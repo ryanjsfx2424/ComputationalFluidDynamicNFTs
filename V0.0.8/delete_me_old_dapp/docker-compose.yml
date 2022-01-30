@@ -1,6 +1,0 @@
-version: "3.8"
-services:
-  web:
-    image: ryanjsfx/copy-hash-4:latest
-    ports:
-      - "5556:80"
