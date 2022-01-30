@@ -3,6 +3,8 @@
 This will create a json file for each movie and also a _metadata.json
 file that stitches them together. Basing it off Hashlips art engine.
 """
+IFPS_URL = ""
+IPFS_URL = "QmeUa7FSu1rzfXxFxwTs5mSowQASpwBxLbZRgUk6dqM5kg"
 import os
 import glob
 import time
@@ -34,11 +36,11 @@ for movie in movies:
 # end for movies
 
 changes = {
-           "name" : ["ComputationalFluidDynamicsV0 #" + str(ii) for ii in range(NUM)],
+           "name" : ["#" + str(ii) for ii in range(NUM)],
 
            "description" : NUM*["This is the first version of a series of Computational Fluid Dynamics collections. In this version, we utilize THE_ARGO, which is a finite-difference, magnetohydrodynamics python code I wrote for my undergraduate honors thesis. THE_ARGO was intended as a learning tool; you can learn more by reading 'Magnetohydrodynamical modeling in Python: simulating magnetic fluids.'\\n\\nIn this version, we demonstrate how varying the Courant-Friedrichs-Lewy (CFL) number impacts the solution when using explicit vs. implicit solvers for the nonlinear advection of a top hat function with periodic boundary conditions. While an explicit solver exhibits numerical instability for CFL greater than unity, it exhibits the least dissipation for unity CFL. Meanwhile, the implicit solver remains stable even if the CFL constraint is violated, yet solutions are more dissipative.\\n\\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\\n\\nv0.0.1 features " + str(NUM) + " unique NFTs."],
 
-           "image" : ["ipfs://QmVfWbJvZmeNB4EGjqDrrXQmnW7Li4gwma5vUevG1LdQG3/" + str(ii) + ".mp4" for ii in range(NUM)],
+           "image" : ["ipfs://" + IPFS_URL + "/" + str(ii) + ".mp4" for ii in range(NUM)],
 
            "dna" : ["" + sha1(str(ii).encode('utf-8')).hexdigest() for ii in range(NUM)],
            "edition" : [ii for ii in range(NUM)],

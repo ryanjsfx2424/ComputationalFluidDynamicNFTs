@@ -1,0 +1,12 @@
+(remix info)
+
+COMPILER
+  0.8.7+commit.e28d00a7
+
+CONTRACT
+  _NAME: CFD NFTs V0.0.9
+  _SYMBOL: CFD009
+  _INITBASEURI: ipfs://QmQ2UWQrD8ankeie2sEut6sWemXM44qb9RccfNZhdSqTG8/
+  _INITNOTREVEALEDURI_: ipfs://QmcrwjeX8nhXqDxzaPxHNojWbpz7GumPDkXY86iDGX5qjw/hidden.json
+
+Bytecode in "bytecode_v009.txt"
