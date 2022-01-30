@@ -1,0 +1,18 @@
+{
+  "CONTRACT_ADDRESS": "0xe0681046f60712748e9E2FC195bF4f2f0778CcEf",
+  "SCAN_LINK": "https://rinkeby.etherscan.io/token/0xe0681046f60712748e9E2FC195bF4f2f0778CcEf",
+  "NETWORK": {
+    "NAME": "Rinkeby",
+    "SYMBOL": "ETH",
+    "ID": 4
+  },
+  "NFT_NAME": "ComputationalFluidDynamicsV0",
+  "SYMBOL": "CFDV0",
+  "MAX_SUPPLY": 10,
+  "WEI_COST": 1000000000000000,
+  "DISPLAY_COST": 0.001,
+  "GAS_LIMIT": 285000,
+  "MARKETPLACE": "Opeansea",
+  "MARKETPLACE_LINK": "https://testnets.opensea.io/collection/computationalfluiddynamicsv0",
+  "SHOW_BACKGROUND": true
+}
