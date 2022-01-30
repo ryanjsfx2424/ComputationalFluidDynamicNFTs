@@ -68,6 +68,23 @@ Okay so v009 will do some v001 edits.
 It worked!
 
 v0.0.10 will use the Mumbai testnet (otherwise same contract).
+Mostly worked! #16 stayed hidden forever b/c I number 0-15 whereas
+tokenIds are 1-index (lame). So, I need to change the baseURI to
+be token-1.
+
+v0.0.11 will test on Polygon (yes mainnet). I'll make sure to verify
+the smart contract before minting - and only mint on the website like
+for the real deal. Also going to update the website favicon and some
+stuff.
+
+v0.0.11 remix snafu'd: polygon said it had deployed but the contract
+remained "pending creation" on remix.
+
+v0.0.12 I tried again and increased the gas and it worked!
+I then verified the contract on Polygon scan. Now I'm updating
+the minting dapp so I copied the ppt that I take screenshots of
+for the title image ("logo") and the background -- which I decided to be
+blank for simplicity.
 
 
   12) minting dapp
