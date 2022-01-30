@@ -1,18 +1,18 @@
 {
-  "CONTRACT_ADDRESS": "0xe0681046f60712748e9E2FC195bF4f2f0778CcEf",
-  "SCAN_LINK": "https://rinkeby.etherscan.io/token/0xe0681046f60712748e9E2FC195bF4f2f0778CcEf",
+  "CONTRACT_ADDRESS": "0x69E25c780B2791D1fe7555bFb371602A469e92c6",
+  "SCAN_LINK": "https://mumbai.polygonscan.com/token/0x69E25c780B2791D1fe7555bFb371602A469e92c6",
   "NETWORK": {
-    "NAME": "Rinkeby",
-    "SYMBOL": "ETH",
-    "ID": 4
+    "NAME": "Mumbai",
+    "SYMBOL": "MATIC",
+    "ID": 80001
   },
-  "NFT_NAME": "ComputationalFluidDynamicsV0",
-  "SYMBOL": "CFDV0",
-  "MAX_SUPPLY": 10,
-  "WEI_COST": 1000000000000000,
-  "DISPLAY_COST": 0.001,
-  "GAS_LIMIT": 285000,
+  "NFT_NAME": "CFD NFTs V0.0.10",
+  "SYMBOL": "CFD0010",
+  "MAX_SUPPLY": 16,
+  "WEI_COST": 1010000000000000,
+  "DISPLAY_COST": 0.00101,
+  "GAS_LIMIT": 300000,
   "MARKETPLACE": "Opeansea",
-  "MARKETPLACE_LINK": "https://testnets.opensea.io/collection/computationalfluiddynamicsv0",
+  "MARKETPLACE_LINK": "https://testnets.opensea.io/collection/cfd-nfts-v0-0-10",
   "SHOW_BACKGROUND": true
 }
