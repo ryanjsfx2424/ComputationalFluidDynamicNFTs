@@ -94,10 +94,9 @@ I had to rm -rf node_modules in the minting dapp directory
          when I minted from fleek the hidden images didn't show up
 on OpenSea, but the reveal went flawlessly.
 
-v0.0.13 will be one last dry run.
+v0.0.13 will be one last dry run. Worked flawlessly! Now I'll just redeploy
+        the contract for V1.0.0, redeploy the website and I'm good!
 
 
-  12) minting dapp
-  13) profit???
 
 
