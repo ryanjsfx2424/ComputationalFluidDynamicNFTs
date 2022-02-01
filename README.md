@@ -86,6 +86,11 @@ the minting dapp so I copied the ppt that I take screenshots of
 for the title image ("logo") and the background -- which I decided to be
 blank for simplicity.
 
+v0.0.12: mints successfully from polygon scan -- so it must be purely
+a website / javascript bug that prevents from minting on that side!
+
+
+
 
   12) minting dapp
   13) profit???
