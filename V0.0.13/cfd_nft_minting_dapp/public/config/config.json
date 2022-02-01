@@ -1,0 +1,18 @@
+{
+  "CONTRACT_ADDRESS": "0xC6dD8C9dcF7Cc64C2d0E08605dc343E68d8c670d",
+  "SCAN_LINK": "https://polygonscan.com/address/0xC6dD8C9dcF7Cc64C2d0E08605dc343E68d8c670d#code",
+  "NETWORK": {
+    "NAME": "Polygon",
+    "SYMBOL": "MATIC",
+    "ID": 137
+  },
+  "NFT_NAME": "CFD NFTs V0.0.13",
+  "SYMBOL": "CFD0013",
+  "MAX_SUPPLY": 16,
+  "WEI_COST": 100000000000000000,
+  "DISPLAY_COST": 0.1,
+  "GAS_LIMIT": 285000,
+  "MARKETPLACE": "Opeansea",
+  "MARKETPLACE_LINK": "https://opensea.io/collection/cfd-nfts-v0-0-13",
+  "SHOW_BACKGROUND": true
+}

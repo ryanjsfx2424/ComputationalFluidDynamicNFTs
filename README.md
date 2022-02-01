@@ -89,7 +89,12 @@ blank for simplicity.
 v0.0.12: mints successfully from polygon scan -- so it must be purely
 a website / javascript bug that prevents from minting on that side!
 
+I had to rm -rf node_modules in the minting dapp directory
+         (I guess npm install is lazy which makes sense). For some reason,
+         when I minted from fleek the hidden images didn't show up
+on OpenSea, but the reveal went flawlessly.
 
+v0.0.13 will be one last dry run.
 
 
   12) minting dapp

@@ -1,0 +1,10 @@
+{
+  "name": "#13 Pastel1",
+  "description": "This is the first version of a series of Computational Fluid Dynamics collections. In this version, we utilize THE_ARGO, which is a finite-difference, magnetohydrodynamics python code I wrote for my undergraduate honors thesis. THE_ARGO was intended as a learning tool; you can learn more by reading 'Magnetohydrodynamical modeling in Python: simulating magnetic fluids.'\n\nIn this version, we demonstrate how varying the Courant-Friedrichs-Lewy (CFL) number impacts the solution when using explicit vs. implicit solvers for the nonlinear advection of a top hat function with periodic boundary conditions. While an explicit solver exhibits numerical instability for CFL greater than unity, it exhibits the least dissipation for unity CFL. Meanwhile, the implicit solver remains stable even if the CFL constraint is violated, yet solutions are more dissipative.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv0.1.0 features 16 unique NFTs.",
+  "image": "ipfs://QmeUa7FSu1rzfXxFxwTs5mSowQASpwBxLbZRgUk6dqM5kg/13.mp4",
+  "dna": "bd307a3ec329e10a2cff8fb87480823da114f8f4",
+  "edition": 13,
+  "date": 16434860622224,
+  "attributes": [{"trait_type": "Stable", "value": "True"}, {"trait_type": "CFL", "value": "0.28"}, {"trait_type": "Solver", "value": "implicit"}, {"trait_type": "Colormap", "value": "Pastel1"}],
+  "compiler": "THE_ARGO_NFT Engine"
+}

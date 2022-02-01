@@ -1,0 +1,12 @@
+(remix info)
+
+COMPILER
+  0.8.7+commit.e28d00a7
+
+CONTRACT
+  _NAME: "Computational Fluid Dynamic NFTs V0.0.5"
+  _SYMBOL: "CFDv005"
+  _INITBASEURI: "ipfs://QmTDtVzmzTNSbGK4fgWg54hzyRe1zPCzRCpHY2DDuDKoLi/"
+  _INITNOTREVEALEDURI_: "ipfs://QmcrwjeX8nhXqDxzaPxHNojWbpz7GumPDkXY86iDGX5qjw/"
+
+Bytecode in "bytecode_v005.txt"

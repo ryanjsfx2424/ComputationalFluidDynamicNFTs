@@ -1,0 +1,14 @@
+(remix info)
+
+COMPILER
+  0.8.7+commit.e28d00a7
+
+CONTRACT
+  _NAME: CFD NFTs V0.0.10
+  _SYMBOL: CFD0010
+  _INITBASEURI: ipfs://QmQ2UWQrD8ankeie2sEut6sWemXM44qb9RccfNZhdSqTG8/
+  _INITNOTREVEALEDURI_: ipfs://QmcrwjeX8nhXqDxzaPxHNojWbpz7GumPDkXY86iDGX5qjw/hidden.json
+
+Bytecode in "bytecode_v0010.txt"
+
+Contract address: 0x69E25c780B2791D1fe7555bFb371602A469e92c6
