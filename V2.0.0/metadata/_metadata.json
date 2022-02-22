@@ -1,0 +1,258 @@
+[
+    {
+      "name":"#0 Hardcandy",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/0.mp4",
+      "edition": 0,
+      "attributes": [{"trait_type": "Resolution", "value": "256"}, {"trait_type": "CFL", "value": "0.48"}, {"trait_type":"tlim", "value": "1.0"},{"trait_type": "Colormap", "value": "Hardcandy"},{"trait_type":"Riemann Solver", "value":"HLLE"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#1 Dark2",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/1.mp4",
+      "edition": 1,
+      "attributes": [{"trait_type": "Resolution", "value": "256"}, {"trait_type": "CFL", "value": "0.48"}, {"trait_type":"tlim", "value": "1.0"},{"trait_type": "Colormap", "value": "Dark2"},{"trait_type":"Riemann Solver", "value":"HLLE"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#10 twilight",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/10.mp4",
+      "edition": 10,
+      "attributes": [{"trait_type": "Resolution", "value": "128"}, {"trait_type": "CFL", "value": "0.49"}, {"trait_type":"tlim", "value": "2.0"},{"trait_type": "Colormap", "value": "twilight"},{"trait_type":"Riemann Solver", "value":"HLLC"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#11 coolwarm",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/11.mp4",
+      "edition": 11,
+      "attributes": [{"trait_type": "Resolution", "value": "256"}, {"trait_type": "CFL", "value": "0.48"}, {"trait_type":"tlim", "value": "2.0"},{"trait_type": "Colormap", "value": "coolwarm"},{"trait_type":"Riemann Solver", "value":"HLLE"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#12 B-W_LINEAR_r",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/12.mp4",
+      "edition": 12,
+      "attributes": [{"trait_type": "Resolution", "value": "256"}, {"trait_type": "CFL", "value": "0.49"}, {"trait_type":"tlim", "value": "2.0"},{"trait_type": "Colormap", "value": "B-W_LINEAR_r"},{"trait_type":"Riemann Solver", "value":"HLLC"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#13 Accent",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/13.mp4",
+      "edition": 13,
+      "attributes": [{"trait_type": "Resolution", "value": "256"}, {"trait_type": "CFL", "value": "0.47"}, {"trait_type":"tlim", "value": "2.0"},{"trait_type": "Colormap", "value": "Accent"},{"trait_type":"Riemann Solver", "value":"HLLC"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#14 winter",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/14.mp4",
+      "edition": 14,
+      "attributes": [{"trait_type": "Resolution", "value": "256"}, {"trait_type": "CFL", "value": "0.47"}, {"trait_type":"tlim", "value": "3.0"},{"trait_type": "Colormap", "value": "winter"},{"trait_type":"Riemann Solver", "value":"HLLE"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#15 bone",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/15.mp4",
+      "edition": 15,
+      "attributes": [{"trait_type": "Resolution", "value": "256"}, {"trait_type": "CFL", "value": "0.49"}, {"trait_type":"tlim", "value": "1.0"},{"trait_type": "Colormap", "value": "bone"},{"trait_type":"Riemann Solver", "value":"HLLE"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#16 spring",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/16.mp4",
+      "edition": 16,
+      "attributes": [{"trait_type": "Resolution", "value": "256"}, {"trait_type": "CFL", "value": "0.47"}, {"trait_type":"tlim", "value": "1.0"},{"trait_type": "Colormap", "value": "spring"},{"trait_type":"Riemann Solver", "value":"HLLE"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#17 inferno",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/17.mp4",
+      "edition": 17,
+      "attributes": [{"trait_type": "Resolution", "value": "256"}, {"trait_type": "CFL", "value": "0.47"}, {"trait_type":"tlim", "value": "2.0"},{"trait_type": "Colormap", "value": "inferno"},{"trait_type":"Riemann Solver", "value":"HLLE"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#18 Set3",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/18.mp4",
+      "edition": 18,
+      "attributes": [{"trait_type": "Resolution", "value": "128"}, {"trait_type": "CFL", "value": "0.48"}, {"trait_type":"tlim", "value": "3.0"},{"trait_type": "Colormap", "value": "Set3"},{"trait_type":"Riemann Solver", "value":"HLLE"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#19 jet",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/19.mp4",
+      "edition": 19,
+      "attributes": [{"trait_type": "Resolution", "value": "256"}, {"trait_type": "CFL", "value": "0.47"}, {"trait_type":"tlim", "value": "1.0"},{"trait_type": "Colormap", "value": "jet"},{"trait_type":"Riemann Solver", "value":"HLLE"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#2 Plasma",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/2.mp4",
+      "edition": 2,
+      "attributes": [{"trait_type": "Resolution", "value": "256"}, {"trait_type": "CFL", "value": "0.47"}, {"trait_type":"tlim", "value": "1.0"},{"trait_type": "Colormap", "value": "Plasma"},{"trait_type":"Riemann Solver", "value":"HLLE"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#20 Ocean",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/20.mp4",
+      "edition": 20,
+      "attributes": [{"trait_type": "Resolution", "value": "256"}, {"trait_type": "CFL", "value": "0.47"}, {"trait_type":"tlim", "value": "1.0"},{"trait_type": "Colormap", "value": "Ocean"},{"trait_type":"Riemann Solver", "value":"HLLE"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#21 Blues",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/21.mp4",
+      "edition": 21,
+      "attributes": [{"trait_type": "Resolution", "value": "256"}, {"trait_type": "CFL", "value": "0.49"}, {"trait_type":"tlim", "value": "2.0"},{"trait_type": "Colormap", "value": "Blues"},{"trait_type":"Riemann Solver", "value":"HLLE"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#22 summer",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/22.mp4",
+      "edition": 22,
+      "attributes": [{"trait_type": "Resolution", "value": "256"}, {"trait_type": "CFL", "value": "0.47"}, {"trait_type":"tlim", "value": "1.0"},{"trait_type": "Colormap", "value": "summer"},{"trait_type":"Riemann Solver", "value":"HLLE"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#23 EosA",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/23.mp4",
+      "edition": 23,
+      "attributes": [{"trait_type": "Resolution", "value": "128"}, {"trait_type": "CFL", "value": "0.48"}, {"trait_type":"tlim", "value": "3.0"},{"trait_type": "Colormap", "value": "EosA"},{"trait_type":"Riemann Solver", "value":"HLLC"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#24 autumn",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/24.mp4",
+      "edition": 24,
+      "attributes": [{"trait_type": "Resolution", "value": "256"}, {"trait_type": "CFL", "value": "0.47"}, {"trait_type":"tlim", "value": "1.2"},{"trait_type": "Colormap", "value": "autumn"},{"trait_type":"Riemann Solver", "value":"HLLE"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#25 STEPS",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/25.mp4",
+      "edition": 25,
+      "attributes": [{"trait_type": "Resolution", "value": "128"}, {"trait_type": "CFL", "value": "0.49"}, {"trait_type":"tlim", "value": "1.2"},{"trait_type": "Colormap", "value": "STEPS"},{"trait_type":"Riemann Solver", "value":"HLLE"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#26 Greys",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/26.mp4",
+      "edition": 26,
+      "attributes": [{"trait_type": "Resolution", "value": "256"}, {"trait_type": "CFL", "value": "0.48"}, {"trait_type":"tlim", "value": "1.0"},{"trait_type": "Colormap", "value": "Greys"},{"trait_type":"Riemann Solver", "value":"HLLE"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#27 hsv",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/27.mp4",
+      "edition": 27,
+      "attributes": [{"trait_type": "Resolution", "value": "256"}, {"trait_type": "CFL", "value": "0.48"}, {"trait_type":"tlim", "value": "2.0"},{"trait_type": "Colormap", "value": "hsv"},{"trait_type":"Riemann Solver", "value":"HLLE"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#28 Haze",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/28.mp4",
+      "edition": 28,
+      "attributes": [{"trait_type": "Resolution", "value": "256"}, {"trait_type": "CFL", "value": "0.48"}, {"trait_type":"tlim", "value": "1.0"},{"trait_type": "Colormap", "value": "Haze"},{"trait_type":"Riemann Solver", "value":"HLLE"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#29 viridis",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/29.mp4",
+      "edition": 29,
+      "attributes": [{"trait_type": "Resolution", "value": "256"}, {"trait_type": "CFL", "value": "0.47"}, {"trait_type":"tlim", "value": "1.0"},{"trait_type": "Colormap", "value": "viridis"},{"trait_type":"Riemann Solver", "value":"HLLE"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#3 RdBu",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/3.mp4",
+      "edition": 3,
+      "attributes": [{"trait_type": "Resolution", "value": "256"}, {"trait_type": "CFL", "value": "0.47"}, {"trait_type":"tlim", "value": "1.0"},{"trait_type": "Colormap", "value": "RdBu"},{"trait_type":"Riemann Solver", "value":"HLLE"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#30 volcano",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/30.mp4",
+      "edition": 30,
+      "attributes": [{"trait_type": "Resolution", "value": "256"}, {"trait_type": "CFL", "value": "0.47"}, {"trait_type":"tlim", "value": "2.0"},{"trait_type": "Colormap", "value": "volcano"},{"trait_type":"Riemann Solver", "value":"HLLE"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#31 prism",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/31.mp4",
+      "edition": 31,
+      "attributes": [{"trait_type": "Resolution", "value": "64"}, {"trait_type": "CFL", "value": "0.495"}, {"trait_type":"tlim", "value": "2.4"}, {"trait_type": "Colormap", "value": "prism"}, {"trait_type":"Riemann Solver", "value":"Roe"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#4 Hue_Sat_Value2",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/4.mp4",
+      "edition": 4,
+      "attributes": [{"trait_type": "Resolution", "value": "256"}, {"trait_type": "CFL", "value": "0.47"}, {"trait_type":"tlim", "value": "2.0"},{"trait_type": "Colormap", "value": "Hue_Sat_Value2"},{"trait_type":"Riemann Solver", "value":"HLLE"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#5 Reds",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/5.mp4",
+      "edition": 5,
+      "attributes": [{"trait_type": "Resolution", "value": "256"}, {"trait_type": "CFL", "value": "0.47"}, {"trait_type":"tlim", "value": "1.0"},{"trait_type": "Colormap", "value": "Reds"},{"trait_type":"Riemann Solver", "value":"HLLE"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#6 seismic",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/6.mp4",
+      "edition": 6,
+      "attributes": [{"trait_type": "Resolution", "value": "256"}, {"trait_type": "CFL", "value": "0.47"}, {"trait_type":"tlim", "value": "1.0"},{"trait_type": "Colormap", "value": "seismic"},{"trait_type":"Riemann Solver", "value":"HLLE"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#7 Nature",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/7.mp4",
+      "edition": 7,
+      "attributes": [{"trait_type": "Resolution", "value": "256"}, {"trait_type": "CFL", "value": "0.47"}, {"trait_type":"tlim", "value": "1.0"},{"trait_type": "Colormap", "value": "Nature"},{"trait_type":"Riemann Solver", "value":"HLLE"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#8 Blue_Waves_r",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/8.mp4",
+      "edition": 8,
+      "attributes": [{"trait_type": "Resolution", "value": "256"}, {"trait_type": "CFL", "value": "0.49"}, {"trait_type":"tlim", "value": "3.0"},{"trait_type": "Colormap", "value": "Blue_Waves_r"},{"trait_type":"Riemann Solver", "value":"HLLE"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    },
+    {
+      "name":"#9 doom",
+      "description": "This is the second version of a series of Computational Fluid Dynamics collections. In this version, we utilize Athena++, which is an open-source finite-volume, magnetohydrodynamics code (further details in Stone et al. 2020, ApJ, 249, 4).\n\nIn this version, we simulate an Orszag-Tang vortex which is a classical test problem to ensure vanishing divergence of the magnetic field is maintained in a complicated flow structure. Athena++ utilizes the constrained transport method to guarantee the solenoidal constraint of Maxwell's equations is zero to machine precision throughout the simulations.\n\nSimulations were performed on a 2013 MacBook Pro (2 GHz Quad-Core Intel Core i7; 8 GB 1600 MHz DDR3).\n\nv2.0.0 features 32 NFTs.",
+      "image": "ipfs://QmeyyYPc5fC9xLpsBhAYV8FDoHs1mNa51YzSVLtSb3bsui/9.mp4",
+      "edition": 9,
+      "attributes": [{"trait_type": "Resolution", "value": "512"}, {"trait_type": "CFL", "value": "0.499"}, {"trait_type":"tlim", "value": "6.0"},{"trait_type": "Colormap", "value": "doom"},{"trait_type":"Riemann Solver", "value":"HLLD"},{"trait_type": "Stable", "value": "True"}],
+      "compiler": "CFD_NFT Engine"
+    }
+]

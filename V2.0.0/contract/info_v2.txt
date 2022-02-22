@@ -1,0 +1,16 @@
+(remix info)
+
+COMPILER
+  0.8.7+commit.e28d00a7
+
+CONTRACT
+  _NAME: CFD NFTs V2.0.0
+  _SYMBOL: CFD2
+  _INITBASEURI: ipfs://QmWppX9eGketmgXcvQhkgEw1vDLttjR3iwDiUypt7vwHV2/
+  _INITNOTREVEALEDURI_: ipfs://QmberPdJxVsjALcxAXtGXAJorBaDYsVkm3DDAfZHTDcyWz/hidden.json
+
+Bytecode in "bytecode_v2.txt"
+
+Contract address: 
+
+ABI from compile page:

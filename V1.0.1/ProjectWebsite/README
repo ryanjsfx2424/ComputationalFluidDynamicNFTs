@@ -1,0 +1,18 @@
+I paid $15 for the cheapest option of webflow to build the site.
+Probably there's a free option but I don't really know web design/dev.
+
+Netlify seems to be "free" similar to fleek (300 build minutes). I also
+signed up for Google Cloud Platform but I think all three are more for
+deploying built sites rather than building them.
+
+Anyway, I'm planning on building the site in webflow and then hopefully
+just saving the full webpage and then tweaking it to deploy on fleek etc
+and then I'll continue on fleek, jump to netlify when I run out of fleek
+build minutes, then jump to GCP when I run out of netlify etc.
+
+First thing I did was build the favicon, which I copied from the
+CFD NFTs V1.0.1 hlld_256_1pt6 run with accent colormap snapshot #40.
+I used imagemagick's convert command like
+  convert img.png -resize 32x32 img_new_size.png
+
+I grabbed the OpenSea logo from their website.

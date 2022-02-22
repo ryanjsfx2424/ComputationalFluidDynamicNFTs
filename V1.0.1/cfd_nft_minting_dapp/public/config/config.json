@@ -1,18 +1,18 @@
 {
-  "CONTRACT_ADDRESS": "0x7464b030c53B99f9270E4979ADf94A26347222d6",
-  "SCAN_LINK": "https://rinkeby.etherscan.io/address/0x7464b030c53B99f9270E4979ADf94A26347222d6",
+  "CONTRACT_ADDRESS": "0xe9c05B28C94A474ED9b8b3331E119666813D00fa",
+  "SCAN_LINK": "https://rinkeby.etherscan.io/address/0xe9c05B28C94A474ED9b8b3331E119666813D00fa",
   "NETWORK": {
     "NAME": "Rinkeby Testnet",
     "SYMBOL": "ETH",
     "ID": 4
   },
-  "NFT_NAME": "CFD NFTs V1.0.1",
-  "SYMBOL": "CFD101",
+  "NFT_NAME": "CFD NFTs V1.0.2",
+  "SYMBOL": "CFD102",
   "MAX_SUPPLY": 32,
   "WEI_COST": 200000000000000,
   "DISPLAY_COST": 0.0002,
   "GAS_LIMIT": 285000,
   "MARKETPLACE": "Opeansea",
-  "MARKETPLACE_LINK": "https://testnets.opensea.io/collection/cfd-nfts-v1-0-1",
+  "MARKETPLACE_LINK": "https://testnets.opensea.io/collection/cfd-nfts-v1-0-2",
   "SHOW_BACKGROUND": true
 }

@@ -1,0 +1,16 @@
+(remix info)
+
+COMPILER
+  0.8.7+commit.e28d00a7
+
+CONTRACT
+  _NAME: CFD NFTs V1.0.1
+  _SYMBOL: CFD101
+  _INITBASEURI: ipfs://QmcsqXArRYZwnsxuEJFm68bfksSLZP8jNdN1hH8Hz17XPD/
+  _INITNOTREVEALEDURI_: ipfs://QmberPdJxVsjALcxAXtGXAJorBaDYsVkm3DDAfZHTDcyWz/hidden.json
+
+Bytecode in "bytecode_v1.txt"
+
+Contract address: 
+
+ABI from compile page:
