@@ -309,7 +309,7 @@ function App() {
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
                 >
-                  Public Sale Below: 1 {CONFIG.SYMBOL} costs {CONFIG.DISPLAY_COST}{" "}
+                  Public Sale: SOLD OUT! Only V1 owners can mint now!!
                   {CONFIG.NETWORK.SYMBOL}.
                 </s.TextTitle>
                 <s.SpacerXSmall />
@@ -406,7 +406,7 @@ function App() {
                           getData();
                         }}
                       >
-                        {claimingNft ? "BUSY" : "BUY"}
+                        {claimingNft ? "BUSY" : "SOLD OUT (DO NOT CLICK ME!)"}
                       </StyledButton>
                     </s.Container>
                   </>
