@@ -1,0 +1,244 @@
+﻿.ads-wr{
+	margin: 25px auto; height:250px; clear: both; width: 970px;
+}
+
+.hasMargin{
+    margin-left: 25px;
+}
+
+#popbox p{
+	line-height: 16px;
+	margin-bottom: 0.5rem;
+	float: left;
+    clear: both;
+    width: calc(100% - 25px);
+}
+#popbox a{
+	color: #ccc;
+}
+#popbox .width50 p:nth-child(2) i, #popbox .width50 p:nth-child(7) i, .userimagewr #popbox .width50 p:nth-child(8) i, .userimagewr #popbox .width50 .marginminus{
+	margin-left: -25px;
+	margin-right: 7px;
+}
+#popbox .width50 p:nth-child(2){
+	float: left;
+}
+#popbox .width50 p:nth-child(1) i, #popbox .width50 p:nth-child(8) i{
+	margin-right: 5px;
+}
+
+.hasMarginFirst{
+    position: relative;
+}	
+.btn50{
+	width: calc(50% - 5px);
+    float: left;
+    margin-top: 10px;
+}
+#popupbutton div span:nth-child(1) .btn50{
+	margin-right: 10px;
+}
+#popbox {
+    /*margin-top: 5px;*/
+    float: left;
+    width: 100%;
+}
+#share-links {
+    margin-top: 25px;
+    float: left;
+    width: 100%;
+}
+#share-links input{
+	width: 100%;
+}
+
+
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 9999; /* Sit on top */
+    padding-top: 70px; /* Location of the box */
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content2 {
+/*
+    width: -webkit-calc(100% - 420px);
+    width:    -moz-calc(100% - 420px);
+    width:         calc(100% - 420px);
+	*/
+    float: left;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+/*.modal-content2 img{width: 100%;}*/
+
+/* Caption of Modal Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: calc(100% - 60px);
+    float: left;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 10px 20px 10px;
+}
+
+/* Add Animation */
+.modal-content2, #caption {    
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close a{
+    color: #f1f1f1;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#img01{
+	max-width: 100%; z-index: 99999; margin: 0 auto; display: block;
+}
+#popupbutton div{
+	width: 100%;
+}
+.width50{
+	width: 45%;
+	float: left;
+	overflow: hidden;
+	margin-top: 10px;
+}
+#downloadsize #popupbutton{
+	margin-right: 10%;
+}
+/*
+.linkads{
+	width: 468px;height: 27px;
+}*/
+.linkads{
+	width: 100%;
+	height: auto;
+}
+#down-link{
+	width: 100%;
+}
+/*
+#likefavidspan, #share-popup{
+	width: 45%;
+}
+#likefavidspan{
+	float: left;
+}
+#likefavidspan a, #share-popup a{
+	width: 100% !important;
+}
+*/
+#download-size span{
+	margin-right: 0;
+    width: 50%;
+    min-width: 50%;
+}
+#image-form{
+	margin-bottom: 2em;
+}
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 1130px){
+    .width50{
+		width: 100%;
+	}
+	#popupbutton{
+		margin-bottom: 20px;
+	}
+	#sharephoto{
+		margin-top:0;
+	}
+}
+
+#spons{
+	width: 300px;
+    height: 600px;
+    float: left;
+}
+#spons2 {
+    position: fixed;
+}
+.adsmobile{
+	text-align: center; height:auto; margin-bottom: 30px;
+}
+#wrapper {
+    min-width: 790px;
+    max-width: 1200px;
+    margin: 0 auto 0 auto;
+}
+@media screen and (max-width: 1100px){
+	.ads-wr{
+		width: 100%; height: 250px;
+	}
+}
+@media screen and (max-width: 736px) {
+	.ads-wr{
+		height: auto;min-height: 100px; clear: both;
+	}
+}
+.a2a_default_style{
+    float: left;
+    margin: 3px 0 3px 23px;
+}
+#share-wr{
+	float: left;
+    width: 100%;
+    clear: both;
+    margin-bottom: 10px;
+}
+
+.itemads{
+	background: none !important;
+	border-color: #FFFFFF !important;
+	cursor: default;
+}

@@ -1,0 +1,29 @@
+{
+  "name": "cfd_nft_minting_dapp",
+  "version": "2.0.1",
+  "description": "Enabling support for coinbase wallet connectivity.",
+  "private": true,
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3"
+  },
+  "author": "Ryan Jeffrey Farber (ryanjsfx.{eth,tez}, @TheLunaLabs @ToTheMoonsNFT)",
+  "license": "MIT",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

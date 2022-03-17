@@ -1,0 +1,8 @@
+[
+  {
+    "name":"Simple Smart Contract + Minting Dapp Voucher",
+    "description": "This ERC-1155 token (polygon) was airdropped to wallets that minted two or more CFD NFTs V2.0.0.\n\nThis voucher can be redeemed for one simple NFT smart contract plus minting dapp (for collections with a potential maximum initial sales revenue of greater than $100,000 or greater than 25 eth, I request 2% of the initial sales - this will be written into the smart contract).\n\nThis voucher null and void after March 10th 2051 and where prohibited.\n\nTo redeem, send this token to 0x01656D41e041b50fc7c1eb270f7d891021937436 and send me a message on ToTheMoonsNFT discord or on twitter @TheLunaLabs.\n\nToTheMoons!\nTheLunaLabs",
+    "image": "ipfs://QmWBRXj2nVjfhU3gWktznxxexdU2ruAGkYPSwCJ5BgrN9a/voucher.png",
+    "compiler": "CFD_NFT Engine"
+  }
+]

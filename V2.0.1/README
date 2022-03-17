@@ -1,0 +1,114 @@
+The main purpose of V2.0.1 is to upgrade the minting dapp used in
+V2.0.0 (which I actually kept in V1.0.1) to allow for Coinbase wallet
+connectivity -- and then to improve the ability for people to check
+if their V1 token can claim a V2 token or not.
+
+Note, Chrome doesn't show my favicon...Brave does though...maybe
+for Chrome I just need to reset the cache?
+  Favicon all good for fresh Firefox window (quit it first) so yeah
+probably just Chrome remembering the tutorial React dapp.
+
+athena configure line:
+  python configure.py --prob rt --flux hllc -hdf5 -mpi
+
+Notes to self:
+  I'd say 16x32 is obviously quite coarse but it can be a 1/1 again :)
+
+32x64 is maybe my favorite but 64x128 looks good at the start too.
+It'll be good to run a 128x256 run for longer but will take ~30 minutes
+and it'd be nice to do a 256x512 but I guess that'll take a few hours.
+And then 512x1024 maybe overnight? Possibly out of reach of single core.
+
+I'd like to modify athena source to allow numerically unstable runs.
+Also I want to look up what iprob, amp, and drat parameters do.
+
+Also I want to play around with gamma and grav_acc2 parameters.
+
+Was about 3 minutes to run grav_acc2 = -0.69 (grav_acc2 = -0.1 fiducial)
+at 64x128 resolution.
+
+Okay, so that basically sped up the evolution of the sim 6.9x which
+is great news regarding evolving some high resolution runs cheaper
+but it's a boring parameter to sweep unfortunately. Also for the 64x128
+run it evolves really rapidly such that most of the simulation time
+it's already reached a steady state so kind of boring.
+
+Next let's try modifying gamma (default is 1.4 so I'll change it to
+1.333333 for a relativistic gas and then 1.666666666 for an ideal gas.
+And maybe a few other values.
+  I just tried 1.69 and there's a subtle but not obvious difference
+so I'll save modifying gamma for later (I'll probably just do 1.4
+the fiducial, 1.69 as a 1/1, 1.33s as relativistic gas and 1.66s as
+ideal gas.
+
+Okay next, I'll look at iprob, amp, and drat.
+  Pretty sure drat is density ratio so similar to grav, if I
+increase the density ratio it'll evolve faster and if I decrease
+the density ratio it'll evolve more slowly.
+  amp is likely the amplitude of the initial perturbation.
+
+According to rt.cpp, iprob = 1 is single mode, iprob != 1 is multiple
+mode perturbation. (more options for 3d)
+
+I think I'll want to modify kx,ky to have more than one finger.
+
+For now I'll just try drat = 6.9
+  Then I'll try iprob != 1
+
+Then I'll include magnetic fields. Then I'll modify the period.
+
+512x1024 took 18.5 hours and didn't quite get there before I had to
+close my laptop. I mean it def went far enough (like t=48) jut not
+the full tlim=69.
+
+Next I'll try iprob != 1, then with magnetic fields, then I'll change
+the wavelength of the perturbation.
+
+Oh and I also want to tweak athena to allow unstable cfl numbers.
+
+iprob != 1 looks pretty cool! Although it saturates early. I guess
+it's effectively the case of a really short period for the perturbation.
+
+Need to plot the case with B-fields turned on next. The next run
+I'll do will be with wavelength of the perturbation 1/2 the fiducial
+(and I'll double the width of the box). I think some iprob != 1 with
+a square box would look cool too.
+
+The B-field case is v boring (since B fields suppress the instability
+but might also just be too low resolution). I'll try increasing
+the gravitational acceleration and see if that makes things more
+interesting --- oooo! I can also make the b-fields weaker! I'll
+do that first. Set it to 0.1 and then I'll try 0.01 (so plasma beta
+proably = 10 and then 100 ;) ).
+
+While that's running I'll go modify the perturbation wavelength and
+call that rt2
+
+b0 = 0.1 was sadly also boring. Next up b0 = 0.01! If it looks cool,
+great! If not, I'll set grav_acc2 to -0.69 again...
+
+b0 = 0.01 evolved! I think it probably won't look *that* cool tho...
+I'll try b0 = 0.069 next. Then b0 = 1 and grav_acc2 = -0.69
+(and if that's boring, b0 = 0.1 with grav_acc2 = -0.69), then I'll
+try the period = 0.5 etc runs.
+
+While that stuff is running I'll work on allowing for unstable cfl
+numbers. Besides cfl I also want to runs some with different
+Riemann solvers. Then I think I'll just need to play with colormaps
+and be done!
+
+b0 = 0.069 was boring -- I'll try it with grav_acc2 = -0.69.
+Then I'll try period = 0.5 etc runs. I'll do unstable cfl stuff
+more likely when I have internet (need to remember how to gdb).
+
+b0 = 0.069 w/ grav_acc2 = -0.69 evolved. But as usual with
+b-fields kinda boring due to suppression of the instability.
+
+I'll just do one more b-field case with iprob!=1 then switch
+to different periods and then do the different riemann solvers.
+Then I'll just mix and match parameters I've already run
+(currently at 16 runs so I really don't need that many more imo...
+and I do want at least one numerically unstable case ideally).
+
+Still kinda meh for b-fields w/ iprob !=1. Anyway, now to
+modifying the period for non-bField cases!
