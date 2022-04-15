@@ -1,0 +1,239 @@
+1649883963761	geckodriver	INFO	Listening on 127.0.0.1:49412
+1649883964271	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "49413" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/pr/mw9ljf9s05z6rjnmbffllg6w0000gn/T/rust_mozprofileBD4aCZ"
+1649883965122	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/pr/mw9ljf9s05z6rjnmbffllg6w0000gn/T/rust_mozprofileBD4aCZ/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+DevTools listening on ws://localhost:49413/devtools/browser/616100b4-9b7c-402f-b5a9-b523c97121b2
+1649883967901	Marionette	INFO	Listening on port 49431
+Read port: 49431
+1649883968022	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+1649884131543	geckodriver	INFO	Listening on 127.0.0.1:49468
+1649884132053	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "49469" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/pr/mw9ljf9s05z6rjnmbffllg6w0000gn/T/rust_mozprofileOspkGF"
+1649884132618	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/pr/mw9ljf9s05z6rjnmbffllg6w0000gn/T/rust_mozprofileOspkGF/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+DevTools listening on ws://localhost:49469/devtools/browser/ecfb3f36-cbb7-445c-9d8e-e55286b09801
+1649884135009	Marionette	INFO	Listening on port 49489
+Read port: 49489
+1649884135076	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://discord.com/assets/e481e2ee7efc4e80340f.js, line 2083: unreachable code after return statement
+JavaScript warning: https://discord.com/assets/e481e2ee7efc4e80340f.js, line 4044: unreachable code after return statement
+JavaScript warning: https://discord.com/assets/e481e2ee7efc4e80340f.js, line 4044: unreachable code after return statement
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://discord.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://discord.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.google.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.google.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.google.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.google.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.google.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.google.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.google.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.error: (new TypeError("currentNode is null", "resource://devtools/client/inspector/shared/style-change-tracker.js", 66))
+TypeError: currentNode is null: canMutationImpactCurrentStyles@resource://devtools/client/inspector/shared/style-change-tracker.js:66:20
+onMutations@resource://devtools/client/inspector/shared/style-change-tracker.js:84:41
+_emit@resource://devtools/shared/event-emitter.js:242:32
+emit@resource://devtools/shared/event-emitter.js:186:18
+emit@resource://devtools/shared/event-emitter.js:330:18
+getMutations@resource://devtools/client/fronts/walker.js:312:10
+
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.google.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.error: "Error while calling actor 'domwalker's method 'getEmbedderElement'" "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [inIDeepTreeWalker.currentNode]"
+console.error: ({})
+console.warn: "Error while destroying front:" "inspector" (new Error("Protocol error (NS_ERROR_FAILURE): Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [inIDeepTreeWalker.currentNode] from: server0.conn0.windowGlobal2147483652/domwalker47 (resource://devtools/server/actors/inspector/document-walker.js:79:0)", "resource://devtools/shared/protocol/Front.js", 365))
+console.error: "Failed to start [root-node] legacy listener for target null" (new Error("Protocol error (NS_ERROR_FAILURE): Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [inIDeepTreeWalker.currentNode] from: server0.conn0.windowGlobal2147483652/domwalker47 (resource://devtools/server/actors/inspector/document-walker.js:79:0)", "resource://devtools/shared/protocol/Front.js", 365))
+JavaScript error: resource://devtools/shared/protocol/Front.js, line 365: Error: Protocol error (NS_ERROR_FAILURE): Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [inIDeepTreeWalker.currentNode] from: server0.conn0.windowGlobal2147483652/domwalker47 (resource://devtools/server/actors/inspector/document-walker.js:79:0)
+JavaScript warning: https://discord.com/assets/e481e2ee7efc4e80340f.js, line 2083: unreachable code after return statement
+JavaScript warning: https://discord.com/assets/e481e2ee7efc4e80340f.js, line 4044: unreachable code after return statement
+JavaScript warning: https://discord.com/assets/e481e2ee7efc4e80340f.js, line 4044: unreachable code after return statement
+Handler function threw an exception: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIHttpChannelInternal.remoteAddress]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://devtools/server/actors/network-monitor/network-observer.js :: _onResponseHeader :: line 990"  data: no]
+Stack: _onResponseHeader@resource://devtools/server/actors/network-monitor/network-observer.js:990:5
+_dispatchActivity@resource://devtools/server/actors/network-monitor/network-observer.js:563:14
+NetworkObserver.prototype.observeActivity<@resource://devtools/server/actors/network-monitor/network-observer.js:672:12
+exports.makeInfallible/<@resource://devtools/shared/ThreadSafeDevToolsUtils.js:103:22
+Line: 990, column: 0
+console.error: ({})
+console.error: (new TypeError("parent is null", "resource://devtools/client/inspector/shared/style-change-tracker.js", 67))
+TypeError: parent is null: canMutationImpactCurrentStyles@resource://devtools/client/inspector/shared/style-change-tracker.js:67:24
+onMutations@resource://devtools/client/inspector/shared/style-change-tracker.js:84:41
+_emit@resource://devtools/shared/event-emitter.js:242:32
+emit@resource://devtools/shared/event-emitter.js:186:18
+emit@resource://devtools/shared/event-emitter.js:330:18
+getMutations@resource://devtools/client/fronts/walker.js:312:10
+
+1649886607468	geckodriver	INFO	Listening on 127.0.0.1:49759
+1649886607964	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "49760" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/pr/mw9ljf9s05z6rjnmbffllg6w0000gn/T/rust_mozprofilepzb3RB"
+1649886609066	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/pr/mw9ljf9s05z6rjnmbffllg6w0000gn/T/rust_mozprofilepzb3RB/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+DevTools listening on ws://localhost:49760/devtools/browser/8a42d307-add3-4aa3-a993-3175e34c8298
+1649886611796	Marionette	INFO	Listening on port 49781
+Read port: 49781
+1649886611835	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://discord.com/assets/e481e2ee7efc4e80340f.js, line 2083: unreachable code after return statement
+JavaScript warning: https://discord.com/assets/e481e2ee7efc4e80340f.js, line 4044: unreachable code after return statement
+JavaScript warning: https://discord.com/assets/e481e2ee7efc4e80340f.js, line 4044: unreachable code after return statement
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://discord.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://discord.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+1649886697259	Marionette	INFO	Stopped listening on port 49781
+
+###!!! [Child][PContentChild] Error: RunMessage(msgname=PContent::Reply_DiscardBrowsingContext) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][PContentParent] Error: Send(msgname=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Parent][PImageBridgeParent] Error: RunMessage(msgname=PImageBridge::Msg_WillClose) Channel closing: too late to send/recv, messages will be lost
+
+1649886700948	geckodriver	INFO	Listening on 127.0.0.1:49820
+1649886701453	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "49821" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/pr/mw9ljf9s05z6rjnmbffllg6w0000gn/T/rust_mozprofile7sTyfv"
+1649886702010	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/pr/mw9ljf9s05z6rjnmbffllg6w0000gn/T/rust_mozprofile7sTyfv/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+DevTools listening on ws://localhost:49821/devtools/browser/1f9da7ae-5e02-4bb6-943b-b3fd25b06d3e
+1649886704288	Marionette	INFO	Listening on port 49837
+Read port: 49837
+1649886704385	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://discord.com/assets/e481e2ee7efc4e80340f.js, line 2083: unreachable code after return statement
+JavaScript warning: https://discord.com/assets/e481e2ee7efc4e80340f.js, line 4044: unreachable code after return statement
+JavaScript warning: https://discord.com/assets/e481e2ee7efc4e80340f.js, line 4044: unreachable code after return statement
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://discord.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://discord.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+1649886756508	Marionette	INFO	Stopped listening on port 49837
+
+###!!! [Parent][PContentParent] Error: Send(msgname=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+1649886760480	geckodriver	INFO	Listening on 127.0.0.1:49869
+1649886760983	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "49870" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/pr/mw9ljf9s05z6rjnmbffllg6w0000gn/T/rust_mozprofileTtddPn"
+1649886761584	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/pr/mw9ljf9s05z6rjnmbffllg6w0000gn/T/rust_mozprofileTtddPn/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+DevTools listening on ws://localhost:49870/devtools/browser/779567fd-43c4-4d6c-9dd7-f27bad956d2b
+1649886763708	Marionette	INFO	Listening on port 49886
+Read port: 49886
+1649886763819	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://discord.com/assets/e481e2ee7efc4e80340f.js, line 2083: unreachable code after return statement
+JavaScript warning: https://discord.com/assets/e481e2ee7efc4e80340f.js, line 4044: unreachable code after return statement
+JavaScript warning: https://discord.com/assets/e481e2ee7efc4e80340f.js, line 4044: unreachable code after return statement
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://discord.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://discord.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+1649886950259	Marionette	INFO	Stopped listening on port 49886
+
+###!!! [Parent][PImageBridgeParent] Error: RunMessage(msgname=PImageBridge::Msg_WillClose) Channel closing: too late to send/recv, messages will be lost
+
+1649886956382	geckodriver	INFO	Listening on 127.0.0.1:49925
+1649886956889	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "49926" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/pr/mw9ljf9s05z6rjnmbffllg6w0000gn/T/rust_mozprofilehfmTVL"
+1649886957602	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/pr/mw9ljf9s05z6rjnmbffllg6w0000gn/T/rust_mozprofilehfmTVL/search.json.mozlz4", (void 0)))
+Exiting due to channel error.
+Exiting due to channel error.
+1649886964080	geckodriver	INFO	Listening on 127.0.0.1:49943
+1649886964597	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "49944" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/pr/mw9ljf9s05z6rjnmbffllg6w0000gn/T/rust_mozprofileBQku0x"
+1649886965063	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/pr/mw9ljf9s05z6rjnmbffllg6w0000gn/T/rust_mozprofileBQku0x/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+DevTools listening on ws://localhost:49944/devtools/browser/73474f29-07f4-4239-8916-e75ec224bb92
+1649886967409	Marionette	INFO	Listening on port 49963
+Read port: 49963
+1649886967530	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://discord.com/assets/e481e2ee7efc4e80340f.js, line 2083: unreachable code after return statement
+JavaScript warning: https://discord.com/assets/e481e2ee7efc4e80340f.js, line 4044: unreachable code after return statement
+JavaScript warning: https://discord.com/assets/e481e2ee7efc4e80340f.js, line 4044: unreachable code after return statement
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://discord.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://discord.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+1649887265840	Marionette	INFO	Stopped listening on port 49963
+
+###!!! [Parent][PContentParent] Error: Send(msgname=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][PContentChild] Error: RunMessage(msgname=PContent::Reply_DiscardBrowsingContext) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][PContentChild] Error: Send(msgname=PContent::Msg_ScriptError) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][PContentChild] Error: Send(msgname=PWebSocket::Msg_DeleteSelf) Channel closing: too late to send/recv, messages will be lost
+
+1649887270439	geckodriver	INFO	Listening on 127.0.0.1:50019
+1649887270946	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "50020" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/pr/mw9ljf9s05z6rjnmbffllg6w0000gn/T/rust_mozprofilevMKbSk"
+1649887271555	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/pr/mw9ljf9s05z6rjnmbffllg6w0000gn/T/rust_mozprofilevMKbSk/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+DevTools listening on ws://localhost:50020/devtools/browser/ddf1d8a9-3627-429c-a4b1-65df25331672
+1649887273807	Marionette	INFO	Listening on port 50037
+Read port: 50037
+1649887273830	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://discord.com/assets/e481e2ee7efc4e80340f.js, line 2083: unreachable code after return statement
+JavaScript warning: https://discord.com/assets/e481e2ee7efc4e80340f.js, line 4044: unreachable code after return statement
+JavaScript warning: https://discord.com/assets/e481e2ee7efc4e80340f.js, line 4044: unreachable code after return statement
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://discord.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://discord.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+1649887549124	Marionette	INFO	Stopped listening on port 50037
+
+###!!! [Parent][PContentParent] Error: Send(msgname=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+1649887551078	geckodriver	INFO	Listening on 127.0.0.1:50082
+1649887551582	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "50083" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/pr/mw9ljf9s05z6rjnmbffllg6w0000gn/T/rust_mozprofileO0Zbpb"
+1649887552208	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/pr/mw9ljf9s05z6rjnmbffllg6w0000gn/T/rust_mozprofileO0Zbpb/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+DevTools listening on ws://localhost:50083/devtools/browser/f6b7859b-7784-4e14-af29-f49d1c44b959
+1649887554346	Marionette	INFO	Listening on port 50099
+Read port: 50099
+1649887554385	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://discord.com/assets/e481e2ee7efc4e80340f.js, line 2083: unreachable code after return statement
+JavaScript warning: https://discord.com/assets/e481e2ee7efc4e80340f.js, line 4044: unreachable code after return statement
+JavaScript warning: https://discord.com/assets/e481e2ee7efc4e80340f.js, line 4044: unreachable code after return statement
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://discord.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://discord.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+1649887946063	Marionette	INFO	Stopped listening on port 50099
+
+###!!! [Parent][PContentParent] Error: Send(msgname=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][PContentChild] Error: RunMessage(msgname=PContent::Reply_DiscardBrowsingContext) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][PImageBridgeParent] Error: RunMessage(msgname=PImageBridge::Msg_WillClose) Channel closing: too late to send/recv, messages will be lost
+
+1649887950605	Marionette	INFO	Stopped listening on port 49489
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'DevToolsFrame'
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'DevToolsFrame'
+
+###!!! [Parent][PContentParent] Error: Send(msgname=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][PContentChild] Error: Send(msgname=PContent::Msg_ScriptError) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][PContentChild] Error: Send(msgname=PWebSocket::Msg_DeleteSelf) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][PImageBridgeParent] Error: RunMessage(msgname=PImageBridge::Msg_WillClose) Channel closing: too late to send/recv, messages will be lost
+

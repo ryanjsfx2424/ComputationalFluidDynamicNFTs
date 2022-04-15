@@ -1,0 +1,31 @@
+The purpose of this project is to automate doing !work
+commands in Gaming Ape Club and also to automate chatter to earn
+Gaming Ape Club tokens for their WL marketplace. Possibly also
+automatically do twitter raids and buy shit from their marketplace too.
+
+I'd then want to expand to automatically entering giveaways and such.
+
+I'll start out by trying to do this ~manually.
+
+After brew install cargo (for rust):
+
+======
+To use the bundled libc++ please add the following LDFLAGS:
+  LDFLAGS="-L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib"
+
+llvm is keg-only, which means it was not symlinked into /usr/local,
+because macOS already provides this software and installing another version in
+parallel can cause all kinds of trouble.
+
+If you need to have llvm first in your PATH, run:
+  echo 'export PATH="/usr/local/opt/llvm/bin:$PATH"' >> /Users/redx/.bash_profile
+
+For compilers to find llvm you may need to set:
+  export LDFLAGS="-L/usr/local/opt/llvm/lib"
+  export CPPFLAGS="-I/usr/local/opt/llvm/include"
+=======
+
+After installing geckodriver using cargo:
+  warning: be sure to add `/Users/redx/.cargo/bin` to your PATH to be able to run the installed binaries
+
+
