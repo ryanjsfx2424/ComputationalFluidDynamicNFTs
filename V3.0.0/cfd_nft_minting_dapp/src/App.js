@@ -180,7 +180,7 @@ function App() {
     setClaimingNftPublicWeth(true);
     blockchain.smartContractWeth.methods.increaseAllowance(
       CONFIG.CONTRACT_ADDRESS, 
-      CONFIG.WEI_COST_WETH_ALLOWANCE).send(
+      String(CONFIG.WEI_COST_WETH_ALLOWANCE)).send(
             {gasLimit: String(totalGasLimit), 
              to:CONFIG.CONTRACT_ADDRESS_WETH,
              from: blockchain.account, 
@@ -260,7 +260,7 @@ function App() {
     setClaimingNftV2HolderWeth(true);
     blockchain.smartContractWeth.methods.increaseAllowance(
       CONFIG.CONTRACT_ADDRESS, 
-      CONFIG.WEI_COST_WETH_ALLOWANCE).send(
+      String(CONFIG.WEI_COST_WETH_ALLOWANCE)).send(
             {gasLimit: String(totalGasLimit), 
              to:CONFIG.CONTRACT_ADDRESS_WETH,
              from: blockchain.account, 
@@ -352,7 +352,7 @@ function App() {
   };
 
   const getConfig = async () => {
-    const configResponse = await fetch("/config/config.json", {
+    const configResponse = await fetch("./config/config.json", {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -376,13 +376,13 @@ function App() {
         flex={1}
         ai={"center"}
         style={{ padding: 24, backgroundColor: "var(--primary)" }}
-        image={CONFIG.SHOW_BACKGROUND ? "/config/images/bg.png" : null}
+        image={CONFIG.SHOW_BACKGROUND ? "./config/images/bg.png" : null}
       >
-        <StyledLogo alt={"logo"} src={"/config/images/logo.png"} />
+        <StyledLogo alt={"logo"} src={"./config/images/logo.png"} />
         <s.SpacerSmall />
         <ResponsiveWrapper flex={1} style={{ padding: 24 }} test>
           <s.Container flex={1} jc={"center"} ai={"center"}>
-            <StyledImg alt={"example"} src={"/config/images/example.gif"} />
+            <StyledImg alt={"example"} src={"./config/images/example.gif"} />
           </s.Container>
           <s.SpacerLarge />
           <s.Container
@@ -630,7 +630,7 @@ function App() {
           <s.Container flex={1} jc={"center"} ai={"center"}>
             <StyledImg
               alt={"example"}
-              src={"/config/images/example.gif"}
+              src={"./config/images/example.gif"}
               style={{ transform: "scaleX(-1)" }}
             />
           </s.Container>

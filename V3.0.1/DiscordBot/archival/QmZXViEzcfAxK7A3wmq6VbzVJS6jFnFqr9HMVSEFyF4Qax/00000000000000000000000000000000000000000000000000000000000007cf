@@ -1,0 +1,44 @@
+{
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Night City"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Orange"
+        },
+        {
+            "trait_type": "Character",
+            "value": "Male Cyborg"
+        },
+        {
+            "trait_type": "Nose and Mouth",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Charitable Pink"
+        },
+        {
+            "trait_type": "Halo",
+            "value": "Turquoise"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Gas Mask Orange"
+        },
+        {
+            "trait_type": "Jacket",
+            "value": "Blue Jacket"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Cap Blue"
+        }
+    ],
+    "description": "3,333 Animated Heroes, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "external_url": "https://holyversenft.com",
+    "image": "https://cloudflare-ipfs.com/ipfs/bafybeievvksekpw2n4a6nijnwsijmlnoij4je5fnvw4y3uukfwav5b7r4q",
+    "name": "HOLY HERO #1999"
+}

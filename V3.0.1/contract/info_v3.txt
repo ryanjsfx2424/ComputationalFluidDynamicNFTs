@@ -1,0 +1,15 @@
+(remix info)
+
+COMPILER
+  0.8.7+commit.e28d00a7
+
+CONTRACT
+  _NAME: CFD NFTs V3.0.0
+  _SYMBOL: CFD3
+  _INITBASEURI: ipfs://QmUvkeQs2RPfM2XDZRAFZVBC6AUzFX89r5qcw2CJaHkh87/
+  _INITNOTREVEALEDURI_: ipfs://Qmdajy3nczPGpeNpey3uAmS1YBsowrbkdeXNxoKx2VBHqC/hidden.json
+
+Polygon
+Contract address: 0xd3eF9a40806AcfE42a5E99257cd8774Cd25d525f
+
+

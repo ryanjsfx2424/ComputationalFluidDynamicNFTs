@@ -1,0 +1,36 @@
+{
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Green City"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Green"
+        },
+        {
+            "trait_type": "Character",
+            "value": "Female Neon"
+        },
+        {
+            "trait_type": "Nose and Mouth",
+            "value": "Lip Blue"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Blue"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "BigLens Purple"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Blue Cap"
+        }
+    ],
+    "description": "3,333 Animated Heroes, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "external_url": "https://holyversenft.com",
+    "image": "https://cloudflare-ipfs.com/ipfs/bafybeib5wooyfrly6dzx4zp4vrqaxceiyksij44ftnoesn6vioq2om3muy",
+    "name": "HOLY HERO #1138"
+}

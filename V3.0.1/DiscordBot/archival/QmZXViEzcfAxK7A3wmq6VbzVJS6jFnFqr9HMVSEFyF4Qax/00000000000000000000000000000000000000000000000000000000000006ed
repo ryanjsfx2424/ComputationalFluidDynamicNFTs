@@ -1,0 +1,40 @@
+{
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Night City"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Yellow/Green"
+        },
+        {
+            "trait_type": "Character",
+            "value": "Female Tattoo"
+        },
+        {
+            "trait_type": "Nose and Mouth",
+            "value": "Lip Red"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Purple"
+        },
+        {
+            "trait_type": "Halo",
+            "value": "Orange"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "BigLens Purple"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Purple Side Mohawk"
+        }
+    ],
+    "description": "3,333 Animated Heroes, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "external_url": "https://holyversenft.com",
+    "image": "https://cloudflare-ipfs.com/ipfs/bafybeidjbleumxtp2t3gsqvs3ud7vhci5jnygvlstomvzw4rvrv5xkrz5u",
+    "name": "HOLY HERO #1773"
+}

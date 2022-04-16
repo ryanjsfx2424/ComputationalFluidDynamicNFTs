@@ -1,0 +1,43 @@
+{
+    "name": "Holy Villain #80",
+    "description": "3,333 Animated Villains, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "image": "https://holyverse.mypinata.cloud/ipfs/QmUqPEjiNGwJ66iFrFveGy94ZVWntD6ZHbUVMbWgMqkDv1/000000000000000000000000000000000000000000000000000000000000004f.gif",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Spaceship"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Bat Brown"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Nose Mouth",
+            "value": "Red Lipstick"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Dark Red"
+        },
+        {
+            "trait_type": "Clothes",
+            "value": "Hightech Blue Armor"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Green Side Hair"
+        },
+        {
+            "trait_type": "Horns",
+            "value": "Lava Horn"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Clown Nose"
+        }
+    ]
+}

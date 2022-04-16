@@ -1,0 +1,40 @@
+{
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "City Pink"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Turquoise Blue"
+        },
+        {
+            "trait_type": "Character",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Nose and Mouth",
+            "value": "Lip Pink"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Red"
+        },
+        {
+            "trait_type": "Halo",
+            "value": "Orange"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Rounded Pink Glass"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Green V Helm"
+        }
+    ],
+    "description": "3,333 Animated Heroes, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "external_url": "https://holyversenft.com",
+    "image": "https://cloudflare-ipfs.com/ipfs/bafybeibxf3vpwnejdxhz3muvsdj6piuqkxkukh5go5j7cgbdtln3r6liwu",
+    "name": "HOLY HERO #1426"
+}

@@ -1,0 +1,39 @@
+{
+    "name": "Holy Villain #3",
+    "description": "3,333 Animated Villains, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "image": "https://holyverse.mypinata.cloud/ipfs/QmUqPEjiNGwJ66iFrFveGy94ZVWntD6ZHbUVMbWgMqkDv1/00000000000000000000000000000000000000000000000000000000000007d4.gif",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Subway"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Bat Brown"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Nose Mouth",
+            "value": "Devil Laugh 2"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Deep Grreen"
+        },
+        {
+            "trait_type": "Clothes",
+            "value": "High Collar Red"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Demon in your head!"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Bandage"
+        }
+    ]
+}

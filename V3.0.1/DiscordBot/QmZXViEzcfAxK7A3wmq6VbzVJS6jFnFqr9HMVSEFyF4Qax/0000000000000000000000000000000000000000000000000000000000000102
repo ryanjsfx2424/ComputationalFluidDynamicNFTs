@@ -1,0 +1,44 @@
+{
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "RetroCity Sunset"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Purple"
+        },
+        {
+            "trait_type": "Character",
+            "value": "Male Cyborg"
+        },
+        {
+            "trait_type": "Nose and Mouth",
+            "value": "Simple"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Green"
+        },
+        {
+            "trait_type": "Halo",
+            "value": "Orange"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Rounded Yellow Glass"
+        },
+        {
+            "trait_type": "Jacket",
+            "value": "Gray Turtleneck"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Phoenix Gray Hair"
+        }
+    ],
+    "description": "3,333 Animated Heroes, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "external_url": "https://holyversenft.com",
+    "image": "https://cloudflare-ipfs.com/ipfs/bafybeig7dygwfp2pcitkmzb2wwsqnzmg7pnmy2advduy7gvinimxxdlr2u",
+    "name": "HOLY HERO #258"
+}

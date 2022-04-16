@@ -1,0 +1,40 @@
+{
+    "attributes": [
+        {
+            "trait_type": "Wings",
+            "value": "Mech White"
+        },
+        {
+            "trait_type": "Character",
+            "value": "Male Tattoo"
+        },
+        {
+            "trait_type": "Nose and Mouth",
+            "value": "Goatee"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Brown Blinking"
+        },
+        {
+            "trait_type": "Halo",
+            "value": "Pink"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Deal with it"
+        },
+        {
+            "trait_type": "Jacket",
+            "value": "Casual Black"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Fringecut Hair Red"
+        }
+    ],
+    "description": "3,333 Animated Heroes, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "external_url": "https://holyversenft.com",
+    "image": "https://cloudflare-ipfs.com/ipfs/bafybeieyfkdgdqnxg7jji5txtqpjgqlsz55aqf2sbx2ttj4scv5ul3ylpq",
+    "name": "HOLY HERO #1980"
+}

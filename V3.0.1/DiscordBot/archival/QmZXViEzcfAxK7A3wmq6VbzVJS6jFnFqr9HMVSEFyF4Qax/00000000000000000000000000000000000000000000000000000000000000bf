@@ -1,0 +1,40 @@
+{
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "City Fog"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Green"
+        },
+        {
+            "trait_type": "Character",
+            "value": "Female Tattoo"
+        },
+        {
+            "trait_type": "Nose and Mouth",
+            "value": "Lip Red"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Red"
+        },
+        {
+            "trait_type": "Halo",
+            "value": "Turquoise"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Piercing Silver"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Blue Mohawk Helm"
+        }
+    ],
+    "description": "3,333 Animated Heroes, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "external_url": "https://holyversenft.com",
+    "image": "https://cloudflare-ipfs.com/ipfs/bafybeidy7ee7225yldgkcjc2lqszi44fiegba4paiqxt3blq2kfkbmrefe",
+    "name": "HOLY HERO #191"
+}

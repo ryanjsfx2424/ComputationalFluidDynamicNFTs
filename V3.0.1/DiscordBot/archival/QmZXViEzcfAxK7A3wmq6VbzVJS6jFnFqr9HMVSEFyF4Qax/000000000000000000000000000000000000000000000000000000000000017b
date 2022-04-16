@@ -1,0 +1,40 @@
+{
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "RetroCity"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Turquoise Blue"
+        },
+        {
+            "trait_type": "Character",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Nose and Mouth",
+            "value": "Lip Red"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Red"
+        },
+        {
+            "trait_type": "Halo",
+            "value": "Yellow"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Cyber Monocle"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Red V Helm"
+        }
+    ],
+    "description": "3,333 Animated Heroes, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "external_url": "https://holyversenft.com",
+    "image": "https://cloudflare-ipfs.com/ipfs/bafybeihbcpxpesdduy6ie5x2cbzxagl22igeomug37sluwzirh5gpzqpnq",
+    "name": "HOLY HERO #379"
+}

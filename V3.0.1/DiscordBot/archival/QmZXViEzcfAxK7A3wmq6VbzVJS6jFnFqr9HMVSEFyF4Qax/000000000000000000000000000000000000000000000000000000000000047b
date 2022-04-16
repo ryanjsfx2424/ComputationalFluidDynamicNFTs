@@ -1,0 +1,40 @@
+{
+    "attributes": [
+        {
+            "trait_type": "Wings",
+            "value": "Orange"
+        },
+        {
+            "trait_type": "Character",
+            "value": "Male Cyber"
+        },
+        {
+            "trait_type": "Nose and Mouth",
+            "value": "Goatee"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Green"
+        },
+        {
+            "trait_type": "Halo",
+            "value": "Blue"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Cyber Monocle"
+        },
+        {
+            "trait_type": "Jacket",
+            "value": "Cyber Coat Yellow"
+        },
+        {
+            "trait_type": "Head",
+            "value": "70s Black Power"
+        }
+    ],
+    "description": "3,333 Animated Heroes, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "external_url": "https://holyversenft.com",
+    "image": "https://cloudflare-ipfs.com/ipfs/bafybeiggckylerdbxj7a3hpqieyzktjxyhnvy6mcljclfcxbpaxezjcpoa",
+    "name": "HOLY HERO #1147"
+}

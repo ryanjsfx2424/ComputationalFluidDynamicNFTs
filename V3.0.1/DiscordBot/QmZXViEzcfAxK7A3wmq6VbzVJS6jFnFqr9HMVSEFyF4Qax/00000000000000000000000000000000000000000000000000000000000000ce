@@ -1,0 +1,44 @@
+{
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Green Space"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Green"
+        },
+        {
+            "trait_type": "Character",
+            "value": "Male Tattoo"
+        },
+        {
+            "trait_type": "Nose and Mouth",
+            "value": "Idle"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Brown Blinking"
+        },
+        {
+            "trait_type": "Halo",
+            "value": "Pink"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Green Circle Glass"
+        },
+        {
+            "trait_type": "Jacket",
+            "value": "Jeans Tank Tpo"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Spike Brown Hair"
+        }
+    ],
+    "description": "3,333 Animated Heroes, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "external_url": "https://holyversenft.com",
+    "image": "https://cloudflare-ipfs.com/ipfs/bafybeicylxlkzew6lbfpvu2jonf23r4z4qreyryef2rjttjgw4l7xnwfhi",
+    "name": "HOLY HERO #206"
+}

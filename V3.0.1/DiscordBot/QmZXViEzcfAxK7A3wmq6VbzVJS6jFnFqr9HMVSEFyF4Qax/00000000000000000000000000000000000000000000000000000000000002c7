@@ -1,0 +1,40 @@
+{
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "RetroCity Rainbow"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Blue"
+        },
+        {
+            "trait_type": "Character",
+            "value": "Female Cheeks"
+        },
+        {
+            "trait_type": "Nose and Mouth",
+            "value": "Lip Red"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Red"
+        },
+        {
+            "trait_type": "Halo",
+            "value": "Orange"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Small Rounded Glass"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Frayed Green Hair"
+        }
+    ],
+    "description": "3,333 Animated Heroes, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "external_url": "https://holyversenft.com",
+    "image": "https://cloudflare-ipfs.com/ipfs/bafybeibezp7vf5wmvsyecx3r2j7i7jo3yoxn62nf4in7bblkwwayb4aiga",
+    "name": "HOLY HERO #711"
+}

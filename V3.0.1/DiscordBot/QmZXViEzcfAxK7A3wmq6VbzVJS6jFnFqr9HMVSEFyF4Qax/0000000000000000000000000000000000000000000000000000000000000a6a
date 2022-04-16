@@ -1,0 +1,44 @@
+{
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Blue Space"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Turquoise"
+        },
+        {
+            "trait_type": "Character",
+            "value": "Male Cyborg"
+        },
+        {
+            "trait_type": "Nose and Mouth",
+            "value": "Idle"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Charitable Pink"
+        },
+        {
+            "trait_type": "Halo",
+            "value": "Pink"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Sci fi Monocle Red"
+        },
+        {
+            "trait_type": "Jacket",
+            "value": "Regatta Red"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Punk Blonde"
+        }
+    ],
+    "description": "3,333 Animated Heroes, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "external_url": "https://holyversenft.com",
+    "image": "https://cloudflare-ipfs.com/ipfs/bafybeifmhdjzukvf5sqgshx5wj7ro757cpzqofio3jzjnq3jb4vsaokszm",
+    "name": "HOLY HERO #2666"
+}

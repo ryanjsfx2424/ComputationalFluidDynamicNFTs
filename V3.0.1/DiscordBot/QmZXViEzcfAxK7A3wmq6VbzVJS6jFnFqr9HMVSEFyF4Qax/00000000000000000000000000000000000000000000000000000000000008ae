@@ -1,0 +1,44 @@
+{
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Buildings at night"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Purple"
+        },
+        {
+            "trait_type": "Character",
+            "value": "Male Tattoo"
+        },
+        {
+            "trait_type": "Nose and Mouth",
+            "value": "Confident Smile"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Relaxed Green"
+        },
+        {
+            "trait_type": "Halo",
+            "value": "Turquoise"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Purple Checker Glass"
+        },
+        {
+            "trait_type": "Jacket",
+            "value": "Gray Turtleneck"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Spike Helmet"
+        }
+    ],
+    "description": "3,333 Animated Heroes, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "external_url": "https://holyversenft.com",
+    "image": "https://cloudflare-ipfs.com/ipfs/bafybeiaxrcwtljnvjyqp7dqaqf3iwoz4g4qw6n2mwiqyazmdpccccrzg6e",
+    "name": "HOLY HERO #2222"
+}

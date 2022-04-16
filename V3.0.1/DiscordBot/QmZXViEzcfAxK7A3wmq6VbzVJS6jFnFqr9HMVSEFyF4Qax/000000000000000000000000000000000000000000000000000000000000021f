@@ -1,0 +1,44 @@
+{
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Blue Space"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Blue"
+        },
+        {
+            "trait_type": "Character",
+            "value": "Male Cyber"
+        },
+        {
+            "trait_type": "Nose and Mouth",
+            "value": "Simple"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Green"
+        },
+        {
+            "trait_type": "Halo",
+            "value": "Pink"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Futuristic Glass"
+        },
+        {
+            "trait_type": "Jacket",
+            "value": "Cyber Coat Red"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Punk Blonde"
+        }
+    ],
+    "description": "3,333 Animated Heroes, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "external_url": "https://holyversenft.com",
+    "image": "https://cloudflare-ipfs.com/ipfs/bafybeih4isp3whzvmsmxfarvp5qimmiqkbfdtymqb7hg7lfernkwzjyhs4",
+    "name": "HOLY HERO #543"
+}

@@ -1,0 +1,39 @@
+{
+    "name": "Holy Villain #104",
+    "description": "3,333 Animated Villains, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "image": "https://holyverse.mypinata.cloud/ipfs/QmUqPEjiNGwJ66iFrFveGy94ZVWntD6ZHbUVMbWgMqkDv1/0000000000000000000000000000000000000000000000000000000000000067.gif",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Jupiter"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Bat Purple"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Nose Mouth",
+            "value": "Neutral Mouth 2"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Dark Green"
+        },
+        {
+            "trait_type": "Clothes",
+            "value": "Blue Vest"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Soldier Helm"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Cyber Equipment"
+        }
+    ]
+}

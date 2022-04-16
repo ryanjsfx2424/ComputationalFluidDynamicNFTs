@@ -1,0 +1,44 @@
+{
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Forest"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Green"
+        },
+        {
+            "trait_type": "Character",
+            "value": "Male Cyber"
+        },
+        {
+            "trait_type": "Nose and Mouth",
+            "value": "Mustache"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "DarkGreen"
+        },
+        {
+            "trait_type": "Halo",
+            "value": "Green"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Gas Mask Orange"
+        },
+        {
+            "trait_type": "Jacket",
+            "value": "Red/Blue Jacket"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Red Bandana"
+        }
+    ],
+    "description": "3,333 Animated Heroes, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "external_url": "https://holyversenft.com",
+    "image": "https://cloudflare-ipfs.com/ipfs/bafybeifzedb6uic2l6gvgo5zn6dycmsqrjkdk5l3pqnsyu5nzdycuhbj6e",
+    "name": "HOLY HERO #264"
+}

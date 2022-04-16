@@ -1,0 +1,40 @@
+{
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Green City"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Yellow/Green"
+        },
+        {
+            "trait_type": "Character",
+            "value": "Female Cyber"
+        },
+        {
+            "trait_type": "Nose and Mouth",
+            "value": "Lip Red"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Red"
+        },
+        {
+            "trait_type": "Halo",
+            "value": "Cyber Red"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Thin Glass"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Red V Helm"
+        }
+    ],
+    "description": "3,333 Animated Heroes, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "external_url": "https://holyversenft.com",
+    "image": "https://cloudflare-ipfs.com/ipfs/bafybeif62otncrpe3x6mciuzkdykymmxjw5mhx3qmbs4zki4g2umgez55y",
+    "name": "HOLY HERO #2951"
+}

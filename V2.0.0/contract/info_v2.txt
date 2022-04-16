@@ -11,6 +11,6 @@ CONTRACT
 
 Bytecode in "bytecode_v2.txt"
 
-Contract address: 
+Contract address: 0x34bD2c9D7568b9d659221f83Fd044fB94C08805d
 
 ABI from compile page:

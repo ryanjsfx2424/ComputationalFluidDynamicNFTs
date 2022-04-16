@@ -1,0 +1,40 @@
+{
+    "attributes": [
+        {
+            "trait_type": "Wings",
+            "value": "Green"
+        },
+        {
+            "trait_type": "Character",
+            "value": "Male Tattoo"
+        },
+        {
+            "trait_type": "Nose and Mouth",
+            "value": "Mustache"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Brown Blinking"
+        },
+        {
+            "trait_type": "Halo",
+            "value": "Blue"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Beard"
+        },
+        {
+            "trait_type": "Jacket",
+            "value": "Detective Coat Brown"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Spike Helmet"
+        }
+    ],
+    "description": "3,333 Animated Heroes, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "external_url": "https://holyversenft.com",
+    "image": "https://cloudflare-ipfs.com/ipfs/bafybeih7yuqpcxnvxqk673vekki7zxz7dvdshmjxs744dxtwhl4nfjklcy",
+    "name": "HOLY HERO #1900"
+}

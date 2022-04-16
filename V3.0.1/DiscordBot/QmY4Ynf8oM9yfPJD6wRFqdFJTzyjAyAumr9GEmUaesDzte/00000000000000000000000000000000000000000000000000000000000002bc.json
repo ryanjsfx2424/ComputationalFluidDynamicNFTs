@@ -1,0 +1,43 @@
+{
+    "name": "Holy Villain #701",
+    "description": "3,333 Animated Villains, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "image": "https://holyverse.mypinata.cloud/ipfs/QmUqPEjiNGwJ66iFrFveGy94ZVWntD6ZHbUVMbWgMqkDv1/00000000000000000000000000000000000000000000000000000000000002bc.gif",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Brown Mountain"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Bat Purple"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Nose Mouth",
+            "value": "Neutral 2"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Black Eye"
+        },
+        {
+            "trait_type": "Clothes",
+            "value": "Dark Purple Jacket"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Mohican Blonde Hair"
+        },
+        {
+            "trait_type": "Horns",
+            "value": "4 Horns"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Cyber Detail"
+        }
+    ]
+}

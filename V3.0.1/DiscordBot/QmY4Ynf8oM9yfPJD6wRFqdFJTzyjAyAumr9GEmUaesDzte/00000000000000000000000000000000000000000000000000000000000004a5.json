@@ -1,0 +1,39 @@
+{
+    "name": "Holy Villain #1190",
+    "description": "3,333 Animated Villains, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "image": "https://holyverse.mypinata.cloud/ipfs/QmUqPEjiNGwJ66iFrFveGy94ZVWntD6ZHbUVMbWgMqkDv1/00000000000000000000000000000000000000000000000000000000000004a5.gif",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Evil Lab"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Simple Gray"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Nose Mouth",
+            "value": "Devil Laugh 1"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Black Eye"
+        },
+        {
+            "trait_type": "Clothes",
+            "value": "Spike Jacket"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Skull Helm"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Deal with it"
+        }
+    ]
+}

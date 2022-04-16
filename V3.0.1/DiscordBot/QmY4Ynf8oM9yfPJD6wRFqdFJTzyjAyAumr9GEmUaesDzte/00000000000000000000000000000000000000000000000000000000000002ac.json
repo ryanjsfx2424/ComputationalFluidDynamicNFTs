@@ -1,0 +1,43 @@
+{
+    "name": "Holy Villain #685",
+    "description": "3,333 Animated Villains, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "image": "https://holyverse.mypinata.cloud/ipfs/QmUqPEjiNGwJ66iFrFveGy94ZVWntD6ZHbUVMbWgMqkDv1/00000000000000000000000000000000000000000000000000000000000002ac.gif",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Retro Red City"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Simple Pink"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Nose Mouth",
+            "value": "Neutral 2"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Deep White"
+        },
+        {
+            "trait_type": "Clothes",
+            "value": "Red Regatta"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Bald"
+        },
+        {
+            "trait_type": "Horns",
+            "value": "HighTech Horns"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Desert Glass"
+        }
+    ]
+}

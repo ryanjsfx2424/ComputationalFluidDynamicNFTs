@@ -1,0 +1,43 @@
+{
+    "name": "Holy Villain #562",
+    "description": "3,333 Animated Villains, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "image": "https://holyverse.mypinata.cloud/ipfs/QmUqPEjiNGwJ66iFrFveGy94ZVWntD6ZHbUVMbWgMqkDv1/0000000000000000000000000000000000000000000000000000000000000231.gif",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Evil Lab"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Demon Red"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Nose Mouth",
+            "value": "Neutral 4"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Red"
+        },
+        {
+            "trait_type": "Clothes",
+            "value": "Purple Jacket"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Brown Bandana"
+        },
+        {
+            "trait_type": "Horns",
+            "value": "Curved Horn"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Cut on face"
+        }
+    ]
+}

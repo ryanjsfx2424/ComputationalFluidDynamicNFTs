@@ -1,0 +1,44 @@
+{
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Blue Space"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Purple"
+        },
+        {
+            "trait_type": "Character",
+            "value": "Male Tattoo"
+        },
+        {
+            "trait_type": "Nose and Mouth",
+            "value": "Simple"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Brown Blinking"
+        },
+        {
+            "trait_type": "Halo",
+            "value": "Yellow"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Cyber Monocle"
+        },
+        {
+            "trait_type": "Jacket",
+            "value": "Cyber Coat Brown"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Aviator Helmet"
+        }
+    ],
+    "description": "3,333 Animated Heroes, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "external_url": "https://holyversenft.com",
+    "image": "https://cloudflare-ipfs.com/ipfs/bafybeiaafveqhmb3vsys7yy7mnqepwnz7bsqvtmed467o4g635dqaja5wq",
+    "name": "HOLY HERO #2415"
+}

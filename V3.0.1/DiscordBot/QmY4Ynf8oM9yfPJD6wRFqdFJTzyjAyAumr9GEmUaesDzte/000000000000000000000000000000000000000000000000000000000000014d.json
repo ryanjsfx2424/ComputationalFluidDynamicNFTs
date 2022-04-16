@@ -1,0 +1,43 @@
+{
+    "name": "Holy Villain #334",
+    "description": "3,333 Animated Villains, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "image": "https://holyverse.mypinata.cloud/ipfs/QmUqPEjiNGwJ66iFrFveGy94ZVWntD6ZHbUVMbWgMqkDv1/000000000000000000000000000000000000000000000000000000000000014d.gif",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Retro Red City"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Basic Gray"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Nose Mouth",
+            "value": "Neutral Mouth 2"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Demon Red"
+        },
+        {
+            "trait_type": "Clothes",
+            "value": "Brown Coat"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Red Hair"
+        },
+        {
+            "trait_type": "Horns",
+            "value": "Brown Horn"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Golden Rings"
+        }
+    ]
+}

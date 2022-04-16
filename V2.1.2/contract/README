@@ -1,0 +1,14 @@
+Contract creation for V2.0.2 is taking 4eva... and I realized there
+was a bug (forgot to do modulo in getRandomNumber). Bug fix in V2.0.3.
+
+I guess I'll just go ahead and implement block time based unpausing
+etc while waiting for V202 to deploy...
+
+V2.0.4 includes unpausing the holders,public mints based on block
+timestamp and same with reveal time.
+
+I guess next I'll try to add weth as a payment method :)
+
+V2.0.8 weth payment still is failing.
+V2.0.9 will just test minting out on Rinkeby and maybe I'll ignore
+minting with weth for now...

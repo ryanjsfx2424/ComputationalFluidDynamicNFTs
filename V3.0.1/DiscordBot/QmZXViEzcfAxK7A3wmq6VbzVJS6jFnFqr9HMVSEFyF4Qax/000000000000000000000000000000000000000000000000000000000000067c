@@ -1,0 +1,40 @@
+{
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Ocean Dawn"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Mech White"
+        },
+        {
+            "trait_type": "Character",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Nose and Mouth",
+            "value": "Lip Blue"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Blue"
+        },
+        {
+            "trait_type": "Halo",
+            "value": "Orange"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Rounded Green Glass"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Samurai Red Helm"
+        }
+    ],
+    "description": "3,333 Animated Heroes, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "external_url": "https://holyversenft.com",
+    "image": "https://cloudflare-ipfs.com/ipfs/bafybeihzirqryn7r2kchgicxbqlx7sxjxgldguwciuniayzwj3xq352l4e",
+    "name": "HOLY HERO #1660"
+}

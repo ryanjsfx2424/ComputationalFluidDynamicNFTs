@@ -1,0 +1,40 @@
+{
+    "attributes": [
+        {
+            "trait_type": "Wings",
+            "value": "Purple/Gray"
+        },
+        {
+            "trait_type": "Character",
+            "value": "Male Tattoo"
+        },
+        {
+            "trait_type": "Nose and Mouth",
+            "value": "Confident Smile"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Relaxed Green"
+        },
+        {
+            "trait_type": "Halo",
+            "value": "Pink"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Blue Cheek"
+        },
+        {
+            "trait_type": "Jacket",
+            "value": "Coat Red"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Red Helmet"
+        }
+    ],
+    "description": "3,333 Animated Heroes, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "external_url": "https://holyversenft.com",
+    "image": "https://cloudflare-ipfs.com/ipfs/bafybeigu7akrok5vxuctjpdgqex2z4qlurfh4ucjw376m64wjrkyylusgu",
+    "name": "HOLY HERO #365"
+}

@@ -1,0 +1,44 @@
+{
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Forest"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Pink"
+        },
+        {
+            "trait_type": "Character",
+            "value": "Male Cyborg"
+        },
+        {
+            "trait_type": "Nose and Mouth",
+            "value": "Simple"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Red"
+        },
+        {
+            "trait_type": "Halo",
+            "value": "Cyber Red"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Rounded Green Glass"
+        },
+        {
+            "trait_type": "Jacket",
+            "value": "Cyber Coat Brown"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Pompadour Blonde"
+        }
+    ],
+    "description": "3,333 Animated Heroes, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "external_url": "https://holyversenft.com",
+    "image": "https://cloudflare-ipfs.com/ipfs/bafybeigdueqowbrsgbmhsvsavmjtihd24mcd4f6jiolngcjbgjvpl2hviu",
+    "name": "HOLY HERO #1714"
+}

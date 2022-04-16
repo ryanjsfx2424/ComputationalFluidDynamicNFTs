@@ -1,0 +1,39 @@
+{
+    "name": "Holy Villain #194",
+    "description": "3,333 Animated Villains, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "image": "https://holyverse.mypinata.cloud/ipfs/QmUqPEjiNGwJ66iFrFveGy94ZVWntD6ZHbUVMbWgMqkDv1/00000000000000000000000000000000000000000000000000000000000000c1.gif",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Red Mountain"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Basic Gray"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Nose Mouth",
+            "value": "Devil Smile"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Green"
+        },
+        {
+            "trait_type": "Clothes",
+            "value": "King Armor"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Green Wasp Helm"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Orange Mask"
+        }
+    ]
+}

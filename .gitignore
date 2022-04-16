@@ -1,2 +1,7 @@
 # save space
 *.mp4
+node_modules
+twitter_data
+
+# for privacy
+git_ignores_me*

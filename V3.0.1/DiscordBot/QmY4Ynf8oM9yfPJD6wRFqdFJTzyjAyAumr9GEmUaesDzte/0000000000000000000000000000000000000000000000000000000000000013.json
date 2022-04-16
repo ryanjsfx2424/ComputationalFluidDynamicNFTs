@@ -1,0 +1,43 @@
+{
+    "name": "Holy Villain #20",
+    "description": "3,333 Animated Villains, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "image": "https://holyverse.mypinata.cloud/ipfs/QmUqPEjiNGwJ66iFrFveGy94ZVWntD6ZHbUVMbWgMqkDv1/0000000000000000000000000000000000000000000000000000000000000013.gif",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Blue City"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Bat Grey"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Nose Mouth",
+            "value": "Green Bloody Mouth"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Blue"
+        },
+        {
+            "trait_type": "Clothes",
+            "value": "Blue Jacket"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Black Low Cut"
+        },
+        {
+            "trait_type": "Horns",
+            "value": "Small Horn"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Tattoo Moon"
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+{
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Green City"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Purple"
+        },
+        {
+            "trait_type": "Character",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Nose and Mouth",
+            "value": "Lip Blue"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Catgirl Blue"
+        },
+        {
+            "trait_type": "Halo",
+            "value": "Cyber Cyan"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Cyber Monocle"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Brown Short Hair"
+        }
+    ],
+    "description": "3,333 Animated Heroes, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "external_url": "https://holyversenft.com",
+    "image": "https://cloudflare-ipfs.com/ipfs/bafybeifaqmfqe7yfrhlujuod2bur7iluvj3agscfyk7fzthnpde3g5yx44",
+    "name": "HOLY HERO #577"
+}

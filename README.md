@@ -1,4 +1,7 @@
 # ComputationalFluidDynamicNFTs
+
+(NOTE: check out palettable for lots more colormaps!)
+
 Steps:
    1) in THE\_ARGO\_NFT execute (python3) the\_executer.py
    2) Upload movies to IPFS (e.g., using pinata)

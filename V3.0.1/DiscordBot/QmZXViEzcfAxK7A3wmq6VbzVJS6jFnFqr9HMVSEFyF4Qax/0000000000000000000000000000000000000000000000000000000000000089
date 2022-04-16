@@ -1,0 +1,40 @@
+{
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "RetroCity"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Yellow/Green"
+        },
+        {
+            "trait_type": "Character",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Nose and Mouth",
+            "value": "Lip Pink"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Purple"
+        },
+        {
+            "trait_type": "Halo",
+            "value": "Cyber Red"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Open Mask Green"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Green Occult Hair"
+        }
+    ],
+    "description": "3,333 Animated Heroes, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "external_url": "https://holyversenft.com",
+    "image": "https://cloudflare-ipfs.com/ipfs/bafybeiexojv4qqu4z6vveeg7apbagz2kaf4wgpb3f6inwrh57k7dxbjyyu",
+    "name": "HOLY HERO #137"
+}

@@ -1,0 +1,40 @@
+{
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Forest"
+        },
+        {
+            "trait_type": "Wings",
+            "value": "Orange"
+        },
+        {
+            "trait_type": "Character",
+            "value": "Female Cheeks"
+        },
+        {
+            "trait_type": "Nose and Mouth",
+            "value": "Lip Green"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Blue"
+        },
+        {
+            "trait_type": "Halo",
+            "value": "Cyber Blue"
+        },
+        {
+            "trait_type": "Acessories",
+            "value": "Red Cheek"
+        },
+        {
+            "trait_type": "Head",
+            "value": "Blue Mohawk"
+        }
+    ],
+    "description": "3,333 Animated Heroes, a part of the HolyVerse working to provide financial literacy to all! Visit https://holyversenft.com",
+    "external_url": "https://holyversenft.com",
+    "image": "https://cloudflare-ipfs.com/ipfs/bafybeiagw3cbughk5sh4r7ckd35d6q2fi62ecupesu3ntpzgfh47rhnoqe",
+    "name": "HOLY HERO #567"
+}
