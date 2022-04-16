@@ -2,6 +2,7 @@
 *.mp4
 node_modules
 twitter_data
+archival
 
 # for privacy
 git_ignores_me*
