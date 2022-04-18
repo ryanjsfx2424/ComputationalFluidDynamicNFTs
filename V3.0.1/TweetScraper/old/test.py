@@ -19,8 +19,21 @@ id_num = "1515192646578290688"
 
 ## last thing to figure out is how to get replies to a given tweet
 ## (specifically the user ids/usernames that replies)
-url = "https://api.twitter.com/2/tweets/search/recent?query=conversation_id:" + id_num + "&max_results=100&expansions=author_id&user.fields=username"
+#url = "https://api.twitter.com/2/tweets/search/recent?query=conversation_id:" + id_num + "&max_results=100&expansions=author_id&user.fields=username"
 #url = "https://api.twitter.com/2/tweets/" + id_num + "/liking_users?user.fields=username"
+
+## searching for phrases
+
+## this one works!
+#url = "https://api.twitter.com/2/tweets/search/recent?query=(Rooty%20Roo%20OR%20Rooty%20Woo)"
+
+query = "(Rooty Roo OR Rooty Woo)"
+query = query.replace(" ", "%20")
+print(query)
+url = "https://api.twitter.com/2/tweets/search/recent?query=" + query + "&user.fields=username&expansions=author_id"
+
+#url = 'https://api.twitter.com/2/tweets?ids=1204084171334832128&tweet.fields=public_metrics'
+#url = 'https://api.twitter.com/2/tweets?ids=1515382011267014657&tweet.fields=public_metrics'
 
 os.system("curl --request GET --url '" + url + "' --header 'Authorization: Bearer " + TW_BT + "'")
 

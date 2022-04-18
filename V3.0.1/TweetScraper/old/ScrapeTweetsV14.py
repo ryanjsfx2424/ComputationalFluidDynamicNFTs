@@ -21,10 +21,8 @@ import re
 import ast
 import glob
 import time
-import json
 import pathlib
 import datetime
-import numpy as np
 print("Begin ScrapeTweets")
 
 start = time.time()
@@ -38,8 +36,6 @@ class ScrapeTweets(object):
     self.curl_header = "' --header 'Authorization: Bearer "
     self.data_dir = "twitter_data"
     self.dtypes = ["Likes", "Retweets", "QuoteTweets", "Replies"]
-    self.include_text = '"includes":\{"users":\[\{'
-    self.meta_text = '"meta":\{"'
 
     os.system("mkdir -p " + self.data_dir)
   # end __init__
@@ -296,198 +292,165 @@ class ScrapeTweets(object):
     print("success fetch_activity")
   # end fetch_activity
 
-  def fetch_keyword_data(self):
-    dtime = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+  ## prob need to give this a better doc string, getting tired
+  def process_activity(self, url):
+    '''
+    creates a csv file with tweet activity
+    '''
+    print("begin process_activity")
 
-    fname = self.data_dir + "/" + dtime + "_keyword_data.txt"
-    
-    #query  = "(Rooty Roo OR Rooty OR Rooty Woo OR rootywoo OR Roo Troop OR"
-    #query += " rootroop OR rootroops OR tree roo OR Roo Roo)"
-    query  = "(Rooty Roo OR Rooty Woo OR rootywoo OR Roo Troop OR rootroop"
-    query += " OR rootroops OR tree roo OR roo bounty OR roo bounties"
-    query += " OR rootyroo OR RootyRoo OR rootroopnft)"
-    query = query.replace(" ", "%20")
-    url_og = "https://api.twitter.com/2/tweets/search/recent?query=" + query \
-           + "&user.fields=username&expansions=author_id&max_results=100"
+    tweet_id = url.split("status/")[1]
+    if "?" in tweet_id:
+      tweet_id = tweet_id.split("?")[0]
+    # end if
 
-    url = url_og + ""
-    token = ""
-    loop  = True
-    max_loops = 300 # limit == 30,000 likes, RTs (note, max 900 requests per 15 minutes
-    num_loops = 0
-    while loop and num_loops < max_loops:
-      print("num_loops: ", num_loops)
-      num_loops += 1
-      os.system(self.curl_base + url + self.curl_header + self.auth + 
-                "' >> " + fname)
+    try:
+      self.activity += "" # does nothing
+    except:
+      self.fetch_activity(tweet_id)
+    # end try/except
 
-      if os.stat(fname).st_size == 0:
-        print("error, didn't grab any data, probably url has a bug")
-        raise
-      # end if
+    keys = [
+            'quote_tweets_includes', 
+            'replies_includes', 
+            'likes',
+            'retweets', 
+            'quote_tweets', 
+            'replies' 
+           ]
 
-      ## check if we grabbed all of them or not
-      with open(fname, "r") as fid:
-        for line in fid:
-          #print("line1: ", line)
-          inds = [m.start() for m in re.finditer("result_count", line)]
-          line = line[inds[-1]:]
-          print("line2: ", line)
-          print("inds: ", inds)
+    print(self.activity.keys())
+    print(keys)
 
-          substr = '"next_token":"'
-          if substr in line:
-            ind = line.find(substr) + len(substr)
-            line = line[ind:]
-            token = line.split('"')[0]
-            print("token: ", token)
+    activity_new = {}
+    key_ext_ids = "_ids_csv"
+    key_ext_use = "_use_csv"
+    for key in keys:
+      print("key: ", key)
 
-            url = url_og + "&pagination_token=" + token
-          else:
-            print("substr not in line!")
-            print("substr: ", substr)
-            loop = False
-          # end if
-        # end for
-      # end with
-    # end while
-    with open(fname, "a") as fid:
-      fid.write("\n\n" + url_og)
-    # end with open
-  # end fetch_keyword_data
+      new_key_ids = key + key_ext_ids
+      new_key_use = key + key_ext_use
+      activity_new[new_key_ids] = ""
+      activity_new[new_key_use] = ""
 
-  def process_keyword_data(self):
-    print("begin process_keyword_data")
-
-    fname = np.sort(glob.glob(self.data_dir + "/*_keyword_data.txt"))[-1]
-
-    with open(fname, "r") as fid:
-      for line in fid:
-        break
-      # end for line
-    # end with open
-
-    ## first get user ids and usernames
-    inds_start = [m.start() for m in re.finditer(self.include_text, line)]
-    inds_end   = [m.start() for m in re.finditer(self.meta_text,    line)]
-
-    line2 = ""
-    for ii in range(len(inds_start)):
-      line2 += line[inds_start[ii]:inds_end[ii]]
-    # end for ii
-    
-    keys = ['"id":"', '"username":"']
-
-    user_ids  = []
-    usernames = []
-
-    key = keys[0]
-    inds = [m.start() for m in re.finditer(key, line2)]
-    for ind in inds:
-      user_ids.append(line2[ind:].split(key)[1].split('"')[0])
-    # end for inds
-
-    key = keys[1]
-    inds = [m.start() for m in re.finditer(key, line2)]
-    for ind in inds:
-      usernames.append(line2[ind:].split(key)[1].split('"')[0])
-    # end for inds
-
-    ## next get tweet ids and content
-    inds_start = [0] + [m.start() for m in re.finditer(self.meta_text, line)][:-1]
-    inds_end   = [m.start() for m in re.finditer(self.include_text,    line)]
-
-    line2 = ""
-    for ii in range(len(inds_start)):
-      line2 += line[inds_start[ii]:inds_end[ii]]
-    # end for ii
-
-    tweet_ids = []
-    contents  = []
-
-    keys = ['"id":"', '"text":"']
-
-    key = keys[0]
-    inds = [m.start() for m in re.finditer(key, line2)]
-    for ind in inds:
-      tweet_ids.append(line2[ind:].split(key)[1].split('"')[0])
-    # end for inds
-
-    key = keys[1]
-    inds = [m.start() for m in re.finditer(key, line2)]
-    for ind in inds:
-      contents.append(line2[ind:].split(key)[1].split('"')[0])
-    # end for inds
-
-    activity_by_user = {}
-    for ii,user_id in enumerate(user_ids):
-      if user_id not in list(activity_by_user.keys()):
-        activity_by_user[user_id] = \
-          {"usernames": [],
-           "num_keyword_entries": 0,
-           "tweet_ids": [],
-           "tweet_contents": []
-          }
-      # end if
-
-      user_dict = activity_by_user[user_id]
-      if tweet_ids[ii] in user_dict:
+      if key not in list(self.activity.keys()):
         continue
       # end if
 
-      user_dict["num_keyword_entries"] += 1
-      user_dict["usernames"].append(usernames[ii])
-      user_dict["tweet_ids"].append(tweet_ids[ii])
-      user_dict["tweet_contents"].append(contents[ii])
-    # end for ii
-    with open(self.data_dir + "/activity_by_user.json", "w") as fid:
-      json.dump(activity_by_user, fid)
-    # end with open
+      if "includes" in key:
+        new_key = key + "_id_to_username"
+        activity_new[new_key] = {}
 
-    print("success process_keyword_data")
-  # end process_keyword_data
+        items = self.activity[key]["users"]
 
-  def fetch_user_leaderboard(self):
-    print("begin fetch_user_leaderboard")
+        for item in items:
+          author_id = item["id"]
+          activity_new[new_key][author_id] = item["username"]
+        # end for
+        continue
+      # end if
 
-    with open(self.data_dir + "/activity_by_user.json", "r") as fid:
-      activity_by_user = fid.read()
-    # end with open
-    activity_by_user = ast.literal_eval(activity_by_user)
+      items = self.activity[key]
 
-    entries   = []
-    usernames = []
-    contents  = []
-    for user in activity_by_user.keys():
-      entries.append(activity_by_user[user]["num_keyword_entries"])
-      usernames.append(activity_by_user[user]["usernames"][-1])
-      for content in activity_by_user[user]["tweet_contents"]:
-        contents.append(content)
+      item_key = "id"
+      if key in ["quote_tweets", "replies"]:
+        item_key = "author_id"
+      # end if
+
+      for item in items:
+        author_id = item[item_key]
+        if key in ["quote_tweets", "replies"]:
+          new_key = key + "_includes_id_to_username"
+          author_username = activity_new[new_key][author_id]
+        else:
+          author_username = item["username"]
+        # end if/else
+
+        activity_new[new_key_ids] += author_id + ","
+        activity_new[new_key_use] += author_username + ","
+      # end for item
+      activity_new[new_key_ids] = activity_new[new_key_ids][:-1]
+      activity_new[new_key_use] = activity_new[new_key_use][:-1]
+    # end for keys
+    self.activity = activity_new
+
+    ## next, get the usernames corresponding to the ids, which
+    ## is more human readable :)
+
+    fname = pathlib.Path("twitter_data/users_liked_tweet_" + 
+                         tweet_id + ".txt")
+    mtime = datetime.datetime.fromtimestamp(fname.stat().st_mtime, 
+            tz=datetime.timezone.utc)
+    dtime = mtime.strftime("%Y-%m-%d_%H:%M:%S")
+
+    url_base = "https://twitter.com/RooTroopNFT/status/"
+    header = "Tweet ID," + tweet_id + "," + "Data Pulled (UTC):," + \
+             dtime + ",URL:," + url_base + tweet_id + "\n"
+
+    with open(self.data_dir + "/RooTroopActivityUsernames.csv", "a") as fid:
+      fid.write(header)
+
+      csv_keys = ["likes"        + key_ext_use,
+                  "retweets"     + key_ext_use,
+                  "quote_tweets" + key_ext_use,
+                  "replies"      + key_ext_use
+                 ]
+      print(self.activity.keys())
+      for key in csv_keys:
+        name = key.split("_")[0]
+        if key in self.activity.keys():
+          line = name + "," + self.activity[key] + "\n"
+        else:
+          line = name + ",\n"
+        # end if/else
+        fid.write(line)
       # end for
-    # end for
-    entries   = np.array(entries)
-    usernames = np.array(usernames)
-    inds = np.argsort(entries)[::-1]
-    inds = inds[:20]
-    for ii in range(len(inds)):
-      print(str(ii) + ") " + usernames[inds][ii] + ": ", entries[inds][ii])
-    # end for ii
-    print("num usernames: ", len(usernames))
-    print("num tweets: ", np.sum(entries))
-
-    #for ii in range(20):
-    #  ind = np.random.randint(len(contents))
-    #  print("\n" + contents[ind])
-    ## end for ii
-
-    with open(self.data_dir + "/queryed_tweets.txt", "w") as fid:
-      for ii in range(len(contents)):
-        fid.write(contents[ii] + "\n\n")
-      # end for line
+      fid.write("\n\n")
     # end with open
 
-    print("success fetch_user_leaderboard")
-  # end fetch_user_leaderboard
+    with open(self.data_dir + "/RooTroopActivityIds.csv", "a") as fid:
+      fid.write(header)
+
+      csv_keys = ["likes"        + key_ext_ids,
+                  "retweets"     + key_ext_ids,
+                  "quote_tweets" + key_ext_ids,
+                  "replies"      + key_ext_ids
+                 ]
+      print(self.activity.keys())
+      for key in csv_keys:
+        name = key.split("_")[0]
+        if key in self.activity.keys():
+          line = name + "," + self.activity[key] + "\n"
+        else:
+          line = name + ",\n"
+        # end if/else
+        fid.write(line)
+      # end for
+      fid.write("\n\n")
+    # end with open
+
+    print("success process_activity")
+  # end process_activity
+
+  def process_tweets(self, urls):
+    '''
+    calls process_activity for each tweet_id passed in.
+    '''
+    print("begin process_tweets")
+
+
+    for url in urls:
+      self.process_activity(url)
+
+      try:
+        del self.activity, self.fname_likes, self.fname_retweets,\
+            self.fname_quote_tweets, self.fname_replies
+      except:
+        pass
+    # end for
+
+    print("success_process_tweets")
+  # end process_tweets
 # end class ScrapeTweets
 
 urls = [
@@ -514,14 +477,9 @@ tweet_url = "https://twitter.com/RooTroopNFT/status/1515139514880061445"
 tweet_url = "https://twitter.com/mooneynft/status/1515382011267014657?s=20&t=pulk5_II0hc-Te5sP2NVIQ"
 #tweet_url = "https://twitter.com/ProjectKaitu/status/1515106498879397891"
 
-tweet_scrape_instance.fetch_keyword_data()
-tweet_scrape_instance.process_keyword_data()
-tweet_scrape_instance.fetch_user_leaderboard()
-
-
 #tweet_scrape_instance.fetch_data(tweet_url, dtype)
 #tweet_scrape_instance.fetch_replies(tweet_id)
-#tweet_scrape_instance.fetch_activity(tweet_url)
+tweet_scrape_instance.fetch_activity(tweet_url)
 #tweet_scrape_instance.process_activity(tweet_id)
 
 #tweet_scrape_instance.process_tweets(urls)
