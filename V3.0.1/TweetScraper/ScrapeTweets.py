@@ -27,6 +27,12 @@ import datetime
 import numpy as np
 print("Begin ScrapeTweets")
 
+S_PER_MINUTE = 60
+S_PER_HOUR   = S_PER_MINUTE * 60
+S_PER_DAY    = S_PER_HOUR * 24
+S_PER_MONTH  = S_PER_DAY * 31
+S_PER_YEAR   = S_PER_MONTH * 12
+
 start = time.time()
 class ScrapeTweets(object):
   def __init__(self):
@@ -40,6 +46,10 @@ class ScrapeTweets(object):
     self.dtypes = ["Likes", "Retweets", "QuoteTweets", "Replies"]
     self.include_text = '"includes":\{"users":\[\{'
     self.meta_text = '"meta":\{"'
+    self.result_text = '"result_count":'
+    self.created_text = '"created_at":"'
+    self.fname_activity = self.data_dir + "/activity_by_user.json"
+    self.special_tweeters = ["rootroopnft", "troopsales"]
 
     os.system("mkdir -p " + self.data_dir)
   # end __init__
@@ -83,6 +93,21 @@ class ScrapeTweets(object):
 
     print("success init_tweet")
   # end init_tweet
+
+  def get_tweet_time_s(self, tweet_time):
+    print("begin get_tweet_time_s")
+
+    yy,mo,dd = tweet_time.split("-")
+    dd,hh    = dd.split("T")
+    hh,mi,ss = hh.split(":")
+    ss = ss[:-1]
+    tweet_time_s = float(yy)*S_PER_YEAR   + float(mo)*S_PER_MONTH + \
+                   float(dd)*S_PER_DAY    + float(hh)*S_PER_HOUR  + \
+                   float(mi)*S_PER_MINUTE + float(ss)
+    return tweet_time_s
+
+    print("success get_tweet_time_s")
+  # end get_tweet_time_s
 
   def fetch_data(self, tweet_url, dtype):
     '''
@@ -149,7 +174,7 @@ class ScrapeTweets(object):
       with open(fname, "r") as fid:
         for line in fid:
           #print("line1: ", line)
-          inds = [m.start() for m in re.finditer("result_count", line)]
+          inds = [m.start() for m in re.finditer(self.result_text, line)]
           line = line[inds[-1]:]
           print("line2: ", line)
           print("inds: ", inds)
@@ -296,7 +321,91 @@ class ScrapeTweets(object):
     print("success fetch_activity")
   # end fetch_activity
 
+  def process_url_activity(self):
+    print("begin process_url_activity")
+
+    if os.path.exists(self.fname_activity) and \
+       os.stat(self.fname_activity).st_size != 0:
+      with open(self.fname_activity, "r") as fid:
+        activity_by_user = fid.read()
+      # end with open
+      activity_by_user = ast.literal_eval(activity_by_user)
+    else:
+      print("data corruption? Something went wrong. Please contant Ryan.")
+      raise
+    # end if/else
+
+    fs = glob.glob(self.data_dir + "/activity_*.txt")
+    for fname in fs:
+      with open(fname, "r") as fid:
+        for line in fid:
+          pass
+        # end for line
+      # end with open
+      activity_by_url = ast.literal_eval(line)
+      tweet_id = list(activity_by_url.keys())[0]
+      tweet_username = activity_by_url[tweet_id]["tweet_author_username"]
+      if tweet_username not in self.special_tweeters:
+        print("warning, skipping url b/c we assume keyword query picks up random raids")
+        continue
+      # end if
+
+      for dtype in self.dtypes:
+        data = activity_by_url[tweet_id][dtype]
+        for ii,user_id in enumerate(data["ids"]):
+          if user_id not in list(activity_by_user.keys()):
+            activity_by_user[user_id] = \
+              {"usernames": [],
+               "num_keyword_entries": 0,
+               "tweet_ids": [],
+               "tweet_contents": [],
+               "tweet_creation_times": [],
+               "num_Likes": 0,
+               "num_Retweets": 0,
+               "num_QuoteTweets": 0,
+               "num_Replies": 0
+              }
+          # end if
+          if tweet_id in activity_by_user[user_id]["tweet_ids"]:
+            continue
+          # end if
+          activity_by_user[user_id]["usernames"].append(data["usernames"][ii])
+
+          if "num_"+dtype not in activity_by_user[user_id].keys():
+            activity_by_user[user_id]["num_"+dytpe]  = 1
+          else:
+            activity_by_user[user_id]["num_"+dtype] += 1
+          # end if/else
+          if dtype == self.dtypes[-1]:
+            activity_by_user[user_id]["tweet_ids"].append(tweet_id)
+          # end if
+        # end for user_ids
+      # end for dtypes
+      os.system("rm " + fname)
+    # end for fnames
+    
+    with open(self.fname_activity, "w") as fid:
+      json.dump(activity_by_user, fid)
+    # end with open
+
+    print("success process_url_activity")
+  # end process_url_activity
+
+  def handle_url_activity(self, urls):
+    if type(urls) == type([]):
+      for url in urls:
+        self.fetch_activity(url)
+        self.process_url_activity()
+      # end for
+    else:
+      self.fetch_activity(urls)
+      self.process_url_activity()
+    # end if/else
+  # end handle_url_activity
+
   def fetch_keyword_data(self):
+    print("are you sure you don't want to update keyword data?")
+    raise
     dtime = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
     fname = self.data_dir + "/" + dtime + "_keyword_data.txt"
@@ -308,7 +417,8 @@ class ScrapeTweets(object):
     query += " OR rootyroo OR RootyRoo OR rootroopnft)"
     query = query.replace(" ", "%20")
     url_og = "https://api.twitter.com/2/tweets/search/recent?query=" + query \
-           + "&user.fields=username&expansions=author_id&max_results=100"
+           + "&user.fields=username&expansions=author_id&max_results=100" \
+           + "&tweet.fields=created_at"
 
     url = url_og + ""
     token = ""
@@ -356,96 +466,231 @@ class ScrapeTweets(object):
     # end with open
   # end fetch_keyword_data
 
-  def process_keyword_data(self):
-    print("begin process_keyword_data")
+  def update_keyword_data(self):
+    print("begin update_keyword_data")
 
-    fname = np.sort(glob.glob(self.data_dir + "/*_keyword_data.txt"))[-1]
+    activity_by_user = {"latest_tweet_time_s":0}
+    fname_activity = self.data_dir + "/activity_by_user.json"
+    if os.path.exists(fname_activity) and \
+       os.stat(fname_activity).st_size != 0:
+      with open(self.data_dir + "/activity_by_user.json", "r") as fid:
+        activity_by_user = fid.read()
+      # end with open
+      activity_by_user = ast.literal_eval(activity_by_user)
+    # end if
 
-    with open(fname, "r") as fid:
-      for line in fid:
-        break
-      # end for line
-    # end with open
+    dtime = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
-    ## first get user ids and usernames
-    inds_start = [m.start() for m in re.finditer(self.include_text, line)]
-    inds_end   = [m.start() for m in re.finditer(self.meta_text,    line)]
-
-    line2 = ""
-    for ii in range(len(inds_start)):
-      line2 += line[inds_start[ii]:inds_end[ii]]
-    # end for ii
+    fname = self.data_dir + "/" + dtime + "_keyword_data.txt"
     
-    keys = ['"id":"', '"username":"']
+    #query  = "(Rooty Roo OR Rooty OR Rooty Woo OR rootywoo OR Roo Troop OR"
+    #query += " rootroop OR rootroops OR tree roo OR Roo Roo)"
+    query  = "(Rooty Roo OR Rooty Woo OR rootywoo OR Roo Troop OR rootroop"
+    query += " OR rootroops OR tree roo OR roo bounty OR roo bounties"
+    query += " OR rootyroo OR RootyRoo OR rootroopnft)"
+    query = query.replace(" ", "%20")
+    url_og = "https://api.twitter.com/2/tweets/search/recent?query=" + query \
+           + "&user.fields=username&expansions=author_id&max_results=100" \
+           + "&tweet.fields=created_at"
 
-    user_ids  = []
-    usernames = []
+    url = url_og + ""
+    token = ""
+    loop  = True
+    max_loops = 300 # limit == 30,000 likes, RTs (note, max 900 requests per 15 minutes
+    num_loops = 0
+    while loop and num_loops < max_loops:
+      print("num_loops: ", num_loops)
+      num_loops += 1
+      os.system(self.curl_base + url + self.curl_header + self.auth + 
+                "' >> " + fname)
 
-    key = keys[0]
-    inds = [m.start() for m in re.finditer(key, line2)]
-    for ind in inds:
-      user_ids.append(line2[ind:].split(key)[1].split('"')[0])
-    # end for inds
-
-    key = keys[1]
-    inds = [m.start() for m in re.finditer(key, line2)]
-    for ind in inds:
-      usernames.append(line2[ind:].split(key)[1].split('"')[0])
-    # end for inds
-
-    ## next get tweet ids and content
-    inds_start = [0] + [m.start() for m in re.finditer(self.meta_text, line)][:-1]
-    inds_end   = [m.start() for m in re.finditer(self.include_text,    line)]
-
-    line2 = ""
-    for ii in range(len(inds_start)):
-      line2 += line[inds_start[ii]:inds_end[ii]]
-    # end for ii
-
-    tweet_ids = []
-    contents  = []
-
-    keys = ['"id":"', '"text":"']
-
-    key = keys[0]
-    inds = [m.start() for m in re.finditer(key, line2)]
-    for ind in inds:
-      tweet_ids.append(line2[ind:].split(key)[1].split('"')[0])
-    # end for inds
-
-    key = keys[1]
-    inds = [m.start() for m in re.finditer(key, line2)]
-    for ind in inds:
-      contents.append(line2[ind:].split(key)[1].split('"')[0])
-    # end for inds
-
-    activity_by_user = {}
-    for ii,user_id in enumerate(user_ids):
-      if user_id not in list(activity_by_user.keys()):
-        activity_by_user[user_id] = \
-          {"usernames": [],
-           "num_keyword_entries": 0,
-           "tweet_ids": [],
-           "tweet_contents": []
-          }
+      if os.stat(fname).st_size == 0:
+        print("error, didn't grab any data, probably url has a bug")
+        raise
       # end if
 
-      user_dict = activity_by_user[user_id]
-      if tweet_ids[ii] in user_dict:
-        continue
-      # end if
+      ## check if we grabbed all of them up to last tweet fetched or not
+      with open(fname, "r") as fid:
+        for line in fid:
+          #print("line1: ", line)
+          inds = [m.start() for m in re.finditer(self.created_text, line)]
+          latest_tweet = line[inds[-1] + len(self.created_text):].split('"')[0]
+          latest_tweet_s = self.get_tweet_time_s(latest_tweet)
 
-      user_dict["num_keyword_entries"] += 1
-      user_dict["usernames"].append(usernames[ii])
-      user_dict["tweet_ids"].append(tweet_ids[ii])
-      user_dict["tweet_contents"].append(contents[ii])
-    # end for ii
-    with open(self.data_dir + "/activity_by_user.json", "w") as fid:
+          if latest_tweet_s < activity_by_user["latest_tweet_time_s"]:
+            loop = False
+            break
+          # end if
+
+          inds = [m.start() for m in re.finditer(self.result_text, line)]
+          line = line[inds[-1]:]
+          print("line2: ", line)
+          print("inds: ", inds)
+
+          substr = '"next_token":"'
+          if substr in line:
+            ind = line.find(substr) + len(substr)
+            line = line[ind:]
+            token = line.split('"')[0]
+            print("token: ", token)
+
+            url = url_og + "&pagination_token=" + token
+          else:
+            print("substr not in line!")
+            print("substr: ", substr)
+            loop = False
+          # end if
+        # end for
+      # end with
+    # end while
+
+    os.system("rm " + fname)
+    activity_by_user["query_url"] = url_og
+    with open(fname_activity, "w") as fid:
       json.dump(activity_by_user, fid)
     # end with open
 
+    print("success update_keyword_data")
+  # end update_keyword_data
+
+  def process_keyword_data(self):
+    print("begin process_keyword_data")
+
+    activity_by_user = {"latest_tweet_time_s":0}
+    fname_activity = self.data_dir + "/activity_by_user.json"
+    if os.path.exists(fname_activity) and \
+       os.stat(fname_activity).st_size != 0:
+      with open(self.data_dir + "/activity_by_user.json", "r") as fid:
+        activity_by_user = fid.read()
+      # end with open
+      activity_by_user = ast.literal_eval(activity_by_user)
+    # end if
+
+    fs = np.sort(glob.glob(self.data_dir + "/*_keyword_data.txt"))
+
+    for fname in fs:
+      print("fname: ", fname)
+      with open(fname, "r") as fid:
+        for line in fid:
+          break
+        # end for line
+      # end with open
+      print("hi1")
+
+      key = '"created_at":"'
+      latest_tweet = line[line.find(key) + len(key):].split('"')[0]
+      latest_tweet_s = self.get_tweet_time_s(latest_tweet)
+      if activity_by_user["latest_tweet_time_s"] >= latest_tweet_s:
+        print("skipping")
+        continue
+      # end if
+      print
+      print("hi2")
+
+      ## first get user ids and usernames
+      inds_start = [m.start() for m in re.finditer(self.include_text, line)]
+      inds_end   = [m.start() for m in re.finditer(self.meta_text,    line)]
+
+      line2 = ""
+      for ii in range(len(inds_start)):
+        line2 += line[inds_start[ii]:inds_end[ii]]
+      # end for ii
+      print("hi2")
+    
+      keys = ['"id":"', '"username":"']
+
+      user_ids  = []
+      usernames = []
+
+      key = keys[0]
+      inds = [m.start() for m in re.finditer(key, line2)]
+      for ind in inds:
+        user_ids.append(line2[ind:].split(key)[1].split('"')[0])
+      # end for inds
+      print("hi3")
+
+      key = keys[1]
+      inds = [m.start() for m in re.finditer(key, line2)]
+      for ind in inds:
+        usernames.append(line2[ind:].split(key)[1].split('"')[0])
+      # end for inds
+      print("hi4")
+
+      ## next get tweet ids and content and creation time
+      inds_start = [0] + [m.start() for m in re.finditer(self.meta_text, line)][:-1]
+      inds_end   = [m.start() for m in re.finditer(self.include_text,    line)]
+
+      line2 = ""
+      for ii in range(len(inds_start)):
+        line2 += line[inds_start[ii]:inds_end[ii]]
+      # end for ii
+
+      tweet_ids = []
+      contents  = []
+      creations = []
+
+      keys = ['"id":"', '"text":"', '"created_at":"']
+
+      key = keys[0]
+      inds = [m.start() for m in re.finditer(key, line2)]
+      for ind in inds:
+        tweet_ids.append(line2[ind:].split(key)[1].split('"')[0])
+      # end for inds
+      print("hi5")
+
+      key = keys[1]
+      inds = [m.start() for m in re.finditer(key, line2)]
+      for ind in inds:
+        contents.append(line2[ind:].split(key)[1].split('"')[0])
+      # end for inds
+
+      key = keys[2]
+      inds = [m.start() for m in re.finditer(key, line2)]
+      for ind in inds:
+        creations.append(line2[ind:].split(key)[1].split('"')[0])
+      # end for inds
+      print("hi6")
+
+      latest_creation_time = np.sort(np.array(creations))[-1]
+      latest_creation_time_s = self.get_tweet_time_s(latest_creation_time)
+      activity_by_user["latest_tweet_time"] = latest_creation_time
+      activity_by_user["latest_tweet_time_s"] = latest_creation_time_s
+
+      for ii,user_id in enumerate(user_ids):
+        if user_id not in list(activity_by_user.keys()):
+          activity_by_user[user_id] = \
+            {"usernames": [],
+             "num_keyword_entries": 0,
+             "tweet_ids": [],
+             "tweet_contents": [],
+             "tweet_creation_times": []
+            }
+        # end if
+
+        user_dict = activity_by_user[user_id]
+        if tweet_ids[ii] in user_dict:
+          continue
+        # end if
+
+        user_dict["num_keyword_entries"] += 1
+        user_dict["usernames"].append(usernames[ii])
+        user_dict["tweet_ids"].append(tweet_ids[ii])
+        user_dict["tweet_contents"].append(contents[ii])
+        user_dict["tweet_creation_times"].append(creations[ii])
+      # end for ii
+      with open(fname_activity, "w") as fid:
+        json.dump(activity_by_user, fid)
+      # end with open
+    # end for fnames
+
     print("success process_keyword_data")
   # end process_keyword_data
+
+  def generate_activity_tweet_urls(self):
+    print("begin generate_activity_tweet_urls")
+    ## load in activity_by_user.json and generate from the tweet_id + username
+    print("success generate_activity_tweet_urls")
+  # end generate_activity_tweet_urls
 
   def fetch_user_leaderboard(self):
     print("begin fetch_user_leaderboard")
@@ -458,19 +703,51 @@ class ScrapeTweets(object):
     entries   = []
     usernames = []
     contents  = []
+
+    num_Likes       = []
+    num_Retweets    = []
+    num_QuoteTweets = []
+    num_Replies     = []
     for user in activity_by_user.keys():
+      if user in ["latest_tweet_time", "latest_tweet_time_s", "query_url"]:
+        continue
+      # end if
+      if "num_Likes" in activity_by_user[user].keys():
+        num_Likes.append(      activity_by_user[user]["num_Likes"])
+      else:
+        num_Likes.append(0)
+      if "num_Retweets" in activity_by_user[user].keys():
+        num_Retweets.append(   activity_by_user[user]["num_Retweets"])
+      else:
+        num_Retweets.append(0)
+      if "num_QuoteTweets" in activity_by_user[user].keys():
+        num_QuoteTweets.append(activity_by_user[user]["num_QuoteTweets"])
+      else:
+        num_QuoteTweets.append(0)
+      if "num_Replies" in activity_by_user[user].keys():
+        num_Replies.append(    activity_by_user[user]["num_Replies"])
+      else:
+        num_Replies.append(0)
+      # end if/else
       entries.append(activity_by_user[user]["num_keyword_entries"])
       usernames.append(activity_by_user[user]["usernames"][-1])
       for content in activity_by_user[user]["tweet_contents"]:
         contents.append(content)
       # end for
     # end for
+    num_Likes       = np.array(num_Likes)
+    num_Retweets    = np.array(num_Retweets)
+    num_QuoteTweets = np.array(num_QuoteTweets)
+    num_Replies     = np.array(num_Replies)
     entries   = np.array(entries)
+
+    points = entries*3 + num_Retweets*2 + num_Likes*1
+
     usernames = np.array(usernames)
-    inds = np.argsort(entries)[::-1]
+    inds = np.argsort(points)[::-1]
     inds = inds[:20]
     for ii in range(len(inds)):
-      print(str(ii) + ") " + usernames[inds][ii] + ": ", entries[inds][ii])
+      print(str(ii) + ") " + usernames[inds][ii] + ": ", points[inds][ii])
     # end for ii
     print("num usernames: ", len(usernames))
     print("num tweets: ", np.sum(entries))
@@ -488,43 +765,64 @@ class ScrapeTweets(object):
 
     print("success fetch_user_leaderboard")
   # end fetch_user_leaderboard
+
+  def verify_processed_tweet(self, tweet_url, username):
+    self.init_tweet(tweet_url)
+
+    url = self.twitter_api_base[:-1] + "?ids=" + self.tweet_id \
+        + "&tweet.fields=created_at"
+
+    os.system(self.curl_base + url + self.curl_header + self.auth + 
+              "' >> " + "delete_me.txt")
+
+    with open("delete_me.txt", "r") as fid:
+      line = fid.read()
+    # end with open
+
+    tweet_time = line.split(self.created_text)[1].split('"')[0]
+    tweet_time_s = self.get_tweet_time_s(tweet_time)
+
+    with open(self.fname_activity, "r") as fid:
+      activity_by_user = fid.read()
+    # end with open
+    activity_by_user = ast.literal_eval(activity_by_user)
+
+    if activity_by_user["latest_tweet_time_s"] < tweet_time_s:
+      print("This tweet created after last query was made")
+      return False
+    # end if
+
+    for user in activity_by_user.keys():
+      if user in ["latest_tweet_time", "latest_tweet_time_s", "query_url"]:
+        continue
+      # end if
+      if username in activity_by_user[user]["usernames"]:
+        if self.tweet_id in activity_by_user[user]["tweet_ids"]:
+          print("verified tweet processed")
+          return True
+        # end if
+      # end if
+    # end for
+    print("Error! There's a bug. Please contact Ryan.")
+    return False
+  # end verify_processed_tweet
+
 # end class ScrapeTweets
 
-urls = [
-"https://twitter.com/mooneynft/status/1515382011267014657?s=20&t=pulk5_II0hc-Te5sP2NVIQ"
-]
-'''
-        "https://twitter.com/ImHudda/status/1515285705165275145"
-"https://twitter.com/cryptojoel66/status/1515253719117541387"
-"https://twitter.com/gronkwizard/status/1515310628386209796"
-"https://twitter.com/SpicegirlNFT/status/1515312882950369284"
-"https://twitter.com/Nomad_eth/status/1515051853301571596"
-"https://twitter.com/greeneteam25/status/1515374193784852485"
-"https://twitter.com/NFTGUYY/status/1515386302237396994"
-]
-'''
+if __name__ == "__main__":
+  tweet_scrape_instance = ScrapeTweets()
+  tweet_scrape_instance.init_auth()
 
-tweet_scrape_instance = ScrapeTweets()
-tweet_scrape_instance.init_auth()
+  tweet_url = "https://twitter.com/RooTroopNFT/status/1515482071849865218"
 
-tweet_id = "1515382011267014657"
-#tweet_url = "https://twitter.com/cryptocom/status/1373877690130821120"
-tweet_url = "https://twitter.com/RooTroopNFT/status/1515482071849865218"
-tweet_url = "https://twitter.com/RooTroopNFT/status/1515139514880061445"
-tweet_url = "https://twitter.com/mooneynft/status/1515382011267014657?s=20&t=pulk5_II0hc-Te5sP2NVIQ"
-#tweet_url = "https://twitter.com/ProjectKaitu/status/1515106498879397891"
+  #tweet_scrape_instance.update_keyword_data()
+  #tweet_scrape_instance.process_keyword_data()
+  #tweet_scrape_instance.fetch_user_leaderboard()
 
-tweet_scrape_instance.fetch_keyword_data()
-tweet_scrape_instance.process_keyword_data()
-tweet_scrape_instance.fetch_user_leaderboard()
+  tweet_scrape_instance.handle_url_activity(tweet_url)
 
-
-#tweet_scrape_instance.fetch_data(tweet_url, dtype)
-#tweet_scrape_instance.fetch_replies(tweet_id)
-#tweet_scrape_instance.fetch_activity(tweet_url)
-#tweet_scrape_instance.process_activity(tweet_id)
-
-#tweet_scrape_instance.process_tweets(urls)
+  tweet_scrape_instance.process_tweets(urls)
+# end if
 
 print("execution rate: ", time.time() - start)
 print("SUCCESS ScrapeTweets")
