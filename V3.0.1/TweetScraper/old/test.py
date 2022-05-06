@@ -9,8 +9,19 @@ import sys
 import requests
 import tweepy
 
-TW_BT  = "AAAAAAAAAAAAAAAAAAAAA" + "ErfbQEAAAAA4siTkqCljmdikM1sMstce"
-TW_BT += "C5cLsc%3DBFO7678SQQUacoQQjzL8PLH9QsRXFLYMrvlddHGKJpb4P899KF"
+auth_str = ""
+with open("../git_ignores_me.mp4", "r") as fid:
+  for line in fid:
+    cur_str = line.split(" = ")[1]
+    cur_str = cur_str[1:-2] # remove quotes and newline char
+
+    auth_str += cur_str
+  # end for line
+# end with open
+TW_BT = auth_str
+
+#TW_BT  = "AAAAAAAAAAAAAAAAAAAAA" + "ErfbQEAAAAA4siTkqCljmdikM1sMstce"
+#TW_BT += "C5cLsc%3DBFO7678SQQUacoQQjzL8PLH9QsRXFLYMrvlddHGKJpb4P899KF"
 
 ## for re-tweets/quote tweets
 id_num = "1354143047324299264"
@@ -30,10 +41,22 @@ id_num = "1515192646578290688"
 query = "(Rooty Roo OR Rooty Woo)"
 query = query.replace(" ", "%20")
 print(query)
-url = "https://api.twitter.com/2/tweets/search/recent?query=" + query + "&user.fields=username&expansions=author_id"
+#url = "https://api.twitter.com/2/tweets/search/recent?query=" + query + "&user.fields=username&expansions=author_id"
+
+
 
 #url = 'https://api.twitter.com/2/tweets?ids=1204084171334832128&tweet.fields=public_metrics'
 #url = 'https://api.twitter.com/2/tweets?ids=1515382011267014657&tweet.fields=public_metrics'
+
+#url = "https://api.twitter.com/2/tweets/search/all?query=from:TwitterDev&tweet.fields=created_at&expansions=author_id&user.fields=created_at"
+url = "https://api.twitter.com/2/users/1447280926967304195/tweets?tweet.fields=created_at&max_results=5"
+url = "https://api.twitter.com/2/users/1447280926967304195/tweets?tweet.fields=created_at&max_results=5&start_time=2022-04-20T15:00:00Z&end_time=2022-04-21T15:00:00Z"
+url = "https://api.twitter.com/2/users/1447280926967304195/tweets?tweet.fields=created_at&max_results=5&end_time=2022-04-20T15:00:00Z"
+
+## try to get older troop sales tweets
+TroopSales = "1477912158730170370"
+url = "https://api.twitter.com/2/users/" + TroopSales + "/tweets?tweet.fields=created_at&max_results=5&end_time=2022-02-25T14:10:00.000Z"
+url = "https://api.twitter.com/2/users/" + TroopSales + "/tweets?tweet.fields=created_at&max_results=5&end_time=2022-02-25T14:10:00.000Z"
 
 os.system("curl --request GET --url '" + url + "' --header 'Authorization: Bearer " + TW_BT + "'")
 
