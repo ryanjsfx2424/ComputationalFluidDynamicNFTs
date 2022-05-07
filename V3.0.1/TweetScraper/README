@@ -1,0 +1,13 @@
+Would be nice to make process_url_activity more efficient as it's
+currently a bottleneck...
+
+Just put what I was working on into refactored and grabbed archival
+twitter_data and ScrapeTweets to here to see if it's stable.
+
+Yup it is, saved it to archival/old/V26.
+
+Note that the heroku version won't run on heroku b/c ast.literal_eval
+of activity_by_user gets killed...I guess heroku is wimpy about it
+consuming 27 MB of memory(?)
+
+I'll add discord functionality next I guess.

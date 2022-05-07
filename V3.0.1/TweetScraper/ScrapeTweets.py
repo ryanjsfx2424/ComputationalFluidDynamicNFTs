@@ -21,8 +21,6 @@ import re
 import ast
 import glob
 import time
-import json
-import pathlib
 import datetime
 import numpy as np
 print("Begin ScrapeTweets")
@@ -348,7 +346,7 @@ class ScrapeTweets(object):
     # end for
 
     with open(self.fname_user_info, "w") as fid:
-      json.dump(user_dict, fid)
+      fid.write(str(user_dict))
     # end with open
   # end update_user_dict
 
@@ -562,11 +560,11 @@ class ScrapeTweets(object):
     # end for dtypes
 
     with open(self.fname_user_info, "w") as fid:
-      json.dump(user_dict, fid)
+      fid.write(str(user_dict))
     # end with open
 
     with open(fname_out, "w") as fid:
-      json.dump(activity, fid)
+      fid.write(str(activity))
     # end with
 
     self.activity = activity
@@ -978,7 +976,7 @@ class ScrapeTweets(object):
     # end for fnames
     
     with open(self.fname_activity, "w") as fid:
-      json.dump(activity_by_user, fid)
+      fid.write(str(activity_by_user))
     # end with open
 
     print("success process_url_activity")
@@ -1076,7 +1074,7 @@ class ScrapeTweets(object):
 
     activity_by_user["query_url"] = url_og
     with open(fname_activity, "w") as fid:
-      json.dump(activity_by_user, fid)
+      fid.write(str(activity_by_user))
     # end with open
 
     print("success update_keyword_data")
@@ -1228,7 +1226,7 @@ class ScrapeTweets(object):
         user_dict["tweet_creation_times"].append(creations[ii])
       # end for ii
       with open(fname_activity, "w") as fid:
-        json.dump(activity_by_user, fid)
+        fid.write(str(activity_by_user))
       # end with open
       #os.system("rm " + fname)
     # end for fnames
@@ -1242,8 +1240,10 @@ class ScrapeTweets(object):
     print("success generate_activity_tweet_urls")
   # end generate_activity_tweet_urls
 
-  def fetch_user_leaderboard(self, start_time, end_time, method="Points"):
+  def fetch_user_leaderboard(self, start_time="2020-05-04T23:59:59.000Z", 
+    end_time="4022-05-04T23:59:59.000Z", method="Points"):
     print("begin fetch_user_leaderboard")
+    self.init_auth()
 
     start_time = self.get_tweet_time_s(start_time)
     end_time   = self.get_tweet_time_s(end_time)
@@ -1360,7 +1360,10 @@ class ScrapeTweets(object):
     # end if/elifs
 
     inds = inds[:20]
+    leaderboard = ""
     for ii in range(len(inds)):
+      leaderboard += str(ii) + ") " + usernames[inds][ii] + ": " + str(val[inds][ii])
+      leaderboard += "\n"
       print(str(ii) + ") " + usernames[inds][ii] + ": ", val[inds][ii])
     # end for ii
     print("num usernames: ", len(usernames))
@@ -1380,6 +1383,7 @@ class ScrapeTweets(object):
     # end with open
 
     print("success fetch_user_leaderboard")
+    return leaderboard
   # end fetch_user_leaderboard
 
   def verify_processed_tweet(self, tweet_url, username):
@@ -1477,6 +1481,45 @@ class ScrapeTweets(object):
     # end while
   # end def continuously_scrape
 
+  def discord_bot(self):
+    print("begin discord_bot")
+    import discord
+    client = discord.Client()
+    print("client loaded")
+
+    ## bot would like read messages/view channels + send messages + read msg history permissions: 68608
+    # for ToTheMoons
+    BOT_COMMANDS_CID = 932056137518444594
+
+    @client.event
+    async def on_ready():
+      print("We have logged in as {0.user}".format(client))
+      channel = client.get_channel(BOT_COMMANDS_CID)
+      await channel.send("I AM ALIVE! MWAHAHAHA")
+    # end
+
+    @client.event
+    async def on_message(message):
+      if message.content.startswith("RT leaderboard") or \
+         message.content.startswith("RT lb"):
+        #if "month" (would be nice to add the other types here...
+        channel = client.get_channel(message.channel.id)
+        msg = "Okay, grabbing the leaderboard for all data"
+        msg += "\nI'm a dumb bot so this can take a while"
+        msg += "\nso please be patient with me :D"
+        await channel.send(msg)
+
+        leaderboard = self.fetch_user_leaderboard()
+        print("discord bot hi here's the leaderboard")
+        print(leaderboard)
+        await channel.send(leaderboard)
+      # end if
+    # end async
+
+    secret = os.environ.get("rttBotPass")
+    client.run(secret)
+  # end discord_bot
+
   #def interpret_human_time_commands(self, text):
   #  text = text.lower()
   #  if "now" in text or "today" in  
@@ -1484,12 +1527,18 @@ class ScrapeTweets(object):
 
 if __name__ == "__main__":
   tweet_scrape_instance = ScrapeTweets()
+  tweet_scrape_instance.discord_bot()
+  #tweet_scrape_instance.continuously_scrape()
 
+  '''
   tweet_scrape_instance.init_auth()
   tweet_url = "https://twitter.com/TheLunaLabs/status/1517817479644524545"
   tweet_url = "https://twitter.com/MorganStoneee/status/1521909270018592768"
-  #tweet_scrape_instance.verify_processed_tweet(tweet_url, "MorganStoneee")
+  tweet_scrape_instance.verify_processed_tweet(tweet_url, "MorganStoneee")
+  '''
 
+  '''
+  tweet_scrape_instance.init_auth()
   start_time = "2022-05-04T23:59:59.000Z"
   #start_time = "2021-05-04T23:59:59.000Z"
   end_time   = "2022-05-05T23:59:59.000Z"
@@ -1498,9 +1547,7 @@ if __name__ == "__main__":
   for method in methods:
     tweet_scrape_instance.fetch_user_leaderboard(start_time, end_time, method)
     input(">>")
-
-  #tweet_scrape_instance.continuously_scrape()
-
+  '''
 # end if
 
 print("execution rate: ", time.time() - start)
