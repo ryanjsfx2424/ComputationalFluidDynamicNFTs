@@ -1,8 +1,9 @@
 # save space
 *.mp4
 node_modules
-twitter_data
+#twitter_data
 archival
+refactored
 
 # for privacy
 git_ignores_me*

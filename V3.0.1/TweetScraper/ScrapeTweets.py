@@ -53,7 +53,11 @@ class ScrapeTweets(object):
     self.special_tweeters = {"1447280926967304195":"rootroopnft", 
                              "1477912158730170370":"troopsales"}
     self.max_loops = 300 # limit == 30,000 likes, RTs (note, max 900 requests per 15 minutes
-    self.continuously_scrape_sleep_time = 60 # seconds
+    self.continuously_scrape_sleep_time = 2 # seconds
+
+    self.keyword_query  = "(Rooty Roo OR Rooty Woo OR rootywoo OR Roo Troop OR rootroop"
+    self.keyword_query += " OR rootroops OR tree roo OR roo bounty OR roo bounties"
+    self.keyword_query += " OR rootyroo OR RootyRoo OR rootroopnft OR troopsales)"
 
     ## 900 requests per 15 minutes max but likes/retweets lookup is 75 (total or each so total is 150? unclear)
     self.api_calls_struct = {"time_limit_s": 15*S_PER_MINUTE, 
@@ -120,6 +124,10 @@ class ScrapeTweets(object):
     # end if
   # end __init__
 
+  #=====================================================
+  #=====================================================
+  #=====================================================
+
   # my laptop is almost 10 years old so I assume there's some
   # malware on here now (although I still haven't lost any crypto/nfts
   # in the 5 years I've been around...), so I make it harder for bots
@@ -146,6 +154,10 @@ class ScrapeTweets(object):
     print("success init_auth")
   # end init_auth
 
+  #=====================================================
+  #=====================================================
+  #=====================================================
+
   def init_tweet(self, tweet_url):
     print("begin init_tweet")
 
@@ -159,6 +171,10 @@ class ScrapeTweets(object):
 
     print("success init_tweet")
   # end init_tweet
+
+  #=====================================================
+  #=====================================================
+  #=====================================================
 
   def get_tweet_time_s(self, tweet_time):
     print("begin get_tweet_time_s")
@@ -174,6 +190,10 @@ class ScrapeTweets(object):
 
     print("success get_tweet_time_s")
   # end get_tweet_time_s
+
+  #=====================================================
+  #=====================================================
+  #=====================================================
 
   def save_url_to_file(self, url, fname):
     print("begin save_url_to_file")
@@ -206,6 +226,7 @@ class ScrapeTweets(object):
       print("url: ", url)
       raise
     # end if/elifs
+    print("dtype: ", dtype)
 
     call_times = self.api_calls_struct["call_times"][dtype]
     total_calls = 0
@@ -233,19 +254,26 @@ class ScrapeTweets(object):
     # end while
 
     flag = True
+    cnt = 0
     while flag:
-      os.system(self.curl_base + url + self.curl_header + self.auth + 
+      result = os.system(self.curl_base + url + self.curl_header + self.auth + 
                 "' >> " + fname)
       
       with open(fname, "r") as fid:
         line = fid.read()
-        if '"status":503' not in line:
+        if '"status":503' not in line and '"status":443' not in line \
+          and result == 0:
           flag = False
           break
         # end if
       # end with
       time.sleep(60.1)
       os.system("rm " + fname)
+      cnt += 1
+      if cnt > 10:
+        print("curl failed 10 times! crashing now")
+        raise
+      # end if
     # end while
     time.sleep(0.1)
     self.api_calls_struct["call_count"] += 1
@@ -288,6 +316,10 @@ class ScrapeTweets(object):
     print("success save_url_to_file")
   # end save_url_to_file
 
+  #=====================================================
+  #=====================================================
+  #=====================================================
+
   def build_activity_from_pairs(self, pairs, activity, line):
     for key in pairs.keys():
       activity += pairs[key]
@@ -308,6 +340,10 @@ class ScrapeTweets(object):
     activity = activity[:-2]
     return activity
   # end build_activity_from_pairs
+
+  #=====================================================
+  #=====================================================
+  #=====================================================
 
   def update_user_dict(self, line):
     user_dict = {}
@@ -349,6 +385,10 @@ class ScrapeTweets(object):
       fid.write(str(user_dict))
     # end with open
   # end update_user_dict
+
+  #=====================================================
+  #=====================================================
+  #=====================================================
 
   def fetch_data(self, tweet_url, dtype):
     '''
@@ -439,6 +479,10 @@ class ScrapeTweets(object):
 
     print("success fetch_data")
   # end fetch_data
+
+  #=====================================================
+  #=====================================================
+  #=====================================================
 
   def fetch_activity(self, tweet_url, creation_time, update=False):
     '''
@@ -580,6 +624,10 @@ class ScrapeTweets(object):
     print("success fetch_activity")
   # end fetch_activity
 
+  #=====================================================
+  #=====================================================
+  #=====================================================
+
   def process_all_tweets_by_user(self, user_id, update = False):
     print("begin process_all_tweets_by_user")
 
@@ -619,6 +667,7 @@ class ScrapeTweets(object):
           line[-1]["last_tweet_time_s"] = creation_time_s
         # end if
 
+        ## note this was for debugging and can probly remove
         print("ii, jj, twid: ", ii, jj, tweet_id)
         print("creation_time: ", creation_time)
         try:
@@ -632,8 +681,14 @@ class ScrapeTweets(object):
           # end try/except
         # end try/except
 
-        if tweet_id in processed_tweets:
-          print("tweet_id in processed_tweets so skipping")
+        ## check if we are in the refresh time window or not
+        tnow = datetime.datetime.now() - datetime.timedelta(days=1)
+        tnow = tnow.strftime("%Y-%m-%dT%H:%M:%S.000Z")
+        tnow = self.get_tweet_time_s(tnow)
+        refresh_time = tnow
+
+        if tweet_id in processed_tweets and creation_time_s < refresh_time:
+          print("tweet_id in processed_tweets and older than 3 days, so skipping")
           continue
         # end if
         print("tweet_id not in processed_tweets")
@@ -660,6 +715,10 @@ class ScrapeTweets(object):
 
     print("success process_all_tweets_by_user")
   # end process_all_tweets_by_user
+
+  #=====================================================
+  #=====================================================
+  #=====================================================
 
   def fetch_all_tweets_by_user(self, user_id):
     print("begin fetch_all_tweets_by_user")
@@ -877,6 +936,10 @@ class ScrapeTweets(object):
     print("success fetch_all_tweets_by_user")
   # end fetch_all_tweets_by_user
 
+  #=====================================================
+  #=====================================================
+  #=====================================================
+
   def process_url_activity(self):
     print("begin process_url_activity")
 
@@ -982,6 +1045,10 @@ class ScrapeTweets(object):
     print("success process_url_activity")
   # end process_url_activity
 
+  #=====================================================
+  #=====================================================
+  #=====================================================
+
   def handle_url_activity(self, urls):
     if type(urls) == type([]):
       for url in urls:
@@ -993,6 +1060,10 @@ class ScrapeTweets(object):
       self.process_url_activity()
     # end if/else
   # end handle_url_activity
+
+  #=====================================================
+  #=====================================================
+  #=====================================================
 
   def update_keyword_data(self):
     print("begin update_keyword_data")
@@ -1013,10 +1084,10 @@ class ScrapeTweets(object):
     
     #query  = "(Rooty Roo OR Rooty OR Rooty Woo OR rootywoo OR Roo Troop OR"
     #query += " rootroop OR rootroops OR tree roo OR Roo Roo)"
-    query  = "(Rooty Roo OR Rooty Woo OR rootywoo OR Roo Troop OR rootroop"
-    query += " OR rootroops OR tree roo OR roo bounty OR roo bounties"
-    query += " OR rootyroo OR RootyRoo OR rootroopnft OR troopsales)"
-    query = query.replace(" ", "%20")
+    #query  = "(Rooty Roo OR Rooty Woo OR rootywoo OR Roo Troop OR rootroop"
+    #query += " OR rootroops OR tree roo OR roo bounty OR roo bounties"
+    #query += " OR rootyroo OR RootyRoo OR rootroopnft OR troopsales)"
+    query = self.keyword_query.replace(" ", "%20")
     url_og = "https://api.twitter.com/2/tweets/search/recent?query=" + query \
            + "&user.fields=username&expansions=author_id&max_results=100" \
            + "&tweet.fields=created_at"
@@ -1080,6 +1151,10 @@ class ScrapeTweets(object):
     print("success update_keyword_data")
   # end update_keyword_data
 
+  #=====================================================
+  #=====================================================
+  #=====================================================
+
   def process_keyword_data(self):
     print("begin process_keyword_data")
 
@@ -1088,72 +1163,56 @@ class ScrapeTweets(object):
     if os.path.exists(fname_activity) and \
        os.stat(fname_activity).st_size != 0:
       with open(self.data_dir + "/activity_by_user.json", "r") as fid:
-        activity_by_user = fid.read()
+        activity_by_user = ast.literal_eval(fid.read())
       # end with open
-      activity_by_user = ast.literal_eval(activity_by_user)
     # end if
 
+    ## needs to be oldest to most recent
     fs = np.sort(glob.glob(self.data_dir + "/*_keyword_data.txt"))
 
     for fname in fs:
       print("fname: ", fname)
+      #sys.exit()
       with open(fname, "r") as fid:
-        for line in fid:
-          break
-        # end for line
+        line = fid.read()
       # end with open
-      print("hi1")
+      try:
+        line = ast.literal_eval(line)
+      except:
+        line = "[" + line + "]"
+        line = line.replace("}{", "},{")
+        line = ast.literal_eval(line)
+      # end try/except
+      if type(line) != type([]):
+        line = [line]
+      # end if
 
-      key = '"created_at":"'
-      latest_tweet = line[line.find(key) + len(key):].split('"')[0]
-      latest_tweet_s = self.get_tweet_time_s(latest_tweet)
+      latest_tweet_s = 0.0
+      for ii in range(len(line)):
+        for jj in range(len(line[ii]["data"])):
+          tweet_time = self.get_tweet_time_s(line[ii]["data"][jj]["created_at"])
+          latest_tweet_s = max(latest_tweet_s, tweet_time)
+        # end for
+      # end for
+
       if activity_by_user["latest_tweet_time_s"] >= latest_tweet_s:
         print("skipping")
         os.system("rm " + fname)
         continue
       # end if
 
-      ## first get user ids and usernames
-      inds_start = [m.start() for m in re.finditer(self.include_text, line)]
-      inds_end   = [m.start() for m in re.finditer(self.meta_text,    line)]
-
-      line2 = ""
-      for ii in range(len(inds_start)):
-        line2 += line[inds_start[ii]:inds_end[ii]]
-      # end for ii
-      print("hi2")
-    
-      keys = ['"id":"', '"username":"']
-
       user_ids  = []
       usernames = []
-
-      key = keys[0]
-      inds = [m.start() for m in re.finditer(key, line2)]
-      for ind in inds:
-        user_ids.append(line2[ind:].split(key)[1].split('"')[0])
-      # end for inds
-      print("hi3")
-
-      key = keys[1]
-      inds = [m.start() for m in re.finditer(key, line2)]
-      for ind in inds:
-        usernames.append(line2[ind:].split(key)[1].split('"')[0])
-      # end for inds
-      print("hi4")
+      for ii in range(len(line)):
+        for jj in range(len(line[ii]["includes"]["users"])):
+          user_ids.append(line[ii]["includes"]["users"][jj]["id"])
+          usernames.append(line[ii]["includes"]["users"][jj]["username"])
+        # end for jj
+      # end for ii
 
       user_ids_to_usernames = {}
       for ii in range(len(user_ids)):
         user_ids_to_usernames[user_ids[ii]] = usernames[ii]
-      # end for ii
-
-      ## next get tweet ids and content and creation time
-      inds_start = [0] + [m.start() for m in re.finditer(self.meta_text, line)][:-1]
-      inds_end   = [m.start() for m in re.finditer(self.include_text,    line)]
-
-      line2 = ""
-      for ii in range(len(inds_start)):
-        line2 += line[inds_start[ii]:inds_end[ii]]
       # end for ii
 
       tweet_ids = []
@@ -1161,35 +1220,14 @@ class ScrapeTweets(object):
       creations = []
       author_ids = []
 
-      keys = ['"id":"', '"text":"', '"created_at":"', '"author_id":"']
-
-      key = keys[0]
-      inds = [m.start() for m in re.finditer(key, line2)]
-      for ind in inds:
-        tweet_ids.append(line2[ind:].split(key)[1].split('"')[0])
-      # end for inds
-      print("hi5")
-
-      key = keys[1]
-      inds = [m.start() for m in re.finditer(key, line2)]
-      for ind in inds:
-        contents.append(line2[ind:].split(key)[1].split('"')[0])
-      # end for inds
-      print("hi6")
-
-      key = keys[2]
-      inds = [m.start() for m in re.finditer(key, line2)]
-      for ind in inds:
-        creations.append(line2[ind:].split(key)[1].split('"')[0])
-      # end for inds
-      print("hi7")
-
-      key = keys[3]
-      inds = [m.start() for m in re.finditer(key, line2)]
-      for ind in inds:
-        author_ids.append(line2[ind:].split(key)[1].split('"')[0])
-      # end for inds
-      print("hi8")
+      for ii in range(len(line)):
+        for jj in range(len(line[ii]["data"])):
+          tweet_ids.append(line[ii]["data"][jj]["id"])
+          contents.append( line[ii]["data"][jj]["text"])
+          creations.append(line[ii]["data"][jj]["created_at"])
+          author_ids.append(line[ii]["data"][jj]["author_id"])
+        # end for
+      # end for
 
       latest_creation_time = np.sort(np.array(creations))[-1]
       latest_creation_time_s = self.get_tweet_time_s(latest_creation_time)
@@ -1228,11 +1266,15 @@ class ScrapeTweets(object):
       with open(fname_activity, "w") as fid:
         fid.write(str(activity_by_user))
       # end with open
-      #os.system("rm " + fname)
+      os.system("rm " + fname)
     # end for fnames
 
     print("success process_keyword_data")
   # end process_keyword_data
+
+  #=====================================================
+  #=====================================================
+  #=====================================================
 
   def generate_activity_tweet_urls(self):
     print("begin generate_activity_tweet_urls")
@@ -1240,13 +1282,17 @@ class ScrapeTweets(object):
     print("success generate_activity_tweet_urls")
   # end generate_activity_tweet_urls
 
+  #=====================================================
+  #=====================================================
+  #=====================================================
+
   def fetch_user_leaderboard(self, start_time="2020-05-04T23:59:59.000Z", 
     end_time="4022-05-04T23:59:59.000Z", method="Points"):
     print("begin fetch_user_leaderboard")
     self.init_auth()
 
-    start_time = self.get_tweet_time_s(start_time)
-    end_time   = self.get_tweet_time_s(end_time)
+    start_time_s = self.get_tweet_time_s(start_time)
+    end_time_s   = self.get_tweet_time_s(end_time)
 
     with open(self.data_dir + "/activity_by_user.json", "r") as fid:
       activity_by_user = fid.read()
@@ -1272,7 +1318,7 @@ class ScrapeTweets(object):
           cnt = 0
           for tweet_time in activity_by_user[user][dtype]["tweet_creation_times"]:
             tweet_time = self.get_tweet_time_s(tweet_time)
-            if tweet_time >= start_time and tweet_time <= end_time:
+            if tweet_time >= start_time_s and tweet_time <= end_time_s:
               cnt += 1
             # end if
           # end for
@@ -1304,7 +1350,7 @@ class ScrapeTweets(object):
 
         tweet_time = activity_by_user[user]["tweet_creation_times"][ii]
         tweet_time = self.get_tweet_time_s(tweet_time)
-        if tweet_time >= start_time and tweet_time <= end_time:
+        if tweet_time >= start_time_s and tweet_time <= end_time_s:
           if activity_by_user[user]["tweet_contents"][ii][:2] == "RT":
             retweets_cnt += 1
           else:
@@ -1376,15 +1422,31 @@ class ScrapeTweets(object):
     #  print("\n" + contents[ind])
     ## end for ii
 
-    with open(self.data_dir + "/queryed_tweets.txt", "w") as fid:
-      for ii in range(len(contents)):
-        fid.write(contents[ii] + "\n\n")
+    ## note, this errors sometimes with a utf-8 issue so I guess
+    ## sometimes it gets passes some dumb emoji :)
+    #with open(self.data_dir + "/queryed_tweets.txt", "w") as fid:
+    #  for ii in range(len(contents)):
+    #    fid.write(contents[ii] + "\n\n")
       # end for line
     # end with open
+
+    fname = self.data_dir + "/leaderboard_" + method + "_start" + \
+            start_time + "_" + end_time + ".txt"
+    tnow = datetime.datetime.now()
+    tnow = tnow.strftime("%Y-%m-%d_%H:%M:%S")
+    with open(fname, "w") as fid:
+      fid.write("last updated: " + tnow + "\n")
+      fid.write(leaderboard)
+    # end with
 
     print("success fetch_user_leaderboard")
     return leaderboard
   # end fetch_user_leaderboard
+
+  #=====================================================
+  #=====================================================
+  #=====================================================
+  #=====================================================
 
   def verify_processed_tweet(self, tweet_url, username):
     self.init_tweet(tweet_url)
@@ -1396,29 +1458,43 @@ class ScrapeTweets(object):
 
     print("tw_id: ", self.tweet_id)
 
+    flag = False
     user_id = ""
     for user in activity_by_user.keys():
       if user[0].isdigit():
-        if username in activity_by_user[user]["usernames"]:
-          user_id = user
-        # end if
+        for stored_username in activity_by_user[user]["usernames"]:
+          if username.lower() == stored_username.lower():
+            user_id = user
+            flag = True
+            break
+          # end if
+        # end for
+      # end if
+      if flag:
+        break
       # end if
     # end for
+    print("user_id: ", user_id)
 
-    error_message  = "We don't recongize that username. If you're new to twitter\n"
-    error_message += "then please try again in a few minutes. Or if you changed\n"
-    error_message += "your username, try your old one (or send a keyword tweet\n"
-    error_message += "with the new username and your profiles will automatically\n"
-    error_message += "be merged. Anyway, I'm just a dumb bot so please send this message\n"
-    error_message += "to ryanjsfx.eth|ToTheMoonsNFT|Luna#3479 on discord, @TheLunaLabs on Twitter\n"
-    error_message += "or raise an issue at github.com/ryanjsfx2424/ComputationalFluidDynamicNFTs\n"
-    error_message += "and my creator should look into this within 24-48H\n"
-    error_message += "(or if at NFT NYC or similar maybe a week)."
+    message  = "We don't recongize that username. If you're new to twitter\n"
+    message += "then please try again in a few minutes. Or if you changed\n"
+    message += "your username, try your old one (or send a keyword tweet\n"
+    message += "with the new username and your profiles will automatically\n"
+    message += "be merged. Anyway, I'm just a dumb bot so please send this message\n"
+    message += "to ryanjsfx.eth|ToTheMoonsNFT|Luna#3479 on discord, @TheLunaLabs on Twitter\n"
+    message += "or raise an issue at github.com/ryanjsfx2424/ComputationalFluidDynamicNFTs\n"
+    message += "and my creator should look into this within 24-48H\n"
+    message += "(or if at NFT NYC or similar maybe a week)."
 
     if user_id != "":
+      print("user: ", activity_by_user[user_id])
+      print("user twids: ", activity_by_user[user_id]["tweet_ids"])
+      print("twid: ", self.tweet_id)
+      print("twid in user twids: ", self.tweet_id in activity_by_user[user_id]["tweet_ids"])
       if self.tweet_id in activity_by_user[user_id]["tweet_ids"]:
-        print("SUCCESS! Your tweet was already processed :)")
-        return True
+        message = "SUCCESS! Your tweet was already processed :)"
+        print(message)
+        return [message,True]
       # end if
     # end if
         
@@ -1432,17 +1508,25 @@ class ScrapeTweets(object):
       line = fid.read()
     # end with open
 
+    print("self created_text: ", self.created_text)
+    print("line: ", line)
+    print("line split self created_text: ", line.split(self.created_text))
     tweet_time = line.split(self.created_text)[1].split('"')[0]
     tweet_time_s = self.get_tweet_time_s(tweet_time)
 
     if activity_by_user["latest_tweet_time_s"] < tweet_time_s:
-      print("This tweet created after last query was made")
-      return False
+      message = "This tweet created after last query was made"
+      print(message)
+      return [message,False]
     # end if
 
-    print(error_message)
-    return False
+    print(message)
+    return [message,False]
   # end verify_processed_tweet
+
+  #=====================================================
+  #=====================================================
+  #=====================================================
 
   def fetch_user_data(self, username):
     with open(self.fname_activity, "r") as fid:
@@ -1454,32 +1538,124 @@ class ScrapeTweets(object):
       if user in ["latest_tweet_time", "latest_tweet_time_s", "query_url"]:
         continue
       # end if
-      if username in activity_by_user[user]["usernames"]:
-        return activity_by_user[user]
+      for stored_username in activity_by_user[user]["usernames"]:
+        if username.lower() == stored_username.lower():
+          return activity_by_user[user]
+      
+        # end if
+      # end for
+    # end for
+    err = "Error! Couldn't find that username."
+    print(err)
+    return err
+  # def fetch_user_data
+
+  #=====================================================
+  #=====================================================
+  #=====================================================
+
+  def fetch_user_points(self, user_data):
+    ## uses result of fetch_user_data above
+
+    num_dict = {"num_Likes":0,
+                "num_Retweets":0,
+                "num_QuoteTweets":0,
+                "num_Replies":0,
+                "num_keyword_retweets":0,
+                "num_keyword_replies":0}
+    for dtype in self.dtypes:
+      if dtype in user_data.keys():
+        num_dict["num_"+dtype] = user_data[dtype]["num_" + dtype]
       # end if
     # end for
-  # def fetch_user_data
+
+    keyword_replies  = 0
+    keyword_retweets = 0
+    for tweet_content in user_data["tweet_contents"]:
+      tweet_content.lower()
+
+      ## below if statement to exclude LuckyRooToken tweets...or we
+      ## could just check for whitelisted users???
+      if "#luckyroo" in tweet_content or "@luckyr" in tweet_content or \
+         "#saita" in tweet_content or "@saita" in tweet_content or \
+         "promote it on" in tweet_content: # last one to filter out spam bots
+        continue
+      # end if
+
+      if tweet_content[:2] == "RT".lower():
+        keyword_retweets += 1
+      else:
+        keyword_replies += 1
+      # end if/else
+
+      num_dict["num_keyword_replies"] = keyword_replies
+      num_dict["num_keyword_retweets"] = keyword_retweets
+    # end for
+
+    points = num_dict["num_keyword_replies" ]*3 + num_dict["num_Retweets"]*2 \
+           + num_dict["num_keyword_retweets"]*2 + num_dict["num_Likes"]*1 \
+           + num_dict["num_QuoteTweets"]*4 + num_dict["num_Replies"]*3
+    
+    message  = "Points: " + str(points) + "\n"
+    message += "Likes: " + str(num_dict["num_Likes"]) + "\n"
+    message += "Retweets: " + str(num_dict["num_Retweets"]) + "\n"
+    message += "QuoteTweets: " + str(num_dict["num_QuoteTweets"]) + "\n"
+    message += "Replies: " + str(num_dict["num_Replies"]) + "\n"
+    message += "num_keyword_replies: " + str(num_dict["num_keyword_replies"]) + "\n"
+    message += "num_keyword_retweets: " + str(num_dict["num_keyword_retweets"]) + "\n\n"
+    message += "Note that points are computed as Likes + Retweets*2 + keyword_retweets*2 + Replies*3 + keyword_replies*3 + QuoteTweets*4\n"
+    message += "where Likes,Retweets,Replies,QuoteTweets are interactions with @RooTroopNFT and/or @TroopSales, while keyword_replies (misnomer, includes if you start the tweet) and keyword_retweets use the keyword search. Use 'rtt keywords' for more info on those.\n\n"
+
+    print("SUCCESS fetch_user_points")
+    return message
+  # end fetch_user_points
+
+  #=====================================================
+  #=====================================================
+  #=====================================================
 
   def continuously_scrape(self):
     self.init_auth()
     cs_start = time.time()
+    reset_time = time.time()
 
     while True:
       loop_start = time.time()
       self.update_keyword_data()
       self.process_keyword_data()
-      for user_id in self.special_tweeters.keys():
-        #print(user_id)
+
+      if reset_time - time.time() > 5*60:
+        for user_id in self.special_tweeters.keys():
+          if self.special_tweeters[user_id] == "troopsales":
+            continue
+          print(user_id)
         #input(">>")
+        #continue
         self.process_all_tweets_by_user(user_id, update=True)
       # end for
 
-      print("last loop executed in: ", time.time() - loop_start)
-      print("time since continuous scraping started: ", time.time() - cs_start)
-      print("current date/time: ", datetime.datetime.now().strftime("%Y-%m-%d %H:%M%S"))
+      msg1 = "last loop executed in: " + str(time.time() - loop_start)
+      msg2 = "time since continuous scraping started: " + str(time.time() - cs_start)
+      msg3 = "current date/time: " + str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M%S"))
+      print("\n\n\n\n\n\n\n\n" + msg1)
+      print(msg2)
+      print(msg3 + "\n\n\n\n\n\n\n\n")
+
+      fname = self.data_dir + "/continuous_scrape_times.txt"
+      with open(fname, "a") as fid:
+        fid.write(msg1 + "\n")
+        fid.write(msg2 + "\n")
+        fid.write(msg3 + "\n")
+      # end with
+
+      #break
       time.sleep(self.continuously_scrape_sleep_time)
     # end while
   # end def continuously_scrape
+
+  #=====================================================
+  #=====================================================
+  #=====================================================
 
   def discord_bot(self):
     print("begin discord_bot")
@@ -1500,29 +1676,214 @@ class ScrapeTweets(object):
 
     @client.event
     async def on_message(message):
-      if message.content.startswith("RT leaderboard") or \
-         message.content.startswith("RT lb"):
-        #if "month" (would be nice to add the other types here...
-        channel = client.get_channel(message.channel.id)
-        msg = "Okay, grabbing the leaderboard for all data"
-        msg += "\nI'm a dumb bot so this can take a while"
-        msg += "\nso please be patient with me :D"
-        await channel.send(msg)
+      channel = client.get_channel(message.channel.id)
 
-        leaderboard = self.fetch_user_leaderboard()
-        print("discord bot hi here's the leaderboard")
-        print(leaderboard)
-        await channel.send(leaderboard)
-      # end if
+      msg = message.content.lower()
+      if msg.startswith("rtt"):
+        edit = False
+
+        if "help" in msg or "halp" in msg:
+          msg2  = "Hi! I'm Twitteroo, developed by ryanjsfx.eth\n"
+          msg2 += "AKA TheLunaLabs.eth, copyright 2022\n."
+
+          if "lb" in msg or "leaderboard" in msg:
+            # expand on leaderboard options
+            msg2 += "  options: rtt lb like (likes leaderboard),\n"
+            msg2 += "  options: rtt lb retweet (retweets leaderboard),\n"
+            msg2 += "    alt:   rtt lb rt\n"
+            msg2 += "  options: rtt lb QuoteTweets (QuoteTweets leaderboard),\n"
+            msg2 += "    alt:   rtt lb qt\n"
+            msg2 += "  options: rtt lb Replies (Replies leaderboard),\n"
+            msg2 += "    alt:   rtt lb reply\n"
+            msg2 += "  options: rtt lb keywords (keywords leaderboard),\n"
+            msg2 += "    alt:   rtt lb key\n\n"
+            msg2 += "you can also use the following time commands (warning, unkown time commands will just use all data)\n"
+            msg2 += "  today (alt == 24H): past 24 hours (time-zone agnostic)\n"
+            msg2 += "  Q1: data from 2022-01-01,0:0:0 to 2022-04-01,0:0:0\n"
+            msg2 += "  Q2: data from 2022-04-01,0:0:0 to 2022-07-01,0:0:0\n"
+            msg2 += "  last year (alt==2021): data from 2021-01-01,0:0:0 to 2022-01-01,0:0:0\n"
+            msg2 += "  last month (alt==april): data from 2022-04-01,0:0:0 to 2022-05-01,0:0:0\n"
+            msg2 += "  month (alt==may): data from 2022-05-01,0:0:0 to 2022-06-01,0:0:0\n"
+            msg2 += "  Jan: data from 2022-01-01,0:0:0 to 2022-02-01,0:0:0\n"
+            msg2 += "  Feb: data from 2022-02-01,0:0:0 to 2022-03-01,0:0:0\n"
+            msg2 += "  Mar: data from 2022-03-01,0:0:0 to 2022-04-01,0:0:0\n"
+            msg2 += "  start:blah, end:blah == user defined. Must fit expected style and spaces matter! Example: start:2022-01-01Z13:45:51.000Z, end:2022-03-03Z03:33:33.000Z"
+          else:
+            # print a minimal list of commands.
+            msg2 += "Here are my commands\n"
+            msg2 += "which are case insensitive :)\n"
+            msg2 += "rtt help: display this command ;)\n"
+            msg2 += "  alts: rtt halp\n\n"
+            msg2 += "rtt lb: display leaderboard for given command options\n"
+            msg2 += "  alts: rtt leabderboard\n"
+            msg2 += "  defaults: points leaderboard, all data\n"
+            msg2 += "  more info: rtt help lb\n\n"
+            msg2 += "rtt keywords: display keywords we use to find tweets\n"
+            msg2 += "rtt verify: verify if we've processed your tweet/interaction\n"
+            msg2 += "  usage: rtt verify url:blah, username:blah\n"
+            msg2 += "rtt me: display user's points, likes, etc.\n"
+            msg2 += "  usage: rtt me username:blah\n"
+          # end if/else
+
+        elif msg.startswith("rtt me"):
+          username = ""
+          try:
+            username  = msg.split("username:")[1]
+          except:
+            msg2  = "sorry, I couldn't parse that. I'm loooking for smtg like\n"
+            msg2 += "rtt me username:TheLunaLabs"
+          # end try/except
+          if username != "":
+            self.init_auth()
+            await channel.send("fetching user data")
+            user_data = self.fetch_user_data(username)
+            print(user_data)
+            await channel.send("and now computing user points")
+            msg2 = self.fetch_user_points(user_data)
+          # end if
+
+        elif "verify" in msg:
+          username = ""
+          try:
+            tweet_url = msg.split("url:")[1].split("username:")[0]
+            tweet_url = tweet_url.replace(",", "").replace(" ", "")
+            username  = msg.split("username:")[1]
+            username  = username.replace(",", "").replace(" ", "")
+          except:
+            msg2  = "sorry, I couldn't parse that. I'm loooking for smtg like\n"
+            msg2 += "rtt verify url:https://twitter.com/RooTroopNFT/status/1499858580568109058, username:TheLunaLabs"
+          # end try/except
+          if username != "":
+            self.init_auth()
+            print("username: ", username)
+            await channel.send("okay! will verify if we processed that tweet for that user yet or not")
+            print("tweet_url: ", tweet_url)
+            status = False
+            while not status:
+              msg2,status = self.verify_processed_tweet(tweet_url, username)
+              if status == False:
+                await channel.send(msg2)
+                await channel.send("We'll wait 20s and then try again.")
+                time.sleep(20)
+              # end if
+            # end while
+          # end if
+
+        elif "lb" in msg or "leaderboard" in msg:
+          method = "Points"
+          if "like" in msg:
+            method = "Likes"
+          elif "rt" in msg[3:] or "retweet" in msg:
+            method = "Retweets"
+          elif "qt" in msg or "quote" in msg:
+            method = "QuoteTweets"
+          elif "repl" in msg:
+            method = "Replies"
+          elif "key" in msg:
+            method = "keyword_replies"
+          # end if/elifs
+
+          start_time = "2020-05-04T23:59:59.000Z"
+          end_time   = "4022-05-04T23:59:59.000Z"
+          tnow = datetime.datetime.now()
+          tstr = "%Y-%m-%dT%H:%M:%S.000Z"
+          time_str = "all"
+          if "today" in msg or "24H" in msg:
+            ## to be time-zone agnostic we start 24H ago and end now
+            start_time = (tnow - datetime.timedelta(days=1)).strftime(tstr)
+            end_time = tnow.strftime(tstr)
+            time_str = "past 24 hours"
+          elif "Q1" in msg:
+            start_time = "2022-01-01T00:00:00.000Z"
+            end_time   = "2022-04-01T00:00:00.000Z"
+            time_str = "Q1 (2022)"
+          elif "Q2" in msg:
+            start_time = "2022-04-01T00:00:00.000Z"
+            end_time   = "2022-07-01T00:00:00.000Z"
+            time_str = "Q2 (2022)"
+          elif "last year" in msg or "2021" in msg:
+            start_time = "2021-01-01T00:00:00.000Z"
+            end_time   = "2022-01-01T00:00:00.000Z"
+            time_str = "2021"
+          elif "year" in msg or "2022" in msg:
+            start_time = "2022-01-01T00:00:00.000Z"
+            end_time   = "2023-01-01T00:00:00.000Z"
+            time_str = "2022"
+          elif "last month" in msg or "april" in msg:
+            start_time = "2022-04-01T00:00:00.000Z"
+            end_time   = "2022-05-01T00:00:00.000Z"
+            time_str = "April 2022"
+          elif "month" in msg or "may" in msg:
+            start_time = "2022-05-01T00:00:00.000Z"
+            end_time   = "2022-06-01T00:00:00.000Z"
+            time_str = "May 2022"
+          elif "jan" in msg:
+            start_time = "2022-01-01T00:00:00.000Z"
+            end_time   = "2022-02-01T00:00:00.000Z"
+            time_str = "Jan 2022"
+          elif "feb" in msg:
+            start_time = "2022-02-01T00:00:00.000Z"
+            end_time   = "2022-03-01T00:00:00.000Z"
+            time_str = "Feb 2022"
+          elif "mar" in msg:
+            start_time = "2022-03-01T00:00:00.000Z"
+            end_time   = "2022-04-01T00:00:00.000Z"
+            time_str = "Mar 2022"
+          elif "start:" in msg and ", end:" in msg:
+            start_time = msg.split("start:")[1].split(", end:")[0]
+            end_time = msg.split("end:")[1]
+            time_str = "user defined"
+          # end if/elifs
+
+          fname = self.data_dir + "/leaderboard_" + method + "_start" + \
+            start_time + "_" + end_time + ".txt"
+          if os.path.exists(fname) and os.stat(fname).st_size != 0:
+            msg2  = "Okay, grabbing the updated " + method + " leaderboard for "
+            msg2 += time_str + " data range. Note it'll take me ~30-60s to update (y'all raid hard :O\n\n"
+            await channel.send(msg2)
+
+            msg2 = "In the meantime, here's the last version of that leaderboard.\n"
+            with open(fname, "r") as fid:
+              for line in fid:
+                msg2 += line
+              # end for
+            # end with
+            dmsg = await channel.send(msg2)
+            edit = True
+          else:
+            msg2  = "Okay, grabbing the " + method + " leaderboard for "
+            msg2 += time_str + " data range for the first time."
+            msg2 += "\nY'all raid hard so this can take a while (30s-60s)"
+            msg2 += "\nso please be patient with me :D"
+            await channel.send(msg2)
+          # end if/else
+
+          msg2 = self.fetch_user_leaderboard(start_time=start_time, 
+                 end_time=end_time, method=method)
+          msg2 += "\nI've now updated the above leaderboard :)"
+          print("discord bot hi here's the " + method + " leaderboard")
+          print(msg2)
+
+        elif "key" in msg:
+          msg2 = "Hi! These are the keywords I use to scrape for tweets:\n"
+          for keyword in self.keyword_query.split("OR"):
+            msg2 += keyword + "\n"
+          # end for
+
+        else:
+          msg2  = "sorry! I didn't understand that command. Try 'rtt help(?)'\n"
+          msg2 += "without the quotes..."
+        # end if/elif/else
+        if not edit:
+          await channel.send(msg2)
+        else:
+          await dmsg.edit(content=msg2)
+      # end if rtt
     # end async
 
     secret = os.environ.get("rttBotPass")
     client.run(secret)
   # end discord_bot
-
-  #def interpret_human_time_commands(self, text):
-  #  text = text.lower()
-  #  if "now" in text or "today" in  
 # end class ScrapeTweets
 
 if __name__ == "__main__":

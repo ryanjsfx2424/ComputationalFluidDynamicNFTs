@@ -5,12 +5,14 @@ and can roll dice.
 
 Next I'm going to query for addresses of who owns V1, V2 NFTs.
 """
+DEV = False
 import os
 import time
 import json
 import random
 import asyncio
 import discord
+import datetime
 import numpy as np
 from web3 import Web3
 
@@ -18,7 +20,8 @@ client = discord.Client()
 channels = {
             "general": 931482273973420034,
             "apod"   : 940983047157854248,
-            "xkcd"   : 940985070460760094
+            "xkcd"   : 940985070460760094,
+            "science": 937749324954222683
            }
 BOT_COMMANDS_CID = 932056137518444594
 GIVEAWAY_CID     = 938548088270880878
@@ -60,25 +63,48 @@ ALCHEMY_URL = "https://polygon-mainnet.g.alchemy.com/v2/" + ALCHEMY_API_KEY
 ## web3 stuff
 w3 = Web3(Web3.HTTPProvider(ALCHEMY_URL))
 
-contracts = []
-totalSupplies = []
-for ii in range(len(ABI_PATHS)):
-  abi_path = ABI_PATHS[ii]
-  contract_address = CONTRACT_ADDRESSES[ii]
+if not DEV:
+  contracts = []
+  totalSupplies = []
+  for ii in range(len(ABI_PATHS)):
+    print("ii: ", ii)
+    abi_path = ABI_PATHS[ii]
+    contract_address = CONTRACT_ADDRESSES[ii]
 
-  with open(abi_path, "r") as fid:
-    rl = "".join(fid.readlines())
-    abi = json.loads(rl)
-    contract = w3.eth.contract(address=contract_address, abi=abi)
-    contracts.append(contract)
-  # end with open
-  totalSupplies.append(contract.functions.totalSupply().call())
-  for jj in range(totalSupplies[-1]):
-    token = contract.functions.tokenByIndex(jj).call()
-    cfd_nft_holders[ii].append(contract.functions.ownerOf(token).call())
-    time.sleep(SLEEP_TIME)
-  # end for jj
-# end for ii
+    with open(abi_path, "r") as fid:
+      rl = "".join(fid.readlines())
+      abi = json.loads(rl)
+      contract = w3.eth.contract(address=contract_address, abi=abi)
+      contracts.append(contract)
+    # end with open
+    totalSupplies.append(contract.functions.totalSupply().call())
+    for jj in range(totalSupplies[-1]):
+      token = contract.functions.tokenByIndex(jj).call()
+      cfd_nft_holders[ii].append(contract.functions.ownerOf(token).call())
+      time.sleep(SLEEP_TIME)
+    # end for jj
+  # end for ii
+# end if
+
+S_PER_MINUTE = 60
+S_PER_HOUR   = S_PER_MINUTE * 60
+S_PER_DAY    = S_PER_HOUR * 24
+S_PER_MONTH  = S_PER_DAY * 31
+S_PER_YEAR   = S_PER_MONTH * 12
+def get_tweet_time_s(tweet_time):
+  print("begin get_tweet_time_s")
+
+  yy,mo,dd = tweet_time.split("-")
+  dd,hh    = dd.split("T")
+  hh,mi,ss = hh.split(":")
+  ss = ss[:-1]
+  tweet_time_s = float(yy)*S_PER_YEAR   + float(mo)*S_PER_MONTH + \
+                 float(dd)*S_PER_DAY    + float(hh)*S_PER_HOUR  + \
+                 float(mi)*S_PER_MINUTE + float(ss)
+  return tweet_time_s
+
+  print("success get_tweet_time_s")
+# end get_tweet_time_s
 
 @client.event
 async def on_ready():
@@ -93,6 +119,10 @@ async def on_message(message):
 
     if message.author == client.user:
       return
+
+    if message.content.startswith('$help'):
+      channel = client.get_channel(message.channel.id) # bot-commands
+      await channel.send('Here are my commands:\n$help\n$yum\n$welcome\n$floor\n$cfd-v1-giveaway\n$cfd-v2-giveaway\n$cfd-v3-giveaway\n$activity-giveaway\n$test-activity-giveaway')
 
     if message.content.startswith('$hello'):
       channel = client.get_channel(BOT_COMMANDS_CID) # bot-commands
@@ -115,21 +145,21 @@ async def on_message(message):
        message.content.startswith('$cfd-v2-giveaway') or \
        message.content.startswith('$cfd-v3-giveaway'):
       
-      if "v1" in message.content:
+      if "v1"   in message.content:
         ind = 0
-      elif "v2": 
+      elif "v2" in message.content: 
         ind = 1
-      elif "v3":
+      elif "v3" in message.content:
         ind = 2
       else:
         print("something went very wrong!")
         raise
       # end if/else
-      num = len(cfd_nft_holders[ind])-1
+      num = totalSupplies[ind]
 
       channel = client.get_channel(GIVEAWAY_CID) # bot-commands
       
-      msg = await channel.send("rolling between 0 and " + str(num) + ", inclusive")
+      msg = await channel.send("rolling between 0 and " + str(num) + ", exclusive")
       text = "ROLL: " + \
              str(random.randrange(0,num+1))
       msg = await channel.send(text)
@@ -140,14 +170,18 @@ async def on_message(message):
         await msg.edit(content=text)
       # end for ii
 
+      ## to make sure I don't win :)
       while True:
-        winning_roll = random.randrange(0,num+1)
+        winning_roll = random.randrange(0,num)
         winning_address = cfd_nft_holders[ind][winning_roll]
         if winning_address not in MY_ADDRESSES:
           break
         # end if
       # end while True
       
+      print("ind: ", ind)
+      for ijk in range(len(cfd_nft_holders[ind])):
+        print(cfd_nft_holders[ind][ijk])
       text = "WINNER: " + str(winning_roll)
       if winning_address in KNOWN_ADDRESSES.keys():
         text += "\nwhich is: " + KNOWN_ADDRESSES[winning_address]
@@ -158,46 +192,91 @@ async def on_message(message):
       await msg.edit(content=text)
     # end if  
 
-    if message.channel.id == GIVEAWAY_CID and \
-       message.content.startswith('$activity-giveaway'):
-
+    if (message.channel.id == GIVEAWAY_CID and \
+        message.content.startswith('$activity-giveaway')) or \
+       (message.channel.id == BOT_COMMANDS_CID and
+       (message.content.startswith('$test-activity-giveaway') or \
+        message.content.startswith('$tag'))):
+      
       channel = client.get_channel(GIVEAWAY_CID) # bot-commands
+
+      ## first, check when last giveaway happened
+      now = datetime.datetime.now()
+      now = now.strftime("%Y-%m-%dT%H:%M:%S.000Z")
+      now = get_tweet_time_s(now)
+
+      yday = datetime.datetime.now() - datetime.timedelta(days=1)
+      yday = yday.strftime("%Y-%m-%dT%H:%M:%S.000Z")
+      yday = get_tweet_time_s(yday)
+
+      flag = True
+      MSG_LIMIT = 200
+      while flag:
+        messages = await channel.history(limit=MSG_LIMIT).flatten()
+        for msg in messages:
+          old_msg_time = str(msg.created_at).replace(" ", "T")
+          old_msg_time_s = get_tweet_time_s(old_msg_time)
+          if old_msg_time_s < yday:
+            flag = False
+            break
+          # end if
+        # end for
+        MSG_LIMIT *= 2
+      # end while
+
+      channel = client.get_channel(BOT_COMMANDS_CID) # bot-commands
+      if message.content.startswith("$activity"):
+        channel = client.get_channel(GIVEAWAY_CID)
+      # end if
       await channel.send('Getting activity, this may take a moment.')
+
       ppl = []
       for channel_key in channels.keys():
         print(channel_key)
         channel = client.get_channel(channels[channel_key])
 
-        LIMIT = 200
-        while True:
-          messages = await channel.history(limit=LIMIT).flatten()
-          #messages = await message.channel.history(limit=LIMIT).flatten()
+        cnt = -1
+        flag = True
+        MSG_LIMIT = 10 # 200
+        while flag:
+          cnt += 1
+          print("while loop cnt: ", cnt)
+          messages = await channel.history(limit=MSG_LIMIT).flatten()
 
-          if int(float(messages[-1].created_at.day)) > 25:
-            LIMIT *= 2
-          else:
-            break
-        # end while True
-
-        for message in messages:
-          msg_day = message.created_at.day
-          msg_mo = message.created_at.month
-
-
-          if (msg_day >= 1 and msg_mo == 4) or (msg_day <= 8 and msg_mo == 4):
-            name = message.author.name
+          for msg in messages:
+            msg_time = str(msg.created_at).replace(" ", "T")
+            msg_time_s = get_tweet_time_s(msg_time)
+            if msg_time_s < old_msg_time_s:
+              flag = False
+              break
+            # end if
+            name = msg.author.name
             if name == "ryanjsfx.eth|ToTheMoonsNFT|Luna":
               continue
-            if "apod" in channel_key:
-              if not message.attachments:
+            # end if
+
+            if channel_key in ["xkcd","apod","science"]:
+              if not msg.attachments:
                 continue
-            ppl.append(message.author.name)
-          # end if
-        # end for
+              else:
+                for ijk in range(10):
+                  ppl.append(name)
+                # end for
+              # end if/else
+            else:
+              ppl.append(name)
+            # end if/elif
+          # end for
+          MSG_LIMIT *= 2
+        # end while
       # end for channels
       print(ppl)
       print("len(ppl): ", len(ppl))
-      channel = client.get_channel(GIVEAWAY_CID) # bot-commands
+
+      channel = client.get_channel(BOT_COMMANDS_CID) # bot-commands
+      if message.content.startswith("$activity"):
+        channel = client.get_channel(GIVEAWAY_CID)
+      # end if
       await channel.send('Got activity, let\'s roll!')
       await channel.send('entrants:')
       text = ""
@@ -219,7 +298,6 @@ async def on_message(message):
       text = "WINNER: " + \
              str(random.randrange(0,len(ppl)))
       await msg.edit(content=text)
-
 
       print("SUCCESS scan!")
     # end if command == scan
