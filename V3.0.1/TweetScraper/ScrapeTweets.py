@@ -23,6 +23,7 @@ import glob
 import time
 import datetime
 import numpy as np
+import asyncio
 print("Begin ScrapeTweets")
 
 S_PER_MINUTE = 60
@@ -53,7 +54,7 @@ class ScrapeTweets(object):
     self.special_tweeters = {"1447280926967304195":"rootroopnft", 
                              "1477912158730170370":"troopsales"}
     self.max_loops = 300 # limit == 30,000 likes, RTs (note, max 900 requests per 15 minutes
-    self.continuously_scrape_sleep_time = 2 # seconds
+    self.continuously_scrape_sleep_time = 10 # seconds
 
     self.keyword_query  = "(Rooty Roo OR Rooty Woo OR rootywoo OR Roo Troop OR rootroop"
     self.keyword_query += " OR rootroops OR tree roo OR roo bounty OR roo bounties"
@@ -1320,7 +1321,6 @@ class ScrapeTweets(object):
 
     for fname in fs:
       print("fname: ", fname)
-      #sys.exit()
       with open(fname, "r") as fid:
         line = fid.read()
       # end with open
@@ -1601,67 +1601,31 @@ class ScrapeTweets(object):
   #=====================================================
   #=====================================================
 
-  def verify_processed_tweet(self, tweet_url, username):
+  def verify_processed_tweet(self, tweet_url, username=""):
     self.init_tweet(tweet_url)
-
-    try:
-      with open(self.fname_activity, "r") as fid:
-        activity_by_user = ast.literal_eval(fid.read())
-      # end with
-    except:
-      print("exception triggered when trying to load fname_activity vpt")
-      print("now we're trying to load the backup.")
-      with open(self.fname_activity + "_backup", "r") as fid:
-        activity_by_user = ast.literal_eval(fid.read())
-      # end with open
-      print("we loaded the backup (fa vpt) so now we'll re-set the file with the backup2")
-      os.system("cp " + self.fname_activity + "_backup " + \
-                  self.fname_activity)
-    # end try/except
     print("tw_id: ", self.tweet_id)
+    print("cr_un: ", self.creator_username)
+    
+    if self.creator_username not in self.special_tweeters:
+      username = self.creator_username
+    # end if
 
-    flag = False
-    user_id = ""
-    for user in activity_by_user.keys():
-      if user[0].isdigit():
-        for stored_username in activity_by_user[user]["usernames"]:
-          if username.lower() == stored_username.lower():
-            user_id = user
-            flag = True
-            break
-          # end if
-        # end for
-      # end if
-      if flag:
-        break
-      # end if
-    # end for
-    print("user_id: ", user_id)
+    if username == "":
+      error_msg  = "error! Didn't supply username and we were asked to verify"
+      error_msg += " interaction with @RooTroopNFT or @TroopSales"
+      return [error_msg, False]
+    # end if
 
-    message  = "We don't recongize that username. If you're new to twitter\n"
-    message += "then please try again in a few minutes. Or if you changed\n"
-    message += "your username, try your old one (or send a keyword tweet\n"
-    message += "with the new username and your profiles will automatically\n"
-    message += "be merged. Anyway, I'm just a dumb bot so please send this message\n"
-    message += "to ryanjsfx.eth|ToTheMoonsNFT|Luna#3479 on discord, @TheLunaLabs on Twitter\n"
-    message += "or raise an issue at github.com/ryanjsfx2424/ComputationalFluidDynamicNFTs\n"
-    message += "and my creator should look into this within 24-48H\n"
-    message += "(or if at NFT NYC or similar maybe a week)."
+    status, user_data = self.fetch_user_data(username)
 
-    if user_id != "":
-      print("user: ", activity_by_user[user_id])
-      print("user twids: ", activity_by_user[user_id]["tweet_ids"])
-      print("twid: ", self.tweet_id)
-      print("twid in user twids: ", self.tweet_id in activity_by_user[user_id]["tweet_ids"])
-      if self.tweet_id in activity_by_user[user_id]["tweet_ids"]:
-        message = "SUCCESS! Your tweet was already processed :)"
-        print(message)
-        return [message,True]
-      else:
-        print("abu_ui_twids: ", activity_by_user[user_id]["tweet_ids"])
-        print("tw_id: ", self.tweet_id)
-        print("twid in twids: ", self.tweet_id in activity_by_user[user_id]["tweet_ids"])
-      # end if
+    if status == False:
+      return ["error! username isn't linked??", False]
+    # end if
+
+    if self.tweet_id in user_data["tweet_ids"]:
+      message = "SUCCESS! Your tweet was already processed :)"
+      print(message)
+      return [message,True]
     # end if
         
     url = self.twitter_api_base[:-1] + "?ids=" + self.tweet_id \
@@ -1680,11 +1644,14 @@ class ScrapeTweets(object):
     tweet_time = line.split(self.created_text)[1].split('"')[0]
     tweet_time_s = self.get_tweet_time_s(tweet_time)
 
+    activity_by_user = self.safe_load(self.fname_activity)
     if activity_by_user["latest_tweet_time_s"] < tweet_time_s:
       message = "This tweet created after last query was made"
       print(message)
       return [message,False]
     # end if
+
+    message = "I have no idea what went wrong but there was an error."
 
     print(message)
     return [message,False]
@@ -1713,36 +1680,6 @@ class ScrapeTweets(object):
     with open(self.data_dir + "/user_data/" + user_id + ".json", "r") as fid:
       return [True, ast.literal_eval(fid.read())]
     # end with open
-
-    try:
-      with open(self.fname_activity, "r") as fid:
-        activity_by_user = ast.literal_eval(fid.read())
-      # end with
-    except:
-      print("exception triggered when trying to load fname_activity fudata")
-      print("now we're trying to load the backup.")
-      with open(self.fname_activity + "_backup", "r") as fid:
-        activity_by_user = ast.literal_eval(fid.read())
-      # end with open
-      print("we loaded the backup (fa fudata) so now we'll re-set the file with the backup2")
-      os.system("cp " + self.fname_activity + "_backup " + \
-                  self.fname_activity)
-    # end try/except
-
-    for user in activity_by_user.keys():
-      if user in ["latest_tweet_time", "latest_tweet_time_s", "query_url"]:
-        continue
-      # end if
-      for stored_username in activity_by_user[user]["usernames"]:
-        if username.lower() == stored_username.lower():
-          return activity_by_user[user]
-      
-        # end if
-      # end for
-    # end for
-    err = "Error! Couldn't find that username."
-    print(err)
-    return err
   # def fetch_user_data
 
   #=====================================================
@@ -1834,14 +1771,14 @@ class ScrapeTweets(object):
     return result
   # end safe_load
 
-  def shard_data(self):
+  async def shard_data(self):
     """The purpose of this method is to break down activity_by_user.json
     into one file per userid so that at least certain actions can be
     done a lot quicker. Only sharding users that link in discord."""
     print("BEGIN shard_data")
 
-    load_time_start = time.time()
     activity_by_user = self.safe_load(self.fname_activity)
+    print("loaded abu!")
 
     save_dir = self.data_dir + "/user_data"
     os.system("mkdir -p " + save_dir)
@@ -1853,39 +1790,56 @@ class ScrapeTweets(object):
         linked_usernames.append(el["handle"])
       # end for
     # end with open
+    print("loaded linked_usernames!")
 
     for key in activity_by_user.keys():
+      print("key: ", key)
       if key[0].isdigit():
+        flag = False
         for username in activity_by_user[key]["usernames"]:
           for linked_username in linked_usernames:
             if username.lower() == linked_username.lower():
+              flag = True
               user_data = activity_by_user[key]
               fname = save_dir + "/" + key + ".json"
               with open(fname, "w") as fid:
                 fid.write(str(user_data))
               # end with open
+              break
             # end if
           # end for linked_usernames
+          if flag:
+            flag = False
+            break
+          # end if
         # end for usernames
       # end if
+      await asyncio.sleep(0.2)
     # end for keys
+    print("SUCCESS shard_data")
   # end def shard_data
 
   #=====================================================
   #=====================================================
   #=====================================================
 
+  def update_and_process_keyword_data(self):
+    print("begin update and process keyword data")
+    self.update_keyword_data()
+    self.process_keyword_data()
+    print("success update and process keyword data")
+  # end def update_and_process_keyword_data
+
   def continuously_scrape(self):
     self.init_auth()
     cs_start = time.time()
-    reset_time = time.time()
+    reset_time = time.time() - 400
 
     while True:
       loop_start = time.time()
-      self.update_keyword_data()
-      self.process_keyword_data()
+      self.update_and_process_keyword_data()
 
-      if reset_time - time.time() > 5*60:
+      if time.time() - reset_time > 5*60:
         for user_id in self.special_tweeters.keys():
           if self.special_tweeters[user_id] == "troopsales":
             continue
@@ -1893,6 +1847,7 @@ class ScrapeTweets(object):
         #input(">>")
         #continue
         self.process_all_tweets_by_user(user_id, update=True)
+        reset_time = time.time()
       # end for
 
       msg1 = "last loop executed in: " + str(time.time() - loop_start)
@@ -2010,30 +1965,22 @@ class ScrapeTweets(object):
         elif "verify" in msg:
           username = ""
           try:
-            tweet_url = msg.split("url:")[1].split("username:")[0]
+            tweet_url = msg.split("url:")[1]
+            if "username:" in msg:
+              tweet_url = tweet_url.split("username:")[0]
+              username  = msg.split("username:")[1]
+              username  = username.replace(",", "").replace(" ", "")
+              print("username: ", username)
+            # end if
             tweet_url = tweet_url.replace(",", "").replace(" ", "")
-            username  = msg.split("username:")[1]
-            username  = username.replace(",", "").replace(" ", "")
-            print("username: ", username)
           except:
             msg2  = "sorry, I couldn't parse that. I'm loooking for smtg like\n"
             msg2 += "rtt verify url:https://twitter.com/RooTroopNFT/status/1499858580568109058, username:TheLunaLabs"
           # end try/except
-          if username != "":
-            self.init_auth()
-            await channel.send("okay! will verify if we processed that tweet for that user yet or not")
-            print("tweet_url: ", tweet_url)
-            status = False
-            while not status:
-              msg2,status = self.verify_processed_tweet(tweet_url, username)
-              sys.exit()
-              if status == False:
-                await channel.send(msg2)
-                await channel.send("We'll wait 20s and then try again.")
-                time.sleep(20)
-              # end if
-            # end while
-          # end if
+          self.init_auth()
+          await channel.send("okay! will verify if we processed that tweet for that user yet or not")
+          print("tweet_url: ", tweet_url)
+          msg2,status = self.verify_processed_tweet(tweet_url, username)
 
         elif "lb" in msg or "leaderboard" in msg:
           method = "Points"
@@ -2152,11 +2099,14 @@ class ScrapeTweets(object):
   # end discord_bot
 # end class ScrapeTweets
 
-if __name__ == "__main__":
+async def main():
   tweet_scrape_instance = ScrapeTweets()
-  tweet_scrape_instance.discord_bot()
-  #tweet_scrape_instance.continuously_scrape()
-# end if
+  await asyncio.gather(
+    tweet_scrape_instance.discord_bot(),
+    tweet_scrape_instance.continuously_scrape())
+
+if __name__ == "__main__":
+  asyncio.run(main())
 
 print("execution rate: ", time.time() - start)
 print("SUCCESS ScrapeTweets")
