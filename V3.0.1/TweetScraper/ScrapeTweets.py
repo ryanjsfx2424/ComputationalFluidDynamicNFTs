@@ -198,14 +198,35 @@ class ScrapeTweets(object):
   def save_url_to_file(self, url, fname):
     print("begin save_url_to_file")
 
-    with open(self.api_calls_struct["fname"], "r") as fid:
-      self.api_calls_struct["call_times"] = ast.literal_eval(fid.read())
-    # end with
+    try:
+      with open(self.api_calls_struct["fname"], "r") as fid:
+        self.api_calls_struct["call_times"] = ast.literal_eval(fid.read())
+      # end with
+    except:
+      print("exception triggered when trying to load api_calls_struct_fname")
+      print("now we're trying to load the backup.")
+      with open(self.api_calls_struct["fname"] + "_backup", "r") as fid:
+        self.api_calls_struct["call_times"] = ast.literal_eval(fid.read())
+      # end with
+      print("we loaded the backup (acs) so now we'll re-set the file with the backup")
+      os.system("cp " + self.api_calls_struct["fname"] + "_backup " + \
+                        self.api_calls_struct["fname"])
+    # end try/except
 
-    with open(self.api_calls_struct["fname_stats"], "r") as fid:
-      line = fid.read()
-    # end with open
-    api_call_stats = ast.literal_eval(line)
+    try:
+      with open(self.api_calls_struct["fname_stats"], "r") as fid:
+        api_call_stats = ast.literal_eval(fid.read())
+      # end with open
+    except:
+      print("exception triggered when trying to load api_calls_struct_fname_stats")
+      print("now we're trying to load the backup.")
+      with open(self.api_calls_struct["fname_stats"] + "_backup", "r") as fid:
+        api_call_stats = ast.literal_eval(fid.read())
+      # end with open
+      print("we loaded the backup (acs_stats) so now we'll re-set the file with the backup")
+      os.system("cp " + self.api_calls_struct["fname"] + "_backup " + \
+                  self.api_calls_struct["fname"])
+    # end try/except
 
     if "query=conversation_id" in url:
       dtype = "Replies"
@@ -305,13 +326,21 @@ class ScrapeTweets(object):
       api_call_stats[key]["call_times_this"].append(tnow)
     # end for
 
-    with open(self.api_calls_struct["fname"], "w") as fid:
+    fname_temp = self.api_calls_struct["fname"] + "_temp"
+    fname_backup = self.api_calls_struct["fname"] + "_backup"
+    os.system("cp " + self.api_calls_struct["fname"] + " " + fname_backup)
+    with open(fname_temp, "w") as fid:
       fid.write(str(self.api_calls_struct["call_times"]))
-    # end with open    
+    # end with open
+    os.system("mv " + fname_temp + " " + self.api_calls_struct["fname"])
 
-    with open(self.api_calls_struct["fname_stats"], "w") as fid:
+    fname_temp = self.api_calls_struct["fname_stats"] + "_temp"
+    fname_backup = self.api_calls_struct["fname_stats"] + "_backup"
+    os.system("cp " + self.api_calls_struct["fname_stats"] + " " + fname_backup)
+    with open(fname_temp, "w") as fid:
       fid.write(str(api_call_stats))
     # end with open
+    os.system("mv " + fname_temp + " " + self.api_calls_struct["fname_stats"])
 
     print("success save_url_to_file")
   # end save_url_to_file
@@ -349,9 +378,21 @@ class ScrapeTweets(object):
     user_dict = {}
     # next grab user_id to username pairs
     if os.path.isfile(self.fname_user_info) and os.stat(self.fname_user_info).st_size != 0:
-      with open(self.fname_user_info, "r") as fid:
-        user_dict = ast.literal_eval(fid.read())
-      # end with
+      try:
+        with open(self.fname_user_info, "r") as fid:
+          user_dict = ast.literal_eval(fid.read())
+        # end with
+      except:
+        print("exception triggered when trying to load fname_user_info")
+        print("now we're trying to load the backup.")
+        with open(self.fname_user_info + "_backup", "r") as fid:
+          user_dict = ast.literal_eval(fid.read())
+        # end with open
+        print("we loaded the backup (fui) so now we'll re-set the file with the backup")
+        os.system("cp " + self.fname_user_info + "_backup " + \
+                    self.fname_user_info)
+      # end try/except
+
     else:
       user_dict["userId_to_username"] = {}
       user_dict["username_to_userId"] = {}
@@ -381,9 +422,13 @@ class ScrapeTweets(object):
       user_dict["username_to_userId"][usernames[ii]] = user_ids[ii]
     # end for
 
-    with open(self.fname_user_info, "w") as fid:
+    fname_temp = self.fname_user_info + "_temp"
+    fname_backup = self.fname_user_info + "_backup"
+    os.system("cp " + self.fname_user_info + " " + fname_backup)
+    with open(fname_temp, "w") as fid:
       fid.write(str(user_dict))
     # end with open
+    os.system("mv " + fname_temp + " " + self.fname_user_info)
   # end update_user_dict
 
   #=====================================================
@@ -537,9 +582,21 @@ class ScrapeTweets(object):
 
     user_dict = {}
     if os.path.isfile(self.fname_user_info) and os.stat(self.fname_user_info).st_size != 0:
-      with open(self.fname_user_info, "r") as fid:
-        user_dict = ast.literal_eval(fid.read())
-      # end with
+
+      try:
+        with open(self.fname_user_info, "r") as fid:
+          user_dict = ast.literal_eval(fid.read())
+        # end with
+      except:
+        print("exception triggered when trying to load fname_user_info2")
+        print("now we're trying to load the backup.2")
+        with open(self.fname_user_info + "_backup", "r") as fid:
+          user_dict = ast.literal_eval(fid.read())
+        # end with open
+        print("we loaded the backup (fui) so now we'll re-set the file with the backup2")
+        os.system("cp " + self.fname_user_info + "_backup " + \
+                    self.fname_user_info)
+      # end try/except
     else:
       user_dict["userId_to_username"] = {}
       user_dict["username_to_userId"] = {}
@@ -603,9 +660,15 @@ class ScrapeTweets(object):
       # end for lines
     # end for dtypes
 
-    with open(self.fname_user_info, "w") as fid:
+    ## safe_save here!!
+
+    fname_temp = self.fname_user_info + "_temp"
+    fname_backup = self.fname_user_info + "_backup"
+    os.system("cp " + self.fname_user_info + " " + fname_backup)
+    with open(fname_temp, "w") as fid:
       fid.write(str(user_dict))
     # end with open
+    os.system("mv " + fname_temp + " " + self.fname_user_info)
 
     with open(fname_out, "w") as fid:
       fid.write(str(activity))
@@ -644,10 +707,20 @@ class ScrapeTweets(object):
       self.fetch_all_tweets_by_user(user_id)
     # end if
 
-    with open(fname, "r") as fid:
-      line = fid.read()
-    # end with open
-    line = ast.literal_eval(line)
+    try:
+      with open(fname, "r") as fid:
+        line = ast.literal_eval(fid.read())
+      # end with
+    except:
+      print("exception triggered when trying to load fname")
+      print("now we're trying to load the backup")
+      with open(fname + "_backup", "r") as fid:
+        line = ast.literal_eval(fid.read())
+      # end with open
+      print("we loaded the backup (f) so now we'll re-set the file with the backup")
+      os.system("cp " + fname + "_backup " + \
+                  fname)
+    # end try/except
 
     if "tweets_processed" in line[-1].keys():
       processed_tweets = line[-1]["tweets_processed"]
@@ -707,9 +780,13 @@ class ScrapeTweets(object):
 
         line[-1]["tweets_processed"].append(tweet_id)
         
+        fname_temp = fname + "_temp"
+        fname_backup = fname + "_backup"
+        os.system("cp " + fname + " " + fname_backup)
         with open(fname, "w") as fid:
           fid.write(str(line))
         # end with open
+        os.system("mv " + fname_temp + " " + fname)
       # end for jj
     # end for ii
 
@@ -729,10 +806,20 @@ class ScrapeTweets(object):
     last_tweet_time = 0
     if os.path.exists(fname) and \
         os.stat(fname).st_size != 0:
-      with open(fname, "r") as fid:
-        activity = fid.read()
-      # end with open
-      activity = ast.literal_eval(activity)
+      try:
+        with open(fname, "r") as fid:
+          activity = ast.literal_eval(fid.read())
+        # end with
+      except:
+        print("exception triggered when trying to load activity")
+        print("now we're trying to load the backup.")
+        with open(fname + "_backup", "r") as fid:
+          activity = ast.literal_eval(fid.read())
+        # end with open
+        print("we loaded the backup (fatbu activity) so now we'll re-set the file with the backup")
+        os.system("cp " + fname + "_backup " + \
+                    fname)
+      # end try/except
 
       if "last_tweet_time_s" not in activity[0].keys() or \
          "last_tweet_time_s" not in activity[-1].keys():
@@ -758,10 +845,20 @@ class ScrapeTweets(object):
     fname = self.data_dir + "/TweetsByUser" + "_" + user_id + ".txt"
     print("fname: ", fname)
 
-    with open(fname, "r") as fid:
-      line = fid.read()
-    # end with open
-    line = ast.literal_eval(line)
+    try:
+      with open(fname, "r") as fid:
+        line = ast.literal_eval(fid.read())
+      # end with
+    except:
+      print("exception triggered when trying to load twByUser2")
+      print("now we're trying to load the backup2.")
+      with open(fname + "_backup", "r") as fid:
+        line = ast.literal_eval(fid.read())
+      # end with open
+      print("we loaded the backup (twByUser2) so now we'll re-set the file with the backup2")
+      os.system("cp " + fname + "_backup " + \
+                  fname)
+    # end try/except
 
     if "last_tweet_time_s" in line[0].keys():
       last_tweet_time = max(last_tweet_time, line[0]["last_tweet_time_s"])
@@ -945,18 +1042,39 @@ class ScrapeTweets(object):
 
     if os.path.exists(self.fname_activity) and \
        os.stat(self.fname_activity).st_size != 0:
-      with open(self.fname_activity, "r") as fid:
-        activity_by_user = fid.read()
-      # end with open
-      activity_by_user = ast.literal_eval(activity_by_user)
+      try:
+        with open(self.fname_activity, "r") as fid:
+          activity_by_user = ast.literal_eval(fid.read())
+        # end with
+      except:
+        print("exception triggered when trying to load fname_activity pua")
+        print("now we're trying to load the backup.")
+        with open(self.fname_activity + "_backup", "r") as fid:
+          activity_by_user = ast.literal_eval(fid.read())
+        # end with open
+        print("we loaded the backup (fui) so now we'll re-set the file with the backup2")
+        os.system("cp " + self.fname_activity + "_backup " + \
+                    self.fname_activity)
+      # end try/except
     else:
-      print("data corruption? Something went wrong. Please contant Ryan.")
+      print("data corruption? Something went wrong. Please contact Ryan.")
       raise
     # end if/else
 
-    with open(self.fname_user_info, "r") as fid:
-      user_dict = ast.literal_eval(fid.read())
-    # end with
+    try:
+      with open(self.fname_user_info, "r") as fid:
+        user_dict = ast.literal_eval(fid.read())
+      # end with
+    except:
+      print("exception triggered when trying to load fname_user_info pua")
+      print("now we're trying to load the backup.3")
+      with open(self.fname_user_info + "_backup", "r") as fid:
+        user_dict = ast.literal_eval(fid.read())
+      # end with open
+      print("we loaded the backup (fui pua) so now we'll re-set the file with the backup3")
+      os.system("cp " + self.fname_user_info + "_backup " + \
+                  self.fname_user_info)
+    # end try/except
 
     fs = glob.glob(self.data_dir + "/activity_*.txt")
     for fname in fs:
@@ -1037,10 +1155,14 @@ class ScrapeTweets(object):
       # end if
       os.system("rm " + fname)
     # end for fnames
-    
-    with open(self.fname_activity, "w") as fid:
+
+    fname_temp = self.fname_activity + "_temp"
+    fname_backup = self.fname_activity + "_backup"
+    os.system("cp " + self.fname_activity + " " + fname_backup)
+    with open(fname_temp, "w") as fid:
       fid.write(str(activity_by_user))
     # end with open
+    os.system("mv " + fname_temp + " " + self.fname_activity)
 
     print("success process_url_activity")
   # end process_url_activity
@@ -1069,13 +1191,23 @@ class ScrapeTweets(object):
     print("begin update_keyword_data")
 
     activity_by_user = {"latest_tweet_time_s":0}
-    fname_activity = self.data_dir + "/activity_by_user.json"
-    if os.path.exists(fname_activity) and \
-       os.stat(fname_activity).st_size != 0:
-      with open(self.data_dir + "/activity_by_user.json", "r") as fid:
-        activity_by_user = fid.read()
-      # end with open
-      activity_by_user = ast.literal_eval(activity_by_user)
+    if os.path.exists(self.fname_activity) and \
+       os.stat(self.fname_activity).st_size != 0:
+
+      try:
+        with open(self.fname_activity, "r") as fid:
+          activity_by_user = ast.literal_eval(fid.read())
+        # end with
+      except:
+        print("exception triggered when trying to load fname_activity ukd")
+        print("now we're trying to load the backup.")
+        with open(self.fname_activity + "_backup", "r") as fid:
+          activity_by_user = ast.literal_eval(fid.read())
+        # end with open
+        print("we loaded the backup (fa ukd) so now we'll re-set the file with the backup2")
+        os.system("cp " + self.fname_activity + "_backup " + \
+                    self.fname_activity)
+      # end try/except
     # end if
 
     dtime = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
@@ -1144,9 +1276,14 @@ class ScrapeTweets(object):
     # end while
 
     activity_by_user["query_url"] = url_og
-    with open(fname_activity, "w") as fid:
+
+    fname_temp = self.fname_activity + "_temp"
+    fname_backup = self.fname_activity + "_backup"
+    os.system("cp " + self.fname_activity + " " + fname_backup)
+    with open(fname_temp, "w") as fid:
       fid.write(str(activity_by_user))
     # end with open
+    os.system("mv " + fname_temp + " " + self.fname_activity)
 
     print("success update_keyword_data")
   # end update_keyword_data
@@ -1159,12 +1296,23 @@ class ScrapeTweets(object):
     print("begin process_keyword_data")
 
     activity_by_user = {"latest_tweet_time_s":0}
-    fname_activity = self.data_dir + "/activity_by_user.json"
-    if os.path.exists(fname_activity) and \
-       os.stat(fname_activity).st_size != 0:
-      with open(self.data_dir + "/activity_by_user.json", "r") as fid:
-        activity_by_user = ast.literal_eval(fid.read())
-      # end with open
+    if os.path.exists(self.fname_activity) and \
+       os.stat(self.fname_activity).st_size != 0:
+
+      try:
+        with open(self.fname_activity, "r") as fid:
+          activity_by_user = ast.literal_eval(fid.read())
+        # end with
+      except:
+        print("exception triggered when trying to load fname_activity pkd")
+        print("now we're trying to load the backup.")
+        with open(self.fname_activity + "_backup", "r") as fid:
+          activity_by_user = ast.literal_eval(fid.read())
+        # end with open
+        print("we loaded the backup (fa pkd) so now we'll re-set the file with the backup2")
+        os.system("cp " + self.fname_activity + "_backup " + \
+                    self.fname_activity)
+      # end try/except
     # end if
 
     ## needs to be oldest to most recent
@@ -1263,10 +1411,15 @@ class ScrapeTweets(object):
         user_dict["tweet_contents"].append(contents[ii])
         user_dict["tweet_creation_times"].append(creations[ii])
       # end for ii
-      with open(fname_activity, "w") as fid:
+
+      fname_backup = self.fname_activity + "_backup"
+      fname_temp = self.fname_activity + "_temp"
+      os.system("cp " + self.fname_activity + " " + fname_backup)
+      with open(fname_temp, "w") as fid:
         fid.write(str(activity_by_user))
       # end with open
       os.system("rm " + fname)
+      os.system("mv " + fname_temp + " " + self.fname_activity)
     # end for fnames
 
     print("success process_keyword_data")
@@ -1451,11 +1604,20 @@ class ScrapeTweets(object):
   def verify_processed_tweet(self, tweet_url, username):
     self.init_tweet(tweet_url)
 
-    with open(self.fname_activity, "r") as fid:
-      activity_by_user = fid.read()
-    # end with open
-    activity_by_user = ast.literal_eval(activity_by_user)
-
+    try:
+      with open(self.fname_activity, "r") as fid:
+        activity_by_user = ast.literal_eval(fid.read())
+      # end with
+    except:
+      print("exception triggered when trying to load fname_activity vpt")
+      print("now we're trying to load the backup.")
+      with open(self.fname_activity + "_backup", "r") as fid:
+        activity_by_user = ast.literal_eval(fid.read())
+      # end with open
+      print("we loaded the backup (fa vpt) so now we'll re-set the file with the backup2")
+      os.system("cp " + self.fname_activity + "_backup " + \
+                  self.fname_activity)
+    # end try/except
     print("tw_id: ", self.tweet_id)
 
     flag = False
@@ -1495,6 +1657,10 @@ class ScrapeTweets(object):
         message = "SUCCESS! Your tweet was already processed :)"
         print(message)
         return [message,True]
+      else:
+        print("abu_ui_twids: ", activity_by_user[user_id]["tweet_ids"])
+        print("tw_id: ", self.tweet_id)
+        print("twid in twids: ", self.tweet_id in activity_by_user[user_id]["tweet_ids"])
       # end if
     # end if
         
@@ -1529,10 +1695,39 @@ class ScrapeTweets(object):
   #=====================================================
 
   def fetch_user_data(self, username):
-    with open(self.fname_activity, "r") as fid:
-      activity_by_user = fid.read()
+    ## first, convert username to userid, 
+    ## then grab the sharded data file from user_data
+    with open(self.data_dir + "/user_info.json", "r") as fid:
+      converter = ast.literal_eval(fid.read())
     # end with open
-    activity_by_user = ast.literal_eval(activity_by_user)
+    user_id = ""
+    for key in converter["username_to_userId"].keys():
+      if key.lower() == username.lower():
+        user_id = converter["username_to_userId"][key]
+      # end if
+    # end for keys
+
+    if user_id == "":
+      return [False, "error! username isn't linked??"]
+
+    with open(self.data_dir + "/user_data/" + user_id + ".json", "r") as fid:
+      return [True, ast.literal_eval(fid.read())]
+    # end with open
+
+    try:
+      with open(self.fname_activity, "r") as fid:
+        activity_by_user = ast.literal_eval(fid.read())
+      # end with
+    except:
+      print("exception triggered when trying to load fname_activity fudata")
+      print("now we're trying to load the backup.")
+      with open(self.fname_activity + "_backup", "r") as fid:
+        activity_by_user = ast.literal_eval(fid.read())
+      # end with open
+      print("we loaded the backup (fa fudata) so now we'll re-set the file with the backup2")
+      os.system("cp " + self.fname_activity + "_backup " + \
+                  self.fname_activity)
+    # end try/except
 
     for user in activity_by_user.keys():
       if user in ["latest_tweet_time", "latest_tweet_time_s", "query_url"]:
@@ -1609,6 +1804,72 @@ class ScrapeTweets(object):
     print("SUCCESS fetch_user_points")
     return message
   # end fetch_user_points
+
+  #=====================================================
+  #=====================================================
+  #=====================================================
+
+  def safe_load(self, fname):
+    ## first, load activity by user :D
+    if os.path.exists(fname) and \
+       os.stat(fname).st_size != 0:
+      try:
+        with open(fname, "r") as fid:
+          result = ast.literal_eval(fid.read())
+        # end with
+      except:
+        print("exception triggered when trying to load " + fname + "in safe load")
+        print("now we're trying to load the backup.")
+        with open(fname + "_backup", "r") as fid:
+          result = ast.literal_eval(fid.read())
+        # end with open
+        print("we loaded the backup (sl) so now we'll re-set the file with the backup2")
+        os.system("cp " + fname + "_backup " + \
+                    fname)
+      # end try/except
+    else:
+      print("data corruption? Something went wrong. Please contact Ryan.")
+      raise
+    # end if/else
+    return result
+  # end safe_load
+
+  def shard_data(self):
+    """The purpose of this method is to break down activity_by_user.json
+    into one file per userid so that at least certain actions can be
+    done a lot quicker. Only sharding users that link in discord."""
+    print("BEGIN shard_data")
+
+    load_time_start = time.time()
+    activity_by_user = self.safe_load(self.fname_activity)
+
+    save_dir = self.data_dir + "/user_data"
+    os.system("mkdir -p " + save_dir)
+
+    with open("discord_data/linked_3.json", "r") as fid:
+      line = ast.literal_eval(fid.read())
+      linked_usernames = []
+      for el in line:
+        linked_usernames.append(el["handle"])
+      # end for
+    # end with open
+
+    for key in activity_by_user.keys():
+      if key[0].isdigit():
+        for username in activity_by_user[key]["usernames"]:
+          for linked_username in linked_usernames:
+            if username.lower() == linked_username.lower():
+              user_data = activity_by_user[key]
+              fname = save_dir + "/" + key + ".json"
+              with open(fname, "w") as fid:
+                fid.write(str(user_data))
+              # end with open
+            # end if
+          # end for linked_usernames
+        # end for usernames
+      # end if
+    # end for keys
+  # end def shard_data
 
   #=====================================================
   #=====================================================
@@ -1728,7 +1989,7 @@ class ScrapeTweets(object):
         elif msg.startswith("rtt me"):
           username = ""
           try:
-            username  = msg.split("username:")[1]
+            username  = msg.split("username:")[1].replace(" ","")
           except:
             msg2  = "sorry, I couldn't parse that. I'm loooking for smtg like\n"
             msg2 += "rtt me username:TheLunaLabs"
@@ -1736,10 +1997,14 @@ class ScrapeTweets(object):
           if username != "":
             self.init_auth()
             await channel.send("fetching user data")
-            user_data = self.fetch_user_data(username)
-            print(user_data)
-            await channel.send("and now computing user points")
-            msg2 = self.fetch_user_points(user_data)
+            status, user_data = self.fetch_user_data(username)
+            if status == False:
+              msg2 = user_data
+            else:
+              print(user_data)
+              await channel.send("and now computing user points")
+              msg2 = self.fetch_user_points(user_data)
+            # end if/else
           # end if
 
         elif "verify" in msg:
@@ -1749,18 +2014,19 @@ class ScrapeTweets(object):
             tweet_url = tweet_url.replace(",", "").replace(" ", "")
             username  = msg.split("username:")[1]
             username  = username.replace(",", "").replace(" ", "")
+            print("username: ", username)
           except:
             msg2  = "sorry, I couldn't parse that. I'm loooking for smtg like\n"
             msg2 += "rtt verify url:https://twitter.com/RooTroopNFT/status/1499858580568109058, username:TheLunaLabs"
           # end try/except
           if username != "":
             self.init_auth()
-            print("username: ", username)
             await channel.send("okay! will verify if we processed that tweet for that user yet or not")
             print("tweet_url: ", tweet_url)
             status = False
             while not status:
               msg2,status = self.verify_processed_tweet(tweet_url, username)
+              sys.exit()
               if status == False:
                 await channel.send(msg2)
                 await channel.send("We'll wait 20s and then try again.")
@@ -1890,25 +2156,6 @@ if __name__ == "__main__":
   tweet_scrape_instance = ScrapeTweets()
   tweet_scrape_instance.discord_bot()
   #tweet_scrape_instance.continuously_scrape()
-
-  '''
-  tweet_scrape_instance.init_auth()
-  tweet_url = "https://twitter.com/TheLunaLabs/status/1517817479644524545"
-  tweet_url = "https://twitter.com/MorganStoneee/status/1521909270018592768"
-  tweet_scrape_instance.verify_processed_tweet(tweet_url, "MorganStoneee")
-  '''
-
-  '''
-  tweet_scrape_instance.init_auth()
-  start_time = "2022-05-04T23:59:59.000Z"
-  #start_time = "2021-05-04T23:59:59.000Z"
-  end_time   = "2022-05-05T23:59:59.000Z"
-  methods = ["Points", "Likes", "Retweets", "QuoteTweets", "Replies", "keyword_replies", "keyword_retweets"]
-
-  for method in methods:
-    tweet_scrape_instance.fetch_user_leaderboard(start_time, end_time, method)
-    input(">>")
-  '''
 # end if
 
 print("execution rate: ", time.time() - start)

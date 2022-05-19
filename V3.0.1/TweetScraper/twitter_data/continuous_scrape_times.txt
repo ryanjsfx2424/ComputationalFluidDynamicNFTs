@@ -112,3 +112,363 @@ current date/time: 2022-05-11 17:4317
 last loop executed in: 28.339697122573853
 time since continuous scraping started: 141.8142740726471
 current date/time: 2022-05-11 17:4347
+last loop executed in: 1017.245049238205
+time since continuous scraping started: 1017.2450590133667
+current date/time: 2022-05-15 14:1710
+last loop executed in: 32.2458758354187
+time since continuous scraping started: 1051.5087308883667
+current date/time: 2022-05-15 14:1744
+last loop executed in: 29.68657684326172
+time since continuous scraping started: 1083.1970200538635
+current date/time: 2022-05-15 14:1816
+last loop executed in: 41.9398250579834
+time since continuous scraping started: 1127.1377229690552
+current date/time: 2022-05-15 14:1900
+last loop executed in: 26.833211183547974
+time since continuous scraping started: 1155.9753670692444
+current date/time: 2022-05-15 14:1928
+last loop executed in: 25.612224102020264
+time since continuous scraping started: 1183.5918300151825
+current date/time: 2022-05-15 14:1956
+last loop executed in: 24.98121404647827
+time since continuous scraping started: 1210.5735220909119
+current date/time: 2022-05-15 14:2023
+last loop executed in: 25.584760189056396
+time since continuous scraping started: 1238.162691116333
+current date/time: 2022-05-15 14:2051
+last loop executed in: 25.8179829120636
+time since continuous scraping started: 1265.9865911006927
+current date/time: 2022-05-15 14:2118
+last loop executed in: 26.583334922790527
+time since continuous scraping started: 1294.5706691741943
+current date/time: 2022-05-15 14:2147
+last loop executed in: 24.72931981086731
+time since continuous scraping started: 1321.3054769039154
+current date/time: 2022-05-15 14:2214
+last loop executed in: 33.046061277389526
+time since continuous scraping started: 33.04607009887695
+current date/time: 2022-05-15 16:4109
+last loop executed in: 40.74447226524353
+time since continuous scraping started: 75.79575777053833
+current date/time: 2022-05-15 16:4152
+last loop executed in: 39.573156118392944
+time since continuous scraping started: 117.37404298782349
+current date/time: 2022-05-15 16:4234
+last loop executed in: 37.011979818344116
+time since continuous scraping started: 156.38968515396118
+current date/time: 2022-05-15 16:4313
+last loop executed in: 32.639610290527344
+time since continuous scraping started: 191.03068089485168
+current date/time: 2022-05-15 16:4347
+last loop executed in: 26.861176252365112
+time since continuous scraping started: 219.89287996292114
+current date/time: 2022-05-15 16:4416
+last loop executed in: 27.028692960739136
+time since continuous scraping started: 248.92804598808289
+current date/time: 2022-05-15 16:4445
+last loop executed in: 27.698344945907593
+time since continuous scraping started: 278.63092374801636
+current date/time: 2022-05-15 16:4515
+last loop executed in: 25.750550031661987
+time since continuous scraping started: 306.38349199295044
+current date/time: 2022-05-15 16:4543
+last loop executed in: 27.347673892974854
+time since continuous scraping started: 335.73201990127563
+current date/time: 2022-05-15 16:4612
+last loop executed in: 25.396799087524414
+time since continuous scraping started: 363.13783407211304
+current date/time: 2022-05-15 16:4640
+last loop executed in: 24.93900203704834
+time since continuous scraping started: 390.07820987701416
+current date/time: 2022-05-15 16:4707
+last loop executed in: 87.52010917663574
+time since continuous scraping started: 479.6029169559479
+current date/time: 2022-05-15 16:4836
+last loop executed in: 28.332471132278442
+time since continuous scraping started: 509.93675088882446
+current date/time: 2022-05-15 16:4906
+last loop executed in: 37.97569704055786
+time since continuous scraping started: 549.9154529571533
+current date/time: 2022-05-15 16:4946
+last loop executed in: 28.840882062911987
+time since continuous scraping started: 580.760556936264
+current date/time: 2022-05-15 16:5017
+last loop executed in: 26.524555683135986
+time since continuous scraping started: 609.2898030281067
+current date/time: 2022-05-15 16:5046
+last loop executed in: 28.30941414833069
+time since continuous scraping started: 639.7455339431763
+current date/time: 2022-05-15 16:5116
+last loop executed in: 28.258738040924072
+time since continuous scraping started: 670.0091319084167
+current date/time: 2022-05-15 16:5146
+last loop executed in: 28.057000875473022
+time since continuous scraping started: 700.0708518028259
+current date/time: 2022-05-15 16:5217
+last loop executed in: 27.499069929122925
+time since continuous scraping started: 729.574460029602
+current date/time: 2022-05-15 16:5246
+last loop executed in: 29.68598222732544
+time since continuous scraping started: 761.2614159584045
+current date/time: 2022-05-15 16:5318
+last loop executed in: 27.657167196273804
+time since continuous scraping started: 790.9198348522186
+current date/time: 2022-05-15 16:5347
+last loop executed in: 26.897653102874756
+time since continuous scraping started: 819.8204619884491
+current date/time: 2022-05-15 16:5416
+last loop executed in: 29.053243160247803
+time since continuous scraping started: 850.8789918422699
+current date/time: 2022-05-15 16:5447
+last loop executed in: 27.153358936309814
+time since continuous scraping started: 880.0341720581055
+current date/time: 2022-05-15 16:5516
+last loop executed in: 25.177634716033936
+time since continuous scraping started: 907.2130019664764
+current date/time: 2022-05-15 16:5544
+last loop executed in: 27.571717023849487
+time since continuous scraping started: 936.7881398200989
+current date/time: 2022-05-15 16:5613
+last loop executed in: 27.542232990264893
+time since continuous scraping started: 966.3351287841797
+current date/time: 2022-05-15 16:5643
+last loop executed in: 27.34054398536682
+time since continuous scraping started: 995.681049823761
+current date/time: 2022-05-15 16:5712
+last loop executed in: 28.246337890625
+time since continuous scraping started: 1025.931478023529
+current date/time: 2022-05-15 16:5742
+last loop executed in: 27.43905997276306
+time since continuous scraping started: 1055.3713970184326
+current date/time: 2022-05-15 16:5812
+last loop executed in: 28.716487884521484
+time since continuous scraping started: 1086.093369960785
+current date/time: 2022-05-15 16:5843
+last loop executed in: 28.662380933761597
+time since continuous scraping started: 1116.7616970539093
+current date/time: 2022-05-15 16:5913
+last loop executed in: 28.33394503593445
+time since continuous scraping started: 1147.0979878902435
+current date/time: 2022-05-15 16:5944
+last loop executed in: 24.71609926223755
+time since continuous scraping started: 1173.8196890354156
+current date/time: 2022-05-15 17:0010
+last loop executed in: 29.931471824645996
+time since continuous scraping started: 1205.7554769515991
+current date/time: 2022-05-15 17:0042
+last loop executed in: 30.89861512184143
+time since continuous scraping started: 1238.7789509296417
+current date/time: 2022-05-15 17:0115
+last loop executed in: 32.148690938949585
+time since continuous scraping started: 1272.9329769611359
+current date/time: 2022-05-15 17:0149
+last loop executed in: 31.399333000183105
+time since continuous scraping started: 1306.3375339508057
+current date/time: 2022-05-15 17:0223
+last loop executed in: 31.251419067382812
+time since continuous scraping started: 1339.6228868961334
+current date/time: 2022-05-15 17:0256
+last loop executed in: 29.146780967712402
+time since continuous scraping started: 1370.7737407684326
+current date/time: 2022-05-15 17:0327
+last loop executed in: 32.21961498260498
+time since continuous scraping started: 1404.9949698448181
+current date/time: 2022-05-15 17:0401
+last loop executed in: 31.902937650680542
+time since continuous scraping started: 1438.8995208740234
+current date/time: 2022-05-15 17:0435
+last loop executed in: 32.32389688491821
+time since continuous scraping started: 1473.2241909503937
+current date/time: 2022-05-15 17:0510
+last loop executed in: 30.016802072525024
+time since continuous scraping started: 1505.2440040111542
+current date/time: 2022-05-15 17:0542
+last loop executed in: 29.189586877822876
+time since continuous scraping started: 1536.4378399848938
+current date/time: 2022-05-15 17:0613
+last loop executed in: 29.98551607131958
+time since continuous scraping started: 1568.4252870082855
+current date/time: 2022-05-15 17:0645
+last loop executed in: 32.98360204696655
+time since continuous scraping started: 1603.4129438400269
+current date/time: 2022-05-15 17:0720
+last loop executed in: 29.76465106010437
+time since continuous scraping started: 1635.182193994522
+current date/time: 2022-05-15 17:0752
+last loop executed in: 31.554928064346313
+time since continuous scraping started: 1668.738529920578
+current date/time: 2022-05-15 17:0825
+last loop executed in: 35.42795014381409
+time since continuous scraping started: 1706.1710770130157
+current date/time: 2022-05-15 17:0903
+last loop executed in: 35.68555212020874
+time since continuous scraping started: 1743.8595490455627
+current date/time: 2022-05-15 17:0940
+last loop executed in: 35.09659814834595
+time since continuous scraping started: 1780.957035779953
+current date/time: 2022-05-15 17:1017
+last loop executed in: 31.727150917053223
+time since continuous scraping started: 1814.6851890087128
+current date/time: 2022-05-15 17:1051
+last loop executed in: 30.698833227157593
+time since continuous scraping started: 1847.4088599681854
+current date/time: 2022-05-15 17:1124
+last loop executed in: 31.341751098632812
+time since continuous scraping started: 1880.7516329288483
+current date/time: 2022-05-15 17:1157
+last loop executed in: 30.578513145446777
+time since continuous scraping started: 1913.339966058731
+current date/time: 2022-05-15 17:1230
+last loop executed in: 33.72348999977112
+time since continuous scraping started: 1949.066379070282
+current date/time: 2022-05-15 17:1305
+last loop executed in: 30.33602809906006
+time since continuous scraping started: 1981.4170730113983
+current date/time: 2022-05-15 17:1338
+last loop executed in: 29.723933935165405
+time since continuous scraping started: 2013.144870042801
+current date/time: 2022-05-15 17:1410
+last loop executed in: 29.78390097618103
+time since continuous scraping started: 2044.9321517944336
+current date/time: 2022-05-15 17:1441
+last loop executed in: 24.71635890007019
+time since continuous scraping started: 2071.649510860443
+current date/time: 2022-05-15 17:1508
+last loop executed in: 29.981117963790894
+time since continuous scraping started: 2103.6354508399963
+current date/time: 2022-05-15 17:1540
+last loop executed in: 28.727630138397217
+time since continuous scraping started: 2134.36869096756
+current date/time: 2022-05-15 17:1611
+last loop executed in: 27.517643213272095
+time since continuous scraping started: 2163.8926589488983
+current date/time: 2022-05-15 17:1640
+last loop executed in: 30.29617214202881
+time since continuous scraping started: 2196.1925818920135
+current date/time: 2022-05-15 17:1713
+last loop executed in: 28.411234140396118
+time since continuous scraping started: 2226.609981060028
+current date/time: 2022-05-15 17:1743
+last loop executed in: 25.908190965652466
+time since continuous scraping started: 2254.522276878357
+current date/time: 2022-05-15 17:1811
+last loop executed in: 27.412861347198486
+time since continuous scraping started: 2283.93638586998
+current date/time: 2022-05-15 17:1840
+last loop executed in: 25.200252056121826
+time since continuous scraping started: 2311.1415359973907
+current date/time: 2022-05-15 17:1908
+last loop executed in: 28.71552300453186
+time since continuous scraping started: 2341.861795902252
+current date/time: 2022-05-15 17:1938
+last loop executed in: 29.38386297225952
+time since continuous scraping started: 2373.251431941986
+current date/time: 2022-05-15 17:2010
+last loop executed in: 28.66153383255005
+time since continuous scraping started: 2403.9178369045258
+current date/time: 2022-05-15 17:2040
+last loop executed in: 28.047212600708008
+time since continuous scraping started: 2433.9690990448
+current date/time: 2022-05-15 17:2110
+last loop executed in: 28.089553117752075
+time since continuous scraping started: 2464.0615859031677
+current date/time: 2022-05-15 17:2140
+last loop executed in: 28.746986150741577
+time since continuous scraping started: 2494.8126249313354
+current date/time: 2022-05-15 17:2211
+last loop executed in: 33.937947273254395
+time since continuous scraping started: 33.937954902648926
+current date/time: 2022-05-15 17:5742
+last loop executed in: 33.3576819896698
+time since continuous scraping started: 69.301433801651
+current date/time: 2022-05-15 17:5817
+last loop executed in: 29.95775294303894
+time since continuous scraping started: 101.2613639831543
+current date/time: 2022-05-15 17:5849
+last loop executed in: 28.472957134246826
+time since continuous scraping started: 131.74078392982483
+current date/time: 2022-05-15 17:5920
+last loop executed in: 38.567224740982056
+time since continuous scraping started: 172.30925178527832
+current date/time: 2022-05-15 18:0000
+last loop executed in: 40.94490027427673
+time since continuous scraping started: 215.2578010559082
+current date/time: 2022-05-15 18:0043
+last loop executed in: 41.13115692138672
+time since continuous scraping started: 258.3936767578125
+current date/time: 2022-05-15 18:0127
+last loop executed in: 29.59713912010193
+time since continuous scraping started: 289.9921569824219
+current date/time: 2022-05-15 18:0158
+last loop executed in: 32.30325508117676
+time since continuous scraping started: 324.2968819141388
+current date/time: 2022-05-15 18:0232
+last loop executed in: 34.51479482650757
+time since continuous scraping started: 360.81669306755066
+current date/time: 2022-05-15 18:0309
+last loop executed in: 33.4760959148407
+time since continuous scraping started: 396.29787492752075
+current date/time: 2022-05-15 18:0344
+last loop executed in: 47.71094489097595
+time since continuous scraping started: 446.0127329826355
+current date/time: 2022-05-15 18:0434
+last loop executed in: 34.404577016830444
+time since continuous scraping started: 482.4230258464813
+current date/time: 2022-05-15 18:0511
+last loop executed in: 30.72990393638611
+time since continuous scraping started: 515.160306930542
+current date/time: 2022-05-15 18:0543
+last loop executed in: 33.7154438495636
+time since continuous scraping started: 550.8763039112091
+current date/time: 2022-05-15 18:0619
+last loop executed in: 32.07547307014465
+time since continuous scraping started: 584.9577670097351
+current date/time: 2022-05-15 18:0653
+last loop executed in: 29.521040201187134
+time since continuous scraping started: 616.4838588237762
+current date/time: 2022-05-15 18:0725
+last loop executed in: 30.982145071029663
+time since continuous scraping started: 649.4700696468353
+current date/time: 2022-05-15 18:0758
+last loop executed in: 30.583343029022217
+time since continuous scraping started: 682.0540618896484
+current date/time: 2022-05-15 18:0830
+last loop executed in: 28.401788234710693
+time since continuous scraping started: 712.4608118534088
+current date/time: 2022-05-15 18:0901
+last loop executed in: 30.394527912139893
+time since continuous scraping started: 744.8611137866974
+current date/time: 2022-05-15 18:0933
+last loop executed in: 32.25141215324402
+time since continuous scraping started: 779.1179988384247
+current date/time: 2022-05-15 18:1007
+last loop executed in: 28.241220951080322
+time since continuous scraping started: 809.3646080493927
+current date/time: 2022-05-15 18:1038
+last loop executed in: 48.16832089424133
+time since continuous scraping started: 859.535395860672
+current date/time: 2022-05-15 18:1128
+last loop executed in: 35.93477201461792
+time since continuous scraping started: 897.4798789024353
+current date/time: 2022-05-15 18:1206
+last loop executed in: 53.31437611579895
+time since continuous scraping started: 952.7981429100037
+current date/time: 2022-05-15 18:1301
+last loop executed in: 33.45156502723694
+time since continuous scraping started: 988.2528338432312
+current date/time: 2022-05-15 18:1336
+last loop executed in: 31.922711849212646
+time since continuous scraping started: 1022.1810660362244
+current date/time: 2022-05-15 18:1410
+last loop executed in: 28.972620964050293
+time since continuous scraping started: 1053.1583487987518
+current date/time: 2022-05-15 18:1441
+last loop executed in: 297.6190848350525
+time since continuous scraping started: 297.6191008090973
+current date/time: 2022-05-19 10:5407
+last loop executed in: 36.0663321018219
+time since continuous scraping started: 335.6921126842499
+current date/time: 2022-05-19 10:5445
+last loop executed in: 44.39499497413635
+time since continuous scraping started: 382.0883357524872
+current date/time: 2022-05-19 10:5532
