@@ -6,7 +6,15 @@ class Test(object):
     self.value = 0
 
   async def set_value(self, value):
-    self.value = value
+    for ii in range(1000):
+      self.value = value
+      print("sv: ", value)
+      await asyncio.sleep(0.2)
+
+  async def loop(self):
+    for value in range(3,1000):
+      await asyncio.sleep(0.2)
+      print("loop: ", value)
 
   async def print_value(self):
     await asyncio.sleep(0.2)
@@ -23,7 +31,9 @@ async def main():
   await test_instance.print_value()
   await asyncio.gather(
         test_instance.print_value(),
-        test_instance.set_and_print_value(2)
+        test_instance.set_and_print_value(2),
+        test_instance.set_value(1),
+        test_instance.loop()
                       )
 
 asyncio.run(main())

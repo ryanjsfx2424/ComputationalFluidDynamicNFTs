@@ -1,21 +1,22 @@
-last updated: 2022-05-15_18:06:22
-0) Gio3272: 5127
-1) MorganStoneee: 3616
-2) cabbienft: 3494
-3) mcgreevymick1: 3350
-4) metacon68: 2995
-5) God23Notorious: 2946
-6) Glaugan2: 2597
-7) HODLerByNature: 2468
-8) TroopSales: 2139
-9) Inter_Chains099: 2001
-10) Atx_Dubstep: 1996
-11) nf_qts: 1892
-12) ParentingAces: 1856
-13) Dfc2west: 1777
-14) sugaFreeFC: 1661
-15) ProjectHodl2018: 1597
-16) plzstopnowty: 1488
-17) DaydreamFaded: 1440
-18) Matthew50005546: 1439
-19) smgstryker: 1438
+last updated: 2022-05-21_14:24:38
+>>> ``` 0) Gio3272:         5875
+ 1) mcgreevymick1:   4735
+ 2) MorganStoneee:   4441
+ 3) cabbienft:       3722
+ 4) God23Notorious:  3513
+ 5) metacon68:       3455
+ 6) HODLerByNature:  3141
+ 7) Atx_Dubstep:     2904
+ 8) Glaugan2:        2882
+ 9) Inter_Chains099: 2497
+10) TroopSales:      2469
+11) plzstopnowty:    2355
+12) nf_qts:          2337
+13) ProjectHodl2018: 2250
+14) sugaFreeFC:      2237
+15) Dfc2west:        2196
+16) smgstryker:      2060
+17) ParentingAces:   1932
+18) dave_hopi:       1751
+19) DaydreamFaded:   1736
+```

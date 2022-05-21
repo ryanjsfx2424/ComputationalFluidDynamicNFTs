@@ -123,6 +123,29 @@ class ScrapeTweets(object):
         fid.write(str(api_call_stats))
       # end with open
     # end if
+
+    self.user_dict = self.safe_load(self.fname_user_info)
+    if self.user_dict == {}:
+      self.user_dict["userId_to_username"] = {}
+      self.user_dict["username_to_userId"] = {}
+    # end if
+
+    with open("discord_data/linked_3.json", "r") as fid:
+      line = ast.literal_eval(fid.read())
+      self.linked_usernames = []
+      self.linked_userIds = []
+      for el in line:
+        self.linked_usernames.append(str(el["handle"]))
+        self.linked_userIds.append(str(el["id"]))
+      
+        self.user_dict["userId_to_username"][str(el["id"])] = str(el["handle"])
+        self.user_dict["username_to_userId"][str(el["handle"])] = str(el["id"])
+      # end for
+    # end with open
+    self.safe_save(self.fname_user_info, self.user_dict)
+    print("loaded linked_usernames!")    
+
+    self.activity_by_user = self.safe_load(self.fname_activity)
   # end __init__
 
   #=====================================================
@@ -162,15 +185,16 @@ class ScrapeTweets(object):
   def init_tweet(self, tweet_url):
     print("begin init_tweet")
 
-    self.tweet_id = tweet_url.split("status/")[1]
-    if "?" in self.tweet_id:
-      self.tweet_id = self.tweet_id.split("?")[0]
+    tweet_id = tweet_url.split("status/")[1]
+    if "?" in tweet_id:
+      tweet_id = tweet_id.split("?")[0]
     # end if
 
-    self.creator_username = tweet_url.split("/status")[0
+    creator_username = tweet_url.split("/status")[0
                                     ].split("twitter.com/")[1]
 
     print("success init_tweet")
+    return [tweet_id, creator_username]
   # end init_tweet
 
   #=====================================================
@@ -178,15 +202,15 @@ class ScrapeTweets(object):
   #=====================================================
 
   def get_tweet_time_s(self, tweet_time):
-    print("begin get_tweet_time_s")
+    #print("begin get_tweet_time_s")
 
     yy,mo,dd = tweet_time.split("-")
-    dd,hh    = dd.split("T")
+    dd,hh         = dd.split("T")
     hh,mi,ss = hh.split(":")
     ss = ss[:-1]
     tweet_time_s = float(yy)*S_PER_YEAR   + float(mo)*S_PER_MONTH + \
-                   float(dd)*S_PER_DAY    + float(hh)*S_PER_HOUR  + \
-                   float(mi)*S_PER_MINUTE + float(ss)
+                        float(dd)*S_PER_DAY    + float(hh)*S_PER_HOUR  + \
+                        float(mi)*S_PER_MINUTE + float(ss)
     return tweet_time_s
 
     print("success get_tweet_time_s")
@@ -196,38 +220,12 @@ class ScrapeTweets(object):
   #=====================================================
   #=====================================================
 
-  def save_url_to_file(self, url, fname):
+  async def save_url_to_file(self, url, fname):
     print("begin save_url_to_file")
+    await asyncio.sleep(0.02)
 
-    try:
-      with open(self.api_calls_struct["fname"], "r") as fid:
-        self.api_calls_struct["call_times"] = ast.literal_eval(fid.read())
-      # end with
-    except:
-      print("exception triggered when trying to load api_calls_struct_fname")
-      print("now we're trying to load the backup.")
-      with open(self.api_calls_struct["fname"] + "_backup", "r") as fid:
-        self.api_calls_struct["call_times"] = ast.literal_eval(fid.read())
-      # end with
-      print("we loaded the backup (acs) so now we'll re-set the file with the backup")
-      os.system("cp " + self.api_calls_struct["fname"] + "_backup " + \
-                        self.api_calls_struct["fname"])
-    # end try/except
-
-    try:
-      with open(self.api_calls_struct["fname_stats"], "r") as fid:
-        api_call_stats = ast.literal_eval(fid.read())
-      # end with open
-    except:
-      print("exception triggered when trying to load api_calls_struct_fname_stats")
-      print("now we're trying to load the backup.")
-      with open(self.api_calls_struct["fname_stats"] + "_backup", "r") as fid:
-        api_call_stats = ast.literal_eval(fid.read())
-      # end with open
-      print("we loaded the backup (acs_stats) so now we'll re-set the file with the backup")
-      os.system("cp " + self.api_calls_struct["fname"] + "_backup " + \
-                  self.api_calls_struct["fname"])
-    # end try/except
+    self.api_calls_struct["call_times"] = self.safe_load(self.api_calls_struct["fname"])
+    api_call_stats = self.safe_load(self.api_calls_struct["fname_stats"])
 
     if "query=conversation_id" in url:
       dtype = "Replies"
@@ -262,7 +260,8 @@ class ScrapeTweets(object):
           (total_calls > (self.api_calls_struct["max_calls_per_time_limit_all"] \
         - self.api_calls_struct["buffer_size"])):
 
-      time.sleep(60.1)
+      print("about to sleep a minute because too many recent requests!")
+      await asyncio.sleep(60.1)
       for key in self.api_calls_struct["call_times"].keys():
         call_times_loop_arr = self.api_calls_struct["call_times"][key]
         offset = 0
@@ -272,6 +271,7 @@ class ScrapeTweets(object):
             offset -= 1
           # end if
         # end for
+        await asyncio.sleep(0.03)
       # end for
     # end while
 
@@ -289,7 +289,9 @@ class ScrapeTweets(object):
           break
         # end if
       # end with
-      time.sleep(60.1)
+      print("curl failed, sleeping 60s then trying again. will try at most 10 times")
+      print("current cnt (to be incremented after sleep: ", cnt)
+      await asyncio.sleep(60.1)
       os.system("rm " + fname)
       cnt += 1
       if cnt > 10:
@@ -297,7 +299,7 @@ class ScrapeTweets(object):
         raise
       # end if
     # end while
-    time.sleep(0.1)
+    await asyncio.sleep(0.1)
     self.api_calls_struct["call_count"] += 1
     
     tnow = time.time()
@@ -327,21 +329,8 @@ class ScrapeTweets(object):
       api_call_stats[key]["call_times_this"].append(tnow)
     # end for
 
-    fname_temp = self.api_calls_struct["fname"] + "_temp"
-    fname_backup = self.api_calls_struct["fname"] + "_backup"
-    os.system("cp " + self.api_calls_struct["fname"] + " " + fname_backup)
-    with open(fname_temp, "w") as fid:
-      fid.write(str(self.api_calls_struct["call_times"]))
-    # end with open
-    os.system("mv " + fname_temp + " " + self.api_calls_struct["fname"])
-
-    fname_temp = self.api_calls_struct["fname_stats"] + "_temp"
-    fname_backup = self.api_calls_struct["fname_stats"] + "_backup"
-    os.system("cp " + self.api_calls_struct["fname_stats"] + " " + fname_backup)
-    with open(fname_temp, "w") as fid:
-      fid.write(str(api_call_stats))
-    # end with open
-    os.system("mv " + fname_temp + " " + self.api_calls_struct["fname_stats"])
+    self.safe_save(self.api_calls_struct["fname"], self.api_calls_struct["call_times"])
+    self.safe_save(self.api_calls_struct["fname_stats"], api_call_stats)
 
     print("success save_url_to_file")
   # end save_url_to_file
@@ -376,29 +365,6 @@ class ScrapeTweets(object):
   #=====================================================
 
   def update_user_dict(self, line):
-    user_dict = {}
-    # next grab user_id to username pairs
-    if os.path.isfile(self.fname_user_info) and os.stat(self.fname_user_info).st_size != 0:
-      try:
-        with open(self.fname_user_info, "r") as fid:
-          user_dict = ast.literal_eval(fid.read())
-        # end with
-      except:
-        print("exception triggered when trying to load fname_user_info")
-        print("now we're trying to load the backup.")
-        with open(self.fname_user_info + "_backup", "r") as fid:
-          user_dict = ast.literal_eval(fid.read())
-        # end with open
-        print("we loaded the backup (fui) so now we'll re-set the file with the backup")
-        os.system("cp " + self.fname_user_info + "_backup " + \
-                    self.fname_user_info)
-      # end try/except
-
-    else:
-      user_dict["userId_to_username"] = {}
-      user_dict["username_to_userId"] = {}
-    # end if
-
     user_ids = []
     usernames = []
     keys = ['"id":"', '"username":"']
@@ -419,24 +385,18 @@ class ScrapeTweets(object):
       # end for
     # end for
     for ii in range(len(usernames)):
-      user_dict["userId_to_username"][ user_ids[ii]] = usernames[ii]
-      user_dict["username_to_userId"][usernames[ii]] = user_ids[ii]
+      self.user_dict["userId_to_username"][ user_ids[ii]] = usernames[ii]
+      self.user_dict["username_to_userId"][usernames[ii]] = user_ids[ ii]
     # end for
 
-    fname_temp = self.fname_user_info + "_temp"
-    fname_backup = self.fname_user_info + "_backup"
-    os.system("cp " + self.fname_user_info + " " + fname_backup)
-    with open(fname_temp, "w") as fid:
-      fid.write(str(user_dict))
-    # end with open
-    os.system("mv " + fname_temp + " " + self.fname_user_info)
+    self.safe_save(self.fname_user_info, self.user_dict)
   # end update_user_dict
 
   #=====================================================
   #=====================================================
   #=====================================================
 
-  def fetch_data(self, tweet_url, dtype):
+  async def fetch_data(self, tweet_url, dtype):
     '''
     for a given tweet, fetch the users that liked, retweeted, quote-tweeted,
     or replied, and saves json response to a file for later processing.
@@ -449,20 +409,20 @@ class ScrapeTweets(object):
     '''
     print("begin fetch_data")
 
-    self.init_tweet(tweet_url)
+    self_tweet_id, self_creator_username = self.init_tweet(tweet_url)
 
-    fname = self.data_dir + "/" + dtype + "_" + self.creator_username + "_" + \
-            self.tweet_id + ".txt"
+    fname = self.data_dir + "/" + dtype + "_" + self_creator_username + "_" + \
+               self_tweet_id + ".txt"
     print("fname: ", fname)
 
-    url = self.twitter_api_base[:-1] + "?ids=" + self.tweet_id + \
+    url = self.twitter_api_base[:-1] + "?ids=" + self_tweet_id + \
           "&tweet.fields=public_metrics"
 
-    self.save_url_to_file(url, fname)
+    await self.save_url_to_file(url, fname)
 
     url_og = self.twitter_api_base
     if dtype != "Replies":
-      url_og += self.tweet_id
+      url_og += self_tweet_id
     # end if
 
     if   dtype == "Likes":
@@ -473,7 +433,7 @@ class ScrapeTweets(object):
       url_og += "/quote_tweets?&expansions=author_id&"
     elif dtype == "Replies":
       url_og += "search/recent?query=conversation_id:" + \
-        self.tweet_id + "&expansions=author_id,in_reply_to_user_id&"
+        self_tweet_id + "&expansions=author_id,in_reply_to_user_id&"
     else:
       print("error! expected dtype in 'likes', 'retweets' but received: ", 
             dtype)
@@ -486,11 +446,11 @@ class ScrapeTweets(object):
     loop  = True
     num_loops = 0
     while loop and num_loops < self.max_loops:
-      time.sleep(0.1) # otherwise Cntrl-C alwyas just kills the curl :(
+      await asyncio.sleep(0.1) # otherwise Cntrl-C alwyas just kills the curl :(
       print("num_loops: ", num_loops)
       num_loops += 1
 
-      self.save_url_to_file(url, fname)
+      await self.save_url_to_file(url, fname)
 
       if os.stat(fname).st_size == 0:
         print("error, didn't grab any data, probably url has a bug")
@@ -508,8 +468,8 @@ class ScrapeTweets(object):
 
           substr = '"next_token":"'
           if substr in line:
-            ind = line.find(substr) + len(substr)
-            line = line[ind:]
+            ind   = line.find(substr) + len(substr)
+            line  = line[ind:]
             token = line.split('"')[0]
             print("token: ", token)
 
@@ -530,7 +490,7 @@ class ScrapeTweets(object):
   #=====================================================
   #=====================================================
 
-  def fetch_activity(self, tweet_url, creation_time, update=False):
+  async def fetch_activity(self, tweet_url, creation_time, update=False):
     '''
     for a given tweet, fetch the users that liked, retweeted, quote-tweeted,
     or replied and saves json response to a single file for later processing.
@@ -542,10 +502,10 @@ class ScrapeTweets(object):
     '''
     print("begin fetch_activity")
 
-    self.init_tweet(tweet_url)
+    self_tweet_id, self_creator_username = self.init_tweet(tweet_url)
 
-    fname_out = self.data_dir + "/activity_" + self.creator_username + "_" + \
-                self.tweet_id + ".txt"
+    fname_out = self.data_dir + "/activity_" + self_creator_username + "_" + \
+                   self_tweet_id + ".txt"
 
     if os.path.isfile(fname_out) and update == False and os.stat(fname_out).st_size != 0:
       with open(fname_out, "r") as fid:
@@ -559,17 +519,18 @@ class ScrapeTweets(object):
     # end if
 
     for dtype in self.dtypes:
-      if len(glob.glob(self.data_dir + "/" + dtype + "*" + self.tweet_id + ".txt")) == 0:
-        self.fetch_data(tweet_url, dtype)
+      if len(glob.glob(self.data_dir + "/" + dtype + "*" + self_tweet_id + ".txt")) == 0:
+        await self.fetch_data(tweet_url, dtype)
+      # end if
     # end for
 
-    activity  = '{"' + self.tweet_id + '":{"tweet_url":"' + tweet_url + '", '
-    activity += '"tweet_author_username":"' + self.creator_username   + '", '
+    activity  = '{"' + self_tweet_id + '":{"tweet_url":"' + tweet_url + '", '
+    activity += '"tweet_author_username":"' + self_creator_username   + '", '
     activity += '"tweet_created_at":"' + creation_time + '", '
 
     dtype = "Likes"
-    fname = self.data_dir + "/" + dtype + "_" + self.creator_username \
-            + "_" + self.tweet_id + ".txt"
+    fname = self.data_dir + "/" + dtype + "_" + self_creator_username \
+               + "_" + self_tweet_id + ".txt"
 
     with open(fname, "r") as fid:
       for line in fid:
@@ -581,37 +542,15 @@ class ScrapeTweets(object):
     activity = ast.literal_eval(activity)
     print("activity: ", activity)
 
-    user_dict = {}
-    if os.path.isfile(self.fname_user_info) and os.stat(self.fname_user_info).st_size != 0:
-
-      try:
-        with open(self.fname_user_info, "r") as fid:
-          user_dict = ast.literal_eval(fid.read())
-        # end with
-      except:
-        print("exception triggered when trying to load fname_user_info2")
-        print("now we're trying to load the backup.2")
-        with open(self.fname_user_info + "_backup", "r") as fid:
-          user_dict = ast.literal_eval(fid.read())
-        # end with open
-        print("we loaded the backup (fui) so now we'll re-set the file with the backup2")
-        os.system("cp " + self.fname_user_info + "_backup " + \
-                    self.fname_user_info)
-      # end try/except
-    else:
-      user_dict["userId_to_username"] = {}
-      user_dict["username_to_userId"] = {}
-    # end if
-
     for dtype in self.dtypes:
       print("dtype: ", dtype)
-      fname = self.data_dir + "/" + dtype + "_" + self.creator_username \
-              + "_" + self.tweet_id + ".txt"
+      fname = self.data_dir + "/" + dtype + "_" + self_creator_username \
+              + "_" + self_tweet_id + ".txt"
 
-      activity[self.tweet_id][dtype] = {"ids":[], "usernames":[]}
+      activity[self_tweet_id][dtype] = {"ids":[], "usernames":[]}
       if dtype in ["Replies","QuoteTweets"]:
-        activity[self.tweet_id][dtype]["contents" ] = []
-        activity[self.tweet_id][dtype]["tweet_ids"] = []
+        activity[self_tweet_id][dtype]["contents" ] = []
+        activity[self_tweet_id][dtype]["tweet_ids"] = []
       with open(fname, "r") as fid:
         line = fid.read()
       # end with
@@ -632,19 +571,19 @@ class ScrapeTweets(object):
             print("val: ", val)
             user_id = val["id"]
             username = val["username"]
-            user_dict["userId_to_username"][user_id]  = username
-            user_dict["username_to_userId"][username] = user_id
+            self.user_dict["userId_to_username"][user_id]  = username
+            self.user_dict["username_to_userId"][username] = user_id
 
-            activity[self.tweet_id][dtype]["ids"].append(user_id)
-            activity[self.tweet_id][dtype]["usernames"].append(username)
+            activity[self_tweet_id][dtype]["ids"].append(user_id)
+            activity[self_tweet_id][dtype]["usernames"].append(username)
           # end for
         else:
           for val in vals["includes"]["users"]:
             print("includes val users: ", val)
             user_id = val["id"]
             username = val["username"]
-            user_dict["userId_to_username"][user_id]  = username
-            user_dict["username_to_userId"][username] = user_id
+            self.user_dict["userId_to_username"][user_id]  = username
+            self.user_dict["username_to_userId"][username] = user_id
           # end for
           for val in vals["data"]:
             print("includes val data: ", val)
@@ -652,24 +591,17 @@ class ScrapeTweets(object):
             author_id = val["author_id"]
             text = val["text"]
             
-            activity[self.tweet_id][dtype]["ids"].append(author_id)
-            activity[self.tweet_id][dtype]["contents"].append(text)
-            activity[self.tweet_id][dtype]["usernames"].append(user_dict["userId_to_username"][author_id])
-            activity[self.tweet_id][dtype]["tweet_ids"].append(tweet_id)
+            activity[self_tweet_id][dtype]["ids"].append(author_id)
+            activity[self_tweet_id][dtype]["contents"].append(text)
+            activity[self_tweet_id][dtype]["usernames"].append(self.user_dict["userId_to_username"][author_id])
+            activity[self_tweet_id][dtype]["tweet_ids"].append(tweet_id)
           # end for
         # end if
       # end for lines
     # end for dtypes
 
     ## safe_save here!!
-
-    fname_temp = self.fname_user_info + "_temp"
-    fname_backup = self.fname_user_info + "_backup"
-    os.system("cp " + self.fname_user_info + " " + fname_backup)
-    with open(fname_temp, "w") as fid:
-      fid.write(str(user_dict))
-    # end with open
-    os.system("mv " + fname_temp + " " + self.fname_user_info)
+    self.safe_save(self.fname_user_info, self.user_dict)
 
     with open(fname_out, "w") as fid:
       fid.write(str(activity))
@@ -680,8 +612,8 @@ class ScrapeTweets(object):
     # if all that was successful, we delete the old files to keep
     # things tidy :)
     for dtype in self.dtypes:
-      fname = self.data_dir + "/" + dtype + "_" + self.creator_username \
-              + "_" + self.tweet_id + ".txt"
+      fname = self.data_dir + "/" + dtype + "_" + self_creator_username \
+              + "_" + self_tweet_id + ".txt"
       os.system("rm " + fname)
     # end for
 
@@ -692,7 +624,7 @@ class ScrapeTweets(object):
   #=====================================================
   #=====================================================
 
-  def process_all_tweets_by_user(self, user_id, update = False):
+  async def process_all_tweets_by_user(self, user_id, update = False):
     print("begin process_all_tweets_by_user")
 
     try:
@@ -704,32 +636,22 @@ class ScrapeTweets(object):
 
     fname = self.data_dir + "/TweetsByUser_" + user_id + ".txt"
 
+    await asyncio.sleep(0.1)
     if not os.path.isfile(fname) or update == True or os.stat(fname).st_size == 0:
-      self.fetch_all_tweets_by_user(user_id)
+      await self.fetch_all_tweets_by_user(user_id)
     # end if
+    await asyncio.sleep(0.1)
 
-    try:
-      with open(fname, "r") as fid:
-        line = ast.literal_eval(fid.read())
-      # end with
-    except:
-      print("exception triggered when trying to load fname")
-      print("now we're trying to load the backup")
-      with open(fname + "_backup", "r") as fid:
-        line = ast.literal_eval(fid.read())
-      # end with open
-      print("we loaded the backup (f) so now we'll re-set the file with the backup")
-      os.system("cp " + fname + "_backup " + \
-                  fname)
-    # end try/except
-
+    line = self.safe_load(fname)
     if "tweets_processed" in line[-1].keys():
       processed_tweets = line[-1]["tweets_processed"]
     else:
       line[-1]["tweets_processed"] = []
       processed_tweets = []
     # end if/else
+
     for ii in range(len(line)):
+      await asyncio.sleep(0.1)
       for jj in range(len(line[ii]["data"])):
         arr = line[ii]["data"][jj]
         tweet_id = arr["id"]
@@ -741,28 +663,15 @@ class ScrapeTweets(object):
           line[-1]["last_tweet_time_s"] = creation_time_s
         # end if
 
-        ## note this was for debugging and can probly remove
-        print("ii, jj, twid: ", ii, jj, tweet_id)
-        print("creation_time: ", creation_time)
-        try:
-          print("text: ", text)
-        except:
-          print("some bad text, maybe first two chars okay?")
-          try:
-            print("text2: ", text[:2])
-          except:
-            print("nope first two chars of text bad too oh well")
-          # end try/except
-        # end try/except
-
         ## check if we are in the refresh time window or not
-        tnow = datetime.datetime.now() - datetime.timedelta(days=1)
+        num_days = 1
+        tnow = datetime.datetime.now() - datetime.timedelta(days=num_days)
         tnow = tnow.strftime("%Y-%m-%dT%H:%M:%S.000Z")
         tnow = self.get_tweet_time_s(tnow)
         refresh_time = tnow
 
         if tweet_id in processed_tweets and creation_time_s < refresh_time:
-          print("tweet_id in processed_tweets and older than 3 days, so skipping")
+          print("tweet_id in processed_tweets and older than " + str(num_days) + " days, so skipping")
           continue
         # end if
         print("tweet_id not in processed_tweets")
@@ -776,15 +685,15 @@ class ScrapeTweets(object):
         #input(">>")
 
         tweet_url = "https://twitter.com/" + username + "/status/" + tweet_id
-        self.fetch_activity(tweet_url, creation_time)
+        await self.fetch_activity(tweet_url, creation_time)
         self.process_url_activity()
 
         line[-1]["tweets_processed"].append(tweet_id)
         
-        fname_temp = fname + "_temp"
+        fname_temp   = fname + "_temp"
         fname_backup = fname + "_backup"
         os.system("cp " + fname + " " + fname_backup)
-        with open(fname, "w") as fid:
+        with open(fname_temp, "w") as fid:
           fid.write(str(line))
         # end with open
         os.system("mv " + fname_temp + " " + fname)
@@ -798,7 +707,7 @@ class ScrapeTweets(object):
   #=====================================================
   #=====================================================
 
-  def fetch_all_tweets_by_user(self, user_id):
+  async def fetch_all_tweets_by_user(self, user_id):
     print("begin fetch_all_tweets_by_user")
 
     username = self.special_tweeters[user_id]
@@ -821,6 +730,7 @@ class ScrapeTweets(object):
         os.system("cp " + fname + "_backup " + \
                     fname)
       # end try/except
+      await asyncio.sleep(0.1)
 
       if "last_tweet_time_s" not in activity[0].keys() or \
          "last_tweet_time_s" not in activity[-1].keys():
@@ -840,26 +750,15 @@ class ScrapeTweets(object):
           tweet_dict["last_tweet_time_s"] = last_tweet_time
         # end for    
       # end if
-      last_tweet_time = max(last_tweet_time, activity[0]["last_tweet_time_s"], activity[-1]["last_tweet_time_s"])
+      last_tweet_time = max(last_tweet_time, 
+          activity[0]["last_tweet_time_s"], activity[-1]["last_tweet_time_s"])
     # end if
 
     fname = self.data_dir + "/TweetsByUser" + "_" + user_id + ".txt"
     print("fname: ", fname)
 
-    try:
-      with open(fname, "r") as fid:
-        line = ast.literal_eval(fid.read())
-      # end with
-    except:
-      print("exception triggered when trying to load twByUser2")
-      print("now we're trying to load the backup2.")
-      with open(fname + "_backup", "r") as fid:
-        line = ast.literal_eval(fid.read())
-      # end with open
-      print("we loaded the backup (twByUser2) so now we'll re-set the file with the backup2")
-      os.system("cp " + fname + "_backup " + \
-                  fname)
-    # end try/except
+    line = self.safe_load(fname)
+    await asyncio.sleep(0.1)
 
     if "last_tweet_time_s" in line[0].keys():
       last_tweet_time = max(last_tweet_time, line[0]["last_tweet_time_s"])
@@ -876,6 +775,7 @@ class ScrapeTweets(object):
       line[-1]["last_tweet_time_s"] = last_tweet_time
       line[ 0]["last_tweet_time_s"] = last_tweet_time
     # end if/else
+    await asyncio.sleep(0.1)
 
     url = self.twitter_api_base[:-len("tweets/")] + "users/" + user_id + \
           "/tweets?tweet.fields=created_at&max_results=100"
@@ -887,14 +787,15 @@ class ScrapeTweets(object):
     num_loops = 0
     newest_tweet_time = 0
     while loop and num_loops < self.max_loops:
-      time.sleep(0.1) # otherwise Cntrl-C alwyas just kills the curl :(
+      print("\n\nsleeping in process_all_tweets_by_user while loop\n\n")
+      await asyncio.sleep(0.1) # otherwise Cntrl-C alwyas just kills the curl :(
       print("num_loops: ", num_loops)
       num_loops += 1
 
       os.system("rm -f temp.txt")
-      self.save_url_to_file(url, "temp.txt")
+      await self.save_url_to_file(url, "temp.txt")
 
-      if os.stat(fname).st_size == 0:
+      if os.stat("temp.txt").st_size == 0:
         print("error, didn't grab any data, probably url has a bug")
         raise
       # end if
@@ -944,6 +845,7 @@ class ScrapeTweets(object):
         # end with open
       # end if
 
+      await asyncio.sleep(0.1)
       if oldest_tweet_time < last_tweet_time:
         print("oldest_tweet_time older than last tweet, time to break!")
         break
@@ -984,6 +886,7 @@ class ScrapeTweets(object):
         # end if
       # end for jj
     # end for ii
+    await asyncio.sleep(0.1)
 
     ## now we do a while loop
     url = self.twitter_api_base[:-len("tweets/")] + "users/" + user_id + \
@@ -1000,11 +903,11 @@ class ScrapeTweets(object):
       url = url_og + "&pagination_token=" + token
 
       while loop and num_loops < self.max_loops:
-        time.sleep(0.1) # otherwise Cntrl-C alwyas just kills the curl :(
+        await asyncio.sleep(0.1) # otherwise Cntrl-C alwyas just kills the curl :(
         print("num_loops: ", num_loops)
         num_loops += 1
 
-        self.save_url_to_file(url, fname)
+        await self.save_url_to_file(url, fname)
 
         if os.stat(fname).st_size == 0:
           print("error, didn't grab any data, probably url has a bug")
@@ -1041,42 +944,6 @@ class ScrapeTweets(object):
   def process_url_activity(self):
     print("begin process_url_activity")
 
-    if os.path.exists(self.fname_activity) and \
-       os.stat(self.fname_activity).st_size != 0:
-      try:
-        with open(self.fname_activity, "r") as fid:
-          activity_by_user = ast.literal_eval(fid.read())
-        # end with
-      except:
-        print("exception triggered when trying to load fname_activity pua")
-        print("now we're trying to load the backup.")
-        with open(self.fname_activity + "_backup", "r") as fid:
-          activity_by_user = ast.literal_eval(fid.read())
-        # end with open
-        print("we loaded the backup (fui) so now we'll re-set the file with the backup2")
-        os.system("cp " + self.fname_activity + "_backup " + \
-                    self.fname_activity)
-      # end try/except
-    else:
-      print("data corruption? Something went wrong. Please contact Ryan.")
-      raise
-    # end if/else
-
-    try:
-      with open(self.fname_user_info, "r") as fid:
-        user_dict = ast.literal_eval(fid.read())
-      # end with
-    except:
-      print("exception triggered when trying to load fname_user_info pua")
-      print("now we're trying to load the backup.3")
-      with open(self.fname_user_info + "_backup", "r") as fid:
-        user_dict = ast.literal_eval(fid.read())
-      # end with open
-      print("we loaded the backup (fui pua) so now we'll re-set the file with the backup3")
-      os.system("cp " + self.fname_user_info + "_backup " + \
-                  self.fname_user_info)
-    # end try/except
-
     fs = glob.glob(self.data_dir + "/activity_*.txt")
     for fname in fs:
       with open(fname, "r") as fid:
@@ -1091,8 +958,8 @@ class ScrapeTweets(object):
       for dtype in self.dtypes:
         data = activity_by_url[tweet_id][dtype]
         for ii,user_id in enumerate(data["ids"]):
-          if user_id not in list(activity_by_user.keys()):
-            activity_by_user[user_id] = \
+          if user_id not in list(self.activity_by_user.keys()):
+            self.activity_by_user[user_id] = \
               {"usernames": [],
                "num_keyword_replies": 0,
                "num_keyword_retweets": 0,
@@ -1105,28 +972,28 @@ class ScrapeTweets(object):
                "Replies": {"num_Replies": 0, "tweet_ids": [], "tweet_creation_times": [], "tweet_contents": []}
               }
           # end if
-          if tweet_id not in activity_by_user[user_id]["tweet_ids"]:
-            activity_by_user[user_id]["tweet_ids"].append(tweet_id)
+          if tweet_id not in list(self.activity_by_user[user_id]["tweet_ids"]):
+            self.activity_by_user[user_id]["tweet_ids"].append(tweet_id)
           # end if
-          activity_by_user[user_id]["usernames"].append(user_dict["userId_to_username"][user_id])
+          self.activity_by_user[user_id]["usernames"].append(self.user_dict["userId_to_username"][user_id])
 
-          if dtype not in activity_by_user[user_id].keys():
-            activity_by_user[user_id][dtype] = {"num_"+dtype: 1, "tweet_ids":[tweet_id], "tweet_creation_times":[tweet_creation_time]}
+          if dtype not in list(self.activity_by_user[user_id].keys()):
+            self.activity_by_user[user_id][dtype] = {"num_"+dtype: 1, "tweet_ids":[tweet_id], "tweet_creation_times":[tweet_creation_time]}
             if dtype in ["QuoteTweets", "Replies"]:
-              activity_by_user[user_id][dtype]["tweet_contents"] = [data["contents"][ii]]
-              activity_by_user[user_id][dtype]["tweet_ids"] = [data["tweet_ids"][ii]]
+              self.activity_by_user[user_id][dtype]["tweet_contents"] = [data["contents"][ii]]
+              self.activity_by_user[user_id][dtype]["tweet_ids"] = [data["tweet_ids"][ii]]
             # end if
           else:
-            if tweet_id not in activity_by_user[user_id][dtype]["tweet_ids"]:
+            if tweet_id not in list(self.activity_by_user[user_id][dtype]["tweet_ids"]):
               print("user_id: ", user_id)
-              print("act keys: ", activity_by_user[user_id].keys())
+              print("act keys: ", self.activity_by_user[user_id].keys())
               print("dtype: ", dtype)
-              activity_by_user[user_id][dtype]["num_"+dtype] += 1
-              activity_by_user[user_id][dtype]["tweet_ids"].append(tweet_id)
-              activity_by_user[user_id][dtype]["tweet_creation_times"].append(tweet_creation_time)
+              self.activity_by_user[user_id][dtype]["num_"+dtype] += 1
+              self.activity_by_user[user_id][dtype]["tweet_ids"].append(tweet_id)
+              self.activity_by_user[user_id][dtype]["tweet_creation_times"].append(tweet_creation_time)
               if dtype in ["QuoteTweets", "Replies"]:
-                activity_by_user[user_id][dtype]["tweet_contents"].append(data["contents"][ii])
-                activity_by_user[user_id][dtype]["tweet_ids"][-1] = data["tweet_ids"][ii]
+                self.activity_by_user[user_id][dtype]["tweet_contents"].append(data["contents"][ii])
+                self.activity_by_user[user_id][dtype]["tweet_ids"][-1] = data["tweet_ids"][ii]
               # end if
             # end if
           # end if/else
@@ -1157,13 +1024,7 @@ class ScrapeTweets(object):
       os.system("rm " + fname)
     # end for fnames
 
-    fname_temp = self.fname_activity + "_temp"
-    fname_backup = self.fname_activity + "_backup"
-    os.system("cp " + self.fname_activity + " " + fname_backup)
-    with open(fname_temp, "w") as fid:
-      fid.write(str(activity_by_user))
-    # end with open
-    os.system("mv " + fname_temp + " " + self.fname_activity)
+    self.safe_save(self.fname_activity, self.activity_by_user)
 
     print("success process_url_activity")
   # end process_url_activity
@@ -1172,54 +1033,14 @@ class ScrapeTweets(object):
   #=====================================================
   #=====================================================
 
-  def handle_url_activity(self, urls):
-    if type(urls) == type([]):
-      for url in urls:
-        self.fetch_activity(url)
-        self.process_url_activity()
-      # end for
-    else:
-      self.fetch_activity(urls)
-      self.process_url_activity()
-    # end if/else
-  # end handle_url_activity
-
-  #=====================================================
-  #=====================================================
-  #=====================================================
-
-  def update_keyword_data(self):
+  async def update_keyword_data(self):
     print("begin update_keyword_data")
-
-    activity_by_user = {"latest_tweet_time_s":0}
-    if os.path.exists(self.fname_activity) and \
-       os.stat(self.fname_activity).st_size != 0:
-
-      try:
-        with open(self.fname_activity, "r") as fid:
-          activity_by_user = ast.literal_eval(fid.read())
-        # end with
-      except:
-        print("exception triggered when trying to load fname_activity ukd")
-        print("now we're trying to load the backup.")
-        with open(self.fname_activity + "_backup", "r") as fid:
-          activity_by_user = ast.literal_eval(fid.read())
-        # end with open
-        print("we loaded the backup (fa ukd) so now we'll re-set the file with the backup2")
-        os.system("cp " + self.fname_activity + "_backup " + \
-                    self.fname_activity)
-      # end try/except
-    # end if
+    start = time.time()
 
     dtime = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
     fname = self.data_dir + "/" + dtime + "_keyword_data.txt"
     
-    #query  = "(Rooty Roo OR Rooty OR Rooty Woo OR rootywoo OR Roo Troop OR"
-    #query += " rootroop OR rootroops OR tree roo OR Roo Roo)"
-    #query  = "(Rooty Roo OR Rooty Woo OR rootywoo OR Roo Troop OR rootroop"
-    #query += " OR rootroops OR tree roo OR roo bounty OR roo bounties"
-    #query += " OR rootyroo OR RootyRoo OR rootroopnft OR troopsales)"
     query = self.keyword_query.replace(" ", "%20")
     url_og = "https://api.twitter.com/2/tweets/search/recent?query=" + query \
            + "&user.fields=username&expansions=author_id&max_results=100" \
@@ -1230,11 +1051,11 @@ class ScrapeTweets(object):
     loop  = True
     num_loops = 0
     while loop and num_loops < self.max_loops:
-      time.sleep(0.1) # otherwise Cntrl-C alwyas just kills the curl :(
+      await asyncio.sleep(0.1) # otherwise Cntrl-C alwyas just kills the curl :(
       print("num_loops: ", num_loops)
       num_loops += 1
 
-      self.save_url_to_file(url, fname)
+      await self.save_url_to_file(url, fname)
 
       if os.stat(fname).st_size == 0:
         print("error, didn't grab any data, probably url has a bug")
@@ -1249,7 +1070,7 @@ class ScrapeTweets(object):
           latest_tweet = line[inds[-1] + len(self.created_text):].split('"')[0]
           latest_tweet_s = self.get_tweet_time_s(latest_tweet)
 
-          if latest_tweet_s < activity_by_user["latest_tweet_time_s"]:
+          if latest_tweet_s < self.activity_by_user["latest_tweet_time_s"]:
             loop = False
             break
           # end if
@@ -1276,16 +1097,11 @@ class ScrapeTweets(object):
       # end with
     # end while
 
-    activity_by_user["query_url"] = url_og
+    self.activity_by_user["query_url"] = url_og
 
-    fname_temp = self.fname_activity + "_temp"
-    fname_backup = self.fname_activity + "_backup"
-    os.system("cp " + self.fname_activity + " " + fname_backup)
-    with open(fname_temp, "w") as fid:
-      fid.write(str(activity_by_user))
-    # end with open
-    os.system("mv " + fname_temp + " " + self.fname_activity)
+    self.safe_save(self.fname_activity, self.activity_by_user)
 
+    print("ukd executed in (s): ", time.time() - start)
     print("success update_keyword_data")
   # end update_keyword_data
 
@@ -1293,33 +1109,30 @@ class ScrapeTweets(object):
   #=====================================================
   #=====================================================
 
-  def process_keyword_data(self):
+  def safe_save(self, fname, data):
+    fname_temp = fname + "_temp"
+    fname_backup = fname + "_backup"
+
+    os.system("cp " + fname + " " + fname_backup)
+    with open(fname_temp, "w") as fid:
+      fid.write(str(data))
+    # end with open
+    os.system("mv " + fname_temp + " " + fname)
+  # end safe_save
+
+  #=====================================================
+  #=====================================================
+  #=====================================================
+
+  async def process_keyword_data(self):
     print("begin process_keyword_data")
-
-    activity_by_user = {"latest_tweet_time_s":0}
-    if os.path.exists(self.fname_activity) and \
-       os.stat(self.fname_activity).st_size != 0:
-
-      try:
-        with open(self.fname_activity, "r") as fid:
-          activity_by_user = ast.literal_eval(fid.read())
-        # end with
-      except:
-        print("exception triggered when trying to load fname_activity pkd")
-        print("now we're trying to load the backup.")
-        with open(self.fname_activity + "_backup", "r") as fid:
-          activity_by_user = ast.literal_eval(fid.read())
-        # end with open
-        print("we loaded the backup (fa pkd) so now we'll re-set the file with the backup2")
-        os.system("cp " + self.fname_activity + "_backup " + \
-                    self.fname_activity)
-      # end try/except
-    # end if
+    start = time.time()
 
     ## needs to be oldest to most recent
     fs = np.sort(glob.glob(self.data_dir + "/*_keyword_data.txt"))
 
     for fname in fs:
+      await asyncio.sleep(0.1)
       print("fname: ", fname)
       with open(fname, "r") as fid:
         line = fid.read()
@@ -1342,8 +1155,9 @@ class ScrapeTweets(object):
           latest_tweet_s = max(latest_tweet_s, tweet_time)
         # end for
       # end for
+      await asyncio.sleep(0.02)
 
-      if activity_by_user["latest_tweet_time_s"] >= latest_tweet_s:
+      if self.activity_by_user["latest_tweet_time_s"] >= latest_tweet_s:
         print("skipping")
         os.system("rm " + fname)
         continue
@@ -1353,15 +1167,17 @@ class ScrapeTweets(object):
       usernames = []
       for ii in range(len(line)):
         for jj in range(len(line[ii]["includes"]["users"])):
-          user_ids.append(line[ii]["includes"]["users"][jj]["id"])
-          usernames.append(line[ii]["includes"]["users"][jj]["username"])
+          user_ids.append(  line[ii]["includes"]["users"][jj]["id"])
+          usernames.append( line[ii]["includes"]["users"][jj]["username"])
         # end for jj
       # end for ii
+      await asyncio.sleep(0.02)
 
       user_ids_to_usernames = {}
       for ii in range(len(user_ids)):
         user_ids_to_usernames[user_ids[ii]] = usernames[ii]
       # end for ii
+      await asyncio.sleep(0.02)
 
       tweet_ids = []
       contents  = []
@@ -1370,21 +1186,22 @@ class ScrapeTweets(object):
 
       for ii in range(len(line)):
         for jj in range(len(line[ii]["data"])):
-          tweet_ids.append(line[ii]["data"][jj]["id"])
-          contents.append( line[ii]["data"][jj]["text"])
-          creations.append(line[ii]["data"][jj]["created_at"])
+          tweet_ids.append( line[ii]["data"][jj]["id"])
+          contents.append(  line[ii]["data"][jj]["text"])
+          creations.append( line[ii]["data"][jj]["created_at"])
           author_ids.append(line[ii]["data"][jj]["author_id"])
         # end for
       # end for
+      await asyncio.sleep(0.02)
 
       latest_creation_time = np.sort(np.array(creations))[-1]
       latest_creation_time_s = self.get_tweet_time_s(latest_creation_time)
-      activity_by_user["latest_tweet_time"] = latest_creation_time
-      activity_by_user["latest_tweet_time_s"] = latest_creation_time_s
+      self.activity_by_user["latest_tweet_time"] = latest_creation_time
+      self.activity_by_user["latest_tweet_time_s"] = latest_creation_time_s
 
       for ii,author_id in enumerate(author_ids):
-        if author_id not in list(activity_by_user.keys()):
-          activity_by_user[author_id] = \
+        if author_id not in list(self.activity_by_user.keys()):
+          self.activity_by_user[author_id] = \
             {"usernames": [],
              "num_keyword_replies": 0,
              "num_keyword_retweets": 0,
@@ -1394,63 +1211,47 @@ class ScrapeTweets(object):
             }
         # end if
 
-        user_dict = activity_by_user[author_id]
-        if tweet_ids[ii] in user_dict:
-          print("tweet_id in user_dict?")
+        if tweet_ids[ii] in self.activity_by_user[author_id]:
+          print("tweet_id in abu?")
           continue
         # end if
 
         if contents[ii][:2] == "RT":
-          user_dict["num_keyword_retweets"] += 1
+          self.activity_by_user[author_id]["num_keyword_retweets"] += 1
         else:
-          user_dict["num_keyword_replies"] += 1
+          self.activity_by_user[author_id]["num_keyword_replies"] += 1
         # end if/else
 
-        user_dict["usernames"].append(user_ids_to_usernames[author_id])
-        user_dict["tweet_ids"].append(tweet_ids[ii])
-        user_dict["tweet_contents"].append(contents[ii])
-        user_dict["tweet_creation_times"].append(creations[ii])
+        self.activity_by_user[author_id]["usernames"].append(user_ids_to_usernames[author_id])
+        self.activity_by_user[author_id]["tweet_ids"].append(tweet_ids[ii])
+        self.activity_by_user[author_id]["tweet_contents"].append(contents[ii])
+        self.activity_by_user[author_id]["tweet_creation_times"].append(creations[ii])
       # end for ii
+      await asyncio.sleep(0.02)
 
-      fname_backup = self.fname_activity + "_backup"
-      fname_temp = self.fname_activity + "_temp"
-      os.system("cp " + self.fname_activity + " " + fname_backup)
-      with open(fname_temp, "w") as fid:
-        fid.write(str(activity_by_user))
-      # end with open
+      self.safe_save(self.fname_activity, self.activity_by_user)
       os.system("rm " + fname)
-      os.system("mv " + fname_temp + " " + self.fname_activity)
     # end for fnames
 
+    print("pkd executed in (s): ", time.time() - start)
     print("success process_keyword_data")
   # end process_keyword_data
 
   #=====================================================
   #=====================================================
   #=====================================================
-
-  def generate_activity_tweet_urls(self):
-    print("begin generate_activity_tweet_urls")
-    ## load in activity_by_user.json and generate from the tweet_id + username
-    print("success generate_activity_tweet_urls")
-  # end generate_activity_tweet_urls
-
-  #=====================================================
-  #=====================================================
   #=====================================================
 
-  def fetch_user_leaderboard(self, start_time="2020-05-04T23:59:59.000Z", 
-    end_time="4022-05-04T23:59:59.000Z", method="Points"):
+  async def fetch_user_leaderboard(self, start_time="2020-05-04T23:59:59.000Z", 
+    end_time="4022-05-04T23:59:59.000Z", method="Points", sharded=True):
     print("begin fetch_user_leaderboard")
+    tstart = time.time()
     self.init_auth()
+
+    await asyncio.sleep(0.1)
 
     start_time_s = self.get_tweet_time_s(start_time)
     end_time_s   = self.get_tweet_time_s(end_time)
-
-    with open(self.data_dir + "/activity_by_user.json", "r") as fid:
-      activity_by_user = fid.read()
-    # end with open
-    activity_by_user = ast.literal_eval(activity_by_user)
 
     keyword_replies  = []
     keyword_retweets = []
@@ -1462,14 +1263,32 @@ class ScrapeTweets(object):
                 "num_Retweets":[],
                 "num_QuoteTweets":[],
                 "num_Replies":[]}
-    for user in activity_by_user.keys():
-      if user in ["latest_tweet_time", "latest_tweet_time_s", "query_url"]:
-        continue
-      # end if
+
+    for user in list(self.activity_by_user.keys()):
+      if sharded:
+        if user not in self.linked_userIds:
+          continue
+        # end if
+      else:
+        if user in ["latest_tweet_time", "latest_tweet_time_s", "query_url"]:
+          continue
+        # end if
+      # end if/else
+      print("user: ", user)
+      await asyncio.sleep(0.001)
+
+      tweet_times_dict = {}
       for dtype in self.dtypes:
-        if dtype in activity_by_user[user].keys():
+        tweet_times_dict[dtype] = []
+        if dtype in self.activity_by_user[user].keys():
           cnt = 0
-          for tweet_time in activity_by_user[user][dtype]["tweet_creation_times"]:
+          for ii,tweet_time in enumerate(list(self.activity_by_user[user][dtype]["tweet_creation_times"])):
+            if tweet_time in tweet_times_dict[dtype]:
+              continue
+            # end if
+            tweet_times_dict[dtype].append(tweet_time)
+            tweet_ids.append(self.activity_by_user[user][dtype]["tweet_ids"][ii])
+
             tweet_time = self.get_tweet_time_s(tweet_time)
             if tweet_time >= start_time_s and tweet_time <= end_time_s:
               cnt += 1
@@ -1480,12 +1299,24 @@ class ScrapeTweets(object):
           num_dict["num_"+dtype].append(0)
         # end if/else
       # end for
-      print(activity_by_user[user])
+      #print(self.activity_by_user[user])
       print(user)
       replies_cnt = 0
       retweets_cnt = 0
-      for ii in range(len(activity_by_user[user]["tweet_contents"])):
-        tweet_content = activity_by_user[user]["tweet_contents"][ii].lower()
+      tweet_contents = []
+      for ii in range(len(self.activity_by_user[user]["tweet_contents"])):
+        ## avoiding double counting via looking at the tweet_ids from Likes etc
+        ## currently won't work since at the root level tweet_ids contains all tweet_ids
+        ## not just the ones from keyword stuff :(
+        ## so either I gotta live with double counting or kind of start over.
+        #if self.activity_by_user[user]["tweet_ids"][ii] in tweet_ids:
+          #continue
+        tweet_content = self.activity_by_user[user]["tweet_contents"][ii]
+        if tweet_content in tweet_contents:
+          continue
+        # end if
+        tweet_contents.append(tweet_content)
+        tweet_content = tweet_content.lower()
 
         ## below if statement to exclude LuckyRooToken tweets...or we
         ## could just check for whitelisted users???
@@ -1495,30 +1326,22 @@ class ScrapeTweets(object):
           continue
         # end if
 
-        tweet_id = activity_by_user[user]["tweet_ids"][ii]
-        if tweet_id in tweet_ids:
-          continue
-        # end if
-        tweet_ids.append(tweet_id)
 
-        tweet_time = activity_by_user[user]["tweet_creation_times"][ii]
+        tweet_time = self.activity_by_user[user]["tweet_creation_times"][ii]
         tweet_time = self.get_tweet_time_s(tweet_time)
         if tweet_time >= start_time_s and tweet_time <= end_time_s:
-          if activity_by_user[user]["tweet_contents"][ii][:2] == "RT":
+          if self.activity_by_user[user]["tweet_contents"][ii][:3] == "RT ":
             retweets_cnt += 1
           else:
             replies_cnt += 1
-            #print("inc replies_cnt")
           # end if/else
         # end if
       # end for
 
-      #print("replies_cnt: ", replies_cnt)
-      #input(">>")
       keyword_replies.append(replies_cnt)
       keyword_retweets.append(retweets_cnt)
-      usernames.append(activity_by_user[user]["usernames"][-1])
-      for content in activity_by_user[user]["tweet_contents"]:
+      usernames.append(self.activity_by_user[user]["usernames"][-1])
+      for content in list(self.activity_by_user[user]["tweet_contents"]):
         contents.append(content)
       # end for
     # end for
@@ -1558,13 +1381,26 @@ class ScrapeTweets(object):
       val = keyword_retweets
     # end if/elifs
 
-    inds = inds[:20]
-    leaderboard = ""
+    inds      = inds[:20]
+    usernames = usernames[inds]
+    val       = val[inds]
+
+    max_name_len = 0
+    max_val_len  = 0
     for ii in range(len(inds)):
-      leaderboard += str(ii) + ") " + usernames[inds][ii] + ": " + str(val[inds][ii])
-      leaderboard += "\n"
-      print(str(ii) + ") " + usernames[inds][ii] + ": ", val[inds][ii])
+      max_name_len = max(max_name_len, len(usernames[ii]))
+      max_val_len  = max(max_val_len,  len(str(val[ii])))
     # end for ii
+
+    leaderboard = ">>> ```"
+    for ii in range(len(inds)):
+      leaderboard += str(ii).rjust(2) + ") " + \
+        (usernames[ii] + ":").ljust(max_name_len+1) + " " + \
+           str(val[ii]).rjust(max_val_len)
+      leaderboard += "\n"
+      print(str(ii) + ") " + usernames[ii] + ": ", val[ii])
+    # end for ii
+    leaderboard += "```"
     print("num usernames: ", len(usernames))
     print("num tweets: ", np.sum(keyword_replies) + np.sum(keyword_retweets) + \
           np.sum(num_dict["num_Replies"]) + np.sum(num_dict["num_QuoteTweets"]))
@@ -1583,7 +1419,12 @@ class ScrapeTweets(object):
       # end for line
     # end with open
 
-    fname = self.data_dir + "/leaderboard_" + method + "_start" + \
+    await asyncio.sleep(0.03)
+    lb_str = "leaderboard"
+    if sharded == True:
+      lb_str += "Sharded"
+    # end if
+    fname = self.data_dir + "/" + lb_str + "_" + method + "_start" + \
             start_time + "_" + end_time + ".txt"
     tnow = datetime.datetime.now()
     tnow = tnow.strftime("%Y-%m-%d_%H:%M:%S")
@@ -1592,6 +1433,7 @@ class ScrapeTweets(object):
       fid.write(leaderboard)
     # end with
 
+    print("fuls executed in (s): ", time.time() - tstart)
     print("success fetch_user_leaderboard")
     return leaderboard
   # end fetch_user_leaderboard
@@ -1602,16 +1444,23 @@ class ScrapeTweets(object):
   #=====================================================
 
   def verify_processed_tweet(self, tweet_url, username=""):
-    self.init_tweet(tweet_url)
-    print("tw_id: ", self.tweet_id)
-    print("cr_un: ", self.creator_username)
+    self_tweet_id, self_creator_username = self.init_tweet(tweet_url)
+    print("tw_id: ", self_tweet_id)
+    print("cr_un: ", self_creator_username)
     
-    if self.creator_username not in self.special_tweeters:
-      username = self.creator_username
+    special_usernames = []
+    for special_uid in self.special_tweeters.keys():
+      special_usernames.append(self.special_tweeters[special_uid])
+    # end for
+
+    if self_creator_username not in special_usernames:
+      username = self_creator_username
     # end if
 
+    print("username: ", username)
+
     if username == "":
-      error_msg  = "error! Didn't supply username and we were asked to verify"
+      error_msg  = "<<< error! Didn't supply username and we were asked to verify"
       error_msg += " interaction with @RooTroopNFT or @TroopSales"
       return [error_msg, False]
     # end if
@@ -1619,16 +1468,20 @@ class ScrapeTweets(object):
     status, user_data = self.fetch_user_data(username)
 
     if status == False:
-      return ["error! username isn't linked??", False]
+      return ["<<< error! username isn't linked??", False]
     # end if
 
-    if self.tweet_id in user_data["tweet_ids"]:
-      message = "SUCCESS! Your tweet was already processed :)"
+    if str(self_tweet_id) in user_data["tweet_ids"]:
+      message = "<<< SUCCESS! Your tweet was already processed :)"
       print(message)
       return [message,True]
     # end if
         
-    url = self.twitter_api_base[:-1] + "?ids=" + self.tweet_id \
+    print("ud twids: ", user_data["tweet_ids"])
+    print("self_tweet_id: ", self_tweet_id)
+    print("ud un0: ", user_data["usernames"][0])
+
+    url = self.twitter_api_base[:-1] + "?ids=" + self_tweet_id \
         + "&tweet.fields=created_at"
 
     os.system(self.curl_base + url + self.curl_header + self.auth + 
@@ -1644,8 +1497,7 @@ class ScrapeTweets(object):
     tweet_time = line.split(self.created_text)[1].split('"')[0]
     tweet_time_s = self.get_tweet_time_s(tweet_time)
 
-    activity_by_user = self.safe_load(self.fname_activity)
-    if activity_by_user["latest_tweet_time_s"] < tweet_time_s:
+    if self.activity_by_user["latest_tweet_time_s"] < tweet_time_s:
       message = "This tweet created after last query was made"
       print(message)
       return [message,False]
@@ -1662,24 +1514,39 @@ class ScrapeTweets(object):
   #=====================================================
 
   def fetch_user_data(self, username):
-    ## first, convert username to userid, 
-    ## then grab the sharded data file from user_data
-    with open(self.data_dir + "/user_info.json", "r") as fid:
-      converter = ast.literal_eval(fid.read())
-    # end with open
-    user_id = ""
-    for key in converter["username_to_userId"].keys():
-      if key.lower() == username.lower():
-        user_id = converter["username_to_userId"][key]
-      # end if
-    # end for keys
-
-    if user_id == "":
-      return [False, "error! username isn't linked??"]
-
-    with open(self.data_dir + "/user_data/" + user_id + ".json", "r") as fid:
-      return [True, ast.literal_eval(fid.read())]
-    # end with open
+    try:
+      for stored_username in self.user_dict["username_to_userId"].keys():
+        if username.lower() == stored_username.lower():
+          user_id = self.user_dict["username_to_userId"][stored_username]
+          return [True, self.activity_by_user[user_id]]
+        # end if
+      # end for
+      for key in list(self.activity_by_user.keys()):
+        if key[0].isdigit():
+          for stored_username in self.activity_by_user[key]["usernames"]:
+            if username.lower() == stored_username.lower():
+              self.user_dict["username_to_userId"][stored_username] = key
+              self.user_dict["userId_to_username"][key] = stored_username
+              return [True, self.activity_by_user[key]]
+            # end if
+          # end for
+        # end if
+      # end for
+      return [False, "error! username not found :("]
+    except:
+      for key in list(self.activity_by_user.keys()):
+        if key[0].isdigit():
+          for stored_username in self.activity_by_user[key]["usernames"]:
+            if username.lower() == stored_username.lower():
+              self.user_dict["username_to_userId"][stored_username] = key
+              self.user_dict["userId_to_username"][key] = stored_username
+              return [True, self.activity_by_user[key]]
+            # end if
+          # end for
+        # end if
+      # end for
+      return [False, "error! username not found :("]
+    # end try/except
   # def fetch_user_data
 
   #=====================================================
@@ -1695,16 +1562,39 @@ class ScrapeTweets(object):
                 "num_Replies":0,
                 "num_keyword_retweets":0,
                 "num_keyword_replies":0}
+
+    tweet_times = {}
+    tweet_ids = []
     for dtype in self.dtypes:
+      tweet_times[dtype] = []
       if dtype in user_data.keys():
-        num_dict["num_"+dtype] = user_data[dtype]["num_" + dtype]
+        for ii,tweet_time in enumerate(user_data[dtype]["tweet_creation_times"]):
+          if tweet_time in tweet_times[dtype]:
+            continue
+          # end if
+          num_dict["num_"+dtype] += 1
+          tweet_times[dtype].append(tweet_time)
+          tweet_ids.append(user_data[dtype]["tweet_ids"][ii])
+        # end for
       # end if
     # end for
 
     keyword_replies  = 0
     keyword_retweets = 0
-    for tweet_content in user_data["tweet_contents"]:
-      tweet_content.lower()
+    tweet_contents = []
+    for ii,tweet_content in enumerate(user_data["tweet_contents"]):
+      #if user_data["tweet_ids"][ii] in tweet_ids:
+      #  continue
+      # end if
+      ## the above is to avoid double counting from the interactions with the keyword
+      ## stuff. No need to append to tweet_ids :)
+      ## But it doesn't work currently, see note in fetch_user_leaderboard... :*(
+
+      if tweet_content in tweet_contents:
+        continue
+      # end if
+      tweet_contents.append(tweet_content)
+      tweet_content = tweet_content.lower()
 
       ## below if statement to exclude LuckyRooToken tweets...or we
       ## could just check for whitelisted users???
@@ -1714,7 +1604,7 @@ class ScrapeTweets(object):
         continue
       # end if
 
-      if tweet_content[:2] == "RT".lower():
+      if user_data["tweet_contents"][ii][:3] == "RT ":
         keyword_retweets += 1
       else:
         keyword_replies += 1
@@ -1728,15 +1618,41 @@ class ScrapeTweets(object):
            + num_dict["num_keyword_retweets"]*2 + num_dict["num_Likes"]*1 \
            + num_dict["num_QuoteTweets"]*4 + num_dict["num_Replies"]*3
     
-    message  = "Points: " + str(points) + "\n"
+    vals = {
+      "Points":           points,
+      "Likes":            num_dict["num_Likes"],
+      "Retweets":         num_dict["num_Retweets"],
+      "QuoteTweets":      num_dict["num_QuoteTweets"],
+      "Replies":          num_dict["num_Replies"],
+      "Keyword Replies":  num_dict["num_keyword_replies"],
+      "Keyword Retweets": num_dict["num_keyword_retweets"]
+    }
+
+    max_str    = 0
+    max_digits = 0
+    for key in vals.keys():
+      max_str = max(max_str, len(key))
+      max_digits = max(max_digits, len(str(vals[key])))
+    # end for keys
+    print("max_str: ", max_str)
+    print("max_digits: ", max_digits)
+
+    message    = ">>> ```"
+    for key in vals.keys():
+      message += key + ":" + (max_str-len(key))*" " + 4*" " + \
+        (max_digits - len(str(vals[key])))*" " + str(vals[key]) + "\n"
+    # end for
+    message += "```"
+
+    '''
+    message  = ">>> ```Points: " + str(points) + "\n"
     message += "Likes: " + str(num_dict["num_Likes"]) + "\n"
     message += "Retweets: " + str(num_dict["num_Retweets"]) + "\n"
     message += "QuoteTweets: " + str(num_dict["num_QuoteTweets"]) + "\n"
     message += "Replies: " + str(num_dict["num_Replies"]) + "\n"
-    message += "num_keyword_replies: " + str(num_dict["num_keyword_replies"]) + "\n"
-    message += "num_keyword_retweets: " + str(num_dict["num_keyword_retweets"]) + "\n\n"
-    message += "Note that points are computed as Likes + Retweets*2 + keyword_retweets*2 + Replies*3 + keyword_replies*3 + QuoteTweets*4\n"
-    message += "where Likes,Retweets,Replies,QuoteTweets are interactions with @RooTroopNFT and/or @TroopSales, while keyword_replies (misnomer, includes if you start the tweet) and keyword_retweets use the keyword search. Use 'rtt keywords' for more info on those.\n\n"
+    message += "Keyword Replies: " + str(num_dict["num_keyword_replies"]) + "\n"
+    message += "Keyword Retweets: " + str(num_dict["num_keyword_retweets"])
+    '''
 
     print("SUCCESS fetch_user_points")
     return message
@@ -1748,6 +1664,7 @@ class ScrapeTweets(object):
 
   def safe_load(self, fname):
     ## first, load activity by user :D
+    result = {}
     if os.path.exists(fname) and \
        os.stat(fname).st_size != 0:
       try:
@@ -1764,21 +1681,19 @@ class ScrapeTweets(object):
         os.system("cp " + fname + "_backup " + \
                     fname)
       # end try/except
-    else:
-      print("data corruption? Something went wrong. Please contact Ryan.")
-      raise
-    # end if/else
+    # end if
     return result
   # end safe_load
+
+  #=====================================================
+  #=====================================================
+  #=====================================================
 
   async def shard_data(self):
     """The purpose of this method is to break down activity_by_user.json
     into one file per userid so that at least certain actions can be
     done a lot quicker. Only sharding users that link in discord."""
     print("BEGIN shard_data")
-
-    activity_by_user = self.safe_load(self.fname_activity)
-    print("loaded abu!")
 
     save_dir = self.data_dir + "/user_data"
     os.system("mkdir -p " + save_dir)
@@ -1792,15 +1707,15 @@ class ScrapeTweets(object):
     # end with open
     print("loaded linked_usernames!")
 
-    for key in activity_by_user.keys():
+    for key in list(self.activity_by_user.keys()):
       print("key: ", key)
       if key[0].isdigit():
         flag = False
-        for username in activity_by_user[key]["usernames"]:
+        for username in list(self.activity_by_user[key]["usernames"]):
           for linked_username in linked_usernames:
             if username.lower() == linked_username.lower():
               flag = True
-              user_data = activity_by_user[key]
+              user_data = self.activity_by_user[key]
               fname = save_dir + "/" + key + ".json"
               with open(fname, "w") as fid:
                 fid.write(str(user_data))
@@ -1819,36 +1734,55 @@ class ScrapeTweets(object):
     print("SUCCESS shard_data")
   # end def shard_data
 
+  async def remove_duplicates(self):
+    for userId in list(self.activity_by_user.keys()):
+      if not userId[0].isdigit():
+        continue
+      # end if
+
+      usernames = []
+      for username in list(self.activity_by_user[userId]["usernames"]):
+        if username not in usernames:
+          usernames.append(username)
+        # end if
+      # end for
+      self.activity_by_user[userId]["usernames"] = usernames
+
+      ## there are other duplicates I could remove although 
+      ## the calculate points things handle them so no real need...
+
+      print("")
+
   #=====================================================
   #=====================================================
   #=====================================================
 
-  def update_and_process_keyword_data(self):
-    print("begin update and process keyword data")
-    self.update_keyword_data()
-    self.process_keyword_data()
-    print("success update and process keyword data")
-  # end def update_and_process_keyword_data
-
-  def continuously_scrape(self):
+  async def continuously_scrape(self):
+    import random
+    print("hello from: ", random.random()*1e3)
+    await asyncio.sleep(1)
     self.init_auth()
     cs_start = time.time()
     reset_time = time.time() - 400
 
     while True:
+      await asyncio.sleep(0.1)
       loop_start = time.time()
-      self.update_and_process_keyword_data()
+      await self.update_keyword_data()
+      await asyncio.sleep(0.1)
+      await self.process_keyword_data()
 
-      if time.time() - reset_time > 5*60:
-        for user_id in self.special_tweeters.keys():
-          if self.special_tweeters[user_id] == "troopsales":
+      if time.time() - reset_time > S_PER_HOUR:
+        ## cs_user_id to avoid naming collisions
+        for cs_user_id in self.special_tweeters.keys():
+          if self.special_tweeters[cs_user_id] == "troopsales":
             continue
-          print(user_id)
-        #input(">>")
-        #continue
-        self.process_all_tweets_by_user(user_id, update=True)
+          # end if
+          print(cs_user_id)
+          #await self.process_all_tweets_by_user(cs_user_id, update=True)
+        # end for
         reset_time = time.time()
-      # end for
+      # end if
 
       msg1 = "last loop executed in: " + str(time.time() - loop_start)
       msg2 = "time since continuous scraping started: " + str(time.time() - cs_start)
@@ -1865,7 +1799,7 @@ class ScrapeTweets(object):
       # end with
 
       #break
-      time.sleep(self.continuously_scrape_sleep_time)
+      await asyncio.sleep(self.continuously_scrape_sleep_time)
     # end while
   # end def continuously_scrape
 
@@ -1888,57 +1822,64 @@ class ScrapeTweets(object):
       print("We have logged in as {0.user}".format(client))
       channel = client.get_channel(BOT_COMMANDS_CID)
       await channel.send("I AM ALIVE! MWAHAHAHA")
+      ## note, only looks for keywords atm
+      #await self.continuously_scrape()
     # end
 
     @client.event
     async def on_message(message):
       channel = client.get_channel(message.channel.id)
 
+      tab = 4*" "
       msg = message.content.lower()
       if msg.startswith("rtt"):
         edit = False
+        msg = msg.replace("@","")
 
         if "help" in msg or "halp" in msg:
-          msg2  = "Hi! I'm Twitteroo, developed by ryanjsfx.eth\n"
-          msg2 += "AKA TheLunaLabs.eth, copyright 2022\n."
+          #copyright = "\U+00A9"
+          msg2  = ">>> Hi! I'm Twitteroo, developed by TheLunaLabs ©2022\n"
 
           if "lb" in msg or "leaderboard" in msg:
             # expand on leaderboard options
-            msg2 += "  options: rtt lb like (likes leaderboard),\n"
-            msg2 += "  options: rtt lb retweet (retweets leaderboard),\n"
-            msg2 += "    alt:   rtt lb rt\n"
-            msg2 += "  options: rtt lb QuoteTweets (QuoteTweets leaderboard),\n"
-            msg2 += "    alt:   rtt lb qt\n"
-            msg2 += "  options: rtt lb Replies (Replies leaderboard),\n"
-            msg2 += "    alt:   rtt lb reply\n"
-            msg2 += "  options: rtt lb keywords (keywords leaderboard),\n"
-            msg2 += "    alt:   rtt lb key\n\n"
-            msg2 += "you can also use the following time commands (warning, unkown time commands will just use all data)\n"
-            msg2 += "  today (alt == 24H): past 24 hours (time-zone agnostic)\n"
-            msg2 += "  Q1: data from 2022-01-01,0:0:0 to 2022-04-01,0:0:0\n"
-            msg2 += "  Q2: data from 2022-04-01,0:0:0 to 2022-07-01,0:0:0\n"
-            msg2 += "  last year (alt==2021): data from 2021-01-01,0:0:0 to 2022-01-01,0:0:0\n"
-            msg2 += "  last month (alt==april): data from 2022-04-01,0:0:0 to 2022-05-01,0:0:0\n"
-            msg2 += "  month (alt==may): data from 2022-05-01,0:0:0 to 2022-06-01,0:0:0\n"
-            msg2 += "  Jan: data from 2022-01-01,0:0:0 to 2022-02-01,0:0:0\n"
-            msg2 += "  Feb: data from 2022-02-01,0:0:0 to 2022-03-01,0:0:0\n"
-            msg2 += "  Mar: data from 2022-03-01,0:0:0 to 2022-04-01,0:0:0\n"
-            msg2 += "  start:blah, end:blah == user defined. Must fit expected style and spaces matter! Example: start:2022-01-01Z13:45:51.000Z, end:2022-03-03Z03:33:33.000Z"
+            msg2 += "This is the help menu for querying the leaderboard."
+            msg2 += "The following usage options are available:\n\n"
+            msg2 += "**__LEADERBOARD TYPE OPTIONS__**\n\n"
+            msg2 += tab + "**__rtt lb Likes__**\n" + 2*tab + "Displays the Likes leaderboard.\n"
+            msg2 += tab + "**__rtt lb Retweets__**\n" + 2*tab + "Displays the Retweets leaderboard.\n"
+            msg2 += tab + "**__rtt lb QuoteTweets__**\n" + 2*tab + "Displays the QuoteTweets leaderboard.\n"
+            msg2 += tab + "**__rtt lb Replies__**\n" + 2*tab + "Displays the Replies leaderboard.\n"
+            msg2 += tab + "**__rtt lb Keywords__**\n" + 2*tab + "Displays the Keywords leaderboard.\n"
+            msg2 += tab + "**__rtt lb AnythingElse__**\n" + 2*tab + "Displays the Points leaderboard.\n\n"
+            msg2 += "**__LEADERBOARD TIME RANGE OPTIONS__**\n\n"
+            msg2 += tab + "**__rtt lb today__**\n" + 2*tab + "past 24 hours (time-zone agnostic)\n"
+            msg2 += tab + "**__rtt lb Q1__**\n" + 2*tab + "data from 2022-01-01,0:0:0 to 2022-04-01,0:0:0\n"
+            msg2 += tab + "**__rtt lb Q2__**\n" + 2*tab + "data from 2022-04-01,0:0:0 to 2022-07-01,0:0:0\n"
+            msg2 += tab + "**__rtt lb last year__**\n" + 2*tab + "data from 2021-01-01,0:0:0 to 2022-01-01,0:0:0\n"
+            msg2 += tab + "**__rtt lb last month__**\n" + 2*tab + "data from 2022-04-01,0:0:0 to 2022-05-01,0:0:0\n"
+            msg2 += tab + "**__rtt lb month__**\n" + 2*tab + "data from 2022-05-01,0:0:0 to 2022-06-01,0:0:0\n"
+            msg2 += tab + "**__rtt lb Jan__**\n" + 2*tab + "data from 2022-01-01,0:0:0 to 2022-02-01,0:0:0\n"
+            msg2 += tab + "**__rtt lb Feb__**\n" + 2*tab + "data from 2022-02-01,0:0:0 to 2022-03-01,0:0:0\n"
+            msg2 += tab + "**__rtt lb Mar__**\n" + 2*tab + "data from 2022-03-01,0:0:0 to 2022-04-01,0:0:0\n"
+            msg2 += tab + "**__rtt lb start:*, end:*__**\n" + 2*tab + "user defined. Must fit expected style and spaces matter!\n"
+            msg2 += tab + "Example: start:2022-01-01Z13:45:51.000Z, end:2022-03-03Z03:33:33.000Z\n\n"
+            msg2 += "**__NOTE__**: type and time range options can be *combined*! E.g.:\n"
+            msg2 += 2*tab + "**__rtt lb Likes Feb__**\n" 
+            msg2 += 3*tab + "Displays the Likes leaderboard for February tweets.\n"
+            msg2 += 3*tab + "Okay, that is all. Good luck! Have fun!!"
           else:
             # print a minimal list of commands.
-            msg2 += "Here are my commands\n"
-            msg2 += "which are case insensitive :)\n"
-            msg2 += "rtt help: display this command ;)\n"
-            msg2 += "  alts: rtt halp\n\n"
-            msg2 += "rtt lb: display leaderboard for given command options\n"
-            msg2 += "  alts: rtt leabderboard\n"
-            msg2 += "  defaults: points leaderboard, all data\n"
-            msg2 += "  more info: rtt help lb\n\n"
-            msg2 += "rtt keywords: display keywords we use to find tweets\n"
-            msg2 += "rtt verify: verify if we've processed your tweet/interaction\n"
-            msg2 += "  usage: rtt verify url:blah, username:blah\n"
-            msg2 += "rtt me: display user's points, likes, etc.\n"
-            msg2 += "  usage: rtt me username:blah\n"
+            msg2 += "Here are my commands, "
+            msg2 += "which are case insensitive :)\n\n"
+            msg2 += "**__rtt help__**\n" + tab + "display this command ;)\n\n"
+            msg2 += "**__rtt lb__**\n" + tab + "display leaderboard\n" + 2*tab
+            msg2 += "defaults: points, all data\n" + 2*tab
+            msg2 += "for more info try *rtt help lb*\n\n"
+            msg2 += "**__rtt keywords__**\n" + tab + "display keywords we use to find tweets\n\n"
+            msg2 += "**__rtt verify__**\n" + tab + "verify if we've processed your tweet/interaction\n"
+            msg2 += 2*tab + "usage: *rtt verify url:blah, username:blah*\n\n"
+            msg2 += "**__rtt me__**\n" + tab + "display user's points, likes, etc.\n"
+            msg2 += 2*tab + "usage: *rtt me username:blah*\n"
           # end if/else
 
         elif msg.startswith("rtt me"):
@@ -1946,18 +1887,18 @@ class ScrapeTweets(object):
           try:
             username  = msg.split("username:")[1].replace(" ","")
           except:
-            msg2  = "sorry, I couldn't parse that. I'm loooking for smtg like\n"
-            msg2 += "rtt me username:TheLunaLabs"
+            msg2  = ">>> sorry, I couldn't parse that. I'm loooking for smtg like\n"
+            msg2 += 2*tab + "*rtt me username:TheLunaLabs*"
           # end try/except
           if username != "":
             self.init_auth()
-            await channel.send("fetching user data")
+            print(">>> fetching user data")
             status, user_data = self.fetch_user_data(username)
             if status == False:
               msg2 = user_data
             else:
-              print(user_data)
-              await channel.send("and now computing user points")
+              #print(user_data)
+              print(">>> and now I'm computing user points")
               msg2 = self.fetch_user_points(user_data)
             # end if/else
           # end if
@@ -1973,12 +1914,15 @@ class ScrapeTweets(object):
               print("username: ", username)
             # end if
             tweet_url = tweet_url.replace(",", "").replace(" ", "")
+            if "?" in tweet_url:
+              tweet_url = tweet_url.split("?")[0]
+            # end if
           except:
-            msg2  = "sorry, I couldn't parse that. I'm loooking for smtg like\n"
-            msg2 += "rtt verify url:https://twitter.com/RooTroopNFT/status/1499858580568109058, username:TheLunaLabs"
+            msg2  = "<<< sorry, I couldn't parse that. I'm loooking for smtg like\n"
+            msg2 += tab + "*rtt verify url:https://twitter.com/RooTroopNFT/status/1499858580568109058, username:TheLunaLabs*"
           # end try/except
           self.init_auth()
-          await channel.send("okay! will verify if we processed that tweet for that user yet or not")
+          await channel.send("<<< okay! will verify if we processed that tweet for that user yet or not")
           print("tweet_url: ", tweet_url)
           msg2,status = self.verify_processed_tweet(tweet_url, username)
 
@@ -2001,48 +1945,59 @@ class ScrapeTweets(object):
           tnow = datetime.datetime.now()
           tstr = "%Y-%m-%dT%H:%M:%S.000Z"
           time_str = "all"
-          if "today" in msg or "24H" in msg:
+          if "today" in msg or "24h" in msg:
+            print("today or 24H in msg")
             ## to be time-zone agnostic we start 24H ago and end now
             start_time = (tnow - datetime.timedelta(days=1)).strftime(tstr)
             end_time = tnow.strftime(tstr)
             time_str = "past 24 hours"
-          elif "Q1" in msg:
+          elif "q1" in msg:
+            print("Q1 in msg")
             start_time = "2022-01-01T00:00:00.000Z"
             end_time   = "2022-04-01T00:00:00.000Z"
             time_str = "Q1 (2022)"
-          elif "Q2" in msg:
+          elif "q2" in msg:
+            print("Q2 in msg")
             start_time = "2022-04-01T00:00:00.000Z"
             end_time   = "2022-07-01T00:00:00.000Z"
             time_str = "Q2 (2022)"
           elif "last year" in msg or "2021" in msg:
+            print("last year or 2021 in msg")
             start_time = "2021-01-01T00:00:00.000Z"
             end_time   = "2022-01-01T00:00:00.000Z"
             time_str = "2021"
           elif "year" in msg or "2022" in msg:
+            print("year or 2022 in msg")
             start_time = "2022-01-01T00:00:00.000Z"
             end_time   = "2023-01-01T00:00:00.000Z"
             time_str = "2022"
           elif "last month" in msg or "april" in msg:
+            print("last month or april in msg")
             start_time = "2022-04-01T00:00:00.000Z"
             end_time   = "2022-05-01T00:00:00.000Z"
             time_str = "April 2022"
           elif "month" in msg or "may" in msg:
+            print("month or may in msg")
             start_time = "2022-05-01T00:00:00.000Z"
             end_time   = "2022-06-01T00:00:00.000Z"
             time_str = "May 2022"
           elif "jan" in msg:
+            print("jan in msg")
             start_time = "2022-01-01T00:00:00.000Z"
             end_time   = "2022-02-01T00:00:00.000Z"
             time_str = "Jan 2022"
           elif "feb" in msg:
+            print("feb in msg")
             start_time = "2022-02-01T00:00:00.000Z"
             end_time   = "2022-03-01T00:00:00.000Z"
             time_str = "Feb 2022"
           elif "mar" in msg:
+            print("mar in msg")
             start_time = "2022-03-01T00:00:00.000Z"
             end_time   = "2022-04-01T00:00:00.000Z"
             time_str = "Mar 2022"
           elif "start:" in msg and ", end:" in msg:
+            print("custom time range!")
             start_time = msg.split("start:")[1].split(", end:")[0]
             end_time = msg.split("end:")[1]
             time_str = "user defined"
@@ -2050,37 +2005,53 @@ class ScrapeTweets(object):
 
           fname = self.data_dir + "/leaderboard_" + method + "_start" + \
             start_time + "_" + end_time + ".txt"
+          if "rtt lbAll".lower() in msg:
+            fname = fname.replace("/leaderboard_", "/leaderboardSharded_")
+          # end if
+
           if os.path.exists(fname) and os.stat(fname).st_size != 0:
-            msg2  = "Okay, grabbing the updated " + method + " leaderboard for "
-            msg2 += time_str + " data range. Note it'll take me ~30-60s to update (y'all raid hard :O\n\n"
+            msg2  = ">>> Okay, grabbing the updated " + method + " leaderboard for "
+            msg2 += time_str + " data range."
             await channel.send(msg2)
 
-            msg2 = "In the meantime, here's the last version of that leaderboard.\n"
+            '''
+            msg2 = ">>> In the meantime, here's the last version of that leaderboard.\n"
+            msg2 += "```"
             with open(fname, "r") as fid:
               for line in fid:
                 msg2 += line
               # end for
             # end with
+            msg2 += "```"
             dmsg = await channel.send(msg2)
             edit = True
+            '''
           else:
-            msg2  = "Okay, grabbing the " + method + " leaderboard for "
-            msg2 += time_str + " data range for the first time."
-            msg2 += "\nY'all raid hard so this can take a while (30s-60s)"
-            msg2 += "\nso please be patient with me :D"
+            msg2  = ">>> Okay, grabbing the " + method + " leaderboard for "
+            msg2 += time_str + " data range."
             await channel.send(msg2)
           # end if/else
 
-          msg2 = self.fetch_user_leaderboard(start_time=start_time, 
-                 end_time=end_time, method=method)
-          msg2 += "\nI've now updated the above leaderboard :)"
+          print("msg: ", msg)
+          if "rtt lbAll".lower() in msg:
+            print("in lbAll")
+            #input(">>")
+            msg2 = await self.fetch_user_leaderboard(start_time=start_time,
+                   end_time=end_time, method=method, sharded=False)
+          else:
+            print("in reg lb")
+            #input(">>")
+            msg2 = await self.fetch_user_leaderboard(start_time=start_time, 
+                   end_time=end_time, method=method, sharded=True)
           print("discord bot hi here's the " + method + " leaderboard")
           print(msg2)
 
         elif "key" in msg:
-          msg2 = "Hi! These are the keywords I use to scrape for tweets:\n"
+          msg2 = ">>> Hi! These are the keywords I use to scrape for tweets:\n"
           for keyword in self.keyword_query.split("OR"):
-            msg2 += keyword + "\n"
+            keyword = keyword.replace(")","")
+            keyword = keyword.replace("("," ")
+            msg2 += 2*tab + keyword + "\n"
           # end for
 
         else:
@@ -2099,14 +2070,9 @@ class ScrapeTweets(object):
   # end discord_bot
 # end class ScrapeTweets
 
-async def main():
-  tweet_scrape_instance = ScrapeTweets()
-  await asyncio.gather(
-    tweet_scrape_instance.discord_bot(),
-    tweet_scrape_instance.continuously_scrape())
-
 if __name__ == "__main__":
-  asyncio.run(main())
+  tweet_scrape_instance = ScrapeTweets()
+  tweet_scrape_instance.discord_bot()
 
 print("execution rate: ", time.time() - start)
 print("SUCCESS ScrapeTweets")
