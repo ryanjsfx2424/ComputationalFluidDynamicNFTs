@@ -5,18 +5,21 @@ and can roll dice.
 
 Next I'm going to query for addresses of who owns V1, V2 NFTs.
 """
-DEV = False
+DEV = True
 import os
 import time
 import json
 import random
 import asyncio
 import discord
+from discord.ext import commands
 import datetime
 import numpy as np
 from web3 import Web3
 
-client = discord.Client()
+client = commands.Bot(command_prefix=".")
+#client = discord.Client()
+
 channels = {
             "general": 931482273973420034,
             "apod"   : 940983047157854248,
@@ -106,6 +109,13 @@ def get_tweet_time_s(tweet_time):
   print("success get_tweet_time_s")
 # end get_tweet_time_s
 
+command_triggered = False
+@client.command()
+async def ping(ctx):
+  await ctx.send("Pong!")
+  global command_triggered
+  command_triggered = True
+
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
@@ -114,6 +124,8 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    global command_triggered
+    command_triggered = False
     if 'test' in message.content:
       channel = client.get_channel(BOT_COMMANDS_CID) # bot-commands
 
@@ -302,6 +314,9 @@ async def on_message(message):
       print("SUCCESS scan!")
     # end if command == scan
     print("SUCCESS!")  
+    await client.process_commands(message)
+    print("val: ", command_triggered)
+# end async def on_message
 
 secret = os.environ.get("ocgBotPass")
 client.run(secret)
