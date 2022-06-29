@@ -1,0 +1,30 @@
+{
+    "name": "Roo #4041",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/4041.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Sky"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Tomato"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Stone Gas Mask"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Wiener Tee"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Green Snapback"
+        }
+    ]
+}

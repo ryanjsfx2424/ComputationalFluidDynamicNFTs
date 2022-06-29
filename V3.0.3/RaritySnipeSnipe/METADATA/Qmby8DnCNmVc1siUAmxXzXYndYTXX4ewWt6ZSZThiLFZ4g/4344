@@ -1,0 +1,30 @@
+{
+    "name": "Roo #4344",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/4344.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Onyx"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Berry"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Grin"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Navy Ninja Yoroi"
+        },
+        {
+            "trait_type": "Eyewear",
+            "value": "Wayfarers"
+        }
+    ]
+}

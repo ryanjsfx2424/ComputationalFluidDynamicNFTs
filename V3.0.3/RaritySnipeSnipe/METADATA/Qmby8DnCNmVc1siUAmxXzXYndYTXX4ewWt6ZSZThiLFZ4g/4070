@@ -1,0 +1,30 @@
+{
+    "name": "Roo #4070",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/4070.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Trippy"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Banana Split"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Toothpick"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Closed"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Green Roo Hoodie"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Green Scanner"
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+keyword_query  = "(Rooty Roo OR Rooty Woo OR rootywoo OR Roo Troop OR rootroop"
+keyword_query += " OR rootroops OR tree roo OR roo bounty OR roo bounties"
+keyword_query += " OR rootyroo OR RootyRoo OR rootroopnft OR troopsales)"
+keyword_query += " OR (@rootroopnft OR @troopsales)"
+keyword_query += " OR (@rootroopnft OR @troopsales) (is:retweet OR is:reply OR is:quote"
+
+print(len(keyword_query))

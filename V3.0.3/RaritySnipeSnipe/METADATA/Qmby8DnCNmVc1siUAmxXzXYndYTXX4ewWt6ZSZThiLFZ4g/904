@@ -1,0 +1,34 @@
+{
+    "name": "Roo #904",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/904.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Onyx"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Mocha"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Grin"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Undead"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Blue Roo Hoodie"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Red Snapback"
+        },
+        {
+            "trait_type": "Eyewear",
+            "value": "3D Glasses"
+        }
+    ]
+}

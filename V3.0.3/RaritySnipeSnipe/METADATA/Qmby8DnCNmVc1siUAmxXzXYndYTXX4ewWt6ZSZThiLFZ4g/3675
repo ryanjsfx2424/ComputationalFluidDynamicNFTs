@@ -1,0 +1,22 @@
+{
+    "name": "Roo #3675",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Sakura"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Robo"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Tongue"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Shocked"
+        }
+    ],
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/3675.webp"
+}

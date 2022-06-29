@@ -1,0 +1,30 @@
+{
+    "name": "Roo #4096",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/4096.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Sky"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Weed"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Grin"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Ice Vision"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Joker Suit"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Grey Snapback"
+        }
+    ]
+}

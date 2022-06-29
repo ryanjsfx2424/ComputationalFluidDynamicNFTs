@@ -1,0 +1,26 @@
+{
+    "name": "Roo #4923",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/4923.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Sakura"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Ash"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Snarl"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Eye Roll"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Green Tracksuit"
+        }
+    ]
+}

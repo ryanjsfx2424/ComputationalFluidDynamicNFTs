@@ -1,0 +1,30 @@
+{
+    "name": "Roo #2291",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/2291.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Rainbow"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Banana Split"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Eye Roll"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Yakuza Shirt"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "White Sushi Chef's Hat"
+        }
+    ]
+}

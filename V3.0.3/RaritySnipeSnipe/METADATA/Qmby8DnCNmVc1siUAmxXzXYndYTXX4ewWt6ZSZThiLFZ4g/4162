@@ -1,0 +1,30 @@
+{
+    "name": "Roo #4162",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/4162.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Iron"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Arctic"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Grin"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Eye Roll"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Black Roo Tee"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Red Snapback"
+        }
+    ]
+}

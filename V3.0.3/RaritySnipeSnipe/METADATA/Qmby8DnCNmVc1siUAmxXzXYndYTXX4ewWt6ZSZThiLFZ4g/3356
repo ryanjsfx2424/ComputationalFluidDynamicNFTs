@@ -1,0 +1,26 @@
+{
+    "name": "Roo #3356",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/3356.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Crimson"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Arctic"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Dry Leaf"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Beaty"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Black Leather Pouch"
+        }
+    ]
+}

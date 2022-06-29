@@ -1,0 +1,30 @@
+{
+    "name": "Roo #1532",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Khaki"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Golden"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Vamp Fangs"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "King's Crown"
+        },
+        {
+            "trait_type": "Gear",
+            "value": "S. Godsword"
+        }
+    ],
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/1532.webp"
+}

@@ -1,0 +1,22 @@
+{
+    "name": "Roo #3003",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Crimson"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Glitch"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Dry Leaf"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Normal"
+        }
+    ],
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/3003.webp"
+}

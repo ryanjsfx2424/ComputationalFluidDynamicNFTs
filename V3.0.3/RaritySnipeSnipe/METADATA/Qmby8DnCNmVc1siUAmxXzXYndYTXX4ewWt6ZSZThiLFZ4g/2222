@@ -1,0 +1,26 @@
+{
+    "name": "Roo #2222",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Khaki"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Arctic"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Drool"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Ice Vision"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Roo Tech Lab Coat"
+        }
+    ],
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/2222.webp"
+}

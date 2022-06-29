@@ -1,0 +1,30 @@
+{
+    "name": "Roo #4695",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Chrome"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Golden"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Diamond Grillz"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Lazer Vision"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "White Suit"
+        },
+        {
+            "trait_type": "Tail",
+            "value": "Diamond"
+        }
+    ],
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/4695.webp"
+}

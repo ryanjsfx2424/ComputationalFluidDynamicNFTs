@@ -1,0 +1,22 @@
+{
+    "name": "Roo #4106",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Sakura"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Banana Split"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Stone Gas Mask"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Normal"
+        }
+    ],
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/4106.webp"
+}

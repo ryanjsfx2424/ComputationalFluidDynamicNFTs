@@ -1,0 +1,38 @@
+{
+    "name": "Roo #1450",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/1450.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Ocean"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Purp"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Green Tracksuit"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Grey Snapback"
+        },
+        {
+            "trait_type": "Eyewear",
+            "value": "Agent Glasses"
+        },
+        {
+            "trait_type": "Tail",
+            "value": "Default"
+        }
+    ]
+}

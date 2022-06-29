@@ -1,0 +1,34 @@
+{
+    "name": "Roo #100",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Trippy"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Irradiated"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Diamond Grillz"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "King's Crown"
+        },
+        {
+            "trait_type": "Eyewear",
+            "value": "Agent Glasses"
+        },
+        {
+            "trait_type": "Gear",
+            "value": "S. Godsword"
+        }
+    ],
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/100.webp"
+}

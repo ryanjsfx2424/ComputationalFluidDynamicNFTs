@@ -1,0 +1,11 @@
+https://discord.com/api/oauth2/authorize?client_id=972607889770414160&permissions=84992&scope=bot%20applications.commands
+
+Currently just:
+1.
+  i. bot
+  ii. applications.commands
+2.
+  i. Read Message History
+  ii. Read Messages / View Channels
+  iii. Send Messages
+  iv. Embed Links

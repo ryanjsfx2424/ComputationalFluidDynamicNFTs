@@ -1,0 +1,26 @@
+{
+    "name": "Roo #2475",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Crimson"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Glitch"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Tongue"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Eye Roll"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Wiener Tee"
+        }
+    ],
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/2475.webp"
+}

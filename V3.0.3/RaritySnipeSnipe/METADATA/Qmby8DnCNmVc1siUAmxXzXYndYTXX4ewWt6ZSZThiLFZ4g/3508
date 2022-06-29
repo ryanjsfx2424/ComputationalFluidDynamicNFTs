@@ -1,0 +1,26 @@
+{
+    "name": "Roo #3508",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/3508.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Sky"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Arctic"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Eye Patch"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Purple Kanga Hoodie"
+        }
+    ]
+}

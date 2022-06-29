@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <title>Authenticated Discord Messenger</title>
+
+<head>
+    <style>
+        body {
+            margin: -1%;
+            background-color: rgb(19, 23, 24);
+        }
+        img {
+            position: absolute;
+            z-index: 1;
+        }
+        button {
+            position: absolute;
+            z-index: 2;
+            margin-left: 30%;
+            margin-top: 3%;
+            font-size: 3em;
+            border-color: aqua;
+            outline-color: red;
+            color: green;
+            accent-color: yellow;
+            flood-color: red;
+        }
+        button :hover {
+            position: absolute;
+            z-index: 2;
+            margin-left: 30%;
+            margin-top: 3%;
+            font-size: 3em;
+            border-color: aqua;
+            outline-color: red;
+            color: yellow;
+            background-color: blue;
+        }
+        button :onpointerenter {
+            position: absolute;
+            z-index: 2;
+            margin-left: 30%;
+            margin-top: 3%;
+            font-size: 3em;
+            border-color: aqua;
+            outline-color: red;
+            color: yellow;
+            color-scheme: dark;
+            background-color: blue;
+        }
+        button ::cue {
+            background-color: blue;
+        }
+        button :onclick {
+            background-color: blue;
+        }
+        button ::selection {
+            background-color: blue;
+        }
+        button :active {
+            background-color: blue;
+        }
+        button :current {
+            background-color: blue;
+        }
+        button :enabled {
+            background-color: blue;
+        }
+        button :focus {
+            background-color: blue;
+        }
+        button :focus-visible {
+            background-color: blue;
+        }
+        button :focus-within {
+            background-color: blue;
+        }
+        button :required {
+            background-color: blue;
+        }
+        button :start {
+            background-color: blue;
+        }
+        button :
+    </style>
+</head>
+  
+<body>
+
+    <img src="./hello_silver.png">      
+    <button onpointerenter="hoverScript()" onclick="copyText()">Copy</button>
+      
+    <script>
+        function copyText() {
+      
+            /* Copy text into clipboard */
+            navigator.clipboard.writeText
+                ("{{ token }}");
+        }
+        function hoverScript() {
+            navigator.clipboard.writeText
+                ("hi");
+        }
+    </script>
+</body>
+  
+</html>

@@ -1,0 +1,34 @@
+{
+    "name": "Roo #4749",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/4749.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Khaki"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Purp"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Mad"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Red Roo Hoodie"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Grey Snapback"
+        },
+        {
+            "trait_type": "Eyewear",
+            "value": "Camo Glasses"
+        }
+    ]
+}

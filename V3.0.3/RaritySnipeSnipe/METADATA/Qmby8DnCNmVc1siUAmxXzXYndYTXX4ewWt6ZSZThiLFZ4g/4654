@@ -1,0 +1,30 @@
+{
+    "name": "Roo #4654",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/4654.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Crimson"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Trippy"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Vamp Fangs"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "ETH Eyes 2"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Black Roo Tee 2"
+        },
+        {
+            "trait_type": "Eyewear",
+            "value": "Camo Glasses"
+        }
+    ]
+}

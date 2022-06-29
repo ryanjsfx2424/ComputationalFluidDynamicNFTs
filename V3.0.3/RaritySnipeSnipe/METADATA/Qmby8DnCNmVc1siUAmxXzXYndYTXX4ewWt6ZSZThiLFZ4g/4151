@@ -1,0 +1,26 @@
+{
+    "name": "Roo #4151",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/4151.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Iron"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Weed"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Grin"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Goldfish"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Degen Jersey"
+        }
+    ]
+}

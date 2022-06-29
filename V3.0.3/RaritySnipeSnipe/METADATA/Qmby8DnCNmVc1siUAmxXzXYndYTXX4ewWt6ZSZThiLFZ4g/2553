@@ -1,0 +1,30 @@
+{
+    "name": "Roo #2553",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/2553.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Forest"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Coffee"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Snarl"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Beaty"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Green Snapback"
+        },
+        {
+            "trait_type": "Tail",
+            "value": "Default"
+        }
+    ]
+}

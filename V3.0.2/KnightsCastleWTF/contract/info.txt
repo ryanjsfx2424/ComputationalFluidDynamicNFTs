@@ -1,0 +1,69 @@
+Address: 0x0b9524E6eB08356f7A5676203A8563d770fe14Fd
+^rink
+
+2nd one:
+Address: 0xF98328c57E87E4eAB25d29f90d35dda14d5E6E71
+^rink
+
+3rd one:
+0x5d4AA9814161822CD5fD951AC29977fc3d61aB21
+^rink
+
+4th one:
+0xB99B313b8f53D93aCdDe9c766fab2F501a78f267
+^goerli (still had single quote jsons)
+
+5th one:
+0x0b9524E6eB08356f7A5676203A8563d770fe14Fd
+^goerli (double quote json)
+
+6th one:
+0xB99B313b8f53D93aCdDe9c766fab2F501a78f267
+^kovan (w/ receive hook) but withdraw bug
+
+7th one:
+0x0b9524E6eB08356f7A5676203A8563d770fe14Fd
+^kovan (withdraw bug fixed)
+
+8th one:
+0x5a31fe3558D6BD8e64545c8D7Fa3f889b3868ece
+^kovan (genv4 metadata)
+
+9th one:
+0xB99B313b8f53D93aCdDe9c766fab2F501a78f267
+^polygon
+
+10th one
+0x5a31fe3558D6BD8e64545c8D7Fa3f889b3868ece
+^polygon (corrected withdrawal)
+
+=====
+v2 that I saved here had a bug in prepare for
+war (checked msg.sender <= 50 but minted to king).
+
+New knightscastlewtf.sol fixes that :)
+====
+
+ipfs cids:
+metadata:
+QmcFReu7NX1FiHsTcqCun8H8ay4PrC4HkAPhNvcUmCXQCb
+
+images:
+QmT6MEzvapDTmGcUcMbeKBbTt8P8nPMm6Hw9kgSNDz9dXt
+
+Addy:
+0x1740A0C1bF57Af8Cf3816bb063DC77379910cEBe
+
+=====
+New take nft storage
+
+img cid
+bafybeigovcy2rxxbavsk23gw7isaf7q7sk3jwsafi6fnlwqfplsnwexzbq
+
+metadata cid
+bafybeiembxtmsv6ztmxrt4lmbfrj7p64rjxx6u3yb47rdvromogtyk6gpq
+
+Addy:
+0xEdF0995deCE5133a621508fF6eb897bFFe07EcB6
+
+

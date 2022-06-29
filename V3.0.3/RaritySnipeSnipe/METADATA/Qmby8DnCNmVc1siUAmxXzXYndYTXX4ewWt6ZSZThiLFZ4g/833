@@ -1,0 +1,34 @@
+{
+    "name": "Roo #833",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/833.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Onyx"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Banana Split"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Shocked"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Red Pouch"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Air Pods"
+        },
+        {
+            "trait_type": "Eyewear",
+            "value": "Black Glasses"
+        }
+    ]
+}

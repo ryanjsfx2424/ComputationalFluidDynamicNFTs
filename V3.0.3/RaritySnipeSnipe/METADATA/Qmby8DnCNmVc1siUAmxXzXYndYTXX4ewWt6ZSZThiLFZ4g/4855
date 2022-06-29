@@ -1,0 +1,38 @@
+{
+    "name": "Roo #4855",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/4855.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Crimson"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Mocha"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Grin"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Shocked"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Purp Pouch"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Air Pods"
+        },
+        {
+            "trait_type": "Eyewear",
+            "value": "Black Glasses"
+        },
+        {
+            "trait_type": "Gear",
+            "value": "Midnight Katanas"
+        }
+    ]
+}

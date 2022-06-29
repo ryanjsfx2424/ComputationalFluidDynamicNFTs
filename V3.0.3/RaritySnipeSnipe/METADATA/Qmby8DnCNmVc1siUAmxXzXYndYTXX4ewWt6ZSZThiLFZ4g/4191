@@ -1,0 +1,30 @@
+{
+    "name": "Roo #4191",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/4191.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Ocean"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Tomato"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "COVID Mask"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Mad"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "White Roo Tee"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Queen's Tiara"
+        }
+    ]
+}

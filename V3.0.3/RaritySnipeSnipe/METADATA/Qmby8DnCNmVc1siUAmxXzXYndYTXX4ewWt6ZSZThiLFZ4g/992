@@ -1,0 +1,26 @@
+{
+    "name": "Roo #992",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/992.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Sakura"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Weed"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "COVID Mask"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Mischevious"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Yakuza Shirt"
+        }
+    ]
+}

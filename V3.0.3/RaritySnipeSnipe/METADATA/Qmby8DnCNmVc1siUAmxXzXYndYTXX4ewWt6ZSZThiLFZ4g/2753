@@ -1,0 +1,30 @@
+{
+    "name": "Roo #2753",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/2753.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Khaki"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Coffee"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Blizzy"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Hypnotized"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Degen Jersey"
+        },
+        {
+            "trait_type": "Eyewear",
+            "value": "Camo Glasses"
+        }
+    ]
+}

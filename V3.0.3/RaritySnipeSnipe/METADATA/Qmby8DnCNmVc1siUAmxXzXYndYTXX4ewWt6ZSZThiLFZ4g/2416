@@ -1,0 +1,30 @@
+{
+    "name": "Roo #2416",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/2416.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Onyx"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Trippy"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Dry Leaf"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Black Roo Tee"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Green Snapback"
+        }
+    ]
+}
