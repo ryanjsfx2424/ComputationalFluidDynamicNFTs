@@ -1,0 +1,5 @@
+Botswana	2,375	Botswana Map	Gaborone
+Lesotho	2,293	 	Maseru
+Namibia	2,642	Namibia Map	Windhoek
+SouthAfrica	58,065	South Africa Map	Pretoria, Bloemfontein, Cape Town
+Swaziland	1,415	Swaziland Map	Mbabane, Lobamba

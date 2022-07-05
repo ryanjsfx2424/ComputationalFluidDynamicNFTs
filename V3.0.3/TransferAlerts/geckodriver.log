@@ -1,0 +1,726 @@
+1656715556953	geckodriver	INFO	Listening on 127.0.0.1:64047
+1656715557104	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "64048" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofileT9q0QT"
+1656715560021	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:64048
+2022-07-02 00:46:00.340 plugin-container[44141:751653] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 00:46:00.340 plugin-container[44141:751653] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 00:46:00.508 plugin-container[44141:751653] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 00:46:00.508 plugin-container[44141:751653] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 00:46:00.509 plugin-container[44141:751712] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 00:46:00.509 plugin-container[44141:751712] nil host used in call to allowsAnyHTTPSCertificateForHost:
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofileT9q0QT/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+1656715561942	Marionette	INFO	Listening on port 64095
+DevTools listening on ws://localhost:64048/devtools/browser/d096051e-5f82-4416-91d6-b8fe770f15a0
+Read port: 64095
+1656715562023	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.error: Region.jsm: "Error fetching region" (new Error("TIMEOUT", "resource://gre/modules/Region.jsm", 767))
+console.error: Region.jsm: "Failed to fetch region" (new Error("TIMEOUT", "resource://gre/modules/Region.jsm", 419))
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 67ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AECe4ruBAQAAGJluiSdmtyfMv5bdmgMJLuYFcd0LzNcu2FqCCRhyCzmAPt53&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+console.error: services.settings: 
+  main/doh-config Signature failed  InvalidSignatureError: Invalid content signature (main/doh-config)
+console.error: services.settings: 
+  main/doh-config local data was corrupted
+console.warn: services.settings: main/doh-config Signature verified failed. Retry from scratch
+console.error: services.settings: 
+  main/pioneer-study-addons-v1 Signature failed  InvalidSignatureError: Invalid content signature (main/pioneer-study-addons-v1)
+console.error: services.settings: 
+  main/pioneer-study-addons-v1 local data was corrupted
+console.warn: services.settings: main/pioneer-study-addons-v1 Signature verified failed. Retry from scratch
+console.error: services.settings: 
+  main/pioneer-study-addons-v1 Signature failed again InvalidSignatureError: Invalid content signature (main/pioneer-study-addons-v1)
+console.error: services.settings: 
+  Message: InvalidSignatureError: Invalid content signature (main/pioneer-study-addons-v1)
+  Stack:
+    InvalidSignatureError@resource://services-settings/RemoteSettingsClient.jsm:135:5
+_validateCollectionSignature@resource://services-settings/RemoteSettingsClient.jsm:899:13
+
+console.error: services.settings: 
+  main/doh-providers Signature failed  InvalidSignatureError: Invalid content signature (main/doh-providers)
+console.error: services.settings: 
+  main/doh-providers local data was corrupted
+console.warn: services.settings: main/doh-providers Signature verified failed. Retry from scratch
+console.error: services.settings: 
+  main/addons-manager-settings Signature failed  InvalidSignatureError: Invalid content signature (main/addons-manager-settings)
+console.error: services.settings: 
+  main/addons-manager-settings local data was corrupted
+console.warn: services.settings: main/addons-manager-settings Signature verified failed. Retry from scratch
+console.error: services.settings: 
+  main/addons-manager-settings Signature failed again InvalidSignatureError: Invalid content signature (main/addons-manager-settings)
+console.error: services.settings: 
+  Message: InvalidSignatureError: Invalid content signature (main/addons-manager-settings)
+  Stack:
+    InvalidSignatureError@resource://services-settings/RemoteSettingsClient.jsm:135:5
+_validateCollectionSignature@resource://services-settings/RemoteSettingsClient.jsm:899:13
+
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 71ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AIBDkb6BAQAACUbo19PUKdSn1E_Vx-1NwNrMB4KRpPBd2l9RzfZzMS2Ahwov&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/aHhPXGVii6m1UdQEw4dl9bTaUK-_iBumPQ-RERU6U4M.js line 2 > eval line 5113 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+SourceActor threw an exception: [Exception... "Component returned failure code: 0x80470002 (NS_BASE_STREAM_CLOSED) [nsIInputStream.available]"  nsresult: "0x80470002 (NS_BASE_STREAM_CLOSED)"  location: "JS frame :: resource://devtools/shared/DevToolsUtils.js :: onResponse :: line 596"  data: no]
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:596:34
+onStopRequest@resource://gre/modules/NetUtil.jsm:128:18
+Line: 596, column: 0
+console.error: ({})
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 596: NS_BASE_STREAM_CLOSED: Component returned failure code: 0x80470002 (NS_BASE_STREAM_CLOSED) [nsIInputStream.available]
+JavaScript error: https://script.crazyegg.com/pages/scripts/0085/1990.js, line 1: Error: CE: multiple userscripts installed
+JavaScript warning: https://pagead2.googlesyndication.com/bg/aHhPXGVii6m1UdQEw4dl9bTaUK-_iBumPQ-RERU6U4M.js line 2 > eval line 2809 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/aHhPXGVii6m1UdQEw4dl9bTaUK-_iBumPQ-RERU6U4M.js line 2 > eval line 4731 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1656761110512	geckodriver	INFO	Listening on 127.0.0.1:53031
+1656761111046	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "53032" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofileAIetph"
+2022-07-02 13:25:11.456 plugin-container[48790:876535] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 13:25:11.457 plugin-container[48790:876535] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 13:25:11.461 plugin-container[48790:876535] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 13:25:11.461 plugin-container[48790:876535] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 13:25:11.461 plugin-container[48790:876537] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 13:25:11.461 plugin-container[48790:876537] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1656761111475	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:53032
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofileAIetph/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+1656761112790	Marionette	INFO	Listening on port 53046
+DevTools listening on ws://localhost:53032/devtools/browser/838a8698-fc03-4140-9345-fd98d271c865
+Read port: 53046
+1656761112838	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 60ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AIBDkb6BAQAACUbo19PUKdSn1E_Vx-1NwNrMB4KRpPBd2l9RzfZzMS2Ahwov&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/aHhPXGVii6m1UdQEw4dl9bTaUK-_iBumPQ-RERU6U4M.js line 2 > eval line 6922 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.google.com"
+JavaScript warning: https://pagead2.googlesyndication.com/bg/aHhPXGVii6m1UdQEw4dl9bTaUK-_iBumPQ-RERU6U4M.js line 2 > eval line 6945 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1656761254500	geckodriver	INFO	Listening on 127.0.0.1:53176
+1656761255027	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "53177" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofileNSjFNu"
+2022-07-02 13:27:35.702 plugin-container[48845:878335] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 13:27:35.703 plugin-container[48845:878335] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 13:27:35.706 plugin-container[48845:878335] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 13:27:35.706 plugin-container[48845:878335] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 13:27:35.706 plugin-container[48845:878337] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 13:27:35.706 plugin-container[48845:878337] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1656761255718	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:53177
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofileNSjFNu/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+1656761257090	Marionette	INFO	Listening on port 53190
+DevTools listening on ws://localhost:53177/devtools/browser/24275ec2-e9f2-4a19-af43-01c706a56395
+Read port: 53190
+1656761257119	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+Marionette threw an error: TypeError: this.curBrowser.contentBrowser is null
+GeckoDriver.prototype.navigateTo@chrome://remote/content/marionette/driver.js:812:3
+
+JavaScript warning: https://etherscan.io/, line 711: unreachable code after return statement
+1656761399405	geckodriver	INFO	Listening on 127.0.0.1:53239
+1656761399933	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "53240" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofileTY9nuq"
+2022-07-02 13:30:00.332 plugin-container[48918:880117] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 13:30:00.333 plugin-container[48918:880117] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 13:30:00.337 plugin-container[48918:880117] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 13:30:00.337 plugin-container[48918:880117] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 13:30:00.337 plugin-container[48918:880119] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 13:30:00.337 plugin-container[48918:880119] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1656761400350	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:53240
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofileTY9nuq/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+1656761401724	Marionette	INFO	Listening on port 53253
+DevTools listening on ws://localhost:53240/devtools/browser/b88429f9-9001-4ed1-a09d-c8de0d7b7c7c
+Read port: 53253
+1656761401832	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 68ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AMC6rL6BAQAAhC0FZqlZY7sKBteRVGDCBQ87RxkBeqU-GWgWtqwXv8xP8sOS&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+console.error: (new TypeError("topBrowsingContext is null", "resource://devtools/server/actors/watcher/browsing-context-helpers.jsm", 352))
+console.error: (new TypeError("topBrowsingContext is null", "resource://devtools/server/actors/watcher/browsing-context-helpers.jsm", 352))
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+
+###!!! [Child][PContentChild] Error: RunMessage(msgname=PHttpChannel::Msg_DeleteSelf) Channel closing: too late to send/recv, messages will be lost
+
+1656761998882	Marionette	INFO	Stopped listening on port 53253
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+
+###!!! [Parent][PImageBridgeParent] Error: RunMessage(msgname=PImageBridge::Msg_WillClose) Channel closing: too late to send/recv, messages will be lost
+
+1656762000602	Marionette	INFO	Stopped listening on port 53190
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1656762002018	Marionette	INFO	Stopped listening on port 53046
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1656762003635	Marionette	INFO	Stopped listening on port 64095
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+
+###!!! [Parent][PImageBridgeParent] Error: RunMessage(msgname=PImageBridge::Msg_WillClose) Channel closing: too late to send/recv, messages will be lost
+
+1656764252795	geckodriver	INFO	Listening on 127.0.0.1:53538
+1656764253326	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-headless" "--remote-debugging-port" "53539" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofileQ2Agqf"
+*** You are running in headless mode.
+2022-07-02 14:17:34.005 plugin-container[50142:906050] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:17:34.005 plugin-container[50142:906050] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 14:17:34.008 plugin-container[50142:906050] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:17:34.008 plugin-container[50142:906050] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 14:17:34.009 plugin-container[50142:906048] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:17:34.009 plugin-container[50142:906048] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1656764254024	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:53539
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofileQ2Agqf/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+1656764255219	Marionette	INFO	Listening on port 53553
+DevTools listening on ws://localhost:53539/devtools/browser/23baab22-9ea3-427c-bc21-922d2081034d
+Read port: 53553
+1656764255327	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 65ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AAAyyL6BAQAAd4UIwk_zzVC-tiaaXPsODoi9nvj0OYqffBo3nHPEts4-wHMg&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1656764478001	geckodriver	INFO	Listening on 127.0.0.1:53652
+1656764478524	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "53653" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofile8SIxtq"
+2022-07-02 14:21:18.922 plugin-container[50221:908474] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:21:18.922 plugin-container[50221:908474] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 14:21:18.927 plugin-container[50221:908474] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:21:18.927 plugin-container[50221:908474] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 14:21:18.927 plugin-container[50221:908483] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:21:18.927 plugin-container[50221:908483] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1656764478937	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:53653
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofile8SIxtq/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+1656764480344	Marionette	INFO	Listening on port 53666
+DevTools listening on ws://localhost:53653/devtools/browser/7f6fc833-88b6-4d83-be71-7d02e4730783
+Read port: 53666
+1656764480408	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 76ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AAAyyL6BAQAAd4UIwk_zzVC-tiaaXPsODoi9nvj0OYqffBo3nHPEts4-wHMg&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+SourceActor threw an exception: [Exception... "Component returned failure code: 0x80470002 (NS_BASE_STREAM_CLOSED) [nsIInputStream.available]"  nsresult: "0x80470002 (NS_BASE_STREAM_CLOSED)"  location: "JS frame :: resource://devtools/shared/DevToolsUtils.js :: onResponse :: line 596"  data: no]
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:596:34
+onStopRequest@resource://gre/modules/NetUtil.jsm:128:18
+Line: 596, column: 0
+console.error: ({})
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 596: NS_BASE_STREAM_CLOSED: Component returned failure code: 0x80470002 (NS_BASE_STREAM_CLOSED) [nsIInputStream.available]
+1656764646628	geckodriver	INFO	Listening on 127.0.0.1:53757
+1656764647148	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-headless" "--remote-debugging-port" "53758" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofileirl3R2"
+*** You are running in headless mode.
+2022-07-02 14:24:07.547 plugin-container[50290:910308] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:24:07.547 plugin-container[50290:910308] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 14:24:07.552 plugin-container[50290:910308] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:24:07.552 plugin-container[50290:910308] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 14:24:07.552 plugin-container[50290:910312] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:24:07.552 plugin-container[50290:910312] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1656764647574	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:53758
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofileirl3R2/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+1656764648881	Marionette	INFO	Listening on port 53787
+DevTools listening on ws://localhost:53758/devtools/browser/869db259-989a-4353-b677-f3673f83fe2b
+Read port: 53787
+1656764648912	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 59ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AAAyyL6BAQAAd4UIwk_zzVC-tiaaXPsODoi9nvj0OYqffBo3nHPEts4-wHMg&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1656765303358	geckodriver	INFO	Listening on 127.0.0.1:53961
+1656765303883	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-headless" "--remote-debugging-port" "53962" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofilecrvZnl"
+*** You are running in headless mode.
+2022-07-02 14:35:04.281 plugin-container[50501:918413] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:35:04.282 plugin-container[50501:918413] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 14:35:04.290 plugin-container[50501:918413] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:35:04.290 plugin-container[50501:918413] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 14:35:04.291 plugin-container[50501:918415] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:35:04.291 plugin-container[50501:918415] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1656765304301	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:53962
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofilecrvZnl/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+1656765305633	Marionette	INFO	Listening on port 53976
+Read port: 53976
+DevTools listening on ws://localhost:53962/devtools/browser/e68b4ea9-950d-4fb3-8d19-bc2bc771d6e3
+1656765305661	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 60ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AECp476BAQAAfNxsHBCqHDNSJaT6SUSoPEajFP7zmKD_By07g1_2fnZsXX3L&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1656765412394	geckodriver	INFO	Listening on 127.0.0.1:54066
+1656765412930	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-headless" "--remote-debugging-port" "54067" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofileqANizi"
+*** You are running in headless mode.
+2022-07-02 14:36:53.313 plugin-container[50562:919893] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:36:53.313 plugin-container[50562:919893] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 14:36:53.317 plugin-container[50562:919893] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:36:53.317 plugin-container[50562:919893] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 14:36:53.317 plugin-container[50562:919895] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:36:53.317 plugin-container[50562:919895] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1656765413330	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:54067
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofileqANizi/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+1656765414659	Marionette	INFO	Listening on port 54081
+DevTools listening on ws://localhost:54067/devtools/browser/2a9f445a-5cf2-482a-8932-bf2a41dc324d
+Read port: 54081
+1656765414707	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1656765505666	geckodriver	INFO	Listening on 127.0.0.1:54114
+1656765506200	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-headless" "--remote-debugging-port" "54115" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofilel4eRgH"
+*** You are running in headless mode.
+2022-07-02 14:38:26.584 plugin-container[50614:921159] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:38:26.584 plugin-container[50614:921159] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 14:38:26.587 plugin-container[50614:921159] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:38:26.587 plugin-container[50614:921159] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 14:38:26.588 plugin-container[50614:921157] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:38:26.588 plugin-container[50614:921157] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1656765506600	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:54115
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofilel4eRgH/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+1656765507858	Marionette	INFO	Listening on port 54129
+Read port: 54129
+1656765507876	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://localhost:54115/devtools/browser/29125e27-c724-48df-ab7f-2651ff1646f2
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 68ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AECp476BAQAAfNxsHBCqHDNSJaT6SUSoPEajFP7zmKD_By07g1_2fnZsXX3L&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1656765608392	geckodriver	INFO	Listening on 127.0.0.1:54221
+1656765608926	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-headless" "--remote-debugging-port" "54222" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofilecxnxEA"
+*** You are running in headless mode.
+2022-07-02 14:40:09.316 plugin-container[50678:922863] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:40:09.316 plugin-container[50678:922863] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 14:40:09.320 plugin-container[50678:922863] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:40:09.320 plugin-container[50678:922863] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 14:40:09.321 plugin-container[50678:922867] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:40:09.321 plugin-container[50678:922867] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1656765609343	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:54222
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofilecxnxEA/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+1656765610645	Marionette	INFO	Listening on port 54237
+Read port: 54237
+1656765610707	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://localhost:54222/devtools/browser/31d9fd5a-9928-403e-9b3c-7dcbff8556c7
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 60ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AECp476BAQAAfNxsHBCqHDNSJaT6SUSoPEajFP7zmKD_By07g1_2fnZsXX3L&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 68ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AECp476BAQAAfNxsHBCqHDNSJaT6SUSoPEajFP7zmKD_By07g1_2fnZsXX3L&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 87ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AECp476BAQAAfNxsHBCqHDNSJaT6SUSoPEajFP7zmKD_By07g1_2fnZsXX3L&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 73ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AECp476BAQAAfNxsHBCqHDNSJaT6SUSoPEajFP7zmKD_By07g1_2fnZsXX3L&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 67ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AECp476BAQAAfNxsHBCqHDNSJaT6SUSoPEajFP7zmKD_By07g1_2fnZsXX3L&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+Exiting due to channel error.
+1656765681451	geckodriver	INFO	Listening on 127.0.0.1:54332
+1656765681982	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-headless" "--remote-debugging-port" "54333" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofilexpFCit"
+*** You are running in headless mode.
+2022-07-02 14:41:22.373 plugin-container[50716:924227] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:41:22.373 plugin-container[50716:924227] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 14:41:22.377 plugin-container[50716:924227] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:41:22.377 plugin-container[50716:924227] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 14:41:22.377 plugin-container[50716:924240] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:41:22.377 plugin-container[50716:924240] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1656765682394	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:54333
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofilexpFCit/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+1656765683803	Marionette	INFO	Listening on port 54347
+DevTools listening on ws://localhost:54333/devtools/browser/666c5722-7954-48f9-925b-f02cf689f374
+Read port: 54347
+1656765683863	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 64ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AECp476BAQAAfNxsHBCqHDNSJaT6SUSoPEajFP7zmKD_By07g1_2fnZsXX3L&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 80ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AECp476BAQAAfNxsHBCqHDNSJaT6SUSoPEajFP7zmKD_By07g1_2fnZsXX3L&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 79ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AECp476BAQAAfNxsHBCqHDNSJaT6SUSoPEajFP7zmKD_By07g1_2fnZsXX3L&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 76ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AECp476BAQAAfNxsHBCqHDNSJaT6SUSoPEajFP7zmKD_By07g1_2fnZsXX3L&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 70ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AECp476BAQAAfNxsHBCqHDNSJaT6SUSoPEajFP7zmKD_By07g1_2fnZsXX3L&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1656765715316	geckodriver	INFO	Listening on 127.0.0.1:54428
+1656765715845	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-headless" "--remote-debugging-port" "54429" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofileBk3Ehq"
+*** You are running in headless mode.
+2022-07-02 14:41:56.238 plugin-container[50745:925215] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:41:56.238 plugin-container[50745:925215] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 14:41:56.242 plugin-container[50745:925215] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:41:56.242 plugin-container[50745:925215] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 14:41:56.243 plugin-container[50745:925221] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:41:56.243 plugin-container[50745:925221] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1656765716255	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:54429
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofileBk3Ehq/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+1656765717885	Marionette	INFO	Listening on port 54442
+Read port: 54442
+1656765717945	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://localhost:54429/devtools/browser/b935727a-3c41-4753-a8d1-20bab450379f
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1656765719908	geckodriver	INFO	Listening on 127.0.0.1:54454
+1656765720441	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-headless" "--remote-debugging-port" "54455" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofileI0tJxi"
+*** You are running in headless mode.
+2022-07-02 14:42:00.807 plugin-container[50766:925582] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:42:00.808 plugin-container[50766:925582] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 14:42:00.811 plugin-container[50766:925582] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:42:00.811 plugin-container[50766:925582] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 14:42:00.812 plugin-container[50766:925590] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:42:00.812 plugin-container[50766:925590] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1656765720830	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:54455
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofileI0tJxi/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+1656765722143	Marionette	INFO	Listening on port 54470
+DevTools listening on ws://localhost:54455/devtools/browser/300cd188-d3ad-424b-b6db-ee731809ffde
+Read port: 54470
+1656765722214	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 60ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AECp476BAQAAfNxsHBCqHDNSJaT6SUSoPEajFP7zmKD_By07g1_2fnZsXX3L&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 75ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AECp476BAQAAfNxsHBCqHDNSJaT6SUSoPEajFP7zmKD_By07g1_2fnZsXX3L&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 111ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AECp476BAQAAfNxsHBCqHDNSJaT6SUSoPEajFP7zmKD_By07g1_2fnZsXX3L&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 81ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AECp476BAQAAfNxsHBCqHDNSJaT6SUSoPEajFP7zmKD_By07g1_2fnZsXX3L&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 83ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AECp476BAQAAfNxsHBCqHDNSJaT6SUSoPEajFP7zmKD_By07g1_2fnZsXX3L&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1656766392315	geckodriver	INFO	Listening on 127.0.0.1:54622
+1656766392848	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-headless" "--remote-debugging-port" "54623" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofileeSKEod"
+*** You are running in headless mode.
+2022-07-02 14:53:13.227 plugin-container[50994:932996] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:53:13.227 plugin-container[50994:932996] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 14:53:13.230 plugin-container[50994:932996] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:53:13.230 plugin-container[50994:932996] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 14:53:13.231 plugin-container[50994:933001] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:53:13.231 plugin-container[50994:933001] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1656766393246	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:54623
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofileeSKEod/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+1656766394477	Marionette	INFO	Listening on port 54637
+DevTools listening on ws://localhost:54623/devtools/browser/3ae99814-7acc-463f-a9fa-de4f2189ed17
+Read port: 54637
+1656766394548	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 78ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AECp476BAQAAfNxsHBCqHDNSJaT6SUSoPEajFP7zmKD_By07g1_2fnZsXX3L&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1656766451556	geckodriver	INFO	Listening on 127.0.0.1:54731
+1656766452086	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-headless" "--remote-debugging-port" "54732" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofilewqFsBQ"
+*** You are running in headless mode.
+2022-07-02 14:54:12.448 plugin-container[51042:934223] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:54:12.449 plugin-container[51042:934223] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 14:54:12.455 plugin-container[51042:934223] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:54:12.455 plugin-container[51042:934223] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 14:54:12.455 plugin-container[51042:934227] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 14:54:12.455 plugin-container[51042:934227] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1656766452470	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:54732
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofilewqFsBQ/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+1656766453910	Marionette	INFO	Listening on port 54745
+DevTools listening on ws://localhost:54732/devtools/browser/b2653fdf-fe25-4d2b-beb0-04e91d2ec219
+Read port: 54745
+1656766453966	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 62ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AECp476BAQAAfNxsHBCqHDNSJaT6SUSoPEajFP7zmKD_By07g1_2fnZsXX3L&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 70ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AECp476BAQAAfNxsHBCqHDNSJaT6SUSoPEajFP7zmKD_By07g1_2fnZsXX3L&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 73ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AECp476BAQAAfNxsHBCqHDNSJaT6SUSoPEajFP7zmKD_By07g1_2fnZsXX3L&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 109ms)
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AECp476BAQAAfNxsHBCqHDNSJaT6SUSoPEajFP7zmKD_By07g1_2fnZsXX3L&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 78ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AECp476BAQAAfNxsHBCqHDNSJaT6SUSoPEajFP7zmKD_By07g1_2fnZsXX3L&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1656768012395	geckodriver	INFO	Listening on 127.0.0.1:54891
+1656768012929	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-headless" "--remote-debugging-port" "54892" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofilesirUM2"
+*** You are running in headless mode.
+2022-07-02 15:20:13.323 plugin-container[51461:946778] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 15:20:13.324 plugin-container[51461:946778] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 15:20:13.328 plugin-container[51461:946778] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 15:20:13.328 plugin-container[51461:946778] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 15:20:13.328 plugin-container[51461:946784] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 15:20:13.328 plugin-container[51461:946784] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1656768013342	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:54892
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofilesirUM2/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+1656768014638	Marionette	INFO	Listening on port 54906
+DevTools listening on ws://localhost:54892/devtools/browser/cb6908a8-d8f8-4da8-9aba-1706f1ef8776
+Read port: 54906
+1656768014705	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1656768051632	geckodriver	INFO	Listening on 127.0.0.1:54933
+1656768052166	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-headless" "--remote-debugging-port" "54934" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofileqU10Mt"
+*** You are running in headless mode.
+2022-07-02 15:20:52.539 plugin-container[51492:947580] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 15:20:52.540 plugin-container[51492:947580] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 15:20:52.543 plugin-container[51492:947580] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 15:20:52.543 plugin-container[51492:947580] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 15:20:52.543 plugin-container[51492:947587] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 15:20:52.543 plugin-container[51492:947587] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1656768052558	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:54934
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofileqU10Mt/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+1656768053860	Marionette	INFO	Listening on port 54949
+DevTools listening on ws://localhost:54934/devtools/browser/e7e1ec53-8115-49b5-8225-a79cc5fd211a
+Read port: 54949
+1656768053947	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 62ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AIAg_76BAQAAQnLM4M4qhQYofV5ag2f5rh5vwHaAEDu7vIBGPJCw5oNcgS_p&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 110ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AIAg_76BAQAAQnLM4M4qhQYofV5ag2f5rh5vwHaAEDu7vIBGPJCw5oNcgS_p&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 90ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AIAg_76BAQAAQnLM4M4qhQYofV5ag2f5rh5vwHaAEDu7vIBGPJCw5oNcgS_p&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 73ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AIAg_76BAQAAQnLM4M4qhQYofV5ag2f5rh5vwHaAEDu7vIBGPJCw5oNcgS_p&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 70ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AIAg_76BAQAAQnLM4M4qhQYofV5ag2f5rh5vwHaAEDu7vIBGPJCw5oNcgS_p&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1656768140394	geckodriver	INFO	Listening on 127.0.0.1:55032
+1656768140925	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-headless" "--remote-debugging-port" "55033" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofilewnhJ8Z"
+*** You are running in headless mode.
+2022-07-02 15:22:21.320 plugin-container[51527:949035] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 15:22:21.320 plugin-container[51527:949035] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 15:22:21.324 plugin-container[51527:949035] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 15:22:21.324 plugin-container[51527:949035] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-02 15:22:21.324 plugin-container[51527:949043] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-02 15:22:21.324 plugin-container[51527:949043] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1656768141342	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:55033
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofilewnhJ8Z/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+1656768142710	Marionette	INFO	Listening on port 55046
+DevTools listening on ws://localhost:55033/devtools/browser/82028be1-f3f0-4fee-82de-1f0e9e52994a
+Read port: 55046
+1656768142809	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 78ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AIAg_76BAQAAQnLM4M4qhQYofV5ag2f5rh5vwHaAEDu7vIBGPJCw5oNcgS_p&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 71ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AIAg_76BAQAAQnLM4M4qhQYofV5ag2f5rh5vwHaAEDu7vIBGPJCw5oNcgS_p&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 82ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AIAg_76BAQAAQnLM4M4qhQYofV5ag2f5rh5vwHaAEDu7vIBGPJCw5oNcgS_p&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 73ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AIAg_76BAQAAQnLM4M4qhQYofV5ag2f5rh5vwHaAEDu7vIBGPJCw5oNcgS_p&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 75ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AIAg_76BAQAAQnLM4M4qhQYofV5ag2f5rh5vwHaAEDu7vIBGPJCw5oNcgS_p&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 75ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AAAPNr-BAQAAyKvTftpYmorcmJ2dR172t5rGcgqrFk94Cct8pft7Mwm-tGwE&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 63ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AAAPNr-BAQAAyKvTftpYmorcmJ2dR172t5rGcgqrFk94Cct8pft7Mwm-tGwE&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 66ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AAAPNr-BAQAAyKvTftpYmorcmJ2dR172t5rGcgqrFk94Cct8pft7Mwm-tGwE&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 70ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AAAPNr-BAQAAyKvTftpYmorcmJ2dR172t5rGcgqrFk94Cct8pft7Mwm-tGwE&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://opensea.io/_next/static/chunks/d3dd70f4.b44ca4b8c4280ee9fcd8.js, line 0: Successfully compiled asm.js code (total compilation time 64ms)
+JavaScript warning: https://opensea.io/singular-www.js?async&seed=AAAPNr-BAQAAyKvTftpYmorcmJ2dR172t5rGcgqrFk94Cct8pft7Mwm-tGwE&I196zqqsyk--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.

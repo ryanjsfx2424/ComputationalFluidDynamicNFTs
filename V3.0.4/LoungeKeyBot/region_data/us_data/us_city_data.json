@@ -1,0 +1,17 @@
+{
+ "chicago":"midwest",
+ "minneapolis":"midwest",
+ "st.louis":"midwest",
+
+ "fortlauderdale":"southeast",
+ "miami":"southeast",
+
+ "boston":"newengland",
+ "newyork":"newengland",
+ "buffalo":"newengland",
+
+ "sanfrancisco":"southwest",
+ "losangeles":"southwest",
+
+ "washingtondc":"greatlakes"
+}

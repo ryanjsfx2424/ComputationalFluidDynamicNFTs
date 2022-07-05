@@ -1,0 +1,20 @@
+Burundi	11,576	Burundi Map	Bujumbura
+Comoros	851	Comoros Map	Moroni
+Djibouti	986	Djibouti Map	Djibouti
+Eritrea	5,310	Eritrea Map	Asmara
+Ethiopia	110,136	Ethiopia Map	Addis Ababa
+Kenya	52,215	Kenya Map	Nairobi
+Madagascar	26,970	Madagascar Map	Antananarivo
+Malawi	19,719	Malawi Map	Lilongwe
+Mauritius	1,271	Mauritius Map	Port Louis
+Mozambique	31,409	Mozambique Map	Maputo
+Reunion	890	Réunion Map	Saint Denis
+Rwanda	12,794	Rwanda Map	Kigali
+Seychelles	96	Seychelles Map	Victoria
+Somalia	15,636	Somalia Map	Mogadishu
+SomaliaandSomaliland	15,636	Somalia Map	Mogadishu
+SouthSudan	13,263	see: Sudan Map	Juba
+Tanzania	60,914	Tanzania Map	Dodoma, Dar es Salaam
+Uganda	45,712	Uganda Map	Kampala
+Zambia	18,137	Zambia Map	Lusaka
+Zimbabwe	17,297	Zimbabwe Map	Harare

@@ -1,0 +1,10 @@
+Angola	31,788	Angola Map	Luanda
+Cameroon	25,313	Cameroon Map	Yaounde
+CentralAfricanRepublic	4,826	Central African Republic Map	Bangui
+Chad	15,814	Chad Map	N'Djamena
+DemocraticRepublicOfCongo (Kinshasa)	86,728	Congo, Dem. Rep. Map	Kinshasa
+RepublicOfCongo (Brazzaville)	5,542	Congo, Rep. Map	Brazzaville
+EquatorialGuinea	1,360	Equatorial Guinea Map	Malabo
+Gabon	2,109	Gabon Map	Libreville
+SaoTomeandprincipe	213	 	São Tomé
+SaoTome	213	 	São Tomé

@@ -1,0 +1,17 @@
+Benin	11,802	Benin Map	Porto-Novo, Cotonou
+BurkinaFaso	20,322	Burkina Faso Map	Ouagadougou
+CapeVerde	560	Cape Verde Map	Praia
+IvoryCoast	25,531	Ivory Coast Map	Yamoussoukro, Abidjan
+Gambia	2,228	see: Senegal Map	Banjul
+Ghana	30,100	Ghana Map	Accra
+Guinea	13,400	Guinea Map	Conakry
+Guinea-Bissau	1,954	Guinea-Bissau Map	Bissau
+Liberia	4,978	Liberia Map	Monrovia
+Mali	19,689	Mali Map	Bamako
+Mauritania	4,661	Mauritania Map	Nouakchott
+Niger	23,177	Niger Map	Niamey
+Nigeria	200,962	Nigeria Map	Abuja
+SaintHelena	4.5	 	Jamestown
+Senegal	16,744	Senegal Map	Dakar
+SierraLeone	7,883	Sierra Leone Map	Freetown
+Togo	8,186	Togo Map	Lomé
