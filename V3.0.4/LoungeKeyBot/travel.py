@@ -8,12 +8,34 @@ class TravelBot(RegionData):
         self.url = "https://secretflying.com"
         self.sleep_time = 60.1
 
-        self.icon_url = "https://cdn.discordapp.com/attachments/932056137518444594/991364877467783279/Screenshot_2022-06-28_at_13.56.21.png"
+        #self.icon_url = "https://cdn.discordapp.com/attachments/932056137518444594/991364877467783279/Screenshot_2022-06-28_at_13.56.21.png"
+        self.icon_url = "https://cdn.discordapp.com/attachments/953289270771220551/994018807813251193/blurred_logo.jpeg"
 
         self.BOT_COMMANDS_CIDS = [932056137518444594]
 
         self.CIDS     = self.load_discord_ids("region_data/channel_id_data.json")
         self.TIDS_USA = self.load_discord_ids("region_data/us_region_thread_id_data.json")
+
+        self.roles = {"Authenticated": "979452786355867679",
+                      "usa"                :"985752938376998932",
+                      "canada"             :"985753142186618960",
+                      "c-america-carribean":"985753244481499187",
+                      "south-america"      :"985753389784784947",
+                      "europe"             :"985753496391397417",
+                      "me-and-north-africa":"985753570504769547",
+                      "africa"             :"985753667850338364",
+                      "c-and-s-asia"       :"985753732664930354",
+                      "east-asia"          :"985753842765398056",
+                      "oceania"            :"985753911631700049",
+                      "uk-and-ireland"     :"985754061770993684",
+                      "northwest"          :"992563715352309830",
+                      "southwest"          :"992563988237918299",
+                      "greatlakes"         :"992564308967948378",
+                      "southeast"          :"992564207910391848",
+                      "newengland"         :"992564378673098762",
+                      "south"              :"992564134736568473",
+                      "midwest"            :"992564037055418438"
+                      }
 
         self.load_region_data()
         self.fares = {}
@@ -103,6 +125,9 @@ class TravelBot(RegionData):
                     if hashtag not in hashtags:
                         hashtags.append(hashtag)
                     # end if
+
+                    if subregion in text.split(" to ")[0].lower().replace(" ", ""):
+                        hashtags[-1] = hashtags[-1] + "_from"
                 # end if
             # end for
         # end for

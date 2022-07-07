@@ -91,11 +91,12 @@ class DisplayRoos(object):
         embed.set_footer(text = "Built for Roo Troop, Powered by @TheLunaLabs",
                          icon_url=self.URL)
 
-        os.chdir("IMAGES/root/")
+        home = os.getcwd()
+        os.chdir("/Users/ryanjsfx/Documents/RooPunks/IMAGES/root/")
         file = interactions.File(fname)
         embed.set_image(url="attachment://" + fname)
         await ctx.send(files=file, embeds=embed, ephemeral=True)
-        os.chdir("../..")
+        os.chdir(home)
       elif name != None:
         print("name: ", name)
         num = name.split("#")[1]
@@ -128,11 +129,12 @@ class DisplayRoos(object):
             embed = interactions.Embed(title=title, description=description,)
             embed.set_footer(text = "Built for Roo Troop, Powered by @TheLunaLabs",
                     icon_url=self.URL)
-            os.chdir("IMAGES/root/")
+            home = os.getcwd()
+            os.chdir("/Users/ryanjsfx/Documents/RooPunks/IMAGES/root/")
             file = interactions.File(fname)
             embed.set_image(url="attachment://" + fname)
             await ctx.send(files=file, embeds=embed, ephemeral=True)
-            os.chdir("../..")
+            os.chdir(home)
             return
           # end if
         # end for

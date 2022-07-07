@@ -57,7 +57,7 @@ class RegionData(object):
         )
 
         self.region_data["uk-and-ireland"] = ["uk","ireland"]
-        self.region_data["canada"] = ["canada"]
+        self.region_data["canada"] = ["canada", "canadian"]
 
         self.region_data["usa"] = self.load_region_data6(
             usa_data_path + "/states.txt"
