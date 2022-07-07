@@ -17,6 +17,7 @@ class TravelBot(RegionData):
         self.TIDS_USA = self.load_discord_ids("region_data/us_region_thread_id_data.json")
 
         self.roles = {"Authenticated": "979452786355867679",
+                      "everyone"           :"994455299475910656",
                       "usa"                :"985752938376998932",
                       "canada"             :"985753142186618960",
                       "c-america-carribean":"985753244481499187",

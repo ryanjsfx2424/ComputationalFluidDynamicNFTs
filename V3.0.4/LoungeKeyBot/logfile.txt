@@ -1,0 +1,110 @@
+nohup: ignoring input
+[2022-07-07 17:49:42] [INFO    ] discord.client: logging in using static token
+[2022-07-07 17:49:42] [INFO    ] discord.gateway: Shard ID None has sent the IDENTIFY payload.
+[2022-07-07 17:49:42] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: e9ea76e149f8574b50b9bdad02c2b0bb).
+on_ready
+resp:  <Response [200]>
+resp:  <Response [200]>
+['']
+[855616810525917215]
+[932056137518444594]
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+['']
+[855616810525917215]
+[932056137518444594]
+resp:  <Response [200]>
+['']
+[855616810525917215]
+[932056137518444594]
+resp:  <Response [200]>
+['']
+[855616810525917215]
+[932056137518444594]
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+['']
+[855616810525917215]
+[932056137518444594]
+['']
+[855616810525917215]
+[932056137518444594]
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+['']
+[855616810525917215]
+[932056137518444594]
+['']
+[855616810525917215]
+[932056137518444594]
+resp:  <Response [200]>
+['']
+[855616810525917215]
+[932056137518444594]
+['']
+[855616810525917215]
+[932056137518444594]
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+['']
+[855616810525917215]
+[932056137518444594]
+['']
+[855616810525917215]
+[932056137518444594]
+['']
+[855616810525917215]
+[932056137518444594]
+['']
+[855616810525917215]
+[932056137518444594]
+resp:  <Response [200]>
+resp:  <Response [200]>
+['']
+[855616810525917215]
+[932056137518444594]
+['']
+[855616810525917215]
+[932056137518444594]
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>
+resp:  <Response [200]>

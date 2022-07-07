@@ -21,11 +21,14 @@ class TravelDiscordBot(TravelBot):
             if message.content.startswith("!lk update pfp="):
                 img = message.content.replace("!lk update pfp=","")
                 with open(img, "rb") as fid:
-                    await client.edit_profile(avatar=fid.read())
+                    #await client.edit_profile(avatar=fid.read()) re-write/2.0
+                    await client.user.edit(avatar=fid.read()) # 1.7.3
                 # end with open
 
         @client.event
         async def on_ready():
+            return
+            print("on_ready")
             while True:
                 old_fares = []
 
@@ -44,11 +47,13 @@ class TravelDiscordBot(TravelBot):
                     # end if
                     title = fare
                     description = ""
+
+                    ports = []; roles = []
                     for jj,hashtag in enumerate(self.fares["hashtags"][ii]):
                         if "_from" in hashtag:
                             hashtag = hashtag.replace("_from","")
-                            role = self.roles[hashtag[1:]]
-                            port = jj
+                            roles.append(self.roles[hashtag[1:]])
+                            ports.append(jj)
                             if   hashtag[1:] in self.CIDS:
                                 did = self.CIDS[hashtag[1:]]
                             elif hashtag[1:] in self.TIDS_USA:
@@ -64,6 +69,10 @@ class TravelDiscordBot(TravelBot):
                             channel = client.get_channel(did)
                         # end if
                         description += hashtag + ", "
+                        if "error-fares" in hashtag:
+                            ports.append(jj)
+                            roles.append(self.roles["everyone"])
+                        # end if
                     # end for
                     description = description[:-2]
                     #description = ", ".join(self.fares["hashtags"][ii])
