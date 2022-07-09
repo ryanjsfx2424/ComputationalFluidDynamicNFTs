@@ -27,7 +27,6 @@ class TravelDiscordBot(TravelBot):
 
         @client.event
         async def on_ready():
-            return
             print("on_ready")
             while True:
                 old_fares = []
@@ -48,9 +47,13 @@ class TravelDiscordBot(TravelBot):
                     title = fare
                     description = ""
 
-                    ports = []; roles = []
+                    ports = []; roles = []; channels = []
                     for jj,hashtag in enumerate(self.fares["hashtags"][ii]):
+                        description += hashtag + ", "
                         if "_from" in hashtag:
+                            if "usa" in hashtag:
+                                continue
+                            # end if
                             hashtag = hashtag.replace("_from","")
                             roles.append(self.roles[hashtag[1:]])
                             ports.append(jj)
@@ -66,15 +69,16 @@ class TravelDiscordBot(TravelBot):
                                 print("TIDS_USA keys: ", self.TIDS_USA.keys())
                                 raise
                             # end if/elif
-                            channel = client.get_channel(did)
+                            channels.append(client.get_channel(did))
                         # end if
-                        description += hashtag + ", "
                         if "error-fares" in hashtag:
                             ports.append(jj)
-                            roles.append(self.roles["everyone"])
+                            roles.append(self.roles["error-fares"])
+                            channels.append(client.get_channel(self.CIDS["error-fares"]))
                         # end if
                     # end for
                     description = description[:-2]
+                    description = description.replace("_from","")
                     #description = ", ".join(self.fares["hashtags"][ii])
 
                     embed = discord.Embed(title=title, description=description,
@@ -85,11 +89,14 @@ class TravelDiscordBot(TravelBot):
                     #embed.add_field(name="Hey @Authenticated", value="\u200b")
 
                     #channel = client.get_channel(self.BOT_COMMANDS_CIDS[0])
-                    if role not in roles_mentioned:
-                        await channel.send("Hey <@&" + role + ">")
-                        roles_mentioned.append(role)
-                    # end if
-                    await channel.send(embed=embed)
+                    for jj,role in enumerate(roles):
+                        channel = channels[jj]
+                        if role not in roles_mentioned:
+                            await channel.send("Hey <@&" + role + ">")
+                            roles_mentioned.append(role)
+                        # end if
+                        await channel.send(embed=embed)
+                    # end for
                 # end for
                 await asyncio.sleep(self.sleep_time)
             # end while

@@ -17,7 +17,7 @@ class TravelBot(RegionData):
         self.TIDS_USA = self.load_discord_ids("region_data/us_region_thread_id_data.json")
 
         self.roles = {"Authenticated": "979452786355867679",
-                      "everyone"           :"994455299475910656",
+                      "error-fares"        :"951232895949897779",
                       "usa"                :"985752938376998932",
                       "canada"             :"985753142186618960",
                       "c-america-carribean":"985753244481499187",
@@ -50,7 +50,10 @@ class TravelBot(RegionData):
     # end load_discord_ids
 
     def get_html(self):
-        resp = requests.get(self.url)
+        try:
+          resp = requests.get(self.url)
+        except:
+          return
         print("resp: ", resp)
         self.html = resp.text
 
@@ -120,15 +123,19 @@ class TravelBot(RegionData):
                             hashtags.append("#usa")
                         # end if
                     else:
+                        if "washingtondc" in text.lower().replace(" ",""):
+                            continue
+                        # end if
                         hashtag = "#" + region
                     # end if
 
-                    if hashtag not in hashtags:
+                    if hashtag not in "".join(hashtags):
                         hashtags.append(hashtag)
                     # end if
 
                     if subregion in text.split(" to ")[0].lower().replace(" ", ""):
-                        hashtags[-1] = hashtags[-1] + "_from"
+                        if "usa" not in hashtags[-1]:
+                            hashtags[-1] = hashtags[-1] + "_from"
                 # end if
             # end for
         # end for
