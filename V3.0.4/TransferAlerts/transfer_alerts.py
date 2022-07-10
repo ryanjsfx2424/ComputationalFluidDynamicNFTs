@@ -13,7 +13,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
 options = Options()
 options.headless = True
-driver = webdriver.Firefox(options=options, executable_path="./geckodriver")
+driver = webdriver.Firefox(options=options, executable_path="/root/ComputationalFluidDynamicNFTs/V3.0.4/TransferAlerts/geckodriver_linux")
 OS_BASE = "https://opensea.io/assets/ethereum/"
 
 class TransferAlerts(object):
@@ -21,7 +21,8 @@ class TransferAlerts(object):
         self.QS = 0.001 # quick sleep
         self.dev_mode = True
 
-        self.CID = 932056137518444594
+        self.CID_LOG = 932056137518444594
+        self.CID_MSG = 995421075414450186 # spy-tool in NFT Round Table
         self.ICON_URL = "https://cdn.discordapp.com/attachments/932056137518444594/992768887890395166/Screenshot_2022-07-02_at_13.48.53.png"
 
         self.wallet_path = "data_big/WALLETS"
@@ -499,8 +500,8 @@ class TransferAlerts(object):
 
         @client.event
         async def on_ready():
-            self.channel_log = client.get_channel(self.CID)
-            self.channel_msg = client.get_channel(self.CID)
+            self.channel_log = client.get_channel(self.CID_LOG)
+            self.channel_msg = client.get_channel(self.CID_MSG)
 
             await self.loop_forever()
         # end on_ready
