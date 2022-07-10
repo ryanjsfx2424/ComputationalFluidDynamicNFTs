@@ -7,3 +7,8 @@ refactored
 
 # for privacy
 git_ignores_me*
+
+#snscrape
+data_big
+
+logfile*txt
