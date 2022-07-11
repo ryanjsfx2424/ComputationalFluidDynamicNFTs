@@ -3,6 +3,7 @@ import ast
 import glob
 import time
 import json
+import socket
 import numpy as np
 import asyncio
 import gspread
@@ -13,16 +14,22 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
 options = Options()
 options.headless = True
-driver = webdriver.Firefox(options=options, executable_path="/root/ComputationalFluidDynamicNFTs/V3.0.4/TransferAlerts/geckodriver_linux")
+
+exec_path = "/root/ComputationalFluidDynamicNFTs/V3.0.4/TransferAlerts/geckodriver_linux"
+if socket.gethostname() == "MB-145.local":
+  exec_path = "/Users/ryanjsfx/Documents/ComputationalFluidDynamicNFTs/V3.0.4/TransferAlerts/geckodriver"
+driver = webdriver.Firefox(options=options, executable_path=exec_path)
 OS_BASE = "https://opensea.io/assets/ethereum/"
 
 class TransferAlerts(object):
     def __init__(self):
         self.QS = 0.001 # quick sleep
+        self.LS = 10 # quick sleep
         self.dev_mode = True
 
         self.CID_LOG = 932056137518444594
         self.CID_MSG = 995421075414450186 # spy-tool in NFT Round Table
+        self.CID_MSG = 932056137518444594 # for testing
         self.ICON_URL = "https://cdn.discordapp.com/attachments/932056137518444594/992768887890395166/Screenshot_2022-07-02_at_13.48.53.png"
 
         self.wallet_path = "data_big/WALLETS"
@@ -75,7 +82,8 @@ class TransferAlerts(object):
         flag = False
         settings = {"collections"  :[],
                     "num_blocks"   :[],
-                    "num_transfers":[]
+                    "num_transfers":[],
+                    "transaction_types":[]
                     }
         for row in gsheet:
             if "END DATA" in row:
@@ -87,6 +95,7 @@ class TransferAlerts(object):
                     msg += "\nnfts: " + ", ".join(list(self.nfts.keys()))
                     print(msg)
                     await self.channel_log.send(msg)
+                    raise
                     continue
                 # end if
                 try:
@@ -95,6 +104,8 @@ class TransferAlerts(object):
                     msg = "warning! exception getting num_blocks for row `" + row + "` so we're skipping"
                     print(msg)
                     await self.channel_log.send(msg)
+                    raise
+                    continue
                 # end try/except
                 try:
                     num_transfers = float(row[2])
@@ -102,11 +113,31 @@ class TransferAlerts(object):
                     msg = "warning! exception getting num_transfers for row `" + row + "` so we're skipping"
                     print(msg)
                     await self.channel_log.send(msg)
+                    raise
+                    continue
+                # end try/except
+                try:
+                    transaction_type = row[3].lower()
+                    if transaction_type not in ["bought", "sold", "minted", "burned", "all"]:
+                        msg  = "warning! transaction_type not in 'bought',"
+                        msg += "'sold', 'minted', 'burned', recvd: " + transaction_type
+                        print(msg)
+                        await self.channel_log.send(msg)
+                        raise
+                        continue
+                    # end if
+                except:
+                    msg = "warning! exception getting transaction_type for row `" + row + "` so we're skipping"
+                    print(msg)
+                    await self.channel_log.send(msg)
+                    raise
+                    continue
                 # end try/except
 
                 settings["collections"  ].append(collection)
                 settings["num_blocks"   ].append(num_blocks)
                 settings["num_transfers"].append(num_transfers)
+                settings["transaction_types"].append(transaction_type)
             elif "Time Window (seconds)" in row:
                 flag = True
             # end if/elifs
@@ -263,6 +294,7 @@ class TransferAlerts(object):
             print("fname: ", fname)
 
             if fname in self.processed_fs:
+                os.system("rm " + fname)
                 continue
             # end if
 
@@ -281,10 +313,19 @@ class TransferAlerts(object):
                 line = fid.read()
             # end with open
 
-            line = ast.literal_eval(line)
+            try:
+                line = ast.literal_eval(line)
+            except Exception as err:
+                print("319 err: ", err)
+                print("320 err.args: ", err.args)
+                os.system("rm " + fname)
+                continue
+            # end try/except
+
 
             if not len(line["result"]) > 0:
                 print("results nonpositive so continuing")
+                os.system("rm " + fname)
                 continue
             # end if
 
@@ -345,6 +386,7 @@ class TransferAlerts(object):
             # end with open
 
             os.system("rm " + fname)
+            os.system("rm " + fname + "_backup")
         # end for fnames
     # end process_transfer_data
 
@@ -363,6 +405,7 @@ class TransferAlerts(object):
                 collection = self.settings["collections"  ][jj]
                 threshold  = self.settings["num_transfers"][jj]
                 num_blocks = self.settings["num_blocks"   ][jj]
+                transaction_type = self.settings["transaction_types"][jj]
 
                 print("indsC: ", indsC)
                 indsB = np.where(np.array(recent_transfers["blockNos"])[indsC]
@@ -373,6 +416,8 @@ class TransferAlerts(object):
 
                 if len(np.array(recent_transfers["blockNos"])[indsC][indsB]) < threshold:
                     print("less than threshold for iC,iB")
+                    print("threshold: ", threshold)
+                    print("len iC,iB: ", len(np.array(recent_transfers["blockNos"])[indsC][indsB]))
                     continue
                 # end if
 
@@ -384,15 +429,43 @@ class TransferAlerts(object):
                         indsCC = indsCC[0]
                     # end if
 
-                    if len(np.array(recent_transfers["wallets"])[indsC][indsB][indsCC]) < threshold:
+                    if len(list(set(np.array(recent_transfers["wallets"])[indsC][indsB][indsCC]))) < threshold:
                         print("less than threshold for iC,iB,iCC: ", collection)
+                        print("threshold: ", threshold)
+                        print("len iC,iB,iCC: ", len(np.array(recent_transfers["blockNos"])[indsC][indsB][indsCC]))
                         continue
                     # end if
                 # end if
+                print("indsCC: ", indsCC)
 
-                ## next get the indices for unique holders...
-                ## DO IT HERE
-                print("UNIQUE HOLDERS CHECK HERE!")
+                indsTT = []
+                if not transaction_type in ["any", "all"]:
+                    if indsCC == []:
+                        indsTT = np.where(np.array(recent_transfers["transfer_types"])[indsC][indsB]
+                            == transaction_type)
+                    else:
+                        indsTT = np.where(np.array(recent_transfers["transfer_types"])[indsC][indsB][indsCC]
+                            == transaction_type)
+                    # end if/else
+                # end if
+                print("indsTT: ", indsTT)
+                if indsTT != []:
+                    if indsCC == []:
+                        if len(np.array(recent_transfers["transfer_types"])[indsC][indsB][indsTT]) < threshold:
+                            print("less than threshold for iC,iB,iCC,iTT: ", collection)
+                            print("threshold: ", threshold)
+                            print("len iC,iB,iCC,iTT: ", len(np.array(recent_transfers["blockNos"])[indsC][indsB][indsTT]))
+                            continue
+                        # end if
+                    else:
+                        if len(np.array(recent_transfers["transfer_types"])[indsC][indsB][indsCC][indsTT]) < threshold:
+                            print("less than threshold for iC,iB,iTT: ", collection)
+                            print("threshold: ", threshold)
+                            print("len iC,iB,iTT: ", len(np.array(recent_transfers["blockNos"])[indsC][indsB][indsCC][indsTT]))
+                            continue
+                        # end if
+                    # end if
+                # end if
 
                 ## next might as well see if we can get the OS stuff 
                 ## b/c if not we also skip (tests if NFT vs ERC20 etc.)
@@ -414,20 +487,110 @@ class TransferAlerts(object):
                 print("grabbed os name and url!")
 
                 ## now we might as well grab holdings
-                description = ""
-                num_loops = np.array(recent_transfers["wallets"])[indsC][indsB]
+                description = ""; nl1 = -1; nl2 = -1; nl3 = -1
+                num_loops = np.array(recent_transfers["wallets"])[indsC][indsB]; nl1 = len(num_loops)
                 if indsCC != []:
-                    num_loops = num_loops[indsCC]
+                    num_loops = num_loops[indsCC]; nl2 = len(num_loops)
+                # end if
+                if indsTT != []:
+                    num_loops = num_loops[indsTT]; nl3 = len(num_loops)
                 # end if
                 num_loops = len(num_loops)
 
+                holders_processed = []
                 for kk in range(num_loops):
+                    if indsCC == []:
+                        if indsTT == []:
+                            wall = np.array(recent_transfers["wallets"])[indsC][indsB][kk]
+                            indsW = np.where(np.array(recent_transfers["wallets"])[indsC][indsB] == wall)
+                        else:
+                            wall = np.array(recent_transfers["wallets"])[indsC][indsB][indsTT][kk]
+                            indsW = np.where(np.array(recent_transfers["wallets"])[indsC][indsB][indsTT] == wall)
+                        # end if/else
+                    else:
+                        if indsTT == []:
+                            wall = np.array(recent_transfers["wallets"])[indsC][indsB][indsCC][kk]
+                            indsW = np.where(np.array(recent_transfers["wallets"])[indsC][indsB][indsCC] == wall)
+                        else:
+                            wall = np.array(recent_transfers["wallets"])[indsC][indsB][indsCC][indsTT][kk]
+                            indsW = np.where(np.array(recent_transfers["wallets"])[indsC][indsB][indsCC][indsTT] == wall)
+                        # end if/else
+                    # end if/else
+                    if type(indsW) == type(test_tuple):
+                        indsW = indsW[0]
+                    # end if
+                    if wall in holders_processed:
+                        continue
+                    # end if
+                    holders_processed.append(wall)
+
+                    ## assume transfer type is any (for now)
+                    if indsCC == []:
+                        if indsTT == []:
+                            transfers_arr = np.array(recent_transfers["transfer_types"])[indsC][indsB][indsW]
+                        else:
+                            transfers_arr = np.array(recent_transfers["transfer_types"])[indsC][indsB][indsTT][indsW]
+                        # end if/else
+                    else:
+                        if indsTT == []:
+                            transfers_arr = np.array(recent_transfers["transfer_types"])[indsC][indsB][indsCC][indsW]
+                        else:
+                            transfers_arr = np.array(recent_transfers["transfer_types"])[indsC][indsB][indsCC][indsTT][indsW]
+                        # end if/else
+                    # end if/else
+                    num_bought = 0
+                    num_sold   = 0
+                    num_minted = 0
+                    num_burned = 0
+                    for tt in transfers_arr:
+                        if tt == "bought":
+                            num_bought += 1
+                        elif tt == "sold":
+                            num_sold += 1
+                        elif tt == "minted":
+                            num_minted += 1
+                        elif tt == "burned":
+                            num_burned += 1
+                        else:
+                            print("err 457, tt: ", tt)
+                            raise
+                        # end if/elifs/else
+                    # end for
+                    transfers_string = ""
+                    if num_bought > 0:
+                        transfers_string += str(num_bought) + " bought "
+                    if num_sold > 0:
+                        if transfers_string != "":
+                            transfers_string += "and "
+                        # end if
+                        transfers_string += str(num_sold) + " sold "
+                    if num_minted > 0:
+                        if transfers_string != "":
+                            transfers_string += "and "
+                        # end if
+                        transfers_string += str(num_minted) + " minted "
+                    # end if
+                    if num_burned > 0:
+                        if transfers_string != "":
+                            transfers_string += "and "
+                        # end if
+                        transfers_string += str(num_burned) + " burned "
+                    # end if
+
                     blues = ""
                     for nft in self.nfts:
                         if indsCC == []:
-                            val = np.array(recent_transfers["blueChipHoldings"][nft])[indsC][indsB][kk]
+                            if indsTT == []:
+                                val = np.array(recent_transfers["blueChipHoldings"][nft])[indsC][indsB][kk]
+                            else:
+                                val = np.array(recent_transfers["blueChipHoldings"][nft])[indsC][indsB][indsTT][kk]
+                            # end if/else
                         else:
-                            val = np.array(recent_transfers["blueChipHoldings"][nft])[indsC][indsB][indsCC][kk]
+                            if indsTT == []:
+                                val = np.array(recent_transfers["blueChipHoldings"][nft])[indsC][indsB][indsCC][kk]
+                            else:
+                                val = np.array(recent_transfers["blueChipHoldings"][nft])[indsC][indsB][indsCC][indsTT][kk]
+                            # end if/else
                         # end if/else
 
                         if val:
@@ -435,14 +598,32 @@ class TransferAlerts(object):
                         # end if
                     # end for
                     blues = blues[:-1]
-                    description += "1 " + np.array(recent_transfers["transfer_types"
-                        ])[indsC][indsB][kk] + " by a " + blues + " holder, "
+                    description += transfers_string + " by a " + blues + " holder, "
                 # end for kk
+                if description == "":
+                    print("num_loops: ", num_loops)
+                    print("nl1: ", [nl1])
+                    print("nl2: ", [nl2])
+                    print("nl3: ", [nl3])
+                    print("indsTT: ", indsTT)
+                    raise
 
                 description = description[:-2] + "."
                 print("done looping over blues!")
 
-                alert_description = str(int(threshold)) + " Transfers by "
+                alert_description = str(int(threshold))
+                if   "any"    in transaction_type:
+                    alert_description += " Transfers by "
+                elif "minted" in transaction_type:
+                    alert_description += " Mints by "
+                elif "bought" in transaction_type:
+                    alert_description += " Buys by "
+                elif "sold"   in transaction_type:
+                    alert_description += " Sells by "
+                elif "burned"   in transaction_type:
+                    alert_description += " Burns by "
+                # end if/elif
+                
                 if collection in ["any", "all"]:
                     alert_description += "any of the tracked blue chip holders "
                 else:
@@ -462,8 +643,24 @@ class TransferAlerts(object):
                     inline=False)
                 embed.add_field(name = "Alert Details", value=description,
                     inline=False)
-                await self.channel_msg.send(embed=embed)
-                print("sent embed!")
+                wembedCnt = 0
+                while wembedCnt < 10:
+                  try:
+                    await self.channel_msg.send(embed=embed)
+                    print("sent embed!")
+                    break
+                  except Exception as err:
+                    print("526 err: ", err)
+                    print("527 err args: ", err.args[:])
+                    print("sleeping for a bit")
+                    await aysncio.sleep(self.LS)
+                    wembedCnt += 1
+                  # end try/except
+                # end while
+                if wembedCnt >= 10:
+                  print("tried sending embed 10 times, gonna crash now")
+                  raise
+                # end if
             # end for jj in settings
         # end for contracts
     # end process_recent_transfers
@@ -480,7 +677,7 @@ class TransferAlerts(object):
 
             block_new = self.w3.eth.get_block_number()
             if block_new == block:
-                await asyncio.sleep(10)
+                await asyncio.sleep(self.LS)
                 continue
             # end if
             block = block_new
