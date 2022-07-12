@@ -49,6 +49,10 @@ usernames = [
              "rootroopnft",
              "sappysealsnft"
             ]
+usernames = [
+             "wabdoteth",
+             "champtgram"
+            ]
 ## note, moonbirds minted April 16th about 3:13pm UTC
 ## note, Azuki launched about 150 days ago
 ## note, BoredApeYachtClub launched 415 days ago (today is June 10th)
@@ -59,10 +63,14 @@ for username in usernames:
   print("begin get data for: ", username)
 
 #2021, 8, 28, 12, 43, 5
-  #query = "@" + username + " until:2021-08-29 since:2021-07-30" # + " until:2021-10-01 since:2021-04-01"
-  #fsave = "at_" + username + EXT + "_fartherBack"# + "_first150ishDays"
-  query = "from:" + username
-  fsave = "from_" + username
+  query = "@" + username + " since:2022-07-01" # + " until:2021-10-01 since:2021-04-01"
+  fsave = "at_" + username
+
+  #query = "from:" + username + " since:2022-07-01"
+  #fsave = "from_" + username
+
+  #query = "from:" + username
+  #fsave = "from_" + username
 
   cnt = 0
   tweets = sntwitter.TwitterSearchScraper(query).get_items()
