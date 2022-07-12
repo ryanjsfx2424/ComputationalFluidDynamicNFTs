@@ -29,7 +29,7 @@ class TransferAlerts(object):
 
         self.CID_LOG = 932056137518444594
         self.CID_MSG = 995421075414450186 # spy-tool in NFT Round Table
-        self.CID_MSG = 932056137518444594 # for testing
+        #self.CID_MSG = 932056137518444594 # for testing
         self.ICON_URL = "https://cdn.discordapp.com/attachments/932056137518444594/992768887890395166/Screenshot_2022-07-02_at_13.48.53.png"
 
         self.wallet_path = "data_big/WALLETS"
@@ -77,7 +77,16 @@ class TransferAlerts(object):
     # end init_processed_fs
 
     async def get_settings(self):
-        gsheet = self.worksheet.get_all_values()
+        try:
+          gsheet = self.worksheet.get_all_values()
+        except Exception as err:
+          print("83 err: ", err)
+          print("84 err.args: ", err.args[:])
+          msg = "error getting gsheet!"
+          print(msg)
+          await self.channel_log.send(msg)
+          return
+        # end try/except
 
         flag = False
         settings = {"collections"  :[],
@@ -609,9 +618,12 @@ class TransferAlerts(object):
                     raise
 
                 description = description[:-2] + "."
+                if len(description) > 1000:
+                  description = ", ".join(description[:1000].split(", ")[:-1] + "..."
+                # end if
                 print("done looping over blues!")
 
-                alert_description = str(int(threshold))
+                alert_description = ">= " + str(int(threshold))
                 if   "any"    in transaction_type:
                     alert_description += " Transfers by "
                 elif "minted" in transaction_type:
