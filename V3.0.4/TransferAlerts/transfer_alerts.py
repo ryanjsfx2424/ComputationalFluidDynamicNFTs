@@ -619,7 +619,7 @@ class TransferAlerts(object):
 
                 description = description[:-2] + "."
                 if len(description) > 1000:
-                  description = ", ".join(description[:1000].split(", ")[:-1] + "..."
+                    description = ", ".join(description[:1000].split(", ")[:-1]) + "..."
                 # end if
                 print("done looping over blues!")
 
@@ -687,7 +687,14 @@ class TransferAlerts(object):
             wcnt += 1
             print("wcnt: ", wcnt)
 
-            block_new = self.w3.eth.get_block_number()
+            try:
+              block_new = self.w3.eth.get_block_number()
+            except Exception as err:
+              print("693 err: ", err)
+              print("694 err.args: ", err.args[:])
+              await asyncio.sleep(self.LS)
+              continue
+            # end try/except
             if block_new == block:
                 await asyncio.sleep(self.LS)
                 continue
