@@ -3,27 +3,23 @@ import ast
 import glob
 import time
 import json
-import socket
+import requests
 import numpy as np
 import asyncio
 import gspread
 from web3 import Web3
 import discord
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.firefox.options import Options
-options = Options()
-options.headless = True
 
-exec_path = "/root/ComputationalFluidDynamicNFTs/V3.0.4/TransferAlerts/geckodriver_linux"
-if socket.gethostname() == "MB-145.local":
-  exec_path = "/Users/ryanjsfx/Documents/ComputationalFluidDynamicNFTs/V3.0.4/TransferAlerts/geckodriver"
-driver = webdriver.Firefox(options=options, executable_path=exec_path)
+
+HEADERS = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.61 Safari/537.36",
+"Authority":"opensea.io"
+}
 OS_BASE = "https://opensea.io/assets/ethereum/"
 
 class TransferAlerts(object):
     def __init__(self):
         self.QS = 0.001 # quick sleep
+        self.MS = 0.03
         self.LS = 10 # quick sleep
         self.dev_mode = True
 
@@ -82,7 +78,7 @@ class TransferAlerts(object):
         except Exception as err:
           print("83 err: ", err)
           print("84 err.args: ", err.args[:])
-          msg = "error getting gsheet!"
+          msg = "79 err_arg: error getting gsheet!"
           print(msg)
           await self.channel_log.send(msg)
           return
@@ -100,7 +96,7 @@ class TransferAlerts(object):
             elif flag:
                 collection = row[0].lower()
                 if collection not in self.nfts and collection not in ["any", "all"]:
-                    msg = "warning! collection for row `" + str(row) + "` not in self.nfts so we're skipping"
+                    msg = "97 err_arg: warning! collection for row `" + str(row) + "` not in self.nfts so we're skipping"
                     msg += "\nnfts: " + ", ".join(list(self.nfts.keys()))
                     print(msg)
                     await self.channel_log.send(msg)
@@ -110,7 +106,7 @@ class TransferAlerts(object):
                 try:
                     num_blocks = float(row[1])/15.0
                 except:
-                    msg = "warning! exception getting num_blocks for row `" + row + "` so we're skipping"
+                    msg = "107 err_arg: warning! exception getting num_blocks for row `" + row + "` so we're skipping"
                     print(msg)
                     await self.channel_log.send(msg)
                     raise
@@ -119,7 +115,7 @@ class TransferAlerts(object):
                 try:
                     num_transfers = float(row[2])
                 except:
-                    msg = "warning! exception getting num_transfers for row `" + row + "` so we're skipping"
+                    msg = "116 err_arg: warning! exception getting num_transfers for row `" + row + "` so we're skipping"
                     print(msg)
                     await self.channel_log.send(msg)
                     raise
@@ -128,7 +124,7 @@ class TransferAlerts(object):
                 try:
                     transaction_type = row[3].lower()
                     if transaction_type not in ["bought", "sold", "minted", "burned", "all"]:
-                        msg  = "warning! transaction_type not in 'bought',"
+                        msg  = "125 err_arg: warning! transaction_type not in 'bought',"
                         msg += "'sold', 'minted', 'burned', recvd: " + transaction_type
                         print(msg)
                         await self.channel_log.send(msg)
@@ -136,7 +132,7 @@ class TransferAlerts(object):
                         continue
                     # end if
                 except:
-                    msg = "warning! exception getting transaction_type for row `" + row + "` so we're skipping"
+                    msg = "133 err_arg: warning! exception getting transaction_type for row `" + row + "` so we're skipping"
                     print(msg)
                     await self.channel_log.send(msg)
                     raise
@@ -213,7 +209,7 @@ class TransferAlerts(object):
                     wallet = contract.functions.ownerOf(jj).call()
                 except Exception as err:
                     await channel_log.send("error grabbing wallet for jj = " + str(jj))
-                    print("172 err: ", err)
+                    print("172 err_arg: ", err)
                     print("173 err args: ", err.args[:])
                     continue
 
@@ -479,40 +475,91 @@ class TransferAlerts(object):
                 ## next might as well see if we can get the OS stuff 
                 ## b/c if not we also skip (tests if NFT vs ERC20 etc.)
                 os_url = OS_BASE + contract + "/1"
+                os_name = "unknown bc OS rugging"
+                floorPrice = "?"
+                totalVolume = "?"
                 flag = False
-                for ii in range(10):
-                  try:
-                    driver.get(os_url)
+
+                try:
+                    resp = requests.get(os_url, headers=HEADERS)
+                    text = resp.text
                     flag = True
-                    break
-                  except Exception as err:
-                    await self.channel_log.send("489 warning! couldn't : " + contract)
-                    print("487 err: ", err)
-                    print("488 err: ", err.args[:])
-                    print("489 ii: ", ii)
-                  # end try/except
-                # end for ii
+                except Exception as err:
+                    await self.channel_log.send("484 err_arg! couldn't get os_url: " + os_url)
+                    print("485 err_arg: ", err)
+                    print("486 err: ", err.args[:])
+                    await asyncio.sleep(self.MS)
+                    continue
+                # end try/except
+                
                 if flag:
-                  html_source = driver.page_source
+                  with open("html.txt", "w") as fid:
+                    fid.write(text)
+                  # end with
+  
                   try:
-                    os_collection = html_source.split('CollectionLink--link" href="')[1].split('"')[0]
+                    spl = '"slug":"'
+                    slug = text.split(spl)[1].split('"')[0]
+                    os_url = "https://opensea.io/collection/" + slug
                   except Exception as err:
-                    await self.channel_log.send("warning! couldn't driver.get(os_url): " + os_url)
-                    print("OS collection not found for contract: ", contract)
-                    #print("err 405: ", err)
-                    #print("err.args 406: ", err.args[:])
+                    msg = "500 err_arg OS slug not found for contract: " + contract
+                    print(msg)
+                    await self.channel_log.send(msg)
+                    flag = False
                     continue
                   # end try/except
-                  
-                  os_name = html_source.split('CollectionLink--link" href="')[1].split(
-                    "<div class=")[1].split(">")[1].split("<")[0]
-                  os_url = "https://opensea.io" + os_collection
-                  print("grabbed os name and url!")
-                else:
-                  await self.channel_log.send("512 warning! couldn't driver.get(os_url): " + os_url)
-                  os_name = "unknown"
-                  os_url = os_url
-                # end if/else
+
+                  try:
+                    spl = '"name":"'
+                    os_name = text.split(spl)[1].split('"')[0]
+                  except Exception as err:
+                    msg = "510 err_arg OS name not found for contract: " + contract
+                    print(msg)
+                    await self.channel_log.send(msg)
+                    # end try/except
+                  # end if
+
+                  if flag:
+                    try:
+                        resp = requests.get(os_url, headers=HEADERS)
+                        text = resp.text
+                    except Exception as err:
+                        msg = "521 err_arg couldn't get os collection page for url: " + os_url
+                        print(msg)
+                        await self.channel_log.send(msg)
+                        flag = False
+                    # end try/except
+                  # end if
+
+                  if flag:
+                    with open("html2.txt", "w") as fid:
+                        fid.write(text)
+                    # end with open
+                    try:
+                        spl = '"floorPrice":{"unit":"'
+                        floorPrice = text.split(spl)[1].split('"')[0]
+                    except Exception as err:
+                        msg = "536 err_args couldn't get floor price"
+                        print(msg)
+                        await self.channel_log.send(msg)
+                    # end try/except
+                
+                    try:
+                        spl = '"totalVolume":{"unit":"'
+                        totalVolume = text.split(spl)[1].split('"')[0]
+                        totalVolumeF = float(totalVolume)
+                        if len(totalVolume.split(".")[0]) > 3: 
+                            totalVolume = "%.1fk eth" % (totalVolumeF/1000.0)
+                        else:
+                            totalVolume = "%.0f eth" % totalVolumeF
+                        # end if/else
+                    except Exception as err:
+                        msg = "552 err_args couldn't get total volume"
+                        print(msg)
+                        await self.channel_log.send(msg)
+                    # end try/except
+                  # end if flag
+                # end if
 
                 ## now we might as well grab holdings
                 description = ""; nl1 = -1; nl2 = -1; nl3 = -1
@@ -642,8 +689,8 @@ class TransferAlerts(object):
                 # end if
                 print("done looping over blues!")
 
-                alert_description = ">= " + str(int(threshold))
-                if   "any"    in transaction_type:
+                alert_description = str(int(threshold)) + " or more"
+                if   "any"    in transaction_type or "all" in transaction_type:
                     alert_description += " Transfers by "
                 elif "minted" in transaction_type:
                     alert_description += " Mints by "
@@ -663,11 +710,16 @@ class TransferAlerts(object):
                 alert_description += (" in the last %.1f minutes." % (num_blocks*15/60.0))
 
                 ## now go ahead and send the alert!
+                print("os_name: ", os_name)
+                print("alert descr: ", alert_description)
+                input(">>")
                 embed = discord.Embed(title = os_name, description = alert_description)
                 embed.set_footer(text = "Built for NFT Round Table, Powered by @TheLunaLabs",
                     icon_url = self.ICON_URL)
                 embed.set_thumbnail(url = self.ICON_URL)
                 embed.add_field(name = "OpenSea", value = os_url, inline=False)
+                embed.add_field(name = "OS Floor", value= floorPrice)
+                embed.add_field(name = "OS Volume Traded", value = totalVolume)
                 embed.add_field(name = "Contract Address", value = 
                     "https://etherscan.io/token/" + contract, inline=False)
                 embed.add_field(name = "Blue Chips Tracked", value = ", ".join(list(self.nfts.keys())),
@@ -736,7 +788,7 @@ class TransferAlerts(object):
         @client.event
         async def on_ready():
             self.channel_log = client.get_channel(self.CID_LOG)
-            self.channel_msg = client.get_channel(self.CID_MSG)
+            self.channel_msg = client.get_channel(self.CID_LOG)
 
             await self.loop_forever()
         # end on_ready
