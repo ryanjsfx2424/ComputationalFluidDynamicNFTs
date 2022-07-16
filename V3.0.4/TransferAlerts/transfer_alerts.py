@@ -493,7 +493,7 @@ class TransferAlerts(object):
                 # end try/except
                 
                 if flag:
-                  with open("html.txt", "w") as fid:
+                  with open("debug1.txt", "w") as fid:
                     fid.write(text)
                   # end with
   
@@ -532,7 +532,7 @@ class TransferAlerts(object):
                   # end if
 
                   if flag:
-                    with open("html2.txt", "w") as fid:
+                    with open("debug2.txt", "w") as fid:
                         fid.write(text)
                     # end with open
                     try:
