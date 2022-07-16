@@ -50,9 +50,10 @@ usernames = [
              "sappysealsnft"
             ]
 usernames = [
-             "wabdoteth",
-             "champtgram"
+             "wabdoteth"
             ]
+             #"nftsarenice"
+             #"champtgram"
 ## note, moonbirds minted April 16th about 3:13pm UTC
 ## note, Azuki launched about 150 days ago
 ## note, BoredApeYachtClub launched 415 days ago (today is June 10th)
@@ -63,8 +64,8 @@ for username in usernames:
   print("begin get data for: ", username)
 
 #2021, 8, 28, 12, 43, 5
-  query = "@" + username + " since:2022-07-01" # + " until:2021-10-01 since:2021-04-01"
-  fsave = "at_" + username
+  query = "@" + username + " since:2022-07-12" # + " until:2021-10-01 since:2021-04-01"
+  fsave = "at_" + username + "_since_July_12th"
 
   #query = "from:" + username + " since:2022-07-01"
   #fsave = "from_" + username

@@ -1,0 +1,22 @@
+1657468315238	geckodriver	INFO	Listening on 127.0.0.1:51723
+1657468315322	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-headless" "--remote-debugging-port" "51724" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofile051qkD"
+*** You are running in headless mode.
+1657468316829	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:51724
+2022-07-10 17:51:57.042 plugin-container[84368:3691280] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-10 17:51:57.043 plugin-container[84368:3691280] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-10 17:51:57.229 plugin-container[84368:3691280] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-10 17:51:57.229 plugin-container[84368:3691280] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-07-10 17:51:57.229 plugin-container[84368:3691334] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-07-10 17:51:57.229 plugin-container[84368:3691334] nil host used in call to allowsAnyHTTPSCertificateForHost:
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofile051qkD/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+1657468318776	Marionette	INFO	Listening on port 51755
+DevTools listening on ws://localhost:51724/devtools/browser/ddad3798-1a52-487e-aa79-ef9ffad02c5d
+Read port: 51755
+1657468318890	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
