@@ -12,3 +12,4 @@ git_ignores_me*
 data_big
 
 logfile*txt
+nohup.out

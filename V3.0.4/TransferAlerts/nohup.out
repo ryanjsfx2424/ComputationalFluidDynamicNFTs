@@ -1,4 +1,0 @@
-  File "transfer_alerts.py", line 513
-    os_name = "unknown"
-                      ^
-IndentationError: unindent does not match any outer indentation level
