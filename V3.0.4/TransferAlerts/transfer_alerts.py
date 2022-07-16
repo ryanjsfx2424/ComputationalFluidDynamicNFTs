@@ -479,21 +479,40 @@ class TransferAlerts(object):
                 ## next might as well see if we can get the OS stuff 
                 ## b/c if not we also skip (tests if NFT vs ERC20 etc.)
                 os_url = OS_BASE + contract + "/1"
-                driver.get(os_url)
-                html_source = driver.page_source
-                try:
+                flag = False
+                for ii in range(10):
+                  try:
+                    driver.get(os_url)
+                    flag = True
+                    break
+                  except Exception as err:
+                    await self.channel_log.send("489 warning! couldn't : " + contract)
+                    print("487 err: ", err)
+                    print("488 err: ", err.args[:])
+                    print("489 ii: ", ii)
+                  # end try/except
+                # end for ii
+                if flag:
+                  html_source = driver.page_source
+                  try:
                     os_collection = html_source.split('CollectionLink--link" href="')[1].split('"')[0]
-                except Exception as err:
-                    await self.channel_log.send("warning! OS collection not found for contract: " + contract)
+                  except Exception as err:
+                    await self.channel_log.send("warning! couldn't driver.get(os_url): " + os_url)
                     print("OS collection not found for contract: ", contract)
-                    print("err 405: ", err)
-                    print("err.args 406: ", err.args[:])
+                    #print("err 405: ", err)
+                    #print("err.args 406: ", err.args[:])
                     continue
-                # end try/except
-                os_name = html_source.split('CollectionLink--link" href="')[1].split(
+                  # end try/except
+                  
+                  os_name = html_source.split('CollectionLink--link" href="')[1].split(
                     "<div class=")[1].split(">")[1].split("<")[0]
-                os_url = "https://opensea.io" + os_collection
-                print("grabbed os name and url!")
+                  os_url = "https://opensea.io" + os_collection
+                  print("grabbed os name and url!")
+                else:
+                  await self.channel_log.send("512 warning! couldn't driver.get(os_url): " + os_url)
+                  os_name = "unknown"
+                  os_url = os_url
+                # end if/else
 
                 ## now we might as well grab holdings
                 description = ""; nl1 = -1; nl2 = -1; nl3 = -1
