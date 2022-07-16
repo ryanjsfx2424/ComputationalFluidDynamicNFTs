@@ -100,7 +100,7 @@ class TransferAlerts(object):
                     msg += "\nnfts: " + ", ".join(list(self.nfts.keys()))
                     print(msg)
                     await self.channel_log.send(msg)
-                    raise
+                    #raise
                     continue
                 # end if
                 try:
@@ -109,7 +109,7 @@ class TransferAlerts(object):
                     msg = "107 err_arg: warning! exception getting num_blocks for row `" + row + "` so we're skipping"
                     print(msg)
                     await self.channel_log.send(msg)
-                    raise
+                    #raise
                     continue
                 # end try/except
                 try:
@@ -118,7 +118,7 @@ class TransferAlerts(object):
                     msg = "116 err_arg: warning! exception getting num_transfers for row `" + row + "` so we're skipping"
                     print(msg)
                     await self.channel_log.send(msg)
-                    raise
+                    #raise
                     continue
                 # end try/except
                 try:
@@ -128,14 +128,14 @@ class TransferAlerts(object):
                         msg += "'sold', 'minted', 'burned', recvd: " + transaction_type
                         print(msg)
                         await self.channel_log.send(msg)
-                        raise
+                        #raise
                         continue
                     # end if
                 except:
                     msg = "133 err_arg: warning! exception getting transaction_type for row `" + row + "` so we're skipping"
                     print(msg)
                     await self.channel_log.send(msg)
-                    raise
+                    #raise
                     continue
                 # end try/except
 
@@ -788,7 +788,7 @@ class TransferAlerts(object):
         @client.event
         async def on_ready():
             self.channel_log = client.get_channel(self.CID_LOG)
-            self.channel_msg = client.get_channel(self.CID_LOG)
+            self.channel_msg = client.get_channel(self.CID_MSG)
 
             await self.loop_forever()
         # end on_ready
