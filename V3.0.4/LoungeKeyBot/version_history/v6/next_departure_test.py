@@ -41,28 +41,6 @@ with open("debug1.txt", "r") as fid:
 spl_beg = '<h4 class="card-title mt-3">'
 spl_end = '</h4>'
 deals = html.split(spl_beg)[1:]
-
-print("len deals: ", len(deals))
-
-spl_beg = '<div class="card mb-3">'
-cards = html.split(spl_beg)[1:]
-
-print("len cards: ", len(cards))
-
-spl_beg = '<h4 class="card-title mt-3">'
-fare = cards[0].split(spl_beg)[1].split(spl_end)[0]
-print("fare: ", fare)
-
-spl_beg = '<img src="'
-img = cards[0].split(spl_beg)[1].split('"')[0]
-print("img: ", img)
-
-spl_beg = '<a href="'
-link = cards[0].split(spl_beg)[1].split('"')[0]
-print("link: ", link)
-
-sys.exit()
-
 deals_clean = []
 for deal in deals:
   deals_clean.append(deal.split(spl_end)[0].replace("&amp;","&"))

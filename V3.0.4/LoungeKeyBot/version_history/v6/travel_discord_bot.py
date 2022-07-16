@@ -1,5 +1,4 @@
 import os
-import time
 import discord
 import asyncio
 from travel import TravelBot
@@ -28,7 +27,6 @@ class TravelDiscordBot(TravelBot):
 
         @client.event
         async def on_ready():
-            last_nd_update = time.time() - 7200
             print("on_ready")
             while True:
                 old_fares = []
@@ -40,15 +38,6 @@ class TravelDiscordBot(TravelBot):
                 self.get_html()
                 self.get_fares("err")
                 self.get_fares("deals")
-
-                if time.time() - last_nd_update > 3600:
-                    last_nd_update = time.time()
-                    self.get_html_nd()
-                # end if
-
-                with open(self.fname_fares, "w") as fid:
-                    fid.write(str(self.fares))
-                # end with open
 
                 roles_mentioned = []
                 for ii,fare in enumerate(self.fares["texts"]):

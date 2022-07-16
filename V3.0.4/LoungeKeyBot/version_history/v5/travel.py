@@ -1,22 +1,8 @@
 import os
-import ast
 import glob
 import json
-import time
 import requests
 from region_data import RegionData
-
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.firefox.options import Options
-from selenium.webdriver.common.action_chains import ActionChains
-
-options = Options()
-options.headless = True
-#options.headless = False
-driver = webdriver.Firefox(options=options, executable_path="./geckodriver")
-
 class TravelBot(RegionData):
     def __init__(self):
         self.url = "https://secretflying.com"
@@ -54,15 +40,6 @@ class TravelBot(RegionData):
 
         self.load_region_data()
         self.fares = {}
-
-        self.fname_fares = "old_fares.txt"
-        if os.path.exists(self.fname_fares) and os.stat(self.fname_fares).st_size != 0:
-            with open(self.fname_fares, "r") as fid:
-                line = fid.read()
-            # end with
-            line = line.replace('', "")
-            self.fares = ast.literal_eval(line)
-        # end if
     # end __init__
 
     def load_discord_ids(self, path):
@@ -84,69 +61,6 @@ class TravelBot(RegionData):
             fid.write(self.html)
         # end with open
     # end get_html
-
-    def get_html_nd(self):
-        url = "https://app.nextdeparture.ca/login"
-        driver.get(url)
-
-        email_xpath = "//input[@id='email']"
-        passw_xpath = "//input[@id='password']"
-
-        email = os.environ.get("lkEmail")
-        passw = os.environ.get("lkNDPass")
-
-        driver.find_element(By.XPATH, email_xpath).send_keys(email)
-        driver.find_element(By.XPATH, passw_xpath).send_keys(passw)
-
-        act = ActionChains(driver)
-        act.send_keys(Keys.ENTER).perform()
-
-        time.sleep(5)
-        url = "https://app.nextdeparture.ca/user/deals"
-        driver.get(url)
-
-        html = driver.page_source
-        with open("debug1.txt", "w") as fid:
-            fid.write(html)
-        # end with open
-
-        if self.fares == {}:
-            self.fares["urls"]   = []
-            self.fares["texts"]  = []
-            self.fares["images"] = []
-            self.fares["hashtags"] = []
-        # end if
-
-        spl_beg = '<div class="card mb-3">'
-        fares = html.split(spl_beg)[1:]
-        
-        for fare in fares:
-            spl_beg = '<h4 class="card-title mt-3">'
-            spl_end = '</h4>'
-            fare_text = fare.split(spl_beg)[1].split(spl_end)[0].replace("&amp;", "&")
-            if fare_text in self.fares["texts"]:
-                continue
-            # end if
-            self.fares["texts"].append(fare_text)
-
-            spl_beg = '<img src="'
-            spl_end = '"'
-            self.fares["images"].append(fare.split(spl_beg)[1].split(spl_end)[0])
-
-            spl_beg = '<a href="'
-            self.fares["urls"].append(fare.split(spl_beg)[1].split(spl_end)[0])
-
-            self.fares["hashtags"].append("#canada_from")
-        # end for
-
-        if self.fares == {} or fare not in self.fares["texts"]:
-            if self.fares == {}:
-                self.fares["urls"]   = []
-                self.fares["texts"]  = []
-                self.fares["images"] = []
-                self.fares["hashtags"] = []
-
-    # end get_html_nd
 
     def get_fares(self, fare_type):
         if fare_type == "err":
