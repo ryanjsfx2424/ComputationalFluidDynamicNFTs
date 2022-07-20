@@ -1,0 +1,30 @@
+{
+    "name": "Roo #3896",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/3896.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Onyx"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Ash"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Green Leaf"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Red Roo Hoodie"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Queen's Tiara"
+        }
+    ]
+}

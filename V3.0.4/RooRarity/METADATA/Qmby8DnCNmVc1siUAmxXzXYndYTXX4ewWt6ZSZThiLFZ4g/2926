@@ -1,0 +1,26 @@
+{
+    "name": "Roo #2926",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Crimson"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Robo"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Drool"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Hypnotized"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Bloody Work Shirt"
+        }
+    ],
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/2926.webp"
+}

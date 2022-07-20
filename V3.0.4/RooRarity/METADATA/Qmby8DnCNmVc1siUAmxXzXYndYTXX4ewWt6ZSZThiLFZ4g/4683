@@ -1,0 +1,34 @@
+{
+    "name": "Roo #4683",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/4683.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Grape"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Sand"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Green Leaf"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Glowing"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Troop Jersey"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Air Pods"
+        },
+        {
+            "trait_type": "Eyewear",
+            "value": "Camo Glasses"
+        }
+    ]
+}

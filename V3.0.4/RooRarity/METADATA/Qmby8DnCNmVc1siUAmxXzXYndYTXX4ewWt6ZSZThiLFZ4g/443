@@ -1,0 +1,26 @@
+{
+    "name": "Roo #443",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Grape"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Golden"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Medical Mask"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Glowing"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Work Shirt"
+        }
+    ],
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/443.webp"
+}

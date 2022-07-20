@@ -1,0 +1,30 @@
+{
+    "name": "Roo #3078",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/3078.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Crimson"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Banana Split"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Jail Jumpsuit"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Queen's Tiara"
+        }
+    ]
+}

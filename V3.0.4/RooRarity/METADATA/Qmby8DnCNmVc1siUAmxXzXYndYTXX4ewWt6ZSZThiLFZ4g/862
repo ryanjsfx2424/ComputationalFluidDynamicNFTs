@@ -1,0 +1,22 @@
+{
+    "name": "Roo #862",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/862.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Onyx"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Ash"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Green Leaf"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Closed"
+        }
+    ]
+}

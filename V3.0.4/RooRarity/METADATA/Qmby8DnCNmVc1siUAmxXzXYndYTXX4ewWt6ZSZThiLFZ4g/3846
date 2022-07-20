@@ -1,0 +1,34 @@
+{
+    "name": "Roo #3846",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/3846.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Rainbow"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Sand"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Gold Diamond Grillz"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Closed"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Degen Jersey"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Green Scanner"
+        },
+        {
+            "trait_type": "Tail",
+            "value": "Default"
+        }
+    ]
+}

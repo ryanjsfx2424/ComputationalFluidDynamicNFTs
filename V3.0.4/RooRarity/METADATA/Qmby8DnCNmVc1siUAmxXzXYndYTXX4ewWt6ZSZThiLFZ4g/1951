@@ -1,0 +1,30 @@
+{
+    "name": "Roo #1951",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/1951.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Chrome"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Bubblegum"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Closed"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Stoners Jersey"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Spy Hat"
+        }
+    ]
+}

@@ -1,0 +1,26 @@
+{
+    "name": "Roo #2453",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/2453.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Ocean"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Coal"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Grin"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Beaty"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Pink Scanner"
+        }
+    ]
+}

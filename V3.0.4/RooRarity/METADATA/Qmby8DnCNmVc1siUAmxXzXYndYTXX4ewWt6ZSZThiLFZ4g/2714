@@ -1,0 +1,26 @@
+{
+    "name": "Roo #2714",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/2714.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Crimson"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Tomato"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "White Roo Tee"
+        }
+    ]
+}

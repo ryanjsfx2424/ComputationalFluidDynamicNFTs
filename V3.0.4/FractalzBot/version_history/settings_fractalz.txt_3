@@ -1,0 +1,6 @@
+['?repair', '?greetings']
+[["Success - you've repaired the module, role 'Authenticated' granted"], ['Hello', 'Howdy']]
+[['Failure to fix space station modules'], ['Nope', 'Never']]
+[[0.1], [0.25, 0.5]]
+[[979452786355867679], ['', '']]
+False

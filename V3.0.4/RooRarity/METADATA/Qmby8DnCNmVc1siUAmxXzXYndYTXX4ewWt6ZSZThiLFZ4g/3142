@@ -1,0 +1,34 @@
+{
+    "name": "Roo #3142",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/3142.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Grape"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Sand"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Blizzy"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "ETH Eyes"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Roo Tech Lab Coat"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Green Snapback"
+        },
+        {
+            "trait_type": "Eyewear",
+            "value": "Wayfarers"
+        }
+    ]
+}

@@ -1,0 +1,26 @@
+{
+    "name": "Roo #1729",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/1729.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Ocean"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Mocha"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Drool"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "ETH Eyes 2"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Black Roo Tee 2"
+        }
+    ]
+}

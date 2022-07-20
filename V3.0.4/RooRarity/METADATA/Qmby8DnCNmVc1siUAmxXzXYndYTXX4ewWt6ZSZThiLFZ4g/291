@@ -1,0 +1,30 @@
+{
+    "name": "Roo #291",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/291.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Grape"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Tomato"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Blizzy"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Closed"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Chef's Coat"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Air Pods"
+        }
+    ]
+}

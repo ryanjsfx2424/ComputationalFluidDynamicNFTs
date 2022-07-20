@@ -1,0 +1,26 @@
+{
+    "name": "Roo #1763",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Forest"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Glitch"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Mischevious"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Malfoy Robes"
+        }
+    ],
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/1763.webp"
+}

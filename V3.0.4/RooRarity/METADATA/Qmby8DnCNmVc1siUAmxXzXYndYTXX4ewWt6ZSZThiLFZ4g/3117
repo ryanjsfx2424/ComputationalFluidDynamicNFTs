@@ -1,0 +1,26 @@
+{
+    "name": "Roo #3117",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/3117.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Khaki"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Sand"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Stoned"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Bone Tee"
+        }
+    ]
+}

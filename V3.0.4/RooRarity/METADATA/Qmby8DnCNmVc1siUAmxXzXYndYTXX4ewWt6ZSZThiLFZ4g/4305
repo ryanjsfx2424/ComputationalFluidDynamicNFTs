@@ -1,0 +1,30 @@
+{
+    "name": "Roo #4305",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/4305.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Crimson"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Purp"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Stoned"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Wife Respecter"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Grey Snapback"
+        }
+    ]
+}

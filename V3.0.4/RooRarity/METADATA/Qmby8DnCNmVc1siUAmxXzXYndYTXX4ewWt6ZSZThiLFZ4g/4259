@@ -1,0 +1,30 @@
+{
+    "name": "Roo #4259",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/4259.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Ocean"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Banana Split"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Shocked"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Death Metal Tee"
+        },
+        {
+            "trait_type": "Gear",
+            "value": "Midnight Katanas"
+        }
+    ]
+}

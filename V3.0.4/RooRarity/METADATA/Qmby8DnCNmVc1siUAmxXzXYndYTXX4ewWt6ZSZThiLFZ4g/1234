@@ -1,0 +1,30 @@
+{
+    "name": "Roo #1234",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Sky"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Glitch"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Red Pouch"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Air Pods"
+        }
+    ],
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/1234.webp"
+}

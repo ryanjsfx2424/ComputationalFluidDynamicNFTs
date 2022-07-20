@@ -1,0 +1,26 @@
+{
+    "name": "Roo #1803",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/1803.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Grape"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Coal"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Diamond Grillz"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Beaty"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "White Roo Tee"
+        }
+    ]
+}

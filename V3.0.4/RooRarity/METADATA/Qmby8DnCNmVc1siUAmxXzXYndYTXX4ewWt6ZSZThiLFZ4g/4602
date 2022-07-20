@@ -1,0 +1,26 @@
+{
+    "name": "Roo #4602",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/4602.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Forest"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Berry"
+        },
+        {
+            "value": "Medical Mask",
+            "trait_type": "Snout"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "White Roo Tee"
+        }
+    ]
+}

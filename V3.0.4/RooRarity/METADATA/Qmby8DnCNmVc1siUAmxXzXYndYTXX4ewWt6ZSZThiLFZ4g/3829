@@ -1,0 +1,30 @@
+{
+    "name": "Roo #3829",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Grape"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Glitch"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Stone Gas Mask"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Red Pouch"
+        },
+        {
+            "trait_type": "Tail",
+            "value": "Default"
+        }
+    ],
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/3829.webp"
+}

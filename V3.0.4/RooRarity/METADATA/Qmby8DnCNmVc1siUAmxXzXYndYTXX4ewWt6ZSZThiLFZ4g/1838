@@ -1,0 +1,30 @@
+{
+    "name": "Roo #1838",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/1838.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Iron"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Mocha"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Green Leaf"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Eye Roll"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "White Roo Tee 2"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Pink Scanner"
+        }
+    ]
+}

@@ -1,0 +1,26 @@
+{
+    "name": "Roo #2489",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Grape"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Golden"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Tongue"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Eyewear",
+            "value": "Black Glasses"
+        }
+    ],
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/2489.webp"
+}

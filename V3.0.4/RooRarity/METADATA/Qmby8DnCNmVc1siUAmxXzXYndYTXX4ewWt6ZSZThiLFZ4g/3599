@@ -1,0 +1,30 @@
+{
+    "name": "Roo #3599",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/3599.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Onyx"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Tomato"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Grin"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Eye Patch"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Yakuza Shirt"
+        },
+        {
+            "trait_type": "Gear",
+            "value": "Jetpack"
+        }
+    ]
+}

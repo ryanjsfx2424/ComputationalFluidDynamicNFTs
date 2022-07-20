@@ -1,0 +1,22 @@
+{
+    "name": "Roo #5227",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/5227.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Forest"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Demon"
+        },
+        {
+            "value": "Vamp Fangs",
+            "trait_type": "Snout"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Normal"
+        }
+    ]
+}

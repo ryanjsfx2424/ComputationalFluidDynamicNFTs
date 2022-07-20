@@ -1,0 +1,30 @@
+{
+    "name": "Roo #5352",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Khaki"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Golden"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Blizzy"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Undead"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Stoners Jersey"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Air Pods"
+        }
+    ],
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/5352.webp"
+}

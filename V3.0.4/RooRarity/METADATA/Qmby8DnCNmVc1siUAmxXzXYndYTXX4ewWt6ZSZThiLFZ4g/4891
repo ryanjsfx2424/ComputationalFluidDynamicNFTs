@@ -1,0 +1,26 @@
+{
+    "name": "Roo #4891",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/4891.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Sky"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Sand"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Toothpick"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Black Suit"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "name": "Roo #3683",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/3683.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Forest"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Berry"
+        },
+        {
+            "value": "Drool",
+            "trait_type": "Snout"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Normal"
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "name": "Roo #5432",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Trippy"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Robo"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Gas Mask"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Lazer Vision"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Rebel Roo Tee"
+        },
+        {
+            "trait_type": "Gear",
+            "value": "Jetpack"
+        }
+    ],
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/5432.webp"
+}

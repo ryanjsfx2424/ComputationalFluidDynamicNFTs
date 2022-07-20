@@ -1,0 +1,22 @@
+{
+    "name": "Roo #4377",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/4377.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Khaki"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Ash"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Normal"
+        }
+    ]
+}

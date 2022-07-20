@@ -1,0 +1,30 @@
+{
+    "name": "Roo #4443",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/4443.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Onyx"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Berry"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Blizzy"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "White Lab Coat"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Queen's Tiara"
+        }
+    ]
+}

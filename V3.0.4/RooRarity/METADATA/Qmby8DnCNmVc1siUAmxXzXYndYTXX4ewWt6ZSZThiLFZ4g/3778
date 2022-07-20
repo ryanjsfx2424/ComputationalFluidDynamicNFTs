@@ -1,0 +1,30 @@
+{
+    "name": "Roo #3778",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/3778.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Ocean"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Trippy"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Snarl"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Hypnotized"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Chef's Coat"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Green Scanner"
+        }
+    ]
+}

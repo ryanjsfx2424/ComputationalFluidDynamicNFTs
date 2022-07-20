@@ -1,0 +1,30 @@
+{
+    "name": "Roo #151",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Iron"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Banana Split"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "COVID Mask"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Heat Vision"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Green Tracksuit"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Red Snapback"
+        }
+    ],
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/151.webp"
+}

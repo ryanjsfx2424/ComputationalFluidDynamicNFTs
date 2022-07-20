@@ -1,0 +1,30 @@
+{
+    "name": "Roo #1369",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/1369.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Rainbow"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Tomato"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Blizzy"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Stoned"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Green Roo Hoodie"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Gambler Hat"
+        }
+    ]
+}

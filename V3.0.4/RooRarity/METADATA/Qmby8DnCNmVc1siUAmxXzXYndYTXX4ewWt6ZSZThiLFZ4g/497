@@ -1,0 +1,26 @@
+{
+    "name": "Roo #497",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Ocean"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Golden"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Beaty"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Black Roo Tee"
+        }
+    ],
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/497.webp"
+}

@@ -1,0 +1,22 @@
+{
+    "name": "Roo #175",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/175.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Khaki"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Arctic"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Normal"
+        }
+    ]
+}

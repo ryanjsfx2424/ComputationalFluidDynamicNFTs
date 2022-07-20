@@ -1,0 +1,30 @@
+{
+    "name": "Roo #5419",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/5419.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Ocean"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Ash"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Blizzy"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Stoned"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Navy Ninja Yoroi"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Pink Scanner"
+        }
+    ]
+}

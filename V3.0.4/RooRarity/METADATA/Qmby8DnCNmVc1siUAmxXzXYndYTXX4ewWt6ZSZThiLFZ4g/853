@@ -1,0 +1,30 @@
+{
+    "name": "Roo #853",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/853.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Sky"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Berry"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Beaty"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Navy Ninja Yoroi"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Gambler Hat"
+        }
+    ]
+}

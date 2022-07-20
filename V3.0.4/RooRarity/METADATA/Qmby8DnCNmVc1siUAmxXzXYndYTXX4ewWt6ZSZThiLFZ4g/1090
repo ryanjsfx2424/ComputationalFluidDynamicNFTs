@@ -1,0 +1,30 @@
+{
+    "name": "Roo #1090",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/1090.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Grape"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Coffee"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Beaty"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Green Kanga Hoodie"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Grey Snapback"
+        }
+    ]
+}

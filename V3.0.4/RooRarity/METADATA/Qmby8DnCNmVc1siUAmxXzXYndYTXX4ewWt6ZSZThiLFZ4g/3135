@@ -1,0 +1,34 @@
+{
+    "name": "Roo #3135",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/3135.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Sakura"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Coal"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Green Leaf"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Black Leather Pouch"
+        },
+        {
+            "trait_type": "Eyewear",
+            "value": "Wayfarers"
+        },
+        {
+            "trait_type": "Gear",
+            "value": "Bow 'n Arrow"
+        }
+    ]
+}

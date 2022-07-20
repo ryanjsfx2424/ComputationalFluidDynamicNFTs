@@ -1,0 +1,30 @@
+{
+    "name": "Roo #1396",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/1396.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Sky"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Purp"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Diamond Grillz"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Shocked"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Red Roo Hoodie"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Red Snapback"
+        }
+    ]
+}

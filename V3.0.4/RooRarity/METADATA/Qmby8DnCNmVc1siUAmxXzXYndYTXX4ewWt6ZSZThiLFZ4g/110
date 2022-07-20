@@ -1,0 +1,26 @@
+{
+    "name": "Roo #110",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/110.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Iron"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Coal"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Snarl"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Mischevious"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Green Tracksuit"
+        }
+    ]
+}

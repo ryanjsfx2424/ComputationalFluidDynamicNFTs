@@ -1,0 +1,30 @@
+{
+    "name": "Roo #289",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/289.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Khaki"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Coffee"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Hypnotized"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Purple Kanga Hoodie"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "White Sushi Chef's Hat"
+        }
+    ]
+}

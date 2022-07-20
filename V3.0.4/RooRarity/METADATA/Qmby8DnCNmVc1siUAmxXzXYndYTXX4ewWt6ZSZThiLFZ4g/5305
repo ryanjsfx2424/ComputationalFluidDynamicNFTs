@@ -1,0 +1,26 @@
+{
+    "name": "Roo #5305",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/5305.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Iron"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Irradiated"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Tongue"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Closed"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Spy Hat"
+        }
+    ]
+}

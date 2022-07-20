@@ -1,0 +1,38 @@
+{
+    "name": "Roo #5444",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/5444.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Khaki"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Coffee"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Green Leaf"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Green Roo Hoodie"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Detective Hat"
+        },
+        {
+            "trait_type": "Eyewear",
+            "value": "Wayfarers"
+        },
+        {
+            "trait_type": "Gear",
+            "value": "Satoshi Spear"
+        }
+    ]
+}

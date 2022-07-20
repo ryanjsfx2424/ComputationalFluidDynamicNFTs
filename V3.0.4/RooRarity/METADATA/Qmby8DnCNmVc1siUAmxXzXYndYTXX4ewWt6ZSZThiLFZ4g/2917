@@ -1,0 +1,30 @@
+{
+    "name": "Roo #2917",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/2917.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Iron"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Bubblegum"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Hypnotized"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Bone Tee"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Grey Snapback"
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "name": "Roo #3027",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/3027.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Forest"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Bubblegum"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Drool"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Mad"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Air Pods"
+        },
+        {
+            "trait_type": "Eyewear",
+            "value": "Wayfarers"
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "name": "Roo #3085",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/3085.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Sakura"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Coal"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Closed"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "White Roo Tee"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Grey Snapback"
+        }
+    ]
+}

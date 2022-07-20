@@ -1,0 +1,26 @@
+{
+    "name": "Roo #3240",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/3240.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Forest"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Bubblegum"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Grin"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Eye Patch"
+        },
+        {
+            "trait_type": "Tail",
+            "value": "Default"
+        }
+    ]
+}

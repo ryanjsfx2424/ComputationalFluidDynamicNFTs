@@ -1,0 +1,38 @@
+{
+    "name": "Roo #5429",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/5429.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Forest"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Coal"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Green Leaf"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Tripping Ballz"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Black Roo Tee 2"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Grey Snapback"
+        },
+        {
+            "trait_type": "Eyewear",
+            "value": "Agent Glasses"
+        },
+        {
+            "trait_type": "Gear",
+            "value": "Bow 'n Arrow"
+        }
+    ]
+}

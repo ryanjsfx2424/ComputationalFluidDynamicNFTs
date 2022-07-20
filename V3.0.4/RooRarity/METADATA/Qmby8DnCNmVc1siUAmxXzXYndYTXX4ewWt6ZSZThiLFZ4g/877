@@ -1,0 +1,30 @@
+{
+    "name": "Roo #877",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/877.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Onyx"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Purp"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Closed"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Neopolitan Jersey"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Pink Scanner"
+        }
+    ]
+}

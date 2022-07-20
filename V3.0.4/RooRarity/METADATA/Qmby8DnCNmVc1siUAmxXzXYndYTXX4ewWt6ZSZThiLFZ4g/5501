@@ -1,0 +1,46 @@
+{
+    "name": "Super Roo #1 - Jungle Roo",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmX2Jf52HcRBoGEP6i6xptdHCF1Caa6iM6X3Zi1jSTvPHb",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Daintree"
+        },
+        {
+            "trait_type": "Gear",
+            "value": "Golden Whistler Staff"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Jungle"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Red Ochre Dyed Cloth"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Purp Pipe"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Ominous"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Red Ochre Dyed Mask"
+        },
+        {
+            "trait_type": "Tail",
+            "value": "Jungle"
+        },
+        {
+            "trait_type": "Neck",
+            "value": "Fire Opal Amulet"
+        },
+        {
+            "trait_type": "1/1",
+            "value": "Yes"
+        }
+    ]
+}

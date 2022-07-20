@@ -1,0 +1,30 @@
+{
+    "name": "Roo #1841",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/1841.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Rainbow"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Ash"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Medical Mask"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Mad"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Green Roo Hoodie"
+        },
+        {
+            "trait_type": "Gear",
+            "value": "Midnight Katanas"
+        }
+    ]
+}

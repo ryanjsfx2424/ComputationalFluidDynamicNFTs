@@ -1,0 +1,30 @@
+{
+    "name": "Roo #4137",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/4137.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Sky"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Arctic"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Green Leaf"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Green Kanga Hoodie"
+        },
+        {
+            "trait_type": "Gear",
+            "value": "Master Sword"
+        }
+    ]
+}

@@ -1,0 +1,34 @@
+{
+    "name": "Roo #5357",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/5357.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Onyx"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Banana Split"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Potter Robes"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Grey Snapback"
+        },
+        {
+            "trait_type": "Eyewear",
+            "value": "Wayfarers"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "name": "Roo #4363",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/4363.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Forest"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Demon"
+        },
+        {
+            "value": "Snarl",
+            "trait_type": "Snout"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Normal"
+        }
+    ]
+}

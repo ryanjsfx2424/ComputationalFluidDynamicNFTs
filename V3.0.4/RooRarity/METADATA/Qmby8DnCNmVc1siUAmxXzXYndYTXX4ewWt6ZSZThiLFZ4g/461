@@ -1,0 +1,30 @@
+{
+    "name": "Roo #461",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/461.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Khaki"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Mocha"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Gold Diamond Grillz"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Mad"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Purp Pouch"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Green Scanner"
+        }
+    ]
+}

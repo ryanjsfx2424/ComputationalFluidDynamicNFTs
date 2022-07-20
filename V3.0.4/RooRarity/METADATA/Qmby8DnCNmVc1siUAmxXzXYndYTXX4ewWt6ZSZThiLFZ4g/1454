@@ -1,0 +1,30 @@
+{
+    "name": "Roo #1454",
+    "image": "https://cc_nftstore.mypinata.cloud/ipfs/QmPZXdpP1sZj67GgevEr2W93bB1D7XcmySLKrMmNDGL4FP/1454.webp",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Crimson"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Irradiated"
+        },
+        {
+            "trait_type": "Snout",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Beaty"
+        },
+        {
+            "trait_type": "Clothing",
+            "value": "Earth Federation Vest"
+        },
+        {
+            "trait_type": "Headwear",
+            "value": "Pink Scanner"
+        }
+    ]
+}
