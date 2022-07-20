@@ -3,6 +3,7 @@ import ast
 import glob
 import json
 import time
+import socket
 import requests
 from region_data import RegionData
 
@@ -14,8 +15,10 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 options = Options()
 options.headless = True
-#options.headless = False
-driver = webdriver.Firefox(options=options, executable_path="./geckodriver")
+
+exec_path = "/root/ComputationalFluidDynamicNFTs/V3.0.4/TransferAlerts/geckodriver_linux"
+if socket.gethostname() == "MB-145.local":
+  exec_path = "/Users/ryanjsfx/Documents/ComputationalFluidDynamicNFTs/V3.0.4/TransferAlerts/geckodriver"
 
 class TravelBot(RegionData):
     def __init__(self):
@@ -80,14 +83,23 @@ class TravelBot(RegionData):
         print("resp: ", resp)
         self.html = resp.text
 
-        with open("html.txt", "w") as fid:
+        with open("debug0.txt", "w") as fid:
             fid.write(self.html)
         # end with open
     # end get_html
 
     def get_html_nd(self):
         url = "https://app.nextdeparture.ca/login"
-        driver.get(url)
+
+        driver = webdriver.Firefox(options=options, executable_path=exec_path)
+        try:
+          driver.get(url)
+        except Exception as err:
+          print("97 err: ", err)
+          print("98 err: ", err.args[:])
+          driver.close()
+          return
+        # end try/except
 
         email_xpath = "//input[@id='email']"
         passw_xpath = "//input[@id='password']"
@@ -101,11 +113,13 @@ class TravelBot(RegionData):
         act = ActionChains(driver)
         act.send_keys(Keys.ENTER).perform()
 
+        print("sleeping for 5s in nextdeparture")
         time.sleep(5)
         url = "https://app.nextdeparture.ca/user/deals"
         driver.get(url)
 
         html = driver.page_source
+        driver.quit()
         with open("debug1.txt", "w") as fid:
             fid.write(html)
         # end with open
@@ -136,7 +150,7 @@ class TravelBot(RegionData):
             spl_beg = '<a href="'
             self.fares["urls"].append(fare.split(spl_beg)[1].split(spl_end)[0])
 
-            self.fares["hashtags"].append("#canada_from")
+            self.fares["hashtags"].append(["#canada_from"])
         # end for
 
         if self.fares == {} or fare not in self.fares["texts"]:

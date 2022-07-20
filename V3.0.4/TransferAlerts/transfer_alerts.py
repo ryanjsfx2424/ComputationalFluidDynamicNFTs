@@ -34,6 +34,8 @@ class TransferAlerts(object):
 
         self.processed_fs_path = "data_big/processed_data.txt"
 
+        self.processed_txHashes = []
+
         self.init_gsheet()
         self.init_w3()
         self.init_processed_fs()
@@ -336,6 +338,10 @@ class TransferAlerts(object):
 
             results = line["result"]
             for result in results:
+                if result["transactionHash"] in self.processed_txHashes:
+                    continue
+                # end if
+                self.processed_txHashes.append(result["transactionHash"])
                 for jj,addy in enumerate(result["topics"][1:]):
                     addy = "0x" + addy[2:].strip("0")
                     if addy in self.wallets:
@@ -710,9 +716,9 @@ class TransferAlerts(object):
                 alert_description += (" in the last %.1f minutes." % (num_blocks*15/60.0))
 
                 ## now go ahead and send the alert!
-                print("os_name: ", os_name)
-                print("alert descr: ", alert_description)
-                input(">>")
+                #print("os_name: ", os_name)
+                #print("alert descr: ", alert_description)
+                #input(">>")
                 embed = discord.Embed(title = os_name, description = alert_description)
                 embed.set_footer(text = "Built for NFT Round Table, Powered by @TheLunaLabs",
                     icon_url = self.ICON_URL)

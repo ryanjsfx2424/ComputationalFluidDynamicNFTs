@@ -30,9 +30,12 @@ class TravelDiscordBot(TravelBot):
         async def on_ready():
             last_nd_update = time.time() - 7200
             print("on_ready")
+            wcnt = 0
             while True:
-                old_fares = []
+                wcnt += 1
+                print("wcnt: ", wcnt)
 
+                old_fares = []
                 if self.fares != {}:
                     old_fares += self.fares["texts"]
                 # end if
@@ -66,6 +69,9 @@ class TravelDiscordBot(TravelBot):
                                 continue
                             # end if
                             hashtag = hashtag.replace("_from","")
+                            if "#mena" in hashtag:
+                              hashtag = "#me-and-north-africa"
+                            # end if
                             roles.append(self.roles[hashtag[1:]])
                             ports.append(jj)
                             if   hashtag[1:] in self.CIDS:
@@ -103,12 +109,24 @@ class TravelDiscordBot(TravelBot):
                     for jj,role in enumerate(roles):
                         channel = channels[jj]
                         if role not in roles_mentioned:
-                            await channel.send("Hey <@&" + role + ">")
+                            try:
+                              await channel.send("Hey <@&" + role + ">")
+                            except Exception as err:
+                              print("112 err: ", err)
+                              print("113 err_args: ", err.args[:])
+                              print("channel: ", channel)
+                              print("jj: ", jj)
+                              print("role: ", role)
+                              print("channels: ", channels)
+                              print("title: ", title)
+                              print("description: ", description)
+                              print("hashtags: ", self.fares["hashtags"][ii])
                             roles_mentioned.append(role)
                         # end if
                         await channel.send(embed=embed)
                     # end for
                 # end for
+                print("119 tdb going to sleep for " + str(self.sleep_time)+"s")
                 await asyncio.sleep(self.sleep_time)
             # end while
         # end on_ready
