@@ -17,8 +17,7 @@ for username in usernames:
   #query = "at:" + username
 
   query = "@" + username
-  fsave = "at_" + username + "slfj"
-  print("fsave: ", fsave)
+  fsave = "at_" + username
 
   cnt = 0
   tweets = sntwitter.TwitterSearchScraper(query).get_items()

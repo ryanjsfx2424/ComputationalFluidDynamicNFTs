@@ -13,12 +13,8 @@ for username in usernames:
   username = username.lower()
   print("begin get data for: ", username)
 
-  ## saved this one as literal_at...not sure what it actually pulled
-  #query = "at:" + username
-
-  query = "@" + username
-  fsave = "at_" + username + "slfj"
-  print("fsave: ", fsave)
+  query = "from:" + username
+  fsave = "from_" + username
 
   cnt = 0
   tweets = sntwitter.TwitterSearchScraper(query).get_items()
