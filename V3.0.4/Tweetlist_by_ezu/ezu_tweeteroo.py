@@ -29,6 +29,8 @@ DEFAULT_TIMEST = "all"
 
 class EzuTweeteroo(object):
     def __init__(self):
+        self.DEV_MODE = True
+
         self.CID_LOG = 999617660155334766 # test server, secret channel
         self.CID_MSG = 999617660155334766
         self.BOT_COMMANDS_CIDS = [self.CID_MSG,self.CID_LOG]
@@ -393,7 +395,9 @@ class EzuTweeteroo(object):
         tweets = line.split("Tweet(")[1:]
 
         nt = len(tweets)
-        nt = 1000 # DEV_MODE
+        if self.DEV_MODE:
+            nt = 1000
+        # end if
 
         dates     = ["tmp"]*nt
         dates_s   = ["tmp"]*nt
