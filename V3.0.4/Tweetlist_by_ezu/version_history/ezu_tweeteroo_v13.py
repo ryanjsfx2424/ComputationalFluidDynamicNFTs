@@ -34,7 +34,7 @@ DEFAULT_TIMEST = "all"
 
 class EzuTweeteroo(object):
     def __init__(self):
-        self.DEV_MODE = False
+        self.DEV_MODE = True
 
         self.CID_LOG = 999617660155334766 # test server, secret channel
         self.CID_MSG = 999617660155334766
@@ -240,7 +240,7 @@ class EzuTweeteroo(object):
             "etypes": np.array([]),
             "texts": np.array([])
         }
-        os.system("python3 stream_ezu.py > logfile_stream.txt &")
+        os.system("python3 stream_ezu.py &")
         if not self.DEV_MODE:
             pass
             #os.system("python3 stream_ezu.py &")
@@ -442,9 +442,8 @@ class EzuTweeteroo(object):
             self.load_project_tweets(fn)
         # end for fs
 
-        os.system("python3 engagement.py likes > logfile_likes.txt &")
-        os.system("python3 engagement.py retweets > logfile_retweets.txt &")
-        os.system("python3 engagement.py quotes > logfile_quotes.txt &")
+        os.system("mpirun -np 3 python3 engagement.py &")
+        input(">>")
         if not self.DEV_MODE:
             pass
             #os.system("mpirun -np 3 python3 engagement.py &")

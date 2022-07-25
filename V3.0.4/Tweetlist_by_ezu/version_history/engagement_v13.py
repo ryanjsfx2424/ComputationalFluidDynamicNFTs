@@ -1,12 +1,9 @@
 import os
-import sys
+import yt
 import ast
 import time
 from ezu_tweeteroo import *
-
-print("sys.argv[:]: ", sys.argv[:])
-etype = sys.argv[1]
-
+yt.enable_parallelism()
 class Engagement(EzuTweeteroo):
     def __init__(self):
         self.init_auth()
@@ -36,16 +33,18 @@ class Engagement(EzuTweeteroo):
 
             for tweet_id in tweet_ids:
                 print("tweet_id: ", [tweet_id])
-                print("etype: ", etype)
-                scraped = self.get_engagement(tweet_id)
-                if scraped:
-                    time.sleep(self.LONG_SLEEP)
-                # end if
+                for etype in yt.parallel_objects(["likes", "retweets", "quotes"]):
+                    print("etype: ", etype)
+                    scraped = self.get_engagement(tweet_id, etype)
+                    if scraped:
+                        time.sleep(self.LONG_SLEEP)
+                    # end if
+                # end for etype
             # end for project_tweet_ids
         # end while True
     # end scrape_engagement
 
-    def get_engagement(self, tweet_id):
+    def get_engagement(self, tweet_id, etype):
         print("BEGIN get_engagement for etype, tweet_id: ", etype, tweet_id)
         #input(">>")
         url  = self.TWITTER_API_BASE
@@ -72,7 +71,7 @@ class Engagement(EzuTweeteroo):
                 token = last_lines[0]
                 token = token.split("next_token: ")[1]
                 token = token.replace(" ","").replace("\n","")
-                if token == "None" and len(lines) > (nl+1):
+                if token == "None":
                     lines = lines[:-nl]
                     last_lines = lines[-nl:]
                     token = last_lines[0]
