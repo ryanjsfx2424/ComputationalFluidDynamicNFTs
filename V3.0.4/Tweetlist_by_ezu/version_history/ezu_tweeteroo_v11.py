@@ -34,7 +34,7 @@ DEFAULT_TIMEST = "all"
 
 class EzuTweeteroo(object):
     def __init__(self):
-        self.DEV_MODE = False
+        self.DEV_MODE = True
 
         self.CID_LOG = 999617660155334766 # test server, secret channel
         self.CID_MSG = 999617660155334766
@@ -92,15 +92,6 @@ class EzuTweeteroo(object):
         query = "@" + self.PROJECT_TWITTER
         self.keywords_help = query + ""
         self.keywords_query = query.replace(" ", "%20")
-
-        self.keywords_data = {
-            "dates":     np.array([]),
-            "dates_s":   np.array([]),
-            "tweet_ids": np.array([]),
-            "tuids":     np.array([]),
-            "usernames": np.array([]),
-            "texts":  np.array([])
-        }
     # end init_keywords
 
     def init_times(self):
@@ -222,7 +213,6 @@ class EzuTweeteroo(object):
     # end init_embeds
 
     def init_stream_data(self):
-        print("BEGIN init_stream_data")
         self.stream_data = {
             "tweet_ids": np.array([]),
             "tuids": np.array([]),
@@ -233,10 +223,7 @@ class EzuTweeteroo(object):
             "texts": np.array([])
         }
         if not self.DEV_MODE:
-            pass
-            #os.system("python3 stream_ezu.py &")
-        # end if not
-        print("SUCCESS init_stream_data")
+            os.system("python3 stream_ezu.py &")
     # end init_stream_data
 
     async def embed_helper(self, pages, client, channel):
@@ -329,17 +316,13 @@ class EzuTweeteroo(object):
     def init_data(self):
         self.user_dict = {"discordId_to_username":[]}
         self.init_stream_data()
-        print("331 init_data, finished init_stream_data")
 
         start = time.time()
         query = self.keywords_query
         fs = np.sort(glob.glob("data_big/keywords_data/keywords*.txt"))
-        print("336 going to start loading keywords")
-        for ii,fsave in enumerate(fs):
-            print("ii, fsave: ", ii, fsave)
+        for fsave in fs:
             self.load_keywords(fsave)
         # end for
-        print("340 finished loading keywords")
 
         if len(fs) > 0:
             fnum = fs[-1].replace("data_big/keywords_data/","")
@@ -361,13 +344,11 @@ class EzuTweeteroo(object):
         # end if
         self.get_sndata(query, fsave, oldest=oldest, newest=newest)
          
-        print("362 going to start loading keywords")
         fs = np.sort(glob.glob("data_big/keywords_data/keywords*.txt"))
-        for ii,fsave in enumerate(fs):
-            print("ii, fsave: ", ii, fsave)
+        for fsave in fs:
             self.load_keywords(fsave)
         # end for
-        print("367 loaded keywords in: ", time.time() - start)
+        print("loaded keywords in: ", time.time() - start)
 
         start = time.time()
         query = "from:" + self.PROJECT_TWITTER
@@ -391,7 +372,6 @@ class EzuTweeteroo(object):
             # end with
             for tweet in tweets.split("Tweet(")[1:]:
                 date = tweet.split("datetime.datetime(")[1].split(", tzinfo=")[0]
-                date = self.convert_sntime(date)
                 dates_s.append(self.get_tweet_time_s(date))
                 dates.append(date)
             # end for tweets
@@ -478,7 +458,7 @@ class EzuTweeteroo(object):
                         fsave = "data_big/keywords_data/keywords" + \
                                 str(fnum).zfill(6) + "_" + \
                                 self.PROJECT_TWITTER + ".txt"
-                    elif "data_big/from" in fsave:
+                    elif "data_big/from" in fsave::
                         fsave = "data_big/from" + \
                                 str(fnum).zfill(6) + "_" + \
                                 self.PROJECT_TWITTER + ".txt"
@@ -503,7 +483,16 @@ class EzuTweeteroo(object):
     # end get_sndata
 
     def load_keywords(self, fload):
-        #print("BEGIN load_keywords fload: ", fload)
+        print("BEGIN load_keywords fload: ", fload)
+
+        self.keywords_data = {
+            "dates":     np.array([]),
+            "dates_s":   np.array([]),
+            "tweet_ids": np.array([]),
+            "tuids":     np.array([]),
+            "usernames": np.array([]),
+            "texts":  np.array([])
+        }
 
         if not (os.path.exists(fload) and os.stat(fload).st_size != 0):
             return
@@ -519,19 +508,19 @@ class EzuTweeteroo(object):
             nt = 10
         # end if
 
-        #print("len tweets: ", len(tweets))
+        print("len tweets: ", len(tweets))
         for ii in range(nt):
             tweet = tweets[ii]
-            if ii % 1000 == 0 and ii != 0:
+            if ii % 1000 == 0:
                 print("ii: ", ii)
             # end if
 
             tweet_id = tweet.split("/status/")[1].split("'")[0]
-            if tweet_id in self.keywords_data["tweet_ids"].tolist():
+            if tweet_id in tweet_ids:
                 continue
             # end if
             if len(self.stream_data["tweet_ids"]) != 0:
-                if tweet_id in self.stream_data["tweet_ids"].tolist():
+                if tweet_id in self.stream_data["tweet_ids"]:
                     continue
                 # end if
             # end if
@@ -546,8 +535,8 @@ class EzuTweeteroo(object):
             self.keywords_data["usernames"] = np.append(self.keywords_data["usernames"], tweet.split("user=User(")[1].split("username='")[1].split(",")[0][:-1].lower())
             self.keywords_data["texts"] = np.append(self.keywords_data["texts"], tweet.split("content=")[1][1:].split(",")[0][:-1])
         # end for tweets
-        #print("done looping over tweets")
-        #print("SUCCESS load_keywords fload: ", fload)
+        print("done looping over tweets")
+        print("SUCCESS load_keywords fload: ", fload)
     # end load_keywords
 
     def load_project_tweets(self, fload):
@@ -1246,12 +1235,12 @@ class EzuTweeteroo(object):
                         flag = "keywords"
                         flag = self.FLAG_KEY
                         for matching_rule in line["matching_rules"]:
-                            if   self.PROJECT_TWITTER + "_retweetstag" in matching_rule["tag"]:
+                            if "retweetstag" in matching_rule["tag"]:
                                 flag = self.FLAG_RTS
                                 text = text[:2]
-                            elif self.PROJECT_TWITTER + "_quotestag" in matching_rule["tag"]:
+                            elif "quotestag" in matching_rule["tag"]:
                                 flag = self.FLAG_QTS
-                            elif self.PROJECT_TWITTER + "_tweetstag" in matching_rule["tag"]:
+                            elif "tweetstag" in matching_rule["tag"]:
                                 self.project_tweet_ids.append(tweet_id)
                                 with open(self.fname_project_tweet_ids, "w") as fid:
                                     fid.write(str(self.project_tweet_ids))
@@ -1260,12 +1249,12 @@ class EzuTweeteroo(object):
                         # end for
 
                         if flag != self.FLAG_RTS:
-                            if tweet_id in self.stream_data["tweet_ids"].tolist():
+                            if tweet_id in self.stream_data["tweet_ids"]:
                                 continue
                             # end if
                         else:
                             inds = np.where(self.stream_data["tuids"] == tuid)
-                            if tweet_id in self.stream_data["tweet_ids"][inds].tolist():
+                            if tweet_id in self.stream_data["tweet_ids"][inds]:
                                 continue
                             # end if
                         # end if/else
