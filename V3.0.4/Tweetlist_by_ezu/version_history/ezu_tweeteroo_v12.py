@@ -93,21 +93,13 @@ class EzuTweeteroo(object):
         self.keywords_help = query + ""
         self.keywords_query = query.replace(" ", "%20")
 
-        self.CHUNK_SIZE = 1000
-        nfs = len(glob.glob("data_big/keywords_data/keywords*.txt"))
-        num = self.CHUNK_SIZE * nfs
-
-        self.filler_date = ["XXXX-XX-XXTXX:XX:XX.XXXZ"]
-        self.filler_text = [280*"X"]
-
         self.keywords_data = {
-            "dates":     np.array(num*self.filler_date),
-            "dates_s":   np.array(num*self.filler_date),
-            "tweet_ids": np.array(num*self.filler_date),
-            "tuids":     np.array(num*self.filler_date),
-            "usernames": np.array(num*self.filler_date),
-            "texts":     np.array(num*self.filler_text),
-            "ii": 0
+            "dates":     np.array([]),
+            "dates_s":   np.array([]),
+            "tweet_ids": np.array([]),
+            "tuids":     np.array([]),
+            "usernames": np.array([]),
+            "texts":  np.array([])
         }
     # end init_keywords
 
@@ -359,26 +351,16 @@ class EzuTweeteroo(object):
         fsave = "data_big/keywords_data/keywords" + str(fnum).zfill(6) + \
                 "_" + self.PROJECT_TWITTER + ".txt"
 
-        inds = np.where(self.keywords_data["dates_s"] != self.filler_date)
         oldest = None
         newest = None
-        if len(self.keywords_data["dates_s"][inds]) > 0:
-            ind = np.argmax(self.keywords_data["dates_s"][inds].astype(float))
-            print("argmax ind: ", ind)
-            newest = self.keywords_data["dates"][inds][ind]
-            ind = np.argmin(self.keywords_data["dates_s"][inds].astype(float))
-            print("argmin ind: ", ind)
-            oldest = self.keywords_data["dates"][inds][ind]
+        if len(self.keywords_data["dates_s"]) > 0:
+            ind = np.argmax(self.keywords_data["dates_s"].astype(float))
+            newest = self.keywords_data["dates"][ind]
+            ind = np.argmin(self.keywords_data["dates_s"].astype(float))
+            oldest = self.keywords_data["dates"][ind]
         # end if
-        print("oldest: ", oldest)
-        print("newest: ", newest)
-        print("text oldest: ",  self.keywords_data["texts"][ind])
-        print("tweet_id old: ", self.keywords_data["tweet_ids"][ind])
-        print("username old: ", self.keywords_data["usernames"][ind])
-        input(">>")
         self.get_sndata(query, fsave, oldest=oldest, newest=newest)
          
-        self.keywords_data["ii"] = 0
         start = time.time()
         print("362 going to start loading keywords")
         fs = np.sort(glob.glob("data_big/keywords_data/keywords*.txt"))
@@ -387,13 +369,6 @@ class EzuTweeteroo(object):
             self.load_keywords(fsave)
         # end for
         print("367 loaded keywords in: ", time.time() - start)
-        inds = np.where(self.keywords_data["dates"] != self.filler_date)
-        self.keywords_data["dates"    ] = self.keywords_data["dates"    ][inds]
-        self.keywords_data["dates_s"  ] = self.keywords_data["dates_s"  ][inds]
-        self.keywords_data["tweet_ids"] = self.keywords_data["tweet_ids"][inds]
-        self.keywords_data[    "tuids"] = self.keywords_data[    "tuids"][inds]
-        self.keywords_data["usernames"] = self.keywords_data["usernames"][inds]
-        self.keywords_data[    "texts"] = self.keywords_data[    "texts"][inds]
 
         start = time.time()
         query = "from:" + self.PROJECT_TWITTER
@@ -498,7 +473,7 @@ class EzuTweeteroo(object):
                         fid.write(to_save)
                     # end with open
                 # end if
-                if cnt % self.CHUNK_SIZE == 0:
+                if cnt % 1000 == 0:
                     fnum += 1
                     data = []
                     if   "data_big/keywords" in fsave:
@@ -543,7 +518,7 @@ class EzuTweeteroo(object):
 
         nt = len(tweets)
         if self.DEV_MODE:
-            nt = 100
+            nt = 10
         # end if
 
         #print("len tweets: ", len(tweets))
@@ -554,49 +529,24 @@ class EzuTweeteroo(object):
             # end if
 
             tweet_id = tweet.split("/status/")[1].split("'")[0]
-            if tweet_id in self.keywords_data["tweet_ids"]:
+            if tweet_id in self.keywords_data["tweet_ids"].tolist():
                 continue
             # end if
             if len(self.stream_data["tweet_ids"]) != 0:
-                if tweet_id in self.stream_data["tweet_ids"] == tweet_id:
+                if tweet_id in self.stream_data["tweet_ids"].tolist():
                     continue
                 # end if
             # end if
 
             date = self.convert_sntime(tweet.split("date=datetime.datetime(")[1].split(", tzinfo=")[0])
-            date_s = str(self.get_tweet_time_s(date))
 
-            tuid  = tweet.split("user=User(")[1].split("id=")[1].split(",")[0]
-            uname = tweet.split("user=User(")[1].split("username='")[1].split(",")[0][:-1].lower()
-            text  = tweet.split("content=")[1][1:].split(",")[0][:-1]
+            self.keywords_data["tweet_ids"] = np.append(self.keywords_data["tweet_ids"], tweet_id)
+            self.keywords_data["dates"] = np.append(self.keywords_data["dates"], date)
+            self.keywords_data["dates_s"] = np.append(self.keywords_data["dates_s"], str(self.get_tweet_time_s(date)))
 
-            ind = self.keywords_data["ii"]
-            self.keywords_data["tweet_ids"][ind] = tweet_id
-            self.keywords_data[    "dates"][ind] = date
-            self.keywords_data[  "dates_s"][ind] = date_s
-            self.keywords_data[    "tuids"][ind] = tuid
-            self.keywords_data["usernames"][ind] = uname
-            self.keywords_data[    "texts"][ind] = text
-
-            '''
-            print("565: ", self.keywords_data["dates"  ])
-            print("566: ", self.keywords_data["dates"  ][ind])
-            print("567: ", self.keywords_data["dates_s"][ind])
-            print("568: ", np.max(self.keywords_data["dates_s"][ind].astype(float)))
-            print("569: ", self.keywords_data["tuids"][ind])
-            print("570: ", self.keywords_data["usernames"][ind])
-            print("571: ", self.keywords_data["texts"][ind])
-            print("ind: ", ind)
-            print("date: ", date)
-            print("date_s: ", date_s)
-            print("tuid: ", tuid)
-            print("uname: ", uname)
-            print("text: ", text)
-            input(">>")
-            '''
-
-
-            self.keywords_data["ii"] += 1
+            self.keywords_data["tuids"] = np.append(self.keywords_data["tuids"], tweet.split("user=User(")[1].split("id=")[1].split(",")[0])
+            self.keywords_data["usernames"] = np.append(self.keywords_data["usernames"], tweet.split("user=User(")[1].split("username='")[1].split(",")[0][:-1].lower())
+            self.keywords_data["texts"] = np.append(self.keywords_data["texts"], tweet.split("content=")[1][1:].split(",")[0][:-1])
         # end for tweets
         #print("done looping over tweets")
         #print("SUCCESS load_keywords fload: ", fload)
@@ -1312,12 +1262,12 @@ class EzuTweeteroo(object):
                         # end for
 
                         if flag != self.FLAG_RTS:
-                            if tweet_id in self.stream_data["tweet_ids"] == tweet_id:
+                            if tweet_id in self.stream_data["tweet_ids"].tolist():
                                 continue
                             # end if
                         else:
                             inds = np.where(self.stream_data["tuids"] == tuid)
-                            if tweet_id in self.stream_data["tweet_ids"][inds] == tweet_id:
+                            if tweet_id in self.stream_data["tweet_ids"][inds].tolist():
                                 continue
                             # end if
                         # end if/else
