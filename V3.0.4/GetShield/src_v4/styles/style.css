@@ -1,0 +1,82 @@
+body {
+    background-color: #031e30;
+}
+
+.mainBox {
+    padding: 0 20% !important;
+    width: auto !important;
+    grid-area: main-box;
+    border: none !important;
+    background: transparent !important;
+    padding-bottom: -100px;
+    margin-bottom: -100px;
+    height: 100px;
+}
+
+.div1 {
+    display: block;
+}
+
+.inputBox {
+    font-family: 'Roboto', sans-serif;
+    border: .2rem #99ccff solid;
+    font-size: 1rem;
+    font-weight: bold;
+	margin: 0 auto;
+    padding: .5rem .5rem;
+    border-radius: 6.1875rem;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    background-color: #182e3c;;
+    width: 80%;
+    transition: all 0.3s;
+    position: relative;
+    z-index: 2;
+    color: rgba(255,255,255,.7)
+}
+
+.searchButton {
+    font-family: 'Roboto', sans-serif;
+    color: #99ccff;
+    border: .2rem #99ccff solid;
+    font-size: 1rem;
+	margin: 0 auto;
+    padding: .5rem .5rem;
+    border-radius: 6.1875rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    width: 20%;
+    transition: all 0.3s;
+    position: relative;
+    z-index: 2;
+    float: right;
+    background-color: black
+}
+
+.searchButton:hover {
+    cursor: pointer;
+  }
+  
+
+
+@media only screen and (max-width: 810px) {
+    .ContainerGridBox {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: repeat(5, 1fr) !important;
+        grid-template-areas: "main-box""box1""box2""box3""box4" !important;
+    }
+
+    .mainBox {
+        padding: 0 !important;
+        padding-bottom: -100px;
+        margin-bottom: -100px;
+        height: 100px;
+    }
+
+    .main_content {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: auto auto auto auto !important;
+        grid-template-areas: "main-title""main-icon""main-left""main-cta" !important;
+    }
+    
+}

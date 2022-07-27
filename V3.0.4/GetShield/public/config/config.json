@@ -1,19 +1,19 @@
 {
-  "CONTRACT_ADDRESS": "0x354dB6396e31e95c872b70F4824C2E556AcEd497",
-  "SCAN_LINK": "https://etherscan.io/address/0x354db6396e31e95c872b70f4824c2e556aced497",
+  "CONTRACT_ADDRESS": "",
+  "SCAN_LINK": "",
   "NETWORK": {
     "NAME": "Mainnet",
     "SYMBOL": "ETH",
     "ID": 1
     
   },
-  "NFT_NAME": "WOM Chosen One LandLand",
-  "SYMBOL": "WOMC1L",
-  "MAX_SUPPLY": 777,
+  "NFT_NAME": "",
+  "SYMBOL": "",
+  "MAX_SUPPLY": 0,
   "WEI_COST": 0,
   "DISPLAY_COST": 0.00,
-  "GAS_LIMIT": 285000,
-  "MARKETPLACE": "Opeansea",
-  "MARKETPLACE_LINK": "https://opensea.io/collection/womchosenoneland",
+  "GAS_LIMIT": 0,
+  "MARKETPLACE": "",
+  "MARKETPLACE_LINK": "",
   "SHOW_BACKGROUND": false
 }

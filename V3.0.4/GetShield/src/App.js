@@ -1,12 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { connect } from "./redux/blockchain/blockchainActions";
-import { fetchData } from "./redux/data/dataActions";
+import Web3 from "web3";
+import axios from "axios";
+import { ERC721Validator } from "@nibbstack/erc721-validator";
 import * as s from "./styles/globalStyles";
 import styled from "styled-components";
-
-const truncate = (input, len) =>
-  input.length > len ? `${input.substring(0, len)}...` : input;
 
 export const StyledButton = styled.button`
   padding: 10px;
@@ -28,31 +25,6 @@ export const StyledButton = styled.button`
   }
 `;
 
-export const StyledRoundButton = styled.button`
-  padding: 10px;
-  border-radius: 100%;
-  border: none;
-  background-color: var(--primary);
-  padding: 10px;
-  font-weight: bold;
-  font-size: 15px;
-  color: var(--primary-text);
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0px 4px 0px -2px rgba(250, 250, 250, 0.3);
-  -webkit-box-shadow: 0px 4px 0px -2px rgba(250, 250, 250, 0.3);
-  -moz-box-shadow: 0px 4px 0px -2px rgba(250, 250, 250, 0.3);
-  :active {
-    box-shadow: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-  }
-`;
-
 export const ResponsiveWrapper = styled.div`
   display: flex;
   flex: 1;
@@ -66,50 +38,30 @@ export const ResponsiveWrapper = styled.div`
 `;
 
 export const StyledLogo = styled.img`
-  width: 120px;
+  padding-top: 480px;
+  width: 400px;
   @media (min-width: 156px) {
-    width: 120px;
+    width: 400px;
   }
   transition: width 0.1s;
   transition: height 0.1s;
 `;
-export const StyledLogo2 = styled.img`
-  width: 56px;
-  @media (min-width: 56px) {
-    width: 56px;
-  }
-  transition: width 0.5s;
-  transition: height 0.5s;
-`;
 
-export const StyledImg = styled.img`
-  box-shadow: 0px 5px 11px 2px rgba(0, 0, 0, 0.7);
-  border: 4px dashed var(--secondary);
-  background-color: var(--accent);
-  border-radius: 100%;
-  width: 200px;
-  @media (min-width: 900px) {
-    width: 250px;
-  }
-  @media (min-width: 1000px) {
-    width: 300px;
-  }
-  transition: width 0.5s;
-`;
-
-export const StyledLink = styled.a`
-  color: var(--secondary);
-  text-decoration: none;
-`;
 
 function App() {
-  const dispatch = useDispatch();
-  const blockchain = useSelector((state) => state.blockchain);
-  const data = useSelector((state) => state.data);
-  const [scanCounterUser,   setScanCounterUser]   = useState(0);
-  const [scanCounterGlobal, setScanCounterGlobal] = useState(0);
   const [contractAddress, setContractAddress] = useState(``);  
-  
+  const [loading,    setLoading   ] = useState(`loadingInvisible`);
+  const [loadingTwo, setLoadingTwo] = useState(`searchingInvisibleSmall`);
+  const [searched, setSearched] = useState(`searchingInvisible`);
+  const [ercCompliant, setErcCompliant] = useState(`No`);
+  const [contractBalance, setContractBalance] = useState(``);
+  const [txCnt, setTxCnt] = useState(``);
+
+  const ETHERSCAN_API_KEY = "2WHTII3VF5U1J3GV63UQF5TK9SZX7A8FUI";
+  const INFURA_API_KEY = "8d8c24c43df74caeab400362f82b4805";
+  const INFURA_API_URL = `https://mainnet.infura.io/v3/${INFURA_API_KEY}`;
+  const ETHERSCAN_BASE_URL = "https://api.etherscan.io/api";
+
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
     SCAN_LINK: "",
@@ -129,12 +81,6 @@ function App() {
     SHOW_BACKGROUND: false,
   });
 
-  const getData = () => {
-    if (blockchain.account !== "" && blockchain.smartContract !== null) {
-      dispatch(fetchData(blockchain.account));
-    }
-  };
-
   const getConfig = async () => {
     const configResponse = await fetch("/config/config.json", {
       headers: {
@@ -150,9 +96,97 @@ function App() {
     getConfig();
   });
 
-  useEffect(() => {
-    getData();
-  }, [blockchain.account]);
+  const fetchData = async(url) =>
+  {
+    return await axios.get(url).then(res => res.data.data);
+  }
+
+  const validateContract = async(address) =>
+  {
+    console.log("106 vc address: ", address);
+    const web3 = new Web3(INFURA_API_URL);
+    const validator = new ERC721Validator(web3);
+
+    let result = await validator.basic(1, address);
+    // if (result.result) {
+    if (false) {
+      setErcCompliant(`\u2705 \t`)
+    } else {
+      setErcCompliant(`\u26d4 \t`)  
+    }
+  }
+
+  async function getTransactionCountFromEtherScan2(address){
+    console.log("120 gtcfe2");
+    return axios.get(`${ETHERSCAN_BASE_URL}?module=proxy&action=eth_getTransactionCount&address=${address}&tag=latest&apikey=X1GHTD69R8V4RRWR5U52WZ65Y8S81AGP1S`)
+   }
+
+  const getTransactionCountFromEtherscan = async(address) =>
+  {
+    console.log("121 gtcfe address: ", address);
+    const result2 = await getTransactionCountFromEtherScan2(address);
+    console.log("123 result2: ", result2);
+  }
+
+  const searchContract = () => {
+    console.log("contractAddress: ", contractAddress);
+
+    // 1. ERC721 contract?
+    validateContract(contractAddress);
+
+    // 2. transaction count
+    getTransactionCountFromEtherscan(contractAddress);
+
+    // 3. account balance
+    const web3 = new Web3(INFURA_API_URL);
+    let flag = false;
+    web3.eth.getBalance(contractAddress, function(error, balance) {
+      if (error) {
+        console.log(error);
+        flag = True;
+      } else {
+        balance = web3.utils.fromWei(balance, "ether");
+        console.log(balance);
+        setContractBalance(balance + " eth");
+      }
+    }).then(
+      balance => console.log("106")
+    );
+    if (flag) {
+      return
+    }
+
+
+    // axios.get(`${ETHERSCAN_BASE_URL}?module=proxy&action=eth_getTransactionCount&address=${contractAddress}&tag=latest&apikey=${ETHERSCAN_API_KEY}`).then(resp => {
+    //   console.log("126", resp.data);
+    //   console.log("127", resp.data.result);
+    // });
+
+    // axios.get(`${ETHERSCAN_BASE_URL}?module=proxy&action=eth_getTransactionCount&address=${contractAddress}&tag=latest&apikey=${ETHERSCAN_API_KEY}`, function(error, txCntLocal) {
+    //   if (error) {
+    //     console.log("122")
+    //     console.log(error);
+    //     flag = True;
+    //   } else {
+    //     console.log("126");
+    //     console.log(txCntLocal);
+    //     setTxCnt(txCntLocal);
+    //   }
+    // });
+    // const data = fetchData(`${ETHERSCAN_BASE_URL}?module=proxy&action=eth_getTransactionCount&address=${contractAddress}&tag=latest&apikey=${ETHERSCAN_API_KEY}`)
+    // console.log(`Data: ${data}`)
+    // console.log("131");
+
+    setLoadingTwo(`searchingSmall`);
+    setLoading(`loading`);
+    setSearched(`searching`);
+    console.log("set Loading to loading");
+    setTimeout(function () {
+      setLoading(`loadingInvisible`);
+      setLoadingTwo(`searchingInvisibleSmall`);
+      console.log("set Loading to empty");
+    }, 5000);
+  }
 
   return (
     <s.Screen>
@@ -170,100 +204,87 @@ function App() {
           <s.smallCon
             className="mainBox">
             <s.logoCon>
-              <StyledLogo alt={"logo"} src={"/config/images/shieldLogo.avif"} />
+              <StyledLogo alt={"logo"} src={"/config/images/shieldLogoWhiteNoText.png"} />
+              <s.TextDescription
+                    style={{
+                      textAlign: "center",
+                      color: "var(--accent-text)",
+                    }}
+                  >
+                    {`Scan any contract for malicious activity`}
+                </s.TextDescription>
+                <s.SpacerSmall></s.SpacerSmall>
+                <div className="searchContainer">
+                    <input className="inputBox" type= 'search' placeholder="Search Contracts / Addresses" onChange={(e) => {
+                      setContractAddress(e.target.value);
+                    }} />
+                    <button className="searchButton" type="submit" onClick={(e) => {
+                      searchContract();
+                  }}><i className="fa fa-search"></i></button>
+                </div>
+                <s.SpacerSmall></s.SpacerSmall>
+
+                <div>
+                  <s.TextDescription
+                      style={{
+                        textAlign: "center",
+                      }} className={searched}
+                  >
+                      {ercCompliant + `Does it follow the ERC-721 standard?`}
+                  </s.TextDescription>
+
+                  <s.SpacerXSmall></s.SpacerXSmall>
+
+                  <s.TextDescriptionSM
+                      style={{
+                        textAlign: "center",
+                      }} className={searched}
+                  >
+                      {`Contract Balance: ` + contractBalance}
+                  </s.TextDescriptionSM>
+                  <s.TextDescriptionSM
+                      style={{
+                        textAlign: "center",
+                      }} className={searched}
+                  >
+                      {`Transaction Count: ` + txCnt}
+                  </s.TextDescriptionSM>
+                
+                  <s.SpacerSmall></s.SpacerSmall>
+
+                  <div className={loading}></div>
+
+                  <s.SpacerSmall></s.SpacerSmall>
+                  <s.SpacerSmall></s.SpacerSmall>
+                  <s.TextDescriptionSmall
+                          style={{
+                            textAlign: "center",
+                          }} className={loadingTwo}
+                        >
+                          {`Please wait 10-15 seconds for the full analysis to complete`}
+                  </s.TextDescriptionSmall>
+
+                  
+                </div>
+                
             </s.logoCon>
-            <s.SpacerSmall />
-            <ResponsiveWrapper flex={1} style={{ padding: 34 }} test>
-              {/*<s.Container flex={1} jc={"center"} ai={"center"}>
-
-              </s.Container>*/}
-              {/* <s.SpacerLarge /> */}
-              <s.Container
-                flex={2}
-                jc={"center"}
-                ai={"center"}
-
-              >    
-                    {blockchain.account === "" ||
-                      blockchain.smartContract === null ? (
-                      <s.FlexContainer ai={"center"} jc={"center"}>
-                        <s.TextDescription
-                          style={{
-                            textAlign: "center",
-                            color: "var(--accent-text)",
-                          }}
-                        >
-                          Connect to the {CONFIG.NETWORK.NAME} network
-                        </s.TextDescription>
-                        <s.SpacerSmall />
-                        <StyledButton
-                          style={{ position: "absolute", bottom: 35 }}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            dispatch(connect());
-                            getData();
-                          }}
-                        >
-                          CONNECT
-                        </StyledButton>
-                        {blockchain.errorMsg !== "" ? (
-                          <>
-                            <s.SpacerSmall />
-                            <s.TextDescription
-                              style={{
-                                textAlign: "center",
-                                color: "var(--accent-text)",
-                              }}
-                            >
-                              {blockchain.errorMsg}
-                            </s.TextDescription>
-                          </>
-                        ) : null}
-                      </s.FlexContainer>
-                    ) : (
-                      <>
-                        <s.TextDescription
-                          style={{
-                            textAlign: "center",
-                            color: "var(--accent-text)",
-                          }}
-                        >
-                          {`Analyze suspicious contracts.`}
-                        </s.TextDescription>
-                        <s.SpacerLarge />
-                        <s.SpacerSmall />
-                        <s.FlexContainer ai={"center"} jc={"center"} fd={"column"}>
-                          <div>
-                            <label>Contrat address to scan:</label>
-                            <input className="inputBox" type= 'textALKFJ' placeholder="0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d" onChange={(e) => setContractAddress(e)} />
-                            <br></br>
-                          </div>
-                          
-                            <StyledButton
-                              onClick={(e) => {
-                                e.preventDefault();
-                                getData();
-                              }}
-                            >
-                              SCAN
-                            </StyledButton>
-                          
-                        </s.FlexContainer>
-                      </>
-                    )}
-                <s.SpacerMedium />
-              </s.Container>
-              <s.SpacerLarge />
-              {/*<s.Container flex={1} jc={"center"} ai={"center"}>
-
-              </s.Container>*/}
-            </ResponsiveWrapper>
-            <s.SpacerMedium />
+            
           </s.smallCon>
           {/* End */}
         </s.Con>
         <s.SpacerMedium/>
       </s.Container >
+
+      <footer>
+
+        <div className="botnav">
+          <p className="botleft">Shield © 2022. Made by the team behind <a className="myLink" href="https://ancientwarriors.xyz">Ancient Warriors NFT</a></p>
+          <p className="botright"><a className="myLink" href="https://getshield.xyz">API</a> | <a className="myLink" href="https://getshield.xyz/documentation">Documentation</a> | <a className="myLink" href="https://calendly.com/emanft/30min">Contact Us</a></p>
+        </div>
+
+      </footer>
+
+
     </s.Screen >
 
 
