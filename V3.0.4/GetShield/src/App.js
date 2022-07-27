@@ -128,13 +128,33 @@ function App() {
     console.log("123 result2: ", result2);
   }
 
+  async function postMythril(address) {
+    console.log("132 gm");
+
+    const config = {
+      method: "post",
+      url: "http://35.85.50.164:3000/api/v1/analysis",
+      headers: {"Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*"},
+      body: {"address": [address]}
+    }
+    return axios(config);
+  }
+
+  const doMythril = async(address) =>
+  {
+    console.log("133 dm address: ", address);
+    const result3 = await postMythril(address);
+    console.log("135 result3: ", result3)
+  }
+
   const searchContract = () => {
     console.log("contractAddress: ", contractAddress);
 
     // 1. ERC721 contract?
     validateContract(contractAddress);
 
-    // 2. transaction count
+    // 2. transaction count (not currently working)
     getTransactionCountFromEtherscan(contractAddress);
 
     // 3. account balance
@@ -156,26 +176,8 @@ function App() {
       return
     }
 
-
-    // axios.get(`${ETHERSCAN_BASE_URL}?module=proxy&action=eth_getTransactionCount&address=${contractAddress}&tag=latest&apikey=${ETHERSCAN_API_KEY}`).then(resp => {
-    //   console.log("126", resp.data);
-    //   console.log("127", resp.data.result);
-    // });
-
-    // axios.get(`${ETHERSCAN_BASE_URL}?module=proxy&action=eth_getTransactionCount&address=${contractAddress}&tag=latest&apikey=${ETHERSCAN_API_KEY}`, function(error, txCntLocal) {
-    //   if (error) {
-    //     console.log("122")
-    //     console.log(error);
-    //     flag = True;
-    //   } else {
-    //     console.log("126");
-    //     console.log(txCntLocal);
-    //     setTxCnt(txCntLocal);
-    //   }
-    // });
-    // const data = fetchData(`${ETHERSCAN_BASE_URL}?module=proxy&action=eth_getTransactionCount&address=${contractAddress}&tag=latest&apikey=${ETHERSCAN_API_KEY}`)
-    // console.log(`Data: ${data}`)
-    // console.log("131");
+    // 4. mythril (consensys) - lots 'o stuff
+    doMythril(contractAddress);
 
     setLoadingTwo(`searchingSmall`);
     setLoading(`loading`);
