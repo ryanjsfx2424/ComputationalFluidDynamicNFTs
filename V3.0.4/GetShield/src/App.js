@@ -154,7 +154,15 @@ function App() {
     //             }
     // )
     console.log("config for axios: ", config);
-    return axios(config);
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://35.85.50.164:3000/api/v1/analysis");
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onload = () => console.log("161 xhr: ", xhr.responseText);
+    xhr.send(JSON.stringify({body: {"address": [address]}}));
+
+
+    // return axios(config);
   }
 
   const doMythril = async(address) =>
