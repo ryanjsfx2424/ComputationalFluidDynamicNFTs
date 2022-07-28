@@ -137,7 +137,8 @@ function App() {
     const config = {
       method: "post",
       url: "http://35.85.50.164:3000/api/v1/analysis",
-      headers: {"Content-Type": "application/json"},
+      headers: {"Content-Type": "application/json",
+                'X-Requested-With': 'XMLHttpRequest'},
       httpsAgent: httpsAgent,
       body: {"address": ["0x3ac26f27595EffeB5e426BD093081EC30eBdD545"]},
     }
