@@ -162,7 +162,7 @@ function App() {
     // xhr.onload = () => console.log("161 xhr: ", xhr.responseText);
     // xhr.send(JSON.stringify({body: {"address": [address]}}));
 
-    console.log("165 trying fetch w/ middle-ware proxy");
+    console.log("165 trying fetch w/ middle-ware proxy mod");
     let data = {address: "0x3ac26f27595EffeB5e426BD093081EC30eBdD545"};
     fetch("http://35.85.50.164:3000/api/v1/analysis", {
       method: "POST",
