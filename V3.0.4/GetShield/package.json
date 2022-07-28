@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "Smart contract scanner.",
   "private": true,
-  "proxy": "http://35.85.50.164:3000/",
   "dependencies": {
     "@nibbstack/erc721-validator": "^0.3.1",
     "axios": "^0.27.2",
     "evm": "^0.2.0",
+    "http-proxy-middleware": "^2.0.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",
