@@ -164,7 +164,7 @@ function App() {
 
     console.log("165 trying fetch w/ middle-ware proxy");
     let data = {address: "0x3ac26f27595EffeB5e426BD093081EC30eBdD545"};
-    fetch("/api/v1/analysis", {
+    fetch("http://35.85.50.164:3000/api/v1/analysis", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       httpAgent: httpAgent,
