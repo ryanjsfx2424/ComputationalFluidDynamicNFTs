@@ -133,7 +133,7 @@ function App() {
   async function postMythril(address) {
     console.log("132 gm address: ", address);
 
-    const httpAngent = new http.Agent({rejectUnauthorized: false});
+    const httpAgent = new http.Agent({rejectUnauthorized: false});
     const httpsAgent = new https.Agent({rejectUnauthorized: false});
 
     const config = {
