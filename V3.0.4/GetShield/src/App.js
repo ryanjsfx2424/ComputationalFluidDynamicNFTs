@@ -153,16 +153,25 @@ function App() {
     //     httpsAgent
     //             }
     // )
-    console.log("config for axios: ", config);
-
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://35.85.50.164:3000/api/v1/analysis");
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.onload = () => console.log("161 xhr: ", xhr.responseText);
-    xhr.send(JSON.stringify({body: {"address": [address]}}));
-
-
+    // console.log("config for axios: ", config);
     // return axios(config);
+
+    // let xhr = new XMLHttpRequest();
+    // xhr.open("POST", "http://35.85.50.164:3000/api/v1/analysis");
+    // xhr.setRequestHeader("Content-Type", "application/json");
+    // xhr.onload = () => console.log("161 xhr: ", xhr.responseText);
+    // xhr.send(JSON.stringify({body: {"address": [address]}}));
+
+    console.log("165 trying fetch");
+    let data = {address: "0x3ac26f27595EffeB5e426BD093081EC30eBdD545"};
+    fetch("http://35.85.50.164:3000/api/v1/analysis", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(data)
+    }).then(res => {
+      console.log("172 fetch response: ", res);
+    })
+
   }
 
   const doMythril = async(address) =>
