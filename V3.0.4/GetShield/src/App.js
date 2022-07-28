@@ -132,12 +132,13 @@ function App() {
   async function postMythril(address) {
     console.log("132 gm address: ", address);
 
-    // const httpsAgent = new https.Agent({rejectUnauthorized: false});
+    const httpsAgent = new https.Agent({rejectUnauthorized: false});
 
     const config = {
       method: "post",
       url: "http://35.85.50.164:3000/api/v1/analysis",
       headers: {"Content-Type": "application/json"},
+      httpsAgent: httpsAgent,
       body: {"address": ["0x3ac26f27595EffeB5e426BD093081EC30eBdD545"]},
     }
     // return axios.post("http://35.85.50.164:3000/api/v1/analysis",
@@ -147,6 +148,7 @@ function App() {
     //     httpsAgent
     //             }
     // )
+    console.log("config for axios: ", config);
     return axios(config);
   }
 
