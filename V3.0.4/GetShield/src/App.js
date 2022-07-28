@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import Web3 from "web3";
 import axios from "axios";
+import http from "http";
 import https from "https";
 import { ERC721Validator } from "@nibbstack/erc721-validator";
 import * as s from "./styles/globalStyles";
@@ -132,6 +133,7 @@ function App() {
   async function postMythril(address) {
     console.log("132 gm address: ", address);
 
+    const httpAngent = new http.Agent({rejectUnauthorized: false});
     const httpsAgent = new https.Agent({rejectUnauthorized: false});
 
     const config = {
@@ -140,6 +142,8 @@ function App() {
       headers: {"Content-Type": "application/json",
                 'X-Requested-With': 'XMLHttpRequest'},
       httpsAgent: httpsAgent,
+      httpAgent: httpAgent,
+      withCredentials: false,
       body: {"address": ["0x3ac26f27595EffeB5e426BD093081EC30eBdD545"]},
     }
     // return axios.post("http://35.85.50.164:3000/api/v1/analysis",
