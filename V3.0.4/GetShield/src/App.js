@@ -167,6 +167,8 @@ function App() {
     fetch("http://35.85.50.164:3000/api/v1/analysis", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
+      httpAgent: httpAgent,
+      httpsAgent: httpsAgent,
       body: JSON.stringify(data)
     }).then(res => {
       console.log("172 fetch response: ", res);
