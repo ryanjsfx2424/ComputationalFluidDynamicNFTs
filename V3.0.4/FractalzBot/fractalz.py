@@ -27,6 +27,7 @@ class FractalzDiscordBot(object):
         self.cmd_msgs = [["Success - you've repaired the module, role 'Authenticated' granted", "Failure to fix space station modules"]]
         self.success_rates = [[0.1, 1.0]]
         self.roles_awarded = [[979452786355867679, ""]]
+        self.URL = "https://cdn.discordapp.com/attachments/984320867507003412/998608089718722610/Screen_Shot_2022-07-10_at_10.43.18_PM.png"
 
         self.init_settings()
     # end __init__
@@ -56,8 +57,14 @@ class FractalzDiscordBot(object):
         @client.event
         async def on_ready():
            print("ready!")
+           pfp_path = "atlas_pfp.png"
+           with open(pfp_path, "rb") as pfp:
+               await client.user.edit(password=secret, avatar=pfp.read())
+           # end with
+           print("edited profile!")
            channel = client.get_channel(self.LOG_CID)
            await channel.send("Greetings, FRACTALZ!")
+           sys.exit()
 
         @client.event
         async def on_message(message):

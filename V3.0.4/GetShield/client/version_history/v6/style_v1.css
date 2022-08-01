@@ -1,0 +1,147 @@
+body {
+    background-color: #031e30;
+}
+
+.mainBox {
+    padding: 0 20% !important;
+    width: auto !important;
+    grid-area: main-box;
+    border: none !important;
+    background: transparent !important;
+}
+
+.main_content {
+    border: solid 2px rgb(208, 138, 38);
+    background-color: black;
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+    max-height: 600px;
+    height: 100%;
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: "main-title main-icon""main-left main-icon""main-cta main-cta";
+}
+
+.main_title {
+    grid-area: main-title;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.main_title>h1 {
+    color: rgb(208, 138, 38);
+    font-size: 24px;
+    text-align: center;
+}
+
+.main_title>p {
+    color: white;
+    text-align: center;
+
+}
+
+.main_left {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    color: white;
+}
+
+.main_left>p {
+    text-align: center;
+
+}
+
+.main_right {
+    grid-area: main-icon;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main_cta {
+    grid-area: main-cta;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.main_cta>button {
+    width: unset !important;
+    background-color: transparent !important;
+    border: solid 2px rgb(208, 138, 38) !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+.LandBox.box1 {
+    grid-area: box1;
+}
+
+.LandBox.box2 {
+    grid-area: box2;
+}
+
+.LandBox.box3 {
+    grid-area: box3;
+}
+
+.LandBox.box4 {
+    grid-area: box4;
+}
+
+label {
+    color: rgb(255, 255, 255);;
+    display: block;
+    text-align: center;
+    margin: 10px;
+}
+
+.inputContainer {
+    margin-bottom: 5rem;
+}
+
+.div1 {
+    display: block;
+}
+
+.inputBox {
+    font-family: 'Roboto', sans-serif;
+    color: #99ccff;
+    border: .2rem #99ccff solid;
+    font-size: 1rem;
+	margin: 0 auto;
+    padding: .5rem .5rem;
+    border-radius: 0.5rem;
+    background-color: transparent;
+    width: 100%;
+    display: block;
+    transition: all 0.3s;
+}
+
+
+@media only screen and (max-width: 810px) {
+    .ContainerGridBox {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: repeat(5, 1fr) !important;
+        grid-template-areas: "main-box""box1""box2""box3""box4" !important;
+    }
+
+    .mainBox {
+        padding: 0 !important;
+    }
+
+    .main_content {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: auto auto auto auto !important;
+        grid-template-areas: "main-title""main-icon""main-left""main-cta" !important;
+    }
+    
+}
