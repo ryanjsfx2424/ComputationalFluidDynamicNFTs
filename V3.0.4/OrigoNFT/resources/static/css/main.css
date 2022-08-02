@@ -10,6 +10,11 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Adlinnaka-BoldDemo";
+  src: local("Adlinnaka-BoldDemo"), url(./fonts/Adlinnaka-BoldDemo.woff) format("woff");
+}
+
 body {
   font-family: "Red Hat Mono", sans-serif;
   background: black;
@@ -467,19 +472,19 @@ body {
 }
 
 .explore-title {
-  max-width: 33vw;
+  max-width: 20vw;
   font-size: 2.9vw;
   padding-left: 1rem !important;
   margin-left: 16px;
 }
 
 .explore-description {
-  font-size: 1.8vw !important;
+  font-size: 1.4vw !important;
   min-font-size: 15px !important;
   max-font-size: 30px !important;
   letter-spacing: 7%;
   word-spacing: -0.03em;
-  max-width: 40vw;
+  max-width: 85vw;
   font-family: "Montserrat", sans-serif;
   line-height: 2.1vw;
   padding-left: 1rem !important;
@@ -492,7 +497,10 @@ body {
 }
 
 .expd1 {
-  max-width: 45vw;
+  font-size: 1.3vw !important;
+  padding-top: 0 !important;
+  max-width: 46.75vw;
+  line-height: 0.6vw;
 }
 
 .expt2 {
@@ -505,7 +513,7 @@ body {
 
 @media (max-width: 936px) and (min-height: 1000px) {
   .explore-description {
-    max-width: 50vw;
+    max-width: 66vw;
   }
 }
 
