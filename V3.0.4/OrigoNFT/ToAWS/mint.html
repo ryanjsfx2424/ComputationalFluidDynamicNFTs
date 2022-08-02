@@ -1,0 +1,103 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Origo NFT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="./resources/static/css/music-player.css">
+    <link rel="stylesheet" href="./resources/static/css/main.css">
+
+    <link rel="preload" as="image" href="./resources/static/images/1.jpg" />
+    <link rel="preload" as="image" href="./resources/static/images/2.jpg" />
+    <link rel="preload" as="image" href="./resources/static/images/3.jpg" />
+    <link rel="preload" as="image" href="./resources/static/images/5.jpg" />
+
+</head>
+
+<body>
+
+    <!--<div id="bg-origo">-->
+    <!--</div>-->
+
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top p-md-5 pt-2" id="navbar">
+        <div class="container-fluid px-5">
+            <div class="d-flex justify-content-center">
+                <img src="./resources/static/images/concept_1_logo.png" alt="concept-logo" style="width: auto; height: 40px;">
+            </div>
+            <button class="navbar-toggler my-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="sandwich-button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="d-flex navbar-nav w-100 justify-content-end text-capitalize">
+                    <!-- <li class="nav-item px-md-1 px-0 my-md-2 my-1 mx-md-1 mx-md-0 text-uppercase">
+                    Music player
+                    <div class="music-container" id="music-container">
+                        <audio src="./resources/static/music/Origo%20song.wav" id="audio" preload="none"></audio>
+                        <div class="music-navigation">
+                            <button id="prev" class="action-btn d-none">
+                                <i class="fas fa-backward"></i>
+                            </button>
+                            <button id="play" class="action-btn">
+                                <img src="./resources/static/images/music.gif" alt="music-playing"
+                                     style="height: 30px; width: auto" id="music-playing" class="d-none">
+                                <img src="./resources/static/images/music-wave-still.png" alt="music-stopped"
+                                     style="height: 30px; width: auto" id="music-stopped">
+                            </button>
+                            <button id="next" class="action-btn d-none">
+                                <i class="fa-solid fa-forward"></i>
+                            </button>
+                        </div>
+                    </div>
+                </li> -->
+                    <li class="nav-item px-md-1 px-0 my-md-2 my-1 mx-md-1 mx-md-0 text-uppercase">
+                        <a class="nav-link p-0" href="https://twitter.com/origo_nft" target="_blank">
+                            <img src="resources/static/images/concept_0_twitter_icon.png" alt="twitter-logo" class="nav-icon">
+                        </a>
+                    </li>
+                    <li class="nav-item px-md-1 px-0 my-md-2 my-1 mx-md-1 mx-md-0 text-uppercase">
+                        <a class="nav-link p-0" href="https://discord.com/invite/origo" target="_blank">
+                            <img src="resources/static/images/concept_0_discord_icon.png" alt="discord-logo" class="nav-icon">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <button id="scrollBtn" title="Go to top"><i class="fa-solid fa-circle-chevron-up"></i></button>
+
+    <!-- Main content -->
+    <main class="text-light position-relative">
+        <section id="section-explore" class="position-relative">
+            <div id="explore-content">
+                <div class="video-container explore-section">
+                    <video preload="none" playsinline autoplay muted loop poster="./resources/static/images/mainlogo-2000x835.jpg" id="video-bg">
+                        <source src="./resources/static/vid/ANIMATION-WEB-ORIGO.mp4" type="video/mp4" />
+                    </video>
+                    <a href="#" class="mintButton"></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./resources/static/js/typewriter.js"></script>
+    <script src="./resources/static/js/music-player.js"></script>
+    <script src="./resources/static/js/index.js"></script>
+    <script>
+        AOS.init({
+            once: true
+        });
+    </script>
+</body>
+
+</html>

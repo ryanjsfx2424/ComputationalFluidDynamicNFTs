@@ -16,6 +16,11 @@ body {
   /*overflow: hidden;*/
 }
 
+.container-fluid .px-3 {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
 .azonix-h1 {
   font-family: Azonix;
   line-height: auto;
@@ -24,7 +29,7 @@ body {
 }
 
 .faq-color {
-  color: rgb(20, 42, 76) !important;
+  color: white !important;
 }
 
 .Origo-logo-1 {
@@ -404,7 +409,7 @@ body {
 #explore-content-2,
 #explore-content-3,
 #explore-content-5 {
-  padding-top: 25vh !important;
+  padding-top: 20vh !important;
   height: 100vh;
 }
 
@@ -433,12 +438,12 @@ body {
 }
 
 #explore-content-2 {
-  background: url("../images/5.jpg") 58% center;
+  background: url("../images/2.jpg") 58% center;
   background-size: cover;
 }
 
 #explore-content-3 {
-  background: url("../images/2.jpg") 58% center;
+  background: url("../images/Background_in_png.png") 58% center;
   background-size: cover;
 }
 
@@ -464,17 +469,38 @@ body {
 .explore-title {
   max-width: 33vw;
   font-size: 2.9vw;
+  padding-left: 1rem !important;
+  margin-left: 16px;
 }
 
 .explore-description {
-  font-size: 18px !important;
+  font-size: 1.8vw !important;
   min-font-size: 15px !important;
   max-font-size: 30px !important;
   letter-spacing: 7%;
   word-spacing: -0.03em;
-  max-width: 33vw;
+  max-width: 40vw;
   font-family: "Montserrat", sans-serif;
-  line-height: 33px;
+  line-height: 2.1vw;
+  padding-left: 1rem !important;
+  margin-left: 16px;
+  text-align: left;
+}
+
+.expt1 {
+  max-width: 45vw;
+}
+
+.expd1 {
+  max-width: 45vw;
+}
+
+.expt2 {
+  max-width: 30vw;
+}
+
+.expd2 {
+  max-width: 30vw;
 }
 
 @media (max-width: 936px) and (min-height: 1000px) {
@@ -494,34 +520,32 @@ body {
 
   .explore-title {
     max-width: 50vw;
-    font-size: 3.6vh;
-  }
-
-  .explore-description {
-    max-width: 50vw;
-  }
-
-  .explore-title {
     font-size: 3vh;
     padding-top: 20px;
     font-weight: bold;
+    padding-left: 2rem !important;
   }
 
   .explore-description {
+    max-width: 33vw;
+    line-height: 2.2vw;
     margin-top: 2vh;
     border-radius: 3%;
     /*backdrop-filter: blur(2px);*/
     /*-webkit-backdrop-filter: blur(2px);*/
-    max-width: 100vw !important;
-    font-size: 2vh !important;
+    font-size: 2.1vh !important;
     font-weight: 400 !important;
+    line-height: 3vw;
+    padding-left: 2rem !important;
   }
 }
 
 @media (max-width: 576px) {
   .explore-title {
-    max-width: 50vw;
+    max-width: 20vw;
     font-size: 3.6vh;
+    padding-left: 0rem !important;
+    margin-left: 0px;
     /*backdrop-filter: blur(2px);*/
     /*-webkit-backdrop-filter: blur(2px);*/
   }
@@ -531,8 +555,11 @@ body {
     border-radius: 3%;
     /*backdrop-filter: blur(2px);*/
     /*-webkit-backdrop-filter: blur(2px);*/
-    max-width: 75vw;
-    font-size: 2.2vh;
+    max-width: 50vw;
+    font-size: 2.3vh;
+    line-height: 5vw;
+    padding-left: 0rem !important;
+    margin-left: 0px;
   }
 }
 
@@ -544,12 +571,16 @@ body {
     padding-right: 0 !important;
     padding-left: 0 !important;
     margin: 0 auto !important;
+    padding-left: 0rem !important;
     /*margin-right: 0 !important;*/
     /*margin-left: 0 !important;*/
   }
 
   .explore-description {
     padding: 0;
+    max-width: 50vw;
+    line-height: 5vw;
+    padding-left: 0rem !important;
   }
 }
 
@@ -612,8 +643,9 @@ body {
 .accordion-item {
   background-color: transparent !important;
   color: rgb(20, 42, 76) !important;
-  border-left: 3px solid rgb(20, 42, 76) !important;
+  /* border-left: 3px solid rgb(20, 42, 76) !important; */
   border-bottom: none;
+  border-top: none;
 }
 .accordion-item:focus {
   border: none;
@@ -628,24 +660,54 @@ body {
 .accordion-button {
   background-color: transparent !important;
   color: white !important;
-  padding: 0 20px;
+  padding: 0 0px;
+  border: none;
+}
+
+.collapsed {
+  border-bottom: none;
+}
+
+.collapsed::after {
+  border-bottom: none;
 }
 
 .accordion-button::after {
+  border-bottom: none;
+}
+
+/* .accordion-button::after {
   background-image: none !important;
-  content: "\f0dd";
   font-family: FontAwesome, serif;
   font-style: normal;
   text-decoration: none;
-  transform-origin: 50% 60% !important;
   height: 100% !important;
   margin-top: 0 !important;
   padding-top: 0 !important;
-  font-size: 36px;
+  font-size: 36px; 
+}*/
+
+.accordion-item .accordion-button::after {
+  font-family: FontAwesome, serif;
+  content: "\f067";
+  background-image: none !important;
+  border: none;
+}
+
+.accordion-item .accordion-button .collapsed::after {
+  font-family: FontAwesome, serif;
+  content: "\f068";
+  background-image: none !important;
+  border: none;
 }
 
 .accordion-button:focus {
   border-color: transparent !important;
+  border-bottom: none;
+}
+
+.accordion-body {
+  color: white;
 }
 
 .explore-description:last-of-type {
@@ -731,11 +793,11 @@ body {
 
 
 
-
-
-
-
-
+hr {
+  border: 2px solid white;
+  opacity: 1;
+  margin: 0;
+}
 
 
 

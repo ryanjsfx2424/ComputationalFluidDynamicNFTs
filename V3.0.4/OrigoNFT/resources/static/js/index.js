@@ -100,20 +100,20 @@ $(document).ready(function () {
         } else {
             tabs[2].classList.remove('eye-active');
         }
-        if ($('#explore-content-4').isOnScreen(function (deltas) {
-            return deltas.top >= 10 && deltas.bottom >= 10;
-        })) {
-            tabs[3].classList.add('eye-active');
-        } else {
-            tabs[3].classList.remove('eye-active');
-        }
-        if ($('#explore-content-5').isOnScreen(function (deltas) {
-            return deltas.top >= 10 && deltas.bottom >= 10;
-        })) {
-            tabs[4].classList.add('eye-active');
-        } else {
-            tabs[4].classList.remove('eye-active');
-        }
+        // if ($('#explore-content-4').isOnScreen(function (deltas) {
+        //     return deltas.top >= 10 && deltas.bottom >= 10;
+        // })) {
+        //     tabs[3].classList.add('eye-active');
+        // } else {
+        //     tabs[3].classList.remove('eye-active');
+        // }
+        // if ($('#explore-content-5').isOnScreen(function (deltas) {
+        //     return deltas.top >= 10 && deltas.bottom >= 10;
+        // })) {
+        //     tabs[4].classList.add('eye-active');
+        // } else {
+        //     tabs[4].classList.remove('eye-active');
+        // }
     }
 
     // Define a place to scroll to for all the bottom nav items on the first section

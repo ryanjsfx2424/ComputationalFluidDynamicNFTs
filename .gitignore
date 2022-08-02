@@ -10,6 +10,12 @@ git_ignores_me*
 
 #snscrape
 data_big
+data_big*
 
 logfile*txt
 nohup.out
+debug*.txt
+
+# aws keys
+*.pem
+*.ppk
