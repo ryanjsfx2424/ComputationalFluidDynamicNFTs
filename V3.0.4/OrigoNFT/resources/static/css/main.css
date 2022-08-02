@@ -15,6 +15,11 @@
   src: local("Adlinnaka-BoldDemo"), url(./fonts/Adlinnaka-BoldDemo.woff) format("woff");
 }
 
+@font-face {
+  font-family: "Helvetica-Bold";
+  src: local("Helvetica-Bold"), url(./fonts/Helvetica-Bold.woff) format("woff");
+}
+
 body {
   font-family: "Red Hat Mono", sans-serif;
   background: black;
@@ -493,7 +498,14 @@ body {
 }
 
 .expt1 {
+  padding-top: 5rem !important;
   max-width: 45vw;
+  margin-bottom: 0 !important;
+}
+
+.expt1-bot {
+  max-width: 45vw;
+  margin-bottom: 1.5rem !important;
 }
 
 .expd1 {
@@ -501,17 +513,28 @@ body {
   padding-top: 0 !important;
   max-width: 46.75vw;
   line-height: 0.6vw;
+  font-family: "Helvetica-Bold", Helvetica, Arial, sans-serif
 }
 
 .expt2 {
-  max-width: 30vw;
+  padding-top: 5rem !important;
+  max-width: 45vw;
+  margin-bottom: 0 !important;
+}
+
+.expt2-bot {
+  max-width: 45vw;
+  margin-bottom: 1.5rem !important;
 }
 
 .expd2 {
-  max-width: 30vw;
+  font-size: 1.3vw !important;
+  padding-top: 0 !important;
+  line-height: 0.6vw;
+  font-family: "Helvetica-Bold", Helvetica, Arial, sans-serif
 }
 
-@media (max-width: 936px) and (min-height: 1000px) {
+/* @media (max-width: 936px) and (min-height: 1000px) {
   .explore-description {
     max-width: 66vw;
   }
@@ -539,8 +562,7 @@ body {
     line-height: 2.2vw;
     margin-top: 2vh;
     border-radius: 3%;
-    /*backdrop-filter: blur(2px);*/
-    /*-webkit-backdrop-filter: blur(2px);*/
+
     font-size: 2.1vh !important;
     font-weight: 400 !important;
     line-height: 3vw;
@@ -554,15 +576,13 @@ body {
     font-size: 3.6vh;
     padding-left: 0rem !important;
     margin-left: 0px;
-    /*backdrop-filter: blur(2px);*/
-    /*-webkit-backdrop-filter: blur(2px);*/
+
   }
 
   .explore-description {
     margin-top: 5vh;
     border-radius: 3%;
-    /*backdrop-filter: blur(2px);*/
-    /*-webkit-backdrop-filter: blur(2px);*/
+
     max-width: 50vw;
     font-size: 2.3vh;
     line-height: 5vw;
@@ -580,8 +600,6 @@ body {
     padding-left: 0 !important;
     margin: 0 auto !important;
     padding-left: 0rem !important;
-    /*margin-right: 0 !important;*/
-    /*margin-left: 0 !important;*/
   }
 
   .explore-description {
@@ -590,7 +608,7 @@ body {
     line-height: 5vw;
     padding-left: 0rem !important;
   }
-}
+} */
 
 .eye {
   /* border: 2px solid whitesmoke; */
