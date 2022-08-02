@@ -1,7 +1,7 @@
 from fontTools.ttLib import TTFont
 
-fload = "Adlinnaka-BoldDemo.ttf"
-fsave = "Adlinnaka-BoldDemo.woff"
+fload = "Helvetica-Bold.ttf"
+fsave = "Helvetica-Bold.woff"
 
 fid = TTFont(fload)
 fid.flavor = "woff"
