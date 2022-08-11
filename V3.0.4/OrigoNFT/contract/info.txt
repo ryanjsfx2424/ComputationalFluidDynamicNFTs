@@ -1,0 +1,28 @@
+Compiled v0.8.7 w/ opt (200 runs)
+
+Rinkeby
+0x33bd3cFc7cb36Fcfdff5278cC146740EAD8C34B7
+[verified]
+  cost 0.163 eth at 73 gwei on mainnet to deploy
+
+=====
+Simple + Remy wallets
+0x97C86B00A1aE8203f64E00D92004463C900D10D5
+0xAf499D5Ea28583d4C3F227FFdB41a09D4eDd4B9F
+
+More Simple + Remy wallets
+0x0eE37690F00557930Beb57286b0cca7d85714B00
+0x0bB3F2c0673F56641E63C9E80Dc4D53d78f98A04
+0x97C86B00A1aE8203f64E00D92004463C900D10D5
+0xf299F06d16bC6f1aA43e85CF76bbb4448e6902b6
+
+v2 addr
+0xEC39Da2832e27B614cbD156fB03C715c2B3d1d9C (old costs)
+0x06Fee2a8c6Efe062D6b7E2D287aEdae97f734a59
+  [0.15 to deploy on mainnet at 60 gwei]
+
+v2 addr (nonReentrant withdraw)
+0xc6824CC0Eb188766CAa51404cFD284034Bd35264
+[verified on rinkeby etherscan
+
+0.00267 eth to burn NFT at 67.89 gwei

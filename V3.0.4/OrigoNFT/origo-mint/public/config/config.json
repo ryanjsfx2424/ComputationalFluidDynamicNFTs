@@ -1,0 +1,16 @@
+{
+  "CONTRACT_ADDRESS": "0xc6824CC0Eb188766CAa51404cFD284034Bd35264",
+  "SCAN_LINK": "https://rinkeby.etherscan.io/address/0xc6824CC0Eb188766CAa51404cFD284034Bd35264",
+  "NETWORK": {
+    "NAME": "Rinkeby Testnet",
+    "SYMBOL": "ETH",
+    "ID": 4
+  },
+  "NFT_NAME": "RebelsClone",
+  "SYMBOL": "RCLONE",
+  "MAX_SUPPLY": 3000,
+  "MARKETPLACE": "Opeansea",
+  "MARKETPLACE_LINK": "https://testnets.opensea.io/collection/rebelsclones-v2",
+  "TWITTER_LINK": "https://twitter.com/origo_nft",
+  "SHOW_BACKGROUND": true
+}

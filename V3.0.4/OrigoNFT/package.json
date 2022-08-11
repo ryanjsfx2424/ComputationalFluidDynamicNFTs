@@ -1,0 +1,16 @@
+{
+  "name": "origonft",
+  "version": "3.0.4",
+  "description": "website and minting dapp",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "@TheLunaLabs",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1"
+  }
+}

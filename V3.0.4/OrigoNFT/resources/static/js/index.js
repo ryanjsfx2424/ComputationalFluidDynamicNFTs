@@ -1,11 +1,36 @@
 $(document).ready(function () {
     $.fn.isOnScreen = function (test) {
-
         var height = this.outerHeight();
         var width = this.outerWidth();
 
         if (!width || !height) {
             return false;
+        }
+
+        if(width < 1200) {
+            document.getElementById("p1p1").innerHTML = "Inspired by the people before and";
+            document.getElementById("p1p2").innerHTML = "among us, we want to add beauty,";
+            document.getElementById("p1p3").innerHTML = "hope, and passion to the web3 space.";
+            document.getElementById("p1p4").innerHTML = "Origo is a collection of 3,000 1/1 hand";
+            document.getElementById("p1p5").innerHTML = "-curated NFT's available by minting";
+            document.getElementById("p1p6").innerHTML = "our access pass. Each Origo NFT is";
+            document.getElementById("p1p7").innerHTML = "Unreal Engine ready, has exclusive";
+            document.getElementById("p1p8").innerHTML = "access to undisclosed future utility,";
+            document.getElementById("p1p9").innerHTML = "upcoming drops, projects and more.";
+
+            document.getElementById("p2p1").innerHTML = "The key to Origo is through our Access Pass.";
+            document.getElementById("p2p2").innerHTML = "One pass = one character from the 3,000";
+            document.getElementById("p2p3").innerHTML = "character collection. Each member with a";
+            document.getElementById("p2p4").innerHTML = "whitelist will be eligible to mint one pass";
+            document.getElementById("p2p5").innerHTML = "which can later be exchanged for one of";
+            document.getElementById("p2p6").innerHTML = "our character NFTs. There will be 3,000 passes";
+            document.getElementById("p2p7").innerHTML = "equivalent to the number of characters, these";
+            document.getElementById("p2p8").innerHTML = "will hold the unknown identity of your Origo.";
+            document.getElementById("p2p9").innerHTML = "You may notice that some passes look unique";
+            document.getElementById("p2p10").innerHTML = "in comparison to others. If this is the case, your";
+            document.getElementById("p2p11").innerHTML = "pass may hold a more complex Origo identity";
+            document.getElementById("p2p12").innerHTML = "which could result in more advanced metadata";
+            document.getElementById("p2p13").innerHTML = "upon the reveal of your character.";
         }
 
         var win = $(window);
@@ -31,6 +56,7 @@ $(document).ready(function () {
         if (typeof test == 'function') {
             return test.call(this, deltas);
         }
+
 
         return deltas.top > 0
             && deltas.left > 0

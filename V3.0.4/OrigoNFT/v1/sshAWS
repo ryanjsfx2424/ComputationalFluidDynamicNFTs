@@ -1,1 +1,0 @@
-ssh -i "origo-keypair.pem" ec2-user@ec2-34-238-184-213.compute-1.amazonaws.com

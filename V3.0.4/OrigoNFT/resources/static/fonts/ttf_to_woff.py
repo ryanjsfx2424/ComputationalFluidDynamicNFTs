@@ -1,7 +1,8 @@
 from fontTools.ttLib import TTFont
 
-fload = "Helvetica-Bold.ttf"
-fsave = "Helvetica-Bold.woff"
+name = "Quicksand-Bold"
+fload = name + ".ttf"
+fsave = name + ".woff"
 
 fid = TTFont(fload)
 fid.flavor = "woff"
