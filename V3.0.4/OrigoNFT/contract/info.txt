@@ -26,3 +26,16 @@ v2 addr (nonReentrant withdraw)
 [verified on rinkeby etherscan
 
 0.00267 eth to burn NFT at 67.89 gwei
+
+===
+for v3:
+ipfs://bafybeib7ctov4f23eraa2ujvcntf4ww6vy3apgwfiynqrgprrhcolkx3ke
+(that's for the movie)
+
+ipfs://bafkreiebs6h7txwsyyacjsemgoidipnajxsegfqn5hqrbjtkw55g7uhjiy
+(that's the metadata file)
+
+rc3.sol deployed on rinkeby at:
+0x8BED103a5554E2413728AD19c01F1C26bFDee41e
+
+
