@@ -38,4 +38,37 @@ ipfs://bafkreiebs6h7txwsyyacjsemgoidipnajxsegfqn5hqrbjtkw55g7uhjiy
 rc3.sol deployed on rinkeby at:
 0x8BED103a5554E2413728AD19c01F1C26bFDee41e
 
+Tribulator address:
+0xC7d7Cc95DeD3B8C81f17AF0e65DEf2d4abB366f7
+
+Tribulator private key:
+2d89365cadd5b587aa27cb78af08542f0d6953cccf1d89e7f468a5e8e82d88cd
+
+=====
+v4 removes 'onlyOwners' modifier from tribulation function since I want to
+use burners for that since private key will be exposed to do it programmatically.
+
+rc4.sol deployed on rinkeby at:
+0xf8b6c1b7a8ad248c27c57bb3d36b7e502d8597a8
+[need to unpause, set merkle root, set baseURI, verify on rinkeby etherscan...]
+
+set mr, set base URI, verified on Rinkeby etherscan, flipped presale state.
+Minted 500 from owner.
+
+===
+v5 should allow me to set a wallet to send tribulated NFTs to. Going to try one of Remy/Simple's:
+0xf299F06d16bC6f1aA43e85CF76bbb4448e6902b6
+
+rc5.sol deployed on rinkeby at:
+0xDC62C01BAe5f8289292fEDaEC46e1c2136126a90
+
+v6 set some functions to public.
+
+rc6.sol deployed on rinkeby at:
+0xC918DbD695718D555ddF55D2eE3532adA7448839
+
+v7 fixed the bug :D [changed zero address to tribulateWallet in two places]
+rc7.sol deployed on rinkeby at:
+0xa1f9f9dDE41319dBe124d80d0a2A2fC854667E16
+
 
