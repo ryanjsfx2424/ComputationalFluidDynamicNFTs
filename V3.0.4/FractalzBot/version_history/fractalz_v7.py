@@ -5,7 +5,7 @@ import random
 import socket
 import discord
 import asyncio
-import gspread
+
 
 if socket.gethostname() == "MB-145.local":
   sys.path.append("/Users/ryanjsfx/Documents/interactions-ryanjsfx")
@@ -33,18 +33,9 @@ class FractalzDiscordBot(object):
         self.cmd_msgs = [["Success - you've repaired the module, role 'Authenticated' granted", "Failure to fix space station modules"]]
         self.success_rates = [[0.1, 1.0]]
         self.roles_awarded = [[979452786355867679, ""]]
-        self.roles_removed = [["",""]]
 
-        #self.init_gsheet()
         self.init_settings()
     # end __init__
-
-    def init_gsheet(self):
-        pass
-        #gc = gspread.service_account()
-        #sh = gc.open("TransferAlertSettings")
-        #self.worksheet = sh.get_worksheet(0)
-    # end init_gsheet
 
     def init_settings(self):
         if os.path.exists(self.fname_settings) and os.stat(self.fname_settings).st_size != 0:
@@ -54,19 +45,7 @@ class FractalzDiscordBot(object):
                 self.cmd_msgs      = ast.literal_eval(lines[1])
                 self.success_rates = ast.literal_eval(lines[2])
                 self.roles_awarded = ast.literal_eval(lines[3])
-
-                if "," in lines[4]:
-                    self.roles_removed = ast.literal_eval(lines[4])
-                else:
-                    self.roles_removed = ast.literal_eval(lines[3])
-                    for ii in range(len(self.roles_removed)):
-                        for jj in range(len(self.roles_removed[ii])):
-                            self.roles_removed[ii][jj] = ""
-                        # end for
-                    # end for
-                # end if/else
-
-                if "True" in lines[-1]:
+                if "True" in lines[4]:
                     self.paused = True
                 else:
                     self.paused = False
@@ -206,19 +185,13 @@ class FractalzDiscordBot(object):
                 ),
                 interactions.Option(
                     name="msgs",
-                    description="Message(s) issued when users 'succeed'",
+                    description="Message(s) issued when users succeed",
                     type=interactions.OptionType.STRING,
                     required=False,
                 ),
                 interactions.Option(
-                    name="roles_awarded",
-                    description="Role(s) awarded when users 'succeed'",
-                    type=interactions.OptionType.STRING,
-                    required=False,
-                ),
-                interactions.Option(
-                    name="roles_removed",
-                    description="Role(s) removed when users 'succeed'",
+                    name="roles",
+                    description="Role(s) awarded when users succeed",
                     type=interactions.OptionType.STRING,
                     required=False,
                 ),
@@ -234,16 +207,14 @@ class FractalzDiscordBot(object):
                             oldname: str = None,
                             name:    str = None,
                             msgs:    str = None,
-                            roles_awarded: str = None,
-                            roles_removed: str = None,
+                            roles:   str = None,
                             rates:   str = None,
                             ):
             print("begin command command")
             if ( oldname  == None and \
                     name  == None and \
                     msgs  == None and \
-                    roles_awarded == None and \
-                    roles_removed == None and \
+                    roles == None and \
                     rates == None):
                 await ctx.send("Sorry, I didn't notice the use of any options. Try again using one of the options.", ephemeral=True)
                 return
@@ -261,7 +232,6 @@ class FractalzDiscordBot(object):
                         index = ii
                     # end if
                 # end for
-
                 if index == -11:
                     msg = "Sorry, I couldn't find 'oldname' in the list of existing commands.\n\n"
                     msg += "This is what I received: " + oldname + "\n\n"
@@ -298,16 +268,16 @@ class FractalzDiscordBot(object):
                     await ctx.send("Updated success message(s) to: " + str(self.cmd_msgs[index]) + "\n\n", ephemeral=True)
                 # end if/else
                 
-            if roles_awarded != None:
-                if "; " in roles_awarded:
-                    roles_awarded = roles_awarded.split("; ")
+            if roles != None:
+                if "; " in roles:
+                    roles = roles.split("; ")
                 else:
-                    roles_awarded = [roles_awarded]
+                    roles = [roles]
                 # end if/else
 
                 roles_arr = []
                 flag = True
-                for role in roles_awarded:
+                for role in roles:
                     if role == "None":
                         roles_arr.append("")
                         continue
@@ -330,41 +300,6 @@ class FractalzDiscordBot(object):
                     else:
                         self.roles_awarded[index] = roles_arr
                         await ctx.send("Updated the following role(s) to award on command success: " + str(self.roles_awarded[index]) + "\n\n", ephemeral=True)
-                    # end if/else
-                # end if
-
-            if roles_removed != None:
-                if "; " in roles_removed:
-                    roles_removed = roles_removed.split("; ")
-                else:
-                    roles_removed = [roles_removed]
-                # end if/else
-
-                roles_arr = []
-                flag = True
-                for role in roles_removed:
-                    if role == "None":
-                        roles_arr.append("")
-                        continue
-                    # end if
-
-                    try:
-                        roles_arr.append(int(role))
-                    except Exception as err:
-                        print("258 err: ", err)
-                        print("2592 err.args: ", err.args[:])
-                        await ctx.send("Sorry, I couldn't parse (one of) the 'role' option as an integer", ephemeral=True)
-                        flag = False
-                    # end try/except
-                # end for
-
-                if flag:
-                    if oldname == None:
-                        self.roles_removed[-1] = roles_arr
-                        await ctx.send("Added the following role(s) to award on command success: " + str(self.roles_removed[-1]) + "\n\n", ephemeral=True)
-                    else:
-                        self.roles_removed[index] = roles_arr
-                        await ctx.send("Updated the following role(s) to award on command success: " + str(self.roles_removed[index]) + "\n\n", ephemeral=True)
                     # end if/else
                 # end if
 
@@ -409,8 +344,7 @@ class FractalzDiscordBot(object):
             bad_iis = []
             for ii in range(len(self.cmd_names)):
                 mask = (len(self.cmd_msgs[ii]) == len(self.success_rates[ii])) and \
-                       (len(self.cmd_msgs[ii]) == len(self.roles_awarded[ii])) and \
-                       (len(self.cmd_msgs[ii]) == len(self.roles_removed[ii]))
+                       (len(self.cmd_msgs[ii]) == len(self.roles_awarded[ii]))
                 if not mask:
                     bad_iis.append(ii)
                 # end if
@@ -421,15 +355,13 @@ class FractalzDiscordBot(object):
                 msg += "This was the command: " + str(self.cmd_names[ii]) + "\n\n"
                 msg += "msgs: " + str(self.cmd_msgs[ii]) + "\n\n"
                 msg += "rates: " + str(self.success_rates[ii]) + "\n\n"
-                msg += "rolesA: " + str(self.roles_awarded[ii]) + "\n\n"
-                msg += "rolesR: " + str(self.roles_removed[ii]) + "\n\n"
+                msg += "roles: " + str(self.roles_awarded[ii]) + "\n\n"
                 await ctx.send(msg)
 
                 del self.cmd_names[ii]
                 del self.cmd_msgs[ ii]
                 del self.success_rates[ii]
                 del self.roles_awarded[ii]
-                del self.roles_removed[ii]
             # end for ii
 
             with open(self.fname_settings, "w") as fid:
@@ -437,8 +369,7 @@ class FractalzDiscordBot(object):
                 fid.write(str(self.cmd_msgs )     + "\n")
                 fid.write(str(self.success_rates) + "\n")
                 fid.write(str(self.roles_awarded) + "\n")
-                fid.write(str(self.roles_removed) + "\n")
-                print(str(self.roles_removed) + "\n")
+                print(str(self.roles_awarded) + "\n")
                 fid.write(str(self.paused))
             # end with open
 
@@ -482,7 +413,6 @@ class FractalzDiscordBot(object):
                 del self.cmd_msgs[     index]
                 del self.success_rates[index]
                 del self.roles_awarded[index]
-                del self.roles_removed[index]
             except Exception as err:
                 print("417 err: ", err)
                 print("418 err.args: ", err.args[:])
@@ -508,4 +438,3 @@ if __name__ == "__main__":
     frac = FractalzDiscordBot()
     frac.discord_bot()
 ## end fractalz.py
-
