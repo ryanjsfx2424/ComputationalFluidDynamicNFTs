@@ -2,10 +2,16 @@ import os
 import sys
 import ast
 import random
+import socket
 import discord
 import asyncio
 
-sys.path.append("/Users/ryanjsfx/Documents/interactions-ryanjsfx")
+
+if socket.gethostname() == "MB-145.local":
+  sys.path.append("/Users/ryanjsfx/Documents/interactions-ryanjsfx")
+else:
+  sys.path.append("/root/ToServer/interactions-ryanjsfx")
+# end if/else
 import interactions
 from interactions.client import get
 
@@ -13,8 +19,8 @@ class FractalzDiscordBot(object):
     def __init__(self):
         self.LOG_CID = 932056137518444594
         self.BOT_CIDS = [932056137518444594]
-        self.GIDS = [931482273440751638]#, # toTheMoons
-                     #902886970383040512] # FRACTALZ
+        self.GIDS = [931482273440751638, # toTheMoons
+                     902886970383040512] # FRACTALZ
 
         self.paused = True
 
@@ -27,7 +33,6 @@ class FractalzDiscordBot(object):
         self.cmd_msgs = [["Success - you've repaired the module, role 'Authenticated' granted", "Failure to fix space station modules"]]
         self.success_rates = [[0.1, 1.0]]
         self.roles_awarded = [[979452786355867679, ""]]
-        self.URL = "https://cdn.discordapp.com/attachments/984320867507003412/998608089718722610/Screen_Shot_2022-07-10_at_10.43.18_PM.png"
 
         self.init_settings()
     # end __init__
@@ -60,11 +65,9 @@ class FractalzDiscordBot(object):
            pfp_path = "atlas_pfp.png"
            with open(pfp_path, "rb") as pfp:
                await client.user.edit(password=secret, avatar=pfp.read())
-           # end with
-           print("edited profile!")
+           # end with open
            channel = client.get_channel(self.LOG_CID)
            await channel.send("Greetings, FRACTALZ!")
-           sys.exit()
 
         @client.event
         async def on_message(message):
@@ -102,12 +105,12 @@ class FractalzDiscordBot(object):
                                     await member.add_roles(role)
                                 # end if
                             # end if
-                            #await channel.send(self.cmd_msgs[ii][jj])
+                            await channel.send(self.cmd_msgs[ii][jj])
                             
-                            embedDpy = discord.Embed(title=TITLE, description=DESCRIPTION, color=discord.Color.blue())
-                            embedDpy.set_footer(text = "Built for FRACTALZ, Powered by @TheLunaLabs",
-                                            icon_url=self.URL)
-                            embedDpy.add_field(name="**__!rttrank <username>__**", value="Display user's points, likes, etc.", inline=False)
+                            #embedDpy = discord.Embed(title=TITLE, description=DESCRIPTION, color=discord.Color.blue())
+                            #embedDpy.set_footer(text = "Built for FRACTALZ, Powered by @TheLunaLabs",
+                            #                icon_url=self.URL)
+                            #embedDpy.add_field(name="**__!rttrank <username>__**", value="Display user's points, likes, etc.", inline=False)
                             return
                     # end for
                     await asyncio.sleep(0.1)
@@ -130,7 +133,7 @@ class FractalzDiscordBot(object):
         )
         async def activate(ctx: interactions.CommandContext, 
                                channel: str):
-
+            print("begin activate command")
             if ctx.author.id not in self.approved_users:
                 await ctx.send("WARNING! Non-approved user tried to activate me.")
                 return
@@ -207,6 +210,7 @@ class FractalzDiscordBot(object):
                             roles:   str = None,
                             rates:   str = None,
                             ):
+            print("begin command command")
             if ( oldname  == None and \
                     name  == None and \
                     msgs  == None and \
@@ -324,7 +328,14 @@ class FractalzDiscordBot(object):
                         self.success_rates[-1] = rates_arr
                         await ctx.send("Added the following success rate(s) to issue command success: " + str(self.success_rates[-1]) + "\n\n", ephemeral=True)
                     else:
-                        self.success_rates[index] = rates_arr
+                        try:
+                          self.success_rates[index] = rates_arr
+                        except Exception as err:
+                          print("330 err: ", err)
+                          print("331 err.args: ", err.args[:])
+                          print("Traceback")
+                          await ctx.send("Index out of bounds error assigning rates to the success_rates.")
+                          return
                         await ctx.send("Updated the following success rate(s) to issue command success: " + str(self.success_rates[index]) + "\n\n", ephemeral=True)
                     # end if/else
                 # end if
@@ -343,7 +354,7 @@ class FractalzDiscordBot(object):
                 msg = "Sorry, the number of successmsgs, failmsgs, rates, and roles did not match.\n\n"
                 msg += "This was the command: " + str(self.cmd_names[ii]) + "\n\n"
                 msg += "msgs: " + str(self.cmd_msgs[ii]) + "\n\n"
-                msg += "rates: " + str(self.rates[ii]) + "\n\n"
+                msg += "rates: " + str(self.success_rates[ii]) + "\n\n"
                 msg += "roles: " + str(self.roles_awarded[ii]) + "\n\n"
                 await ctx.send(msg)
 
@@ -364,6 +375,54 @@ class FractalzDiscordBot(object):
 
             return
         # end command
+
+        @intBot.command(
+            name="remove_command",
+            description="remove text command",
+            scope=self.GIDS,
+            options = [
+                interactions.Option(
+                    name="name",
+                    description="Existing command name to delete",
+                    type=interactions.OptionType.STRING,
+                    required=True,
+                ),
+            ]
+        )
+        async def command(ctx: interactions.CommandContext, 
+                          name: str):
+            if ctx.author.id not in self.approved_users:
+                await ctx.send("WARNING! Non-approved user tried to activate me.")
+                return
+            # end if
+
+            index = -11
+            for ii in range(len(self.cmd_names)):
+                if name == self.cmd_names[ii]:
+                    index = ii
+                # end if
+            # end for
+            if index == -11:
+                msg = "Sorry, I couldn't find 'name' in the list of existing commands.\n\n"
+                msg += "This is what I received: " + name + "\n\n"
+                msg += "And these are the commands I know about: " + str(self.cmd_names)
+                await ctx.send(msg, ephemeral=True)
+            # end if
+            try:
+                del self.cmd_names[    index]
+                del self.cmd_msgs[     index]
+                del self.success_rates[index]
+                del self.roles_awarded[index]
+            except Exception as err:
+                print("417 err: ", err)
+                print("418 err.args: ", err.args[:])
+                print("419 Traceback, error deleting a command for index: ", index)
+                print("and name: ", name)
+                await ctx.send("An error occurred wile trying to delete that command. Plz contact the dev.")
+            # end try/excpet
+            await ctx.send("Successfully removed command: ", name)
+            return
+        # end remove_command
 
         loop = asyncio.get_event_loop()
 

@@ -1,4 +1,5 @@
 import ast
+import time
 import requests
 import numpy as np
 from tweeteroo_gac import *
@@ -18,12 +19,13 @@ class Stream(Tweeteroo2):
     self.url_base = "https://api.twitter.com/2/tweets/search/stream"
     self.url = self.url_base + "?user.fields=username&expansions=author_id" \
                              + "&tweet.fields=created_at,public_metrics"
+    self.start = time.time()
   # end __init__
 
   def add_rules(self):
     json_data = {
         "add": [
-                {"value": self.keywords_query, "tag": self.PROJECT_TWITTER + "_keywordstag"},
+                {"value": self.keywords_help, "tag": self.PROJECT_TWITTER + "_keywordstag"},
                 {"value": self.retweet_rule,   "tag": self.PROJECT_TWITTER + "_retweetstag"},
                 {"value": self.quote_rule,     "tag": self.PROJECT_TWITTER + "_quotestag"},
                 {"value": self.tweet_rule,     "tag": self.PROJECT_TWITTER + "_tweetstag"}
@@ -83,6 +85,9 @@ class Stream(Tweeteroo2):
           print("3")
           for line in resp.iter_lines():
             print("4")
+            if time.time() - self.start > 3600:
+              wcnt = 0
+              self.start = time.time()
             if line:
               cnt += 1
               print("5")

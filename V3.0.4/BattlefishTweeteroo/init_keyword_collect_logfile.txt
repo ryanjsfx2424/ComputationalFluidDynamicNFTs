@@ -1,0 +1,2924 @@
+nohup: ignoring input
+len keywords_data[tweet_ids]):  0
+begin init_auth
+success init_auth
+BEGIN init_stream_data
+SUCCESS init_stream_data
+331 init_data, finished init_stream_data
+336 going to start loading keywords
+340 finished loading keywords
+tweeteroo_bf.py:354: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
+  inds = np.where(self.keywords_data["dates_s"] != self.filler_date)
+oldest:  None
+newest:  None
+BEGIN get_sndata
+query:  @BattleFish_
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+1200
+1300
+1400
+1500
+1600
+1700
+1800
+1866
+SUCCESS get_sndata
+BEGIN get_sndata
+query:  $BATTLE
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+1200
+1300
+1400
+1500
+1548
+SUCCESS get_sndata
+BEGIN get_sndata
+query:  #readytobattle
+100
+200
+300
+400
+500
+600
+700
+730
+SUCCESS get_sndata
+BEGIN get_sndata
+query:  #BattleReady
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+1200
+1300
+1400
+1500
+1600
+1700
+1800
+1900
+2000
+2100
+2200
+2300
+2400
+2500
+2600
+2700
+2800
+2900
+3000
+3100
+3200
+3300
+3400
+3500
+3600
+3700
+3800
+3900
+4000
+4100
+4200
+4300
+4400
+4500
+4600
+4700
+4800
+4900
+5000
+5100
+5200
+5300
+5400
+5500
+5600
+5700
+5800
+5900
+6000
+6100
+6200
+6300
+6400
+6500
+6600
+6700
+6800
+6900
+7000
+7100
+7200
+7300
+7400
+7500
+7600
+7700
+7800
+7900
+8000
+8100
+8200
+8300
+8400
+8500
+8600
+8700
+8800
+8900
+9000
+9100
+9200
+9300
+9400
+9500
+9600
+9700
+9800
+9900
+10000
+10100
+10200
+10300
+10400
+10500
+10600
+10700
+10800
+10900
+11000
+11100
+11200
+11300
+11400
+11500
+11600
+11700
+11800
+11900
+12000
+12100
+12200
+12300
+12400
+12500
+12600
+12700
+12800
+12900
+13000
+13100
+13200
+13300
+13400
+13500
+13600
+13700
+13800
+13900
+14000
+14100
+14200
+14300
+14400
+14500
+14600
+14700
+14800
+14900
+15000
+15100
+15200
+15300
+15400
+15500
+15600
+15700
+15800
+15900
+16000
+16100
+16200
+16300
+16400
+16500
+16600
+16700
+16800
+16900
+17000
+17100
+17200
+17300
+17400
+17500
+17600
+17700
+17800
+17900
+18000
+18100
+18200
+18300
+18400
+18500
+18600
+18700
+18800
+18900
+19000
+19100
+19200
+19300
+19400
+19500
+19600
+19700
+19800
+19900
+20000
+20100
+20200
+20300
+20400
+20500
+20600
+20700
+20800
+20900
+21000
+21100
+21200
+21300
+21400
+21500
+21600
+21700
+21800
+21900
+22000
+22100
+22200
+22300
+22400
+22500
+22600
+22700
+22800
+22900
+23000
+23100
+23200
+23300
+23400
+23500
+23600
+23700
+23800
+23900
+24000
+24100
+24200
+24300
+24400
+24500
+24600
+24700
+24800
+24900
+25000
+25100
+25200
+25300
+25371
+SUCCESS get_sndata
+len keywords_data[tweet_ids]):  62000
+362 going to start loading keywords
+ii, fsave, exec'd:  0 data_big/keywords_data/keywords000001_BattleFish_.txt 0.00033092498779296875
+len tweets:  1035
+ii:  1000
+ii, fsave, exec'd:  1 data_big/keywords_data/keywords000002_BattleFish_.txt 0.9074196815490723
+len tweets:  888
+ii, fsave, exec'd:  2 data_big/keywords_data/keywords000003_BattleFish_.txt 1.664658784866333
+len tweets:  1079
+ii:  1000
+ii, fsave, exec'd:  3 data_big/keywords_data/keywords000004_BattleFish_.txt 2.5201001167297363
+len tweets:  549
+ii, fsave, exec'd:  4 data_big/keywords_data/keywords000005_BattleFish_.txt 2.965791940689087
+len tweets:  744
+ii, fsave, exec'd:  5 data_big/keywords_data/keywords000006_BattleFish_.txt 3.573054075241089
+len tweets:  1069
+ii:  1000
+ii, fsave, exec'd:  6 data_big/keywords_data/keywords000007_BattleFish_.txt 4.449429750442505
+len tweets:  1033
+ii:  1000
+ii, fsave, exec'd:  7 data_big/keywords_data/keywords000008_BattleFish_.txt 5.320552110671997
+len tweets:  1062
+ii:  1000
+ii, fsave, exec'd:  8 data_big/keywords_data/keywords000009_BattleFish_.txt 6.212010383605957
+len tweets:  1093
+ii:  1000
+ii, fsave, exec'd:  9 data_big/keywords_data/keywords000010_BattleFish_.txt 7.160828113555908
+len tweets:  1049
+ii:  1000
+ii, fsave, exec'd:  10 data_big/keywords_data/keywords000011_BattleFish_.txt 8.03593897819519
+len tweets:  1080
+ii:  1000
+ii, fsave, exec'd:  11 data_big/keywords_data/keywords000012_BattleFish_.txt 8.982085466384888
+len tweets:  1082
+ii:  1000
+ii, fsave, exec'd:  12 data_big/keywords_data/keywords000013_BattleFish_.txt 9.886549472808838
+len tweets:  1060
+ii:  1000
+ii, fsave, exec'd:  13 data_big/keywords_data/keywords000014_BattleFish_.txt 10.76018476486206
+len tweets:  1050
+ii:  1000
+ii, fsave, exec'd:  14 data_big/keywords_data/keywords000015_BattleFish_.txt 11.612151622772217
+len tweets:  1059
+ii:  1000
+ii, fsave, exec'd:  15 data_big/keywords_data/keywords000016_BattleFish_.txt 12.470675468444824
+len tweets:  1041
+ii:  1000
+ii, fsave, exec'd:  16 data_big/keywords_data/keywords000017_BattleFish_.txt 13.35626769065857
+len tweets:  1059
+ii:  1000
+ii, fsave, exec'd:  17 data_big/keywords_data/keywords000018_BattleFish_.txt 14.224074840545654
+len tweets:  1071
+ii:  1000
+ii, fsave, exec'd:  18 data_big/keywords_data/keywords000019_BattleFish_.txt 15.098606586456299
+len tweets:  1058
+ii:  1000
+ii, fsave, exec'd:  19 data_big/keywords_data/keywords000020_BattleFish_.txt 15.986973762512207
+len tweets:  1036
+ii:  1000
+ii, fsave, exec'd:  20 data_big/keywords_data/keywords000021_BattleFish_.txt 16.835718631744385
+len tweets:  1056
+ii:  1000
+ii, fsave, exec'd:  21 data_big/keywords_data/keywords000022_BattleFish_.txt 17.698681831359863
+len tweets:  1106
+ii:  1000
+ii, fsave, exec'd:  22 data_big/keywords_data/keywords000023_BattleFish_.txt 18.63834309577942
+len tweets:  1090
+ii:  1000
+ii, fsave, exec'd:  23 data_big/keywords_data/keywords000024_BattleFish_.txt 19.5254123210907
+len tweets:  1023
+ii:  1000
+ii, fsave, exec'd:  24 data_big/keywords_data/keywords000025_BattleFish_.txt 20.368146896362305
+len tweets:  1003
+ii:  1000
+ii, fsave, exec'd:  25 data_big/keywords_data/keywords000026_BattleFish_.txt 21.21155285835266
+len tweets:  1000
+ii, fsave, exec'd:  26 data_big/keywords_data/keywords000027_BattleFish_.txt 22.034046173095703
+len tweets:  1000
+ii, fsave, exec'd:  27 data_big/keywords_data/keywords000028_BattleFish_.txt 22.843239068984985
+len tweets:  1000
+ii, fsave, exec'd:  28 data_big/keywords_data/keywords000029_BattleFish_.txt 23.69021725654602
+len tweets:  1000
+ii, fsave, exec'd:  29 data_big/keywords_data/keywords000030_BattleFish_.txt 24.5126371383667
+len tweets:  1000
+ii, fsave, exec'd:  30 data_big/keywords_data/keywords000031_BattleFish_.txt 25.379581451416016
+len tweets:  372
+367 loaded keywords in:  25.68722152709961
+BEGIN get_sndata
+query:  from:BattleFish_ since:2022-08-15T19:52:43.000Z
+5
+query:  from:BattleFish_ until:2022-01-16T07:50:17.000Z
+0
+SUCCESS get_sndata
+BEGIN load_project_tweets
+SUCCESS load_project_tweets
+BEGIN load_project_tweets
+SUCCESS load_project_tweets
+BEGIN load_project_tweets
+SUCCESS load_project_tweets
+BEGIN load_project_tweets
+SUCCESS load_project_tweets
+BEGIN load_project_tweets
+SUCCESS load_project_tweets
+BEGIN load_project_tweets
+SUCCESS load_project_tweets
+BEGIN load_project_tweets
+SUCCESS load_project_tweets
+BEGIN load_project_tweets
+SUCCESS load_project_tweets
+BEGIN load_project_tweets
+SUCCESS load_project_tweets
+BEGIN load_project_tweets
+SUCCESS load_project_tweets
+BEGIN load_project_tweets
+SUCCESS load_project_tweets
+BEGIN load_project_tweets
+SUCCESS load_project_tweets
+BEGIN load_project_tweets
+SUCCESS load_project_tweets
+BEGIN load_project_tweets
+SUCCESS load_project_tweets
+BEGIN load_project_tweets
+SUCCESS load_project_tweets
+BEGIN load_project_tweets
+SUCCESS load_project_tweets
+BEGIN load_project_tweets
+SUCCESS load_project_tweets
+BEGIN load_project_tweets
+SUCCESS load_project_tweets
+BEGIN load_project_tweets
+SUCCESS load_project_tweets
+BEGIN load_project_tweets
+SUCCESS load_project_tweets
+BEGIN load_project_tweets
+SUCCESS load_project_tweets
+BEGIN load_project_tweets
+SUCCESS load_project_tweets
+loaded engagement in:  1.8464078903198242
+begin discord_bot
+clientInteractions loaded
+client loaded
+The HTTP client has exhausted a per-route ratelimit. Locking route for 1.0 seconds.
+We have logged in as SeaShills#3807
+begin tweeteroo_stream
+fn:  stream_data1.txt
+tweeteroo_bf.py:1338: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
+  if tweet_id in self.stream_data["tweet_ids"]:
+1343 added to stream data! uname, tweet_id:  1559419286812504064 phucvanla1
+1343 added to stream data! uname, tweet_id:  1559450243653066752 tonysflakes
+1343 added to stream data! uname, tweet_id:  1559463913481289728 yicomanetidujo1
+1343 added to stream data! uname, tweet_id:  1559488362855432193 masumsh32898327
+1343 added to stream data! uname, tweet_id:  1559488510809501699 masumsh32898327
+1343 added to stream data! uname, tweet_id:  1559488622600265731 masumsh32898327
+1343 added to stream data! uname, tweet_id:  1559497214778429440 tonysflakes
+1343 added to stream data! uname, tweet_id:  1559497338883694592 oikoscryptogems
+1343 added to stream data! uname, tweet_id:  1559497348970979328 oikoscryptogems
+1343 added to stream data! uname, tweet_id:  1559497434580914176 rlcryptolegend
+1343 added to stream data! uname, tweet_id:  1559497479678087168 rlcryptolegend
+1343 added to stream data! uname, tweet_id:  1559502827478781952 denizbaldo1
+1343 added to stream data! uname, tweet_id:  1559540314775461889 khollyadams
+1343 added to stream data! uname, tweet_id:  1559545038513782785 dilaradila24
+1287 cont
+1343 added to stream data! uname, tweet_id:  1559580144188129282 adrewxvii
+1343 added to stream data! uname, tweet_id:  1559580416566247425 omaromar3lshab7
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+We have logged in as SeaShills#3807
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+msg:  !bflb
+begin get_rankins
+in Points method
+shape dates_s:  (103760,)
+dates_s:  [1.28565965e+11 1.28565965e+11 1.28565965e+11 ... 6.50115587e+10
+ 6.50115671e+10 6.50115671e+10]
+tuids shape1:  (103760,)
+tuids shape2:  (0,)
+finished with get_rankings
+vals[:20]:  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+get_leaderboard executed in (s):  1.8345787525177002
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+>>> fetching user data
+tweeteroo_bf.py:923: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
+  indsRP = np.where(self.engagement["replies" ]["usernames"] == username)
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt
+1287 cont
+fn:  stream_data1.txt

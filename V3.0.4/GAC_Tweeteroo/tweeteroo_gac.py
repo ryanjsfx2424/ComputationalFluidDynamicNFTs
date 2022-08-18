@@ -28,19 +28,26 @@ DEFAULT_TIMEST = "all"
 
 class Tweeteroo2(object):
     def __init__(self):
-        self.DEV_MODE = False
+        self.DEV_MODE = True
 
-        self.CID_LOG = 932056137518444594 # TTM, bot-commands
-        self.CID_MSG = 998218831036170301 # roo tech, tweeteroo-gac
-        self.BOT_COMMANDS_CIDS = [self.CID_MSG,self.CID_LOG]
-        self.GUILDS = [993961827799158925,931482273440751638] # Roo Tech, TTM
+        self.CID_LOG  = 932056137518444594 # TTM, bot-commands
+        self.CID_MSG1 = 998218831036170301 # roo tech, tweeteroo-gac
+        self.CID_MSG2 = 987434744721580102 # gac lb channel
+        self.CID_MSG3 = 955674727584788520 # gac commands channel
+        self.BOT_COMMANDS_CIDS = [self.CID_MSG1, self.CID_MSG2, self.CID_MSG3, self.CID_LOG]
+        self.GUILDS = [993961827799158925,931482273440751638,927427107666133033] # Roo Tech, TTM, GAC
+
+        self.AUTHORIZED_USERS = [855616810525917215, 276902270774542346]
 
         self.CMD_PREFIX = "gac"
         self.BOT_NAME   = "GAC Tweeteroo"
-        self.FOOTER = "Built for GAC, powered by @TheLunaLabs.\nRoo Tech: Developing innovative web3 solutions."
+        self.FOOTER = "Built for GAC, powered by Roo Tech."
 
         os.system("mkdir -p data_big")
         os.system("mkdir -p data_big/keywords_data")
+        os.system("mkdir -p data_big/likes")
+        os.system("mkdir -p data_big/retweets")
+        os.system("mkdir -p data_big/quotes")
 
         self.init_keywords() # prob edit these!
 
@@ -81,6 +88,7 @@ class Tweeteroo2(object):
 
     def init_keywords(self):
         self.PROJECT_TWITTER = "gamingapeclub"
+        self.PROJECT_TWITTER_SN = "GamingApeClub"
         self.fname_project_tweet_ids   = "data_big/tweet_ids_" + self.PROJECT_TWITTER + ".txt"
 
         query = "(@" + self.PROJECT_TWITTER + " OR LFGAC OR LFGACCC OR Gaming Ape Club OR GACAttack OR GACGANG OR GAC Sales OR GACFollowGAC)"
@@ -343,16 +351,6 @@ class Tweeteroo2(object):
         # end for
         print("340 finished loading keywords")
 
-        if len(fs) > 0:
-            fnum = fs[-1].replace("data_big/keywords_data/","")
-            fnum =   fnum.replace("keywords","")
-            fnum = int(fnum.split("_")[0])+1
-        else:
-            fnum = 1
-        # end if/else
-        fsave = "data_big/keywords_data/keywords" + str(fnum).zfill(6) + \
-                "_" + self.PROJECT_TWITTER + ".txt"
-
         inds = np.where(self.keywords_data["dates_s"] != self.filler_date)
         oldest = None
         newest = None
@@ -370,8 +368,20 @@ class Tweeteroo2(object):
         #input(">>")
         #oldest = None; newest = None
         for qq in query.split("OR"):
-          qq = qq.replace("(","").replace(")","").replace(" ","")
-          self.get_sndata(qq, fsave, oldest=oldest, newest=newest)
+            qq = qq.replace("(","").replace(")","").replace(" ","")
+
+            fs = np.sort(glob.glob("data_big/keywords_data/keywords*.txt"))
+            if len(fs) > 0:
+                fnum = fs[-1].replace("data_big/keywords_data/","")
+                fnum =   fnum.replace("keywords","")
+                fnum = int(fnum.split("_")[0])+1
+            else:
+                fnum = 1
+            # end if/else
+            fsave = "data_big/keywords_data/keywords" + str(fnum).zfill(6) + \
+                    "_" + self.PROJECT_TWITTER + ".txt"
+
+            self.get_sndata(qq, fsave, oldest=oldest, newest=newest)
         # end for qq
          
         self.init_keywords()
@@ -539,8 +549,8 @@ class Tweeteroo2(object):
         tweets = line.split("Tweet(")[1:]
 
         nt = len(tweets)
-        if self.DEV_MODE:
-            nt = min(10,nt)
+        #if self.DEV_MODE:
+        #    nt = min(10,nt)
         # end if
 
         #print("len tweets: ", len(tweets))
@@ -605,7 +615,7 @@ class Tweeteroo2(object):
             line = fid.read()
         # end with open
 
-        tweet_ids = line.split("https://twitter.com/" + self.PROJECT_TWITTER + "/status/")[1:]
+        tweet_ids = line.split("https://twitter.com/" + self.PROJECT_TWITTER_SN + "/status/")[1:]
 
         for tweet_id in tweet_ids:
             tweet_id = tweet_id.split("'")[0]
@@ -1039,6 +1049,8 @@ class Tweeteroo2(object):
         url = self.twitter_api_base[:-1] + "?ids=" + str(tweet_id) \
             + "&tweet.fields=created_at"
 
+        print("skipping this for now 1050")
+        return
         os.system(self.curl_base + url + self.curl_header + self.auth + 
                   "' > " + "delete_me.txt")
 
@@ -1135,13 +1147,15 @@ class Tweeteroo2(object):
         dates_s   = np.concatenate(dates_s).astype(float)
         usernames = np.concatenate(usernames)
 
+        indsSU = np.where(usernames != "gacsales")
+
         print("shape dates_s: ", dates_s.shape)
         print("dates_s: ", dates_s)
-        indsB = np.where(dates_s >= start_time)
-        indsE = np.where(dates_s[indsB] <= end_time)
+        indsB = np.where(dates_s[indsSU] >= start_time)
+        indsE = np.where(dates_s[indsSU][indsB] <= end_time)
         
         print("tuids shape1: ", tuids.shape)
-        tuids = tuids[indsB][indsE]
+        tuids = tuids[indsSU][indsB][indsE]
         print("tuids shape2: ", tuids.shape)
         tuids, indsU, vals = np.unique(tuids, return_index=True, return_counts=True)
         inds = np.argsort(vals)[::-1]
@@ -1151,7 +1165,7 @@ class Tweeteroo2(object):
             usernames = np.array(["anon"]*len(usernames))
         else:
             vals = vals[inds]
-            usernames = usernames[indsB][indsE][indsU][inds]
+            usernames = usernames[indsSU][indsB][indsE][indsU][inds]
         # end if/else
 
         if method == "Points":
@@ -1270,23 +1284,22 @@ class Tweeteroo2(object):
             print("1271 ele")
 
             fs = np.sort(glob.glob("stream_data?.txt"))
-            print("fs: ", fs)
+            #print("fs: ", fs)
             for fn in fs:
-                #print("fn: ", fn)
                 #input(">>")
                 await asyncio.sleep(self.SS)
                 with open(fn, "r") as fid:
+                    print("fn: ", fn)
                     for line in fid:
                         await asyncio.sleep(self.SS)
-                        line = ast.literal_eval(line.replace("\n",""))
-                        #try:
-                            #print("line: ", line)
-                        #except:
-                            #print("1281 cont")
-                        #    continue
-                        # end try/except
-                        #print("1283 line: ", line)
-                        #input(">>")
+                        try:
+                            line = ast.literal_eval(line.replace("\n",""))
+                        except Exception as err:
+                            print("Traceback 1289")
+                            print("1290 err: ", err)
+                            print("1291 err.args: ", err.args[:])
+                            os.system("cp " + fn + " problematic_" + fn)
+                            break
 
                         if "matching_rules" not in line:
                             print("1287 cont")
@@ -1813,6 +1826,20 @@ class Tweeteroo2(object):
             # end if
 
             channel = client.get_channel(message.channel.id)
+            if message.author.id in self.AUTHORIZED_USERS:
+              if message.content.startswith("!gac addChannel:"):
+                try:
+                  self.BOT_COMMANDS_CIDS.append(int(message.content.split("!gac addChannel:")))
+                  await channel.send("Added channel successfully!")
+                  return
+                except:
+                  print("1828 err: ", err)
+                  print("1829 err.args: ", err.args[:])
+                  await channel.send("Error adding channel, be mindful of syntax. Else, bug.")
+                  return
+                # end try/except
+              # end if
+            # end if
 
             msg = message.content.lower()
             prefix_in_msg = msg.startswith(      self.CMD_PREFIX) or \

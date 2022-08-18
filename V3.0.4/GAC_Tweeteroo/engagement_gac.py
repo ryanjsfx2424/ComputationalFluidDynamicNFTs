@@ -66,6 +66,7 @@ class Engagement(Tweeteroo2):
         lines = []
         token = ""
         fname = "data_big/" + etype + "/activity_" + self.PROJECT_TWITTER + "_" + tweet_id + ".txt"
+        print("fname: ", fname)
         if os.path.exists(fname) and os.stat(fname).st_size != 0:
             with open(fname, "r") as fid:
                 lines = fid.readlines()
@@ -106,6 +107,11 @@ class Engagement(Tweeteroo2):
             # end with open
             line = ast.literal_eval(line)
 
+            if "meta" not in line:
+              print("meta not in line, will try again")
+              time.sleep(self.LONG_SLEEP)
+              continue
+              
             next_token = "None"
             if "next_token" in line["meta"]:
                 next_token = line["meta"]["next_token"]
@@ -122,13 +128,13 @@ class Engagement(Tweeteroo2):
                     # end for
                     fid.write("next_token: " + next_token + "\n")
                     fid.write("results_count: " + str(line["meta"]["result_count"]) + "\n")
-                    fid.write("twitter_ids: "       + str(twids ) + "\n")
+                    fid.write("twitter_ids: "       + str([]) + "\n")
                     if etype != "quotes":
-                        fid.write("twitter_usernames: " + str(unames))
+                        fid.write("twitter_usernames: " + str([]))
                     else:
-                        fid.write("twitter_usernames: " + str(unames) + "\n")
-                        fid.write("tweet_ids: "         + str(tweds ) + "\n")
-                        fid.write("texts: "             + str(texts))
+                        fid.write("twitter_usernames: " + str([]) + "\n")
+                        fid.write("tweet_ids: "         + str([]) + "\n")
+                        fid.write("texts: "             + str([]))
                     # end if/else
                     return True
                 # end with
