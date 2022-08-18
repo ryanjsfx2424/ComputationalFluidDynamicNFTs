@@ -134,16 +134,16 @@ export const StyledLogo = styled.img`
 export const StyledTwitter = styled.img`
   position: absolute;
   z-index: 200;
-  left: 3%;
+  right: 9%;
   top: 3%;
   background: transparent;
   width: 5%;
 `;
 
-export const StyledOpensea = styled.img`
+export const StyledDiscord = styled.img`
   position: absolute;
   z-index: 200;
-  left: 9%;
+  right: 3%;
   top: 3%;
   background: transparent;
   width: 5%;
@@ -1858,18 +1858,21 @@ function App() {
     <s.Screen>
 
       <a href={CONFIG.TWITTER_LINK}>
-        <StyledTwitter alt={"twitter link"} src={"./config/images/twitter_social_cons_circle_white.png"} />
+        <StyledTwitter alt={"twitter link"} src={"./config/images/twitter-logo.png"} />
+      </a>
+      <a href={CONFIG.MARKETPLACE_LINK}>
+        <StyledDiscord alt={"discord link"} src={"./config/images/dc-logo.png"} />
       </a>
 
-      <a href={CONFIG.MARKETPLACE_LINK}>
+      {/* <a href={CONFIG.MARKETPLACE_LINK}>
         <StyledOpensea alt={"opensea link"} src={"./config/images/Opensea-Logomark-Transparent-White.png"} />
-      </a>
+      </a> */}
 
       <s.Container
         flex={1}
         ai={"center"}
         style={{ padding: 24, backgroundColor: "var(--primary)" }}
-        image={CONFIG.SHOW_BACKGROUND ? "./config/images/bg.jpg" : null}
+        image={CONFIG.SHOW_BACKGROUND ? "./config/images/bg1.jpg" : null}
       >
 
         <s.SpacerSmall />

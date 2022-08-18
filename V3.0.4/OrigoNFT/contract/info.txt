@@ -71,4 +71,27 @@ v7 fixed the bug :D [changed zero address to tribulateWallet in two places]
 rc7.sol deployed on rinkeby at:
 0xa1f9f9dDE41319dBe124d80d0a2A2fC854667E16
 
+====
+for v8, metadata now at:
+ipfs://bafybeia47eqzqkhgevis2dfe27gv5tj5j5txnnjkn2t7evrxz77nkvknmu/
+
+rc8.sol deployed at:
+0x3472df409A7DfFcF95F0a2c57c4941AF01F5d734
+
+rc8t.sol deployed at: (this is the polygon-collection that gets sent for tribulated NFTs)
+0x5b92c3129Bef116E3af183aEC3408e3dAD816376
+
+merkle root:
+0xa6ce29a49271bc4f02577c4ad61e473d60248e9cde3dc18e3feacefbfac0eea7
+
+Looks like web3py is kinda dumb and won't let me have tribulation address the same
+as the wallet doing the tribulating. Just thought of a workaround tho.
+
+===
+rc9.sol deployed at:
+0xefc9CF3d5cbc351bF94b459B7943B89f67a817bA
+
+rc9t.sol deployed at:
+0xe7736Ae3d9Cd30c7def41789e0601db2e67F0432
+
 

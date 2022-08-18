@@ -1,4 +1,0 @@
-v=4
-
-cp *.html v${v}
-cp -r resources v${v}
