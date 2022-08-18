@@ -133,6 +133,14 @@ class FractalzDiscordBot(object):
                             #                icon_url=self.URL)
                             #embedDpy.add_field(name="**__!rttrank <username>__**", value="Display user's points, likes, etc.", inline=False)
                             return
+                        else:
+                            if self.roles_removed[ii][jj] != "":
+                                member = message.author
+                                guild = client.get_guild(message.guild.id)
+                                role  = guild.get_role(self.roles_awarded[ii][jj])
+                                if role in member.roles:
+                                    await member.remove_roles(role)
+                                # end if
                     # end for
                     await asyncio.sleep(0.1)
                 # end if
