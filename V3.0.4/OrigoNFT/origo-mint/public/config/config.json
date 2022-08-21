@@ -1,16 +1,17 @@
 {
-  "CONTRACT_ADDRESS": "0xefc9CF3d5cbc351bF94b459B7943B89f67a817bA",
-  "SCAN_LINK": "https://rinkeby.etherscan.io/address/0xefc9CF3d5cbc351bF94b459B7943B89f67a817bA",
+  "CONTRACT_ADDRESS": "0xE740677D16705E5949c48b4c55aE22D2fE545811",
+  "SCAN_LINK": "https://rinkeby.etherscan.io/address/0xE740677D16705E5949c48b4c55aE22D2fE545811",
   "NETWORK": {
     "NAME": "Rinkeby Testnet",
     "SYMBOL": "ETH",
     "ID": 4
   },
-  "NFT_NAME": "RC8N",
-  "SYMBOL": "RC8S",
+  "NFT_NAME": "RC13N",
+  "SYMBOL": "RC13S",
   "MAX_SUPPLY": 3000,
   "MARKETPLACE": "Opeansea",
-  "MARKETPLACE_LINK": "https://testnets.opensea.io/collection/rc9n",
+  "MARKETPLACE_LINK": "https://testnets.opensea.io/collection/rc13n",
   "TWITTER_LINK": "https://twitter.com/origo_nft",
+  "DISCORD_LINK": "https://discord.com/invite/origo",
   "SHOW_BACKGROUND": true
 }

@@ -3,7 +3,7 @@ import styled from "styled-components";
 // Used for wrapping a page component
 export const Screen = styled.div`
   background-color: var(--primary);
-  background-image: ${({ image }) => (image ? `url(${image})` : "none")};
+  background-image: url("./config/images/bg1.jpg");
   background-size: cover;
   background-position: center;
   width: 100%;

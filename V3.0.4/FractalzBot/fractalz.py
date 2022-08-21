@@ -27,6 +27,8 @@ class FractalzDiscordBot(object):
         self.approved_users = [855616810525917215, # me
                                399985291135549442] # liamptd
 
+        self.QS = 0.01
+
         self.fname_settings = "settings_fractalz.txt"
 
         self.cmd_names = ["?repair"]
@@ -35,16 +37,94 @@ class FractalzDiscordBot(object):
         self.roles_awarded = [[979452786355867679, ""]]
         self.roles_removed = [["",""]]
 
-        #self.init_gsheet()
+        self.init_gsheet()
         self.init_settings()
     # end __init__
 
     def init_gsheet(self):
-        pass
-        #gc = gspread.service_account()
-        #sh = gc.open("TransferAlertSettings")
-        #self.worksheet = sh.get_worksheet(0)
+        gc = gspread.service_account(filename="/Users/ryanjsfx/.config/gspread/fractalz/service_account.json")
+        sh = gc.open("fractalz-atlas-settings")
+        self.worksheet = sh.get_worksheet(0)
     # end init_gsheet
+
+    async def get_settings(self):
+        try:
+          gsheet = self.worksheet.get_all_values()
+        except Exception as err:
+          print("83 err: ", err)
+          print("84 err.args: ", err.args[:])
+          msg = "79 err_arg: error getting gsheet!"
+          print(msg)
+          await self.channel_log.send(msg)
+          return
+        # end try/except
+
+        flag = False
+        ## modify this part forward!!!
+        settings = {"collections"  :[],
+                    "num_blocks"   :[],
+                    "num_transfers":[],
+                    "transaction_types":[]
+                    }
+        for row in gsheet:
+            if "END DATA" in row:
+                break
+            elif flag:
+                collection = row[0].lower()
+                if collection not in self.nfts and collection not in ["any", "all"]:
+                    msg = "97 err_arg: warning! collection for row `" + str(row) + "` not in self.nfts so we're skipping"
+                    msg += "\nnfts: " + ", ".join(list(self.nfts.keys()))
+                    print(msg)
+                    await self.channel_log.send(msg)
+                    #raise
+                    continue
+                # end if
+                try:
+                    num_blocks = float(row[1])/15.0
+                except:
+                    msg = "107 err_arg: warning! exception getting num_blocks for row `" + row + "` so we're skipping"
+                    print(msg)
+                    await self.channel_log.send(msg)
+                    #raise
+                    continue
+                # end try/except
+                try:
+                    num_transfers = float(row[2])
+                except:
+                    msg = "116 err_arg: warning! exception getting num_transfers for row `" + row + "` so we're skipping"
+                    print(msg)
+                    await self.channel_log.send(msg)
+                    #raise
+                    continue
+                # end try/except
+                try:
+                    transaction_type = row[3].lower()
+                    if transaction_type not in ["bought", "sold", "minted", "burned", "all"]:
+                        msg  = "125 err_arg: warning! transaction_type not in 'bought',"
+                        msg += "'sold', 'minted', 'burned', recvd: " + transaction_type
+                        print(msg)
+                        await self.channel_log.send(msg)
+                        #raise
+                        continue
+                    # end if
+                except:
+                    msg = "133 err_arg: warning! exception getting transaction_type for row `" + row + "` so we're skipping"
+                    print(msg)
+                    await self.channel_log.send(msg)
+                    #raise
+                    continue
+                # end try/except
+
+                settings["collections"  ].append(collection)
+                settings["num_blocks"   ].append(num_blocks)
+                settings["num_transfers"].append(num_transfers)
+                settings["transaction_types"].append(transaction_type)
+            elif "Time Window (seconds)" in row:
+                flag = True
+            # end if/elifs
+        # end for row in gsheet
+        self.settings = settings
+    # end get_settings
 
     def init_settings(self):
         if os.path.exists(self.fname_settings) and os.stat(self.fname_settings).st_size != 0:
@@ -88,6 +168,7 @@ class FractalzDiscordBot(object):
                await client.user.edit(password=secret, avatar=pfp.read())
            # end with open
            channel = client.get_channel(self.LOG_CID)
+           self.channel_log = channel
            await channel.send("Greetings, FRACTALZ!")
 
         @client.event
@@ -116,6 +197,7 @@ class FractalzDiscordBot(object):
                     roll = random.random()
                     print("roll: ", roll)
                     for jj in range(len(self.cmd_msgs[ii])):
+                        await asyncio.sleep(self.QS)
                         print("jj: ", jj)
                         if roll <= self.success_rates[ii][jj]:
                             if self.roles_awarded[ii][jj] != "":
@@ -316,6 +398,7 @@ class FractalzDiscordBot(object):
                 roles_arr = []
                 flag = True
                 for role in roles_awarded:
+                    await asyncio.sleep(self.QS)
                     if role == "None":
                         roles_arr.append("")
                         continue
@@ -351,6 +434,7 @@ class FractalzDiscordBot(object):
                 roles_arr = []
                 flag = True
                 for role in roles_removed:
+                    await asyncio.sleep(self.QS)
                     if role == "None":
                         roles_arr.append("")
                         continue
@@ -386,6 +470,7 @@ class FractalzDiscordBot(object):
                 rates_arr = []
                 flag = True
                 for rate in rates:
+                    await asyncio.sleep(self.QS)
                     try:
                         rates_arr.append(float(rate))
                     except Exception as err:
@@ -416,6 +501,7 @@ class FractalzDiscordBot(object):
 
             bad_iis = []
             for ii in range(len(self.cmd_names)):
+                await asyncio.sleep(self.QS)
                 mask = (len(self.cmd_msgs[ii]) == len(self.success_rates[ii])) and \
                        (len(self.cmd_msgs[ii]) == len(self.roles_awarded[ii])) and \
                        (len(self.cmd_msgs[ii]) == len(self.roles_removed[ii]))
@@ -425,6 +511,7 @@ class FractalzDiscordBot(object):
             # end for ii
 
             for ii in bad_iis[::-1]:
+                await asyncio.sleep(self.QS)
                 msg = "Sorry, the number of successmsgs, failmsgs, rates, and roles did not match.\n\n"
                 msg += "This was the command: " + str(self.cmd_names[ii]) + "\n\n"
                 msg += "msgs: " + str(self.cmd_msgs[ii]) + "\n\n"
@@ -475,6 +562,7 @@ class FractalzDiscordBot(object):
 
             index = -11
             for ii in range(len(self.cmd_names)):
+                await asyncio.sleep(self.QS)
                 if name == self.cmd_names[ii]:
                     index = ii
                 # end if

@@ -8,6 +8,7 @@ import { fetchData } from "./redux/data/dataActions";
 import * as s from "./styles/globalStyles";
 import styled from "styled-components";
 import FadeIn from "react-fade-in";
+import "./styles/styles.css";
 
 const disconnectCoinbase = () => {
   walletlinkProvider.close();
@@ -102,69 +103,95 @@ export const StyledRoundButton = styled.button`
   }
 `;
 
-export const ResponsiveWrapperTwo = styled.div`
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: stretched;
-  align-items: stretched;
-  width: 33%;
-  @media (min-width: 767px) {
-    flex-direction: row;
+export const ResponsiveWrapper = styled.div`
+  margin-top: auto !important;
+  margin-bottom: auto !important;
   }
 `;
 
-export const ResponsiveWrapper = styled.div`
+export const StyledBox = styled.img`
+  display: block;
+  z-index: 200;
+  width: 50%;
+  background-position: center;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  top: 50%;
+  transform: translate(0, 25%);
+`;
+
+export const StyledOrigo = styled.img`
   position: absolute;
   z-index: 200;
-  left: 38%;
-  top: 32%;
-  width: 24%;
-  }
-`;
-
-export const StyledLogo = styled.img`
-  position: absolute;
-  z-index: 100;
-  width: 15%;
-  left: 42.5%;
-  top: 3%;
+  left: 0%;
+  top: 0%;
+  background: transparent;
+  height: 16%;
 `;
 
 export const StyledTwitter = styled.img`
   position: absolute;
   z-index: 200;
-  right: 9%;
-  top: 3%;
+  right: 6%;
+  top: 0%;
   background: transparent;
-  width: 5%;
+  width: 8%;
 `;
 
 export const StyledDiscord = styled.img`
   position: absolute;
   z-index: 200;
-  right: 3%;
-  top: 3%;
+  right: 11%;
+  top: 0%;
   background: transparent;
-  width: 5%;
+  width: 8%;
+`;
+
+export const StyledOpensea = styled.img`
+  position: absolute;
+  z-index: 200;
+  right: 1%;
+  top: 0%;
+  background: transparent;
+  width: 8%;
+`;
+
+export const StyledWalletFeedback = styled.img`
+  cursor: pointer,
+  marginLeft: 5%,
+  marginTop: 29.3%,
+  position: absolute,
+  display: flex,
+  zIndex: 5003,
+  maxWidth: 38%,
+  height: auto,
+`;
+
+export const MyStyledButton = styled.button`
+  cursor: pointer;
+  box-shadow: 0px 6px 0px -2px rgba(250, 250, 250, 0.3);
+  -webkit-box-shadow: 0px 6px 0px -2px rgba(250, 250, 250, 0.3);
+  -moz-box-shadow: 0px 6px 0px -2px rgba(250, 250, 250, 0.3);
+  :active {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+  }
 `;
 
 export const StyledButtonConnect = styled.button`
-  position: absolute;
-  z-index: 200;
   cursor: pointer;
   :active {
     box-shadow: none;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
   }
-  background-image: url(config/images/ButtonHead-Standard-Mint.svg);
-  background-repeat: no-repeat;
-  background-size: 100%;
-  height: 100px;
-  width: 200px;
-  background-color: transparent;
-  border: none;
+
+  display: flex;
+  position: absolute;
+  z-index: 5001;
+  max-width: 75%;
+  height: auto;
 `;
 
 export const StyledScroll = styled.img`
@@ -211,7 +238,8 @@ function App() {
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
   const [mintingNft, setMintingNft] = useState(false);
-  const [feedback, setFeedback] = useState(``);
+  const [walletState, setWalletState] = useState(`CONNECT WALLET`);
+  const [saleState, setSaleState] = useState(1);
   const [mintAmount, setMintAmount] = useState(1);
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
@@ -229,9 +257,32 @@ function App() {
     SHOW_BACKGROUND: true,
   });
 
+  const useWindowWide = () => {
+    const [width, setWidth] = useState(0)
+
+    useEffect(() => {
+      function handleResize() {
+        setWidth(window.innerWidth)
+      }
+
+      window.addEventListener("resize", handleResize)
+
+      handleResize()
+
+      return () => {
+        window.removeEventListener("resize", handleResize)
+      }
+    }, [setWidth])
+
+    return width
+  }
+
+  const width = useWindowWide()
+
   const mintNFTs = async () => {
 
     const whitelist = [
+      "0xADda176020629A666Ed5012266a7F9D04096D40b",
       "0x64F1E48cb75825c384B8eB6134c959c3C8BBC11A",
       "0x0eE37690F00557930Beb57286b0cca7d85714B00",
       "0x0bB3F2c0673F56641E63C9E80Dc4D53d78f98A04",
@@ -1734,12 +1785,6 @@ function App() {
       "0x0bB3F2c0673F56641E63C9E80Dc4D53d78f98A04"
     ];
 
-    let owners = [
-      "0x01656D41e041b50fc7c1eb270f7d891021937436".toLowerCase(),
-      "0x97C86B00A1aE8203f64E00D92004463C900D10D5".toLowerCase(),
-      "0xAf499D5Ea28583d4C3F227FFdB41a09D4eDd4B9F".toLowerCase()
-    ];
-
     const merkleTree = new MerkleTree(whitelist.map(hashAccount), keccak256, { sortPairs: true });
     const merkleProof = merkleTree.getHexProof(hashAccount(blockchain.account));
     console.log("231 hexRoot: ", merkleTree.getHexRoot());
@@ -1749,28 +1794,28 @@ function App() {
 
     // set cost depending on if pre-sale or public-sale
     var costPerNFT = 0;
-    if (!owners.includes(blockchain.account)) {
-      var costPerNFT;
-      let public_sale_active = await blockchain.smartContract.methods.public_sale_active().call();
-      if (public_sale_active === true) {
-        costPerNFT = await blockchain.smartContract.methods.public_sale_cost().call();
-        console.log("public sale");
-        console.log("costPerNFT: ", costPerNFT);
-      } 
-      else {
-        let pre_sale_active = await blockchain.smartContract.methods.pre_sale_active().call();
-        if (pre_sale_active === false) {
-          console.log("pre_sale_active is false")
-          setFeedback("Sale is not yet active.");
-          return
-        }
-        costPerNFT = await blockchain.smartContract.methods.pre_sale_cost().call();
-        console.log("pre sale");
+    if (saleState === 2) {
+      costPerNFT = data.public_sale_cost;
+      // costPerNFT = await blockchain.smartContract.methods.public_sale_cost().call();
+      console.log("public sale");
+      console.log("costPerNFT: ", costPerNFT);
+    } 
+    else {
+      let pre_sale_active = await blockchain.smartContract.methods.sale_state().call();
+      if (pre_sale_active === 0) {
+        console.log("pre_sale_active is false");
+        // setFeedback("Sale is not yet active.");
+        return
       }
+      // costPerNFT = await blockchain.smartContract.methods.pre_sale_cost().call();
+      costPerNFT = data.pre_sale_cost;
+      console.log("pre sale");
     }
     let totalCostWei = String(costPerNFT * mintAmount);
     console.log("249 cost: ", totalCostWei);
-    setFeedback(`Now minting your Origo NFT(s)...`);
+    console.log(`Now minting your NFT(s)...`);
+    // setFeedback(`Now minting your Origo NFT(s)...`);
+    setWalletState(`BUSY`);
     setMintingNft(true);
     
     let gasLimitEstimate;
@@ -1778,7 +1823,7 @@ function App() {
       gasLimitEstimate = await blockchain.smartContract.methods.mint(mintAmount, merkleProof).estimateGas({from: blockchain.account, value: totalCostWei});
     } catch (err) {
       console.log(err);
-      setFeedback("An error occurred while estimating gas. Bad merkle proof or tried to mint more than the pre/public sale limit. Refresh the page to try again.");
+      // setFeedback("An error occurred while estimating gas. Bad merkle proof or tried to mint more than the pre/public sale limit. Refresh the page to try again.");
       return;
     }
     console.log("got gasLimitEstimate! ", gasLimitEstimate);
@@ -1803,30 +1848,16 @@ function App() {
       })
       .once("error", (err) => {
         console.log(err);
-        setFeedback("We received an error while minting. Check on etherscan if your mint succeeded.");
+        // setFeedback("We received an error while minting. Check on etherscan if your mint succeeded.");
         setMintingNft(false);
       })
       .then((receipt) => {
         console.log(receipt);
-        setFeedback(
-          `Successfully minted your Origo NFT(s).`
-        );
+        // setFeedback(`Successfully minted your Origo NFT(s).`);
         setMintingNft(false);
+        setWalletState(`SUCCESS`);
         dispatch(fetchData(blockchain.account));
       });
-  };
-
-  const decrementMintAmount = () => {
-    let newMintAmount = mintAmount - 1;
-    if (newMintAmount < 1) {
-      newMintAmount = 1;
-    }
-    setMintAmount(newMintAmount);
-  };
-
-  const incrementMintAmount = async () => {
-    let newMintAmount = mintAmount + 1;
-    setMintAmount(newMintAmount);
   };
 
   const getData = () => {
@@ -1857,212 +1888,240 @@ function App() {
   return (
     <s.Screen>
 
-      <a href={CONFIG.TWITTER_LINK}>
-        <StyledTwitter alt={"twitter link"} src={"./config/images/twitter-logo.png"} />
-      </a>
-      <a href={CONFIG.MARKETPLACE_LINK}>
-        <StyledDiscord alt={"discord link"} src={"./config/images/dc-logo.png"} />
-      </a>
+        <div>
+            <StyledOrigo alt={"origo logo"} src={"./config/images/origo-logo.png"} />
+        </div>
 
-      {/* <a href={CONFIG.MARKETPLACE_LINK}>
-        <StyledOpensea alt={"opensea link"} src={"./config/images/Opensea-Logomark-Transparent-White.png"} />
-      </a> */}
+        <a href={CONFIG.TWITTER_LINK}>
+            <StyledTwitter alt={"twitter link"} src={"./config/images/twitter1.png"} />
+        </a>
 
-      <s.Container
-        flex={1}
-        ai={"center"}
-        style={{ padding: 24, backgroundColor: "var(--primary)" }}
-        image={CONFIG.SHOW_BACKGROUND ? "./config/images/bg1.jpg" : null}
-      >
+        <a href={CONFIG.DISCORD_LINK}>
+            <StyledDiscord alt={"discord link"} src={"./config/images/discord1.png"} />
+        </a>
 
-        <s.SpacerSmall />
-        
-            <ResponsiveWrapper flex={1} style={{ padding: 0, margin: 0,  }} test>
-              
-              <FadeIn delay={"1000"}>
-              <s.Container
-                flex={2}
-                jc={"center"}
-                ai={"center"}
-                style={{
-                  backgroundColor: "var(--accent)",
-                  padding: 24,
-                  borderRadius: 24,
-                  border: "4px solid var(--secondary)",
-                  boxShadow: "0px 5px 11px 2px rgba(0,0,0,0.7)",
-                }}
-              >
+        <a href={CONFIG.MARKETPLACE_LINK}>
+            <StyledOpensea alt={"opensea link"} src={"./config/images/os1.png"} />
+        </a>        
 
-                  <s.SpacerSmall />
-                  <s.TextTitle
-                    style={{
-                      textAlign: "center",
-                      fontSize: 42,
-                      fontWeight: "bold",
-                      color: "var(--primary-text)",
-                    }}
-                  >
-                    {data.totalSupply} / {CONFIG.MAX_SUPPLY}
-                  </s.TextTitle>
-                  {Number(data.totalSupply) >= CONFIG.MAX_SUPPLY ? (
-                    <>
-                      <s.TextTitle
-                        style={{ textAlign: "center", color: "var(--primary-text)", fontSize: 20, paddingLeft: 50, paddingRight: 50, }}
-                      >
-                        Mint COMPLETE!
-                      </s.TextTitle>
-                      <s.TextDescription
-                        style={{ textAlign: "center", color: "var(--primary-text)", fontSize: 20, paddingLeft: 50, paddingRight: 50, }}
-                      >
-                        To acquire an Origo, visit
-                      </s.TextDescription>
-                      <s.SpacerSmall />
-                      <StyledLink target={"_blank"} href={CONFIG.MARKETPLACE_LINK}>
-                        {CONFIG.MARKETPLACE}
-                      </StyledLink>
-                    </>
-                  ) : (
+      {/* <FadeIn delay={"1000"}> */}
+          <div className="Container">
 
-                    <>
-                      <s.Container ai={"center"} jc={"center"} >
+              <div className="pmClick minusClick">
+                  <div style={{
+                      width: "100%",
+                      height: "100%",
+                    }} onClick={(e) => {
+                      e.preventDefault();
+                      console.log("hiMinus");
+                      var newMintAmount = Math.max(mintAmount-1, 1);
+                      setMintAmount(newMintAmount);
+                  }}>
+                  </div>
+              </div>
 
-                        {blockchain.account === "" ||
-                          blockchain.smartContract === null ? (
-                            <s.Container ai={"center"} jc={"center"}>
-                        
-                              <StyledButtonConnect src={"./config/images/ButtonHead-Standard-Mint.svg"}
-                                onClick={(e) => {
+              <div className="pmClick plusClick">
+                  <div style={{
+                      width: "100%",
+                      height: "100%",
+                    }} onClick={(e) => {
+                      e.preventDefault();
+                      console.log("hiPlus");
+                      var newMintAmount = mintAmount+1;
+                      if (saleState === 1) {
+                          newMintAmount = Math.min(newMintAmount, 2);
+                      } else if (saleState == 2) {
+                          newMintAmount = Math.min(newMintAmount, 3);
+                      } else {
+                          console.log("error, saleState neither 1 nor 2");
+                      }
+                      setMintAmount(newMintAmount);
+                  }}></div>
+              </div>
+
+                <div className="bigBox">
+                    <img src={"./config/images/MintPopup/1.png"} className="resp"></img>
+                </div>
+
+                <div className="boxOnTop">
+                    <img src={"./config/images/MintPopup/2.png"} className="resp"></img>
+                </div>
+
+                {/* <div className="boxOnTop">
+                    <img src={"./config/images/MintPopup/3.png"} className="resp"></img>
+                </div> */}
+
+                <div className="boxOnTop">
+                    <img src={"./config/images/MintPopup/5.png"} className="resp"></img>
+                </div>
+
+                {/* Connect Wallet */}
+                <div className="feedbackBox">
+                    {walletState === `CONNECT WALLET` ? (
+                          <img src={"./config/images/connect_wallet.png"} className="resp" style={{
+                        }}
+                            onClick={(e) => {
+                                console.log("hiConnect");
                                 e.preventDefault();
                                 dispatch(connect());
                                 getData();
-                                setFeedback(``);
-                                }}
-                              >
-                              </StyledButtonConnect>
-
-                              {blockchain.errorMsg !== "" ? (
-                              <>
-                                <s.SpacerSmall />
-                                <s.TextDescription
-                                  style={{
-                                    textAlign: "center",
-                                    color: "var(--primary-text)",
-                                  }}
-                                >
-
-                                {blockchain.errorMsg}
-                                </s.TextDescription>
-                                <s.SpacerLarge />
-                                <s.SpacerLarge />
-                                <s.SpacerLarge />
-                              </>
-                              ) : null}
-                            </s.Container>
-                          ) : (
-                          <>
-
-                            <s.Container ai={"center"} jc={"center"} fd={"row"}>
-                              <StyledRoundButton
-                                style={{ lineHeight: 0.4 }}
-                                disabled={mintingNft ? 1 : 0}
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  decrementMintAmount();
-                                }}
-                              >
-                              -
-                              </StyledRoundButton>
-                              <s.SpacerMedium />
-                              <s.TextDescription
-                                style={{
-                                  textAlign: "center",
-                                  color: "var(--accent-text)",
-                                }}
-                              >
-                              {mintAmount}
-                              </s.TextDescription>
-                              <s.SpacerMedium />
-                              <StyledRoundButton
-                                disabled={mintingNft ? 1 : 0}
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  incrementMintAmount();
-                                }}
-                              >
-                              +
-                              </StyledRoundButton>
-                            </s.Container>
-
-                            <s.SpacerSmall />
-                                <s.TextDescription
-                                  style={{
-                                    textAlign: "center",
-                                    color: "var(--primary-text)",
-                                    fontSize: "22px",
-                                    margin: "-50px 0 0 0"
-                                  }}
-                                >
-                                  {mintAmount}
-                                </s.TextDescription>
-                                
-                                <s.Container ai={"center"} jc={"center"} >
-                                {mintingNft === false ? (
-                                    <>
-                                      <StyledButtonMint
-                                        disabled={mintingNft ? 1 : 0}
-                                        onClick={(e) => {
-                                          e.preventDefault();
-                                          mintNFTs();
-                                          getData();
-                                        }}
-                                      >
-                                      </StyledButtonMint>
-                                    </>
-                                  ) : (
-                                    <>
-                                      <StyledButtonBusy
-                                        disabled={1}
-                                        onClick={(e) => {
-                                          e.preventDefault();
-                                          mintNFTs();
-                                          getData();
-                                        }}
-                                      >
-                                  
-                                      </StyledButtonBusy>
-                                    </>
-                                  )
-                                }
-                              </s.Container>
-                            
-                          </>
-                          )
-                        }
-                      </s.Container>
-                      <s.TextDescription
-                        style={{
-                          textAlign: "center",
-                          color: "var(--primary-text)",
-                          fontSize: 28,
-                          paddingLeft: 50,
-                          paddingRight: 50,
+                                // setSaleState(data.sale_state);
+                                console.log("data.sale_state: ", data.sale_state);
+                                console.log("saleState: ", saleState);
+                                setWalletState(`MINT`);
+                            }}
+                        ></img>
+                      ) : ``}
+                    {walletState === `MINT` ? (
+                          <img src={"./config/images/mint_box.png"} className="resp" style={{
                         }}
-                      >
-                      {feedback}
-                      </s.TextDescription>
-                      <s.SpacerLarge />
-                      
-                      
+                            onClick={(e) => {
+                                console.log("hiMint");
+                                e.preventDefault();
+                                mintNFTs();
+                                getData();
+                                // setSaleState(data.sale_state);
+                                setWalletState(`BUSY`);
+                            }}
+                        ></img>
+                      ) : ``}
+                    {walletState === `BUSY` ? (
+                        <img src={"./config/images/busy_box.png"} className="resp" style={{
+                      }}
+                          disabled={1} onClick={(e) => {
+                              e.preventDefault();
+                              console.log("hiBusy");
+                          }}
+                      ></img>
+                    ) : ``}
+                    {walletState === `SUCCESS` ? (
+                        <img src={"./config/images/success_box.png"} className="resp" style={{
+                      }}
+                          onClick={(e) => {
+                              console.log("hi");
+                              e.preventDefault();
+                              getData();
+                              // setSaleState(data.sale_state);
+                              setWalletState(`MINT`);
+                          }}
+                      ></img>
+                    ) : ``}
+                </div>
+
+                {/* 0/3000 Minted */}
+                <div className="boxOnTop numMinted">
+                    {data.totalSupply} / {CONFIG.MAX_SUPPLY} MINTED
+                </div>
+
+                <div className="boxOnTop">
+                    <img src={"./config/images/MintPopup/9.png"} className="resp"></img>
+                </div>
+
+                <div className="boxOnTop">
+                    <img src={"./config/images/MintPopup/10.png"} className="resp"></img>
+                </div>
+
+                <div className="boxOnTop">
+                    <img src={"./config/images/MintPopup/12.png"} className="resp"></img>
+                </div>
+
+                {/* + 0 - */}
+                {/* <div className="boxOnTop">
+                    <img src={"./config/images/MintPopup/14.png"} className="resp"></img>
+                </div> */}
+
+                <div className="boxOnTop">
+                    <img src={"./config/images/MintPopup/15.png"} className="resp"></img>
+                </div>
+
+                {saleState === 1 ? (
+                    <>
+                        {/* 2 Per Wallet */}
+                        <div className="boxOnTop">
+                            <img src={"./config/images/MintPopup/23.png"} className="resp"></img>
+                        </div>
+
+                        {/* WL Sale */}
+                        {/* <div className="boxOnTop">
+                            <img src={"./config/images/MintPopup/22.png"} className="resp"></img>
+                        </div> */}
+                        <div className="boxOnTop2">
+                                <img src={"./config/images/WLsale1.png"} className="resp"></img>
+                            </div>
+                            <div className="cost">
+                                {mintAmount*0.079}
+                            </div>
+                        {mintAmount === 1 ? (
+                          <>
+                            <div className="boxOnTop2">
+                                <img src={"./config/images/WLsale1.png"} className="resp"></img>
+                            </div>
+                          </>
+                        ) : ""}
+                        {mintAmount === 2 ? (
+                          <>
+                            <div className="boxOnTop2">
+                                <img src={"./config/images/WLsale2.png"} className="resp" style={{
+                                    marginTop: "-0.48%",
+                                    marginLeft: "-0.08%",
+                                }}></img>
+                            </div>
+                          </>
+                        ) : ""}
+
+                            <div className="cost">
+                                {mintAmount*0.079}
+                            </div>
+
+                        {/* Origo WL Sale */}
+                        <div className="boxOnTop">
+                            <img src={"./config/images/MintPopup/20.png"} className="resp"></img>
+                        </div>
+
+                        {/* 0.079 WL cost */}
+                        <div className="boxOnTop">
+                            <img src={"./config/images/MintPopup/21.png"} className="resp"></img>
+                        </div>
+                    </>               
+                ) : (
+                    <>
+                        {/* 3 per wallet */}
+                        <div className="boxOnTop">
+                            <img src={"./config/images/MintPopup/16.png"} className="resp"></img>
+                        </div> 
+
+                        {/* Public Sale */}
+                        <div className="boxOnTop">
+                            <img src={"./config/images/MintPopup/13.png"} className="resp"></img>
+                        </div>
+
+                        {/* Public Sale */}
+                        <div className="boxOnTop">
+                            <img src={"./config/images/MintPopup/6.png"} className="resp"></img>
+                        </div>
+
+                        {/* 0.089 - eth (public sale cost) */}
+                        <div className="boxOnTop">
+                            <img src={"./config/images/MintPopup/11.png"} className="resp"></img>
+                        </div>
+
+
                     </>
-                  )}
+                )}
+                
+                <div className="boxOnTop">
+                    <img src={"./config/images/MintPopup/17.png"} className="resp"></img>
+                </div>
 
-                </s.Container>
+                <div className="boxOnTop">
+                    <img src={"./config/images/MintPopup/18.png"} className="resp"></img>
+                </div>
 
-              </FadeIn>
-              
-            </ResponsiveWrapper>
-          
-      </s.Container>
+                <div className="boxOnTop">
+                    <img src={"./config/images/MintPopup/19.png"} className="resp"></img>
+                </div>
+            </div>
+        {/* </FadeIn> */}
     </s.Screen>
   );
 }

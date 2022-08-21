@@ -1,0 +1,140 @@
+body {
+    background-color: black;
+}
+
+.Screen {
+    background-color: var(--primary);
+    background-image: url("../images/bg1.jpg");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.Container {
+    margin-left: 35%;
+    margin-top: 15%;
+}
+
+.bigBox {
+    position: absolute;
+    z-index: 5000;
+}
+
+.boxOnTop {
+    display: flex;
+    position: absolute;
+    z-index: 5001;
+}
+
+.boxOnTop2 {
+    display: flex;
+    position: absolute;
+    z-index: 5001;
+    margin-top: 19.5%;
+    margin-left: 5%;
+    max-width: 52% !important;
+    color: white;
+}
+
+.resp {
+    max-width: 75%;
+    height: auto;
+}
+
+.numMinted {
+    position: absolute;
+    z-index: 7000;
+    color: white;
+    margin-top: 36.3%;
+    margin-left: 18%;
+    font-size: 1.5vw;
+}
+
+.feedbackBox {
+    max-width: 75%;
+    height: auto;
+    cursor: pointer;
+    margin-left: 5.5%;
+    margin-top: 29.3%;
+    position: absolute;
+    display: flex;
+    z-index: 9003;
+    max-width: 50.5%;
+    height: auto;
+    width: 600px;
+}
+
+.pmClick {
+    cursor: pointer;
+    background-color: transparent;
+    /* background-color: white; */
+    border-radius: 100%;
+    height: 4%;
+    width: 2%;
+    margin-top: 20.7%;
+    position: absolute;
+    z-index: 5005;
+}
+
+.minusClick {
+    margin-left: 7.5%;
+}
+
+.plusClick {
+    margin-left: 10.8%;
+}
+
+.cost {
+    color: white;
+    margin-left: 33.3%;
+    margin-top: 25.7%;
+    position: absolute;
+    z-index: 9000;
+    font-size: 1.7vw;
+}
+
+@media (min-width: 1301px) {
+    .boxOnTop2 {
+        margin-top: 255px;
+        margin-left: 67px;
+        width: 680px;
+        height: auto;
+        height: 70px;
+
+    }
+
+    .feedbackBox {
+        margin-top: 380px;
+        margin-left: 70px;
+        width: 670px;
+        height: 70px;
+        height: auto;
+    }
+
+    .pmClick {
+        margin-top: 270px;
+    }
+
+    .minusClick {
+        margin-left: 95px;
+    }
+
+    .plusClick {
+        margin-left: 145px;
+    }
+
+    .numMinted {
+        margin-top: 480px;
+        margin-left: 240px;
+        font-size: 24px;
+    }
+
+    .cost {
+        margin-left: 435px;
+        margin-top: 337px;
+        font-size: 24px;
+    }
+}

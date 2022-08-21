@@ -94,4 +94,58 @@ rc9.sol deployed at:
 rc9t.sol deployed at:
 0xe7736Ae3d9Cd30c7def41789e0601db2e67F0432
 
+===
+tribulation nft image url is now at:
+ipfs://bafybeibsfhktut3cuc56j2mauhivcc2q6v2kiephlne5ry3ur7a4zkn5re
 
+tribulation metadata (says rc and test in it):
+ipfs://bafybeibsraqlrey3xq37mcztnkxgfnsfp4l3z4lck346ixrgkn4vrwivqe
+
+rc10.sol deployed at:
+0x216B824c6468b99301BC14238939Ea38f75ACe5E
+
+rc10t.sol deployed at:
+0xD33F7DC200fA99AE09184a07e7Bb40538f646B8e
+
+===
+rc11.sol deployed at:
+0xc30091706a1B823a627EFdf7f3f1CCFa7a864d9a
+[can't currently access :(]
+
+rc11t.sol deployed at:
+0x4c5a0b340D2C2d40AfF955a800cFe299a51DCA8d
+
+rc11nt.sol deployed at:
+0xdae2507Ad60E25C288014314C8D385838C96E351
+
+===
+rc12.sol deployed at:
+0x39958B92d06583E214061A84f4B5dC1167518c67
+
+addTrib:
+0x879d3D3a5720b9fd575f6d07A6396B1FE78C850a
+
+merkleRoot:
+0xa6ce29a49271bc4f02577c4ad61e473d60248e9cde3dc18e3feacefbfac0eea7
+
+metadata (v8 test still)
+ipfs://bafybeia47eqzqkhgevis2dfe27gv5tj5j5txnnjkn2t7evrxz77nkvknmu/
+
+TribWallet:
+0xC7d7Cc95DeD3B8C81f17AF0e65DEf2d4abB366f7
+
+rc12t.sol deployed at:
+0x6D2851C7477ca888276Cbfc320830Da39c46cA50
+
+metadata for trib:
+ipfs://bafybeibsraqlrey3xq37mcztnkxgfnsfp4l3z4lck346ixrgkn4vrwivqe/
+
+====
+rc13.sol:
+0xE740677D16705E5949c48b4c55aE22D2fE545811
+
+rc13t.sol:
+0x177547ef0676CDba4b9AF2617dB80BA6E04D4F8D
+
+merkleRoot:
+0x35fe98c8bd405d61810e6b9e8c50f1e9abcad6e5ecb80dd351eb4dde2636b088

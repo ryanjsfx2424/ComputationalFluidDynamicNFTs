@@ -15,11 +15,11 @@ class Tribulator(object):
     def __init__(self):
         print("BEGIN __init__ class Tribulator")
 
-        self.vn = "9"
-        self.CONTRACT_ADDRESS1 = "0xefc9CF3d5cbc351bF94b459B7943B89f67a817bA"
-        self.CONTRACT_ADDRESST = "0xe7736Ae3d9Cd30c7def41789e0601db2e67F0432"
-        self.TRIB_ADDRESS      = "0xC7d7Cc95DeD3B8C81f17AF0e65DEf2d4abB366f7"
-        self.DEPLOYER_ADDRESS  = "0x01656D41e041b50fc7c1eb270f7d891021937436"
+        self.vn = "12"
+        self.CONTRACT_ADDRESS1 = "0xE740677D16705E5949c48b4c55aE22D2fE545811"
+        self.CONTRACT_ADDRESST = "0x177547ef0676CDba4b9AF2617dB80BA6E04D4F8D"
+        self.TRIB_ADDRESS      = "0x879d3D3a5720b9fd575f6d07A6396B1FE78C850a"
+        self.DEPLOYER_ADDRESS  = "0xC7d7Cc95DeD3B8C81f17AF0e65DEf2d4abB366f7"
 
         self.path_abi1 = "contract/rc" + self.vn + "_abi.json"
         self.path_abiT = "contract/rc" + self.vn + "t_abi.json"
@@ -39,7 +39,7 @@ class Tribulator(object):
         self.init_contract()
         self.init_webscraper()
 
-        self.trib_counter = 2
+        self.trib_counter = 0
 
         print("SUCCESS __init__ class Tribulator")
     # end __init__
@@ -158,24 +158,20 @@ class Tribulator(object):
     def get_mint_price(self):
         print("BEGIN get_mint_price")
 
-        public_sale_active = self.contract.functions.public_sale_active().call()
-        print("public_sale_active: ", public_sale_active)
-        if public_sale_active:
+        sale_state = self.contract.functions.sale_state().call()
+        print("sale_state: ", sale_state)
+        if sale_state == 2:
             self.mint_price = self.contract.functions.public_sale_cost().call() / self.WEI_PER_ETH
             print("public sale mint_price: ", self.mint_price)
 
-        else:
-            pre_sale_active = self.contract.functions.pre_sale_active().call()
-            print("pre_sale_active: ", pre_sale_active)
-
-            if not pre_sale_active:
-                print("sale is closed")
-                self.mint_price = -1
-                return
-            # end if
+        elif sale_state == 1:
             self.mint_price = self.contract.functions.pre_sale_cost().call() / self.WEI_PER_ETH
             print("pre sale mint_price: ", self.mint_price)
-        # end if/else
+        else:
+            print("sale is closed")
+            self.mint_price = -1
+            return
+        # end if/elif/else
 
         print("SUCCESS get_mint_price")
     # end get_mint_price
@@ -211,8 +207,6 @@ class Tribulator(object):
             # end try/except
 
             html = driver.page_source
-            #driver.quit()
-
             with open("os_html.txt", "w") as fid:
                 fid.write(html)
             # end with open
@@ -227,6 +221,7 @@ class Tribulator(object):
             print("len_name_elems: ", len(name_elems))
 
             event_elems = driver.find_elements(By.CSS_SELECTOR, "h6.sc-1xf18x6-0.sc-1aqfqq9-0.evlrPY.cSiicL")
+            driver.quit()
             print("event_elems: ", event_elems)
             print("len event_elems: ", len(event_elems))
 
@@ -236,6 +231,8 @@ class Tribulator(object):
 
             elif len(price_elems) == 0:
                 print("no price_elems, continuing after a long sleep")
+                self.tribulation([300,302])
+                sys.exit()
                 await asyncio.sleep(self.LS)
                 continue
             # end if/elif

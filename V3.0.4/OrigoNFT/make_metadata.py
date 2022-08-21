@@ -3,7 +3,7 @@
 Uses metadata.json as a template. Just gives a unique name for each token.
 """
 import os
-os.chdir("metadata")
+os.chdir("data_big/metadata")
 
 with open("template.json", "r") as fid:
   lines = fid.readlines()
@@ -19,7 +19,7 @@ for ii in range(3000):
       # end if
 
       if "description" in line:
-        line = line.replace("RC3", "RC8")
+        line = line.replace("RC3", "RC8T")
       # end if
       fid.write(line)
     # end for

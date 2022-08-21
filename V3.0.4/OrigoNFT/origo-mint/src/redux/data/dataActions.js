@@ -30,15 +30,11 @@ export const fetchData = () => {
         .blockchain.smartContract.methods.totalSupply()
         .call();
       
-      let pre_sale_active = await store
+      let sale_state = await store
         .getState()
-        .blockchain.smartContract.methods.pre_sale_active()
+        .blockchain.smartContract.methods.sale_state()
         .call();  
-
-      let public_sale_active = await store
-        .getState()
-        .blockchain.smartContract.methods.public_sale_active()
-        .call();
+        console.log("got sale state! ", sale_state);
 
       let pre_sale_cost = await store
         .getState()
@@ -48,20 +44,19 @@ export const fetchData = () => {
       let public_sale_cost = await store
         .getState()
         .blockchain.smartContract.methods.public_sale_cost()
-        .call();
-    
+        .call();    
 
       dispatch(
         fetchDataSuccess({
           totalSupply,
-          pre_sale_active,
-          public_sale_active,
+          sale_state,
           pre_sale_cost,
           public_sale_cost,
         })
       );
     } catch (err) {
       console.log(err);
+      console.log("error");
       dispatch(fetchDataFailed("Could not load data from contract."));
     }
   };
