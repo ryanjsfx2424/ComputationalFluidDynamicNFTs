@@ -15,7 +15,7 @@ class Tribulator(object):
     def __init__(self):
         print("BEGIN __init__ class Tribulator")
 
-        self.vn = "12"
+        self.vn = "13"
         self.CONTRACT_ADDRESS1 = "0xE740677D16705E5949c48b4c55aE22D2fE545811"
         self.CONTRACT_ADDRESST = "0x177547ef0676CDba4b9AF2617dB80BA6E04D4F8D"
         self.TRIB_ADDRESS      = "0x879d3D3a5720b9fd575f6d07A6396B1FE78C850a"
@@ -231,8 +231,6 @@ class Tribulator(object):
 
             elif len(price_elems) == 0:
                 print("no price_elems, continuing after a long sleep")
-                self.tribulation([300,302])
-                sys.exit()
                 await asyncio.sleep(self.LS)
                 continue
             # end if/elif

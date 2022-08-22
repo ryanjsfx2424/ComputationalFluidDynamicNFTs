@@ -1320,3 +1320,21 @@ Read port: 63230
 console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofile0NpWIp/search.json.mozlz4", (void 0)))
 DevTools listening on ws://localhost:63219/devtools/browser/2e4c9c33-f379-42a1-8933-b248ea7f0fe2
 1660889587644	Marionette	INFO	Stopped listening on port 63230
+1661070781148	geckodriver	INFO	Listening on 127.0.0.1:56430
+1661070781636	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-headless" "--remote-debugging-port" "56431" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofilefIfbMb"
+*** You are running in headless mode.
+1661070783005	Marionette	INFO	Marionette enabled
+1661070783060	Marionette	INFO	Listening on port 56445
+WebDriver BiDi listening on ws://localhost:56431
+2022-08-21 10:33:03.068 plugin-container[26841:485010] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-08-21 10:33:03.069 plugin-container[26841:485010] nil host used in call to allowsAnyHTTPSCertificateForHost:
+Read port: 56445
+2022-08-21 10:33:03.150 plugin-container[26841:485010] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-08-21 10:33:03.150 plugin-container[26841:485010] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-08-21 10:33:03.150 plugin-container[26841:485014] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-08-21 10:33:03.150 plugin-container[26841:485014] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1661070783231	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/bq/1kt723454f5bpv_06zkg0s480000gp/T/rust_mozprofilefIfbMb/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:56431/devtools/browser/03adaed5-36a8-4da4-b6fd-ba31edcab03e
+1661070792657	Marionette	INFO	Stopped listening on port 56445
