@@ -13,7 +13,6 @@ import asyncio
 import pyotp
 import qrcode
 from PIL import Image
-from cryptography.fernet import Fernet
 
 sys.path.append("/Users/ryanjsfx/Documents/interactions-ryanjsfx")
 import interactions
@@ -83,12 +82,8 @@ class AuthenticationDiscordBot(object):
     print("BEGIN load_data")
     if os.path.exists(self.fname) and os.stat(self.fname).st_size != 0:
       print("in if")
-      fernet = Fernet(os.environ["dauthyFern1"] + os.environ["dauthyFern2"] + os.environ["dauthyFern3"])
-      with open(self.fname, "rb") as fid:
+      with open(self.fname, "r") as fid:
         lines = fid.readlines()
-        for ii in range(len(lines)):
-          lines[ii] = fernet.decrypt(lines[ii])
-        # end for
         self.key = lines[0].replace("\n","")
         self.totp = pyotp.TOTP(self.key)
 
@@ -117,10 +112,9 @@ class AuthenticationDiscordBot(object):
     to_save = [self.key, self.GIDS, self.ME, self.APPROVED_USERS, 
                self.MODERATOR_IDS, self.AUTHENTD_IDS, self.RESET_TIMES,
                self.MOD_PASSWORDS, self.AUTHENTD_TIMES]
-    fernet = Fernet(os.environ["dauthyFern1"] + os.environ["dauthyFern2"] + os.environ["dauthyFern3"])
-    with open(self.fname, "wb") as fid:
+    with open(self.fname, "w") as fid:
       for el in to_save:
-        fid.write(fernet.encrypt(str(el) + "\n"))
+        fid.write(str(el) + "\n")
     # end with open
   # end save_data
 
@@ -514,7 +508,6 @@ class AuthenticationDiscordBot(object):
       #await ctx.send(file=name + ".png", ephemeral=True)
       file = interactions.File(filename=name + ".png")
       await command_send(ctx, files=file, ephemeral=True)
-      os.system("rm " + name + ".png")
       return
       # send image somehow. Doesn't have to be an embed. Should be ephemeral tho
     # end generate_qr_code

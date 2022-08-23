@@ -1,7 +1,6 @@
 ## dauthy.py by @TheLunaLabs (Twitter) Copyright 2022
 ## url invite link set up:
-## scopes: bot, application.commands, guilds.members.read
-## redirect url: https://www.rootroop.com/
+## scopes: bot, application.commands
 ## permissions: 1) read/view messages, 2) send messages, 3) embed links, 
 ## 4) attach files, 5) manage roles, 6) read message history
 ## https://discord.com/api/oauth2/authorize?client_id=979391724734521354&permissions=268553216&scope=bot%20applications.commands
@@ -13,7 +12,6 @@ import asyncio
 import pyotp
 import qrcode
 from PIL import Image
-from cryptography.fernet import Fernet
 
 sys.path.append("/Users/ryanjsfx/Documents/interactions-ryanjsfx")
 import interactions
@@ -83,12 +81,8 @@ class AuthenticationDiscordBot(object):
     print("BEGIN load_data")
     if os.path.exists(self.fname) and os.stat(self.fname).st_size != 0:
       print("in if")
-      fernet = Fernet(os.environ["dauthyFern1"] + os.environ["dauthyFern2"] + os.environ["dauthyFern3"])
-      with open(self.fname, "rb") as fid:
+      with open(self.fname, "r") as fid:
         lines = fid.readlines()
-        for ii in range(len(lines)):
-          lines[ii] = fernet.decrypt(lines[ii])
-        # end for
         self.key = lines[0].replace("\n","")
         self.totp = pyotp.TOTP(self.key)
 
@@ -117,43 +111,16 @@ class AuthenticationDiscordBot(object):
     to_save = [self.key, self.GIDS, self.ME, self.APPROVED_USERS, 
                self.MODERATOR_IDS, self.AUTHENTD_IDS, self.RESET_TIMES,
                self.MOD_PASSWORDS, self.AUTHENTD_TIMES]
-    fernet = Fernet(os.environ["dauthyFern1"] + os.environ["dauthyFern2"] + os.environ["dauthyFern3"])
-    with open(self.fname, "wb") as fid:
+    with open(self.fname, "w") as fid:
       for el in to_save:
-        fid.write(fernet.encrypt(str(el) + "\n"))
+        fid.write(str(el) + "\n")
     # end with open
   # end save_data
 
-  async def remove_authentication_from_all_users(self, client):
-    for guild in client.guilds:
-      gid = int(guild.id)
-      print("gid, guild.id: ", gid, guild.id)
-
-      if gid not in self.AUTHENTD_IDS:
-        print("Note, gid for guild not in AUTHENTD_IDS: ", gid, guild)
-        continue
-      # end if
-
-      members = await guild.get_all_members()
-      print("guild.get_all_members: ",members)
-      for member in members:
-        print("125 member: ", member)
-        for aid in self.AUTHENTD_IDS[gid]:
-          print("member.roles: ", member.roles)
-          print("aid: ", aid)
-          #input(">>")
-          if aid in member.roles:
-            print("aid in roles")
-            await member.remove_role(aid, guild_id=gid)
-            print("removed role")
-          # end if
-        # end for
-      # end for
-    # end for
-  # end remove_authentication_from_all_users
-
   async def remove_authenticated_users(self):
+    print("begin remove_authenticated_users")
     for gid in list(self.AUTHENTD_TIMES.keys()):
+      print("123 gid: ", gid)
       reset_time = self.RESET_TIMES[gid]
 
       for did in list(self.AUTHENTD_TIMES[gid].keys()):
@@ -178,10 +145,11 @@ class AuthenticationDiscordBot(object):
         # end if
       # end for did
     # end for gid
+    print("success remove_authenticated_users")
   # end remove_authenticated_users
 
   def discord_bot(self):
-    client = interactions.Client(token=os.environ["dauthyBotPass"], intents=interactions.Intents.DEFAULT | interactions.Intents.GUILD_MEMBERS)
+    client = interactions.Client(token=os.environ["dauthyBotPass"])
 
     @client.command(
       name="help",
@@ -514,7 +482,6 @@ class AuthenticationDiscordBot(object):
       #await ctx.send(file=name + ".png", ephemeral=True)
       file = interactions.File(filename=name + ".png")
       await command_send(ctx, files=file, ephemeral=True)
-      os.system("rm " + name + ".png")
       return
       # send image somehow. Doesn't have to be an embed. Should be ephemeral tho
     # end generate_qr_code
@@ -587,8 +554,7 @@ class AuthenticationDiscordBot(object):
 
     @client.event
     async def on_ready():
-      print("Dauthy on_ready!")
-      await self.remove_authentication_from_all_users(client)
+      print("Dauthy is ready!")
       #for BOT_COMMANDS_CID in self.BOT_COMMANDS_CIDS:
       #  channel = client.get_channel(BOT_COMMANDS_CID)
       #  await channel.send("URL Police bot is on patrol.")
