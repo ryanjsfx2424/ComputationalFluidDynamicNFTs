@@ -126,9 +126,7 @@ export const StyledOrigo = styled.img`
   left: 0%;
   top: 0%;
   background: transparent;
-  margin-top: 0;
-  margin-left: 0;
-  width: 60vw;
+  height: 16%;
 `;
 
 export const StyledTwitter = styled.img`
@@ -240,20 +238,8 @@ function App() {
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
   const [mintingNft, setMintingNft] = useState(false);
-  const [feedback, setFeedback] = useState(``);
   const [walletState, setWalletState] = useState(`CONNECT WALLET`);
-  const [gasText1, setGasText1] = useState(`Mint price is subject`);
-  const [gasText2, setGasText2] = useState(`to GAS fees`);
-  const [headerText, setHeaderText] = useState(`Origo Whitelist Sale`);
-  const [mintLimitText, setMintLimitText] = useState(`2 Per Wallet`);
-  const [pricePer1, setPricePer1] = useState(`Price Per Relic`);
-  const [pricePer2, setPricePer2] = useState(`0.089 - ETH`);
   const [saleState, setSaleState] = useState(1);
-  const [mintLimitPerPhase, setMintLimitPerPhase] = useState(2);
-  const [saleStateText, setSaleStateText] = useState(`Whitelist Sale`);
-  const [totalTextLeft, setTotalTextLeft] = useState(`Total`);
-  const [totalTextRight, setTotalTextRight] = useState(`0.089 - ETH`);
-  const [mintCost, setMintCost] = useState(0.089);
   const [mintAmount, setMintAmount] = useState(1);
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
@@ -1815,9 +1801,7 @@ function App() {
       console.log("costPerNFT: ", costPerNFT);
     } 
     else {
-      console.log("1816 mintNFTs")
       let pre_sale_active = await blockchain.smartContract.methods.sale_state().call();
-      console.log("1818 mintNFTs")
       if (pre_sale_active === 0) {
         console.log("pre_sale_active is false");
         // setFeedback("Sale is not yet active.");
@@ -1902,127 +1886,244 @@ function App() {
   }, [blockchain.account]);
 
   return (
-    <div className="Screen">
-        {/* <div className="Navbar">
-            <div>
-                <StyledOrigo alt={"origo logo"} src={"./config/images/origo-logo.png"} />
-            </div>
-
-            <a href={CONFIG.TWITTER_LINK}>
-                <StyledTwitter alt={"twitter link"} src={"./config/images/twitter1.png"} />
-            </a>
-
-            <a href={CONFIG.DISCORD_LINK}>
-                <StyledDiscord alt={"discord link"} src={"./config/images/discord1.png"} />
-            </a>
-
-            <a href={CONFIG.MARKETPLACE_LINK}>
-                <StyledOpensea alt={"opensea link"} src={"./config/images/os1.png"} />
-            </a>
-        </div>         */}
+    <s.Screen>
 
         <div>
-          <div className="Navbar">
-              <div className="OrigoLogo"></div>
-              <div className="DiscordLogo LogoSizes CursorPointer"><a href={CONFIG.DISCORD_LINK}></a></div>
-              <div className="TwitterLogo LogoSizes CursorPointer"><a href={CONFIG.TWITTER_LINK}></a></div>
-              <div className="OpenseaLogo LogoSizes CursorPointer"><a href={CONFIG.MARKETPLACE_LINK}></a></div>
-          </div>
-              
-          <div className="Container">
-              <div className="BoxWidths HeaderText">{headerText}</div>
-              <div className="BoxWidths InfoBox">
-                  <div className="RelicImage InfoBoxItems"></div>
-                  <div className="MintLimitPerWallet InfoBoxItems MintPerWalletText">{mintLimitText}</div>
-                  <hr className="HrLeft InfoBoxItems MintPerWalletText"></hr>
-                  <div className="GasFees1 InfoBoxItems MintPerWalletText GasFeesBoth">{gasText1}</div>
-                  <div className="GasFees2 InfoBoxItems MintPerWalletText GasFeesBoth">{gasText2}</div>
-                  <div className="PricePer1 InfoBoxItems TextLeft">{pricePer1}</div>
-                  <hr className="HrRight InfoBoxItems TextLeft"></hr>
-                  <div className="PricePer2 InfoBoxItems TextLeft">{pricePer2}</div>
-              </div>
-              <div className="PmBox BoxWidths">
-                  <div className="PmBox SaleTypeText TextLeft">{saleStateText}</div>
-                  <div className="PmBox MinusSign PmSigns" onClick={(e) => {
-                      e.preventDefault();
-                      let newMintAmount = Math.max(1, mintAmount-1);
-                      setMintAmount(newMintAmount);
-                      setTotalTextRight(String(newMintAmount*mintCost) + " - ETH");
-                  }}>-</div>
-                  <div className="PmBox MintAmountDisplay PmSigns">{mintAmount}</div>
-                  <div className="PmBox PlusSign PmSigns" onClick={(e) => {
-                      e.preventDefault();
-                      let newMintAmount = Math.min(mintLimitPerPhase, mintAmount+1);
-                      setMintAmount(newMintAmount);
-                      setTotalTextRight(String(newMintAmount*mintCost) + " - ETH");
-                  }}>+</div>
-              </div>
-              <div className="TotalCostBox BoxWidths">
-                  <div className="TotalCostBox TotalTextLeft">{totalTextLeft}</div>
-                  <div className="TotalCostBox TotalTextRight">{totalTextRight}</div>
-              </div>
-              <div className="WalletBox BoxWidths">
-
-                  {blockchain.account === "" || blockchain.smartContract === null ? (
-                    <>
-                        <div className="WalletBox WalletFeedback CursorPointer" onClick={(e) => {
-                            e.preventDefault();
-                            dispatch(connect());
-                            getData();
-                        }}>CONNECT WALLET</div>
-
-                        {blockchain.errorMsg !== "" ? (
-                            <div className="FeedbackBox ErrorMessage">
-                                {blockchain.errorMsg}
-                            </div>
-                        ) : null}
-                    </>
-                  ) : (
-                    <div>
-                        <div className="WalletBox WalletFeedback CursorPointer" 
-                        disabled={mintingNft ? 1 : 0}
-                        onClick={(e) => {
-                            e.preventDefault();
-                            mintNFTs();
-                            getData();
-                        }}>{mintingNft ? "BUSY" : "MINT"}</div>
-                    </div>
-                  )}
-
-                  {/* {walletState === `BUSY` ? (
-                      <div className="WalletBox WalletFeedback">{walletState}</div>
-                  ) : (
-                    <div className="WalletBox WalletFeedback CursorPointer" onClick={(e) => {
-                        e.preventDefault();
-
-                        if (walletState === `CONNECT WALLET`) {
-                            console.log("going to dispatch connect");
-                            dispatch(connect());
-                            setWalletState(`MINT`);
-                            console.log("dispatched connect");
-                        } else if (walletState === `MINT`) {
-                            setWalletState(`BUSY`);
-                            mintNFTs();
-                        } else if (walletState === `SUCCESS`) {
-                            setWalletState(`MINT`);
-                        } else {
-                          console.log("None of them???");
-                          console.log("walletState: ", walletState);
-                          console.log("walletState === CONNECT WALLET", walletState === `CONNECT WALLET`);
-                        }
-                        getData();
-                        console.log("data.sale_state: ", data.sale_state);
-                        console.log("saleState: ", saleState);
-                  }}>{walletState}</div>
-                  )} */}
-              </div>
-              <div className="BoxWidths ProgressBar"></div>
-              <div className="BoxWidths NumMinted">{data.totalSupply} / {CONFIG.MAX_SUPPLY} MINTED</div>
-          </div> {/* Container */}
+            <StyledOrigo alt={"origo logo"} src={"./config/images/origo-logo.png"} />
         </div>
-    </div>
+
+        <a href={CONFIG.TWITTER_LINK}>
+            <StyledTwitter alt={"twitter link"} src={"./config/images/twitter1.png"} />
+        </a>
+
+        <a href={CONFIG.DISCORD_LINK}>
+            <StyledDiscord alt={"discord link"} src={"./config/images/discord1.png"} />
+        </a>
+
+        <a href={CONFIG.MARKETPLACE_LINK}>
+            <StyledOpensea alt={"opensea link"} src={"./config/images/os1.png"} />
+        </a>        
+
+      {/* <FadeIn delay={"1000"}> */}
+          <div className="Container">
+
+              <div className="pmClick minusClick">
+                  <div style={{
+                      width: "100%",
+                      height: "100%",
+                    }} onClick={(e) => {
+                      e.preventDefault();
+                      console.log("hiMinus");
+                      var newMintAmount = Math.max(mintAmount-1, 1);
+                      setMintAmount(newMintAmount);
+                  }}>
+                  </div>
+              </div>
+
+              <div className="pmClick plusClick">
+                  <div style={{
+                      width: "100%",
+                      height: "100%",
+                    }} onClick={(e) => {
+                      e.preventDefault();
+                      console.log("hiPlus");
+                      var newMintAmount = mintAmount+1;
+                      if (saleState === 1) {
+                          newMintAmount = Math.min(newMintAmount, 2);
+                      } else if (saleState == 2) {
+                          newMintAmount = Math.min(newMintAmount, 3);
+                      } else {
+                          console.log("error, saleState neither 1 nor 2");
+                      }
+                      setMintAmount(newMintAmount);
+                  }}></div>
+              </div>
+
+                <div className="bigBox">
+                    <img src={"./config/images/MintPopup/1.png"} className="resp"></img>
+                </div>
+
+                <div className="boxOnTop">
+                    <img src={"./config/images/MintPopup/2.png"} className="resp"></img>
+                </div>
+
+                {/* <div className="boxOnTop">
+                    <img src={"./config/images/MintPopup/3.png"} className="resp"></img>
+                </div> */}
+
+                <div className="boxOnTop">
+                    <img src={"./config/images/MintPopup/5.png"} className="resp"></img>
+                </div>
+
+                {/* Connect Wallet */}
+                <div className="feedbackBox">
+                    {walletState === `CONNECT WALLET` ? (
+                          <img src={"./config/images/connect_wallet.png"} className="resp" style={{
+                        }}
+                            onClick={(e) => {
+                                console.log("hiConnect");
+                                e.preventDefault();
+                                dispatch(connect());
+                                getData();
+                                // setSaleState(data.sale_state);
+                                console.log("data.sale_state: ", data.sale_state);
+                                console.log("saleState: ", saleState);
+                                setWalletState(`MINT`);
+                            }}
+                        ></img>
+                      ) : ``}
+                    {walletState === `MINT` ? (
+                          <img src={"./config/images/mint_box.png"} className="resp" style={{
+                        }}
+                            onClick={(e) => {
+                                console.log("hiMint");
+                                e.preventDefault();
+                                mintNFTs();
+                                getData();
+                                // setSaleState(data.sale_state);
+                                setWalletState(`BUSY`);
+                            }}
+                        ></img>
+                      ) : ``}
+                    {walletState === `BUSY` ? (
+                        <img src={"./config/images/busy_box.png"} className="resp" style={{
+                      }}
+                          disabled={1} onClick={(e) => {
+                              e.preventDefault();
+                              console.log("hiBusy");
+                          }}
+                      ></img>
+                    ) : ``}
+                    {walletState === `SUCCESS` ? (
+                        <img src={"./config/images/success_box.png"} className="resp" style={{
+                      }}
+                          onClick={(e) => {
+                              console.log("hi");
+                              e.preventDefault();
+                              getData();
+                              // setSaleState(data.sale_state);
+                              setWalletState(`MINT`);
+                          }}
+                      ></img>
+                    ) : ``}
+                </div>
+
+                {/* 0/3000 Minted */}
+                <div className="boxOnTop numMinted">
+                    {data.totalSupply} / {CONFIG.MAX_SUPPLY} MINTED
+                </div>
+
+                <div className="boxOnTop">
+                    <img src={"./config/images/MintPopup/9.png"} className="resp"></img>
+                </div>
+
+                <div className="boxOnTop">
+                    <img src={"./config/images/MintPopup/10.png"} className="resp"></img>
+                </div>
+
+                <div className="boxOnTop">
+                    <img src={"./config/images/MintPopup/12.png"} className="resp"></img>
+                </div>
+
+                {/* + 0 - */}
+                {/* <div className="boxOnTop">
+                    <img src={"./config/images/MintPopup/14.png"} className="resp"></img>
+                </div> */}
+
+                <div className="boxOnTop">
+                    <img src={"./config/images/MintPopup/15.png"} className="resp"></img>
+                </div>
+
+                {saleState === 1 ? (
+                    <>
+                        {/* 2 Per Wallet */}
+                        <div className="boxOnTop">
+                            <img src={"./config/images/MintPopup/23.png"} className="resp"></img>
+                        </div>
+
+                        {/* WL Sale */}
+                        {/* <div className="boxOnTop">
+                            <img src={"./config/images/MintPopup/22.png"} className="resp"></img>
+                        </div> */}
+                        <div className="boxOnTop2">
+                                <img src={"./config/images/WLsale1.png"} className="resp"></img>
+                            </div>
+                            <div className="cost">
+                                {mintAmount*0.079}
+                            </div>
+                        {mintAmount === 1 ? (
+                          <>
+                            <div className="boxOnTop2">
+                                <img src={"./config/images/WLsale1.png"} className="resp"></img>
+                            </div>
+                          </>
+                        ) : ""}
+                        {mintAmount === 2 ? (
+                          <>
+                            <div className="boxOnTop2">
+                                <img src={"./config/images/WLsale2.png"} className="resp" style={{
+                                    marginTop: "-0.48%",
+                                    marginLeft: "-0.08%",
+                                }}></img>
+                            </div>
+                          </>
+                        ) : ""}
+
+                            <div className="cost">
+                                {mintAmount*0.079}
+                            </div>
+
+                        {/* Origo WL Sale */}
+                        <div className="boxOnTop">
+                            <img src={"./config/images/MintPopup/20.png"} className="resp"></img>
+                        </div>
+
+                        {/* 0.079 WL cost */}
+                        <div className="boxOnTop">
+                            <img src={"./config/images/MintPopup/21.png"} className="resp"></img>
+                        </div>
+                    </>               
+                ) : (
+                    <>
+                        {/* 3 per wallet */}
+                        <div className="boxOnTop">
+                            <img src={"./config/images/MintPopup/16.png"} className="resp"></img>
+                        </div> 
+
+                        {/* Public Sale */}
+                        <div className="boxOnTop">
+                            <img src={"./config/images/MintPopup/13.png"} className="resp"></img>
+                        </div>
+
+                        {/* Public Sale */}
+                        <div className="boxOnTop">
+                            <img src={"./config/images/MintPopup/6.png"} className="resp"></img>
+                        </div>
+
+                        {/* 0.089 - eth (public sale cost) */}
+                        <div className="boxOnTop">
+                            <img src={"./config/images/MintPopup/11.png"} className="resp"></img>
+                        </div>
+
+
+                    </>
+                )}
+                
+                <div className="boxOnTop">
+                    <img src={"./config/images/MintPopup/17.png"} className="resp"></img>
+                </div>
+
+                <div className="boxOnTop">
+                    <img src={"./config/images/MintPopup/18.png"} className="resp"></img>
+                </div>
+
+                <div className="boxOnTop">
+                    <img src={"./config/images/MintPopup/19.png"} className="resp"></img>
+                </div>
+            </div>
+        {/* </FadeIn> */}
+    </s.Screen>
   );
 }
 
 export default App;
-
