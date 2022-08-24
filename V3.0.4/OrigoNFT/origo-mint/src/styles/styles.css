@@ -21,284 +21,290 @@ a {
     height: 100%;
     margin-bottom: 0;
     padding-bottom: 0;
-    background-color: red;
+    background-color: black;
 }
 
-.Navbar {
-    height: 20vh;
-    background-color: transparent;
-}
+@media (max-width: 599px) {
 
-.OrigoLogo {
-    width: 22vw;
-    height: 20vw;
-    background-image: url("./origo-logo.png");
-    background-size: cover;
-    background-position: center;
-    position: absolute;
-    z-index: 4;
-    margin-left: 2vw;
-    margin-top:-5vw;
-}
+    .Navbar {
+        height: 20vh;
+        background-color: transparent;
+    }
+    
+    .OrigoLogo {
+        width: 22vw;
+        height: 20vw;
+        background-image: url("./origo-logo.png");
+        background-size: cover;
+        background-position: center;
+        position: absolute;
+        z-index: 4;
+        margin-left: 2vw;
+        margin-top:-5vw;
+    }
+    
+    .LogoSizes {
+        width: 10vw;
+        height: 10vw;
+    }
+    
+    
+    .DiscordLogo {
+        position: absolute;
+        z-index: 6;
+        margin-left: 65vw;
+        background-image: url("./discord1.png");
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .TwitterLogo {
+        position: absolute;
+        z-index: 5;
+        margin-left: 75vw;
+        background-image: url("./twitter1.png");
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .OpenseaLogo {
+        z-index: 4;
+        position: absolute;
+        margin-left: 85vw;
+        background-image: url("./os1.png");
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .Container {
+        position: absolute;
+        z-index: 2;
+        width: 100%;
+        height: 100vw;
+        background-color: #141416;
+        border-radius: 5%;
+    }
+    
+    .BoxWidths {
+        width: 90%;
+        margin-left: 5%;
+    }
+    
+    .HeaderText {
+        position: absolute;
+        z-index: 100;
+        color: white;
+        font-size: 6vw;
+        margin-top: 7vw;
+        background-color: transparent;
+    }
+    
+    .InfoBox {
+        height: 22vw;
+        margin-top: 20vw;
+        background-color:#141416;
+        border-radius: 10px;
+        border: 1px solid #3c4044;
+    }
+    
+    .InfoBoxItems {
+        position: absolute;
+        z-index: 4;
+    }
+    
+    .RelicImage {
+        width: 20vw;
+        margin-left: 1vw;
+        height: 20vw;
+        margin-top: 1vw;
+        border-radius: 10px;
+        background-color: transparent;
+        background-image: url("./RelicImage.png");
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .MintPerWalletText {
+        left: 30vw;
+    }
+    
+    .MintLimitPerWallet {
+        position: absolute;
+        z-index: 4;
+        margin-top: 5vw;
+        color: white;
+        font-size: 4vw;
+        /* font-size: 0.8rem; */
+    }
+    
+    .HrLeft {
+        color: grey;
+        background-color: grey;
+        width: 21vw;
+        margin-top: 10vw;
+        border: none;
+        height: 1px;
+    }
+    
+    .GasFeesBoth {
+        color: #949494;
+        font-size: 3vw;
+    }
+    
+    .GasFees1 {
+        margin-top: 12vw;
+    }
+    
+    .GasFees2 {
+        margin-top: 15vw;
+    }
+    
+    .TextLeft {
+        margin-left: 60vw;
+    }
+    
+    .PricePer1 {
+        margin-top: 5vw;
+        font-size: 4vw;
+        color: #949494;
+    }
+    
+    .HrRight {
+        width: 20vw;
+        color: grey;
+        margin-top: 10vw;
+        border: none;
+        height: 1px;
+        background-color: grey;
+    }
+    
+    .PricePer2 {
+        margin-top: 12vw;
+        font-size: 4vw;
+        color: white;
+    }
+    
+    .PmBox {
+        height: 10vw;
+        margin-top: 4vw;
+        background-color: #26282c;
+        border-radius: 10px;
+        border: 1px solid #3c4044
+    }
+    
+    .SaleTypeText {
+        position: absolute;
+        z-index: 5;
+        color: white;
+        font-size: 4vw;
+        margin-top: 3vw;
+        height: 4vw;
+        border: none;
+    }
+    
+    .PmSigns {
+        position: absolute;
+        z-index: 5;
+        width: 6vw;
+        height: 4vw;
+        margin-top: 2vw;
+        text-align: center;
+        color: white;
+        font-size: 6vw;
+        border: none;
+    }
+    
+    .MinusSign {
+        margin-left: 2vw;
+        cursor: pointer;
+    }
+    
+    .MintAmountDisplay {
+        margin-left: 7vw;
+    }
+    
+    .PlusSign {
+        margin-left: 12vw;
+        cursor: pointer;
+    }
+    
+    .TotalCostBox {
+        background-color: transparent;
+        height: 12vw;
+        margin-top: 2vw;
+    }
+    
+    .TotalTextLeft {
+        position: absolute;
+        z-index: 5;
+        color: white;
+        font-size: 5vw;
+        margin-left: 3vw;
+        background-color: transparent;
+    }
+    
+    .TotalTextRight {
+        position: absolute;
+        z-index: 5;
+        color: white;
+        margin-left:60vw;
+        font-size: 5vw;
+        background-color: transparent;
+    }
+    
+    .WalletBox {
+        height: 8vw;
+        background-color: rgb(60, 64, 70);
+        border-radius: 10px;
+    }
+    
+    .WalletFeedback {
+        position: absolute;
+        z-index: 5;
+        color: white;
+        background-color: transparent;
+        margin-top: 1.5vw;
+        width: 90%;
+        text-align: center;
+        font-size: 6vw;
+        font-family: Roboto, Helvetica, Arial, sans-serif;
+    }
+    
+    .CursorPointer {
+        cursor: pointer;
+    }
+    
+    .FeedbackBox {
+        position: absolute;
+        z-index: 5;
+        background-color: transparent;
+        color: white;
+        text-align: center;
+        margin-top: 10vw;
+        width: 90%;
+        font-size: 5vw;
+    }
+    
+    .ProgressBar {
+        margin-top: 8vw;
+        height: 1vw;
+        background-color: #3a3d42;
+        border-radius: 10px;
+    }
+    
+    .NumMinted {
+        background-color: transparent;
+        text-align: center;
+        color: white;
+        margin-top: 3vw;
+        font-size: 4vw;
+    }
 
-.LogoSizes {
-    width: 10vw;
-    height: 10vw;
-}
 
-
-.DiscordLogo {
-    position: absolute;
-    z-index: 6;
-    margin-left: 65vw;
-    background-image: url("./discord1.png");
-    background-size: cover;
-    background-position: center;
-}
-
-.TwitterLogo {
-    position: absolute;
-    z-index: 5;
-    margin-left: 75vw;
-    background-image: url("./twitter1.png");
-    background-size: cover;
-    background-position: center;
-}
-
-.OpenseaLogo {
-    z-index: 4;
-    position: absolute;
-    margin-left: 85vw;
-    background-image: url("./os1.png");
-    background-size: cover;
-    background-position: center;
-}
-
-.Container {
-    position: absolute;
-    z-index: 2;
-    width: 100%;
-    height: 100vw;
-    background-color: #141416;
-    border-radius: 5%;
-}
-
-.BoxWidths {
-    width: 90%;
-    margin-left: 5%;
-}
-
-.HeaderText {
-    position: absolute;
-    z-index: 100;
-    color: white;
-    font-size: 6vw;
-    margin-top: 7vw;
-    background-color: transparent;
-}
-
-.InfoBox {
-    height: 22vw;
-    margin-top: 20vw;
-    background-color:#141416;
-    border-radius: 10px;
-    border: 1px solid #3c4044;
-}
-
-.InfoBoxItems {
-    position: absolute;
-    z-index: 4;
-}
-
-.RelicImage {
-    width: 20vw;
-    margin-left: 1vw;
-    height: 20vw;
-    margin-top: 1vw;
-    border-radius: 10px;
-    background-color: transparent;
-    background-image: url("./RelicImage.png");
-    background-size: cover;
-    background-position: center;
-}
-
-.MintPerWalletText {
-    left: 30vw;
-}
-
-.MintLimitPerWallet {
-    position: absolute;
-    z-index: 4;
-    margin-top: 5vw;
-    color: white;
-    font-size: 4vw;
-    /* font-size: 0.8rem; */
-}
-
-.HrLeft {
-    color: grey;
-    background-color: grey;
-    width: 21vw;
-    margin-top: 10vw;
-    border: none;
-    height: 1px;
-}
-
-.GasFeesBoth {
-    color: #949494;
-    font-size: 3vw;
-}
-
-.GasFees1 {
-    margin-top: 12vw;
-}
-
-.GasFees2 {
-    margin-top: 15vw;
-}
-
-.TextLeft {
-    margin-left: 60vw;
-}
-
-.PricePer1 {
-    margin-top: 5vw;
-    font-size: 4vw;
-    color: #949494;
-}
-
-.HrRight {
-    width: 20vw;
-    color: grey;
-    margin-top: 10vw;
-    border: none;
-    height: 1px;
-    background-color: grey;
-}
-
-.PricePer2 {
-    margin-top: 12vw;
-    font-size: 4vw;
-    color: white;
-}
-
-.PmBox {
-    height: 10vw;
-    margin-top: 4vw;
-    background-color: #26282c;
-    border-radius: 10px;
-    border: 1px solid #3c4044
-}
-
-.SaleTypeText {
-    position: absolute;
-    z-index: 5;
-    color: white;
-    font-size: 4vw;
-    margin-top: 3vw;
-    height: 4vw;
-    border: none;
-}
-
-.PmSigns {
-    position: absolute;
-    z-index: 5;
-    width: 6vw;
-    height: 4vw;
-    margin-top: 2vw;
-    text-align: center;
-    color: white;
-    font-size: 6vw;
-    border: none;
-}
-
-.MinusSign {
-    margin-left: 2vw;
-    cursor: pointer;
-}
-
-.MintAmountDisplay {
-    margin-left: 7vw;
-}
-
-.PlusSign {
-    margin-left: 12vw;
-    cursor: pointer;
-}
-
-.TotalCostBox {
-    background-color: transparent;
-    height: 12vw;
-    margin-top: 2vw;
-}
-
-.TotalTextLeft {
-    position: absolute;
-    z-index: 5;
-    color: white;
-    font-size: 5vw;
-    margin-left: 3vw;
-    background-color: transparent;
-}
-
-.TotalTextRight {
-    position: absolute;
-    z-index: 5;
-    color: white;
-    margin-left:60vw;
-    font-size: 5vw;
-    background-color: transparent;
-}
-
-.WalletBox {
-    height: 8vw;
-    background-color: rgb(60, 64, 70);
-    border-radius: 10px;
-}
-
-.WalletFeedback {
-    position: absolute;
-    z-index: 5;
-    color: white;
-    background-color: transparent;
-    margin-top: 1.5vw;
-    width: 90%;
-    text-align: center;
-    font-size: 6vw;
-    font-family: Roboto, Helvetica, Arial, sans-serif;
-}
-
-.CursorPointer {
-    cursor: pointer;
-}
-
-.FeedbackBox {
-    position: absolute;
-    z-index: 5;
-    background-color: transparent;
-    color: white;
-    text-align: center;
-    margin-top: 10vw;
-    width: 90%;
-    font-size: 5vw;
-}
-
-.ProgressBar {
-    margin-top: 8vw;
-    height: 1vw;
-    background-color: #3a3d42;
-    border-radius: 10px;
-}
-
-.NumMinted {
-    background-color: transparent;
-    text-align: center;
-    color: white;
-    margin-top: 3vw;
-    font-size: 4vw;
 }
 
 @media (min-width: 600px ) {
+@media (max-width: 1260px) {
 
     .Navbar {
         height: 20vh;
@@ -370,10 +376,11 @@ a {
         position: absolute;
         z-index: 100;
         color: white;
-        font-size: 2.2vw;
-        margin-top: 3vw;
+        font-size: 2.0vh;
+        margin-top: 2vw;
+        margin-bottom:2vw;
         background-color: transparent;
-        font-weight: 500;;
+        font-weight: 500;
     }
     
     .InfoBox {
@@ -585,9 +592,591 @@ a {
         text-align: center;
         color: white;
         margin-top: 2vw;
-        font-size: 4vw;
+        font-size: 2vw;
+    }
+}
+}
+
+@media (min-width: 1261px ) {
+    @media (max-width: 1439px) {
+    
+        .Navbar {
+            height: 20vh;
+        }
+        
+        .OrigoLogo {
+            width: 18vw;
+            height: 16vw;
+            background-image: url("./origo-logo.png");
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            z-index: 4;
+            margin-left: 20vw;
+            margin-top: 0vw;
+        }
+        
+        .LogoSizes {
+            width: 6vw;
+            height: 6vw;
+            margin-top: 6vw;
+        }
+        
+        
+        .DiscordLogo {
+            position: absolute;
+            z-index: 6;
+            margin-left: 73vw;
+            background-image: url("./discord1.png");
+            background-size: cover;
+            background-position: center;
+            right: 32vw;
+        }
+        
+        .TwitterLogo {
+            position: absolute;
+            z-index: 5;
+            background-image: url("./twitter1.png");
+            background-size: cover;
+            background-position: center;
+            right:26vw;
+        }
+        
+        .OpenseaLogo {
+            z-index: 4;
+            position: absolute;
+            background-image: url("./os1.png");
+            background-size: cover;
+            background-position: center;
+            right: 20vw;
+        }
+        
+        .Container {
+            position: absolute;
+            z-index: 2;
+            width: 60vw;
+            height: 80vh;
+            background-color: #141416;
+            border-radius: 5%;
+            margin-left: 20vw;
+        }
+        
+        .BoxWidths {
+            width: 90%;
+            margin-left: 5%;
+        }
+        
+        .HeaderText {
+            position: absolute;
+            z-index: 100;
+            color: white;
+            font-size: 2.5vh;
+            margin-top: 2vw;
+            margin-bottom:2vw;
+            background-color: transparent;
+            font-weight: 500;
+        }
+        
+        .InfoBox {
+            height: 12vw;
+            margin-top: 7vw;
+            background-color:#141416;
+            border-radius: 10px;
+            border: 1px solid #3c4044;
+        }
+        
+        .InfoBoxItems {
+            position: absolute;
+            z-index: 4;
+        }
+        
+        .RelicImage {
+            width: 10vw;
+            margin-left: 1vw;
+            height: 10vw;
+            margin-top: 1vw;
+            border-radius: 10px;
+            background-color: transparent;
+            background-image: url("./RelicImage.png");
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .MintPerWalletText {
+            left: 15vw;
+        }
+        
+        .MintLimitPerWallet {
+            position: absolute;
+            z-index: 4;
+            margin-top: 3vw;
+            color: white;
+            font-size: 2vw;
+            margin-left: 1vw;
+            /* font-size: 0.8rem; */
+        }
+        
+        .HrLeft {
+            color: grey;
+            background-color: grey;
+            width: 11vw;
+            margin-top: 5.5vw;
+            border: none;
+            height: 1px;
+            margin-left: 1vw;
+        }
+        
+        .GasFeesBoth {
+            color: #949494;
+            font-size: 1.5vw;
+            margin-left: 1.1vw
+        }
+        
+        .GasFees1 {
+            margin-top: 6vw;
+        }
+        
+        .GasFees2 {
+            margin-top: 8vw;
+        }
+        
+        .TextLeft {
+            right: 4vw;
+        }
+        
+        .PricePer1 {
+            margin-top: 3vw;
+            font-size: 2vw;
+            color: #949494;
+            width: 14vw;
+        }
+        
+        .HrRight {
+            width: 11vw;
+            color: grey;
+            margin-top: 5.5vw;
+            margin-right: 1vw;
+            border: none;
+            height: 1px;
+            background-color: grey;
+        }
+        
+        .PricePer2 {
+            margin-top: 6vw;
+            font-size: 2vw;
+            color: white;
+            width: 14vw;
+            right: 1.8vw;
+        }
+        
+        .PmBox {
+            height: 6vw;
+            margin-top: 3vw;
+            background-color: #26282c;
+            border-radius: 10px;
+            border: 1px solid #3c4044
+        }
+    
+        .PmSigns {
+            position: absolute;
+            z-index: 5;
+            width: 4vw;
+            height: 3vw;
+            margin-top: 1vw;
+            text-align: center;
+            color: white;
+            font-size: 3vw;
+            border: none;
+        }
+        
+        .MinusSign {
+            margin-left: 0.5vw;
+            cursor: pointer;
+        }
+        
+        .MintAmountDisplay {
+            margin-left: 3vw;
+        }
+        
+        .PlusSign {
+            margin-left: 6vw;
+            cursor: pointer;
+        }
+        
+        .SaleTypeText {
+            position: absolute;
+            z-index: 5;
+            color: white;
+            font-size: 2.5vw;
+            margin-top: 1.5vw;
+            height: 4vw;
+            width: 16vw;
+            text-align: center;
+            background-color: transparent;
+            border: none;
+        }
+        
+        .TotalCostBox {
+            background-color: transparent;
+            height: 6vw;
+            margin-top: 1vw;
+        }
+        
+        .TotalTextLeft {
+            position: absolute;
+            z-index: 5;
+            color: white;
+            font-size: 2.5vw;
+            margin-left: 3vw;
+            background-color: transparent;
+        }
+        
+        .TotalTextRight {
+            position: absolute;
+            z-index: 5;
+            color: white;
+            margin-left: 0;
+            right: 5vw;
+            font-size: 2.5vw;
+            background-color: transparent;
+        }
+        
+        .WalletBox {
+            height: 6vw;
+            background-color: rgb(60, 64, 70);
+            border-radius: 10px;
+        }
+        
+        .WalletFeedback {
+            position: absolute;
+            z-index: 5;
+            color: white;
+            background-color: transparent;
+            margin-top: 1.5vw;
+            width: 90%;
+            text-align: center;
+            font-size: 2.5vw;
+            font-family: Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        .CursorPointer {
+            cursor: pointer;
+        }
+        
+        .FeedbackBox {
+            position: absolute;
+            z-index: 9;
+            color: white;
+            text-align: center;
+            margin-top: 10vw;
+            width: 90%;
+            height: 100px;
+            font-size: 2.2vw;
+        }
+        
+        .ProgressBar {
+            margin-top: 6.5vw;
+            height: 1vw;
+            background-color: #3a3d42;
+            border-radius: 10px;
+        }
+        
+        .NumMinted {
+            background-color: transparent;
+            text-align: center;
+            color: white;
+            margin-top: 2vw;
+            font-size: 2vw;
+        }
+    }
     }
 
 
+@media (min-width: 1440px ) {
 
+    .Navbar {
+        height: 200px;
+    }
+    
+    .OrigoLogo {
+        width: 220px;
+        height: 166px;
+        background-image: url("./origo-logo.png");
+        background-size: cover;
+        background-position: center;
+        position: absolute;
+        z-index: 4;
+        margin-left: 30%;
+        margin-top: 0vw;
+    }
+    
+    .LogoSizes {
+        width: 60px;
+        height: 60px;
+        margin-top: 54px;
+    }
+    
+    
+    .DiscordLogo {
+        position: absolute;
+        z-index: 6;
+        right: 38.5%;
+        background-image: url("./discord1.png");
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .TwitterLogo {
+        position: absolute;
+        z-index: 5;
+        background-image: url("./twitter1.png");
+        background-size: cover;
+        background-position: center;
+        right: 35%;
+    }
+    
+    .OpenseaLogo {
+        z-index: 4;
+        position: absolute;
+        background-image: url("./os1.png");
+        background-size: cover;
+        background-position: center;
+        right: 32%;
+    }
+    
+    .Container {
+        position: absolute;
+        z-index: 2;
+        width: 40%;
+        height: 70%;
+        background-color: #141416;
+        border-radius: 5%;
+        margin-left: 30%;
+    }
+    
+    .BoxWidths {
+        width: 94%;
+        margin-left: 3%;
+    }
+    
+    .HeaderText {
+        position: absolute;
+        z-index: 100;
+        color: white;
+        font-size: 28px;
+        margin-top: 24px;
+        margin-left: 50px;
+        background-color: transparent;
+        font-weight: 500;
+    }
+    
+    .InfoBox {
+        height: 200px;
+        margin-top: 66px;
+        background-color:#141416;
+        border-radius: 10px;
+        border: 1px solid #3c4044;
+    }
+    
+    .InfoBoxItems {
+        position: absolute;
+        z-index: 4;
+    }
+    
+    .RelicImage {
+        width: 172px;
+        margin-left: 9px;
+        height: 172px;
+        margin-top: 12px;
+        border-radius: 10px;
+        background-color: transparent;
+        background-image: url("./RelicImage.png");
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .MintPerWalletText {
+        left: 200px;
+    }
+    
+    .MintLimitPerWallet {
+        position: absolute;
+        z-index: 4;
+        color: white;
+        margin-top: 50px;
+        font-size: 24px;
+        margin-left: 18px;
+        /* font-size: 0.8rem; */
+    }
+    
+    .HrLeft {
+        color: grey;
+        background-color: grey;
+        width: 132px;
+        margin-top: 84px;
+        border: none;
+        height: 1px;
+        margin-left: 18px;
+    }
+    
+    .GasFeesBoth {
+        color: #949494;
+        font-size: 18px;
+        margin-left: 18px;
+    }
+    
+    .GasFees1 {
+        margin-top: 92px;
+    }
+    
+    .GasFees2 {
+        margin-top: 114px;
+    }
+    
+    .TextLeft {
+        right: 10px;
+    }
+    
+    .PricePer1 {
+        margin-top: 50px;
+        margin-right: 22px;
+        font-size: 24px;
+        color: #949494;
+    }
+    
+    .HrRight {
+        width: 156px;
+        color: grey;
+        margin-top: 84px;
+        margin-right: 22px;
+        border: none;
+        height: 1px;
+        background-color: grey;
+    }
+    
+    .PricePer2 {
+        margin-top: 92px;
+        font-size: 24px;
+        color: white;
+        right: 30px;
+    }
+    
+    .PmBox {
+        height: 64px;
+        margin-top: 18px;
+        background-color: #26282c;
+        border-radius: 10px;
+        border: 1px solid #3c4044
+    }
+
+    .PmSigns {
+        position: absolute;
+        z-index: 5;
+        width: 32px;
+        height: 38px;
+        margin-top: 9px;
+        text-align: center;
+        color: white;
+        font-size: 30px;
+        border: none;
+    }
+    
+    .MinusSign {
+        margin-left: 40px;
+        cursor: pointer;
+    }
+    
+    .MintAmountDisplay {
+        margin-left: 64px;
+    }
+    
+    .PlusSign {
+        margin-left: 90px;
+        cursor: pointer;
+    }
+    
+    .SaleTypeText {
+        position: absolute;
+        z-index: 5;
+        color: white;
+        font-size: 30px;
+        margin-top: 12px;
+        text-align: center;
+        right: 30px;
+        background-color: transparent;
+        border: none;
+    }
+    
+    .TotalCostBox {
+        background-color: transparent;
+        height: 56px;
+        margin-top: 15px;
+    }
+    
+    .TotalTextLeft {
+        position: absolute;
+        z-index: 5;
+        color: white;
+        font-size: 30px;
+        margin-left: 50px;
+        background-color: transparent;
+    }
+    
+    .TotalTextRight {
+        position: absolute;
+        z-index: 5;
+        color: white;
+        margin-left: 0;
+        right: 36px;
+        font-size: 30px;
+        background-color: transparent;
+    }
+    
+    .WalletBox {
+        height: 56px;
+        background-color: rgb(60, 64, 70);
+        border-radius: 10px;
+        margin-top: 21px;
+    }
+    
+    .WalletFeedback {
+        position: absolute;
+        z-index: 5;
+        color: white;
+        background-color: transparent;
+        margin-top: 12px;
+        width: 90%;
+        text-align: center;
+        font-size: 30px;
+        font-family: Roboto, Helvetica, Arial, sans-serif;
+    }
+    
+    .CursorPointer {
+        cursor: pointer;
+    }
+    
+    .FeedbackBox {
+        position: absolute;
+        z-index: 9;
+        color: white;
+        text-align: center;
+        margin-top: 72px;
+        height: 100px;
+        font-size: 27px;
+    }
+    
+    .ProgressBar {
+        margin-top: 64px;
+        height: 18px;
+        background-color: #3a3d42;
+        border-radius: 10px;
+    }
+    
+    .NumMinted {
+        background-color: transparent;
+        text-align: center;
+        color: white;
+        margin-top: 12px;
+        font-size: 25px;
+    }
 }
