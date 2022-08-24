@@ -9,11 +9,20 @@ import os
 import sys
 import ast
 import time
-import asyncio
 import pyotp
 import qrcode
+import socket
+import asyncio
 from PIL import Image
 from cryptography.fernet import Fernet
+
+
+if socket.gethostname() == "MB-145.local":
+  sys.path.append("/Users/ryanjsfx/Documents/interactions-ryanjsfx")
+  gname = "/Users/ryanjsfx/.config/gspread/origo/service_account.json"
+else:
+  sys.path.append("/root/ToServer/interactions-ryanjsfx")
+  gname = "/root/.config/gspread/origo/service_account.json"
 
 sys.path.append("/Users/ryanjsfx/Documents/interactions-ryanjsfx")
 import interactions
@@ -110,6 +119,9 @@ class AuthenticationDiscordBot(object):
           self.AUTHENTD_TIMES = {993961827799158925:{}}
         return True
       # end with
+    else:
+      print("didn't find data to load!")
+      return False
     # end if
   # end load_data
 
@@ -120,7 +132,7 @@ class AuthenticationDiscordBot(object):
     fernet = Fernet(os.environ["dauthyFern1"] + os.environ["dauthyFern2"] + os.environ["dauthyFern3"])
     with open(self.fname, "wb") as fid:
       for el in to_save:
-        fid.write(fernet.encrypt(str(el) + "\n"))
+        fid.write(fernet.encrypt( (str(el) + "\n").encode("utf-8") ))
     # end with open
   # end save_data
 
