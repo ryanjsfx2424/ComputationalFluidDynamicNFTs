@@ -4,7 +4,7 @@
 ## redirect url: https://www.rootroop.com/
 ## permissions: 1) read/view messages, 2) send messages, 3) embed links, 
 ## 4) attach files, 5) manage roles, 6) read message history
-## https://discord.com/api/oauth2/authorize?client_id=979391724734521354&permissions=268553216&redirect_uri=https%3A%2F%2Fdiscord.com%2Foauth2%2Fauthorized&response_type=code&scope=guilds.members.read%20bot%20applications.commands
+## https://discord.com/api/oauth2/authorize?client_id=979391724734521354&permissions=268553216&scope=bot%20applications.commands
 import os
 import sys
 import ast
@@ -37,7 +37,7 @@ class AuthenticationDiscordBot(object):
 
     self.SLEEP_TIME = 3.2
 
-    self.fname_base = "data_big/DauthyData"
+    self.fname_base = "DauthyData"
     self.fname_ext  = ".txt"
 
     success = self.load_data()
@@ -55,12 +55,9 @@ class AuthenticationDiscordBot(object):
     self.key = pyotp.random_base32()
     self.totp = pyotp.TOTP(self.key)
 
-    os.system("mkdir -p data_big")
-
     TTM_GID = 931482273440751638
     ROO_TECH_GID = 993961827799158925
     self.GIDS = [TTM_GID, ROO_TECH_GID]
-    self.GIDS = []
 
     self.ME = 855616810525917215
 
@@ -119,19 +116,12 @@ class AuthenticationDiscordBot(object):
       # end for
 
       self.ME = int(self.decrypt(self.fname_base + "2" + self.fname_ext).replace("\n",""))
-
-      self.APPROVED_USERS = ast.literal_eval(self.decrypt(self.fname_base + "3" + self.fname_ext))
-      self.MODERATOR_IDS = ast.literal_eval(self.decrypt(self.fname_base + "4" + self.fname_ext))
-      self.AUTHENTD_IDS  = ast.literal_eval(self.decrypt(self.fname_base + "5" + self.fname_ext))
-      self.RESET_TIMES   = ast.literal_eval(self.decrypt(self.fname_base + "6" + self.fname_ext))
-      self.MOD_PASSWORDS = ast.literal_eval(self.decrypt(self.fname_base + "7" + self.fname_ext))
-
+      self.APPROVED_USERS = ast.literal_eval(self.fname_base + "3" + self.fname_ext)
       print("AU after eval: ", self.APPROVED_USERS)
-      print("self.GIDS: ", self.GIDS)
-      print("self.AUTHENTD_TIMES: ", self.AUTHENTD_TIMES)
-      print("MOD_PASSWORDS: ", self.MOD_PASSWORDS)
-      print("MOD_PASSWORDS.keys[0] type ", type(list(self.MOD_PASSWORDS)[0]))
-      return True
+      self.MODERATOR_IDS    = ast.literal_eval(self.fname_base + "4" + self.fname_ext)
+      self.AUTHENTD_IDS   = ast.literal_eval(self.fname_base + "5" + self.fname_ext)
+      self.RESET_TIMES    = ast.literal_eval(self.fname_base + "6" + self.fname_ext)
+      self.MOD_PASSWORDS  = ast.literal_eval(self.fname_base + "7" + self.fname_ext)
     else:
       print("didn't find data to load!")
       return False
@@ -156,7 +146,7 @@ class AuthenticationDiscordBot(object):
   async def remove_authentication_from_all_users(self, client):
     for guild in client.guilds:
       gid = int(guild.id)
-      print("guild, guild.id: ", guild, guild.id)
+      print("gid, guild.id: ", gid, guild.id)
 
       if gid not in self.AUTHENTD_IDS:
         print("Note, gid for guild not in AUTHENTD_IDS: ", gid, guild)
@@ -164,10 +154,15 @@ class AuthenticationDiscordBot(object):
       # end if
 
       members = await guild.get_all_members()
+      print("guild.get_all_members: ",members)
       for member in members:
+        print("125 member: ", member)
         for aid in self.AUTHENTD_IDS[gid]:
+          print("member.roles: ", member.roles)
+          print("aid: ", aid)
+          #input(">>")
           if aid in member.roles:
-            print("aid in roles, aid, member.roles, member: ", aid, member.roles, member)
+            print("aid in roles")
             await member.remove_role(aid, guild_id=gid)
             print("removed role")
           # end if
@@ -372,7 +367,6 @@ class AuthenticationDiscordBot(object):
 
       if free_pass and did not in self.APPROVED_USERS[gid]:
         await ctx.send("Error, only approved users can add the moderator id.", ephemeral=True)
-        return
       # end if
 
       self.MODERATOR_IDS[gid].append(mid)
@@ -532,16 +526,16 @@ class AuthenticationDiscordBot(object):
       # end if
 
       name = "gid" + str(gid) + "did" + str(did)
-      pname = str(ctx.guild)
-      auth_str = self.totp.provisioning_uri(name=pname,
+      auth_str = self.totp.provisioning_uri(name=name,
                                             issuer_name="Dauthy")
       img = qrcode.make(auth_str)
       img.save(name + ".png")
+      #await ctx.send(file=name + ".png", ephemeral=True)
       file = interactions.File(filename=name + ".png")
-
       await command_send(ctx, files=file, ephemeral=True)
       os.system("rm " + name + ".png")
       return
+      # send image somehow. Doesn't have to be an embed. Should be ephemeral tho
     # end generate_qr_code
 
     @client.command(

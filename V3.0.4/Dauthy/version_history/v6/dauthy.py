@@ -55,8 +55,6 @@ class AuthenticationDiscordBot(object):
     self.key = pyotp.random_base32()
     self.totp = pyotp.TOTP(self.key)
 
-    os.system("mkdir -p data_big")
-
     TTM_GID = 931482273440751638
     ROO_TECH_GID = 993961827799158925
     self.GIDS = [TTM_GID, ROO_TECH_GID]
