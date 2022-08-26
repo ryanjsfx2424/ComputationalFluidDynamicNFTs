@@ -281,8 +281,8 @@ a {
         color: white;
         text-align: center;
         margin-top: 10vw;
-        width: 90%;
         font-size: 5vw;
+        width: 90%;
     }
     
     .ProgressBar {
@@ -304,7 +304,7 @@ a {
 }
 
 @media (min-width: 600px ) {
-@media (max-width: 1260px) {
+@media (max-width: 945px) {
 
     .Navbar {
         height: 20vh;
@@ -575,9 +575,9 @@ a {
         color: white;
         text-align: center;
         margin-top: 10vw;
-        width: 90%;
-        height: 100px;
         font-size: 2.5vw;
+        width: 90%;
+        background-color: transparent;
     }
     
     .ProgressBar {
@@ -596,6 +596,299 @@ a {
     }
 }
 }
+
+@media (min-width: 946px) {
+    @media (max-width: 1260px) {
+    
+        .Navbar {
+            height: 20vh;
+        }
+        
+        .OrigoLogo {
+            width: 18vw;
+            height: 16vw;
+            background-image: url("./origo-logo.png");
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            z-index: 4;
+            margin-left: 20vw;
+            margin-top: 0vw;
+        }
+        
+        .LogoSizes {
+            width: 6vw;
+            height: 6vw;
+            margin-top: 6vw;
+        }
+        
+        
+        .DiscordLogo {
+            position: absolute;
+            z-index: 6;
+            margin-left: 73vw;
+            background-image: url("./discord1.png");
+            background-size: cover;
+            background-position: center;
+            right: 32vw;
+        }
+        
+        .TwitterLogo {
+            position: absolute;
+            z-index: 5;
+            background-image: url("./twitter1.png");
+            background-size: cover;
+            background-position: center;
+            right:26vw;
+        }
+        
+        .OpenseaLogo {
+            z-index: 4;
+            position: absolute;
+            background-image: url("./os1.png");
+            background-size: cover;
+            background-position: center;
+            right: 20vw;
+        }
+        
+        .Container {
+            position: absolute;
+            z-index: 2;
+            width: 50vw;
+            height: 75vh;
+            background-color: #141416;
+            border-radius: 5%;
+            margin-left: 25vw;
+        }
+        
+        .BoxWidths {
+            width: 90%;
+            margin-left: 5%;
+        }
+        
+        .HeaderText {
+            position: absolute;
+            z-index: 100;
+            color: white;
+            font-size: 3vh;
+            margin-top: 2vw;
+            margin-bottom:2vw;
+            background-color: transparent;
+            font-weight: 500;
+        }
+        
+        .InfoBox {
+            height: 12vw;
+            margin-top: 6vw;
+            background-color:#141416;
+            border-radius: 10px;
+            border: 1px solid #3c4044;
+        }
+        
+        .InfoBoxItems {
+            position: absolute;
+            z-index: 4;
+        }
+        
+        .RelicImage {
+            width: 10vw;
+            margin-left: 1vw;
+            height: 10vw;
+            margin-top: 1vw;
+            border-radius: 10px;
+            background-color: transparent;
+            background-image: url("./RelicImage.png");
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .MintPerWalletText {
+            left: 15vw;
+        }
+        
+        .MintLimitPerWallet {
+            position: absolute;
+            z-index: 4;
+            margin-top: 3vw;
+            color: white;
+            font-size: 2vw;
+            margin-left: 1vw;
+            /* font-size: 0.8rem; */
+        }
+        
+        .HrLeft {
+            color: grey;
+            background-color: grey;
+            width: 11vw;
+            margin-top: 5.5vw;
+            border: none;
+            height: 1px;
+            margin-left: 1vw;
+        }
+        
+        .GasFeesBoth {
+            color: #949494;
+            font-size: 1.4vw;
+            margin-left: 1.1vw
+        }
+        
+        .GasFees1 {
+            margin-top: 6vw;
+        }
+        
+        .GasFees2 {
+            margin-top: 7.5vw;
+        }
+        
+        .TextLeft {
+            right: 4vw;
+        }
+        
+        .PricePer1 {
+            margin-top: 3vw;
+            font-size: 2vw;
+            color: #949494;
+            width: 14vw;
+        }
+        
+        .HrRight {
+            width: 13vw;
+            color: grey;
+            margin-top: 5.5vw;
+            margin-right: 1vw;
+            border: none;
+            height: 1px;
+            background-color: grey;
+        }
+        
+        .PricePer2 {
+            margin-top: 6vw;
+            font-size: 2vw;
+            color: white;
+            width: 14vw;
+            right: 1.8vw;
+        }
+        
+        .PmBox {
+            height: 5vw;
+            margin-top: 1.5vw;
+            background-color: #26282c;
+            border-radius: 10px;
+            border: 1px solid #3c4044
+        }
+    
+        .PmSigns {
+            position: absolute;
+            z-index: 5;
+            width: 4vw;
+            height: 3vw;
+            margin-top: 1vw;
+            text-align: center;
+            color: white;
+            font-size: 2.5vw;
+            border: none;
+        }
+        
+        .MinusSign {
+            margin-left: 0.5vw;
+            cursor: pointer;
+        }
+        
+        .MintAmountDisplay {
+            margin-left: 3vw;
+        }
+        
+        .PlusSign {
+            margin-left: 6vw;
+            cursor: pointer;
+        }
+        
+        .SaleTypeText {
+            position: absolute;
+            z-index: 5;
+            color: white;
+            font-size: 2.0vw;
+            margin-top: 1.5vw;
+            height: 4vw;
+            width: 16vw;
+            text-align: center;
+            background-color: transparent;
+            border: none;
+        }
+        
+        .TotalCostBox {
+            background-color: transparent;
+            height: 4vw;
+            margin-top: 0.8vw;
+        }
+        
+        .TotalTextLeft {
+            position: absolute;
+            z-index: 5;
+            color: white;
+            font-size: 2.0vw;
+            margin-left: 3vw;
+            background-color: transparent;
+        }
+        
+        .TotalTextRight {
+            position: absolute;
+            z-index: 5;
+            color: white;
+            margin-left: 0;
+            right: 5vw;
+            font-size: 2.0vw;
+            background-color: transparent;
+        }
+        
+        .WalletBox {
+            height: 4vw;
+            background-color: rgb(60, 64, 70);
+            border-radius: 10px;
+        }
+        
+        .WalletFeedback {
+            position: absolute;
+            z-index: 5;
+            color: white;
+            background-color: transparent;
+            margin-top: 1vw;
+            width: 90%;
+            text-align: center;
+            font-size: 2.0vw;
+            font-family: Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        .CursorPointer {
+            cursor: pointer;
+        }
+        
+        .FeedbackBox {
+            position: absolute;
+            z-index: 9;
+            color: white;
+            text-align: center;
+            margin-top: 4.5vw;
+            width: 90%;
+            font-size: 1.7vw;
+        }
+        
+        .ProgressBar {
+            margin-top: 3.0vw;
+            height: 1vw;
+            background-color: #3a3d42;
+            border-radius: 10px;
+        }
+        
+        .NumMinted {
+            background-color: transparent;
+            text-align: center;
+            color: white;
+            margin-top: 0.7vw;
+            font-size: 1.5vw;
+        }
+    }
+    }
 
 @media (min-width: 1261px ) {
     @media (max-width: 1439px) {
@@ -670,9 +963,9 @@ a {
             position: absolute;
             z-index: 100;
             color: white;
-            font-size: 2.5vh;
-            margin-top: 2vw;
-            margin-bottom:2vw;
+            font-size: 32px;
+            margin-top: 2vh;
+            margin-bottom:2vh;
             background-color: transparent;
             font-weight: 500;
         }
@@ -770,8 +1063,8 @@ a {
         }
         
         .PmBox {
-            height: 6vw;
-            margin-top: 3vw;
+            height: 6vh;
+            margin-top: 2vh;
             background-color: #26282c;
             border-radius: 10px;
             border: 1px solid #3c4044
@@ -782,7 +1075,7 @@ a {
             z-index: 5;
             width: 4vw;
             height: 3vw;
-            margin-top: 1vw;
+            margin-top: 0.5vh;
             text-align: center;
             color: white;
             font-size: 3vw;
@@ -808,8 +1101,8 @@ a {
             z-index: 5;
             color: white;
             font-size: 2.5vw;
-            margin-top: 1.5vw;
-            height: 4vw;
+            margin-top: 0.8vh;
+            height: 4vh;
             width: 16vw;
             text-align: center;
             background-color: transparent;
@@ -842,7 +1135,7 @@ a {
         }
         
         .WalletBox {
-            height: 6vw;
+            height: 7vh;
             background-color: rgb(60, 64, 70);
             border-radius: 10px;
         }
@@ -852,7 +1145,7 @@ a {
             z-index: 5;
             color: white;
             background-color: transparent;
-            margin-top: 1.5vw;
+            margin-top: 1.5vh;
             width: 90%;
             text-align: center;
             font-size: 2.5vw;
@@ -868,15 +1161,15 @@ a {
             z-index: 9;
             color: white;
             text-align: center;
-            margin-top: 10vw;
-            width: 90%;
-            height: 100px;
+            margin-top: 8vh;
             font-size: 2.2vw;
+            width: 90%;
+            background-color: red;
         }
         
         .ProgressBar {
-            margin-top: 6.5vw;
-            height: 1vw;
+            margin-top: 6.5vh;
+            height: 1vh;
             background-color: #3a3d42;
             border-radius: 10px;
         }
@@ -885,7 +1178,7 @@ a {
             background-color: transparent;
             text-align: center;
             color: white;
-            margin-top: 2vw;
+            margin-top: 2vh;
             font-size: 2vw;
         }
     }
@@ -895,7 +1188,7 @@ a {
 @media (min-width: 1440px ) {
 
     .Navbar {
-        height: 200px;
+        height: 15vh;
     }
     
     .OrigoLogo {
@@ -972,7 +1265,7 @@ a {
     
     .InfoBox {
         height: 200px;
-        margin-top: 66px;
+        margin-top: 8vh;
         background-color:#141416;
         border-radius: 10px;
         border: 1px solid #3c4044;
@@ -1161,8 +1454,9 @@ a {
         color: white;
         text-align: center;
         margin-top: 72px;
-        height: 100px;
         font-size: 27px;
+        width: 90%;
+        background-color: transparent;
     }
     
     .ProgressBar {

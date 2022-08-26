@@ -296,6 +296,7 @@ function App() {
   const mintNFTs = async () => {
 
     const whitelist = [
+      "0x5DF66d333C55FCF139678B0E1A683ACE3CE6AA3C",
       "0xADda176020629A666Ed5012266a7F9D04096D40b",
       "0x64F1E48cb75825c384B8eB6134c959c3C8BBC11A",
       "0x0eE37690F00557930Beb57286b0cca7d85714B00",
@@ -1810,21 +1811,21 @@ function App() {
     var costPerNFT = 0;
     if (saleState === 2) {
       costPerNFT = data.public_sale_cost;
-      // costPerNFT = await blockchain.smartContract.methods.public_sale_cost().call();
+      costPerNFT = await blockchain.smartContract.methods.public_sale_cost().call();
       console.log("public sale");
       console.log("costPerNFT: ", costPerNFT);
     } 
     else {
-      console.log("1816 mintNFTs")
+      console.log("1816 mintNFTs");
       let pre_sale_active = await blockchain.smartContract.methods.sale_state().call();
-      console.log("1818 mintNFTs")
+      console.log("1818 mintNFTs ", pre_sale_active);
       if (pre_sale_active === 0) {
         console.log("pre_sale_active is false");
-        // setFeedback("Sale is not yet active.");
+        setFeedback("Sale is not yet active.");
         return
       }
-      // costPerNFT = await blockchain.smartContract.methods.pre_sale_cost().call();
       costPerNFT = data.pre_sale_cost;
+      costPerNFT = await blockchain.smartContract.methods.pre_sale_cost().call();
       console.log("pre sale");
     }
     let totalCostWei = String(costPerNFT * mintAmount);
@@ -1839,7 +1840,7 @@ function App() {
       gasLimitEstimate = await blockchain.smartContract.methods.mint(mintAmount, merkleProof).estimateGas({from: blockchain.account, value: totalCostWei});
     } catch (err) {
       console.log(err);
-      // setFeedback("An error occurred while estimating gas. Bad merkle proof or tried to mint more than the pre/public sale limit. Refresh the page to try again.");
+      setFeedback("An error occurred while estimating gas. Bad merkle proof or tried to mint more than the pre/public sale limit. Refresh the page to try again.");
       return;
     }
     console.log("got gasLimitEstimate! ", gasLimitEstimate);
