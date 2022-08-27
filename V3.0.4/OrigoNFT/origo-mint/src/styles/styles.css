@@ -1493,7 +1493,7 @@ a {
             background-position: center;
             position: absolute;
             z-index: 4;
-            margin-left: 30%;
+            margin-left: 40%;
             margin-top: 0vw;
         }
         
@@ -1507,7 +1507,7 @@ a {
         .DiscordLogo {
             position: absolute;
             z-index: 6;
-            right: 38.5%;
+            right: 34%;
             background-image: url("./discord1.png");
             background-size: cover;
             background-position: center;
@@ -1519,7 +1519,7 @@ a {
             background-image: url("./twitter1.png");
             background-size: cover;
             background-position: center;
-            right: 35%;
+            right: 32%;
         }
         
         .OpenseaLogo {
@@ -1528,7 +1528,7 @@ a {
             background-image: url("./os1.png");
             background-size: cover;
             background-position: center;
-            right: 32%;
+            right: 30%;
         }
         
         @media(min-height: 300px) {
@@ -1536,11 +1536,11 @@ a {
                 .Container {
                     position: absolute;
                     z-index: 2;
-                    width: 40%;
+                    width: 30%;
                     height: 100%;
                     background-color: #141416;
                     border-radius: 5%;
-                    margin-left: 30%;
+                    margin-left: 40%;
                 }
             }
         }
@@ -1549,11 +1549,11 @@ a {
                 .Container {
                     position: absolute;
                     z-index: 2;
-                    width: 40%;
+                    width: 30%;
                     height: 70%;
                     background-color: #141416;
                     border-radius: 5%;
-                    margin-left: 30%;
+                    margin-left: 40%;
                 }
             }
         }
@@ -1561,11 +1561,11 @@ a {
                 .Container {
                     position: absolute;
                     z-index: 2;
-                    width: 40%;
+                    width: 30%;
                     height: 55%;
                     background-color: #141416;
                     border-radius: 5%;
-                    margin-left: 30%;
+                    margin-left: 40%;
                 }
         }
         
