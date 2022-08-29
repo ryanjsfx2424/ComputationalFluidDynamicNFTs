@@ -68,7 +68,7 @@ class AuthenticationDiscordBot(object):
     self.MODERATOR_IDS  = {}
     self.AUTHENTD_IDS   = {}
     self.RESET_TIMES    = {}
-    self.MOD_QR_ADDED   = {}
+    self.MOD_PASSWORDS  = {}
     self.AUTHENTD_TIMES = {}
   # end first_time
 
@@ -121,11 +121,16 @@ class AuthenticationDiscordBot(object):
       self.ME = int(self.decrypt(self.fname_base + "2" + self.fname_ext).replace("\n",""))
 
       self.APPROVED_USERS = ast.literal_eval(self.decrypt(self.fname_base + "3" + self.fname_ext))
-      self.MODERATOR_IDS  = ast.literal_eval(self.decrypt(self.fname_base + "4" + self.fname_ext))
-      self.AUTHENTD_IDS   = ast.literal_eval(self.decrypt(self.fname_base + "5" + self.fname_ext))
-      self.RESET_TIMES    = ast.literal_eval(self.decrypt(self.fname_base + "6" + self.fname_ext))
-      self.MOD_QR_ADDED   = ast.literal_eval(self.decrypt(self.fname_base + "7" + self.fname_ext))
+      self.MODERATOR_IDS = ast.literal_eval(self.decrypt(self.fname_base + "4" + self.fname_ext))
+      self.AUTHENTD_IDS  = ast.literal_eval(self.decrypt(self.fname_base + "5" + self.fname_ext))
+      self.RESET_TIMES   = ast.literal_eval(self.decrypt(self.fname_base + "6" + self.fname_ext))
+      self.MOD_PASSWORDS = ast.literal_eval(self.decrypt(self.fname_base + "7" + self.fname_ext))
 
+      print("AU after eval: ", self.APPROVED_USERS)
+      print("self.GIDS: ", self.GIDS)
+      print("self.AUTHENTD_TIMES: ", self.AUTHENTD_TIMES)
+      print("MOD_PASSWORDS: ", self.MOD_PASSWORDS)
+      print("MOD_PASSWORDS.keys[0] type ", type(list(self.MOD_PASSWORDS)[0]))
       return True
     else:
       print("didn't find data to load!")
@@ -138,7 +143,7 @@ class AuthenticationDiscordBot(object):
     ## and I was having trouble loading it...
     to_save = [self.key, self.GIDS, self.ME, self.APPROVED_USERS, 
                self.MODERATOR_IDS, self.AUTHENTD_IDS, self.RESET_TIMES,
-               self.MOD_QR_ADDED]
+               self.MOD_PASSWORDS]
 
     fernet = Fernet(os.environ["dauthyFern1"] + os.environ["dauthyFern2"] + os.environ["dauthyFern3"])
     for ii,el in enumerate(to_save):
@@ -245,8 +250,8 @@ class AuthenticationDiscordBot(object):
       self.APPROVED_USERS[gid] = []
       self.MODERATOR_IDS[ gid] = []
       self.AUTHENTD_IDS[  gid] = []
-      self.RESET_TIMES[   gid] = 20.0
-      self.MOD_QR_ADDED[  gid] = {}
+      self.RESET_TIMES[   gid] = 10.0
+      self.MOD_PASSWORDS[ gid] = {}
       self.AUTHENTD_TIMES[gid] = {}
       if gid not in self.GIDS:
         self.GIDS.append(gid)
@@ -258,18 +263,18 @@ class AuthenticationDiscordBot(object):
     # end add_guild
 
     @client.command(
-      name="add_admin",
-      description="Adds 'administrator' for a given guild",
+      name="add_approved_user",
+      description="Adds approved user for a given guild",
       scope=self.GIDS,
       options = [
         interactions.Option(
-          name="guild_id",
+          name="gid",
           description="guild id",
           type=interactions.OptionType.STRING,
           required=True,
         ),
         interactions.Option(
-          name="discord_id",
+          name="did",
           description="discord id",
           type=interactions.OptionType.STRING,
           required=True,
@@ -277,21 +282,21 @@ class AuthenticationDiscordBot(object):
       ],
     )
     async def add_approved_user(ctx: interactions.CommandContext, 
-                                guild_id: str, discord_id: str):
+                                gid: str, did: str):
       if int(ctx.author.id) != self.ME:
         await ctx.send("ERROR only botfather can add approved users", ephemeral=True)
         return
       # end if
 
       try:
-        gid = int(guild_id)
+        gid = int(gid)
       except:
         await ctx.send("Error, didn't pass in guild id parseable as int", ephemeral=True)
         return
       # end try/except
 
       try:
-        did = int(discord_id)
+        did = int(did)
       except:
         await ctx.send("Error, didn't pass in discord id parseable as int", ephemeral=True)
         return
@@ -425,21 +430,104 @@ class AuthenticationDiscordBot(object):
     # end authentication_reset_time
 
     @client.command(
+      name="init_password",
+      description="Initializes password for given user.",
+      scope=self.GIDS,
+      options = [
+        interactions.Option(
+          name="password",
+          description="Mod's password. Must be >= 16 characters and contain at least one number and symbol.",
+          type=interactions.OptionType.STRING,
+          required=True,
+        ),
+      ],
+    )
+    async def init_password(ctx: interactions.CommandContext, 
+                           password: str):
+      gid = int(ctx.guild_id)
+
+      did = int(ctx.author.id)
+      if did in self.MOD_PASSWORDS[gid]:
+        await ctx.send("Error, you've already set your password. If you forgot, you'll have to contact the developer. And he'll taunt you a second time ;)", ephemeral=True)
+        return
+      # end if
+
+      mod_roles = self.MODERATOR_IDS[gid]
+      has_mod_role = False
+      for mod_role in mod_roles:
+        if mod_role in ctx.author.roles:
+          has_mod_role = True
+        # end if
+      # end for
+
+      if not has_mod_role:
+        await ctx.send("Error, user does not have moderator role.", ephemeral=True)
+        return
+      # end if
+
+      if len(password) < 16:
+        await ctx.send("Error, your password was shorter than 16 characters bozo. Try again.", ephemeral=True)
+        return
+      # end if
+
+      num_in_password = False
+      for num in "1234567890":
+        if num in password:
+          num_in_password = True
+        # end if
+      # end for
+      if not num_in_password:
+        await ctx.send("Error, your password didn't have a number in it bozo. Try again.", ephemeral=True)
+        return
+      # end if
+
+      sym_in_password = False
+      for sym in "!@#$%^&*()`~-_=+[{]}\|'\";:/?.>,<":
+        if sym in password:
+          sym_in_password = True
+        # end if
+      # end for
+      if not sym_in_password:
+        await ctx.send("Error, your password didn't have a symbol in it bozo. Try again.", ephemeral=True)
+        return
+      # end if
+
+      self.MOD_PASSWORDS[gid][did] = password
+      self.save_data()
+      await ctx.send("Successfully added your password: " + password + "\nNow don't forget it!", ephemeral=True)
+      return
+    # end init_password
+
+    @client.command(
       name="generate_qr_code",
       description="Generates QR code for authenticator app (e.g., Google Authentcator) for given user.",
       scope=self.GIDS,
+      options = [
+        interactions.Option(
+          name="password",
+          description="Mod's password.",
+          type=interactions.OptionType.STRING,
+          required=True,
+        ),
+      ],
     )
-    async def generate_qr_code(ctx: interactions.CommandContext):
+    async def generate_qr_code(ctx: interactions.CommandContext,
+                               password: str):
       did = int(ctx.author.id)
       gid = int(ctx.guild_id)
 
-      if gid not in self.MOD_QR_ADDED:
+      if gid not in self.MOD_PASSWORDS:
         await ctx.send("Error, guild id not yet added. Please contact the developer.", ephemeral=True)
         return
       # end if
 
-      if did in self.MOD_QR_ADDED[gid]:
-        await ctx.send("Error, user already generated their QR code.", ephemeral=True)
+      if did not in self.MOD_PASSWORDS[gid]:
+        await ctx.send("Error, user hasn't set a password yet.", ephemeral=True)
+        return
+      # end if
+
+      if password != self.MOD_PASSWORDS[gid][did]:
+        await ctx.send("Error, wrong password.", ephemeral=True)
         return
       # end if
 
@@ -459,9 +547,15 @@ class AuthenticationDiscordBot(object):
 
     @client.command(
       name="authenticate",
-      description="Assigns 'authenticated' role to user for 5 minutes (at default).",
+      description="Assigns 'authenticated' role to user for 60s.",
       scope=self.GIDS,
       options = [
+        interactions.Option(
+          name="password",
+          description="mod's password",
+          type=interactions.OptionType.STRING,
+          required=True,
+        ),
         interactions.Option(
           name="authentication_token",
           description="mod's authentication token",
@@ -471,18 +565,23 @@ class AuthenticationDiscordBot(object):
       ],
     )
     async def authenticate(ctx: interactions.CommandContext, 
-                           authentication_token: str):
+                           password: str, authentication_token: str):
       print("BEGIN authenticate")
       did = int(ctx.author.id)
       gid = int(ctx.guild_id)
 
-      if gid not in self.MOD_QR_ADDED:
+      if gid not in self.MOD_PASSWORDS:
         await ctx.send("Error, guild id not yet added. Please contact the developer.", ephemeral=True)
         return
       # end if
 
-      if did not in self.MOD_QR_ADDED[gid]:
-        await ctx.send("Error, user hasn't generated a QR code yet.", ephemeral=True)
+      if did not in self.MOD_PASSWORDS[gid]:
+        await ctx.send("Error, user hasn't set a password yet.", ephemeral=True)
+        return
+      # end if
+
+      if password != self.MOD_PASSWORDS[gid][did]:
+        await ctx.send("Error, wrong password.", ephemeral=True)
         return
       # end if
 
