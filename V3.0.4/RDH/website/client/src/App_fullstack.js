@@ -42,8 +42,6 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import icon from "./icon.png";
 import { pinJSONToIPFS } from './pinata.js';
 import { ethers } from "ethers";
-import keccak256 from 'keccak256';
-import MerkleTree from 'merkletreejs';
 import Web3 from "web3";
 import Web3EthContract from "web3-eth-contract";
 
@@ -58,11 +56,6 @@ const burner_priv_key = process.env.REACT_APP_ALCHEMY_KEY2;
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 const web3 = createAlchemyWeb3(alchemyURL);
 const contractABI = require('./contract-abi.json');
-const wlg = require('./whitelist_gold.json');
-const wlt = require('./whitelist_team.json');
-const wlf = require('./whitelist_fr.json');
-const wlo = require('./whitelist_og.json');
-const wlw = require('./whitelist_wl.json');
 console.log("55 App abi: ", JSON.stringify(contractABI));
 const contractAddress = "0xee40d1556a460c2b93e40F33EB8Ff0CEaCDD4838";
 const ETHERSCAN_LINK = "https://rinkeby.etherscan.io/address/" + contractAddress;
@@ -73,20 +66,6 @@ const nftContract = new web3.eth.Contract(contractABI, contractAddress);
 // const signer = new ethers.Wallet(burner_priv_key, alchemyProvider);
 // const smartContract = new ethers.Contract(contractAddress, contractABI, signer);
 
-function hashAccount(userAddress) {
-	return Buffer.from(ethers.utils.solidityKeccak256(['address'], [userAddress]).slice(2), 'hex');
-  }
-  function generateMerkleTree(addresses) {
-	const merkleTree = new MerkleTree(
-		addresses.map(hashAccount), keccak256, { sortPairs: true }
-	);
-	return merkleTree;
-  }
-  function generateMerkleProof(userAddress, addresses) {
-	const merkleTree = generateMerkleTree(addresses);
-	const proof = merkleTree.getHexProof(hashAccount(userAddress));
-	return proof;
-  }
 
 function App() {
 	const [isConnected, setIsConnected] = useState(false)
@@ -228,57 +207,20 @@ function App() {
 		}
 	}
 
-	// backend version
-	// const postRequestMerkle = async(wallet) => {
-	// 	console.log("159 trying fetch w/ middle-ware proxy mod");
-	// 	console.log("160 for account: ", wallet);
-
-	// 	let data = {address: wallet};
-	// 	const res = await fetch("/api/v1/merkle", {
-	// 		method: "POST",
-	// 		headers: {"Content-Type": "application/json"},
-	// 		body: JSON.stringify(data)
-	// 	});
-	// 	const result = await res.json();
-	// 	console.log("225 result: ", result);
-	// 	return [result.merkle,result.mintType];
-	// }
 
 	const postRequestMerkle = async(wallet) => {
 		console.log("159 trying fetch w/ middle-ware proxy mod");
 		console.log("160 for account: ", wallet);
 
-		var merkleTree = new MerkleTree(wlg.map(hashAccount), keccak256, { sortPairs: true });
-		var merkleProof = merkleTree.getHexProof(hashAccount(wallet));
-		if (merkleTree.verify(merkleProof, keccak256(wallet), merkleTree.getHexRoot())) {
-			return [merkleProof, 1]
-		} else{
-			merkleTree = new MerkleTree(wlt.map(hashAccount), keccak256, { sortPairs: true });
-			merkleProof = merkleTree.getHexProof(hashAccount(wallet));
-			if (merkleTree.verify(merkleProof, keccak256(wallet), merkleTree.getHexRoot())) {
-				return [merkleProof, 2]
-			} else {
-				merkleTree = new MerkleTree(wlo.map(hashAccount), keccak256, { sortPairs: true });
-				merkleProof = merkleTree.getHexProof(hashAccount(wallet));
-				if (merkleTree.verify(merkleProof, keccak256(wallet), merkleTree.getHexRoot())) {
-					return [merkleProof, 3]
-				} else {
-					merkleTree = new MerkleTree(wlf.map(hashAccount), keccak256, { sortPairs: true });
-					merkleProof = merkleTree.getHexProof(hashAccount(wallet));
-					if (merkleTree.verify(merkleProof, keccak256(wallet), merkleTree.getHexRoot())) {
-						return [merkleProof, 4]
-					} else{
-						merkleTree = new MerkleTree(wlw.map(hashAccount), keccak256, { sortPairs: true });
-						merkleProof = merkleTree.getHexProof(hashAccount(wallet));
-						if (merkleTree.verify(merkleProof, keccak256(wallet), merkleTree.getHexRoot())) {
-							return [merkleProof, 5]
-						} else {
-							return [-1, -1]
-						}
-					}
-				}
-			}
-		}
+		let data = {address: wallet};
+		const res = await fetch("/api/v1/merkle", {
+			method: "POST",
+			headers: {"Content-Type": "application/json"},
+			body: JSON.stringify(data)
+		});
+		const result = await res.json();
+		console.log("225 result: ", result);
+		return [result.merkle,result.mintType];
 	}
 
 	//MINT FUNCTION
