@@ -24,6 +24,18 @@ a {
     background-color: black;
 }
 
+.ProgressBarColor {
+    background-color: #141416;
+    background-color: #3a3d42;
+    background-color: transparent;
+}
+
+.DisclaimerText {
+    background-color: transparent;
+    text-align: center;
+    color: white;
+}
+
 @media (max-width: 599px) {
 
     .Navbar {
@@ -288,7 +300,6 @@ a {
     .ProgressBar {
         margin-top: 8vw;
         height: 1vw;
-        background-color: #3a3d42;
         border-radius: 10px;
     }
     
@@ -297,6 +308,10 @@ a {
         text-align: center;
         color: white;
         margin-top: 3vw;
+        font-size: 4vw;
+    }
+    .DisclaimerText {
+        margin-top: 5vw;
         font-size: 4vw;
     }
 
@@ -583,7 +598,6 @@ a {
     .ProgressBar {
         margin-top: 7vw;
         height: 1vw;
-        background-color: #3a3d42;
         border-radius: 10px;
     }
     
@@ -650,7 +664,7 @@ a {
             background-position: center;
             right: 20vw;
         }
-        
+
         .Container {
             position: absolute;
             z-index: 2;
@@ -660,7 +674,7 @@ a {
             border-radius: 5%;
             margin-left: 25vw;
         }
-        
+
         .BoxWidths {
             width: 90%;
             margin-left: 5%;
@@ -876,7 +890,6 @@ a {
         .ProgressBar {
             margin-top: 3.0vw;
             height: 1vw;
-            background-color: #3a3d42;
             border-radius: 10px;
         }
         
@@ -887,6 +900,156 @@ a {
             margin-top: 0.7vw;
             font-size: 1.5vw;
         }
+        
+        @media (min-height: 300px) {
+        @media (max-height: 600px) {
+
+            .Screen {
+                background-position: -100px 0;
+
+            }
+
+            .OrigoLogo {
+                width: 100px;
+                height: 90px;
+                background-image: url("./origo-logo.png");
+                background-size: cover;
+                background-position: center;
+                position: absolute;
+                z-index: 4;
+                margin-left: 330px;
+                margin-top: 0vw;
+            }
+            
+            .LogoSizes {
+                width: 48px;
+                height: 48px;
+                margin-top: 16px;
+            }
+            
+            
+            .DiscordLogo {
+                position: absolute;
+                z-index: 6;
+                margin-left: 73vw;
+                background-image: url("./discord1.png");
+                background-size: cover;
+                background-position: center;
+                right: 448px;
+            }
+            
+            .TwitterLogo {
+                position: absolute;
+                z-index: 5;
+                background-image: url("./twitter1.png");
+                background-size: cover;
+                background-position: center;
+                right:400px;
+            }
+            
+            .OpenseaLogo {
+                z-index: 4;
+                position: absolute;
+                background-image: url("./os1.png");
+                background-size: cover;
+                background-position: center;
+                right: 352px;
+            }
+
+
+            .Container {
+                position: absolute;
+                z-index: 2;
+                width: 50vw;
+                height: 525px;
+                background-color: #141416;
+                border-radius: 5%;
+                margin-left: 25vw;
+            }
+
+            .HeaderText {
+                position: absolute;
+                z-index: 100;
+                color: white;
+                font-size: 24px;
+                margin-top: 2vw;
+                margin-bottom:2vw;
+                background-color: transparent;
+                font-weight: 500;
+            }
+        }
+        }
+        @media (min-height: 601px) {
+        
+                .OrigoLogo {
+                    width: 100px;
+                    height: 90px;
+                    background-image: url("./origo-logo.png");
+                    background-size: cover;
+                    background-position: center;
+                    position: absolute;
+                    z-index: 4;
+                    margin-left: 330px;
+                    margin-top: 0vw;
+                }
+                
+                .LogoSizes {
+                    width: 48px;
+                    height: 48px;
+                    margin-top: 16px;
+                }
+                
+                
+                .DiscordLogo {
+                    position: absolute;
+                    z-index: 6;
+                    margin-left: 73vw;
+                    background-image: url("./discord1.png");
+                    background-size: cover;
+                    background-position: center;
+                    right: 448px;
+                }
+                
+                .TwitterLogo {
+                    position: absolute;
+                    z-index: 5;
+                    background-image: url("./twitter1.png");
+                    background-size: cover;
+                    background-position: center;
+                    right:400px;
+                }
+                
+                .OpenseaLogo {
+                    z-index: 4;
+                    position: absolute;
+                    background-image: url("./os1.png");
+                    background-size: cover;
+                    background-position: center;
+                    right: 352px;
+                }
+    
+    
+                .Container {
+                    position: absolute;
+                    z-index: 2;
+                    width: 50vw;
+                    height: 525px;
+                    background-color: #141416;
+                    border-radius: 5%;
+                    margin-left: 25vw;
+                }
+    
+                .HeaderText {
+                    position: absolute;
+                    z-index: 100;
+                    color: white;
+                    font-size: 24px;
+                    margin-top: 2vw;
+                    margin-bottom:2vw;
+                    background-color: transparent;
+                    font-weight: 500;
+                }
+            }
     }
     }
 
@@ -1170,7 +1333,6 @@ a {
         .ProgressBar {
             margin-top: 6.5vh;
             height: 1vh;
-            background-color: #3a3d42;
             border-radius: 10px;
         }
         
@@ -1465,8 +1627,10 @@ a {
     .ProgressBar {
         margin-top: 64px;
         height: 18px;
-        background-color: #3a3d42;
-        border-radius: 10px;
+        /* background-color: #3a3d42; */
+        /* border-radius: 10px; */
+        background-color: transparent;
+        border-radius: none;
     }
     
     .NumMinted {
@@ -1476,8 +1640,103 @@ a {
         margin-top: 12px;
         font-size: 25px;
     }
-    }
-    }
+
+    @media (min-height: 300px) {
+        @media (max-height: 600px) {
+
+            .Screen {
+                background-position: -100px 0;
+
+            }
+
+            .OrigoLogo {
+                width: 100px;
+                height: 90px;
+                background-image: url("./origo-logo.png");
+                background-size: cover;
+                background-position: center;
+                position: absolute;
+                z-index: 4;
+                margin-left: 445px;
+                margin-top: 0vw;
+            }
+            
+            .LogoSizes {
+                width: 48px;
+                height: 48px;
+                margin-top: 16px;
+            }
+            
+            
+            .DiscordLogo {
+                position: absolute;
+                z-index: 6;
+                margin-left: 73vw;
+                background-image: url("./discord1.png");
+                background-size: cover;
+                background-position: center;
+                right: 544px;
+            }
+            
+            .TwitterLogo {
+                position: absolute;
+                z-index: 5;
+                background-image: url("./twitter1.png");
+                background-size: cover;
+                background-position: center;
+                right:496px;
+            }
+            
+            .OpenseaLogo {
+                z-index: 4;
+                position: absolute;
+                background-image: url("./os1.png");
+                background-size: cover;
+                background-position: center;
+                right: 448px;
+            }
+
+
+            .Container {
+                position: absolute;
+                z-index: 2;
+                width: 50vw;
+                height: 605px;
+                background-color: #141416;
+                border-radius: 5%;
+                margin-left: 25vw;
+            }
+
+            .HeaderText {
+                position: absolute;
+                z-index: 100;
+                color: white;
+                font-size: 18px;
+                margin-top: 0.5vw;
+                margin-bottom:2vw;
+                background-color: transparent;
+                font-weight: 500;
+            }
+        }
+        }
+
+        @media (min-height: 601px) {
+            @media (max-height: 900px) {
+
+                .Container {
+                    position: absolute;
+                    z-index: 2;
+                    width: 40%;
+                    height: 630px;
+                    background-color: #141416;
+                    border-radius: 5%;
+                    margin-left: 30%;
+                }
+                
+            }
+        }
+}
+}
 
     @media (min-width: 2101px ) {
     
@@ -1787,7 +2046,6 @@ a {
         .ProgressBar {
             margin-top: 64px;
             height: 18px;
-            background-color: #3a3d42;
             border-radius: 10px;
         }
         
