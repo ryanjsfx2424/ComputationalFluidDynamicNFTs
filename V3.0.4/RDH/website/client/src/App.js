@@ -213,7 +213,7 @@ function App() {
 		console.log("160 for account: ", wallet);
 
 		let data = {address: wallet};
-		const res = await fetch("http://localhost:3001/api/v1/merkle", {
+		const res = await fetch("/api/v1/merkle", {
 			method: "POST",
 			headers: {"Content-Type": "application/json"},
 			body: JSON.stringify(data)
@@ -243,7 +243,7 @@ function App() {
 		}
 
 		var now = new Date().getTime();
-		if (now - wlStart > 0) {
+		if (now - wlStart < 0) {
 			console.log("tried to mint too early: ", now, wlStart, now-wlStart);
 			return {
 				success: false,
@@ -396,7 +396,7 @@ function App() {
 				<Flex px={["4", "12"]} w="100%" bg="rgba(255,255,255,0.07)" align="center" position="sticky" top="0" borderRadius="8px" mb="6" zIndex="1" data-aos="fade-up" backdropFilter="blur(4px)" py="3">
 					<Flex align="center">
 						<Image src={icon} w={["40px", "50px"]} h={["40px", "50px"]} />
-						<Text fontWeight="bold" ml="3" display={["none", "block"]} textShadow="6px 2px rgb(70,70,70)" fontSize={["20px", "28px"]}>Rekted Diamond Hands</Text>
+						<Text fontWeight="bold" ml="3" display={["none", "block"]} textShadow="6px 2px rgb(70,70,70)" fontSize={["18px", "24px"]}>RDH Academy</Text>
 					</Flex>
 					<Flex flex="1" align="center" justify="flex-end">
 						{
@@ -414,10 +414,10 @@ function App() {
 							a.scrollIntoView({behavior: "smooth"})
 						}}>Roadmap</Flex>
 
-						<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]} align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.9)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.7)"}} cursor="pointer"  mr={["3", "5" ]} onClick={() => window.open("https://twitter.com/RDH_NFT?s=21", "_BLANK")} color="#1DA1F2"><i className="mdi mdi-twitter"></i></Flex>
+						<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]} align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.9)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.7)"}} cursor="pointer"  mr={["3", "5" ]} onClick={() => window.open("https://twitter.com/RDHNFTs?s=21", "_BLANK")} color="#1DA1F2"><i className="mdi mdi-twitter"></i></Flex>
 
 
-						<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]}  align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.9)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.7)"}} cursor="pointer"  color="#cd486b" mr={["3", "5" ]} onClick={() => window.open("https://www.instagram.com/rdh_nft/", "_BLANK")}><i className="mdi mdi-instagram"></i></Flex>
+						<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]}  align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.9)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.7)"}} cursor="pointer"  color="#cd486b" mr={["3", "5" ]} onClick={() => window.open("https://www.instagram.com/rdhnfts/", "_BLANK")}><i className="mdi mdi-instagram"></i></Flex>
 
 						<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]}  align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.9)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.7)"}} cursor="pointer" color="#7289da" onClick={() => window.open("https://discord.gg/rdhnft", "_BLANK")}><i className="mdi mdi-discord"></i></Flex>
 					</Flex>
@@ -576,11 +576,11 @@ function App() {
 					<Text textAlign="center" mt="3"  data-aos="fade-up">For all press inquiries, please contact <Text as="span" color="rgb(200,200,250)" mb="2">press@rdh.club</Text></Text>
 					
 					<Flex flex="1" align="center" justify="center" mt="8"  data-aos="fade-up">
-					<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]} align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.1)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.3)"}} cursor="pointer" className="bounce" mr={["3", "5" ]} onClick={() => window.open("https://twitter.com/RDH_NFT?s=21", "_BLANK")}><i className="mdi mdi-twitter"></i></Flex>
+					<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]} align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.1)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.3)"}} cursor="pointer" className="bounce" mr={["3", "5" ]} onClick={() => window.open("https://twitter.com/RDHNFTs?s=21", "_BLANK")}><i className="mdi mdi-twitter"></i></Flex>
 
 					<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]}  align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.1)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.3)"}} className="bounce" mr={["3", "5" ]} cursor="pointer" onClick={() => window.open("https://discord.gg/rdhnft", "_BLANK")}><i className="mdi mdi-discord"></i></Flex>
 
-					<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]}  align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.1)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.3)"}} className="bounce2" onClick={() => window.open("https://www.instagram.com/rdh_nft/", "_BLANK")} cursor="pointer"><i className="mdi mdi-instagram"></i></Flex>
+					<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]}  align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.1)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.3)"}} className="bounce2" onClick={() => window.open("https://www.instagram.com/rdhnfts/", "_BLANK")} cursor="pointer"><i className="mdi mdi-instagram"></i></Flex>
 					</Flex>
 				</Flex>
 			</Flex>
