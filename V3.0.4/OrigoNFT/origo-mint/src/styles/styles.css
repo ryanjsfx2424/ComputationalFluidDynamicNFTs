@@ -1335,7 +1335,7 @@ a {
             margin-top: 8vh;
             font-size: 2.2vw;
             width: 90%;
-            background-color: red;
+            background-color: transparent;
         }
         
         .ProgressBar {
