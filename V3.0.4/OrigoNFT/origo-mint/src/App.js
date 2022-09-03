@@ -629,7 +629,7 @@ function App() {
               {blockchain.account !== "" && blockchain.smartContract !== null ? (
                   <div className="BoxWidths NumMinted">{data.totalSupply} / {CONFIG.MAX_SUPPLY} MINTED</div>
                 ) : null}
-              <p className="DisclaimerText">IMPORTANT: Relics listed below 0.1 eth are subject to <i>Tribulation</i></p>
+              <p className="DisclaimerText">IMPORTANT: Relics listed below 0.1 ETH are subject to <i>Tribulation</i></p>
           </div> {/* Container */}
         </div>
     </div>
