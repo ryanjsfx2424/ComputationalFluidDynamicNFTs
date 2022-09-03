@@ -37,7 +37,7 @@ class FractalzDiscordBot(object):
         self.roles_awarded = [[979452786355867679, ""]]
         self.roles_removed = [["",""]]
 
-        self.init_gsheet()
+        #self.init_gsheet()
         self.init_settings()
     # end __init__
 
