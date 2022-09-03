@@ -246,17 +246,26 @@ function App() {
   const [walletState, setWalletState] = useState(`CONNECT WALLET`);
   const [gasText1, setGasText1] = useState(`Mint price is subject`);
   const [gasText2, setGasText2] = useState(`to GAS fees`);
-  const [headerText, setHeaderText] = useState(`Origo Whitelist Sale`);
-  const [mintLimitText, setMintLimitText] = useState(`2 Per Wallet`);
   const [pricePer1, setPricePer1] = useState(`Price Per Relic`);
-  const [pricePer2, setPricePer2] = useState(`0.089 - ETH`);
-  const [saleState, setSaleState] = useState(1);
-  const [mintLimitPerPhase, setMintLimitPerPhase] = useState(2);
-  const [saleStateText, setSaleStateText] = useState(`Whitelist Sale`);
   const [totalTextLeft, setTotalTextLeft] = useState(`Total`);
-  const [totalTextRight, setTotalTextRight] = useState(`0.089 - ETH`);
-  const [mintCost, setMintCost] = useState(0.089);
+  // const [headerText, setHeaderText] = useState(`Origo Whitelist Sale`);
+  // const [mintLimitText, setMintLimitText] = useState(`2 Per Wallet`);
+  // const [pricePer2, setPricePer2] = useState(`0.089 - ETH`);
+  // const [saleState, setSaleState] = useState(1);
+  // const [mintLimitPerPhase, setMintLimitPerPhase] = useState(2);
+  // const [saleStateText, setSaleStateText] = useState(`WL Sale`);
+  // const [totalTextRight, setTotalTextRight] = useState(`0.089 - ETH`);
+  // const [mintCost, setMintCost] = useState(0.089);
+  const [headerText, setHeaderText] = useState(`Origo Public Sale`);
+  const [mintLimitText, setMintLimitText] = useState(`3 Per Wallet`);
+  const [pricePer2, setPricePer2] = useState(`0.099 - ETH`);
+  const [saleState, setSaleState] = useState(2);
+  const [mintLimitPerPhase, setMintLimitPerPhase] = useState(3);
+  const [saleStateText, setSaleStateText] = useState(`Public Sale`);
+  const [totalTextRight, setTotalTextRight] = useState(`0.099 - ETH`);
+  const [mintCost, setMintCost] = useState(0.099);
   const [mintAmount, setMintAmount] = useState(1);
+  const [numMinted, setNumMinted] = useState(0);
   const [success, setSuccess] = useState(0);
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
@@ -273,6 +282,7 @@ function App() {
     MARKETPLACE_LINK: "",
     SHOW_BACKGROUND: true,
   });
+  const mintText = 'MINT';
 
   const useWindowWide = () => {
     const [width, setWidth] = useState(0)
@@ -323,6 +333,49 @@ function App() {
     return merkleTree;
   }
 
+  const getNumMinted = async(callType) => {
+    const numMintedLocal = await blockchain.smartContract.methods.num_minted(blockchain.account).call();
+    console.log("numMintedLocal: ", numMintedLocal, "mintLimit: ", mintLimitPerPhase);
+    setNumMinted(numMintedLocal);
+    setWalletState(mintText);
+    setMintingNft(false);
+    if (String(numMintedLocal) === String(mintLimitPerPhase)) {
+      console.log("342");
+      setMintAmount(0);
+      setTotalTextRight('0 - ETH');
+      setWalletState('');
+      setFeedback('You have minted the limit.');
+      setMintingNft(true);
+    } else {
+      console.log("349");
+      if (callType === 1) {
+        let newMintAmount = Math.max(1, mintAmount-1);
+        setMintAmount(newMintAmount);
+        let newCostText = String(newMintAmount*mintCost);
+        if (newCostText.length > 5) {
+          newCostText = newCostText.substring(0, 5);
+        }
+        setTotalTextRight(newCostText + " - ETH");
+        setWalletState(mintText);
+        setMintingNft(false);
+      }
+      else if (callType === 2) {
+        let newMintAmount = Math.min(mintLimitPerPhase-numMinted, mintAmount+1);
+        if (mintAmount === newMintAmount) {
+          setFeedback('Enforcing mint limit of ' + String(mintLimitPerPhase) + '. You have minted ' + String(numMinted) + ".");
+        }
+        setMintAmount(newMintAmount);
+        let newCostText = String(newMintAmount*mintCost);
+        if (newCostText.length > 5) {
+          newCostText = newCostText.substring(0, 5);
+        }
+        setTotalTextRight(newCostText + " - ETH");
+        setWalletState(mintText);
+        setMintingNft(false);
+      }  
+    }
+  }
+
   const mintNFTs = async () => {
 
     console.log("174 window.ethereum.selectedAddress: ", blockchain.account);
@@ -331,94 +384,130 @@ function App() {
 		const merkleTree = new MerkleTree(whitelist.map(hashAccount), keccak256, { sortPairs: true });
 		const merkleProof = merkleTree.getHexProof(hashAccount(blockchain.account));
 
-    if (!merkleTree.verify(merkleProof, keccak256(blockchain.account), merkleTree.getHexRoot())) {
+    if (saleState === 1 && !merkleTree.verify(merkleProof, keccak256(blockchain.account), merkleTree.getHexRoot())) {
       console.log("verify failed");
       setFeedback("Not WL'd");
+      setMintingNft(false);
+      setWalletState('');
       return
     }
 
 		console.log("227 mint");
-    if (!merkleProof) {
+    if (!merkleProof && saleState === 1) {
       console.log("302 mint merkleProof: ", merkleProof);
       setFeedback("Error fetching merkle proof, status 567");
+      setMintingNft(false);
+      setWalletState(mintText);
     } else {
-    // set cost depending on if pre-sale or public-sale
-    var costPerNFT = 0;
-    if (saleState === 2) {
-      costPerNFT = data.public_sale_cost;
-      costPerNFT = await blockchain.smartContract.methods.public_sale_cost().call();
-      console.log("public sale");
-      console.log("costPerNFT: ", costPerNFT);
-    } 
-    else {
-      console.log("1816 mintNFTs");
-      let pre_sale_active = await blockchain.smartContract.methods.sale_state().call();
-      console.log("1818 mintNFTs ", pre_sale_active);
-      if (pre_sale_active === 0) {
-        console.log("pre_sale_active is false");
-        setFeedback("Sale is not yet active.");
-        return
+      // set cost depending on if pre-sale or public-sale
+      var costPerNFT = 0;
+      if (saleState === 2) {
+        costPerNFT = data.public_sale_cost;
+        costPerNFT = await blockchain.smartContract.methods.public_sale_cost().call();
+        console.log("public sale");
+        console.log("costPerNFT: ", costPerNFT);
+      } 
+      else {
+        console.log("1816 mintNFTs");
+        let pre_sale_active = await blockchain.smartContract.methods.sale_state().call();
+        console.log("1818 mintNFTs ", pre_sale_active);
+        if (pre_sale_active === 0) {
+          console.log("pre_sale_active is false");
+          setFeedback("Sale is not yet active.");
+          setMintingNft(false);
+          setWalletState(mintText);
+          return
+        }
+        costPerNFT = data.pre_sale_cost;
+        costPerNFT = await blockchain.smartContract.methods.pre_sale_cost().call();
+        console.log("pre sale");
       }
-      costPerNFT = data.pre_sale_cost;
-      costPerNFT = await blockchain.smartContract.methods.pre_sale_cost().call();
-      console.log("pre sale");
-    }
-    let totalCostWei = String(costPerNFT * mintAmount);
-    console.log("249 cost: ", totalCostWei);
-    console.log(`Now minting your NFT(s)...`);
-    // setFeedback(`Now minting your Origo NFT(s)...`);
-    setWalletState(`BUSY`);
-    setMintingNft(true);
+      let totalCostWei = String(costPerNFT * mintAmount);
+      console.log("249 cost: ", totalCostWei);
+      console.log(`Now minting your NFT(s)...`);
+      // setFeedback(`Now minting your Origo NFT(s)...`);
+      setMintingNft(true);
 
-    let gasLimitEstimate;
-    try {
-      gasLimitEstimate = await blockchain.smartContract.methods.mint(mintAmount, merkleProof).estimateGas({from: blockchain.account, value: totalCostWei});
-    } catch (err) {
-      console.log(err);
-      setWalletState(`ERROR`);
-      setFeedback(err.message.split("{")[0] + ". Refresh page.");//"Error estimating gas. Bad merkle proof or tried to mint more than the pre/public sale limit. Refresh the page to try again.");
-      return;
-    }
-    console.log("got gasLimitEstimate! ", gasLimitEstimate);
-    console.log({
-      gasLimitEstimate: gasLimitEstimate,
-    });
-
-    let gasPriceEstimate = await blockchain.web3.eth.getGasPrice();
-
-    console.log({
-      resultOfGasPriceEstimate: gasPriceEstimate,
-    });
-
-    blockchain.smartContract.methods
-      .mint(mintAmount, merkleProof)
-      .send({
-        gasLimit: String(Math.round(1.2 * gasLimitEstimate)),
-        gasPrice: String(Math.round(1.1 * gasPriceEstimate)),
-        to: CONFIG.CONTRACT_ADDRESS,
-        from: blockchain.account,
-        value: totalCostWei,
-      })
-      .once("error", (err) => {
+      let gasLimitEstimate;
+      try {
+        gasLimitEstimate = await blockchain.smartContract.methods.mint(mintAmount, merkleProof).estimateGas({from: blockchain.account, value: totalCostWei});
+      } catch (err) {
         console.log(err);
-        setFeedback("Error? Check etherscan.");
-        setWalletState('ERROR');
+        setWalletState(mintText);
+        setFeedback("Error estimating gas.");
         setMintingNft(false);
-      })
-      .then((receipt) => {
-        console.log(receipt);
-        setFeedback(`Successfully minted your Origo NFT(s).`);
-        setSuccess(1);
-        setMintingNft(false);
-        setWalletState(`SUCCESS`);
-        dispatch(fetchData(blockchain.account));
+        return;
+      }
+      console.log("got gasLimitEstimate! ", gasLimitEstimate);
+      console.log({
+        gasLimitEstimate: gasLimitEstimate,
       });
+
+      let gasPriceEstimate = await blockchain.web3.eth.getGasPrice();
+
+      console.log({
+        resultOfGasPriceEstimate: gasPriceEstimate,
+      });
+      document.body.className += 'loadingBody';
+      var element = document.getElementById("spinDiv");
+      element.className += 'spinner';
+
+      blockchain.smartContract.methods
+        .mint(mintAmount, merkleProof)
+        .send({
+          gasLimit: String(Math.round(1.2 * gasLimitEstimate)),
+          gasPrice: String(Math.round(1.1 * gasPriceEstimate)),
+          to: CONFIG.CONTRACT_ADDRESS,
+          from: blockchain.account,
+          value: totalCostWei,
+        })
+        .once("error", (err) => {
+          document.body.classList.remove('loadingBody');
+          element.classList.remove('spinner');
+          console.log(err);
+          setFeedback("Error? Check etherscan.");
+          setWalletState(mintText);
+          setMintingNft(false);
+        })
+        .then((receipt) => {
+          document.body.classList.remove('loadingBody');
+          element.classList.remove('spinner');
+          console.log(receipt);
+          setFeedback(`Successfully minted your Origo NFT(s).`);
+          setSuccess(1);
+          setMintingNft(false);
+          setWalletState(mintText);
+          dispatch(fetchData(blockchain.account));
+        });
+      const numMintedLocal = await blockchain.smartContract.methods.num_minted(blockchain.account).call();
+      setNumMinted(numMintedLocal);
+      setWalletState(mintText);
+      setMintingNft(false);
+      if (numMintedLocal === mintLimitPerPhase) {
+        setMintAmount(0);
+        setTotalTextRight('0 - ETH');
+        setWalletState('');
+        setFeedback('You have minted the limit.');
+        setMintingNft(true);
+      }
     }
   };
 
-  const getData = () => {
+  const getData = async() => {
+    console.log("getData 487");
     if (blockchain.account !== "" && blockchain.smartContract !== null) {
       dispatch(fetchData(blockchain.account));
+      const numMintedLocal = await blockchain.smartContract.methods.num_minted(blockchain.account).call();
+          setNumMinted(numMintedLocal);
+          setWalletState(mintText);
+          setMintingNft(false);
+          if (String(numMintedLocal) === String(mintLimitPerPhase)) {
+            setMintAmount(0);
+            setTotalTextRight('0 - ETH');
+            setWalletState('');
+            setFeedback('You have minted the limit.');
+            setMintingNft(true);
+          }
     }
   };
 
@@ -443,24 +532,6 @@ function App() {
 
   return (
     <div className="Screen">
-        {/* <div className="Navbar">
-            <div>
-                <StyledOrigo alt={"origo logo"} src={"./config/images/origo-logo.png"} />
-            </div>
-
-            <a href={CONFIG.TWITTER_LINK}>
-                <StyledTwitter alt={"twitter link"} src={"./config/images/twitter1.png"} />
-            </a>
-
-            <a href={CONFIG.DISCORD_LINK}>
-                <StyledDiscord alt={"discord link"} src={"./config/images/discord1.png"} />
-            </a>
-
-            <a href={CONFIG.MARKETPLACE_LINK}>
-                <StyledOpensea alt={"opensea link"} src={"./config/images/os1.png"} />
-            </a>
-        </div>         */}
-
         <div>
           <div className="Navbar">
               <div className="OrigoLogo"></div>
@@ -468,6 +539,7 @@ function App() {
               <div className="TwitterLogo LogoSizes CursorPointer"><a href={CONFIG.TWITTER_LINK}></a></div>
               <div className="OpenseaLogo LogoSizes CursorPointer"><a href={CONFIG.MARKETPLACE_LINK}></a></div>
           </div>
+          <div id="spinDiv"></div>
               
           <div className="Container">
               <div className="BoxWidths HeaderText">{headerText}</div>
@@ -485,16 +557,21 @@ function App() {
                   <div className="PmBox SaleTypeText TextLeft">{saleStateText}</div>
                   <div className="PmBox MinusSign PmSigns" onClick={(e) => {
                       e.preventDefault();
-                      let newMintAmount = Math.max(1, mintAmount-1);
-                      setMintAmount(newMintAmount);
-                      setTotalTextRight(String(newMintAmount*mintCost) + " - ETH");
+                      if (blockchain.account !== "" && blockchain.smartContract !== null) {
+                        getNumMinted(1);
+                      } else {
+                        setFeedback(`Wallet not connected?`);
+                      }
                   }}>-</div>
                   <div className="PmBox MintAmountDisplay PmSigns">{mintAmount}</div>
                   <div className="PmBox PlusSign PmSigns" onClick={(e) => {
                       e.preventDefault();
-                      let newMintAmount = Math.min(mintLimitPerPhase, mintAmount+1);
-                      setMintAmount(newMintAmount);
-                      setTotalTextRight(String(newMintAmount*mintCost) + " - ETH");
+                      if (blockchain.account !== "" && blockchain.smartContract !== null) {
+                        getNumMinted(2);
+                      } 
+                      else {
+                          setFeedback(`Wallet not connected?`);
+                      }
                   }}>+</div>
               </div>
               <div className="TotalCostBox BoxWidths">
@@ -505,33 +582,41 @@ function App() {
 
                   {blockchain.account === "" || blockchain.smartContract === null ? (
                     <>
-                        <div className="WalletBox WalletFeedback CursorPointer" onClick={(e) => {
+                        <div className="WalletBox WalletFeedback CursorPointer" 
+                        disabled={mintingNft ? 1: 0}
+                        onClick={(e) => {
                             e.preventDefault();
+                            setMintingNft(true);
                             dispatch(connect());
                             getData();
                         }}>{walletState}</div>
-
-                        {blockchain.errorMsg !== "" ? (
                             <div className="FeedbackBox ErrorMessage">
-                                {blockchain.errorMsg}
+                                {feedback}
                             </div>
-                        ) : null}
                     </>
                   ) : null}
-                    {feedback === `` && blockchain.account !== "" && blockchain.smartContract !== null ? (
+                    {!mintingNft && blockchain.account !== "" && blockchain.smartContract !== null ? (
                       <div>
                         <div className="WalletBox WalletFeedback CursorPointer" 
                         disabled={mintingNft ? 1 : 0}
                         onClick={(e) => {
-                            e.preventDefault();
-                            mintNFTs();
-                            getData();
-                        }}>{mintingNft ? "BUSY" : "MINT"}</div>
+                            if (!mintingNft) {
+                              e.preventDefault();
+                              setMintingNft(true);
+                              setWalletState('MINT PROCESSING');
+                              mintNFTs();
+                              getData();
+                            }
+                        }}
+                        >{walletState}</div>
+                        <div className="FeedbackBox ErrorMessage">
+                                {feedback}
+                        </div>
                     </div>
                     ) : null}
-                    {feedback !== `` && blockchain.account !== "" && blockchain.smartContract !== null ? (
+                    {mintingNft && blockchain.account !== "" && blockchain.smartContract !== null ? (
                       <div>
-                        <div className="WalletBox WalletFeedback" 
+                        <div className="WalletBox WalletFeedback"
                         disabled={1}
                         >{walletState}</div>
                         <div className="FeedbackBox ErrorMessage">
@@ -544,7 +629,7 @@ function App() {
               {blockchain.account !== "" && blockchain.smartContract !== null ? (
                   <div className="BoxWidths NumMinted">{data.totalSupply} / {CONFIG.MAX_SUPPLY} MINTED</div>
                 ) : null}
-              <p className="DisclaimerText">IMPORTANT: Relics listed below mint are subject to <i>Tribulation</i></p>
+              <p className="DisclaimerText">IMPORTANT: Relics listed below 0.1 eth are subject to <i>Tribulation</i></p>
           </div> {/* Container */}
         </div>
     </div>
