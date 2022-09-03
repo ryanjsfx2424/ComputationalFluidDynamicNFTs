@@ -4,6 +4,113 @@ body {
     font-weight: 500 !important;
 }
 
+/* .loadingBody {
+    opacity: 75%;
+} */
+
+/* Absolute Center Spinner */
+.spinner {
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    z-index: 999999999;
+  }
+  
+  /* Transparent Overlay */
+  .spinner:before {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+    
+  .spinner:not(:required):after {
+    content: '';
+    display: block;
+    font-size: 10px;
+    width: 0.75em;
+    height: 0.75em;
+  
+    -webkit-animation: spinner 1500ms infinite linear;
+    -moz-animation: spinner 1500ms infinite linear;
+    -ms-animation: spinner 1500ms infinite linear;
+    -o-animation: spinner 1500ms infinite linear;
+    animation: spinner 1500ms infinite linear;
+    border-radius: 0.5em;
+    -webkit-box-shadow: rgba(255, 255, 255, 0.75) 1.5em 0 0 0, rgba(255, 255, 255, 0.75) 1.1em 1.1em 0 0, rgba(255, 255, 255, 0.75) 0 1.5em 0 0, rgba(255, 255, 255, 0.75) -1.1em 1.1em 0 0, rgba(255, 255, 255, 0.5) -1.5em 0 0 0, rgba(255, 255, 255, 0.5) -1.1em -1.1em 0 0, rgba(255, 255, 255, 0.75) 0 -1.5em 0 0, rgba(255, 255, 255, 0.75) 1.1em -1.1em 0 0;
+    box-shadow: rgba(255, 255, 255, 0.75) 1.5em 0 0 0, rgba(255, 255, 255, 0.75) 1.1em 1.1em 0 0, rgba(255, 255, 255, 0.75) 0 1.5em 0 0, rgba(255, 255, 255, 0.75) -1.1em 1.1em 0 0, rgba(255, 255, 255, 0.75) -1.5em 0 0 0, rgba(255, 255, 255, 0.75) -1.1em -1.1em 0 0, rgba(255, 255, 255, 0.75) 0 -1.5em 0 0, rgba(255, 255, 255, 0.75) 1.1em -1.1em 0 0;
+  }
+  
+  /* Animation */
+  
+  @-webkit-keyframes spinner {
+    0% {
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  @-moz-keyframes spinner {
+    0% {
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  @-o-keyframes spinner {
+    0% {
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes spinner {
+    0% {
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  
+
 a {
     height: 100%;
     width: 100%;
@@ -22,6 +129,18 @@ a {
     margin-bottom: 0;
     padding-bottom: 0;
     background-color: black;
+}
+
+.ProgressBarColor {
+    background-color: #141416;
+    background-color: #3a3d42;
+    background-color: transparent;
+}
+
+.DisclaimerText {
+    background-color: transparent;
+    text-align: center;
+    color: white;
 }
 
 @media (max-width: 599px) {
@@ -288,7 +407,6 @@ a {
     .ProgressBar {
         margin-top: 8vw;
         height: 1vw;
-        background-color: #3a3d42;
         border-radius: 10px;
     }
     
@@ -298,6 +416,10 @@ a {
         color: white;
         margin-top: 3vw;
         font-size: 4vw;
+    }
+    .DisclaimerText {
+        margin-top: 1vw;
+        font-size: 3vw;
     }
 
 
@@ -583,7 +705,6 @@ a {
     .ProgressBar {
         margin-top: 7vw;
         height: 1vw;
-        background-color: #3a3d42;
         border-radius: 10px;
     }
     
@@ -592,6 +713,10 @@ a {
         text-align: center;
         color: white;
         margin-top: 2vw;
+        font-size: 2vw;
+    }
+    .DisclaimerText {
+        margin-top: 1vw;
         font-size: 2vw;
     }
 }
@@ -650,7 +775,7 @@ a {
             background-position: center;
             right: 20vw;
         }
-        
+
         .Container {
             position: absolute;
             z-index: 2;
@@ -660,7 +785,7 @@ a {
             border-radius: 5%;
             margin-left: 25vw;
         }
-        
+
         .BoxWidths {
             width: 90%;
             margin-left: 5%;
@@ -876,7 +1001,6 @@ a {
         .ProgressBar {
             margin-top: 3.0vw;
             height: 1vw;
-            background-color: #3a3d42;
             border-radius: 10px;
         }
         
@@ -887,6 +1011,160 @@ a {
             margin-top: 0.7vw;
             font-size: 1.5vw;
         }
+        .DisclaimerText {
+            margin-top: 1vw;
+            font-size: 1.5vw;
+        }
+        
+        @media (min-height: 300px) {
+        @media (max-height: 600px) {
+
+            .Screen {
+                background-position: -100px 0;
+
+            }
+
+            .OrigoLogo {
+                width: 100px;
+                height: 90px;
+                background-image: url("./origo-logo.png");
+                background-size: cover;
+                background-position: center;
+                position: absolute;
+                z-index: 4;
+                margin-left: 330px;
+                margin-top: 0vw;
+            }
+            
+            .LogoSizes {
+                width: 48px;
+                height: 48px;
+                margin-top: 16px;
+            }
+            
+            
+            .DiscordLogo {
+                position: absolute;
+                z-index: 6;
+                margin-left: 73vw;
+                background-image: url("./discord1.png");
+                background-size: cover;
+                background-position: center;
+                right: 448px;
+            }
+            
+            .TwitterLogo {
+                position: absolute;
+                z-index: 5;
+                background-image: url("./twitter1.png");
+                background-size: cover;
+                background-position: center;
+                right:400px;
+            }
+            
+            .OpenseaLogo {
+                z-index: 4;
+                position: absolute;
+                background-image: url("./os1.png");
+                background-size: cover;
+                background-position: center;
+                right: 352px;
+            }
+
+
+            .Container {
+                position: absolute;
+                z-index: 2;
+                width: 50vw;
+                height: 525px;
+                background-color: #141416;
+                border-radius: 5%;
+                margin-left: 25vw;
+            }
+
+            .HeaderText {
+                position: absolute;
+                z-index: 100;
+                color: white;
+                font-size: 24px;
+                margin-top: 2vw;
+                margin-bottom:2vw;
+                background-color: transparent;
+                font-weight: 500;
+            }
+        }
+        }
+        @media (min-height: 601px) {
+        
+                .OrigoLogo {
+                    width: 100px;
+                    height: 90px;
+                    background-image: url("./origo-logo.png");
+                    background-size: cover;
+                    background-position: center;
+                    position: absolute;
+                    z-index: 4;
+                    margin-left: 330px;
+                    margin-top: 0vw;
+                }
+                
+                .LogoSizes {
+                    width: 48px;
+                    height: 48px;
+                    margin-top: 16px;
+                }
+                
+                
+                .DiscordLogo {
+                    position: absolute;
+                    z-index: 6;
+                    margin-left: 73vw;
+                    background-image: url("./discord1.png");
+                    background-size: cover;
+                    background-position: center;
+                    right: 448px;
+                }
+                
+                .TwitterLogo {
+                    position: absolute;
+                    z-index: 5;
+                    background-image: url("./twitter1.png");
+                    background-size: cover;
+                    background-position: center;
+                    right:400px;
+                }
+                
+                .OpenseaLogo {
+                    z-index: 4;
+                    position: absolute;
+                    background-image: url("./os1.png");
+                    background-size: cover;
+                    background-position: center;
+                    right: 352px;
+                }
+    
+    
+                .Container {
+                    position: absolute;
+                    z-index: 2;
+                    width: 50vw;
+                    height: 525px;
+                    background-color: #141416;
+                    border-radius: 5%;
+                    margin-left: 25vw;
+                }
+    
+                .HeaderText {
+                    position: absolute;
+                    z-index: 100;
+                    color: white;
+                    font-size: 24px;
+                    margin-top: 2vw;
+                    margin-bottom:2vw;
+                    background-color: transparent;
+                    font-weight: 500;
+                }
+            }
     }
     }
 
@@ -1164,13 +1442,12 @@ a {
             margin-top: 8vh;
             font-size: 2.2vw;
             width: 90%;
-            background-color: red;
+            background-color: transparent;
         }
         
         .ProgressBar {
             margin-top: 6.5vh;
             height: 1vh;
-            background-color: #3a3d42;
             border-radius: 10px;
         }
         
@@ -1179,6 +1456,10 @@ a {
             text-align: center;
             color: white;
             margin-top: 2vh;
+            font-size: 2vw;
+        }
+        .DisclaimerText {
+            margin-top: 1vw;
             font-size: 2vw;
         }
     }
@@ -1241,7 +1522,7 @@ a {
         position: absolute;
         z-index: 2;
         width: 40%;
-        height: 70%;
+        height: 77%;
         background-color: #141416;
         border-radius: 5%;
         margin-left: 30%;
@@ -1465,8 +1746,10 @@ a {
     .ProgressBar {
         margin-top: 64px;
         height: 18px;
-        background-color: #3a3d42;
-        border-radius: 10px;
+        /* background-color: #3a3d42; */
+        /* border-radius: 10px; */
+        background-color: transparent;
+        border-radius: none;
     }
     
     .NumMinted {
@@ -1476,8 +1759,107 @@ a {
         margin-top: 12px;
         font-size: 25px;
     }
+    .DisclaimerText {
+        margin-top: 12px;
+        font-size: 25px;
     }
-    }
+
+    @media (min-height: 300px) {
+        @media (max-height: 600px) {
+
+            .Screen {
+                background-position: -100px 0;
+
+            }
+
+            .OrigoLogo {
+                width: 100px;
+                height: 90px;
+                background-image: url("./origo-logo.png");
+                background-size: cover;
+                background-position: center;
+                position: absolute;
+                z-index: 4;
+                margin-left: 445px;
+                margin-top: 0vw;
+            }
+            
+            .LogoSizes {
+                width: 48px;
+                height: 48px;
+                margin-top: 16px;
+            }
+            
+            
+            .DiscordLogo {
+                position: absolute;
+                z-index: 6;
+                margin-left: 73vw;
+                background-image: url("./discord1.png");
+                background-size: cover;
+                background-position: center;
+                right: 544px;
+            }
+            
+            .TwitterLogo {
+                position: absolute;
+                z-index: 5;
+                background-image: url("./twitter1.png");
+                background-size: cover;
+                background-position: center;
+                right:496px;
+            }
+            
+            .OpenseaLogo {
+                z-index: 4;
+                position: absolute;
+                background-image: url("./os1.png");
+                background-size: cover;
+                background-position: center;
+                right: 448px;
+            }
+
+
+            .Container {
+                position: absolute;
+                z-index: 2;
+                width: 50vw;
+                height: 605px;
+                background-color: #141416;
+                border-radius: 5%;
+                margin-left: 25vw;
+            }
+
+            .HeaderText {
+                position: absolute;
+                z-index: 100;
+                color: white;
+                font-size: 18px;
+                margin-top: 0.5vw;
+                margin-bottom:2vw;
+                background-color: transparent;
+                font-weight: 500;
+            }
+        }
+        }
+
+        @media (min-height: 601px) {
+            @media (max-height: 900px) {
+
+                .Container {
+                    position: absolute;
+                    z-index: 2;
+                    width: 40%;
+                    height: 700px;
+                    background-color: #141416;
+                    border-radius: 5%;
+                    margin-left: 30%;
+                }
+                
+            }
+        }
+}
+}
 
     @media (min-width: 2101px ) {
     
@@ -1550,7 +1932,7 @@ a {
                     position: absolute;
                     z-index: 2;
                     width: 30%;
-                    height: 70%;
+                    height: 75%;
                     background-color: #141416;
                     border-radius: 5%;
                     margin-left: 40%;
@@ -1562,12 +1944,23 @@ a {
                     position: absolute;
                     z-index: 2;
                     width: 30%;
-                    height: 55%;
+                    height: 60%;
                     background-color: #141416;
                     border-radius: 5%;
                     margin-left: 40%;
                 }
         }
+        @media(min-height: 1251px) {
+            .Container {
+                position: absolute;
+                z-index: 2;
+                width: 30%;
+                height: 55%;
+                background-color: #141416;
+                border-radius: 5%;
+                margin-left: 40%;
+            }
+    }
         
         .BoxWidths {
             width: 94%;
@@ -1787,7 +2180,6 @@ a {
         .ProgressBar {
             margin-top: 64px;
             height: 18px;
-            background-color: #3a3d42;
             border-radius: 10px;
         }
         
@@ -1797,5 +2189,9 @@ a {
             color: white;
             margin-top: 12px;
             font-size: 25px;
+        }
+        .DisclaimerText {
+            margin-top: 12px;
+            font-size: 20px;
         }
 }
