@@ -1161,14 +1161,11 @@ class Tweeteroo2(object):
 
         print("shape dates_s: ", dates_s.shape)
         print("dates_s: ", dates_s)
-        #indsB = np.where(dates_s[indsSU] >= start_time)
-        #indsE = np.where(dates_s[indsSU][indsB] <= end_time)
-        indsB = np.where(dates_s >= start_time)
-        indsE = np.where(dates_s[indsB] <= end_time)
+        indsB = np.where(dates_s[indsSU] >= start_time)
+        indsE = np.where(dates_s[indsSU][indsB] <= end_time)
         
         print("tuids shape1: ", tuids.shape)
-        #tuids = tuids[indsSU][indsB][indsE]
-        tuids = tuids[indsB][indsE]
+        tuids = tuids[indsSU][indsB][indsE]
         print("tuids shape2: ", tuids.shape)
         tuids, indsU, vals = np.unique(tuids, return_index=True, return_counts=True)
         inds = np.argsort(vals)[::-1]
@@ -1178,8 +1175,7 @@ class Tweeteroo2(object):
             usernames = np.array(["anon"]*len(usernames))
         else:
             vals = vals[inds]
-            #usernames = usernames[indsSU][indsB][indsE][indsU][inds]
-            usernames = usernames[indsB][indsE][indsU][inds]
+            usernames = usernames[indsSU][indsB][indsE][indsU][inds]
         # end if/else
 
         if method == "Points":
