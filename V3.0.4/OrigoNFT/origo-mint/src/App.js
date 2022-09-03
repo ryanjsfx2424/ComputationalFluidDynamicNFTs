@@ -448,7 +448,7 @@ function App() {
       console.log({
         resultOfGasPriceEstimate: gasPriceEstimate,
       });
-      document.body.className += 'loadingBody';
+      // document.body.className += 'loadingBody';
       var element = document.getElementById("spinDiv");
       element.className += 'spinner';
 
@@ -462,7 +462,7 @@ function App() {
           value: totalCostWei,
         })
         .once("error", (err) => {
-          document.body.classList.remove('loadingBody');
+          // document.body.classList.remove('loadingBody');
           element.classList.remove('spinner');
           console.log(err);
           setFeedback("Error? Check etherscan.");
@@ -470,7 +470,7 @@ function App() {
           setMintingNft(false);
         })
         .then((receipt) => {
-          document.body.classList.remove('loadingBody');
+          // document.body.classList.remove('loadingBody');
           element.classList.remove('spinner');
           console.log(receipt);
           setFeedback(`Successfully minted your Origo NFT(s).`);

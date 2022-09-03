@@ -4,9 +4,9 @@ body {
     font-weight: 500 !important;
 }
 
-.loadingBody {
-    opacity: 50%;
-}
+/* .loadingBody {
+    opacity: 75%;
+} */
 
 /* Absolute Center Spinner */
 .spinner {
@@ -14,7 +14,6 @@ body {
     top: 50%;
     position: absolute;
     z-index: 999999999;
-    opacity: 100%;
   }
   
   /* Transparent Overlay */
