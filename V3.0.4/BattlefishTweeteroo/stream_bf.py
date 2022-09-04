@@ -91,12 +91,12 @@ class Stream(Tweeteroo2):
             if line:
               cnt += 1
               print("5")
-              num = int(np.ceil(cnt / 100)) % 10
+              num = 10+int(np.ceil(cnt / int(1e6)))
               if num != old_num:
                 mode = "w"
                 old_num = num
               # end if
-              with open("stream_data" + str(num) + ".txt", mode) as fid:
+              with open("data_big/stream/stream_data" + str(num) + ".txt", mode) as fid:
                 mode = "a"
                 print("6")
                 fid.write(line.decode("utf-8") + "\n")

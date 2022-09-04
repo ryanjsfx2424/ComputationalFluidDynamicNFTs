@@ -405,11 +405,13 @@ print("usernames: ", usernames)
 print("len vals: ", len(vals))
 print("len usernames: ", len(usernames))
 
-inds = np.where(usernames == "pokerface_gg")
-uname = usernames[inds]
-val = vals[inds]
-
-print("uname; ", uname)
-print("val: ", val)
+mynames = ["pokerface_gg", "kevwants_crypto", "kalimber19", "cryptodaygo",
+           "cryptoashe", "philmewithether", "mdeloach44", "ethyaga", "seas089",
+           "ntbiotech", "wakeandstake832", "krispykristoff", "thelunalabs"]
+for myname in mynames:
+  inds = np.where(usernames == myname)
+  uname = usernames[inds]
+  val = vals[inds]
+  print("myname: ", myname, " uname: ", uname, " val: ", val)
 
 print("success!")
