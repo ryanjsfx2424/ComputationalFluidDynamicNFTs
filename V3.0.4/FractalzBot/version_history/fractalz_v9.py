@@ -26,7 +26,7 @@ from interactions.client import get
 class FractalzDiscordBot(object):
     def __init__(self):
         self.LOG_CID = 932056137518444594
-        self.BOT_CIDS = [932056137518444594] # TTM, Fractalz
+        self.BOT_CIDS = [932056137518444594, ] # TTM, Fractalz
         self.GIDS = [931482273440751638, # toTheMoons
                      902886970383040512] # FRACTALZ
 
@@ -54,7 +54,6 @@ class FractalzDiscordBot(object):
     # end __init__
 
     def init_cids(self):
-        print("init_cids bot_cids: ", self.BOT_CIDS)
         if (not os.path.exists(self.fname)) or (os.stat(self.fname).st_size == 0):
             return
         # end if
@@ -69,7 +68,6 @@ class FractalzDiscordBot(object):
                 self.BOT_CIDS.append(cid)
             # end if
         # end for lines
-        print("end init_cids bot_cids: ", self.BOT_CIS)
     # end init_cids
 
     def save_cids(self):
@@ -272,7 +270,7 @@ class FractalzDiscordBot(object):
             # end if
 
             try:
-                channel = int(channel)
+                channel = int(float(channel))
             except Exception as err:
                 print("83 err: ", err)
                 print("84 err.args: ", err.args[:])
@@ -280,7 +278,6 @@ class FractalzDiscordBot(object):
                 ephemeral=True)
             # end try/except
 
-            print("self.BOT_CIDS: ", self.BOT_CIDS)
             if channel in self.BOT_CIDS:
                 await ctx.send("I am already activated for that channel :)", ephemeral=True)
                 return
@@ -289,7 +286,6 @@ class FractalzDiscordBot(object):
             self.BOT_CIDS.append(channel)
             self.save_cids()
             await ctx.send("I am now activated in channel: " + str(channel), ephemeral=True)
-            print("activated!")
             return
         # end authenticate
 
