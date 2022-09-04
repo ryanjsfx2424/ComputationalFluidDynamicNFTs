@@ -350,6 +350,11 @@ function App() {
       console.log("349");
       if (callType === 1) {
         let newMintAmount = Math.max(1, mintAmount-1);
+        if (mintAmount === newMintAmount) {
+          setFeedback('Enforcing mint limit of ' + String(mintLimitPerPhase) + '. You have minted ' + String(numMinted) + ".");
+        } else {
+          setFeedback('');
+        }
         setMintAmount(newMintAmount);
         let newCostText = String(newMintAmount*mintCost);
         if (newCostText.length > 5) {
@@ -363,6 +368,8 @@ function App() {
         let newMintAmount = Math.min(mintLimitPerPhase-numMinted, mintAmount+1);
         if (mintAmount === newMintAmount) {
           setFeedback('Enforcing mint limit of ' + String(mintLimitPerPhase) + '. You have minted ' + String(numMinted) + ".");
+        } else {
+          setFeedback('');
         }
         setMintAmount(newMintAmount);
         let newCostText = String(newMintAmount*mintCost);
