@@ -34,7 +34,7 @@ class Tweeteroo2(object):
         self.CID_MSG1 = 1008832530633478284 # roo tech, tweeteroo-battlefish
         self.CID_MSG2 = 1009227419082825758 # battle.fish. seashills
         self.BOT_COMMANDS_CIDS = [self.CID_MSG1, self.CID_MSG2, self.CID_LOG]
-        self.GUILDS = [993961827799158925,931482273440751638,954556360354299924] # Roo Tech, TTM, BF
+        self.GUILDS = [993961827799158925,931482273440751638]#,954556360354299924] # Roo Tech, TTM, BF
 
         self.CMD_PREFIX = "bf"
         self.BOT_NAME   = "SeaShills - a Battle.Fish bot"
@@ -244,6 +244,14 @@ class Tweeteroo2(object):
             "etypes": np.array([]),
             "texts": np.array([])
         }
+
+        self.fname_stream = "data_big/stream/stream.txt"
+        if os.path.exists(self.fname_stream) and os.stat(self.fname_stream).st_size != 0:
+            with open(self.fname_stream, "r") as fid:
+                data = fid.read()
+            # end with
+            self.stream_data = ast.literal_eval(data)
+
         if not self.DEV_MODE:
             os.system("nohup python3 -u stream_bf.py > logfile_stream.txt 2>&1 &")
         # end if not
@@ -1156,21 +1164,37 @@ class Tweeteroo2(object):
         dates_s   = np.concatenate(dates_s).astype(float)
         usernames = np.concatenate(usernames)
 
+        print("linked usernames: ", self.user_dict["linked_usernames"])
         junk, indsSU, junk = np.intersect1d(usernames, self.user_dict["linked_usernames"], 
                                             return_indices=True)
 
         print("shape dates_s: ", dates_s.shape)
         print("dates_s: ", dates_s)
-        #indsB = np.where(dates_s[indsSU] >= start_time)
-        #indsE = np.where(dates_s[indsSU][indsB] <= end_time)
+        # indsB = np.where(dates_s[indsSU] >= start_time)
+        # indsE = np.where(dates_s[indsSU][indsB] <= end_time)
         indsB = np.where(dates_s >= start_time)
         indsE = np.where(dates_s[indsB] <= end_time)
         
         print("tuids shape1: ", tuids.shape)
-        #tuids = tuids[indsSU][indsB][indsE]
+        # tuids = tuids[indsSU][indsB][indsE]
         tuids = tuids[indsB][indsE]
         print("tuids shape2: ", tuids.shape)
         tuids, indsU, vals = np.unique(tuids, return_index=True, return_counts=True)
+
+        usernames = usernames[indsB][indsE][indsU]
+        ind = np.where(usernames == "TheLunaLabs")
+        ind2 = np.where(usernames == "thelunalabs")
+        print("1: ", usernames[ind])
+        print("2: ", usernames[ind2])
+        print("tuids 1: ", tuids[ind])
+        print("tuids 2: ", tuids[ind2])
+        print("vals 2: ", vals[ind2])
+        indsSU = np.where(np.in1d(usernames, self.user_dict["linked_usernames"]))[0]
+
+        usernames = usernames[indsSU]
+        tuids = tuids[indsSU]
+        vals = vals[indsSU]
+        
         inds = np.argsort(vals)[::-1]
 
         if len(vals) == 0:
@@ -1178,8 +1202,8 @@ class Tweeteroo2(object):
             usernames = np.array(["anon"]*len(usernames))
         else:
             vals = vals[inds]
-            #usernames = usernames[indsSU][indsB][indsE][indsU][inds]
-            usernames = usernames[indsB][indsE][indsU][inds]
+            usernames = usernames[inds]
+            # usernames = usernames[indsB][indsE][indsU][inds]
         # end if/else
 
         if method == "Points":

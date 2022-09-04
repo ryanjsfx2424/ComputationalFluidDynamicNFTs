@@ -49,6 +49,7 @@ class Engagement(Tweeteroo2):
                     time.sleep(self.LONG_SLEEP)
                 # end if
             # end for project_tweet_ids
+            break
         # end while True
     # end scrape_engagement
 
