@@ -1340,7 +1340,7 @@ class Tweeteroo2(object):
             wcnt += 1
             self.load_engagement()
 
-            fs = np.sort(glob.glob("data_big/stream/stream_data?.txt"))
+            fs = np.sort(glob.glob("data_big/stream/stream_data*.txt"))
             #print("fs: ", fs)
             for fn in fs:
                 #input(">>")
