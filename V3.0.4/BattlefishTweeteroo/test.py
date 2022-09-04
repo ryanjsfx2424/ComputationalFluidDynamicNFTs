@@ -2,6 +2,7 @@
 import os
 import ast
 import glob
+import json
 import numpy as np
 
 home = os.getcwd()
@@ -142,7 +143,7 @@ keywords_data["usernames"] = keywords_data["usernames"][inds]
 keywords_data[    "texts"] = keywords_data[    "texts"][inds]
 
 # next, let's do stream data
-fs = np.sort(glob.glob("data_big/stream_data?.txt"))
+fs = np.sort(glob.glob("data_big/stream/stream_data?.txt"))
 for fn in fs:
     print("fn: ", fn)
     with open(fn, "r") as fid:
@@ -212,7 +213,13 @@ for fn in fs:
 # end for fn in fs
 
 with open("data_big/stream/stream.txt", "w") as fid:
-    fid.write(str(stream_data))
+    fid.write(json.dumps(list(stream_data["tweet_ids"])) + "\n")
+    fid.write(json.dumps(list(stream_data["tuids"    ])) + "\n")
+    fid.write(json.dumps(list(stream_data["usernames"])) + "\n")
+    fid.write(json.dumps(list(stream_data["dates"    ])) + "\n")
+    fid.write(json.dumps(list(stream_data["dates_s"  ])) + "\n")
+    fid.write(json.dumps(list(stream_data["etypes"   ])) + "\n")
+    fid.write(json.dumps(list(stream_data["texts"    ])) + "\n")
 # end with open
 
 engagement = {}

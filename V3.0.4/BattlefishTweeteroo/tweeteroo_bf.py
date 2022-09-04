@@ -5,6 +5,7 @@ import ast
 import time
 import glob
 import copy
+import json
 import socket
 import asyncio
 import datetime
@@ -248,15 +249,35 @@ class Tweeteroo2(object):
         self.fname_stream = "data_big/stream/stream.txt"
         if os.path.exists(self.fname_stream) and os.stat(self.fname_stream).st_size != 0:
             with open(self.fname_stream, "r") as fid:
-                data = fid.read()
+                lines = fid.readlines()
             # end with
-            self.stream_data = ast.literal_eval(data)
+            self.stream_data["tweet_ids"] = np.array(json.loads(lines[0][:-1]))
+            self.stream_data["tuids"    ] = np.array(json.loads(lines[1][:-1]))
+            self.stream_data["usernames"] = np.array(json.loads(lines[2][:-1]))
+            self.stream_data["dates"    ] = np.array(json.loads(lines[3][:-1]))
+            self.stream_data["dates_s"  ] = np.array(json.loads(lines[4][:-1]))
+            self.stream_data["etypes"   ] = np.array(json.loads(lines[5][:-1]))
+            self.stream_data["texts"    ] = np.array(json.loads(lines[6][:-1]))
+        # end if
 
         if not self.DEV_MODE:
             os.system("nohup python3 -u stream_bf.py > logfile_stream.txt 2>&1 &")
         # end if not
         print("SUCCESS init_stream_data")
     # end init_stream_data
+
+    def save_stream(self):
+        with open("data_big/stream/temp.txt", "w") as fid:
+            fid.write(json.dumps(list(self.stream_data["tweet_ids"])) + "\n")
+            fid.write(json.dumps(list(self.stream_data["tuids"    ])) + "\n")
+            fid.write(json.dumps(list(self.stream_data["usernames"])) + "\n")
+            fid.write(json.dumps(list(self.stream_data["dates"    ])) + "\n")
+            fid.write(json.dumps(list(self.stream_data["dates_s"  ])) + "\n")
+            fid.write(json.dumps(list(self.stream_data["etypes"   ])) + "\n")
+            fid.write(json.dumps(list(self.stream_data["texts"    ])) + "\n")
+        # end with open
+        os.system("cp data_big/stream/temp.txt " + self.fname_stream)
+    # end save_stream
 
     async def embed_helper(self, pages, client, channel):
         xemoji = "🇽"
@@ -1194,7 +1215,7 @@ class Tweeteroo2(object):
         usernames = usernames[indsSU]
         tuids = tuids[indsSU]
         vals = vals[indsSU]
-        
+
         inds = np.argsort(vals)[::-1]
 
         if len(vals) == 0:
@@ -1319,7 +1340,7 @@ class Tweeteroo2(object):
             wcnt += 1
             self.load_engagement()
 
-            fs = np.sort(glob.glob("stream_data?.txt"))
+            fs = np.sort(glob.glob("data_big/stream/stream_data?.txt"))
             #print("fs: ", fs)
             for fn in fs:
                 #input(">>")
@@ -1396,6 +1417,7 @@ class Tweeteroo2(object):
                         self.stream_data[    "dates_s"] = np.append(self.stream_data[    "dates_s"], date_s)
                         self.stream_data[   "etypes"  ] = np.append(self.stream_data[   "etypes"  ], flag)
                         self.stream_data[    "texts"  ] = np.append(self.stream_data[    "texts"  ], text)
+                        self.save_stream()
                         print("1343 added to stream data! uname, tweet_id: ", tweet_id, username)
                     # end for line in fid
                 # end with open
