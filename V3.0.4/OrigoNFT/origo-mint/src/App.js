@@ -646,7 +646,7 @@ function App() {
               </div>
               <div className="BoxWidths ProgressBar"></div>
               {blockchain.account !== "" && blockchain.smartContract !== null ? (
-                  <div className="BoxWidths NumMinted">{data.totalSupply} / {CONFIG.MAX_SUPPLY} MINTED</div>
+                  <div className="BoxWidths NumMinted">{data.totalSupply} / 333 MINTED</div>
                 ) : null}
               <p className="DisclaimerText">IMPORTANT: Relics listed below 0.1 ETH are subject to <i>Tribulation</i></p>
           </div> {/* Container */}
