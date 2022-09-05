@@ -37,14 +37,18 @@ const updateAccountRequest = (payload) => {
 
 export const connect = () => {
   return async (dispatch) => {
+    console.log("40 in connect");
     dispatch(connectRequest());
+    console.log("42 dispatched connectRequest");
     const abiResponse = await fetch("config/abi.json", {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
     });
+    console.log("49 got abiResponse");
     const abi = await abiResponse.json();
+    console.log("51 got abi");
 
     const configResponse = await fetch("config/config.json", {
       headers: {
