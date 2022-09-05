@@ -66,6 +66,7 @@ export const connect = () => {
         const accounts = await ethereum.request({
           method: "eth_requestAccounts",
         });
+        console.log("accounts[0]: ", accounts[0]);
         const networkId = await ethereum.request({
           method: "net_version",
         });

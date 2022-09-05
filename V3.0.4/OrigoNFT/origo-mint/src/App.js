@@ -390,6 +390,7 @@ function App() {
 
 		const merkleTree = new MerkleTree(whitelist.map(hashAccount), keccak256, { sortPairs: true });
 		const merkleProof = merkleTree.getHexProof(hashAccount(blockchain.account));
+    console.log("393 hexRoot: ", merkleTree.getHexRoot());
 
     if (saleState === 1 && !merkleTree.verify(merkleProof, keccak256(blockchain.account), merkleTree.getHexRoot())) {
       console.log("verify failed 395");
