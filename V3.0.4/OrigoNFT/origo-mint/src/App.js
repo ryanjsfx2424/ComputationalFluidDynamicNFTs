@@ -258,7 +258,7 @@ function App() {
   // const [mintCost, setMintCost] = useState(0.089);
   const [headerText, setHeaderText] = useState(`Origo Public Sale`);
   const [mintLimitText, setMintLimitText] = useState(`3 Per Wallet`);
-  const [pricePer2, setPricePer2] = useState(`0.899 - ETH`);
+  const [pricePer2, setPricePer2] = useState(`0.089 - ETH`);
   const [saleState, setSaleState] = useState(2);
   const [mintLimitPerPhase, setMintLimitPerPhase] = useState(3);
   const [saleStateText, setSaleStateText] = useState(`Public Sale`);
