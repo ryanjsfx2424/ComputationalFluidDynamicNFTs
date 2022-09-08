@@ -84,7 +84,7 @@ class AuthenticationDiscordBot(object):
     embedInt.add_field(name="**/" + self.CMD_PREFIX + "help**", value="(Access: Everyone) Displays this help menu", inline=True)
     embedInt.add_field(name="**/" + self.CMD_PREFIX + "add_approved_user**", value="(Access: Creator) Adds user that can manage Dauthy settings for their guild.", inline=False)
     embedInt.add_field(name="**/" + self.CMD_PREFIX + "add_role_ids**", value="(Access: Approved Users) Adds 'authenticated' role id for given guild and roles ('moderators') which may authenticate.", inline=False)
-    embedInt.add_field(name="**/" + self.CMD_PREFIX + "authentication_reset_timer**", value="(Access: Approved Users) Modifies time 'authenticated' role is granted before it is revoked.", inline=False)
+    embedInt.add_field(name="**/" + self.CMD_PREFIX + "authentication_reset_time**", value="(Access: Approved Users) Modifies time 'authenticated' role is granted before it is revoked.", inline=False)
     embedInt.add_field(name="**/" + self.CMD_PREFIX + "init_password**", value="(Access: 'Moderator' Role(s)) Initializes dauthy password for given user.", inline=False)
     embedInt.add_field(name="**/" + self.CMD_PREFIX + "generate_qr_code**", value="(Access: 'Moderator' Role(s)) Generates QR code for given user to initialize passcode generation with their 2FA app.", inline=False)
     embedInt.add_field(name="**/" + self.CMD_PREFIX + "authenticate**", value="(Access: 'Moderator' Role(s)) Grants users that pass the 2FA challenge an 'authenticated' role, granting access to secured channels (e.g., announcements), if they pass the 2FA challenge.", inline=False)
@@ -245,7 +245,7 @@ class AuthenticationDiscordBot(object):
       self.APPROVED_USERS[gid] = []
       self.MODERATOR_IDS[ gid] = []
       self.AUTHENTD_IDS[  gid] = []
-      self.RESET_TIMES[   gid] = 20.0
+      self.RESET_TIMES[   gid] = 300.0
       self.MOD_QR_ADDED[  gid] = {}
       self.AUTHENTD_TIMES[gid] = {}
       if gid not in self.GIDS:
@@ -299,6 +299,7 @@ class AuthenticationDiscordBot(object):
 
       if did in self.APPROVED_USERS[gid]:
         await ctx.send("Note, discord id passed is already an approved user for this guild id", ephemeral=True)
+        return
       # end if
       self.APPROVED_USERS[gid].append(did)
       self.save_data()
@@ -378,13 +379,54 @@ class AuthenticationDiscordBot(object):
     # end add_mod_role_id
 
     @client.command(
+      name="let_user_regenerate_qr_code",
+      description="Lets a user generate_qr_code again.",
+      scope=self.GIDS,
+      options = [
+        interactions.Option(
+          name="discord_id",
+          description="Discord Id of the user who needs to re-generate the QR code",
+          type=interactions.OptionType.STRING,
+          required=True,
+        ),
+      ],
+    )
+    async def let_user_regenerate_qr_code(ctx: interactions.CommandContext, discord_id: str):
+      did = int(ctx.author.id)
+      gid = int(ctx.guild_id)
+
+      try:
+        discord_id = int(discord_id)
+      except:
+        await ctx.send("Error, couldn't parse that user's discord id as an integer.", ephemeral=True)
+      # end try/except
+
+      free_pass = did != self.ME
+
+      if free_pass and gid not in self.APPROVED_USERS:
+        await ctx.send("Error, guild id not yet added. Please contact the developer.", ephemeral=True)
+        return
+      # end if
+
+      if free_pass and did not in self.APPROVED_USERS[gid]:
+        await ctx.send("Error, only approved users can let users regenerate their qr code..", ephemeral=True)
+        return
+      # end if
+      
+      del self.MOD_QR_ADDED[gid][str(discord_id)]
+      self.save_data()
+      await ctx.send(f"Okay, we'll give them a 2nd shot to generate their QR code...", ephmeral=True)
+      return
+    # end def
+
+    @client.command(
       name="authentication_reset_time",
       description="Assigns the timer a user is 'authenticated' for.",
       scope=self.GIDS,
       options = [
         interactions.Option(
           name="seconds",
-          description="Time a user is authenticated for in seconds. (<= 300)",
+          description="Time a user is authenticated for in seconds. (< 15m)",
           type=interactions.OptionType.STRING,
           required=True,
         ),
@@ -413,8 +455,8 @@ class AuthenticationDiscordBot(object):
         return
       # end if
 
-      if seconds > 300:
-        await ctx.send("Error, tried to set the reset time to > 300 seconds", ephemeral=True)
+      if seconds > 60*15:
+        await ctx.send("Error, tried to set the reset time to > 15 minutes", ephemeral=True)
         return
       # end if
 
@@ -443,6 +485,22 @@ class AuthenticationDiscordBot(object):
         return
       # end if
 
+      authorized = False
+      if did in self.APPROVED_USERS[gid]:
+        authorized = True
+      # end if
+
+      for mid in self.MODERATOR_IDS[gid]:
+        if mid in ctx.author.roles:
+          authorized = True
+        # end if
+      # end for
+
+      if authorized == False:
+        await ctx.send("Error, user not authorized to authenticate.", ephemeral=True)
+        return
+      # end if
+
       name = "gid" + str(gid) + "did" + str(did)
       pname = str(ctx.guild)
       auth_str = self.totp.provisioning_uri(name=pname,
@@ -453,6 +511,8 @@ class AuthenticationDiscordBot(object):
 
       await command_send(ctx, files=file, ephemeral=True)
       os.system("rm " + name + ".png")
+      self.MOD_QR_ADDED[gid][did] = True
+      self.save_data()
       await ctx.send("Scan the above QR code with Authy, Google Authenticator, or your preferred 2FA app.", ephemeral=True)
       return
     # end generate_qr_code
@@ -490,6 +550,23 @@ class AuthenticationDiscordBot(object):
         await ctx.send("Error, wrong authentication token.", ephemeral=True)
         return
       # end if
+
+      authorized = False
+      if did in self.APPROVED_USERS[gid]:
+        authorized = True
+      # end if
+
+      for mid in self.MODERATOR_IDS[gid]:
+        if mid in ctx.author.roles:
+          authorized = True
+        # end if
+      # end for
+
+      if authorized == False:
+        await ctx.send("Error, user not authorized to authenticate.", ephemeral=True)
+        return
+      # end if
+
 
       aids = self.AUTHENTD_IDS[gid]
       for aid in aids:
