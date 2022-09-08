@@ -279,7 +279,7 @@ class AuthenticationDiscordBot(object):
     async def add_approved_user(ctx: interactions.CommandContext, 
                                 guild_id: str, discord_id: str):
       if int(ctx.author.id) != self.ME:
-        await ctx.send("ERROR only botfather can add Dauthy admins", ephemeral=True)
+        await ctx.send("ERROR only botfather can add approved users", ephemeral=True)
         return
       # end if
 
@@ -298,71 +298,14 @@ class AuthenticationDiscordBot(object):
       # end try/except
 
       if did in self.APPROVED_USERS[gid]:
-        await ctx.send("Note, discord id passed is already a Dauthy admin for this guild id", ephemeral=True)
+        await ctx.send("Note, discord id passed is already an approved user for this guild id", ephemeral=True)
         return
       # end if
-
       self.APPROVED_USERS[gid].append(did)
       self.save_data()
-      await ctx.send("Successfully added discord id to Dauthy admins for given guild id!", ephemeral=True)
+      await ctx.send("Successfully added discord id to approved users for given guild id!", ephemeral=True)
       return
     # end add_approved_user
-
-    @client.command(
-      name="sub_admin",
-      description="Removes an 'administrator' for a given guild",
-      scope=self.GIDS,
-      options = [
-        interactions.Option(
-          name="guild_id",
-          description="guild id",
-          type=interactions.OptionType.STRING,
-          required=True,
-        ),
-        interactions.Option(
-          name="discord_id",
-          description="discord id",
-          type=interactions.OptionType.STRING,
-          required=True,
-        ),
-      ],
-    )
-    async def sub_approved_user(ctx: interactions.CommandContext, 
-                                guild_id: str, discord_id: str):
-      if int(ctx.author.id) != self.ME:
-        await ctx.send("ERROR only botfather can remove Dauthy admins", ephemeral=True)
-        return
-      # end if
-
-      try:
-        gid = int(guild_id)
-      except:
-        await ctx.send("Error, didn't pass in guild id parseable as int", ephemeral=True)
-        return
-      # end try/except
-
-      try:
-        did = int(discord_id)
-      except:
-        await ctx.send("Error, didn't pass in discord id parseable as int", ephemeral=True)
-        return
-      # end try/except
-
-      if did not in self.APPROVED_USERS[gid]:
-        await ctx.send("Error, discord id passed is not a Dauthy admin for this guild id", ephemeral=True)
-        return
-      # end if
-
-      ind = self.APPROVED_USERS[gid].index(did)
-      print("admin[ind]: ", self.APPROVED_USERS[gid][ind])
-      if did != self.APPROVED_USERS[gid][ind]:
-        await ctx.send("Error fetching approved user index for passed discord id", ephemeral=True)
-        return
-      del self.APPROVED_USERS[gid][ind]
-      self.save_data()
-      await ctx.send("Successfully removed discord id from approved users for given guild id!", ephemeral=True)
-      return
-    # end sub_approved_user
 
     @client.command(
       name="add_role_ids",
