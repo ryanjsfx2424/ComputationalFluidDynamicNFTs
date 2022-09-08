@@ -258,12 +258,12 @@ function App() {
   // const [mintCost, setMintCost] = useState(0.089);
   const [headerText, setHeaderText] = useState(`Origo Public Sale`);
   const [mintLimitText, setMintLimitText] = useState(`3 Per Wallet`);
-  const [pricePer2, setPricePer2] = useState(`0.099 - ETH`);
+  const [pricePer2, setPricePer2] = useState(`0.089 - ETH`);
   const [saleState, setSaleState] = useState(2);
   const [mintLimitPerPhase, setMintLimitPerPhase] = useState(3);
   const [saleStateText, setSaleStateText] = useState(`Public Sale`);
-  const [totalTextRight, setTotalTextRight] = useState(`0.099 - ETH`);
-  const [mintCost, setMintCost] = useState(0.099);
+  const [totalTextRight, setTotalTextRight] = useState(`0.089 - ETH`);
+  const [mintCost, setMintCost] = useState(0.089);
   const [mintAmount, setMintAmount] = useState(1);
   const [numMinted, setNumMinted] = useState(0);
   const [success, setSuccess] = useState(0);
@@ -350,6 +350,11 @@ function App() {
       console.log("349");
       if (callType === 1) {
         let newMintAmount = Math.max(1, mintAmount-1);
+        if (mintAmount === newMintAmount) {
+          setFeedback('Enforcing mint limit of ' + String(mintLimitPerPhase) + '. You have minted ' + String(numMinted) + ".");
+        } else {
+          setFeedback('');
+        }
         setMintAmount(newMintAmount);
         let newCostText = String(newMintAmount*mintCost);
         if (newCostText.length > 5) {
@@ -363,6 +368,8 @@ function App() {
         let newMintAmount = Math.min(mintLimitPerPhase-numMinted, mintAmount+1);
         if (mintAmount === newMintAmount) {
           setFeedback('Enforcing mint limit of ' + String(mintLimitPerPhase) + '. You have minted ' + String(numMinted) + ".");
+        } else {
+          setFeedback('');
         }
         setMintAmount(newMintAmount);
         let newCostText = String(newMintAmount*mintCost);
@@ -383,9 +390,10 @@ function App() {
 
 		const merkleTree = new MerkleTree(whitelist.map(hashAccount), keccak256, { sortPairs: true });
 		const merkleProof = merkleTree.getHexProof(hashAccount(blockchain.account));
+    console.log("393 hexRoot: ", merkleTree.getHexRoot());
 
     if (saleState === 1 && !merkleTree.verify(merkleProof, keccak256(blockchain.account), merkleTree.getHexRoot())) {
-      console.log("verify failed");
+      console.log("verify failed 395");
       setFeedback("Not WL'd");
       setMintingNft(false);
       setWalletState('');
@@ -496,7 +504,9 @@ function App() {
   const getData = async() => {
     console.log("getData 487");
     if (blockchain.account !== "" && blockchain.smartContract !== null) {
+      console.log("506 going to fetch data");
       dispatch(fetchData(blockchain.account));
+      console.log("508 fetched data, blockchain.account: ", blockchain.account);
       const numMintedLocal = await blockchain.smartContract.methods.num_minted(blockchain.account).call();
           setNumMinted(numMintedLocal);
           setWalletState(mintText);
@@ -508,6 +518,8 @@ function App() {
             setFeedback('You have minted the limit.');
             setMintingNft(true);
           }
+    } else if (blockchain.errorMsg !== "") {
+      setFeedback(blockchain.errorMsg);
     }
   };
 
@@ -585,10 +597,17 @@ function App() {
                         <div className="WalletBox WalletFeedback CursorPointer" 
                         disabled={mintingNft ? 1: 0}
                         onClick={(e) => {
+                            console.log("597 no account yet");
                             e.preventDefault();
                             setMintingNft(true);
                             dispatch(connect());
+                            console.log("601 dispatched connect");
                             getData();
+                            console.log("603 went for data");
+                            console.log("blockchain.error");
+                            if (blockchain.errorMsg !== "") {
+                              setFeedback(blockchain.errorMsg);
+                            }
                         }}>{walletState}</div>
                             <div className="FeedbackBox ErrorMessage">
                                 {feedback}
@@ -627,7 +646,7 @@ function App() {
               </div>
               <div className="BoxWidths ProgressBar"></div>
               {blockchain.account !== "" && blockchain.smartContract !== null ? (
-                  <div className="BoxWidths NumMinted">{data.totalSupply} / {CONFIG.MAX_SUPPLY} MINTED</div>
+                  <div className="BoxWidths NumMinted">{data.totalSupply} / 333 MINTED</div>
                 ) : null}
               <p className="DisclaimerText">IMPORTANT: Relics listed below 0.1 ETH are subject to <i>Tribulation</i></p>
           </div> {/* Container */}
