@@ -2,15 +2,15 @@ root         514  0.0  0.0 108104  7628 ?        Ssl  Jun19   0:00 /usr/bin/pyth
 root       10250  0.0  0.1  30496 11864 ?        Ss   Jun19  36:52 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
 root       35217  0.0  0.0  15096  6204 ?        S    Aug30   1:04 python3 -u keep_alive.py
 root      741773  0.0  0.5 210040 47336 pts/0    Sl   Sep04   0:37 python3 -u fractalz.py
-root      790186  3.7  1.4 442404 122168 pts/0   Sl   Sep04 204:27 python3 -u tweeteroo_bf.py
+root      790186  3.7  1.4 442404 122168 pts/0   Sl   Sep04 204:29 python3 -u tweeteroo_bf.py
 root      790343  0.0  4.3 551592 354936 pts/0   S    Sep04   0:05 python3 -u stream_bf.py
-root     1335549  5.7  2.0 265108 170672 ?       Sl   15:22   2:14 python3 -u dauthy.py
-root     1337015 10.4 15.2 1552372 1247288 pts/0 Sl   15:39   2:17 python3 -u ScrapeTweets_server.py
-root     1337198  5.6  0.5 213100 41744 pts/0    S    15:41   1:06 python3 stream.py
+root     1335549  5.6  2.0 265364 170672 ?       Sl   15:22   2:14 python3 -u dauthy.py
+root     1337015 10.1 15.2 1552372 1247288 pts/0 Sl   15:39   2:18 python3 -u ScrapeTweets_server.py
+root     1337198  5.3  0.5 213100 41744 pts/0    S    15:41   1:06 python3 stream.py
 root     1337446  0.0  0.5 202464 46192 pts/0    Sl   15:46   0:00 python3 -u travel_discord_bot.py
-root     1337712  0.2  4.8 574136 393532 pts/0   S    15:47   0:01 python3 -u engagement_bf.py likes
+root     1337712  0.1  4.8 574136 393532 pts/0   S    15:47   0:01 python3 -u engagement_bf.py likes
 root     1337730  0.2  4.8 574132 393796 pts/0   S    15:47   0:01 python3 -u engagement_bf.py retweets
-root     1337891 99.9  8.6 883076 702108 pts/0   R    15:49  11:59 python3 -u tweeteroo_gac.py
+root     1337891 99.9  8.6 884312 703428 pts/0   R    15:49  12:49 python3 -u tweeteroo_gac.py
 root     1337907  0.2  7.9 827988 648524 pts/0   S    15:49   0:01 python3 stream_gac.py
-root     1338541  0.0  0.0   2608   524 ?        S    16:01   0:00 sh -c ps aux | grep python > running_processes.txt
-root     1338543  0.0  0.0   8160   720 ?        S    16:01   0:00 grep python
+root     1338725  0.0  0.0   2608   588 ?        S    16:02   0:00 sh -c ps aux | grep python > running_processes.txt
+root     1338727  0.0  0.0   8160   708 ?        S    16:02   0:00 grep python
