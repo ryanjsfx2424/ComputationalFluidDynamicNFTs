@@ -33,15 +33,23 @@ class Engagement(Tweeteroo2):
             print("wcnt se25: ", wcnt)
             wcnt += 1
             tweet_ids = self.get_project_tweet_ids()
+            print("tweet_ids: ", tweet_ids)
 
             for tweet_id in tweet_ids:
                 print("tweet_id: ", [tweet_id])
                 print("etype: ", etype)
+
+                if "?" in tweet_id:
+                    tweet_id = tweet_id.split("?")[0]
+                    print("tweet id w/o ?: ", tweet_id)
+                # end if
+
                 scraped = self.get_engagement(tweet_id)
                 if scraped:
                     time.sleep(self.LONG_SLEEP)
                 # end if
             # end for project_tweet_ids
+            break
         # end while True
     # end scrape_engagement
 
@@ -65,6 +73,7 @@ class Engagement(Tweeteroo2):
         lines = []
         token = ""
         fname = "data_big/" + etype + "/activity_" + self.PROJECT_TWITTER + "_" + tweet_id + ".txt"
+        print("fname: ", fname)
         if os.path.exists(fname) and os.stat(fname).st_size != 0:
             with open(fname, "r") as fid:
                 lines = fid.readlines()
@@ -105,6 +114,11 @@ class Engagement(Tweeteroo2):
             # end with open
             line = ast.literal_eval(line)
 
+            if "meta" not in line:
+                print("meta not in line, will try again")
+                time.sleep(self.LONG_SLEEP)
+                continue
+              
             next_token = "None"
             if "next_token" in line["meta"]:
                 next_token = line["meta"]["next_token"]
@@ -121,13 +135,13 @@ class Engagement(Tweeteroo2):
                     # end for
                     fid.write("next_token: " + next_token + "\n")
                     fid.write("results_count: " + str(line["meta"]["result_count"]) + "\n")
-                    fid.write("twitter_ids: "       + str(twids ) + "\n")
+                    fid.write("twitter_ids: "       + str([]) + "\n")
                     if etype != "quotes":
-                        fid.write("twitter_usernames: " + str(unames))
+                        fid.write("twitter_usernames: " + str([]))
                     else:
-                        fid.write("twitter_usernames: " + str(unames) + "\n")
-                        fid.write("tweet_ids: "         + str(tweds ) + "\n")
-                        fid.write("texts: "             + str(texts))
+                        fid.write("twitter_usernames: " + str([]) + "\n")
+                        fid.write("tweet_ids: "         + str([]) + "\n")
+                        fid.write("texts: "             + str([]))
                     # end if/else
                     return True
                 # end with
