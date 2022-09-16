@@ -39,9 +39,10 @@ class HabitsNest(object):
         RT_GID = 993961827799158925 # roo tech
         self.GIDS = [TTM_GID, RT_GID]
         self.LOG_CHANNEL = 932056137518444594
-        self.TEST_CHANNEL = 1019966068078428190
+        self.TEST_CHANNEL = 1020438647302000731
         self.init_stuff()
         self.gsheet_name = "habits-nest-prompts"
+        self.rows_handled = []
     # end __init__
 
     def init_stuff(self):
@@ -190,6 +191,9 @@ class HabitsNest(object):
                 print("got worksheet!")
                 gsheet = worksheet.get_all_values()
                 for jj,row in enumerate(gsheet[1:]): # first row is header
+                    if row in self.rows_handled:
+                        continue
+                    # end if
                     time_to_send = row[0]
                     image_name   = row[1]
                     button_text  = row[2]
@@ -270,10 +274,11 @@ class HabitsNest(object):
                                     )
                         for channel in channels:
                             await channel.send(message_text.replace("\\n", "\n"), components=button)
+                        self.rows_handled.append(row)
                     else:
                         print("too early!")
                     # end if/else
-                break
+                #break
                 await asyncio.sleep(5.0)
 
         # end on_ready
