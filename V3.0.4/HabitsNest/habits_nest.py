@@ -4,7 +4,10 @@
 import os
 import io
 import sys
+import json
+import shutil
 import socket
+import requests
 import asyncio
 import gspread
 import datetime
@@ -42,7 +45,9 @@ class HabitsNest(object):
         self.TEST_CHANNEL = 1020438647302000731
         self.init_stuff()
         self.gsheet_name = "habits-nest-prompts"
+        self.airtable_url = "https://api.airtable.com/v0/appPp5AF5PoGQk7ls/Table%201"
         self.rows_handled = []
+        self.MODE = "airtable" # or "gdrive"
     # end __init__
 
     def init_stuff(self):
@@ -90,7 +95,7 @@ class HabitsNest(object):
         return service
     # end initialize_drive
 
-    def download_file(self, image_name):
+    def download_gdrive_file(self, image_name):
         if ".jpg" in image_name.lower() or ".jpeg" in image_name.lower():
             mimeType = "image/jpeg"
         elif ".png" in image_name.lower():
@@ -153,7 +158,211 @@ class HabitsNest(object):
 
         #print("my_file.getvalue(): ", my_file.getvalue())
         return my_file.getvalue()
-    # end download_file
+    # end download_gdrive_file
+
+    def process_time(self, time_to_send):
+        print("time_to_send (st process_time): ", time_to_send)
+
+        yy,mm,dd = time_to_send.split("-")
+        dd,hh,apm = dd.split()
+        HH,MM = hh.split(":")
+        
+        yy = int(yy); mm = int(mm); dd = int(dd)
+        HH = int(HH); MM = int(MM)
+        print("pm in apm.lower(): ", "pm" in apm.lower())
+        print("apm.lower(): ", apm.lower())
+
+        if "pm" in apm.lower() and HH != 12:
+            print("added 12!")
+            HH += 12
+        # end if
+
+        now = datetime.datetime.now(timezone("US/Eastern"))
+        print("now: ", now)
+        print("HH: ", HH)
+        print("now.year,   int(yy), now.year   >= int(yy): ", now.year,   int(yy), now.year   >= int(yy))
+        print("now.month,  int(mm), now.month  >= int(mm): ", now.month,  int(mm), now.month  >= int(mm))    
+        print("now.day,    int(dd), now.day    >= int(dd): ", now.day,    int(dd), now.day    >= int(dd))
+        print("now.hour,   int(HH), now.hour   > int(HH): ", now.hour,    int(HH), now.hour   >= int(HH)) 
+        print("now.minute, int(MM), now.minute > int(MM): ", now.minute,  int(MM), now.minute >= int(MM))   
+        #input(">>")
+        
+        result = False
+        if   now.year  > yy:
+            result = True
+        elif now.year == yy:
+            if now.month > mm:
+                result = True
+            elif now.month == mm:
+                if now.day > dd:
+                    result = True
+                elif now.day == dd:
+                    if now.hour > HH:
+                        result = True
+                    elif now.hour == HH:
+                        if now.minute >= MM:
+                            result = True
+                        # end if
+                    # end if/elif
+                # end if/elif
+            # end if/elif
+        # end if/elif
+        return result
+    # end process_time
+
+    async def gdrive_stuff(self, client):
+        sh = self.gc.open(self.gsheet_name)
+        worksheet = sh.get_worksheet(0)
+        print("got worksheet!")
+        gsheet = worksheet.get_all_values()
+        for jj,row in enumerate(gsheet[1:]): # first row is header
+            if row in self.rows_handled:
+                continue
+            # end if
+            time_to_send = row[0]
+
+            good_to_send = self.process_time(time_to_send)
+            if not good_to_send:
+                print("too early!")
+                continue
+            # end if
+
+            image_name   = row[1]
+            button_text  = row[2]
+            message_text = row[3]
+            modal_title  = row[4]
+            prompts      = row[5:]
+
+            print("time to send it hurray!")
+
+            ## first, download the image file
+            self.download_gdrive_file(image_name)
+            for channel in self.channels:
+                image_file = interactions.File(filename=image_name)
+                await channel.send(files=image_file)
+            #input(">>")
+
+            button = interactions.Button(style=1, label=button_text, custom_id="button")
+
+            modal_components = []
+            for ii in range(len(prompts)):
+                modal_components.append(interactions.TextInput(
+                    style=interactions.TextStyleType.PARAGRAPH,
+                    label=prompts[ii],
+                    custom_id="text-input-" + str(ii),
+                ))
+            # end for ii
+            self.modal = interactions.Modal(
+                            title="Modal Title",
+                            custom_id="modal",
+                            components=modal_components
+                        )
+            for channel in self.channels:
+                await channel.send(message_text.replace("\\n", "\n"), components=button)
+            self.rows_handled.append(row)
+        # end for rows
+    # end gdrive_stuff
+
+    async def airtable_stuff(self, client):
+        headers = {"Content-Type":"json", "Authorization":"Bearer " + os.environ["airTable"]}
+        req = requests.get(self.airtable_url, headers=headers)
+        print("airtable_stuff req.status_code: ", req.status_code)
+        
+        if str(req.status_code)[0] != "2":
+            print("not 2XX??")
+        # end if
+        
+        result = req.json()
+        with open("debug_airtable.json", "w") as fid:
+            json.dump(result, fid)
+        # end with
+
+        for record in result["records"]:
+            if str(record) in self.rows_handled:
+                continue
+            # end if
+            fields = record["fields"]
+
+            if len(fields) < 5:
+                print("too few fields? wanted 5. received len(fields): ", len(fields))
+                print("fields: ", fields)
+                print("skipping")
+                continue
+            # end if
+
+            time_to_send = fields["TimeToSendEST"]
+
+            good_to_send = self.process_time(time_to_send)
+            if not good_to_send:
+                print("too early! airtable")
+                continue
+            # end if
+
+            attachments  = fields["Attachments"] # list, index with ['url']
+            button_text  = fields["ButtonText"]
+            message_text = fields["Discord Message"]
+
+            num_prompts = 0
+            prompts = []
+            for field in fields:
+                if "Prompt" in field:
+                    num_prompts += 1
+                    prompts.append("")
+                # end if
+            # end for
+
+            for field in fields:
+                if "Prompt" in field:
+                    ind = int(field.replace("Prompt",""))-1
+                    prompts[ind] = fields[field]
+                # end if
+            # end for
+            
+            button = interactions.Button(style=1, label=button_text, custom_id="button")
+
+            modal_components = []
+            for ii in range(len(prompts)):
+                modal_components.append(interactions.TextInput(
+                    style=interactions.TextStyleType.PARAGRAPH,
+                    label=prompts[ii],
+                    custom_id="text-input-" + str(ii),
+                ))
+            # end for ii
+            self.modal = interactions.Modal(
+                            title="Modal Title",
+                            custom_id="modal",
+                            components=modal_components
+                        )
+            parts = message_text.split("@(")
+            message_text = parts[0]
+            for part in parts[1:]:
+                part.split()
+                message_text += "<@&"
+            for channel in self.channels:
+                await channel.send(message_text.replace("\\n", "\n"), components=button)
+            self.rows_handled.append(str(record))
+
+            print("prompts: ", prompts)
+            for attachment in attachments:
+                image_url = attachment["url"]
+                image_name = image_url.split("/")[-1]
+                r = requests.get(image_url, stream=True)
+                print("r.status_code: ", r.status_code)
+                r.raw.decode_content = True
+
+                with open(image_name, "wb") as fid:
+                    shutil.copyfileobj(r.raw, fid)
+                # end with
+                print("Image downloaded!")
+
+                for channel in self.channels:
+                    image_file = interactions.File(filename=image_name)
+                    await channel.send(files=image_file)
+                # end for
+            # end for attachments
+        # end records
+    # end airtable_stuff
+
 
     def discord_bot(self):
         client = interactions.Client(token=os.environ["habitsNestBotPass"])#, intents=interactions.Intents.DEFAULT | interactions.Intents.GUILD_MEMBERS)
@@ -180,107 +389,22 @@ class HabitsNest(object):
 
             channel_test = await interactions.get(client, interactions.Channel, object_id=self.TEST_CHANNEL)
             channel_log = await interactions.get(client, interactions.Channel, object_id=self.LOG_CHANNEL)
-            channels = [channel_log, channel_test]
+            self.channels = [channel_log]#, channel_test]
             # channel_log = interactions.Channel(**await client.http.get_channel(self.LOG_CHANNEL), _client=client._http)
-            for channel in channels:
+            for channel in self.channels:
                 await channel.send("I am reborn from my ashes.")
             #await channel_log.send("Click the button below to send a modal!", components=self.button)
             while True:
-                sh = self.gc.open(self.gsheet_name)
-                worksheet = sh.get_worksheet(0)
-                print("got worksheet!")
-                gsheet = worksheet.get_all_values()
-                for jj,row in enumerate(gsheet[1:]): # first row is header
-                    if row in self.rows_handled:
-                        continue
-                    # end if
-                    time_to_send = row[0]
-                    image_name   = row[1]
-                    button_text  = row[2]
-                    message_text = row[3]
-                    modal_title  = row[4]
-                    prompts      = row[5:]
+                if self.MODE == "gdrive":
+                    await self.gdrive_stuff(client)
+                elif self.MODE == "airtable":
+                    await self.airtable_stuff(client)
+                else:
+                    print("error! Mode not supported. self.MODE: ", self.MODE)
+                # end if/elif/else
 
-                    print("time_to_send: ", time_to_send)
-                    yy,mm,dd = time_to_send.split("-")
-                    dd,hh,apm = dd.split()
-                    HH,MM = hh.split(":")
-                    
-                    yy = int(yy); mm = int(mm); dd = int(dd)
-                    HH = int(HH); MM = int(MM)
-                    print("pm in apm.lower(): ", "pm" in apm.lower())
-                    print("apm.lower(): ", apm.lower())
-
-                    if "pm" in apm.lower() and HH != 12:
-                        print("added 12!")
-                        HH += 12
-                    # end if
-
-                    now = datetime.datetime.now(timezone("US/Eastern"))
-                    print("now: ", now)
-                    print("HH: ", HH)
-                    print("now.year,   int(yy), now.year   >= int(yy): ", now.year,   int(yy), now.year   >= int(yy))
-                    print("now.month,  int(mm), now.month  >= int(mm): ", now.month,  int(mm), now.month  >= int(mm))    
-                    print("now.day,    int(dd), now.day    >= int(dd): ", now.day,    int(dd), now.day    >= int(dd))
-                    print("now.hour,   int(HH), now.hour   > int(HH): ", now.hour,   int(HH), now.hour   >= int(HH)) 
-                    print("now.minute, int(MM), now.minute > int(MM): ", now.minute, int(MM), now.minute >= int(MM))   
-                    #input(">>")
-                    
-                    result = False
-                    if   now.year  > yy:
-                        result = True
-                    elif now.year == yy:
-                        if now.month > mm:
-                            result = True
-                        elif now.month == mm:
-                            if now.day > dd:
-                                result = True
-                            elif now.day == dd:
-                                if now.hour > HH:
-                                    result = True
-                                elif now.hour == HH:
-                                    if now.minute >= MM:
-                                        result = True
-                                    # end if
-                                # end if/elif
-                            # end if/elif
-                        # end if/elif
-                    # end if/elif
-
-                    if result:
-                        print("time to send it hurray!")
-
-                        ## first, download the image file
-                        self.download_file(image_name)
-                        for channel in channels:
-                            image_file = interactions.File(filename=image_name)
-                            await channel.send(files=image_file)
-                        #input(">>")
-
-                        button = interactions.Button(style=1, label=button_text, custom_id="button")
-
-                        modal_components = []
-                        for ii in range(len(prompts)):
-                            modal_components.append(interactions.TextInput(
-                                style=interactions.TextStyleType.PARAGRAPH,
-                                label=prompts[ii],
-                                custom_id="text-input-" + str(ii),
-                            ))
-                        # end for ii
-                        self.modal = interactions.Modal(
-                                        title="Modal Title",
-                                        custom_id="modal",
-                                        components=modal_components
-                                    )
-                        for channel in channels:
-                            await channel.send(message_text.replace("\\n", "\n"), components=button)
-                        self.rows_handled.append(row)
-                    else:
-                        print("too early!")
-                    # end if/else
-                #break
                 await asyncio.sleep(5.0)
-
+            # end while True
         # end on_ready
 
         client.start()
