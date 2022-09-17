@@ -45,8 +45,7 @@ class HabitsNest(object):
         self.TEST_CHANNEL = 1020438647302000731
         self.init_stuff()
         self.gsheet_name = "habits-nest-prompts"
-        self.airtable_url = "https://api.airtable.com/v0/appPp5AF5PoGQk7ls/AllTheDays"
-        self.airtable_base = "https://api.airtable.com/v0/appPp5AF5PoGQk7ls/"
+        self.airtable_url = "https://api.airtable.com/v0/appPp5AF5PoGQk7ls/Table%201"
         self.rows_handled = []
         self.MODE = "airtable" # or "gdrive"
     # end __init__
@@ -258,7 +257,6 @@ class HabitsNest(object):
                             custom_id="modal",
                             components=modal_components
                         )
-            self.button_text = button_text
             for channel in self.channels:
                 await channel.send(message_text.replace("\\n", "\n"), components=button)
             self.rows_handled.append(row)
@@ -292,7 +290,7 @@ class HabitsNest(object):
                 continue
             # end if
 
-            time_to_send = fields["TimeEST"]
+            time_to_send = fields["TimeToSendEST"]
 
             good_to_send = self.process_time(time_to_send)
             if not good_to_send:
@@ -335,7 +333,6 @@ class HabitsNest(object):
                             custom_id="modal",
                             components=modal_components
                         )
-            self.button_text = button_text
             parts = message_text.split("@(")
             message_text = parts[0]
             for part in parts[1:]:
@@ -384,38 +381,7 @@ class HabitsNest(object):
 
         @client.modal("modal")
         async def modal_response(ctx: interactions.CommandContext, short: str, paragraph: str):
-            
-            headers = {"Content-Type":"application/json", "Authorization":"Bearer " + os.environ["airTable"]}
-
-            print("modal response author id: ", ctx.author.id)
-
-            tnow = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            print("tnow: ", tnow)
-            print("type tnow: ", type(tnow))
-            print("self.button_text: ", self.button_text)
-            print("short: ", short)
-            print("paragraph: ", paragraph)
-            data = {
-                "records": [
-                            {
-                                "fields": {
-                                    "TimeEST": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                                    "Attachments": [],
-                                    "ButtonText": self.button_text,
-                                    "Discord Message": "",
-                                    "Prompt1":short,
-                                    "Prompt2":paragraph,
-                                    "FromDiscordID": str(int(ctx.author.id))
-                                }
-                            }
-                           ]
-                    }
-            url = self.airtable_base + self.button_text.replace(" ", "%20")
-            print("url: ", url)
-            req = requests.post(url, headers=headers, json=data)
-            print("req.status_code: ", req.status_code)
             await ctx.send(f"Short text: {short}\nLong text: {paragraph}")
-        # end modal_response
 
         @client.event
         async def on_ready():

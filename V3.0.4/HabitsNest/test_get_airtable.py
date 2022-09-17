@@ -3,8 +3,9 @@ import json
 import requests
 import shutil
 
-'''
+#'''
 url = "https://api.airtable.com/v0/appPp5AF5PoGQk7ls/Table%201"
+url = "https://api.airtable.com/v0/appPp5AF5PoGQk7ls/Day%205%20Gratitude"
 headers = {"Content-Type":"json", "Authorization":"Bearer " + os.environ["airTable"]}
 req = requests.get(url, headers=headers)
 print("req: ", req)
@@ -13,12 +14,12 @@ print("req.text: ", req.text)
 print("req.json(): ", req.json())
 result = req.json()
 
-with open("test.json", "w") as fid:
+with open("test2.json", "w") as fid:
   json.dump(result, fid)
 # end with
 print("good")
 sys.exit()
-'''
+#'''
 with open("test.json", "r") as fid:
   result = json.load(fid)
 # end with
