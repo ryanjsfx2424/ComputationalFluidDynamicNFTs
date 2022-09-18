@@ -1469,7 +1469,11 @@ class Tweeteroo2(object):
                         # end if
 
                         for mm in range(multiplier):
-                            self.stream_data["tweet_ids"  ] = np.append(self.stream_data["tweet_ids"  ], tweet_id)
+                            new_tweet_id = tweet_id + ""
+                            if mm > 0:
+                                new_tweet_id += 12*"0" + str(mm)
+                            # end if
+                            self.stream_data["tweet_ids"  ] = np.append(self.stream_data["tweet_ids"  ], new_tweet_id)
                             self.stream_data[    "tuids"  ] = np.append(self.stream_data[    "tuids"  ], tuid)
                             self.stream_data["usernames"  ] = np.append(self.stream_data["usernames"  ], username)
                             self.stream_data[    "dates"  ] = np.append(self.stream_data[    "dates"  ], date)
@@ -1531,19 +1535,6 @@ class Tweeteroo2(object):
                         interactions.Option(
                             name="username",
                             description="Your twitter username",
-                            type=interactions.OptionType.STRING,
-                            required=False,
-                        ),
-                    ],
-                ),
-                interactions.Option(
-                    name="add_tweeteroo_admin",
-                    description="User that can put bounties on specific tweets",
-                    type=interactions.OptionType.SUB_COMMAND,
-                    options=[
-                        interactions.Option(
-                            name="discord_id",
-                            description="Tweeteroo Admin Discord ID to add",
                             type=interactions.OptionType.STRING,
                             required=False,
                         ),
