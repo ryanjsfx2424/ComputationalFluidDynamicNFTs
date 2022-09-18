@@ -177,6 +177,7 @@ class Tweeteroo2(object):
     # end load_arr
 
     def save_arr(self, fname, arr):
+        print("saving fname: ", fname)
         with open(fname, "w") as fid:
             json.dump(arr)
         # end with
@@ -1709,10 +1710,7 @@ class Tweeteroo2(object):
 
                 self.admins.append(discord_id)
                 await ctx.send("Added discord_id to tweeteroo admins!", ephemeral=True)
-
-                with open(self.fname_admins, "w") as fid:
-                    json.dump(self.admins)
-                # end with
+                self.save_arr(self.fname_admins, self.admins)
 
                 await ctx.send("Saved updates to admins! All done :)", ephemeral=True)
                 return
@@ -1744,9 +1742,7 @@ class Tweeteroo2(object):
                 del self.admins[ind]
                 await ctx.send("removed discord_id from tweeteroo admins!", ephemeral=True)
 
-                with open(self.fname_admins, "w") as fid:
-                    json.dump(self.admins)
-                # end with open
+                self.save_arr(self.fname_admins, self.admins)
 
                 await ctx.send("Saved updates to admins! All done :)", ephemeral=True)
                 return
