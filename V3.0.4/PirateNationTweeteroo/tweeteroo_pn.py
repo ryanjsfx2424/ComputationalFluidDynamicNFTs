@@ -159,11 +159,11 @@ class Tweeteroo2(object):
 
         self.fname_admins       = "data_big/tweeteroo_admins.txt"
         self.fname_bmultipliers = "data_big/tweeteroo_bounty_multipliers.txt"
-        self.fname_btweetIds    = "data_big/tweeteroo_bounty_multipliers.txt"
+        self.fname_btweetIds    = "data_big/tweeteroo_bounty_tweet_ids.txt"
 
         self.admins             = self.load_arr(self.fname_admins)
         self.bounty_multipliers = self.load_arr(self.fname_bmultipliers)
-        self.fname_btweetIds    = self.load_arr(self.fname_btweetIds)
+        self.bounty_tweet_ids   = self.load_arr(self.fname_btweetIds)
     # end init_admins
 
     def load_arr(self, fname):
@@ -1727,8 +1727,8 @@ class Tweeteroo2(object):
                 return
 
             elif sub_command in ["remove_tweeteroo_admin"]:
-                if int(ctx.author.id) != self.ME:
-                    await ctx.send("Error, only botfather can add tweeteroo admins.", ephemeral=True)
+                if int(ctx.author.id) not in self.admins:
+                    await ctx.send("Error, must be a tweeteroo admin to use this function.", ephemeral=True)
                     return
                 # end if
 
@@ -1745,7 +1745,7 @@ class Tweeteroo2(object):
                 # end try/except
 
                 if discord_id not in self.admins:
-                    await ctx.send("This discord_id is not a tweeteroo admin...Done trying to remove.", ephemeral=True)
+                    await ctx.send("Error, This discord_id is not a tweeteroo admin..", ephemeral=True)
                     return
                 # end if
 
@@ -1761,6 +1761,11 @@ class Tweeteroo2(object):
                 return
 
             elif sub_command in ["add_tweet_to_bounties"]:
+                if discord_id not in self.admins:
+                    await ctx.send("Error, must be a tweeteroo admin to use this function.", ephemeral=True)
+                    return
+                # end if
+
                 if tweet_url == None and tweet_id == None:
                     await ctx.send("Error, you must send either tweet_url or tweet_id.", ephemeral=True)
                     return
