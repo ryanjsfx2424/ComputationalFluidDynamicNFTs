@@ -1461,13 +1461,22 @@ class Tweeteroo2(object):
                                 break
                             # end if
                         # end for
-                        self.stream_data["tweet_ids"  ] = np.append(self.stream_data["tweet_ids"  ], tweet_id)
-                        self.stream_data[    "tuids"  ] = np.append(self.stream_data[    "tuids"  ], tuid)
-                        self.stream_data["usernames"  ] = np.append(self.stream_data["usernames"  ], username)
-                        self.stream_data[    "dates"  ] = np.append(self.stream_data[    "dates"  ], date)
-                        self.stream_data[    "dates_s"] = np.append(self.stream_data[    "dates_s"], date_s)
-                        self.stream_data[   "etypes"  ] = np.append(self.stream_data[   "etypes"  ], flag)
-                        self.stream_data[    "texts"  ] = np.append(self.stream_data[    "texts"  ], text)
+
+                        multiplier = 1
+                        if tweet_id in self.bounty_tweet_ids:
+                            ind = self.bounty_tweet_ids.index(tweet_id)
+                            multiplier = self.bounty_multipliers[ind]
+                        # end if
+
+                        for mm in range(multiplier):
+                            self.stream_data["tweet_ids"  ] = np.append(self.stream_data["tweet_ids"  ], tweet_id)
+                            self.stream_data[    "tuids"  ] = np.append(self.stream_data[    "tuids"  ], tuid)
+                            self.stream_data["usernames"  ] = np.append(self.stream_data["usernames"  ], username)
+                            self.stream_data[    "dates"  ] = np.append(self.stream_data[    "dates"  ], date)
+                            self.stream_data[    "dates_s"] = np.append(self.stream_data[    "dates_s"], date_s)
+                            self.stream_data[   "etypes"  ] = np.append(self.stream_data[   "etypes"  ], flag)
+                            self.stream_data[    "texts"  ] = np.append(self.stream_data[    "texts"  ], text)
+                        # end for mm
                         self.save_stream()
                         print("1343 added to stream data! uname, tweet_id: ", tweet_id, username)
                     # end for line in fid
