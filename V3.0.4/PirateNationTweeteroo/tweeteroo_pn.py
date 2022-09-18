@@ -98,7 +98,8 @@ class Tweeteroo2(object):
 
         query = "(@" + self.PROJECT_TWITTER + " OR Yargh OR #Yargh OR Arr Nation OR #ArrNation OR Pirate Nation OR #PirateNation OR The Weekly Yargh)"
 
-        self.keywords_help = "Arr Nation OR Pirate Nation OR The Weekly Yargh"
+        #self.keywords_help = "Arr Nation OR Pirate Nation OR The Weekly Yargh"
+        self.keywords_help = query + ""
 
         ## NOTE! MAKE CHUNK SIZE LARGER IN THE FUTURE!! (reduced start time hopefully)
         self.CHUNK_SIZE = 1000
@@ -165,20 +166,22 @@ class Tweeteroo2(object):
                             icon_url=self.URL)
         embedInt.set_footer(text = self.FOOTER,
                             icon_url=self.URL)
-        embedInt.add_field(name="**__!" + self.CMD_PREFIX + "help__**", value="Display this help menu", inline=True)
-        embedDpy.add_field(name="**__!" + self.CMD_PREFIX + "help__**", value="Display this help menu", inline=True)
-        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "link__**", value="(Slash command only!) Link discord id with twitter username", inline=False)
-        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "link__**", value="(Slash command only!) Link discord id with twitter username", inline=False)
-        embedInt.add_field(name="**__!" + self.CMD_PREFIX + "lb__**", value="Display leaderboard (all data)\nTo see options for granular leaderboards, run command: **__!" + self.CMD_PREFIX + "helplb__**", inline=False)
-        embedDpy.add_field(name="**__!" + self.CMD_PREFIX + "lb__**", value="Display leaderboard (all data)\nTo see options for granular leaderboards, run command: **__!" + self.CMD_PREFIX + "helplb__**", inline=False)
-        embedInt.add_field(name="**__!" + self.CMD_PREFIX + "keywords__**", value="Display keywords we use to find Tweets that count towards your rank", inline=False)
-        embedDpy.add_field(name="**__!" + self.CMD_PREFIX + "keywords__**", value="Display keywords we use to find Tweets that count towards your rank", inline=False)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "help__**", value="Display this help menu", inline=True)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "help__**", value="Display this help menu", inline=True)
+        #embedInt.add_field(name="**__/" + self.CMD_PREFIX + "link__**", value="(Slash command only!) Link discord id with twitter username", inline=False)
+        #embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "link__**", value="(Slash command only!) Link discord id with twitter username", inline=False)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "link__**", value="Link discord id with twitter username", inline=False)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "link__**", value="Link discord id with twitter username", inline=False)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "lb__**", value="Display leaderboard (all data)\nTo see options for granular leaderboards, run command: **__!" + self.CMD_PREFIX + "helplb__**", inline=False)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "lb__**", value="Display leaderboard (all data)\nTo see options for granular leaderboards, run command: **__!" + self.CMD_PREFIX + "helplb__**", inline=False)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "keywords__**", value="Display keywords we use to find Tweets that count towards your rank", inline=False)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "keywords__**", value="Display keywords we use to find Tweets that count towards your rank", inline=False)
         #embedDpy.add_field(name="**__!" + self.CMD_PREFIX + "verify <url>,<twitter username>__**", value="Verify if we've processed your interaction", inline=False)
         #embedInt.add_field(name="**__!" + self.CMD_PREFIX + "verify <url>,<twitter username>__**", value="Verify if we've processed your interaction", inline=False)
-        embedDpy.add_field(name="**__!" + self.CMD_PREFIX + "stats <twitter username>__**", value="Display user's points, likes, etc.", inline=False)
-        embedInt.add_field(name="**__!" + self.CMD_PREFIX + "stats <twitter username>__**", value="Display user's points, likes, etc.", inline=False)
-        embedDpy.add_field(name="**__!" + self.CMD_PREFIX + "rank <twitter username>__**",  value="Display user's rank (all data). To see options for granular ranks, run command: **__!" + self.CMD_PREFIX + "helplb__**", inline=False)
-        embedInt.add_field(name="**__!" + self.CMD_PREFIX + "rank <twitter username>__**",  value="Display user's rank (all data). To see options for granular ranks, run command: **__!" + self.CMD_PREFIX + "helplb__**", inline=False)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "stats <twitter username>__**", value="Display user's points, likes, etc.", inline=False)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "stats <twitter username>__**", value="Display user's points, likes, etc.", inline=False)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "rank <twitter username>__**",  value="Display user's rank (all data). To see options for granular ranks, run command: **__!" + self.CMD_PREFIX + "helplb__**", inline=False)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "rank <twitter username>__**",  value="Display user's rank (all data). To see options for granular ranks, run command: **__!" + self.CMD_PREFIX + "helplb__**", inline=False)
         self.helpEmbedDpy = embedDpy
         self.helpEmbedInt = embedInt
 
@@ -192,30 +195,30 @@ class Tweeteroo2(object):
                         icon_url=self.URL)
         embedInt.set_footer(text = self.FOOTER,
                         icon_url=self.URL)
-        embedInt.add_field(name="**__!" + self.CMD_PREFIX + "lblikes__**", value="Displays the Likes leaderboard.", inline=True)
-        embedDpy.add_field(name="**__!" + self.CMD_PREFIX + "lblikes__**", value="Displays the Likes leaderboard.", inline=True)
-        embedInt.add_field(name="**__!" + self.CMD_PREFIX + "lbretweets__**", value="Displays the Retweets leaderboard.", inline=False)
-        embedDpy.add_field(name="**__!" + self.CMD_PREFIX + "lbretweets__**", value="Displays the Retweets leaderboard.", inline=False)
-        embedInt.add_field(name="**__!" + self.CMD_PREFIX + "lbtweets__**", value="Displays the Tweets leaderboard.", inline=False)
-        embedDpy.add_field(name="**__!" + self.CMD_PREFIX + "lbtweets__**", value="Displays the Tweets leaderboard.", inline=False)
-        embedInt.add_field(name="**__!" + self.CMD_PREFIX + "lbpoints__**", value="Displays the Points leaderboard.\n\n**__LEADERBOARD BY TIME RANGE__**\n\n\n\n\n", inline=False)
-        embedDpy.add_field(name="**__!" + self.CMD_PREFIX + "lbpoints__**", value="Displays the Points leaderboard.\n\n**__LEADERBOARD BY TIME RANGE__**\n\n\n\n\n", inline=False)
-        embedInt.add_field(name="\n**__!" + self.CMD_PREFIX + "lbtoday__**", value="Past 24 hours (time-zone agnostic)", inline=False)
-        embedDpy.add_field(name="\n**__!" + self.CMD_PREFIX + "lbtoday__**", value="Past 24 hours (time-zone agnostic)", inline=False)
-        embedInt.add_field(name="**__!" + self.CMD_PREFIX + "lbq1__**", value="Data from January 1st, 2022 - April 1st, 2022", inline=False)
-        embedDpy.add_field(name="**__!" + self.CMD_PREFIX + "lbq1__**", value="Data from January 1st, 2022 - April 1st, 2022", inline=False)
-        embedInt.add_field(name="**__!" + self.CMD_PREFIX + "lbq2__**", value="Data from April 1st, 2022 - July 1st, 2022", inline=False)
-        embedDpy.add_field(name="**__!" + self.CMD_PREFIX + "lbq2__**", value="Data from April 1st, 2022 - July 1st, 2022", inline=False)
-        embedInt.add_field(name="**__!" + self.CMD_PREFIX + "lblastyear__**", value="Data from January 1st, 2021 - January 1st, 2022", inline=False)
-        embedDpy.add_field(name="**__!" + self.CMD_PREFIX + "lblastyear__**", value="Data from January 1st, 2021 - January 1st, 2022", inline=False)
-        embedInt.add_field(name="**__!" + self.CMD_PREFIX + "lblastmonth__**", value="Data from the last month.", inline=False)
-        embedDpy.add_field(name="**__!" + self.CMD_PREFIX + "lblastmonth__**", value="Data from the last month.", inline=False)
-        embedInt.add_field(name="**__!" + self.CMD_PREFIX + "lb <month>__**", value="Data from the specified month.", inline=False)
-        embedDpy.add_field(name="**__!" + self.CMD_PREFIX + "lb <month>__**", value="Data from the specified month.", inline=False)
-        embedInt.add_field(name="**__!" + self.CMD_PREFIX + "lb start: <month day, year, time>, end: <month day, year, time>__**", value="Data from the specified timeframe. **Must fit expected style and spaces matter!**\nExample: !" + self.CMD_PREFIX + "lb start: January 5, 2022, 17:07:39, end: January 6, 2022, 01:00:00\n\n**NOTE:** leaderboard type & time range options can be combined!\nExample:", inline=False)
-        embedDpy.add_field(name="**__!" + self.CMD_PREFIX + "lb start: <month day, year, time>, end: <month day, year, time>__**", value="Data from the specified timeframe. **Must fit expected style and spaces matter!**\nExample: !" + self.CMD_PREFIX + "lb start: January 5, 2022, 17:07:39, end: January 6, 2022, 01:00:00\n\n**NOTE:** leaderboard type & time range options can be combined!\nExample:", inline=False)
-        embedInt.add_field(name="**__!" + self.CMD_PREFIX + "lblikesfebruary__**", value="Displays the Likes leaderboard for February tweets.", inline=False)
-        embedDpy.add_field(name="**__!" + self.CMD_PREFIX + "lblikesfebruary__**", value="Displays the Likes leaderboard for February tweets.", inline=False)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "lblikes__**", value="Displays the Likes leaderboard.", inline=True)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "lblikes__**", value="Displays the Likes leaderboard.", inline=True)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "lbretweets__**", value="Displays the Retweets leaderboard.", inline=False)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "lbretweets__**", value="Displays the Retweets leaderboard.", inline=False)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "lbtweets__**", value="Displays the Tweets leaderboard.", inline=False)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "lbtweets__**", value="Displays the Tweets leaderboard.", inline=False)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "lbpoints__**", value="Displays the Points leaderboard.\n\n**__LEADERBOARD BY TIME RANGE__**\n\n\n\n\n", inline=False)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "lbpoints__**", value="Displays the Points leaderboard.\n\n**__LEADERBOARD BY TIME RANGE__**\n\n\n\n\n", inline=False)
+        embedInt.add_field(name="\n**__/" + self.CMD_PREFIX + "lbtoday__**", value="Past 24 hours (time-zone agnostic)", inline=False)
+        embedDpy.add_field(name="\n**__/" + self.CMD_PREFIX + "lbtoday__**", value="Past 24 hours (time-zone agnostic)", inline=False)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "lbq1__**", value="Data from January 1st, 2022 - April 1st, 2022", inline=False)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "lbq1__**", value="Data from January 1st, 2022 - April 1st, 2022", inline=False)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "lbq2__**", value="Data from April 1st, 2022 - July 1st, 2022", inline=False)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "lbq2__**", value="Data from April 1st, 2022 - July 1st, 2022", inline=False)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "lblastyear__**", value="Data from January 1st, 2021 - January 1st, 2022", inline=False)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "lblastyear__**", value="Data from January 1st, 2021 - January 1st, 2022", inline=False)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "lblastmonth__**", value="Data from the last month.", inline=False)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "lblastmonth__**", value="Data from the last month.", inline=False)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "lb <month>__**", value="Data from the specified month.", inline=False)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "lb <month>__**", value="Data from the specified month.", inline=False)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "lb start: <month day, year, time>, end: <month day, year, time>__**", value="Data from the specified timeframe. **Must fit expected style and spaces matter!**\nExample: !" + self.CMD_PREFIX + "lb start: January 5, 2022, 17:07:39, end: January 6, 2022, 01:00:00\n\n**NOTE:** leaderboard type & time range options can be combined!\nExample:", inline=False)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "lb start: <month day, year, time>, end: <month day, year, time>__**", value="Data from the specified timeframe. **Must fit expected style and spaces matter!**\nExample: !" + self.CMD_PREFIX + "lb start: January 5, 2022, 17:07:39, end: January 6, 2022, 01:00:00\n\n**NOTE:** leaderboard type & time range options can be combined!\nExample:", inline=False)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "lblikesfebruary__**", value="Displays the Likes leaderboard for February tweets.", inline=False)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "lblikesfebruary__**", value="Displays the Likes leaderboard for February tweets.", inline=False)
         self.lbHelpEmbedDpy = embedDpy
         self.lbHelpEmbedInt = embedInt
 
@@ -505,6 +508,7 @@ class Tweeteroo2(object):
     def get_sndata(self, og_query, fsave, oldest=None, newest=None):
         """NOTE: snscrape does since/until from the day, not more granular as far as I know."""
         print("BEGIN get_sndata")
+        return
 
         if   "data_big/keywords" in fsave:
             fnum = fsave.replace("data_big/keywords_data/","")
@@ -1567,20 +1571,20 @@ class Tweeteroo2(object):
                       timerange: str = None, url: str = None):
 
             if   sub_command in ["help", "halp", "hlp"]:
-                await ctx.send(embeds=self.helpEmbedInt, ephemeral=True)
+                await ctx.send(embeds=self.helpEmbedInt)#, ephemeral=True)
 
             elif sub_command in ["helplb","halplb","hlplb", 
                                 "lbhelp","lbhalp","lbhlp"]:
-                await ctx.send(embeds=self.lbHelpEmbedInt, ephemeral=True)
+                await ctx.send(embeds=self.lbHelpEmbedInt)#, ephemeral=True)
         
             elif sub_command in ["keywords"]:
-                await ctx.send(embeds=self.keyEmbedInt, ephemeral=True)
+                await ctx.send(embeds=self.keyEmbedInt)#, ephemeral=True)
 
             elif sub_command in ["stats","stat"]:
                 if username == None:
                     discord_id = str(ctx.author.id)
                     if discord_id not in self.user_dict["discordId_to_username"]:
-                        await ctx.send(self.UNKNOWN_USERNAME, ephemeral=True)
+                        await ctx.send(self.UNKNOWN_USERNAME)#, ephemeral=True)
                         return
                     # end if
                     username = self.user_dict["discordId_to_username"][discord_id]
@@ -1592,7 +1596,7 @@ class Tweeteroo2(object):
 
                 else:
                     msg2 = "```>>> Something went very wrong fetching the username. Error Code 273```"
-                    await ctx.send(msg2, ephemeral=True)
+                    await ctx.send(msg2)#, ephemeral=True)
                     return
                 # end if/elif/else
 
@@ -1608,7 +1612,7 @@ class Tweeteroo2(object):
                     await channel.send(self.STATS_ERROR)
                     return
                 # end try/except
-                await ctx.send(embeds=self.statEmbedInt, ephemeral=True)
+                await ctx.send(embeds=self.statEmbedInt)#, ephemeral=True)
                 return
 
             elif sub_command == "link":
@@ -1629,7 +1633,7 @@ class Tweeteroo2(object):
                 # end with open
                 os.system("cp data_big/temp.txt " + self.fname_linked)
 
-                await ctx.send(self.LINK_SUCCESS, ephemeral=True)
+                await ctx.send(self.LINK_SUCCESS)#, ephemeral=True)
                 return
 
             elif sub_command in ["verify"]:
@@ -1640,14 +1644,14 @@ class Tweeteroo2(object):
                 # end if
 
                 if ("https://twitter.com/" not in tweet_url) and ("https://mobile.twitter.com/") not in tweet_url:
-                    await ctx.send(self.VERIFY_ERROR, ephemeral=True)
+                    await ctx.send(self.VERIFY_ERROR)#, ephemeral=True)
                     return
                 # end if
           
                 if username == None:
                     discord_id = str(ctx.author.id)
                     if discord_id not in self.user_dict["discordId_to_username"]:
-                        await ctx.send(msg2, ephemeral=True)
+                        await ctx.send(msg2)#, ephemeral=True)
                         return
                     # end if
                     username = self.user_dict["discordId_to_username"][discord_id]
@@ -1658,35 +1662,35 @@ class Tweeteroo2(object):
                     username = username.replace(" ","")
                 # end if/elif
                 msg2 = "```>>> okay! will verify if we processed that tweet for '" + username + "' yet or not```"
-                await ctx.send(msg2, ephemeral=True)
+                await ctx.send(msg2)#, ephemeral=True)
 
                 try:
                     msg2,status = self.verify_processed_tweet(tweet_url, username)
                 except Exception as err:
                     print("873 verify_processed_tweet err: ", err)
                     print("874 vpt err.ags: ", err.args[:])
-                    await channel.send(self.VERIFY_ERROR, ephemeral=True)
+                    await channel.send(self.VERIFY_ERROR)#, ephemeral=True)
                     return
                 # end try/except
                 if status == False:
                     print("879 vptF error")
-                    await channel.send(self.VERIFY_ERROR, ephemeral=True)
+                    await channel.send(self.VERIFY_ERROR)#, ephemeral=True)
                     return
                 # end if
-                await ctx.send(msg2, ephemeral=True)
+                await ctx.send(msg2)#, ephemeral=True)
 
             elif sub_command in ["leaderboard", "lb"]:
                 method = self.get_method(method)
 
                 start_time, end_time, time_str, status, err_msg = self.get_time_str(timerange)
                 if status == False:
-                    await ctx.send(err_msg, ephemeral=True)
+                    await ctx.send(err_msg)#, ephemeral=True)
                     return
                 # end if
 
                 msg2  = "```>>> Okay, grabbing the " + method + " leaderboard for the "
                 msg2 += time_str + " data time range.```"
-                await ctx.send(msg2, ephemeral=True)
+                await ctx.send(msg2)#, ephemeral=True)
 
                 try:
                     await self.get_leaderboard(start_time=start_time,
@@ -1732,7 +1736,7 @@ class Tweeteroo2(object):
                 print("going to send embed")
                 print("self.lbEmbedInts[ijk]: ", self.lbEmbedInts[ijk])
                 await ctx.send(embeds=self.lbEmbedInts[ijk], 
-                    components=[self.buttons_row], ephemeral=True)
+                    components=[self.buttons_row])#, ephemeral=True)
                 print("sent embed!")
                 return
             
@@ -1742,7 +1746,7 @@ class Tweeteroo2(object):
                     try:
                         username = self.user_dict["discordId_to_username"][discord_id]
                     except:
-                        await ctx.send(self.UNKNOWN_USERNAME, ephemeral=True)
+                        await ctx.send(self.UNKNOWN_USERNAME)#, ephemeral=True)
                         return
                     # end try/except
                 # end if
@@ -1750,13 +1754,13 @@ class Tweeteroo2(object):
                 method = self.get_method(method)
                 start_time, end_time, time_str, status, err_msg = self.get_time_str(timerange)
                 if status == False:
-                    await ctx.send(err_msg, ephemeral=True)
+                    await ctx.send(err_msg)#, ephemeral=True)
                     return
                 # end if
 
                 msg2  = "```>>> Okay, grabbing the " + method + " rank for the "
                 msg2 += time_str + " data time range.```"
-                await ctx.send(msg2, ephemeral=True)
+                await ctx.send(msg2)#, ephemeral=True)
 
                 try:
                     await self.get_rank(username.lower(), start_time=start_time,
@@ -1764,13 +1768,13 @@ class Tweeteroo2(object):
                 except Exception as err:
                     print("1075 get_rank err: ", err)
                     print("1076 gr cmd err.args: ", err.args[:])
-                    await ctx.send(self.RANK_ERROR, ephemeral=True)
+                    await ctx.send(self.RANK_ERROR)#, ephemeral=True)
                 # end try/except
 
                 print("discord bot hi here's the " + method + " rank")
                 timerange = ""
                 try:
-                    await ctx.send(embeds=self.rankEmbedInt, ephemeral=True)
+                    await ctx.send(embeds=self.rankEmbedInt)#, ephemeral=True)
                 except:
                     pass
             # end if/elifs
@@ -1781,7 +1785,7 @@ class Tweeteroo2(object):
         async def done_component(ctx: interactions.ComponentContext):
             self.lbPageNum = 0
             ijk = self.lbPageNum
-            await ctx.send(embeds=self.lbEmbedInts[ijk], components=[self.buttons_row], ephemeral=True)
+            await ctx.send(embeds=self.lbEmbedInts[ijk], components=[self.buttons_row])#, ephemeral=True)
         # end def
 
         @intBot.component("backwards")
@@ -1789,7 +1793,7 @@ class Tweeteroo2(object):
             self.lbPageNum -= 1
             self.lbPageNum = max(self.lbPageNum,0)
             ijk = self.lbPageNum
-            await ctx.send(embeds=self.lbEmbedInts[ijk], components=[self.buttons_row], ephemeral=True)
+            await ctx.send(embeds=self.lbEmbedInts[ijk], components=[self.buttons_row])#, ephemeral=True)
         # end def
 
         @intBot.component("forwards")
@@ -1797,14 +1801,14 @@ class Tweeteroo2(object):
             self.lbPageNum += 1
             self.lbPageNum = min(self.lbPageNum,len(self.lbEmbedInts)-1)
             ijk = self.lbPageNum
-            await ctx.send(embeds=self.lbEmbedInts[ijk], components=[self.buttons_row], ephemeral=True)
+            await ctx.send(embeds=self.lbEmbedInts[ijk], components=[self.buttons_row])#, ephemeral=True)
         # end def
 
         @intBot.component("ending")
         async def done_component(ctx: interactions.ComponentContext):
             self.lbPageNum = len(self.lbEmbedInts)-1
             ijk = self.lbPageNum
-            await ctx.send(embeds=self.lbEmbedInts[ijk], components=[self.buttons_row], ephemeral=True)
+            await ctx.send(embeds=self.lbEmbedInts[ijk], components=[self.buttons_row])#, ephemeral=True)
         # end def
 
         @client.event
@@ -1926,15 +1930,20 @@ class Tweeteroo2(object):
             # end if
 
             if message.channel.id not in self.BOT_COMMANDS_CIDS:
+                print("msg channel id not in BOT CIDS")
                 return
             # end if
+            print("message.content: ", message.content)
 
             channel = client.get_channel(message.channel.id)
             msg = message.content.lower()
+            print("msg: ", msg)
+            print("self.CMD_PREFIX: ", self.CMD_PREFIX)
             prefix_in_msg = msg.startswith(      self.CMD_PREFIX) or \
                             msg.startswith("!" + self.CMD_PREFIX) or \
                             msg.startswith("/" + self.CMD_PREFIX)
             if not prefix_in_msg:
+                print("prefix not in msg")
                 return
             # end if
 
@@ -1946,12 +1955,14 @@ class Tweeteroo2(object):
 
             max_len  = len("!" + self.CMD_PREFIX + " help lb")
             if "lb" in msg[:max_len] and "help" in msg[:max_len]:
+                print("sending lb help embed")
                 await self.embed_helper([self.lbHelpEmbedDpy], client, channel)
                 return
             # end if
 
             max_len = len("!" + self.CMD_PREFIX + " help")
             if "help" in msg[:max_len]:
+                print("sending help embed")
                 await self.embed_helper([self.helpEmbedDpy], client, channel)
                 return
             elif msg.startswith("!" + self.CMD_PREFIX + "stats") or msg.startswith("!" + self.CMD_PREFIX + " stats") or \
