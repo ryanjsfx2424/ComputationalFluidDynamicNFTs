@@ -35,7 +35,7 @@ DEFAULT_TIMEST = "all"
 
 class Tweeteroo2(object):
     def __init__(self):
-        self.DEV_MODE = True
+        self.DEV_MODE = False
 
         self.CID_LOG  =  932056137518444594 # TTM, bot-commands
         self.CID_MSG1 = 1001191510705963129 # roo tech, tweeteroo-piratenation
@@ -87,6 +87,7 @@ class Tweeteroo2(object):
         self.pages = {}; self.points_usernames = []; self.project_tweet_ids = []
         self.init_times()
         self.init_auth()
+        self.init_arrays()
         self.init_embeds()
         self.init_data()
     # end __init__
@@ -152,6 +153,34 @@ class Tweeteroo2(object):
 
         print("success init_auth")
     # end init_auth
+
+    def init_arrays(self):
+        self.ME = 855616810525917215
+
+        self.fname_admins       = "data_big/tweeteroo_admins.txt"
+        self.fname_bmultipliers = "data_big/tweeteroo_bounty_multipliers.txt"
+        self.fname_btweetIds    = "data_big/tweeteroo_bounty_multipliers.txt"
+
+        self.admins             = self.load_arr(self.fname_admins)
+        self.bounty_multipliers = self.load_arr(self.fname_bmultipliers)
+        self.fname_btweetIds    = self.load_arr(self.fname_btweetIds)
+    # end init_admins
+
+    def load_arr(self, fname):
+        arr = []
+        if os.path.exists(fname) and os.stat(fname).st_size != 0:
+            with open(fname, "r") as fid:
+                arr = json.load(fid)
+            # end with
+        # end if
+        return arr
+    # end load_arr
+
+    def save_arr(self, fname, arr):
+        with open(fname, "w") as fid:
+            json.dump(arr)
+        # end with
+    # end save_arr
 
     def init_embeds(self):
         self.URL = "https://cdn.discordapp.com/attachments/1008827093032910868/1008864099800731778/BF_logo.png"
@@ -496,9 +525,12 @@ class Tweeteroo2(object):
         # end for fs
 
         if not self.DEV_MODE:
-            os.system("nohup python3 -u engagement_bf.py likes > logfile_likes.txt 2>&1 &")
+            os.system("nohup python3 -u engagement_bf.py likes    > logfile_likes.txt    2>&1 &")
             os.system("nohup python3 -u engagement_bf.py retweets > logfile_retweets.txt 2>&1 &")
-            os.system("nohup python3 -u engagement_bf.py quotes > logfile_quotes.txt 2>&1 &")
+            os.system("nohup python3 -u engagement_bf.py replies  > logfile_replies.txt  2>&1 &")            
+            os.system("nohup python3 -u engagement_bf.py quotes   > logfile_quotes.txt   2>&1 &")
+        # end if
+
         self.load_engagement()
         print("loaded engagement in: ", time.time() - start)
 
@@ -681,7 +713,7 @@ class Tweeteroo2(object):
     # end load_project_tweets
 
     def load_engagement(self):
-        self.engagement = {}
+        engagement = {}
         for etype in ["likes", "retweets", "replies", "quotes"]:
             fnames = np.sort(glob.glob("data_big/" + etype + "/activity_*.txt"))
             tuids = []
@@ -689,6 +721,18 @@ class Tweeteroo2(object):
             tweet_ids = []
             
             for fname in fnames:
+                try:
+                    tweet_id = int(fname.split("activity_gac_")[1].split(".txt")[0])
+                except:
+                    tweet_id = int(fname.split("activity_" + self.PROJECT_TWITTER + "_")[1].split(".txt")[0])
+                # end try/except
+
+                multiplier = 1
+                if tweet_id in self.bounty_tweet_ids:
+                    ind = self.bounty_tweet_ids.index(tweet_id)
+                    multiplier = self.bounty_multipliers[ind]
+                # end if
+
                 usernames_f = []
                 #print("fname: ", fname)
                 with open(fname, "r") as fid:
@@ -698,22 +742,23 @@ class Tweeteroo2(object):
                         elif "twitter_ids: " in line and "[]" not in line:
                             tuids_line = line.replace("'", "").replace("[", "").replace("]","").replace("\n","").split("twitter_ids: ")[1]
                             if ", " in tuids_line:
-                                tuids += tuids_line.split(", ")
+                                tuids += multiplier * tuids_line.split(", ")
                             else:
-                                tuids += [tuids_line]
+                                tuids += multiplier * [tuids_line]
                             # end if/else
                         elif "twitter_usernames: " in line and "[]" not in line:
                             usernames_line = line.replace("'", "").replace("[", "").replace("]","").replace("\n","").split("twitter_usernames: ")[1]
                             if ", " in usernames_line:
-                                usernames += usernames_line.split(", ")
-                                usernames_f += usernames_line.split(", ")
+                                usernames   += multiplier * usernames_line.split(", ")
+                                usernames_f += multiplier * usernames_line.split(", ")
                             else:
-                                usernames   += [usernames_line]
-                                usernames_f += [usernames_line]
+                                usernames   += multiplier * [usernames_line]
+                                usernames_f += multiplier * [usernames_line]
                             # end if/else
                         # end if/elifs
                     # end for line in fid
                 # end with open
+
                 if len(usernames) != len(tuids):
                     print("usernames != tweet_ids ???")
                     print("len usernames: ", len(usernames))
@@ -721,31 +766,21 @@ class Tweeteroo2(object):
                     raise
                 # end if
                 #print("fname: ", fname)
-                try:
-                    tweet_id = int(fname.split("activity_gac_")[1].split(".txt")[0])
-                except:
-                    tweet_id = int(fname.split("activity_" + self.PROJECT_TWITTER + "_")[1].split(".txt")[0])
-                tweet_ids += len(usernames_f)*[tweet_id]
 
-                if len(usernames) != len(tuids):
-                    print("usernames != tweet_ids ???")
-                    print("len usernames: ", len(usernames))
-                    print("len tuids: ", len(tuids))
-                    raise
-                # end if
-
+                tweet_ids += multiplier * len(usernames_f)*[tweet_id]
             # end for fnames
 
             usernames = np.array(usernames)
             if len(usernames) != 0:
                 usernames = np.char.lower(usernames)
 
-            self.engagement[etype] = {
+            engagement[etype] = {
                 "tweet_ids": np.array(tweet_ids),
                 "tuids": np.array(tuids),
                 "usernames": usernames
             }
         # end for etypes
+        return engagement
     # end load_engagement
 
     def get_latest_tweet_time_s(self):
@@ -757,9 +792,10 @@ class Tweeteroo2(object):
         self.latest_tweet_time_s = max(np.max(self.keywords_data["dates_s"].astype(float)),
                                        self.latest_tweet_time_s)        
 
+        engagement = self.load_engagement()
         for etype in ["likes", "retweets", "replies", "quotes"]:
-            if "dates_s" in self.engagement[etype]:
-                self.latest_tweet_time_s = max(self.latest_tweet_time_s, np.max(self.engagement[etype]["dates_s"]))
+            if "dates_s" in engagement[etype]:
+                self.latest_tweet_time_s = max(self.latest_tweet_time_s, np.max(engagement[etype]["dates_s"]))
             # end if
         # end for etype
     # end get_latest_tweet_time_s
@@ -967,11 +1003,12 @@ class Tweeteroo2(object):
     # end get_method
 
     def get_user_stats(self, username):
+        engagement = self.load_engagement()
         indsKE = np.where(         self.keywords_data["usernames"] == username)
-        indsLI = np.where(self.engagement["likes"   ]["usernames"] == username)
-        indsRT = np.where(self.engagement["retweets"]["usernames"] == username)
-        indsRP = np.where(self.engagement["replies" ]["usernames"] == username)
-        indsQT = np.where(self.engagement["quotes"  ]["usernames"] == username)
+        indsLI = np.where(engagement["likes"   ]["usernames"] == username)
+        indsRT = np.where(engagement["retweets"]["usernames"] == username)
+        indsRP = np.where(engagement["replies" ]["usernames"] == username)
+        indsQT = np.where(engagement["quotes"  ]["usernames"] == username)
 
         indsST = np.where(self.stream_data["usernames"] == username)
 
@@ -980,10 +1017,10 @@ class Tweeteroo2(object):
         indsSQ = np.where(self.stream_data["etypes"][indsST] == self.FLAG_QTS)
 
         lenKE = len(         self.keywords_data["usernames"][indsKE])
-        lenLI = len(self.engagement[   "likes"]["usernames"][indsLI])
-        lenRT = len(self.engagement["retweets"]["usernames"][indsRT])
-        lenRP = len(self.engagement[ "replies"]["usernames"][indsRP])
-        lenQT = len(self.engagement[  "quotes"]["usernames"][indsQT])
+        lenLI = len(engagement[   "likes"]["usernames"][indsLI])
+        lenRT = len(engagement["retweets"]["usernames"][indsRT])
+        lenRP = len(engagement[ "replies"]["usernames"][indsRP])
+        lenQT = len(engagement[  "quotes"]["usernames"][indsQT])
 
         lenKE += len(self.stream_data["usernames"][indsST][indsSK])
         lenRT += len(self.stream_data["usernames"][indsST][indsSR])
@@ -1042,10 +1079,10 @@ class Tweeteroo2(object):
                 return [error_msg, False]
             # end if
             for etype in ["likes","retweets"]:
-                inds = np.where(self.engagement[etype]["tweet_ids"] == tweet_id)
+                inds = np.where(engagement[etype]["tweet_ids"] == tweet_id)
                 if len(inds) != 0:
                     print("696 inds: ", inds)
-                    if username in self.engagement[etype]["usernames"][inds]:
+                    if username in engagement[etype]["usernames"][inds]:
                         return [self.VERIFY_SUCCESS, True]
                     # end if
                 # end if
@@ -1069,10 +1106,10 @@ class Tweeteroo2(object):
                 # end if
             # end if
             for etype in ["quotes", "replies"]:
-                inds = np.where(self.engagement[etype]["tweet_ids"] == tweet_id)
+                inds = np.where(engagement[etype]["tweet_ids"] == tweet_id)
                 if len(inds) != 0:
                     print("723 inds: ", inds)
-                    if username in self.engagement[etype]["usernames"][inds]:
+                    if username in engagement[etype]["usernames"][inds]:
                         return [self.VERIFY_SUCCESS, True]
                     # end if
                 # end if
@@ -1151,32 +1188,34 @@ class Tweeteroo2(object):
             weli = 1; wert = 2; werp = 3; weqt = 5; wkey = 3; wsrt = 2; wske = 3; wsqt = 5
         # end if/elifs
         
+        engagement = self.load_engagement()
+
         key = "tuids"
-        tuids = weli*[self.engagement[   "likes"][key]] \
-              + wert*[self.engagement["retweets"][key]] \
-              + werp*[self.engagement[ "replies"][key]] \
-              + weqt*[self.engagement[  "quotes"][key]] \
+        tuids = weli*[engagement[   "likes"][key]] \
+              + wert*[engagement["retweets"][key]] \
+              + werp*[engagement[ "replies"][key]] \
+              + weqt*[engagement[  "quotes"][key]] \
               + wkey*[         self.keywords_data[key]] \
               + wsrt*[           self.stream_data[key][indsSRT]] \
               + wske*[           self.stream_data[key][indsSKE]] \
               + wsqt*[           self.stream_data[key][indsSQT]]
 
         key = "usernames"
-        usernames = weli*[self.engagement[   "likes"][key]] \
-              + wert*[self.engagement["retweets"][key]] \
-              + werp*[self.engagement[ "replies"][key]] \
-              + weqt*[self.engagement[  "quotes"][key]] \
+        usernames = weli*[engagement[   "likes"][key]] \
+              + wert*[engagement["retweets"][key]] \
+              + werp*[engagement[ "replies"][key]] \
+              + weqt*[engagement[  "quotes"][key]] \
               + wkey*[         self.keywords_data[key]] \
               + wsrt*[           self.stream_data[key][indsSRT]] \
               + wske*[           self.stream_data[key][indsSKE]] \
               + wsqt*[           self.stream_data[key][indsSQT]]
 
         key = "dates_s"
-        if key in self.engagement["likes"]:
-            dates_s = weli*[self.engagement[   "likes"][key]] \
-                    + wert*[self.engagement["retweets"][key]] \
-                    + werp*[self.engagement[ "replies"][key]] \
-                    + weqt*[self.engagement[  "quotes"][key]] \
+        if key in engagement["likes"]:
+            dates_s = weli*[engagement[   "likes"][key]] \
+                    + wert*[engagement["retweets"][key]] \
+                    + werp*[engagement[ "replies"][key]] \
+                    + weqt*[engagement[  "quotes"][key]] \
                     + wkey*[         self.keywords_data[key]] \
                     + wsrt*[           self.stream_data[key][indsSRT]] \
                     + wske*[           self.stream_data[key][indsSKE]] \
@@ -1184,10 +1223,10 @@ class Tweeteroo2(object):
         else:
             ky2 = "tuids"
             date_s0 = self.get_tweet_time_s("4000-01-01T00:00:00.000Z")
-            dates_s = weli*[np.zeros(len(self.engagement[   "likes"][ky2]))+date_s0] \
-                    + wert*[np.zeros(len(self.engagement["retweets"][ky2]))+date_s0] \
-                    + werp*[np.zeros(len(self.engagement[ "replies"][ky2]))+date_s0] \
-                    + weqt*[np.zeros(len(self.engagement[  "quotes"][ky2]))+date_s0] \
+            dates_s = weli*[np.zeros(len(engagement[   "likes"][ky2]))+date_s0] \
+                    + wert*[np.zeros(len(engagement["retweets"][ky2]))+date_s0] \
+                    + werp*[np.zeros(len(engagement[ "replies"][ky2]))+date_s0] \
+                    + weqt*[np.zeros(len(engagement[  "quotes"][ky2]))+date_s0] \
                     + wkey*[         self.keywords_data[key]] \
                     + wsrt*[           self.stream_data[key][indsSRT]] \
                     + wske*[           self.stream_data[key][indsSKE]] \
@@ -1489,6 +1528,70 @@ class Tweeteroo2(object):
                     ],
                 ),
                 interactions.Option(
+                    name="add_tweeteroo_admin",
+                    description="User that can put bounties on specific tweets",
+                    type=interactions.OptionType.SUB_COMMAND,
+                    options=[
+                        interactions.Option(
+                            name="discord_id",
+                            description="Tweeteroo Admin Discord ID to add",
+                            type=interactions.OptionType.STRING,
+                            required=False,
+                        ),
+                    ],
+                ),
+                interactions.Option(
+                    name="add_tweeteroo_admin",
+                    description="User that can put bounties on specific tweets",
+                    type=interactions.OptionType.SUB_COMMAND,
+                    options=[
+                        interactions.Option(
+                            name="discord_id",
+                            description="Tweeteroo Admin Discord ID to add",
+                            type=interactions.OptionType.STRING,
+                            required=False,
+                        ),
+                    ],
+                ),
+                interactions.Option(
+                    name="remove_tweeteroo_admin",
+                    description="Removes user that can put bounties on specific tweets",
+                    type=interactions.OptionType.SUB_COMMAND,
+                    options=[
+                        interactions.Option(
+                            name="discord_id",
+                            description="Tweeteroo Admin Discord ID to remove",
+                            type=interactions.OptionType.STRING,
+                            required=False,
+                        ),
+                    ],
+                ),
+                interactions.Option(
+                    name="add_tweet_to_bounties",
+                    description="Tweet that users get extra points for engaging with.",
+                    type=interactions.OptionType.SUB_COMMAND,
+                    options=[
+                        interactions.Option(
+                            name="tweet_url",
+                            description="Tweet (by url) to add a bounty to",
+                            type=interactions.OptionType.STRING,
+                            required=False,
+                        ),
+                        interactions.Option(
+                            name="tweet_id",
+                            description="Tweet (by id) to add a bounty to",
+                            type=interactions.OptionType.STRING,
+                            required=False,
+                        ),
+                        interactions.Option(
+                            name="bounty_multiplier",
+                            description="Points multiplier for engaging with the tweet",
+                            type=interactions.OptionType.STRING,
+                            required=False,
+                        ),
+                    ],
+                ),
+                interactions.Option(
                     name="verify",
                     description="Verify if tweet has been processed",
                     type=interactions.OptionType.SUB_COMMAND,
@@ -1568,7 +1671,8 @@ class Tweeteroo2(object):
         )
         async def cmd(ctx: interactions.CommandContext, sub_command: str,
                       username: str = None, method: str = None,
-                      timerange: str = None, url: str = None):
+                      timerange: str = None, url: str = None, discord_id: str = None,
+                      tweet_url: str = None, bounty_multiplier: str = None, tweet_id: str = None):
 
             if   sub_command in ["help", "halp", "hlp"]:
                 await ctx.send(embeds=self.helpEmbedInt)#, ephemeral=True)
@@ -1579,6 +1683,141 @@ class Tweeteroo2(object):
         
             elif sub_command in ["keywords"]:
                 await ctx.send(embeds=self.keyEmbedInt)#, ephemeral=True)
+
+            elif sub_command in ["add_tweeteroo_admin"]:
+                if int(ctx.author.id) != self.ME:
+                    await ctx.send("Error, only botfather can add tweeteroo admins.", ephemeral=True)
+                    return
+                # end if
+
+                if discord_id == None:
+                    await ctx.send("Error, didn't receive discord_id.", ephemeral=True)
+                    return
+                try:
+                    discord_id = int(discord_id)
+                except Exception as err:
+                    print("err 1603: ", err)
+                    print("err.args 1604: ", err.args[:])
+                    await ctx.send("Error, discord_id was not parseable as an integer.", ephemeral=True)
+                    return
+                # end try/except
+
+                if discord_id in self.admins or str(discord_id) in self.admins:
+                    await ctx.send("This discord_id is already a tweeteroo admin. So all done :)", ephemeral=True)
+                    return
+                # end if
+
+                self.admins.append(discord_id)
+                await ctx.send("Added discord_id to tweeteroo admins!", ephemeral=True)
+
+                with open(self.fname_admins, "w") as fid:
+                    json.dump(self.admins)
+                # end with
+
+                await ctx.send("Saved updates to admins! All done :)", ephemeral=True)
+                return
+
+            elif sub_command in ["remove_tweeteroo_admin"]:
+                if int(ctx.author.id) != self.ME:
+                    await ctx.send("Error, only botfather can add tweeteroo admins.", ephemeral=True)
+                    return
+                # end if
+
+                if discord_id == None:
+                    await ctx.send("Error, didn't receive discord_id.", ephemeral=True)
+                    return
+                try:
+                    discord_id = int(discord_id)
+                except Exception as err:
+                    print("err 1603: ", err)
+                    print("err.args 1604: ", err.args[:])
+                    await ctx.send("Error, discord_id was not parseable as an integer.", ephemeral=True)
+                    return
+                # end try/except
+
+                if discord_id not in self.admins:
+                    await ctx.send("This discord_id is not a tweeteroo admin...Done trying to remove.", ephemeral=True)
+                    return
+                # end if
+
+                ind = self.admins.index(discord_id)
+                del self.admins[ind]
+                await ctx.send("removed discord_id from tweeteroo admins!", ephemeral=True)
+
+                with open(self.fname_admins, "w") as fid:
+                    json.dump(self.admins)
+                # end with open
+
+                await ctx.send("Saved updates to admins! All done :)", ephemeral=True)
+                return
+
+            elif sub_command in ["add_tweet_to_bounties"]:
+                if tweet_url == None and tweet_id == None:
+                    await ctx.send("Error, you must send either tweet_url or tweet_id.", ephemeral=True)
+                    return
+                elif bounty_multiplier == None:
+                    await ctx.send("Error, bounty_multiplier is required.", ephemeral=True)
+                    return
+                # end if/else
+
+                try:
+                    bounty_multiplier = int(bounty_multiplier)
+                except Exception as err:
+                    print("1733 err: ", err)
+                    print("1734 err.args: ", err.args[:])
+                    await ctx.send("Error, couldn't parse bounty_multiplier as an integer.", ephemeral=True)
+                    return
+                # end try/except
+
+                if tweet_id == None:
+                    await ctx.send("No tweet_id so going to try extracting from tweet_url.", ephemeral=True)
+
+                    if "?" in tweet_url:
+                        tweet_url = tweet_url.split("?")[0]
+                        await ctx.send("Warning, there was a '?' in that tweet_url. This is what we have now: " + str(tweet_url), ephemeral=True)
+                    # end if
+
+                    if "/" not in tweet_url:
+                        await ctx.send("Error, no '/' in tweet_url. Can't find tweet_id.", ephemeral=True)
+                        return
+                    # end if
+                    tweet_id = tweet_url.split("/")[-1]
+                    await ctx.send("This is the tweet_id we extracted from that url: " + str(tweet_id), ephemeral=True)
+                # end if
+
+                if tweet_id != None:
+                    try:
+                        tweet_id = int(tweet_id)
+                    except Exception as err:
+                        await ctx.send("Error, couldn't parse tweet_id as an integer.", ephemeral=True)
+                        return
+                    # end try/except
+
+                    if tweet_id in self.bounty_tweet_ids:
+                        await ctx.send("tweet_id: " + str(tweet_id) + " alrealy in bounty tweet ids. So we'll just adjust the multiplier", ephemeral=True)
+                        ind = self.bounty_tweet_ids.index(tweet_id)
+                        self.bounty_multipliers[ind] = bounty_multiplier
+                        await ctx.send("adjusted bounty multiplier to: " + str(self.bounty_multipliers[ind]), ephemeral=True)
+
+                        self.save_arr(self.fname_bmultipliers, self.bounty_multipliers)
+                        await ctx.send("Saved modifications to bounty multipliers", ephemeral=True)
+                        await ctx.send("All done, success :)", ephemeral=True)
+                        return
+                    else:
+                        self.bounty_tweet_ids.append(tweet_id)
+                        await ctx.send("added tweet_id: " + str(tweet_id), ephemeral=True)
+
+                        self.save_arr(self.fname_btweetIds, self.bounty_tweet_ids)
+                        await ctx.send("saved tweet_id.", ephemeral=True)
+
+                        self.bounty_multipliers.append(bounty_multiplier)
+                        await ctx.send("added bounty_multiplier: " + str(bounty_multiplier), ephemeral=True)
+
+                        self.save_arr(self.fname_bmultipliers, self.bounty_multipliers)
+                        await ctx.send("saved bounty_multiplier.", ephemeral=True)
+                        await ctx.send("All done, success :)", ephemeral=True)
+                    # end if/else
+                # end if
 
             elif sub_command in ["stats","stat"]:
                 if username == None:
