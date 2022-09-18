@@ -18,7 +18,7 @@ class Stream(Tweeteroo2):
 
     self.url_base = "https://api.twitter.com/2/tweets/search/stream"
     self.url = self.url_base + "?user.fields=username&expansions=author_id" \
-                             + "&tweet.fields=created_at,public_metrics"
+                             + "&tweet.fields=created_at,public_metrics,conversation_id"
     self.start = time.time()
   # end __init__
 

@@ -164,6 +164,9 @@ class Tweeteroo2(object):
         self.admins             = self.load_arr(self.fname_admins)
         self.bounty_multipliers = self.load_arr(self.fname_bmultipliers)
         self.bounty_tweet_ids   = self.load_arr(self.fname_btweetIds)
+
+        print("self.admins: ", self.admins)
+        print("self.bounty_tweet_ids: ", self.bounty_tweet_ids)
     # end init_admins
 
     def load_arr(self, fname):
@@ -179,7 +182,7 @@ class Tweeteroo2(object):
     def save_arr(self, fname, arr):
         print("saving fname: ", fname)
         with open(fname, "w") as fid:
-            json.dump(arr)
+            json.dump(arr, fid)
         # end with
     # end save_arr
 
@@ -732,6 +735,7 @@ class Tweeteroo2(object):
                 if tweet_id in self.bounty_tweet_ids:
                     ind = self.bounty_tweet_ids.index(tweet_id)
                     multiplier = self.bounty_multipliers[ind]
+                    print("applying multiplier of: " + str(multiplier) + " for tweet_id: " + str(tweet_id))
                 # end if
 
                 usernames_f = []
@@ -1424,6 +1428,7 @@ class Tweeteroo2(object):
                         # end if
                         tweet_id = line["data"]["id"]
                         tuid     = line["data"]["author_id"]
+                        og_twid  = line["data"]["conversation_id"]
                         text     = line["data"]["text"].lower()
                         date     = line["data"]["created_at"]
                         date_s   = str(self.get_tweet_time_s(date))
@@ -1464,13 +1469,27 @@ class Tweeteroo2(object):
                         # end for
 
                         multiplier = 1
-                        if tweet_id in self.bounty_tweet_ids:
-                            ind = self.bounty_tweet_ids.index(tweet_id)
+                        try:
+                            og_twid = int(og_twid)
+                        except Exception as err:
+                            print("1476 err: ", err)
+                            print("1477 err: ", err.args[:])
+                            print("couldn't make og_twid an int")
+                        # end try/except
+
+                        if og_twid in self.bounty_tweet_ids:
+                            ind = self.bounty_tweet_ids.index(og_twid)
                             multiplier = self.bounty_multipliers[ind]
+                            print("applying multiplier of: " + str(multiplier) + " for tweet_id: " + str(tweet_id))
+                        else:
+                            print("tweet_id not in self.bounty_tweet_ids")
+                            print("tweet_id: ", tweet_id)
+                            print("og_twid: ", og_twid)
+                            print("self.bounty_tweet_ids: ", self.bounty_tweet_ids)
                         # end if
 
                         for mm in range(multiplier):
-                            new_tweet_id = tweet_id + ""
+                            new_tweet_id = str(tweet_id) + ""
                             if mm > 0:
                                 new_tweet_id += 12*"0" + str(mm)
                             # end if
@@ -1748,7 +1767,7 @@ class Tweeteroo2(object):
                 return
 
             elif sub_command in ["add_tweet_to_bounties"]:
-                if discord_id not in self.admins:
+                if int(ctx.author.id) not in self.admins:
                     await ctx.send("Error, must be a tweeteroo admin to use this function.", ephemeral=True)
                     return
                 # end if
