@@ -1,6 +1,16 @@
-washington
+seattle
+Spokane
 oregon
+Portland
 idaho
+Boise
 montana
+Bozeman
+Billings
+Missoula
+Great Falls
 wyoming
 alaska
+Anchorage
+Juneau
+Fairbanks
