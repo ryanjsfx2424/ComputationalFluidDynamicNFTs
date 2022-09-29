@@ -1,8 +1,21 @@
 colorado
+Denver
+Colorado Springs
+Aspen
 northdakota
+Bismarck
+Fargo
+Minot
 southdakota
+Sioux Falls
 nebraska
+Omaha
 kansas
+Wichita
 minnesota
+Minneapolis
 iowa
+Des Moines
 missouri
+St. Louis
+Kansas City
