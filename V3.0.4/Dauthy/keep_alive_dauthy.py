@@ -16,7 +16,7 @@ while True:
   if "ScrapeTweets_server.py" not in line:
     print("Tweeteroo not running?")
 
-  if "dauthy.py" not in line:
+  if " dauthy.py" not in line:
     print("dauthy not running?")
     dcnt += 1
     result = os.system("nohup python3 -u dauthy.py > logfile" + str(dcnt) + ".txt 2>&1 &")
