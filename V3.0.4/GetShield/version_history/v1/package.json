@@ -1,0 +1,39 @@
+{
+  "name": "getshield",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd client && yarn start",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+  },
+  "type": "commonjs",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@alch/alchemy-web3": "^1.4.4",
+    "@chainsafe/dappeteer": "^3.0.0-rc.0",
+    "@nibbstack/erc721-validator": "^0.3.1",
+    "axios": "^0.27.2",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "csv": "^6.1.5",
+    "csv-parse": "^5.2.2",
+    "csv-writer": "^1.6.0",
+    "evm": "^0.2.0",
+    "express": "^4.18.1",
+    "perfy": "^1.1.5",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
+    "puppeteer": "^15.5.0",
+    "sequelize": "^6.21.2",
+    "web3": "^1.7.4"
+  },
+  "devDependencies": {
+    "concurrently": "^4.0.1",
+    "nodemon": "^1.19.4",
+    "sequelize-cli": "^6.4.1"
+  }
+}

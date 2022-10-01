@@ -1,0 +1,18 @@
+{
+  "name": "nftspaces",
+  "version": "1.0.0",
+  "description": "v0-0-1 just listed a few twitter spaces. v0-0-2 will let users add a space to the list.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "TheLunaLabs",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "engines": {
+    "node": "16.x"
+  }
+}

@@ -1,0 +1,200 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="/">
+  <link rel="stylesheet" type="text/css" href="output.css" >
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+    <div id="bodyDiv" class="flex items-center justify-center h-screen bg-discord-gray text-white flex-col">
+        <div class="text-2xl">Welcome to the dashboard,</div>
+        <div class="text-4xl mt-3 flex items-center font-medium" >
+            <img src='' id="avatar" class="rounded-full w-12 h-12 mr-3"/>
+            <div id="name"></div>
+        </div>
+        <a href="/" class="text-sm mt-5">Logout</a>
+
+        <div class="card-deck">
+            <div class="card">
+              <img class="card-img-top" src="../test_card2.svg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+            <div class="card">
+              <img class="card-img-top" src="../test_card2.svg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+            <div class="card">
+              <img class="card-img-top" src="../test_card2.svg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+          </div>
+
+
+
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+<script>
+  window.onload = () => {
+    const fragment = new URLSearchParams(window.location.hash.slice(1));
+    const [accessToken, tokenType] = [fragment.get('access_token'), fragment.get('token_type')];
+    const ABE_INVITE_LINK = "https://discord.com/oauth2/authorize?client_id=1014177171008409660&permissions=19456&scope=bot";
+
+    if (!accessToken) {
+        window.location.href('/')
+    }
+
+    fetch('https://discord.com/api/users/@me', {
+    headers: {
+        authorization: `${tokenType} ${accessToken}`,
+    },
+    })
+    .then(result => result.json())
+    .then(response => {
+        console.log(response);
+        const { username, discriminator, avatar, id} = response;
+        //set the welcome username string
+        document.getElementById('name').innerText = ` ${username}#${discriminator}`;
+
+        //set the avatar image by constructing a url to access discord's cdn
+        document.getElementById("avatar").src = `https://cdn.discordapp.com/avatars/${id}/${avatar}.jpg`;
+    })
+    .catch("44 ", console.error);
+
+    fetch('https://discord.com/api/users/@me/guilds', {
+        headers: {
+        authorization: `${tokenType} ${accessToken}`,
+    },
+    })
+    .then(result => result.json())
+    .then(response => {
+        console.log(response);
+        console.log("resp0: ", response[0]);
+        console.log("resp45: ", response[45]); // ToTheMoons
+        console.log("resp47: ", response[47]); // Arbitunities
+        console.log("resp68: ", response[68]); // Knightscastle
+        console.log("resp70: ", response[70]); // Roo Tech   
+        console.log("resp73: ", response[73]); // Test  
+        console.log("resp75: ", response[75]); // Bountiful       
+        //set the welcome username string
+
+        let flag = false;
+        for (ii in response) {
+            let responseVal = response[ii];
+            if (responseVal.owner || responseVal.permissions & 0x8 || responseVal.permissions & 0x20) {
+                flag = true;
+                let isOwner;
+                if (responseVal.owner) {
+                    isOwner = true;
+                } else {
+                    isOwner = false;
+                }
+
+                let guildId = responseVal.id;
+                let guildIcon = responseVal.icon;
+                let guildName = responseVal.name;
+
+                console.log("window innerWdith: ", window.innerWidth);
+                console.log("document.body.clientWidth: ", document.body.clientWdith);
+                let width = window.innerWidth || document.body.clientWidth || 400;
+                console.log("width: ", width);
+                if (width > 0) {
+                    // desktop only supported for now and we'll do 3 wide, maybe 4 wide
+                    let elem = document.getElementById("bodyDiv");
+                    let guildIconDiv = document.createElement("div");
+
+                    guildIconDiv.style.background = 'url(https://cdn.discordapp.com/icons/' + responseVal.id + "/" + responseVal.icon + ".jpg) center center / cover no-repeat";
+                    guildIconDiv.style.transform = "scale(1.4)";
+                    guildIconDiv.style.filter = "blur(10px)";
+                    guildIconDiv.style.opacity = "0.3";
+                    guildIconDiv.setAttribute("id", "guildIconDiv" + ii);
+                    guildIconDiv.style.position = "absolute";
+                    guildIconDiv.style.zIndex = "1";
+
+                    let guildNameP = document.createElement("p");
+                    guildNameP.style.marginTop = "20px";
+                    guildNameP.style.marginBottom = "5px";
+                    guildNameP.innerHTML = guildName;
+
+                    let guildPfpImg = document.createElement("img");
+                    guildPfpImg.src = "https://cdn.discordapp.com/icons/" + responseVal.id + "/" + responseVal.icon + ".jpg";
+                    guildPfpImg.style.height   = "120px";
+                    guildPfpImg.style.width    = "120px";
+                    guildPfpImg.style.border   = "2px solid rgb(242, 244, 251)";
+                    guildPfpImg.style.borderRadius = "100%";
+                    guildPfpImg.style.filter   = "drop-shadow(rgba(0, 0, 0, 0.16) 0px 32px 72px)";
+
+                    let addGuildBtn = document.createElement("a");
+                    addGuildBtn.href = ABE_INVITE_LINK + "&guild_id=" + guildId;
+                    addGuildBtn.innerHTML = "Add";
+                    addGuildBtn.classList.add("addBotBtn");
+
+                    let settingsBtn = document.createElement("a");
+                    settingsBtn.href = "http://localhost:3000/dashboard/" + guildId;
+                    settingsBtn.innerHTML = "Settings";
+                    settingsBtn.classList.add("addBotBtn");
+
+
+                    if (ii % 3 === 0) {
+                        console.log("0th");
+                    } else if (ii % 3 === 1) {
+                        console.log("1th");
+                        guildIconDiv.style.left = "0px";
+                        guildPfpImg.style.left  = "0px";
+                        guildNameP.style.left   = "0px";
+                        addGuildBtn.style.left  = "0px";
+                    } else {
+                        console.log("2th");
+                        guildIconDiv.style.right = "0px";
+                        guildPfpImg.style.right  = "0px";
+                        guildNameP.style.right   = "0px";
+                        addGuildBt.style.right   = "0px";
+                        break
+                    }
+
+
+                    // elem.appendChild(guildNameP);
+                    // elem.appendChild(addGuildBtn);
+                    // elem.appendChild(settingsBtn);
+                    // elem.appendChild(guildPfpImg);
+                }
+            }
+        }
+        if (!flag) {
+            let elem = document.getElementById("bodyDiv");
+            console.log("elem: ", elem);
+            let errorText1 = document.createElement("p");
+            errorText1.innerHTML = "<h2>Oh oh! You're not the owner / admin / guild manager of any discord servers :*(</h2>";
+            let errorText2 = document.createElement("p");
+            errorText2.innerHTML = "<h2>Try connecting to another account?</h2>"
+            elem.appendChild(errorText1);
+            elem.appendChild(errorText2);
+        }
+    })
+    .catch("94 ", console.error);
+};
+</script>
+
+
+</body>
+</html>

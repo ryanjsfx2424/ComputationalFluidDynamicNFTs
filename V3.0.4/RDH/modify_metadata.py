@@ -2,7 +2,7 @@
 import os
 
 base = os.getcwd()
-newdir = "json2"
+newdir = "json3"
 os.system("mkdir -p " + base + "/" + newdir)
 os.chdir(base + "/json")
 
@@ -22,7 +22,15 @@ for ii in range(1,5555+1):
 
   old_cid = "QmYhGAkzMWmqB3BUzDsAXifHtatrXbtGPjYQNGr6srttDT"
   new_cid = "bafybeifxvxx3uegxmddht6s54jlxnp5rnxqbt4szp3r2e6tetpjxcfkici"
+  new_cid = "bafybeifxvxx3uegxmddht6s54jlxnp5rnxqbt4szp3r2e6tetpjxcfkici"
   lines[3] = lines[3].replace(old_cid, new_cid)
+
+  #lines[1] = lines[1].split(":")[0] + ': "Walking dark elves",\n'
+  #lines[2] = lines[2].split(":")[0] + ': "",\n'
+
+  lines[1] = lines[1].replace("Rekted diamond Hands", "RDHA")
+  lines[2] = lines[2].replace("5,555", "2,222")
+  lines[2] = lines[2].replace("RDH", "RDHA")
 
   if len(lines) > 18:
     lines[18] = lines[18].replace("Diamond Cry","Diamond Cry Eyes")
@@ -49,66 +57,6 @@ for ii in range(1,5555+1):
     cnt = reg_cnt
     fname = base + "/" + newdir + "/" + str(reg_cnt) + ".json"
   # end if/elifs/else
-
-  '''
-  if "Diamond Cry Eyes" in line and "Diamond Head" in line:
-    print("doubled up!1")
-    print("ii: ", ii)
-    sys.exit()
-  if "Diamond Eyes" in line and "Diamond Head" in line:
-    print("doubled up!1")
-    print("ii: ", ii)
-    sys.exit()
-
-  if "Crown" in line and "Gold Diamond" in line:
-    print("doubled up!1")
-    print("ii: ", ii)
-    sys.exit()
-  elif "Crown" in line and "Diamond Tshirt" in line:
-    print("doubled up!2")
-    print("ii: ", ii)
-    sys.exit()
-  elif"Gold Diamond" in line and "Diamond Tshirt" in line:
-    print("doubled up!3")
-    print("ii: ", ii)
-    sys.exit()
-  elif "Crown" in line and "Diamond Cry Eyes" in line:
-    print("doubled up!4")
-    print("ii: ", ii)
-    sys.exit()
-  elif "Crown" in line and "Diamond Eyes" in line:
-    print("doubled up!5")
-    print("ii: ", ii)
-    sys.exit()
-  elif "Crown" in line and "Diamond Head" in line:
-    print("doubled up!6")
-    print("ii: ", ii)
-    sys.exit()
-  elif "Gold Diamond" in line and "Diamond Cry Eyes" in line:
-    print("doubled up!7")
-    print("ii: ", ii)
-    sys.exit()
-  elif "Gold Diamond" in line and "Diamond Eyes" in line:
-    print("doubled up!8")
-    print("ii: ", ii)
-    sys.exit()
-  elif "Gold Diamond" in line and "Diamond Head" in line:
-    print("doubled up!9")
-    print("ii: ", ii)
-    sys.exit()
-  elif "Diamond Tshirt" in line and "Diamond Cry Eyes" in line:
-    print("doubled up!7")
-    print("ii: ", ii)
-    sys.exit()
-  elif "Diamond Tshirt" in line and "Diamond Eyes" in line:
-    print("doubled up!8")
-    print("ii: ", ii)
-    sys.exit()
-  elif "Diamond Tshirt" in line and "Diamond Head" in line:
-    print("doubled up!9")
-    print("ii: ", ii)
-    sys.exit()
-  '''
 
   lines[1] = lines[1].split("#")[0] + "#" + str(cnt) + '",\n'
   line = "".join(lines)

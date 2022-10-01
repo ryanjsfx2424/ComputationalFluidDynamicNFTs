@@ -96,8 +96,8 @@ class Tribulator(object):
         print("BEGIN init_webscraper class Tribulator")
 
         self.options = Options()
-        self.options.headless = True
-        #self.options.headless = False
+        #self.options.headless = True
+        self.options.headless = False
 
         self.exec_path = "/root/ComputationalFluidDynamicNFTs/V3.0.4/TransferAlerts/geckodriver_linux"
         if socket.gethostname() == "MB-145.local":

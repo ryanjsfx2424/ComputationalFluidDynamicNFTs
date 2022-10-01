@@ -1,0 +1,4 @@
+v0-0-1 just listed a few twitter spaces.
+v0-0-2 will let users add a space to the list. Actually it just
+       got it running as a node app and deployed on heroku.
+v0-0-3 will let users add a space to the list.

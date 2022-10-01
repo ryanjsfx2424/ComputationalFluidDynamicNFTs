@@ -149,3 +149,17 @@ rc13t.sol:
 
 merkleRoot:
 0x35fe98c8bd405d61810e6b9e8c50f1e9abcad6e5ecb80dd351eb4dde2636b088
+
+merkleRoot including lowercase account 2 address firefox new mac:
+0x494146f20707a4d03742e254d655a6e4d6cafcda06b0ad21a8db27721ed09c5d
+===
+rc14.sol:
+0xa1e04354929992b9eec85ca8269c91a089244215
+
+rc14t.sol:
+0xBeD9d7746A5def293dbA90098352c7552c93425C
+
+metadata for origo genesis:
+ipfs://bafybeihdbeqpvdcgivbofryqvabbg25sijur4pyd6uwuymcmnyu2jvhucu/
+
+ipfs://bafybeihcdoqey7r3x76olkkqm65aq62vupbxmqejr73lkzotscixutlzuq/
