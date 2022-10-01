@@ -55,7 +55,7 @@
 <link rel="alternate" type="application/rss+xml" title="Secret Flying &raquo; Comments Feed" href="https://www.secretflying.com/comments/feed/" />
 <meta property="og:image" content="https://www.secretflying.com/wp-content/themes/snews/images/no_thumb.png" />
 <script type="text/javascript">
-			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.secretflying.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.20"}};
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.secretflying.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.21"}};
 			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])?!1:!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([55358,56760,9792,65039],[55358,56760,8203,9792,65039])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
 		</script>
 <style type="text/css">
@@ -72,12 +72,12 @@ img.emoji {
 	padding: 0 !important;
 }
 </style>
-<link rel='stylesheet' id='ihc_font_style-css' href='https://www.secretflying.com/wp-content/plugins/indeed-membership-pro/assets/css/font-awesome.css?ver=4.9.20' type='text/css' media='all' />
-<link rel='stylesheet' id='ihc_front_end_style-css' href='https://www.secretflying.com/wp-content/plugins/indeed-membership-pro/assets/css/style.css?ver=4.9.20' type='text/css' media='all' />
-<link rel='stylesheet' id='ihc_templates_style-css' href='https://www.secretflying.com/wp-content/plugins/indeed-membership-pro/assets/css/templates.css?ver=4.9.20' type='text/css' media='all' />
-<link rel='stylesheet' id='ihc_select2_style-css' href='https://www.secretflying.com/wp-content/plugins/indeed-membership-pro/assets/css/select2.min.css?ver=4.9.20' type='text/css' media='all' />
+<link rel='stylesheet' id='ihc_font_style-css' href='https://www.secretflying.com/wp-content/plugins/indeed-membership-pro/assets/css/font-awesome.css?ver=4.9.21' type='text/css' media='all' />
+<link rel='stylesheet' id='ihc_front_end_style-css' href='https://www.secretflying.com/wp-content/plugins/indeed-membership-pro/assets/css/style.css?ver=4.9.21' type='text/css' media='all' />
+<link rel='stylesheet' id='ihc_templates_style-css' href='https://www.secretflying.com/wp-content/plugins/indeed-membership-pro/assets/css/templates.css?ver=4.9.21' type='text/css' media='all' />
+<link rel='stylesheet' id='ihc_select2_style-css' href='https://www.secretflying.com/wp-content/plugins/indeed-membership-pro/assets/css/select2.min.css?ver=4.9.21' type='text/css' media='all' />
 <link rel='stylesheet' id='mc4wp-form-basic-css' href='https://www.secretflying.com/wp-content/plugins/mailchimp-for-wp/assets/css/form-basic.min.css?ver=4.8.1' type='text/css' media='all' />
-<link rel='stylesheet' id='parent-style-css' href='https://www.secretflying.com/wp-content/themes/snews/style.css?ver=4.9.20' type='text/css' media='all' />
+<link rel='stylesheet' id='parent-style-css' href='https://www.secretflying.com/wp-content/themes/snews/style.css?ver=4.9.21' type='text/css' media='all' />
 <link rel='stylesheet' id='bootstrap-css' href='https://www.secretflying.com/wp-content/themes/snews/css/bootstrap.min.css?ver=all' type='text/css' media='all' />
 <link rel='stylesheet' id='style-css' href='https://www.secretflying.com/wp-content/themes/snews-child/style.css?ver=all' type='text/css' media='all' />
 <link rel='stylesheet' id='snews-less-css' href='https://www.secretflying.com/wp-content/themes/snews/css/less.css?ver=all' type='text/css' media='all' />
@@ -425,18 +425,18 @@ var ihc_site_url = "https:\/\/www.secretflying.com";
 <script type='text/javascript' src='https://www.secretflying.com/wp-content/plugins/indeed-membership-pro/assets/js/functions.js'></script>
 <script type='text/javascript' src='https://www.secretflying.com/wp-content/plugins/indeed-membership-pro/assets/js/printThis.js'></script>
 <!--[if lt IE 9]>
-<script type='text/javascript' src='https://www.secretflying.com/wp-content/themes/snews/js/html5.js?ver=4.9.20'></script>
+<script type='text/javascript' src='https://www.secretflying.com/wp-content/themes/snews/js/html5.js?ver=4.9.21'></script>
 <![endif]-->
 <!--[if lt IE 9]>
-<script type='text/javascript' src='https://www.secretflying.com/wp-content/themes/snews/js/respond.min.js?ver=4.9.20'></script>
+<script type='text/javascript' src='https://www.secretflying.com/wp-content/themes/snews/js/respond.min.js?ver=4.9.21'></script>
 <![endif]-->
 <!--[if lt IE 9]>
-<script type='text/javascript' src='https://www.secretflying.com/wp-content/themes/snews/js/modernizr.js?ver=4.9.20'></script>
+<script type='text/javascript' src='https://www.secretflying.com/wp-content/themes/snews/js/modernizr.js?ver=4.9.21'></script>
 <![endif]-->
 <link rel='https://api.w.org/' href='https://www.secretflying.com/wp-json/' />
 <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.secretflying.com/xmlrpc.php?rsd" />
 <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.secretflying.com/wp-includes/wlwmanifest.xml" />
-<meta name="generator" content="WordPress 4.9.20" />
+<meta name="generator" content="WordPress 4.9.21" />
 <link rel='shortlink' href='https://www.secretflying.com/' />
 <link rel="alternate" type="application/json+oembed" href="https://www.secretflying.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.secretflying.com%2F" />
 <link rel="alternate" type="text/xml+oembed" href="https://www.secretflying.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.secretflying.com%2F&#038;format=xml" />
@@ -466,6 +466,58 @@ body {font-size:15px }</style>
 </script>
 
 <style>
+.bkm_title{
+    padding:20px 0 30px;
+}
+@media screen and (max-width:767px){
+    #bkmrkPost{
+        float:left;
+        height: 30px;
+        margin-top: 12px;
+        margin-right: 17px;
+    }
+    .bkm_title {
+        padding: 7px 0 5px;
+    }
+    .bkm_title h3{
+        font-size: 16px;
+    }
+}
+@media (max-width: 570px){
+    
+    .ihc-user-page-top-ap-wrapper {
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+    .ihc-ap-theme-1 .ihc-ap-wrap{
+        margin-top:0;
+    }
+    #content{
+        margin-top:35px !important;
+    }
+    .ihc-user-page-top-ap-wrapper .ihc-account-page-top-mess div{
+        margin-bottom:0;
+    }
+    .ihc-user-page-top-ap-wrapper .ihc-account-page-top-mess{
+        padding-left: 0px;
+        margin-top: 3px;
+    }
+    div#main {
+        margin-top: -70px;
+    }
+}
+.post .entry-details span.entry-posted-on{
+    float:right;
+}
+input#bkmrk_btn1 {
+    padding-left: 0;
+}
+.single .post .entry-details-single-header{
+    padding: 0px 22px;
+}
+.dlt_btn{
+    border: 0px solid red;
+}
 .single .entry-details-single-header .snews-cat{display:none;}.entry-header .entry-title{
     font-size: 26px;
 }
@@ -1142,6 +1194,7 @@ opacity:0.1;
 }
 .btn_option:hover,.btn_type5:hover{
     filter:brightness(0.9);
+    background-color: #000;
     color:#fff;
 }
 .btn_type5:active {
@@ -1151,7 +1204,7 @@ opacity:0.1;
     color:#fff;
 }
 .btn_normal {
-    background-color: #1d9c43;
+    background-color: #64c7df;
     color: #fff;
 }
 .menu-toggle{
@@ -3308,7 +3361,7 @@ jQuery('#input-month').selectize({
 	maxOptions:50,
 	maxItems:50,
 	highlight:false,
-	options: [{title:'August 2022',val:'August 2022',sort:1},{title:'September 2022',val:'September 2022',sort:2},{title:'October 2022',val:'October 2022',sort:3},{title:'November 2022',val:'November 2022',sort:4},{title:'December 2022',val:'December 2022',sort:5},{title:'January 2023',val:'January 2023',sort:6},{title:'February 2023',val:'February 2023',sort:7},{title:'March 2023',val:'March 2023',sort:8},{title:'April 2023',val:'April 2023',sort:9},{title:'May 2023',val:'May 2023',sort:10},{title:'June 2023',val:'June 2023',sort:11},{title:'July 2023',val:'July 2023',sort:12},{title:'August 2023',val:'August 2023',sort:13}]
+	options: [{title:'September 2022',val:'September 2022',sort:1},{title:'October 2022',val:'October 2022',sort:2},{title:'November 2022',val:'November 2022',sort:3},{title:'December 2022',val:'December 2022',sort:4},{title:'January 2023',val:'January 2023',sort:5},{title:'February 2023',val:'February 2023',sort:6},{title:'March 2023',val:'March 2023',sort:7},{title:'April 2023',val:'April 2023',sort:8},{title:'May 2023',val:'May 2023',sort:9},{title:'June 2023',val:'June 2023',sort:10},{title:'July 2023',val:'July 2023',sort:11},{title:'August 2023',val:'August 2023',sort:12},{title:'September 2023',val:'September 2023',sort:13}]
 
 });
 
@@ -3998,7 +4051,7 @@ var intv1 = setInterval(showNextDealForWidget,10000);
 </div> 
 <article class="article-content-wrapper hentry snews-category-widget-hentry" style="">
 <div class="entry-img">
-<a href="https://www.secretflying.com/posts/new-york-to-cartagena-colombia-for-only-243-roundtrip/" target="_blank" title="🔥 New York to Cartagena, Colombia for only $286 roundtrip (Nov-May dates)"><a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=USD&amp;market=US&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=NYCA&amp;destination=CTG&amp;inboundDate=20230517&amp;outboundDate=20230510&amp;rtn=1" id="a3593907"></a><a href="https://www.secretflying.com/posts/new-york-to-cartagena-colombia-for-only-243-roundtrip/" onclick="setTimeout(function(){document.getElementById('a3593907').click();},3000);" target="_blank" title="🔥 New York to Cartagena, Colombia for only $286 roundtrip (Nov-May dates)"><img width="410" height="300" src="https://www.secretflying.com/wp-content/uploads/2017/12/cartagena-5-410x300.jpg" class="attachment-snews-loop size-snews-loop wp-post-image" alt="🔥 New York to Cartagena, Colombia for only $286 roundtrip (Nov-May dates)" title="🔥 New York to Cartagena, Colombia for only $286 roundtrip (Nov-May dates)" srcset="https://www.secretflying.com/wp-content/uploads/2017/12/cartagena-5-410x300.jpg 410w, https://www.secretflying.com/wp-content/uploads/2017/12/cartagena-5-234x171.jpg 234w" sizes="(max-width: 410px) 100vw, 410px" /></a></a><div class="spacial-icons-container"></div>
+<a href="https://www.secretflying.com/posts/miami-or-chicago-to-dubai-uae-from-only-421-roundtrip/" target="_blank" title="🔥 Miami or Chicago to Dubai, UAE from only $421 roundtrip (Oct-May dates)"><a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=USD&amp;market=US&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=MIA&amp;destination=DXBA&amp;inboundDate=20230327&amp;outboundDate=20230320&amp;rtn=1" id="a7498886"></a><a href="https://www.secretflying.com/posts/miami-or-chicago-to-dubai-uae-from-only-421-roundtrip/" onclick="setTimeout(function(){document.getElementById('a7498886').click();},3000);" target="_blank" title="🔥 Miami or Chicago to Dubai, UAE from only $421 roundtrip (Oct-May dates)"><img width="410" height="300" src="https://www.secretflying.com/wp-content/uploads/2019/10/dubai-15-410x300.jpg" class="attachment-snews-loop size-snews-loop wp-post-image" alt="🔥 Miami or Chicago to Dubai, UAE from only $421 roundtrip (Oct-May dates)" title="🔥 Miami or Chicago to Dubai, UAE from only $421 roundtrip (Oct-May dates)" srcset="https://www.secretflying.com/wp-content/uploads/2019/10/dubai-15-410x300.jpg 410w, https://www.secretflying.com/wp-content/uploads/2019/10/dubai-15-234x171.jpg 234w" sizes="(max-width: 410px) 100vw, 410px" /></a></a><div class="spacial-icons-container"></div>
 <style>
 			    #content h3.entry-title{
 			        margin-top:6px;
@@ -4012,21 +4065,21 @@ var intv1 = setInterval(showNextDealForWidget,10000);
 			    }
 			</style>
 <div class="entry-details-item entry-posted-on">
-<a href="https://www.secretflying.com/posts/new-york-to-cartagena-colombia-for-only-243-roundtrip/" target="_blank" title="10:32 am" rel="bookmark"><time class="entry-date snews-font" datetime="2022-08-13T10:32:14+00:00">August 13, 2022</time></a> </div>
+<a href="https://www.secretflying.com/posts/miami-or-chicago-to-dubai-uae-from-only-421-roundtrip/" target="_blank" title="10:55 pm" rel="bookmark"><time class="entry-date snews-font" datetime="2022-09-28T22:55:37+00:00">September 28, 2022</time></a> </div>
 </div>
 <div class="entry-block ">
 <h3 class="entry-title">
-<a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=USD&amp;market=US&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=NYCA&amp;destination=CTG&amp;inboundDate=20230517&amp;outboundDate=20230510&amp;rtn=1" id="a3136511"></a>
-<a href="https://www.secretflying.com/posts/new-york-to-cartagena-colombia-for-only-243-roundtrip/" title="🔥 New York to Cartagena, Colombia for only $286 roundtrip (Nov-May dates)" onclick="setTimeout(function(){document.getElementById('a3136511').click();},3000);" target="_blank">🔥 New York to Cartagena, Colombia for only $286 roundtrip (Nov-May dates)</a>
+<a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=USD&amp;market=US&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=MIA&amp;destination=DXBA&amp;inboundDate=20230327&amp;outboundDate=20230320&amp;rtn=1" id="a2976837"></a>
+<a href="https://www.secretflying.com/posts/miami-or-chicago-to-dubai-uae-from-only-421-roundtrip/" title="🔥 Miami or Chicago to Dubai, UAE from only $421 roundtrip (Oct-May dates)" onclick="setTimeout(function(){document.getElementById('a2976837').click();},3000);" target="_blank">🔥 Miami or Chicago to Dubai, UAE from only $421 roundtrip (Oct-May dates)</a>
 </h3>
 <p>
-Cheap flights from New York to Cartagena, Colombia for only $286 roundtrip with Copa Airlines. </p>
+Cheap flights from Miami or Chicago to Dubai, UAE from only $421 roundtrip with Qatar Airways. </p>
 </div>
 <div class="clear"></div>
 </article>
 <article class="article-content-wrapper hentry snews-category-widget-hentry" style="display:none;">
 <div class="entry-img">
-<a href="https://www.secretflying.com/posts/uk-cities-to-melbourne-florida-from-only-179-roundtrip/" target="_blank" title="🔥 Non-stop from UK cities to Melbourne, Florida from only £179 roundtrip (Aug-Sep dates)"><a href="https://www.skyscanner.net/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=GBP&amp;market=UK&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=MAN&amp;destination=MLB&amp;inboundDate=20220913&amp;outboundDate=20220830&amp;rtn=1" id="a3287088"></a><a href="https://www.secretflying.com/posts/uk-cities-to-melbourne-florida-from-only-179-roundtrip/" onclick="setTimeout(function(){document.getElementById('a3287088').click();},3000);" target="_blank" title="🔥 Non-stop from UK cities to Melbourne, Florida from only £179 roundtrip (Aug-Sep dates)"><img width="410" height="273" src="https://www.secretflying.com/wp-content/uploads/2015/09/orlando-3.jpg" class="attachment-snews-loop size-snews-loop wp-post-image" alt="🔥 Non-stop from UK cities to Melbourne, Florida from only £179 roundtrip (Aug-Sep dates)" title="🔥 Non-stop from UK cities to Melbourne, Florida from only £179 roundtrip (Aug-Sep dates)" srcset="https://www.secretflying.com/wp-content/uploads/2015/09/orlando-3.jpg 1732w, https://www.secretflying.com/wp-content/uploads/2015/09/orlando-3-300x200.jpg 300w, https://www.secretflying.com/wp-content/uploads/2015/09/orlando-3-1024x683.jpg 1024w, https://www.secretflying.com/wp-content/uploads/2015/09/orlando-3-600x400.jpg 600w" sizes="(max-width: 410px) 100vw, 410px" /></a></a><div class="spacial-icons-container"></div>
+<a href="https://www.secretflying.com/posts/seville-or-alicante-spain-to-morocco-from-only-e8-roundtrip/" target="_blank" title="🔥 Seville or Alicante, Spain to Morocco from only €8 roundtrip (Oct dates)"><a href="https://www.skyscanner.ie/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=EUR&amp;market=IE&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=SVQ&amp;destination=OUD&amp;inboundDate=20221026&amp;outboundDate=20221019&amp;rtn=1" id="a3963635"></a><a href="https://www.secretflying.com/posts/seville-or-alicante-spain-to-morocco-from-only-e8-roundtrip/" onclick="setTimeout(function(){document.getElementById('a3963635').click();},3000);" target="_blank" title="🔥 Seville or Alicante, Spain to Morocco from only €8 roundtrip (Oct dates)"><img width="410" height="300" src="https://www.secretflying.com/wp-content/uploads/2019/05/agadir-4-410x300.jpg" class="attachment-snews-loop size-snews-loop wp-post-image" alt="🔥 Seville or Alicante, Spain to Morocco from only €8 roundtrip (Oct dates)" title="🔥 Seville or Alicante, Spain to Morocco from only €8 roundtrip (Oct dates)" srcset="https://www.secretflying.com/wp-content/uploads/2019/05/agadir-4-410x300.jpg 410w, https://www.secretflying.com/wp-content/uploads/2019/05/agadir-4-234x171.jpg 234w" sizes="(max-width: 410px) 100vw, 410px" /></a></a><div class="spacial-icons-container"></div>
 <style>
 			    #content h3.entry-title{
 			        margin-top:6px;
@@ -4040,21 +4093,21 @@ Cheap flights from New York to Cartagena, Colombia for only $286 roundtrip with 
 			    }
 			</style>
 <div class="entry-details-item entry-posted-on">
-<a href="https://www.secretflying.com/posts/uk-cities-to-melbourne-florida-from-only-179-roundtrip/" target="_blank" title="8:32 am" rel="bookmark"><time class="entry-date snews-font" datetime="2022-08-13T08:32:49+00:00">August 13, 2022</time></a> </div>
+<a href="https://www.secretflying.com/posts/seville-or-alicante-spain-to-morocco-from-only-e8-roundtrip/" target="_blank" title="2:49 pm" rel="bookmark"><time class="entry-date snews-font" datetime="2022-09-27T14:49:21+00:00">September 27, 2022</time></a> </div>
 </div>
 <div class="entry-block ">
 <h3 class="entry-title">
-<a href="https://www.skyscanner.net/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=GBP&amp;market=UK&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=MAN&amp;destination=MLB&amp;inboundDate=20220913&amp;outboundDate=20220830&amp;rtn=1" id="a4084262"></a>
-<a href="https://www.secretflying.com/posts/uk-cities-to-melbourne-florida-from-only-179-roundtrip/" title="🔥 Non-stop from UK cities to Melbourne, Florida from only £179 roundtrip (Aug-Sep dates)" onclick="setTimeout(function(){document.getElementById('a4084262').click();},3000);" target="_blank">🔥 Non-stop from UK cities to Melbourne, Florida from only £179 roundtrip (Aug-Sep dates)</a>
+<a href="https://www.skyscanner.ie/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=EUR&amp;market=IE&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=SVQ&amp;destination=OUD&amp;inboundDate=20221026&amp;outboundDate=20221019&amp;rtn=1" id="a4739477"></a>
+<a href="https://www.secretflying.com/posts/seville-or-alicante-spain-to-morocco-from-only-e8-roundtrip/" title="🔥 Seville or Alicante, Spain to Morocco from only €8 roundtrip (Oct dates)" onclick="setTimeout(function(){document.getElementById('a4739477').click();},3000);" target="_blank">🔥 Seville or Alicante, Spain to Morocco from only €8 roundtrip (Oct dates)</a>
 </h3>
 <p>
-Non-stop flights from UK cities to Melbourne, Florida from only £179 roundtrip. </p>
+Non-stop flights from Seville or Alicante, Spain to Oujda or Agadir, Morocco from only €8 roundtrip. </p>
 </div>
 <div class="clear"></div>
 </article>
 <article class="article-content-wrapper hentry snews-category-widget-hentry" style="display:none;">
 <div class="entry-img">
-<img src="https://www.secretflying.com/wp-content/uploads/2014/10/EXPIRED1.gif" class="expiredStamp"><a href="https://www.secretflying.com/posts/us-cities-to-abidjan-ivory-coast-from-only-144-roundtrip/" target="_blank" title="⚠️ ERROR FARE ⚠️ US cities to Abidjan, Ivory Coast from only $144 roundtrip (Nov-Apr dates)"><a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=USD&amp;market=US&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=NYCA&amp;destination=ABJ&amp;inboundDate=20221218&amp;outboundDate=20221211&amp;rtn=1" id="a2793106"></a><a href="https://www.secretflying.com/posts/us-cities-to-abidjan-ivory-coast-from-only-144-roundtrip/" onclick="setTimeout(function(){document.getElementById('a2793106').click();},3000);" target="_blank" title="⚠️ ERROR FARE ⚠️ US cities to Abidjan, Ivory Coast from only $144 roundtrip (Nov-Apr dates)"><img style="opacity:0.5;" width="410" height="273" src="https://www.secretflying.com/wp-content/uploads/2016/10/ivory-coast-1.jpg" class="attachment-snews-loop size-snews-loop wp-post-image" alt="&lt;div class=&#039;expired&#039;&gt;EXPIRED&lt;/div&gt;⚠️ ERROR FARE ⚠️ US cities to Abidjan, Ivory Coast from only $144 roundtrip (Nov-Apr dates)" title="&lt;div class=&#039;expired&#039;&gt;EXPIRED&lt;/div&gt;⚠️ ERROR FARE ⚠️ US cities to Abidjan, Ivory Coast from only $144 roundtrip (Nov-Apr dates)" srcset="https://www.secretflying.com/wp-content/uploads/2016/10/ivory-coast-1.jpg 1732w, https://www.secretflying.com/wp-content/uploads/2016/10/ivory-coast-1-300x200.jpg 300w, https://www.secretflying.com/wp-content/uploads/2016/10/ivory-coast-1-1024x683.jpg 1024w, https://www.secretflying.com/wp-content/uploads/2016/10/ivory-coast-1-200x133.jpg 200w" sizes="(max-width: 410px) 100vw, 410px" /></a></a><div class="spacial-icons-container"></div>
+<a href="https://www.secretflying.com/posts/barcelona-spain-to-new-york-usa-for-only-e194-roundtrip/" target="_blank" title="🔥 Barcelona, Spain to New York, USA for only €198 roundtrip (Mar dates)"><a href="https://www.skyscanner.at/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=EUR&amp;market=AT&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=BCN&amp;destination=NYCA&amp;inboundDate=20230327&amp;outboundDate=20230314&amp;rtn=1" id="a9043005"></a><a href="https://www.secretflying.com/posts/barcelona-spain-to-new-york-usa-for-only-e194-roundtrip/" onclick="setTimeout(function(){document.getElementById('a9043005').click();},3000);" target="_blank" title="🔥 Barcelona, Spain to New York, USA for only €198 roundtrip (Mar dates)"><img width="410" height="300" src="https://www.secretflying.com/wp-content/uploads/2017/04/new-york-10-410x300.jpg" class="attachment-snews-loop size-snews-loop wp-post-image" alt="🔥 Barcelona, Spain to New York, USA for only €198 roundtrip (Mar dates)" title="🔥 Barcelona, Spain to New York, USA for only €198 roundtrip (Mar dates)" srcset="https://www.secretflying.com/wp-content/uploads/2017/04/new-york-10-410x300.jpg 410w, https://www.secretflying.com/wp-content/uploads/2017/04/new-york-10-234x171.jpg 234w" sizes="(max-width: 410px) 100vw, 410px" /></a></a><div class="spacial-icons-container"></div>
 <style>
 			    #content h3.entry-title{
 			        margin-top:6px;
@@ -4068,21 +4121,21 @@ Non-stop flights from UK cities to Melbourne, Florida from only £179 roundtrip.
 			    }
 			</style>
 <div class="entry-details-item entry-posted-on">
-<a href="https://www.secretflying.com/posts/us-cities-to-abidjan-ivory-coast-from-only-144-roundtrip/" target="_blank" title="7:37 pm" rel="bookmark"><time class="entry-date snews-font" datetime="2022-08-12T19:37:15+00:00">August 12, 2022</time></a> </div>
+<a href="https://www.secretflying.com/posts/barcelona-spain-to-new-york-usa-for-only-e194-roundtrip/" target="_blank" title="9:23 am" rel="bookmark"><time class="entry-date snews-font" datetime="2022-09-27T09:23:43+00:00">September 27, 2022</time></a> </div>
 </div>
 <div class="entry-block ">
 <h3 class="entry-title">
-<a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=USD&amp;market=US&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=NYCA&amp;destination=ABJ&amp;inboundDate=20221218&amp;outboundDate=20221211&amp;rtn=1" id="a8006384"></a>
-<a href="https://www.secretflying.com/posts/us-cities-to-abidjan-ivory-coast-from-only-144-roundtrip/" title="<div class='expired'>EXPIRED</div>⚠️ ERROR FARE ⚠️ US cities to Abidjan, Ivory Coast from only $144 roundtrip (Nov-Apr dates)" onclick="setTimeout(function(){document.getElementById('a8006384').click();},3000);" target="_blank"><div class='expired'>EXPIRED</div>⚠️ ERROR FARE ⚠️ US cities to Abidjan, Ivory Coast from only $144 roundtrip (Nov-Apr dates)</a>
+<a href="https://www.skyscanner.at/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=EUR&amp;market=AT&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=BCN&amp;destination=NYCA&amp;inboundDate=20230327&amp;outboundDate=20230314&amp;rtn=1" id="a2075846"></a>
+<a href="https://www.secretflying.com/posts/barcelona-spain-to-new-york-usa-for-only-e194-roundtrip/" title="🔥 Barcelona, Spain to New York, USA for only €198 roundtrip (Mar dates)" onclick="setTimeout(function(){document.getElementById('a2075846').click();},3000);" target="_blank">🔥 Barcelona, Spain to New York, USA for only €198 roundtrip (Mar dates)</a>
 </h3>
 <p>
-Error Fare flights from US cities to Abidjan, Ivory Coast from only $144 roundtrip with Lufthansa and Brussels Airlines. </p>
+Cheap flights from Barcelona, Spain to New York, USA for only €198 roundtrip with TAP Air Portugal. </p>
 </div>
 <div class="clear"></div>
 </article>
 <article class="article-content-wrapper hentry snews-category-widget-hentry" style="display:none;">
 <div class="entry-img">
-<a href="https://www.secretflying.com/posts/promo-100000-free-tickets-for-ukrainian-citizens-on-all-continental-european-and-uk-flights/" target="_blank" title="PROMO: 100,000 free tickets for Ukrainian citizens on all continental European and UK flights"><a href="https://www.secretflying.com/posts/promo-100000-free-tickets-for-ukrainian-citizens-on-all-continental-european-and-uk-flights/" target="_blank" title="PROMO: 100,000 free tickets for Ukrainian citizens on all continental European and UK flights"><img width="410" height="260" src="https://www.secretflying.com/wp-content/uploads/2016/07/wizzair-1.jpg" class="attachment-snews-loop size-snews-loop wp-post-image" alt="PROMO: 100,000 free tickets for Ukrainian citizens on all continental European and UK flights" title="PROMO: 100,000 free tickets for Ukrainian citizens on all continental European and UK flights" srcset="https://www.secretflying.com/wp-content/uploads/2016/07/wizzair-1.jpg 1463w, https://www.secretflying.com/wp-content/uploads/2016/07/wizzair-1-300x190.jpg 300w, https://www.secretflying.com/wp-content/uploads/2016/07/wizzair-1-1024x650.jpg 1024w, https://www.secretflying.com/wp-content/uploads/2016/07/wizzair-1-200x127.jpg 200w" sizes="(max-width: 410px) 100vw, 410px" /></a></a><div class="spacial-icons-container"></div>
+<a href="https://www.secretflying.com/posts/dakar-senegal-to-barcelona-spain-for-only-332-usd-roundtrip/" target="_blank" title="🔥 Dakar, Senegal to Barcelona, Spain for only $259 USD roundtrip (Nov dates)"><a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=USD&amp;market=US&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=DSS&amp;destination=BCN&amp;inboundDate=20221123&amp;outboundDate=20221116&amp;rtn=1" id="a395523"></a><a href="https://www.secretflying.com/posts/dakar-senegal-to-barcelona-spain-for-only-332-usd-roundtrip/" onclick="setTimeout(function(){document.getElementById('a395523').click();},3000);" target="_blank" title="🔥 Dakar, Senegal to Barcelona, Spain for only $259 USD roundtrip (Nov dates)"><img width="410" height="300" src="https://www.secretflying.com/wp-content/uploads/2017/10/barcelona-8-410x300.jpg" class="attachment-snews-loop size-snews-loop wp-post-image" alt="🔥 Dakar, Senegal to Barcelona, Spain for only $259 USD roundtrip (Nov dates)" title="🔥 Dakar, Senegal to Barcelona, Spain for only $259 USD roundtrip (Nov dates)" srcset="https://www.secretflying.com/wp-content/uploads/2017/10/barcelona-8-410x300.jpg 410w, https://www.secretflying.com/wp-content/uploads/2017/10/barcelona-8-234x171.jpg 234w" sizes="(max-width: 410px) 100vw, 410px" /></a></a><div class="spacial-icons-container"></div>
 <style>
 			    #content h3.entry-title{
 			        margin-top:6px;
@@ -4096,20 +4149,21 @@ Error Fare flights from US cities to Abidjan, Ivory Coast from only $144 roundtr
 			    }
 			</style>
 <div class="entry-details-item entry-posted-on">
-<a href="https://www.secretflying.com/posts/promo-100000-free-tickets-for-ukrainian-citizens-on-all-continental-european-and-uk-flights/" target="_blank" title="2:12 pm" rel="bookmark"><time class="entry-date snews-font" datetime="2022-08-11T14:12:08+00:00">August 11, 2022</time></a> </div>
+<a href="https://www.secretflying.com/posts/dakar-senegal-to-barcelona-spain-for-only-332-usd-roundtrip/" target="_blank" title="5:56 am" rel="bookmark"><time class="entry-date snews-font" datetime="2022-09-27T05:56:01+00:00">September 27, 2022</time></a> </div>
 </div>
 <div class="entry-block ">
 <h3 class="entry-title">
-<a href="https://www.secretflying.com/posts/promo-100000-free-tickets-for-ukrainian-citizens-on-all-continental-european-and-uk-flights/" title="PROMO: 100,000 free tickets for Ukrainian citizens on all continental European and UK flights" target="_blank">PROMO: 100,000 free tickets for Ukrainian citizens on all continental European and UK flights</a>
+<a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=USD&amp;market=US&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=DSS&amp;destination=BCN&amp;inboundDate=20221123&amp;outboundDate=20221116&amp;rtn=1" id="a8406220"></a>
+<a href="https://www.secretflying.com/posts/dakar-senegal-to-barcelona-spain-for-only-332-usd-roundtrip/" title="🔥 Dakar, Senegal to Barcelona, Spain for only $259 USD roundtrip (Nov dates)" onclick="setTimeout(function(){document.getElementById('a8406220').click();},3000);" target="_blank">🔥 Dakar, Senegal to Barcelona, Spain for only $259 USD roundtrip (Nov dates)</a>
 </h3>
 <p>
-Wizz air are running a promotion where Ukrainian citizens can fly for free on all continental European and UK flights. </p>
+Cheap flights from Dakar, Senegal to Barcelona, Spain for only $259 USD roundtrip with TAP Air Portugal. </p>
 </div>
 <div class="clear"></div>
 </article>
 <article class="article-content-wrapper hentry snews-category-widget-hentry" style="display:none;">
 <div class="entry-img">
-<a href="https://www.secretflying.com/posts/los-angeles-to-kahului-hawaii-vice-versa-for-only-196-roundtrip/" target="_blank" title="🔥 Non-stop from Los Angeles to Kahului, Hawaii (&amp; vice versa) for only $161 roundtrip (Aug-Feb dates)"><a href="https://www.tkqlhce.com/click-7706309-10592070?url=https%3A%2F%2Fwww.priceline.com%2Fm%2Ffly%2Fsearch%2FLAX-OGG-20230127%2FOGG-LAX-20230131%2F%3Fcabin-class%3DECO%26included-airlines%3DUA%26sbsroute%3Dslice1%26search-type%3D1111%26vrid%3Dfecb629f79ddc6c8c98e5d8ec57e113b" id="a6172430"></a><a href="https://www.secretflying.com/posts/los-angeles-to-kahului-hawaii-vice-versa-for-only-196-roundtrip/" onclick="setTimeout(function(){document.getElementById('a6172430').click();},3000);" target="_blank" title="🔥 Non-stop from Los Angeles to Kahului, Hawaii (&amp; vice versa) for only $161 roundtrip (Aug-Feb dates)"><img width="410" height="300" src="https://www.secretflying.com/wp-content/uploads/2015/03/hawaii-8-410x300.jpg" class="attachment-snews-loop size-snews-loop wp-post-image" alt="🔥 Non-stop from Los Angeles to Kahului, Hawaii (&#038; vice versa) for only $161 roundtrip (Aug-Feb dates)" title="🔥 Non-stop from Los Angeles to Kahului, Hawaii (&#038; vice versa) for only $161 roundtrip (Aug-Feb dates)" srcset="https://www.secretflying.com/wp-content/uploads/2015/03/hawaii-8-410x300.jpg 410w, https://www.secretflying.com/wp-content/uploads/2015/03/hawaii-8-234x171.jpg 234w, https://www.secretflying.com/wp-content/uploads/2015/03/hawaii-8-318x233.jpg 318w" sizes="(max-width: 410px) 100vw, 410px" /></a></a><div class="spacial-icons-container"></div>
+<a href="https://www.secretflying.com/posts/new-york-to-casablanca-morocco-for-only-316-roundtrip/" target="_blank" title="🔥 New York to Casablanca, Morocco for only $369 roundtrip (Nov-Mar dates)"><a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=USD&amp;market=US&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=NYCA&amp;destination=CMN&amp;inboundDate=20230303&amp;outboundDate=20230223&amp;rtn=1" id="a8596986"></a><a href="https://www.secretflying.com/posts/new-york-to-casablanca-morocco-for-only-316-roundtrip/" onclick="setTimeout(function(){document.getElementById('a8596986').click();},3000);" target="_blank" title="🔥 New York to Casablanca, Morocco for only $369 roundtrip (Nov-Mar dates)"><img width="410" height="274" src="https://www.secretflying.com/wp-content/uploads/2016/09/casablanca-2.jpg" class="attachment-snews-loop size-snews-loop wp-post-image" alt="🔥 New York to Casablanca, Morocco for only $369 roundtrip (Nov-Mar dates)" title="🔥 New York to Casablanca, Morocco for only $369 roundtrip (Nov-Mar dates)" srcset="https://www.secretflying.com/wp-content/uploads/2016/09/casablanca-2.jpg 1024w, https://www.secretflying.com/wp-content/uploads/2016/09/casablanca-2-300x201.jpg 300w, https://www.secretflying.com/wp-content/uploads/2016/09/casablanca-2-200x134.jpg 200w" sizes="(max-width: 410px) 100vw, 410px" /></a></a><div class="spacial-icons-container"></div>
 <style>
 			    #content h3.entry-title{
 			        margin-top:6px;
@@ -4123,21 +4177,21 @@ Wizz air are running a promotion where Ukrainian citizens can fly for free on a
 			    }
 			</style>
 <div class="entry-details-item entry-posted-on">
-<a href="https://www.secretflying.com/posts/los-angeles-to-kahului-hawaii-vice-versa-for-only-196-roundtrip/" target="_blank" title="4:29 pm" rel="bookmark"><time class="entry-date snews-font" datetime="2022-08-10T16:29:01+00:00">August 10, 2022</time></a> </div>
+<a href="https://www.secretflying.com/posts/new-york-to-casablanca-morocco-for-only-316-roundtrip/" target="_blank" title="11:01 am" rel="bookmark"><time class="entry-date snews-font" datetime="2022-09-20T11:01:13+00:00">September 20, 2022</time></a> </div>
 </div>
 <div class="entry-block ">
 <h3 class="entry-title">
-<a href="https://www.tkqlhce.com/click-7706309-10592070?url=https%3A%2F%2Fwww.priceline.com%2Fm%2Ffly%2Fsearch%2FLAX-OGG-20230127%2FOGG-LAX-20230131%2F%3Fcabin-class%3DECO%26included-airlines%3DUA%26sbsroute%3Dslice1%26search-type%3D1111%26vrid%3Dfecb629f79ddc6c8c98e5d8ec57e113b" id="a42558"></a>
-<a href="https://www.secretflying.com/posts/los-angeles-to-kahului-hawaii-vice-versa-for-only-196-roundtrip/" title="🔥 Non-stop from Los Angeles to Kahului, Hawaii (&#038; vice versa) for only $161 roundtrip (Aug-Feb dates)" onclick="setTimeout(function(){document.getElementById('a42558').click();},3000);" target="_blank">🔥 Non-stop from Los Angeles to Kahului, Hawaii (&#038; vice versa) for only $161 roundtrip (Aug-Feb dates)</a>
+<a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=USD&amp;market=US&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=NYCA&amp;destination=CMN&amp;inboundDate=20230303&amp;outboundDate=20230223&amp;rtn=1" id="a5240786"></a>
+<a href="https://www.secretflying.com/posts/new-york-to-casablanca-morocco-for-only-316-roundtrip/" title="🔥 New York to Casablanca, Morocco for only $369 roundtrip (Nov-Mar dates)" onclick="setTimeout(function(){document.getElementById('a5240786').click();},3000);" target="_blank">🔥 New York to Casablanca, Morocco for only $369 roundtrip (Nov-Mar dates)</a>
 </h3>
 <p>
-Non-stop flights from Los Angeles to Kahului, Hawaii for only $161 roundtrip with United Airlines. Also works in reverse. </p>
+Cheap flights from New York to Casablanca, Morocco for only $369 roundtrip with TAP Air Portugal. </p>
 </div>
 <div class="clear"></div>
 </article>
 <article class="article-content-wrapper hentry snews-category-widget-hentry" style="display:none;">
 <div class="entry-img">
-<a href="https://www.secretflying.com/posts/open-jaw-from-vienna-austria-to-bangkok-thailand-returning-to-germany-from-only-e250-roundtrip/" target="_blank" title="🔥 Open-jaw from Vienna, Austria to Bangkok, Thailand returning to Germany from only €250 roundtrip (Nov-Feb dates)"><a href="https://www.skyscanner.at/g/referrals/v1/flights/multicity?adults=1&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;cabinclass=economy&amp;locale=en-GB&amp;sortby=cheapest&amp;currency=EUR&amp;ref=home&amp;market=AT&amp;infants=0&amp;children=0&amp;childrenv2=&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin0=VIE&amp;destination0=BKKT&amp;date0=2023-02-07&amp;origin1=BKKT&amp;destination1=FRAN&amp;date1=2023-02-25" id="a777571"></a><a href="https://www.secretflying.com/posts/open-jaw-from-vienna-austria-to-bangkok-thailand-returning-to-germany-from-only-e250-roundtrip/" onclick="setTimeout(function(){document.getElementById('a777571').click();},3000);" target="_blank" title="🔥 Open-jaw from Vienna, Austria to Bangkok, Thailand returning to Germany from only €250 roundtrip (Nov-Feb dates)"><img width="410" height="300" src="https://www.secretflying.com/wp-content/uploads/2021/05/bangkok-8-410x300.jpg" class="attachment-snews-loop size-snews-loop wp-post-image" alt="🔥 Open-jaw from Vienna, Austria to Bangkok, Thailand returning to Germany from only €250 roundtrip (Nov-Feb dates)" title="🔥 Open-jaw from Vienna, Austria to Bangkok, Thailand returning to Germany from only €250 roundtrip (Nov-Feb dates)" srcset="https://www.secretflying.com/wp-content/uploads/2021/05/bangkok-8-410x300.jpg 410w, https://www.secretflying.com/wp-content/uploads/2021/05/bangkok-8-234x171.jpg 234w, https://www.secretflying.com/wp-content/uploads/2021/05/bangkok-8-318x233.jpg 318w" sizes="(max-width: 410px) 100vw, 410px" /></a></a><div class="spacial-icons-container"></div>
+<a href="https://www.secretflying.com/posts/new-york-to-marrakesh-morocco-for-only-356-roundtrip/" target="_blank" title="🔥 New York to Marrakesh, Morocco for only $350 roundtrip (Nov-May dates)"><a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=USD&amp;market=US&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=NYCA&amp;destination=RAK&amp;inboundDate=20221116&amp;outboundDate=20221109&amp;rtn=1" id="a4175385"></a><a href="https://www.secretflying.com/posts/new-york-to-marrakesh-morocco-for-only-356-roundtrip/" onclick="setTimeout(function(){document.getElementById('a4175385').click();},3000);" target="_blank" title="🔥 New York to Marrakesh, Morocco for only $350 roundtrip (Nov-May dates)"><img width="410" height="273" src="https://www.secretflying.com/wp-content/uploads/2015/05/marrakech-2.jpg" class="attachment-snews-loop size-snews-loop wp-post-image" alt="🔥 New York to Marrakesh, Morocco for only $350 roundtrip (Nov-May dates)" title="🔥 New York to Marrakesh, Morocco for only $350 roundtrip (Nov-May dates)" srcset="https://www.secretflying.com/wp-content/uploads/2015/05/marrakech-2.jpg 1732w, https://www.secretflying.com/wp-content/uploads/2015/05/marrakech-2-300x200.jpg 300w, https://www.secretflying.com/wp-content/uploads/2015/05/marrakech-2-1024x683.jpg 1024w, https://www.secretflying.com/wp-content/uploads/2015/05/marrakech-2-600x400.jpg 600w" sizes="(max-width: 410px) 100vw, 410px" /></a></a><div class="spacial-icons-container"></div>
 <style>
 			    #content h3.entry-title{
 			        margin-top:6px;
@@ -4151,21 +4205,21 @@ Non-stop flights from Los Angeles to Kahului, Hawaii for only $161 roundtrip wit
 			    }
 			</style>
 <div class="entry-details-item entry-posted-on">
-<a href="https://www.secretflying.com/posts/open-jaw-from-vienna-austria-to-bangkok-thailand-returning-to-germany-from-only-e250-roundtrip/" target="_blank" title="2:07 pm" rel="bookmark"><time class="entry-date snews-font" datetime="2022-08-10T14:07:33+00:00">August 10, 2022</time></a> </div>
+<a href="https://www.secretflying.com/posts/new-york-to-marrakesh-morocco-for-only-356-roundtrip/" target="_blank" title="5:48 pm" rel="bookmark"><time class="entry-date snews-font" datetime="2022-09-19T17:48:02+00:00">September 19, 2022</time></a> </div>
 </div>
 <div class="entry-block ">
 <h3 class="entry-title">
-<a href="https://www.skyscanner.at/g/referrals/v1/flights/multicity?adults=1&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;cabinclass=economy&amp;locale=en-GB&amp;sortby=cheapest&amp;currency=EUR&amp;ref=home&amp;market=AT&amp;infants=0&amp;children=0&amp;childrenv2=&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin0=VIE&amp;destination0=BKKT&amp;date0=2023-02-07&amp;origin1=BKKT&amp;destination1=FRAN&amp;date1=2023-02-25" id="a5055424"></a>
-<a href="https://www.secretflying.com/posts/open-jaw-from-vienna-austria-to-bangkok-thailand-returning-to-germany-from-only-e250-roundtrip/" title="🔥 Open-jaw from Vienna, Austria to Bangkok, Thailand returning to Germany from only €250 roundtrip (Nov-Feb dates)" onclick="setTimeout(function(){document.getElementById('a5055424').click();},3000);" target="_blank">🔥 Open-jaw from Vienna, Austria to Bangkok, Thailand returning to Germany from only €250 roundtrip (Nov-Feb dates)</a>
+<a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=USD&amp;market=US&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=NYCA&amp;destination=RAK&amp;inboundDate=20221116&amp;outboundDate=20221109&amp;rtn=1" id="a9182787"></a>
+<a href="https://www.secretflying.com/posts/new-york-to-marrakesh-morocco-for-only-356-roundtrip/" title="🔥 New York to Marrakesh, Morocco for only $350 roundtrip (Nov-May dates)" onclick="setTimeout(function(){document.getElementById('a9182787').click();},3000);" target="_blank">🔥 New York to Marrakesh, Morocco for only $350 roundtrip (Nov-May dates)</a>
 </h3>
 <p>
-Open-jaw flights from Vienna, Austria to Bangkok, Thailand returning to Frankfurt or Munich, Germany from only €250 roundtrip. </p>
+Cheap flights from New York to Marrakesh, Morocco for only $350 roundtrip with TAP Air Portugal. </p>
 </div>
 <div class="clear"></div>
 </article>
 <article class="article-content-wrapper hentry snews-category-widget-hentry" style="display:none;">
 <div class="entry-img">
-<a href="https://www.secretflying.com/posts/boston-bogota-colombia-313-roundtrip/" target="_blank" title="🔥 Boston to Bogota, Colombia for only $243 roundtrip (Nov-May dates)"><a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=USD&amp;market=US&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=BOS&amp;destination=BOG&amp;inboundDate=20230206&amp;outboundDate=20230130&amp;rtn=1" id="a895788"></a><a href="https://www.secretflying.com/posts/boston-bogota-colombia-313-roundtrip/" onclick="setTimeout(function(){document.getElementById('a895788').click();},3000);" target="_blank" title="🔥 Boston to Bogota, Colombia for only $243 roundtrip (Nov-May dates)"><img width="410" height="300" src="https://www.secretflying.com/wp-content/uploads/2022/04/bogota-8-410x300.jpg" class="attachment-snews-loop size-snews-loop wp-post-image" alt="🔥 Boston to Bogota, Colombia for only $243 roundtrip (Nov-May dates)" title="🔥 Boston to Bogota, Colombia for only $243 roundtrip (Nov-May dates)" srcset="https://www.secretflying.com/wp-content/uploads/2022/04/bogota-8-410x300.jpg 410w, https://www.secretflying.com/wp-content/uploads/2022/04/bogota-8-234x171.jpg 234w, https://www.secretflying.com/wp-content/uploads/2022/04/bogota-8-318x233.jpg 318w" sizes="(max-width: 410px) 100vw, 410px" /></a></a><div class="spacial-icons-container"></div>
+<a href="https://www.secretflying.com/posts/french-cities-to-canadian-cities-from-only-e166-roundtrip/" target="_blank" title="🔥 French cities to Canadian cities from only €159 roundtrip (Oct-Mar dates)"><a href="https://www.skyscanner.fr/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=EUR&amp;market=FR&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=LYS&amp;destination=YZV&amp;inboundDate=20230306&amp;outboundDate=20230219&amp;rtn=1" id="a9091316"></a><a href="https://www.secretflying.com/posts/french-cities-to-canadian-cities-from-only-e166-roundtrip/" onclick="setTimeout(function(){document.getElementById('a9091316').click();},3000);" target="_blank" title="🔥 French cities to Canadian cities from only €159 roundtrip (Oct-Mar dates)"><img width="410" height="300" src="https://www.secretflying.com/wp-content/uploads/2021/06/canada-2-410x300.jpg" class="attachment-snews-loop size-snews-loop wp-post-image" alt="🔥 French cities to Canadian cities from only €159 roundtrip (Oct-Mar dates)" title="🔥 French cities to Canadian cities from only €159 roundtrip (Oct-Mar dates)" srcset="https://www.secretflying.com/wp-content/uploads/2021/06/canada-2-410x300.jpg 410w, https://www.secretflying.com/wp-content/uploads/2021/06/canada-2-234x171.jpg 234w, https://www.secretflying.com/wp-content/uploads/2021/06/canada-2-318x233.jpg 318w" sizes="(max-width: 410px) 100vw, 410px" /></a></a><div class="spacial-icons-container"></div>
 <style>
 			    #content h3.entry-title{
 			        margin-top:6px;
@@ -4179,21 +4233,21 @@ Open-jaw flights from Vienna, Austria to Bangkok, Thailand returning to Frankfur
 			    }
 			</style>
 <div class="entry-details-item entry-posted-on">
-<a href="https://www.secretflying.com/posts/boston-bogota-colombia-313-roundtrip/" target="_blank" title="9:47 pm" rel="bookmark"><time class="entry-date snews-font" datetime="2022-08-08T21:47:02+00:00">August 8, 2022</time></a> </div>
+<a href="https://www.secretflying.com/posts/french-cities-to-canadian-cities-from-only-e166-roundtrip/" target="_blank" title="11:12 am" rel="bookmark"><time class="entry-date snews-font" datetime="2022-09-19T11:12:40+00:00">September 19, 2022</time></a> </div>
 </div>
 <div class="entry-block ">
 <h3 class="entry-title">
-<a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=USD&amp;market=US&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=BOS&amp;destination=BOG&amp;inboundDate=20230206&amp;outboundDate=20230130&amp;rtn=1" id="a4102478"></a>
-<a href="https://www.secretflying.com/posts/boston-bogota-colombia-313-roundtrip/" title="🔥 Boston to Bogota, Colombia for only $243 roundtrip (Nov-May dates)" onclick="setTimeout(function(){document.getElementById('a4102478').click();},3000);" target="_blank">🔥 Boston to Bogota, Colombia for only $243 roundtrip (Nov-May dates)</a>
+<a href="https://www.skyscanner.fr/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=EUR&amp;market=FR&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=LYS&amp;destination=YZV&amp;inboundDate=20230306&amp;outboundDate=20230219&amp;rtn=1" id="a4354641"></a>
+<a href="https://www.secretflying.com/posts/french-cities-to-canadian-cities-from-only-e166-roundtrip/" title="🔥 French cities to Canadian cities from only €159 roundtrip (Oct-Mar dates)" onclick="setTimeout(function(){document.getElementById('a4354641').click();},3000);" target="_blank">🔥 French cities to Canadian cities from only €159 roundtrip (Oct-Mar dates)</a>
 </h3>
 <p>
-Cheap flights from Boston to Bogota, Colombia for only $243 roundtrip with Copa Airlines. </p>
+Cheap flights from French cities to Canadian cities from only €159 roundtrip with Austrian Airlines and Air Canada. </p>
 </div>
 <div class="clear"></div>
 </article>
 <article class="article-content-wrapper hentry snews-category-widget-hentry" style="display:none;">
 <div class="entry-img">
-<a href="https://www.secretflying.com/posts/lisbon-portugal-new-york-usa-e360-roundtrip/" target="_blank" title="🔥 Lisbon, Portugal to New York, USA for only €187 roundtrip (Oct dates)"><a href="https://www.skyscanner.ie/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=EUR&amp;market=IE&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=LIS&amp;destination=NYCA&amp;inboundDate=20221020&amp;outboundDate=20221013&amp;rtn=1" id="a5373531"></a><a href="https://www.secretflying.com/posts/lisbon-portugal-new-york-usa-e360-roundtrip/" onclick="setTimeout(function(){document.getElementById('a5373531').click();},3000);" target="_blank" title="🔥 Lisbon, Portugal to New York, USA for only €187 roundtrip (Oct dates)"><img width="410" height="300" src="https://www.secretflying.com/wp-content/uploads/2015/06/new-york-2-410x300.jpg" class="attachment-snews-loop size-snews-loop wp-post-image" alt="🔥 Lisbon, Portugal to New York, USA for only €187 roundtrip (Oct dates)" title="🔥 Lisbon, Portugal to New York, USA for only €187 roundtrip (Oct dates)" srcset="https://www.secretflying.com/wp-content/uploads/2015/06/new-york-2-410x300.jpg 410w, https://www.secretflying.com/wp-content/uploads/2015/06/new-york-2-234x171.jpg 234w, https://www.secretflying.com/wp-content/uploads/2015/06/new-york-2-318x233.jpg 318w" sizes="(max-width: 410px) 100vw, 410px" /></a></a><div class="spacial-icons-container"></div>
+<a href="https://www.secretflying.com/posts/boston-to-san-juan-puerto-rico-for-only-180-roundtrip/" target="_blank" title="🔥 Non-stop from Boston to San Juan, Puerto Rico for only $179 roundtrip (Oct-Nov dates)"><a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=USD&amp;market=US&amp;locale=en-GB&amp;airlines=B6&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=BOS&amp;destination=SJUA&amp;inboundDate=20221015&amp;outboundDate=20221008&amp;rtn=1" id="a7075757"></a><a href="https://www.secretflying.com/posts/boston-to-san-juan-puerto-rico-for-only-180-roundtrip/" onclick="setTimeout(function(){document.getElementById('a7075757').click();},3000);" target="_blank" title="🔥 Non-stop from Boston to San Juan, Puerto Rico for only $179 roundtrip (Oct-Nov dates)"><img width="410" height="273" src="https://www.secretflying.com/wp-content/uploads/2015/03/puerto-rico-2.jpg" class="attachment-snews-loop size-snews-loop wp-post-image" alt="🔥 Non-stop from Boston to San Juan, Puerto Rico for only $179 roundtrip (Oct-Nov dates)" title="🔥 Non-stop from Boston to San Juan, Puerto Rico for only $179 roundtrip (Oct-Nov dates)" srcset="https://www.secretflying.com/wp-content/uploads/2015/03/puerto-rico-2.jpg 1732w, https://www.secretflying.com/wp-content/uploads/2015/03/puerto-rico-2-300x200.jpg 300w, https://www.secretflying.com/wp-content/uploads/2015/03/puerto-rico-2-1024x683.jpg 1024w, https://www.secretflying.com/wp-content/uploads/2015/03/puerto-rico-2-600x400.jpg 600w" sizes="(max-width: 410px) 100vw, 410px" /></a></a><div class="spacial-icons-container"></div>
 <style>
 			    #content h3.entry-title{
 			        margin-top:6px;
@@ -4207,21 +4261,21 @@ Cheap flights from Boston to Bogota, Colombia for only $243 roundtrip with Copa 
 			    }
 			</style>
 <div class="entry-details-item entry-posted-on">
-<a href="https://www.secretflying.com/posts/lisbon-portugal-new-york-usa-e360-roundtrip/" target="_blank" title="1:03 pm" rel="bookmark"><time class="entry-date snews-font" datetime="2022-08-06T13:03:42+00:00">August 6, 2022</time></a> </div>
+<a href="https://www.secretflying.com/posts/boston-to-san-juan-puerto-rico-for-only-180-roundtrip/" target="_blank" title="3:29 pm" rel="bookmark"><time class="entry-date snews-font" datetime="2022-09-15T15:29:53+00:00">September 15, 2022</time></a> </div>
 </div>
 <div class="entry-block ">
 <h3 class="entry-title">
-<a href="https://www.skyscanner.ie/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=EUR&amp;market=IE&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=LIS&amp;destination=NYCA&amp;inboundDate=20221020&amp;outboundDate=20221013&amp;rtn=1" id="a4966325"></a>
-<a href="https://www.secretflying.com/posts/lisbon-portugal-new-york-usa-e360-roundtrip/" title="🔥 Lisbon, Portugal to New York, USA for only €187 roundtrip (Oct dates)" onclick="setTimeout(function(){document.getElementById('a4966325').click();},3000);" target="_blank">🔥 Lisbon, Portugal to New York, USA for only €187 roundtrip (Oct dates)</a>
+<a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=USD&amp;market=US&amp;locale=en-GB&amp;airlines=B6&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=BOS&amp;destination=SJUA&amp;inboundDate=20221015&amp;outboundDate=20221008&amp;rtn=1" id="a1871788"></a>
+<a href="https://www.secretflying.com/posts/boston-to-san-juan-puerto-rico-for-only-180-roundtrip/" title="🔥 Non-stop from Boston to San Juan, Puerto Rico for only $179 roundtrip (Oct-Nov dates)" onclick="setTimeout(function(){document.getElementById('a1871788').click();},3000);" target="_blank">🔥 Non-stop from Boston to San Juan, Puerto Rico for only $179 roundtrip (Oct-Nov dates)</a>
 </h3>
 <p>
-Cheap flights from Lisbon, Portugal to New York, USA for only €187 roundtrip with Iberia. </p>
+Non-stop flights from Boston to San Juan, Puerto Rico for only $179 roundtrip with JetBlue. </p>
 </div>
 <div class="clear"></div>
 </article>
 <article class="article-content-wrapper hentry snews-category-widget-hentry" style="display:none;">
 <div class="entry-img">
-<a href="https://www.secretflying.com/posts/rome-italy-to-dammam-saudi-arabia-for-only-e108-roundtrip/" target="_blank" title="🔥 Non-stop from Rome, Italy to Dammam, Saudi Arabia for only €108 roundtrip (Sep-Oct dates)"><a href="https://www.skyscanner.ie/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=EUR&amp;market=IE&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=FCO&amp;destination=DMM&amp;inboundDate=20221026&amp;outboundDate=20221012&amp;rtn=1" id="a9465095"></a><a href="https://www.secretflying.com/posts/rome-italy-to-dammam-saudi-arabia-for-only-e108-roundtrip/" onclick="setTimeout(function(){document.getElementById('a9465095').click();},3000);" target="_blank" title="🔥 Non-stop from Rome, Italy to Dammam, Saudi Arabia for only €108 roundtrip (Sep-Oct dates)"><img width="410" height="300" src="https://www.secretflying.com/wp-content/uploads/2022/08/dammam-1-410x300.jpg" class="attachment-snews-loop size-snews-loop wp-post-image" alt="🔥 Non-stop from Rome, Italy to Dammam, Saudi Arabia for only €108 roundtrip (Sep-Oct dates)" title="🔥 Non-stop from Rome, Italy to Dammam, Saudi Arabia for only €108 roundtrip (Sep-Oct dates)" srcset="https://www.secretflying.com/wp-content/uploads/2022/08/dammam-1-410x300.jpg 410w, https://www.secretflying.com/wp-content/uploads/2022/08/dammam-1-234x171.jpg 234w, https://www.secretflying.com/wp-content/uploads/2022/08/dammam-1-318x233.jpg 318w" sizes="(max-width: 410px) 100vw, 410px" /></a></a><div class="spacial-icons-container"></div>
+<a href="https://www.secretflying.com/posts/new-york-puerto-rico-256-roundtrip/" target="_blank" title="🔥 Non-stop from New York to San Juan, Puerto Rico for only $186 roundtrip (Oct-Nov dates)"><a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;cabinclass=economy&amp;locale=en-GB&amp;sortby=cheapest&amp;currency=USD&amp;ref=home&amp;market=US&amp;airlines=B6&amp;infants=0&amp;children=0&amp;childrenv2=&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=NYCA&amp;destination=SJUA&amp;inboundDate=20221101&amp;outboundDate=20221025&amp;rtn=1" id="a1486730"></a><a href="https://www.secretflying.com/posts/new-york-puerto-rico-256-roundtrip/" onclick="setTimeout(function(){document.getElementById('a1486730').click();},3000);" target="_blank" title="🔥 Non-stop from New York to San Juan, Puerto Rico for only $186 roundtrip (Oct-Nov dates)"><img width="410" height="273" src="https://www.secretflying.com/wp-content/uploads/2015/08/puerto-rico-4.jpg" class="attachment-snews-loop size-snews-loop wp-post-image" alt="🔥 Non-stop from New York to San Juan, Puerto Rico for only $186 roundtrip (Oct-Nov dates)" title="🔥 Non-stop from New York to San Juan, Puerto Rico for only $186 roundtrip (Oct-Nov dates)" srcset="https://www.secretflying.com/wp-content/uploads/2015/08/puerto-rico-4.jpg 1732w, https://www.secretflying.com/wp-content/uploads/2015/08/puerto-rico-4-300x200.jpg 300w, https://www.secretflying.com/wp-content/uploads/2015/08/puerto-rico-4-1024x683.jpg 1024w, https://www.secretflying.com/wp-content/uploads/2015/08/puerto-rico-4-600x400.jpg 600w" sizes="(max-width: 410px) 100vw, 410px" /></a></a><div class="spacial-icons-container"></div>
 <style>
 			    #content h3.entry-title{
 			        margin-top:6px;
@@ -4235,15 +4289,15 @@ Cheap flights from Lisbon, Portugal to New York, USA for only €187 roundtrip w
 			    }
 			</style>
 <div class="entry-details-item entry-posted-on">
-<a href="https://www.secretflying.com/posts/rome-italy-to-dammam-saudi-arabia-for-only-e108-roundtrip/" target="_blank" title="7:15 am" rel="bookmark"><time class="entry-date snews-font" datetime="2022-08-06T07:15:32+00:00">August 6, 2022</time></a> </div>
+<a href="https://www.secretflying.com/posts/new-york-puerto-rico-256-roundtrip/" target="_blank" title="7:36 pm" rel="bookmark"><time class="entry-date snews-font" datetime="2022-09-14T19:36:24+00:00">September 14, 2022</time></a> </div>
 </div>
 <div class="entry-block ">
 <h3 class="entry-title">
-<a href="https://www.skyscanner.ie/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=EUR&amp;market=IE&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=FCO&amp;destination=DMM&amp;inboundDate=20221026&amp;outboundDate=20221012&amp;rtn=1" id="a1364533"></a>
-<a href="https://www.secretflying.com/posts/rome-italy-to-dammam-saudi-arabia-for-only-e108-roundtrip/" title="🔥 Non-stop from Rome, Italy to Dammam, Saudi Arabia for only €108 roundtrip (Sep-Oct dates)" onclick="setTimeout(function(){document.getElementById('a1364533').click();},3000);" target="_blank">🔥 Non-stop from Rome, Italy to Dammam, Saudi Arabia for only €108 roundtrip (Sep-Oct dates)</a>
+<a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;cabinclass=economy&amp;locale=en-GB&amp;sortby=cheapest&amp;currency=USD&amp;ref=home&amp;market=US&amp;airlines=B6&amp;infants=0&amp;children=0&amp;childrenv2=&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=NYCA&amp;destination=SJUA&amp;inboundDate=20221101&amp;outboundDate=20221025&amp;rtn=1" id="a7270042"></a>
+<a href="https://www.secretflying.com/posts/new-york-puerto-rico-256-roundtrip/" title="🔥 Non-stop from New York to San Juan, Puerto Rico for only $186 roundtrip (Oct-Nov dates)" onclick="setTimeout(function(){document.getElementById('a7270042').click();},3000);" target="_blank">🔥 Non-stop from New York to San Juan, Puerto Rico for only $186 roundtrip (Oct-Nov dates)</a>
 </h3>
 <p>
-Non-stop flights from Rome, Italy to Dammam, Saudi Arabia for only €108 roundtrip. </p>
+Non-stop flights from New York to San Juan, Puerto Rico for only $186 roundtrip with JetBlue. </p>
 </div>
 <div class="clear"></div>
 </article>
@@ -4441,12 +4495,11 @@ intv1 = setInterval(showNextDealForWidget,waitTime);
 </div> 
 <article class="article-content-wrapper hentry snews-category-widget-hentry entry-img-small snews-side-posts-wrap">
 <div class="entry-img pull-left">
-<img src="https://www.secretflying.com/wp-content/uploads/2014/10/EXPIRED1.gif" class="expiredStamp"><a href="https://www.secretflying.com/posts/us-cities-to-abidjan-ivory-coast-from-only-144-roundtrip/" target="_blank" title="⚠️ ERROR FARE ⚠️ US cities to Abidjan, Ivory Coast from only $144 roundtrip (Nov-Apr dates)"><a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=USD&amp;market=US&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=NYCA&amp;destination=ABJ&amp;inboundDate=20221218&amp;outboundDate=20221211&amp;rtn=1" id="a394129"></a><a href="https://www.secretflying.com/posts/us-cities-to-abidjan-ivory-coast-from-only-144-roundtrip/" onclick="setTimeout(function(){document.getElementById('a394129').click();},3000);" target="_blank" title="⚠️ ERROR FARE ⚠️ US cities to Abidjan, Ivory Coast from only $144 roundtrip (Nov-Apr dates)"><img style="opacity:0.5;" width="120" height="80" src="https://www.secretflying.com/wp-content/uploads/2016/10/ivory-coast-1.jpg" class="attachment-snews-regular-square size-snews-regular-square wp-post-image" alt="⚠️ ERROR FARE ⚠️ US cities to Abidjan, Ivory Coast from only $144 roundtrip (Nov-Apr dates)" title="⚠️ ERROR FARE ⚠️ US cities to Abidjan, Ivory Coast from only $144 roundtrip (Nov-Apr dates)" srcset="https://www.secretflying.com/wp-content/uploads/2016/10/ivory-coast-1.jpg 1732w, https://www.secretflying.com/wp-content/uploads/2016/10/ivory-coast-1-300x200.jpg 300w, https://www.secretflying.com/wp-content/uploads/2016/10/ivory-coast-1-1024x683.jpg 1024w, https://www.secretflying.com/wp-content/uploads/2016/10/ivory-coast-1-200x133.jpg 200w" sizes="(max-width: 120px) 100vw, 120px" /></a></a><div class="spacial-icons-container-mini"></div>
+<a href="https://www.secretflying.com/posts/hotel-misprice-3-hotel-el-espanol-paseo-de-montejo-in-merida-mexico-for-only-1-usd-per-night/" target="_blank" title="⚠️ HOTEL MISPRICE ⚠️ 3* Hotel El Español Paseo de Montejo in Merida, Mexico for only $1 USD per night"><a href="https://www.secretflying.com/posts/hotel-misprice-3-hotel-el-espanol-paseo-de-montejo-in-merida-mexico-for-only-1-usd-per-night/" target="_blank" title="⚠️ HOTEL MISPRICE ⚠️ 3* Hotel El Español Paseo de Montejo in Merida, Mexico for only $1 USD per night"><img width="120" height="100" src="https://www.secretflying.com/wp-content/uploads/2022/09/Hotel-El-Español-Paseo-de-Montejo-120x100.jpg" class="attachment-snews-regular-square size-snews-regular-square wp-post-image" alt="⚠️ HOTEL MISPRICE ⚠️ 3* Hotel El Español Paseo de Montejo in Merida, Mexico for only $1 USD per night" title="⚠️ HOTEL MISPRICE ⚠️ 3* Hotel El Español Paseo de Montejo in Merida, Mexico for only $1 USD per night" /></a></a><div class="spacial-icons-container-mini"></div>
 </div>
 <div class="entry-block ">
 <h3 class="entry-title">
-<a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=USD&amp;market=US&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=NYCA&amp;destination=ABJ&amp;inboundDate=20221218&amp;outboundDate=20221211&amp;rtn=1" id="a8484014"></a>
-<a href="https://www.secretflying.com/posts/us-cities-to-abidjan-ivory-coast-from-only-144-roundtrip/" title="⚠️ ERROR FARE ⚠️ US cities to Abidjan, Ivory Coast from only $144 roundtrip (Nov-Apr dates)" onclick="setTimeout(function(){document.getElementById('a8484014').click();},3000);" target="_blank"><div class='expired'>EXPIRED</div> US cities to Abidjan, Ivory Coast from only $144 roundtrip (Nov-Apr dates)</a>
+<a href="https://www.secretflying.com/posts/hotel-misprice-3-hotel-el-espanol-paseo-de-montejo-in-merida-mexico-for-only-1-usd-per-night/" title="⚠️ HOTEL MISPRICE ⚠️ 3* Hotel El Español Paseo de Montejo in Merida, Mexico for only $1 USD per night" target="_blank">⚠️ HOTEL MISPRICE ⚠️ 3* Hotel El Español Paseo de Montejo in Merida, Mexico for only $1 USD per night</a>
 </h3>
 </div>
 <div class="clear"></div>
@@ -4454,12 +4507,12 @@ intv1 = setInterval(showNextDealForWidget,waitTime);
 <div class="snews-divider clear"></div>
 <article class="article-content-wrapper hentry snews-category-widget-hentry entry-img-small snews-side-posts-wrap">
 <div class="entry-img pull-left">
-<img src="https://www.secretflying.com/wp-content/uploads/2014/10/EXPIRED1.gif" class="expiredStamp"><a href="https://www.secretflying.com/posts/error-fare-boston-to-tel-aviv-israel-for-only-189-roundtrip/" target="_blank" title="⚠️ ERROR FARE ⚠️ Non-stop from Boston to Tel Aviv, Israel for only $189 roundtrip (Nov-Mar dates)"><a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=USD&amp;market=US&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=BOS&amp;destination=TLV&amp;inboundDate=20230316&amp;outboundDate=20230309&amp;rtn=1" id="a9674968"></a><a href="https://www.secretflying.com/posts/error-fare-boston-to-tel-aviv-israel-for-only-189-roundtrip/" onclick="setTimeout(function(){document.getElementById('a9674968').click();},3000);" target="_blank" title="⚠️ ERROR FARE ⚠️ Non-stop from Boston to Tel Aviv, Israel for only $189 roundtrip (Nov-Mar dates)"><img style="opacity:0.5;" width="120" height="100" src="https://www.secretflying.com/wp-content/uploads/2017/08/tel-aviv-3-120x100.jpg" class="attachment-snews-regular-square size-snews-regular-square wp-post-image" alt="⚠️ ERROR FARE ⚠️ Non-stop from Boston to Tel Aviv, Israel for only $189 roundtrip (Nov-Mar dates)" title="⚠️ ERROR FARE ⚠️ Non-stop from Boston to Tel Aviv, Israel for only $189 roundtrip (Nov-Mar dates)" /></a></a><div class="spacial-icons-container-mini"></div>
+<img src="https://www.secretflying.com/wp-content/uploads/2014/10/EXPIRED1.gif" class="expiredStamp"><a href="https://www.secretflying.com/posts/us-cities-to-abidjan-ivory-coast-from-only-144-roundtrip/" target="_blank" title="⚠️ ERROR FARE ⚠️ US cities to Abidjan, Ivory Coast from only $144 roundtrip (Nov-Apr dates)"><a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=USD&amp;market=US&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=NYCA&amp;destination=ABJ&amp;inboundDate=20221218&amp;outboundDate=20221211&amp;rtn=1" id="a9547058"></a><a href="https://www.secretflying.com/posts/us-cities-to-abidjan-ivory-coast-from-only-144-roundtrip/" onclick="setTimeout(function(){document.getElementById('a9547058').click();},3000);" target="_blank" title="⚠️ ERROR FARE ⚠️ US cities to Abidjan, Ivory Coast from only $144 roundtrip (Nov-Apr dates)"><img style="opacity:0.5;" width="120" height="80" src="https://www.secretflying.com/wp-content/uploads/2016/10/ivory-coast-1.jpg" class="attachment-snews-regular-square size-snews-regular-square wp-post-image" alt="⚠️ ERROR FARE ⚠️ US cities to Abidjan, Ivory Coast from only $144 roundtrip (Nov-Apr dates)" title="⚠️ ERROR FARE ⚠️ US cities to Abidjan, Ivory Coast from only $144 roundtrip (Nov-Apr dates)" srcset="https://www.secretflying.com/wp-content/uploads/2016/10/ivory-coast-1.jpg 1732w, https://www.secretflying.com/wp-content/uploads/2016/10/ivory-coast-1-300x200.jpg 300w, https://www.secretflying.com/wp-content/uploads/2016/10/ivory-coast-1-1024x683.jpg 1024w, https://www.secretflying.com/wp-content/uploads/2016/10/ivory-coast-1-200x133.jpg 200w" sizes="(max-width: 120px) 100vw, 120px" /></a></a><div class="spacial-icons-container-mini"></div>
 </div>
 <div class="entry-block ">
 <h3 class="entry-title">
-<a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=USD&amp;market=US&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=BOS&amp;destination=TLV&amp;inboundDate=20230316&amp;outboundDate=20230309&amp;rtn=1" id="a1694654"></a>
-<a href="https://www.secretflying.com/posts/error-fare-boston-to-tel-aviv-israel-for-only-189-roundtrip/" title="⚠️ ERROR FARE ⚠️ Non-stop from Boston to Tel Aviv, Israel for only $189 roundtrip (Nov-Mar dates)" onclick="setTimeout(function(){document.getElementById('a1694654').click();},3000);" target="_blank"><div class='expired'>EXPIRED</div> Non-stop from Boston to Tel Aviv, Israel for only $189 roundtrip (Nov-Mar dates)</a>
+<a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=USD&amp;market=US&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=NYCA&amp;destination=ABJ&amp;inboundDate=20221218&amp;outboundDate=20221211&amp;rtn=1" id="a3317037"></a>
+<a href="https://www.secretflying.com/posts/us-cities-to-abidjan-ivory-coast-from-only-144-roundtrip/" title="⚠️ ERROR FARE ⚠️ US cities to Abidjan, Ivory Coast from only $144 roundtrip (Nov-Apr dates)" onclick="setTimeout(function(){document.getElementById('a3317037').click();},3000);" target="_blank"><div class='expired'>EXPIRED</div> US cities to Abidjan, Ivory Coast from only $144 roundtrip (Nov-Apr dates)</a>
 </h3>
 </div>
 <div class="clear"></div>
@@ -4467,12 +4520,12 @@ intv1 = setInterval(showNextDealForWidget,waitTime);
 <div class="snews-divider clear"></div>
 <article class="article-content-wrapper hentry snews-category-widget-hentry entry-img-small snews-side-posts-wrap">
 <div class="entry-img pull-left">
-<img src="https://www.secretflying.com/wp-content/uploads/2014/10/EXPIRED1.gif" class="expiredStamp"><a href="https://www.secretflying.com/posts/error-fare-non-stop-from-barcelona-spain-to-new-york-usa-for-only-e139-roundtrip/" target="_blank" title="⚠️ ERROR FARE ⚠️ Non-stop from Barcelona, Spain to New York, USA for only €139 roundtrip (Feb dates)"><a href="https://www.skyscanner.es/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=EUR&amp;market=ES&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=BCN&amp;destination=NYCA&amp;inboundDate=20230216&amp;outboundDate=20230206&amp;rtn=1" id="a7217149"></a><a href="https://www.secretflying.com/posts/error-fare-non-stop-from-barcelona-spain-to-new-york-usa-for-only-e139-roundtrip/" onclick="setTimeout(function(){document.getElementById('a7217149').click();},3000);" target="_blank" title="⚠️ ERROR FARE ⚠️ Non-stop from Barcelona, Spain to New York, USA for only €139 roundtrip (Feb dates)"><img style="opacity:0.5;" width="120" height="100" src="https://www.secretflying.com/wp-content/uploads/2018/06/new-york-6-120x100.jpg" class="attachment-snews-regular-square size-snews-regular-square wp-post-image" alt="⚠️ ERROR FARE ⚠️ Non-stop from Barcelona, Spain to New York, USA for only €139 roundtrip (Feb dates)" title="⚠️ ERROR FARE ⚠️ Non-stop from Barcelona, Spain to New York, USA for only €139 roundtrip (Feb dates)" /></a></a><div class="spacial-icons-container-mini"></div>
+<img src="https://www.secretflying.com/wp-content/uploads/2014/10/EXPIRED1.gif" class="expiredStamp"><a href="https://www.secretflying.com/posts/error-fare-boston-to-tel-aviv-israel-for-only-189-roundtrip/" target="_blank" title="⚠️ ERROR FARE ⚠️ Non-stop from Boston to Tel Aviv, Israel for only $189 roundtrip (Nov-Mar dates)"><a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=USD&amp;market=US&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=BOS&amp;destination=TLV&amp;inboundDate=20230316&amp;outboundDate=20230309&amp;rtn=1" id="a6511408"></a><a href="https://www.secretflying.com/posts/error-fare-boston-to-tel-aviv-israel-for-only-189-roundtrip/" onclick="setTimeout(function(){document.getElementById('a6511408').click();},3000);" target="_blank" title="⚠️ ERROR FARE ⚠️ Non-stop from Boston to Tel Aviv, Israel for only $189 roundtrip (Nov-Mar dates)"><img style="opacity:0.5;" width="120" height="100" src="https://www.secretflying.com/wp-content/uploads/2017/08/tel-aviv-3-120x100.jpg" class="attachment-snews-regular-square size-snews-regular-square wp-post-image" alt="⚠️ ERROR FARE ⚠️ Non-stop from Boston to Tel Aviv, Israel for only $189 roundtrip (Nov-Mar dates)" title="⚠️ ERROR FARE ⚠️ Non-stop from Boston to Tel Aviv, Israel for only $189 roundtrip (Nov-Mar dates)" /></a></a><div class="spacial-icons-container-mini"></div>
 </div>
 <div class="entry-block ">
 <h3 class="entry-title">
-<a href="https://www.skyscanner.es/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=EUR&amp;market=ES&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=BCN&amp;destination=NYCA&amp;inboundDate=20230216&amp;outboundDate=20230206&amp;rtn=1" id="a5075704"></a>
-<a href="https://www.secretflying.com/posts/error-fare-non-stop-from-barcelona-spain-to-new-york-usa-for-only-e139-roundtrip/" title="⚠️ ERROR FARE ⚠️ Non-stop from Barcelona, Spain to New York, USA for only €139 roundtrip (Feb dates)" onclick="setTimeout(function(){document.getElementById('a5075704').click();},3000);" target="_blank"><div class='expired'>EXPIRED</div> Non-stop from Barcelona, Spain to New York, USA for only €139 roundtrip (Feb dates)</a>
+<a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=USD&amp;market=US&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=BOS&amp;destination=TLV&amp;inboundDate=20230316&amp;outboundDate=20230309&amp;rtn=1" id="a7568755"></a>
+<a href="https://www.secretflying.com/posts/error-fare-boston-to-tel-aviv-israel-for-only-189-roundtrip/" title="⚠️ ERROR FARE ⚠️ Non-stop from Boston to Tel Aviv, Israel for only $189 roundtrip (Nov-Mar dates)" onclick="setTimeout(function(){document.getElementById('a7568755').click();},3000);" target="_blank"><div class='expired'>EXPIRED</div> Non-stop from Boston to Tel Aviv, Israel for only $189 roundtrip (Nov-Mar dates)</a>
 </h3>
 </div>
 <div class="clear"></div>
@@ -4555,7 +4608,7 @@ div#pf1{
 </div>
 <div class="loading-indicator">
 </div>
-<script>(function(){var js = "window['__CF$cv$params']={r:'73cb94f1eee90b47',m:'SWkkfGZY.7UT6yGU4h_HX_zkufGZKfMzfVRG_PCsEmk-1660835484-0-AdkR6Mcqq5dRilHidu4v6dqbsYH7gMCoC3NxIDYycogqwbWDkXtZnLhvivD32imIbIrBUGdw49U9LMkYUHkPeojqAliWmYK408jUmK3WyVqI61Txi4KFzCGRc1vrS0V4ZA==',s:[0xe85af68ff4,0x3016ed1398],u:'/cdn-cgi/challenge-platform/h/g'};var now=Date.now()/1000,offset=14400,ts=''+(Math.floor(now)-Math.floor(now%offset)),_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='/cdn-cgi/challenge-platform/h/g/scripts/alpha/invisible.js?ts='+ts,document.getElementsByTagName('head')[0].appendChild(_cpo);";var _0xh = document.createElement('iframe');_0xh.height = 1;_0xh.width = 1;_0xh.style.position = 'absolute';_0xh.style.top = 0;_0xh.style.left = 0;_0xh.style.border = 'none';_0xh.style.visibility = 'hidden';document.body.appendChild(_0xh);function handler() {var _0xi = _0xh.contentDocument || _0xh.contentWindow.document;if (_0xi) {var _0xj = _0xi.createElement('script');_0xj.nonce = '';_0xj.innerHTML = js;_0xi.getElementsByTagName('head')[0].appendChild(_0xj);}}if (document.readyState !== 'loading') {handler();} else if (window.addEventListener) {document.addEventListener('DOMContentLoaded', handler);} else {var prev = document.onreadystatechange || function () {};document.onreadystatechange = function (e) {prev(e);if (document.readyState !== 'loading') {document.onreadystatechange = prev;handler();}};}})();</script></body>
+<script>(function(){var js = "window['__CF$cv$params']={r:'752e605f9a3eb986',m:'0z0GpZ7gGXIyAqeo16aGErqyvMR6iQZwGzCpYXiSVJ0-1664555776-0-AbG0W/sa/zkRqPJwkndD6c/eCdZ87Fm+4T5WffsI3F4jxKaWMyoZiYTxbsioOgRyvKzOAXk32hQZB8g1wc+xmh0B+lKBoh8GwZ8ySI6Et9xYH/7130bsLQO8zixEqy+dFA==',s:[0x318824f419,0xb4f751f5ae],u:'/cdn-cgi/challenge-platform/h/b'};var now=Date.now()/1000,offset=14400,ts=''+(Math.floor(now)-Math.floor(now%offset)),_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='/cdn-cgi/challenge-platform/h/b/scripts/alpha/invisible.js?ts='+ts,document.getElementsByTagName('head')[0].appendChild(_cpo);";var _0xh = document.createElement('iframe');_0xh.height = 1;_0xh.width = 1;_0xh.style.position = 'absolute';_0xh.style.top = 0;_0xh.style.left = 0;_0xh.style.border = 'none';_0xh.style.visibility = 'hidden';document.body.appendChild(_0xh);function handler() {var _0xi = _0xh.contentDocument || _0xh.contentWindow.document;if (_0xi) {var _0xj = _0xi.createElement('script');_0xj.nonce = '';_0xj.innerHTML = js;_0xi.getElementsByTagName('head')[0].appendChild(_0xj);}}if (document.readyState !== 'loading') {handler();} else if (window.addEventListener) {document.addEventListener('DOMContentLoaded', handler);} else {var prev = document.onreadystatechange || function () {};document.onreadystatechange = function (e) {prev(e);if (document.readyState !== 'loading') {document.onreadystatechange = prev;handler();}};}})();</script></body>
 
 <script>
 
@@ -4752,61 +4805,59 @@ intv1 = setInterval(showNextDealForWidget,waitTime);
 </div> 
 <article class="article-content-wrapper hentry snews-category-widget-hentry entry-img-small snews-side-posts-wrap">
 <div class="entry-img pull-left">
-<a href="https://www.secretflying.com/posts/washington-dc-zanzibar-tanzania-618-roundtrip/" target="_blank" title="Washington DC to Zanzibar, Tanzania for only $599 roundtrip (Nov-Jan dates)"><a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;cabinclass=economy&amp;locale=en-GB&amp;sortby=cheapest&amp;currency=USD&amp;ref=home&amp;market=US&amp;infants=0&amp;children=0&amp;childrenv2=&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=WASA&amp;destination=ZNZ&amp;inboundDate=20230128&amp;outboundDate=20230113&amp;rtn=1" id="a5943026"></a><a href="https://www.secretflying.com/posts/washington-dc-zanzibar-tanzania-618-roundtrip/" onclick="setTimeout(function(){document.getElementById('a5943026').click();},3000);" target="_blank" title="Washington DC to Zanzibar, Tanzania for only $599 roundtrip (Nov-Jan dates)"><img width="120" height="100" src="https://www.secretflying.com/wp-content/uploads/2017/03/zanzibar-2-120x100.jpg" class="attachment-snews-regular-square size-snews-regular-square wp-post-image" alt="Washington DC to Zanzibar, Tanzania for only $599 roundtrip (Nov-Jan dates)" title="Washington DC to Zanzibar, Tanzania for only $599 roundtrip (Nov-Jan dates)" /></a></a><div class="spacial-icons-container-mini"></div>
+<a href="https://www.secretflying.com/posts/washington-dc-to-barranquilla-colombia-for-only-383-roundtrip/" target="_blank" title="Washington DC to Barranquilla, Colombia for only $369 roundtrip (Dec-Feb dates)"><a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=USD&amp;market=US&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=WASA&amp;destination=BAQ&amp;inboundDate=20230214&amp;outboundDate=20230207&amp;rtn=1" id="a56094"></a><a href="https://www.secretflying.com/posts/washington-dc-to-barranquilla-colombia-for-only-383-roundtrip/" onclick="setTimeout(function(){document.getElementById('a56094').click();},3000);" target="_blank" title="Washington DC to Barranquilla, Colombia for only $369 roundtrip (Dec-Feb dates)"><img width="120" height="100" src="https://www.secretflying.com/wp-content/uploads/2021/06/barranquilla-3-120x100.jpg" class="attachment-snews-regular-square size-snews-regular-square wp-post-image" alt="Washington DC to Barranquilla, Colombia for only $369 roundtrip (Dec-Feb dates)" title="Washington DC to Barranquilla, Colombia for only $369 roundtrip (Dec-Feb dates)" /></a></a><div class="spacial-icons-container-mini"></div>
 </div>
 <div class="entry-block ">
 <h3 class="entry-title">
-<a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;cabinclass=economy&amp;locale=en-GB&amp;sortby=cheapest&amp;currency=USD&amp;ref=home&amp;market=US&amp;infants=0&amp;children=0&amp;childrenv2=&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=WASA&amp;destination=ZNZ&amp;inboundDate=20230128&amp;outboundDate=20230113&amp;rtn=1" id="a8974831"></a>
-<a href="https://www.secretflying.com/posts/washington-dc-zanzibar-tanzania-618-roundtrip/" title="Washington DC to Zanzibar, Tanzania for only $599 roundtrip (Nov-Jan dates)" onclick="setTimeout(function(){document.getElementById('a8974831').click();},3000);" target="_blank">Washington DC to Zanzibar, Tanzania for only $599 roundtrip (Nov-Jan dates)</a>
+<a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=USD&amp;market=US&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=WASA&amp;destination=BAQ&amp;inboundDate=20230214&amp;outboundDate=20230207&amp;rtn=1" id="a8630203"></a>
+<a href="https://www.secretflying.com/posts/washington-dc-to-barranquilla-colombia-for-only-383-roundtrip/" title="Washington DC to Barranquilla, Colombia for only $369 roundtrip (Dec-Feb dates)" onclick="setTimeout(function(){document.getElementById('a8630203').click();},3000);" target="_blank">Washington DC to Barranquilla, Colombia for only $369 roundtrip (Dec-Feb dates)</a>
 </h3>
 </div>
 <div class="clear"></div>
 <div class="entry-details entry-posted-on" style="text-transform: initial;">
-<a href="https://www.secretflying.com/posts/washington-dc-zanzibar-tanzania-618-roundtrip/" target="_blank" style="line-height: 25px;" title="1:39 pm" rel="bookmark"><time class="entry-date snews-font" datetime="2022-08-18T13:39:05+00:00">August 18, 2022</time></a> </div>
+<a href="https://www.secretflying.com/posts/washington-dc-to-barranquilla-colombia-for-only-383-roundtrip/" target="_blank" style="line-height: 25px;" title="3:33 pm" rel="bookmark"><time class="entry-date snews-font" datetime="2022-09-30T15:33:40+00:00">September 30, 2022</time></a> </div>
+</article>
+<div class="snews-divider clear"></div>
+<article class="article-content-wrapper hentry snews-category-widget-hentry entry-img-small snews-side-posts-wrap">
+<div class="entry-block img-less ">
+<h3 class="entry-title">
+<a href="https://www.skyscanner.com/g/referrals/v1/flights/multicity?adults=1&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;cabinclass=economy&amp;locale=en-GB&amp;sortby=cheapest&amp;currency=USD&amp;ref=home&amp;market=US&amp;infants=0&amp;children=0&amp;childrenv2=&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin0=YVRA&amp;destination0=SINS&amp;date0=2023-05-17&amp;origin1=SINS&amp;destination1=TYOA&amp;date1=2023-05-20&amp;origin2=TYOA&amp;destination2=YVRA&amp;date2=2023-05-25" id="a8364225"></a>
+<a href="https://www.secretflying.com/posts/2-in-1-trip-vancouver-canada-to-singapore-japan-for-only-516-usd-roundtrip/" title="2 IN 1 TRIP: Vancouver, Canada to Singapore &#038; Japan for only $516 USD roundtrip (May-Jun dates)" onclick="setTimeout(function(){document.getElementById('a8364225').click();},3000);" target="_blank">2 IN 1 TRIP: Vancouver, Canada to Singapore &#038; Japan for only $516 USD roundtrip (May-Jun dates)</a>
+</h3>
+</div>
+<div class="clear"></div>
+<div class="entry-details entry-posted-on" style="text-transform: initial;">
+<a href="https://www.secretflying.com/posts/2-in-1-trip-vancouver-canada-to-singapore-japan-for-only-516-usd-roundtrip/" target="_blank" style="line-height: 25px;" title="3:21 pm" rel="bookmark"><time class="entry-date snews-font" datetime="2022-09-30T15:21:18+00:00">September 30, 2022</time></a> </div>
 </article>
 <div class="snews-divider clear"></div>
 <article class="article-content-wrapper hentry snews-category-widget-hentry entry-img-small snews-side-posts-wrap">
 <div class="entry-img pull-left">
-<a href="https://www.secretflying.com/posts/new-york-zanzibar-tanzania-665-roundtrip/" target="_blank" title="New York to Zanzibar, Tanzania for only $599 roundtrip (Nov dates)"><a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;cabinclass=economy&amp;locale=en-GB&amp;sortby=cheapest&amp;currency=USD&amp;ref=home&amp;market=US&amp;infants=0&amp;children=0&amp;childrenv2=&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=NYCA&amp;destination=ZNZ&amp;inboundDate=20221128&amp;outboundDate=20221115&amp;rtn=1" id="a4710193"></a><a href="https://www.secretflying.com/posts/new-york-zanzibar-tanzania-665-roundtrip/" onclick="setTimeout(function(){document.getElementById('a4710193').click();},3000);" target="_blank" title="New York to Zanzibar, Tanzania for only $599 roundtrip (Nov dates)"><img width="120" height="90" src="https://www.secretflying.com/wp-content/uploads/2015/12/zanzibar-4.jpg" class="attachment-snews-regular-square size-snews-regular-square wp-post-image" alt="New York to Zanzibar, Tanzania for only $599 roundtrip (Nov dates)" title="New York to Zanzibar, Tanzania for only $599 roundtrip (Nov dates)" srcset="https://www.secretflying.com/wp-content/uploads/2015/12/zanzibar-4.jpg 1633w, https://www.secretflying.com/wp-content/uploads/2015/12/zanzibar-4-300x225.jpg 300w, https://www.secretflying.com/wp-content/uploads/2015/12/zanzibar-4-1024x768.jpg 1024w, https://www.secretflying.com/wp-content/uploads/2015/12/zanzibar-4-200x150.jpg 200w" sizes="(max-width: 120px) 100vw, 120px" /></a></a><div class="spacial-icons-container-mini"></div>
+<a href="https://www.secretflying.com/posts/amsterdam-netherlands-to-us-cities-from-only-e272-roundtrip/" target="_blank" title="Amsterdam, Netherlands to US cities from only €296 roundtrip (Oct-Mar dates)"><a href="https://www.skyscanner.ie/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=EUR&amp;market=IE&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=AMS&amp;destination=MCO&amp;inboundDate=20221210&amp;outboundDate=20221203&amp;rtn=1" id="a9930254"></a><a href="https://www.secretflying.com/posts/amsterdam-netherlands-to-us-cities-from-only-e272-roundtrip/" onclick="setTimeout(function(){document.getElementById('a9930254').click();},3000);" target="_blank" title="Amsterdam, Netherlands to US cities from only €296 roundtrip (Oct-Mar dates)"><img width="120" height="100" src="https://www.secretflying.com/wp-content/uploads/2021/06/usa-1-120x100.jpg" class="attachment-snews-regular-square size-snews-regular-square wp-post-image" alt="Amsterdam, Netherlands to US cities from only €296 roundtrip (Oct-Mar dates)" title="Amsterdam, Netherlands to US cities from only €296 roundtrip (Oct-Mar dates)" /></a></a><div class="spacial-icons-container-mini"></div>
 </div>
 <div class="entry-block ">
 <h3 class="entry-title">
-<a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;cabinclass=economy&amp;locale=en-GB&amp;sortby=cheapest&amp;currency=USD&amp;ref=home&amp;market=US&amp;infants=0&amp;children=0&amp;childrenv2=&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=NYCA&amp;destination=ZNZ&amp;inboundDate=20221128&amp;outboundDate=20221115&amp;rtn=1" id="a6447426"></a>
-<a href="https://www.secretflying.com/posts/new-york-zanzibar-tanzania-665-roundtrip/" title="New York to Zanzibar, Tanzania for only $599 roundtrip (Nov dates)" onclick="setTimeout(function(){document.getElementById('a6447426').click();},3000);" target="_blank">New York to Zanzibar, Tanzania for only $599 roundtrip (Nov dates)</a>
+<a href="https://www.skyscanner.ie/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=EUR&amp;market=IE&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=AMS&amp;destination=MCO&amp;inboundDate=20221210&amp;outboundDate=20221203&amp;rtn=1" id="a6191689"></a>
+<a href="https://www.secretflying.com/posts/amsterdam-netherlands-to-us-cities-from-only-e272-roundtrip/" title="Amsterdam, Netherlands to US cities from only €296 roundtrip (Oct-Mar dates)" onclick="setTimeout(function(){document.getElementById('a6191689').click();},3000);" target="_blank">Amsterdam, Netherlands to US cities from only €296 roundtrip (Oct-Mar dates)</a>
 </h3>
 </div>
 <div class="clear"></div>
 <div class="entry-details entry-posted-on" style="text-transform: initial;">
-<a href="https://www.secretflying.com/posts/new-york-zanzibar-tanzania-665-roundtrip/" target="_blank" style="line-height: 25px;" title="1:17 pm" rel="bookmark"><time class="entry-date snews-font" datetime="2022-08-18T13:17:33+00:00">August 18, 2022</time></a> </div>
+<a href="https://www.secretflying.com/posts/amsterdam-netherlands-to-us-cities-from-only-e272-roundtrip/" target="_blank" style="line-height: 25px;" title="3:06 pm" rel="bookmark"><time class="entry-date snews-font" datetime="2022-09-30T15:06:01+00:00">September 30, 2022</time></a> </div>
 </article>
 <div class="snews-divider clear"></div>
 <article class="article-content-wrapper hentry snews-category-widget-hentry entry-img-small snews-side-posts-wrap">
 <div class="entry-img pull-left">
-<a href="https://www.secretflying.com/posts/rome-italy-to-alexandria-egypt-for-only-e27-roundtrip-wizz-members/" target="_blank" title="Rome, Italy to Alexandria, Egypt for only €34 roundtrip (Wizz members price) (Sep-Nov dates)"><a href="https://www.secretflying.com/posts/rome-italy-to-alexandria-egypt-for-only-e27-roundtrip-wizz-members/" target="_blank" title="Rome, Italy to Alexandria, Egypt for only €34 roundtrip (Wizz members price) (Sep-Nov dates)"><img width="120" height="100" src="https://www.secretflying.com/wp-content/uploads/2020/08/alexandria-1-120x100.jpg" class="attachment-snews-regular-square size-snews-regular-square wp-post-image" alt="Rome, Italy to Alexandria, Egypt for only €34 roundtrip (Wizz members price) (Sep-Nov dates)" title="Rome, Italy to Alexandria, Egypt for only €34 roundtrip (Wizz members price) (Sep-Nov dates)" /></a></a><div class="spacial-icons-container-mini"></div>
+<a href="https://www.secretflying.com/posts/dublin-ireland-to-anchorage-alaska-for-only-e399-roundtrip/" target="_blank" title="Dublin, Ireland to Anchorage, Alaska for only €401 roundtrip (Nov-Dec dates)"><a href="https://www.skyscanner.ie/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=EUR&amp;market=IE&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=DUB&amp;destination=ANCA&amp;inboundDate=20221207&amp;outboundDate=20221124&amp;rtn=1" id="a715500"></a><a href="https://www.secretflying.com/posts/dublin-ireland-to-anchorage-alaska-for-only-e399-roundtrip/" onclick="setTimeout(function(){document.getElementById('a715500').click();},3000);" target="_blank" title="Dublin, Ireland to Anchorage, Alaska for only €401 roundtrip (Nov-Dec dates)"><img width="120" height="80" src="https://www.secretflying.com/wp-content/uploads/2016/03/anchorage-3.jpg" class="attachment-snews-regular-square size-snews-regular-square wp-post-image" alt="Dublin, Ireland to Anchorage, Alaska for only €401 roundtrip (Nov-Dec dates)" title="Dublin, Ireland to Anchorage, Alaska for only €401 roundtrip (Nov-Dec dates)" srcset="https://www.secretflying.com/wp-content/uploads/2016/03/anchorage-3.jpg 1735w, https://www.secretflying.com/wp-content/uploads/2016/03/anchorage-3-300x199.jpg 300w, https://www.secretflying.com/wp-content/uploads/2016/03/anchorage-3-1024x681.jpg 1024w, https://www.secretflying.com/wp-content/uploads/2016/03/anchorage-3-200x133.jpg 200w" sizes="(max-width: 120px) 100vw, 120px" /></a></a><div class="spacial-icons-container-mini"></div>
 </div>
 <div class="entry-block ">
 <h3 class="entry-title">
-<a href="https://www.secretflying.com/posts/rome-italy-to-alexandria-egypt-for-only-e27-roundtrip-wizz-members/" title="Rome, Italy to Alexandria, Egypt for only €34 roundtrip (Wizz members price) (Sep-Nov dates)" target="_blank">Rome, Italy to Alexandria, Egypt for only €34 roundtrip (Wizz members price) (Sep-Nov dates)</a>
+<a href="https://www.skyscanner.ie/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=EUR&amp;market=IE&amp;locale=en-GB&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=DUB&amp;destination=ANCA&amp;inboundDate=20221207&amp;outboundDate=20221124&amp;rtn=1" id="a7407771"></a>
+<a href="https://www.secretflying.com/posts/dublin-ireland-to-anchorage-alaska-for-only-e399-roundtrip/" title="Dublin, Ireland to Anchorage, Alaska for only €401 roundtrip (Nov-Dec dates)" onclick="setTimeout(function(){document.getElementById('a7407771').click();},3000);" target="_blank">Dublin, Ireland to Anchorage, Alaska for only €401 roundtrip (Nov-Dec dates)</a>
 </h3>
 </div>
 <div class="clear"></div>
 <div class="entry-details entry-posted-on" style="text-transform: initial;">
-<a href="https://www.secretflying.com/posts/rome-italy-to-alexandria-egypt-for-only-e27-roundtrip-wizz-members/" target="_blank" style="line-height: 25px;" title="12:57 pm" rel="bookmark"><time class="entry-date snews-font" datetime="2022-08-18T12:57:19+00:00">August 18, 2022</time></a> </div>
-</article>
-<div class="snews-divider clear"></div>
-<article class="article-content-wrapper hentry snews-category-widget-hentry entry-img-small snews-side-posts-wrap">
-<div class="entry-img pull-left">
-<a href="https://www.secretflying.com/posts/dallas-texas-beirut-lebanon-633-roundtrip/" target="_blank" title="Dallas, Texas to Beirut, Lebanon for only $624 roundtrip (Sep-Jun dates)"><a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=USD&amp;market=US&amp;locale=en-GB&amp;airlines=AF&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=DFWA&amp;destination=BEY&amp;inboundDate=20230620&amp;outboundDate=20230613&amp;rtn=1" id="a8445353"></a><a href="https://www.secretflying.com/posts/dallas-texas-beirut-lebanon-633-roundtrip/" onclick="setTimeout(function(){document.getElementById('a8445353').click();},3000);" target="_blank" title="Dallas, Texas to Beirut, Lebanon for only $624 roundtrip (Sep-Jun dates)"><img width="120" height="100" src="https://www.secretflying.com/wp-content/uploads/2015/09/lebanon-4-120x100.jpg" class="attachment-snews-regular-square size-snews-regular-square wp-post-image" alt="Dallas, Texas to Beirut, Lebanon for only $624 roundtrip (Sep-Jun dates)" title="Dallas, Texas to Beirut, Lebanon for only $624 roundtrip (Sep-Jun dates)" /></a></a><div class="spacial-icons-container-mini"></div>
-</div>
-<div class="entry-block ">
-<h3 class="entry-title">
-<a href="https://www.skyscanner.com/g/referrals/v1/flights/day-view?adults=1&amp;children=0&amp;adultsv2=1&amp;associateid=API_B2B_18695_00001&amp;childrenv2=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;sortby=cheapest&amp;currency=USD&amp;market=US&amp;locale=en-GB&amp;airlines=AF&amp;inboundaltsenabled=false&amp;outboundaltsenabled=false&amp;origin=DFWA&amp;destination=BEY&amp;inboundDate=20230620&amp;outboundDate=20230613&amp;rtn=1" id="a3638772"></a>
-<a href="https://www.secretflying.com/posts/dallas-texas-beirut-lebanon-633-roundtrip/" title="Dallas, Texas to Beirut, Lebanon for only $624 roundtrip (Sep-Jun dates)" onclick="setTimeout(function(){document.getElementById('a3638772').click();},3000);" target="_blank">Dallas, Texas to Beirut, Lebanon for only $624 roundtrip (Sep-Jun dates)</a>
-</h3>
-</div>
-<div class="clear"></div>
-<div class="entry-details entry-posted-on" style="text-transform: initial;">
-<a href="https://www.secretflying.com/posts/dallas-texas-beirut-lebanon-633-roundtrip/" target="_blank" style="line-height: 25px;" title="12:31 pm" rel="bookmark"><time class="entry-date snews-font" datetime="2022-08-18T12:31:49+00:00">August 18, 2022</time></a> </div>
+<a href="https://www.secretflying.com/posts/dublin-ireland-to-anchorage-alaska-for-only-e399-roundtrip/" target="_blank" style="line-height: 25px;" title="2:41 pm" rel="bookmark"><time class="entry-date snews-font" datetime="2022-09-30T14:41:57+00:00">September 30, 2022</time></a> </div>
 </article>
 <div class="snews-divider clear"></div>
 </aside><aside id="custom_html-3" class="widget_text widget clearfix widget_custom_html"><div class="snews-group-title-wrap"><h2 class="snews-title snews-title-skin snews-title-cat">As seen on<span></span></h2></div><div class="textwidget custom-html-widget"><style>
@@ -4865,7 +4916,7 @@ intv1 = setInterval(showNextDealForWidget,waitTime);
 <img class="icoSm1" src="https://www.secretflying.com/wp-content/uploads/2019/09/daily-mail-1.png">
 </div>
 <div class="col-xs-1"></div>
-</div>
+ </div>
 </div></div></aside>
 <aside id="snews_widget-5" class="widget clearfix snews_main_cat_widget">
 <div class="snews_widget_content" id="snews_widget-5_content">
@@ -5134,17 +5185,17 @@ jQuery(document).ready(function(jQuery){jQuery.datepicker.setDefaults({"closeTex
 <script type='text/javascript' src='https://www.secretflying.com/wp-content/themes/snews/js/small-menu.js?ver=20120206'></script>
 <script type='text/javascript'>
 /* <![CDATA[ */
-var ajax_object = {"nonce":"28ec08fccc","ajaxurl":"https:\/\/www.secretflying.com\/wp-admin\/admin-ajax.php"};
+var ajax_object = {"nonce":"634d2cf051","ajaxurl":"https:\/\/www.secretflying.com\/wp-admin\/admin-ajax.php"};
 /* ]]> */
 </script>
 <script type='text/javascript' src='https://www.secretflying.com/wp-content/uploads/SrkIaMPaNRUc/HsLbbZwxcQGX.js?ver=2.2.3'></script>
-<script type='text/javascript' src='https://www.secretflying.com/wp-includes/js/wp-embed.min.js?ver=4.9.20'></script>
+<script type='text/javascript' src='https://www.secretflying.com/wp-includes/js/wp-embed.min.js?ver=4.9.21'></script>
 <script type='text/javascript'>
 /* <![CDATA[ */
 var djWidget = {"ajax_url":"https:\/\/www.secretflying.com\/wp-admin\/admin-ajax.php"};
 /* ]]> */
 </script>
-<script type='text/javascript' src='https://www.secretflying.com/wp-content/themes/snews/inc/widgets/js/wg-main-cat.js?ver=4.9.20'></script>
+<script type='text/javascript' src='https://www.secretflying.com/wp-content/themes/snews/inc/widgets/js/wg-main-cat.js?ver=4.9.21'></script>
 <script> 
 	var templateDir = "https://www.secretflying.com/wp-content/themes/snews"; 
 	jQuery(document).ready(function($) {

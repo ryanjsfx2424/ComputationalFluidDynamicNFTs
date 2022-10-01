@@ -30,6 +30,7 @@ class TravelBot(RegionData):
 
         self.BOT_COMMANDS_CIDS = [932056137518444594]
 
+        self.CID_VEGAS = 1000549429276848221
         self.CIDS     = self.load_discord_ids("region_data/channel_id_data.json")
         self.TIDS_USA = self.load_discord_ids("region_data/us_region_thread_id_data.json")
 
@@ -164,7 +165,13 @@ class TravelBot(RegionData):
 
     def get_fares(self, fare_type):
         if fare_type == "err":
-            fares = self.html.split("Latest Error Fares")[1].split("Popular Departure Cities")[0]
+            try:
+              fares = self.html.split("Latest Error Fares")[1].split("Popular Departure Cities")[0]
+            except Exception as err:
+              print("170 err: ", err)
+              print("171 err.args: ", err.args[:])
+              print("172 Traceback, html ", self.html)
+              return
         else:
             fares = self.html.split("Latest Deals")[1].split("As seen on")[0]
         # end if/else

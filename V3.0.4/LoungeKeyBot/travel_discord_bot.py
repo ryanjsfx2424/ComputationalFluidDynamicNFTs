@@ -1,7 +1,9 @@
 import os
+import sys
 import time
 import discord
 import asyncio
+import datetime
 from travel import TravelBot
 
 class TravelDiscordBot(TravelBot):
@@ -30,6 +32,11 @@ class TravelDiscordBot(TravelBot):
         async def on_ready():
             last_nd_update = time.time() - 7200
             print("on_ready")
+
+            #channel = client.get_channel(self.CID_VEGAS)
+            #await channel.send("test")
+            #print("sent test")
+
             wcnt = 0
             while True:
                 wcnt += 1
@@ -45,6 +52,7 @@ class TravelDiscordBot(TravelBot):
                 self.get_fares("deals")
 
                 if time.time() - last_nd_update > 3600:
+                    print(datetime.datetime.now())
                     last_nd_update = time.time()
                     self.get_html_nd()
                 # end if
@@ -98,6 +106,27 @@ class TravelDiscordBot(TravelBot):
                     description = description.replace("_from","")
                     #description = ", ".join(self.fares["hashtags"][ii])
 
+                    if "to Las Vegas" in title:
+                        print("Las vegas in title, now: ", datetime.datetime.now())
+
+                        embed = discord.Embed(title=title, description=title,
+                            color=discord.Color.blue(), url=self.fares["urls"][ii])
+                        embed.set_thumbnail(url=self.fares["images"][ii])
+                        embed.set_footer(text = "Built for Solana Vegas Tour, Powered by @TheLunaLabs",
+                          icon_url=self.icon_url)
+                        try:
+                            print("going to get LV channel, now: ", datetime.datetime.now())
+                            channel = client.get_channel(self.CID_VEGAS)
+                            print("got LV channel, now: ", datetime.datetime.now())
+                            await channel.send(embed=embed)
+                            print("LV sent embed, now: ", datetime.datetime.now())
+                        except Exception as err:
+                            print("error LV, now: ", datetime.datetime.now())
+                            print("111 tdb err: ", err)
+                            print("112 tdb err: ", err.args[:])
+                        # end try/except
+                    # end if
+
                     embed = discord.Embed(title=title, description=description,
                         color=discord.Color.blue(), url=self.fares["urls"][ii])
                     embed.set_thumbnail(url=self.fares["images"][ii])
@@ -110,20 +139,27 @@ class TravelDiscordBot(TravelBot):
                         channel = channels[jj]
                         if role not in roles_mentioned:
                             try:
-                              await channel.send("Hey <@&" + role + ">")
+                                await channel.send("Hey <@&" + role + ">")
                             except Exception as err:
-                              print("112 err: ", err)
-                              print("113 err_args: ", err.args[:])
-                              print("channel: ", channel)
-                              print("jj: ", jj)
-                              print("role: ", role)
-                              print("channels: ", channels)
-                              print("title: ", title)
-                              print("description: ", description)
-                              print("hashtags: ", self.fares["hashtags"][ii])
+                                print("112 err: ", err)
+                                print("113 err_args: ", err.args[:])
+                                print("channel: ", channel)
+                                print("jj: ", jj)
+                                print("role: ", role)
+                                print("channels: ", channels)
+                                print("title: ", title)
+                                print("description: ", description)
+                                print("hashtags: ", self.fares["hashtags"][ii])
+                            # end try/except
                             roles_mentioned.append(role)
                         # end if
-                        await channel.send(embed=embed)
+                        try:
+                            await channel.send(embed=embed)
+                        except Exception as err:
+                            print("129 err: ", err)
+                            print("130 err_args: ", err.args[:])
+                            print("channel: ", channel)
+                        # end try/except
                     # end for
                 # end for
                 print("119 tdb going to sleep for " + str(self.sleep_time)+"s")
