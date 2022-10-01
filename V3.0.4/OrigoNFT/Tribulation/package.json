@@ -1,0 +1,21 @@
+{
+  "name": "tribulation",
+  "version": "1.0.0",
+  "description": "Origo Mint Tribulation Backend",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@TheLunaLabs",
+  "license": "ISC",
+  "dependencies": {
+    "@opensea/stream-js": "^0.0.20",
+    "@truffle/hdwallet-provider": "^2.0.14",
+    "@types/phoenix": "^1.5.4",
+    "ethereumjs-tx": "^2.1.2",
+    "fs": "^0.0.1-security",
+    "web3": "^1.7.5",
+    "ws": "^8.8.1"
+  }
+}

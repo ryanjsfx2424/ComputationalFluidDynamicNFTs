@@ -1,0 +1,39 @@
+{
+  "name": "Rekted diamond Hands #2874",
+  "description": "A community-driven collectibles project. RDH come in a joyful range of colors, traits and sizes with a collection size of 5,555",
+  "image": "ipfs://QmYhGAkzMWmqB3BUzDsAXifHtatrXbtGPjYQNGr6srttDT/2874.png",
+  "dna": "1a50f3b0d7bff38aa1dc9157030e8781f65ea8b1",
+  "edition": 2874,
+  "date": 1659363832737,
+  "attributes": [
+    {
+      "trait_type": "BACKGROUND",
+      "value": "BG6"
+    },
+    {
+      "trait_type": "SKIN",
+      "value": "Baige"
+    },
+    {
+      "trait_type": "EYES",
+      "value": "Crying"
+    },
+    {
+      "trait_type": "MOUTH",
+      "value": "Meh"
+    },
+    {
+      "trait_type": "HEAD",
+      "value": "Diamond Head"
+    },
+    {
+      "trait_type": "OUTFIT",
+      "value": "None"
+    },
+    {
+      "trait_type": "BOOK",
+      "value": "None"
+    }
+  ],
+  "compiler": "HashLips Art Engine"
+}

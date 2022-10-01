@@ -1,0 +1,70 @@
+{
+  "name": "rdh-client",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:3001",
+  "dependencies": {
+    "@alch/alchemy-web3": "^1.4.6",
+    "@analytics/mixpanel": "0.3.1",
+    "@chakra-ui/icons": "^1.0.15",
+    "@chakra-ui/react": "^1.6.7",
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "analytics": "0.3.1",
+    "aos": "^2.3.4",
+    "aws-sdk": "2.601.0",
+    "axios": "^0.24.0",
+    "dotenv": "^16.0.1",
+    "emailjs-com": "^3.2.0",
+    "ethers": "^5.4.7",
+    "ethers-react": "^1.1.0",
+    "framer-motion": "^4.1.17",
+    "history": "4.10.1",
+    "http-proxy-middleware": "^2.0.6",
+    "keccak256": "^1.0.6",
+    "mailchimp-api-v3": "1.14.0",
+    "merkletreejs": "^0.2.32",
+    "node-sass": "^6.0.1",
+    "pure-react-carousel": "^1.28.1",
+    "query-string": "6.13.8",
+    "react": "17.0.2",
+    "react-accessible-accordion": "^5.0.0",
+    "react-collapsible": "^2.9.0",
+    "react-dom": "17.0.2",
+    "react-helmet": "^6.1.0",
+    "react-hook-form": "6.15.1",
+    "react-responsive-carousel": "^3.2.23",
+    "react-responsive-carousel-2": "^3.2.19",
+    "react-router-dom": "5.2.0",
+    "react-scripts": "4.0.2",
+    "react-slideshow-image": "^3.7.5",
+    "yarn": "^1.22.19",
+    "web3": "^1.5.1",
+    "web3-eth-contract": "^1.5.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": ["eslint:recommended", "react-app"],
+    "rules": {
+      "no-console": "off",
+      "strict": ["error", "global"]
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

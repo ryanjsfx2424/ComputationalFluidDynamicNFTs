@@ -1,0 +1,19 @@
+{
+  "name": "Rekted diamond Hands #1",
+  "description": "A community-driven collectibles project. RDH come in a joyful range of colors, traits and sizes with a collection size of 5,555",
+  "image": "ipfs://bafybeihs5jbqafjpimunutuntngca2dvz766evxms7zbagtpgmvejvtqtu/1.png",
+  "dna": "1f6ff5bcc9aadd6f630e3b1410fad8af935f700e",
+  "edition": 1,
+  "date": 1661617190716,
+  "attributes": [
+    {
+      "trait_type": "BACKGROUND",
+      "value": "Blue"
+    },
+    {
+      "trait_type": "BODY",
+      "value": "Body1"
+    }
+  ],
+  "compiler": "HashLips Art Engine"
+}

@@ -1,0 +1,55 @@
+{
+  "homepage": "./",
+  "name": "OrigoNFT_minting_dapp",
+  "version": "3.0.4",
+  "description": "Origo NFT minting dapp",
+  "private": true,
+  "proxy": "http://localhost:3001",
+  "dependencies": {
+    "@web3-react/core": "^6.1.9",
+    "@web3-react/walletlink-connector": "^6.2.8",
+    "axios": "^0.27.2",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "csv": "^6.1.5",
+    "csv-parse": "^5.2.2",
+    "csv-writer": "^1.6.0",
+    "dotenv": "^16.0.1",
+    "ethers": "^5.5.2",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "http-proxy-middleware": "^2.0.6",
+    "keccak256": "^1.0.6",
+    "merkletreejs": "^0.2.32",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-fade-in": "2.0.1",
+    "react-redux": "^7.2.4",
+    "react-scripts": "4.0.3",
+    "redux": "^4.1.1",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.3.0",
+    "walletlink": "^2.4.0",
+    "web-vitals": "^1.0.1",
+    "web3": "^1.5.1",
+    "web3-eth-contract": "^1.5.2"
+  },
+  "author": "@TheLunaLabs",
+  "license": "MIT",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

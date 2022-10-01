@@ -21,8 +21,9 @@ db.sequelize
   })
 
 // Routes
-app.get('/', (req, res) => {
-  res.send('Welcome to Contract Analysis Tools!')
+app.use(express.static('build'))
+app.get('*', (req, res) => {
+  res.sendfile(__dirname, 'build', 'index.html')
 })
 
 require('./app/routes/v1/analysis.route')(app)

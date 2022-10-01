@@ -1,0 +1,32 @@
+html {
+  background: white;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  color: #000068;
+  background: #FFFFFF;
+  margin: 8px;
+}
+
+a {
+  color: #060FDF;
+}
+
+a:active {
+  color: #DC24C5;
+}
+
+a:visted {
+  color: #060FDF;
+}
+
+hr {
+  margin: 8px 0;
+}
+
+footer {
+  bottom: 0;
+  position: absolute;
+}

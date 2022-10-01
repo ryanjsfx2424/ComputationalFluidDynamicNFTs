@@ -171,52 +171,95 @@ class HabitsNest(object):
             if "Attachments" in fields:
                 attachments  = fields["Attachments"] # list, index with ['url']
             # end if
-            #button_text  = fields["ButtonText"]
+
             message_text = fields["Discord Message"]
+            channel_id   = fields["Channel_Id"]
 
-            button_texts = []
-            dropdowns = []
+            try:
+                channel_id = int(channel_id)
+            except Exception as err:
+                print("couldn't cast channel_id to int")
+                print("181 err: ", err)
+                print("182 err.args: ", err.args[:])
+                continue
+            # end try/except
+
+            try:
+                channel = await interactions.get(client, interactions.Channel, object_id=channel_id)
+            except Exception as err:
+                print("couldn't get channel for channel_id: ", channel_id)
+                print("191 err: ", err)
+                print("192 err.args: ", err.args[:])
+                continue
+            # end try/except
+
+            dropdowns  = []
+            textinputs = []
+            num_dropdowns  = []
+            num_textinputs = []
             for field in fields:
-                print("313 field: ", field)
-                if "ButtonText" in field:
-                    button_texts.append("")
-                    dropdowns.append([])
-                # end if
-            # end for
-            print("button_texts: ", button_texts)
-            print("dropdowns: ", dropdowns)
-
-            print("len dropdowns: ", len(dropdowns))
-            for field in fields:
-                print("321 field: ", field)
-                if "DropDown1" in field:
-                    for dropdown in dropdowns:
-                        print("325 dropdown: ", dropdown)
-                        dropdown.append("")
-                # end if
-            # end for
-            print("dropdowns: ", dropdowns)
-
-            for field in fields:
-                print("329 field: ", field)
-                if "ButtonText" in field:
-                    ind = int(field.replace("ButtonText",""))-1
-                    button_texts[ind] = fields[field]
-
+                if "TextInput" in field:
+                    arr = num_textinputs
+                    arr2 = textinputs
                 elif "DropDown" in field:
-                    ind1 = int(field.replace("DropDown", "").split("_")[0])-1
-                    ind2 = int(field.replace("DropDown", "").split("_")[1][1])-1
-                    dropdowns[ind1][ind2] = fields[field]
-                # end if
-            # end for
-            print("button_texts: ", button_texts)
-            print("dropdowns: ", dropdowns)
+                    arr = num_dropdowns
+                    arr2 = dropdowns
+                # end if/else
 
-            select_menus = []
+                if "_" in field:
+                    field = field.split("_")
+                    num = field[-1]
+                    print("field, num: ", field, num)
+                    if num.isdigit():
+                        if num not in arr:
+                            arr.append(num)
+                            arr2.append([])
+                            print("in if")
+                        else:
+                            print("else")
+                            ind = arr.index(num)
+                            arr2[ind].append("")
+                        # end if
+                        print("num is digit")
+                    # end if
+                # end if
+
+                if "TextInput" in field:
+                    num_textinputs = arr
+                    textinputs = arr2
+                elif "DropDown" in field:
+                    num_dropdowns = arr
+                    dropdowns = arr2
+                # end if/else
+
+                print("arr, arr2: ", arr, arr2)
+            # end for
+
+            print("dropdowns: ", dropdowns)
+            print("textinputs: ", textinputs)
+            for field in fields:
+                if "DropDown" in field:
+                    var = "DropDown"
+                    arr = dropdowns
+                    print("DD")
+                elif "TextInput" in field:
+                    var = "TextInput"
+                    arr = textinputs
+                    print("TI")
+                # end if/elif
+                ind1 = int(field.replace(var, "").split("_")[0])-1
+                ind2 = int(field.replace(var, "").split("_")[1][1])-1
+                print("ind1, ind2: ", ind1, ind2)
+                arr[ind1][ind2] = fields[field]
+            # end for
+
             buttons = []
-            for ii in range(len(button_texts)):
-                print("343 ii: ", ii)
-                buttons.append(interactions.Button(style=1, label=button_texts[ii], custom_id="button" + str(ii)))
+            select_menus = []
+            labels = "a b c d e f g h i j k l m n o".split()
+            for ii in range(len(dropdowns)):
+                label = ":regional_indicator_" + labels[ii] + ":"
+                buttons.append(interactions.Button(style=1, label=label,
+                                custom_id="button" + str(ii)))
 
                 select_options = []
                 for dropdown_option in dropdowns[ii]:
@@ -226,22 +269,43 @@ class HabitsNest(object):
                 
                 select_menus.append(interactions.SelectMenu(
                     options=select_options,
-                    placeholder=button_texts[ii],
+                    placeholder=label,
                     custom_id="menu" + str(ii)
                 ))
             # end for
+            
+            cnt = 0
+            modals = []
+            for jj in range(len(textinputs)):
+                label = ":regional_indicator_" + labels[ii+jj+1] + ":"
+                buttons.append(interactions.Button(style=1, label=label,
+                                custom_id="button" + str(ii+jj+1)))
+
+                modal_components = []
+                for kk in range(len(textinputs[jj])):
+                    cnt += 1
+                    modal_components.append(interactions.TextInput(
+                        style=interactions.TextStyleType.PARAGRAPH,
+                        label=textinputs[jj][kk],
+                        custom_id="text-input-" + str(cnt),
+                    ))
+                # end for
+
+                modals.append(interactions.Modal(
+                            title=label,
+                            custom_id="modal" + str(ii+jj+1),
+                            components=modal_components
+                ))
+            # end for
+
             row = interactions.ActionRow(components=buttons)
             self.select_menus = select_menus
-            self.button_texts = button_texts
+            self.modals = modals
             self.message_text = message_text
 
             print("message_text: ", message_text)
             print("select_menus: ", self.select_menus)
-            for channel in self.channels:
-                await channel.send(message_text.replace("\\n", "\n"), components=row)
-            # end for
-            self.rows_handled.append(str(record))
-            self.save_arr()
+            print("modals: ", self.modals)
 
             print("attachments: ", attachments)
             for attachment in attachments:
@@ -256,34 +320,53 @@ class HabitsNest(object):
                     shutil.copyfileobj(r.raw, fid)
                 # end with
                 print("Image downloaded!")
+                image_file = interactions.File(filename=image_name)
 
-                for channel in self.channels:
-                    image_file = interactions.File(filename=image_name)
-                    await channel.send(files=image_file)
-                # end for
+                await channel.send(files=image_file)
             # end for attachments
+            for channel in self.channels:
+                await channel.send(message_text.replace("\\n", "\n"), components=row)
+            # end for
+            self.rows_handled.append(str(record))
+            self.save_arr()
         # end records
     # end airtable_stuff
-
 
     def discord_bot(self):
         client = interactions.Client(token=os.environ["habitsNestBotPass"])#, intents=interactions.Intents.DEFAULT | interactions.Intents.GUILD_MEMBERS)
 
-        @client.command(name="send-modal", description="Send a modal", scope=self.GIDS)
-        async def send_modals(ctx: interactions.CommandContext):
-            await ctx.popup(self.modal)
-
         async def button_func(ctx: interactions.ComponentContext):
             ii = int(ctx.data.custom_id.replace("button", ""))
-            print("ii, self.select_menus[ii]: ", ii, self.select_menus[ii])
-            await ctx.send(components=self.select_menus[ii])#, ephemeral=True)
+
+            if ii < len(self.select_menus):
+                print("ii, self.select_menus[ii]: ", ii, self.select_menus[ii])
+                await ctx.send(components=self.select_menus[ii])#, ephemeral=True)
+            else:
+                jj = len(self.select_menus) - ii
+                print("ii, jj, self.modals[jj]: ", ii, jj, self.modals[jj])
+                await ctx.popup(self.modals[jj])
+            # end if/else
         # end def
 
-        async def menu_response(ctx: interactions.CommandContext, response: str):
-            ii = int(ctx.data.custom_id.replace("menu",""))
+        async def user_response(ctx: interactions.CommandContext, response: str):
+            gid = int(ctx.guild.id)
+
+            custom_id = ctx.data.custom_id
+            num = int(custom_id.replace("menu","").replace("modal",""))
+
+            print("response: ", response)
+            print("[r]: ", [response])
+            print("gid, custom_id, num: ", gid, custom_id, num)
+            return
+
+            if   "menu" in custom_id:
+                pass
+            elif "modal" in custom_id:
+                pass
             if type(response) == type([]):
                 response = response[0]
             # end if
+
 
             print("ii, response, self.button_texts[ii]: ", ii, response, self.button_texts[ii])
             print("type response: ", type(response))
@@ -301,7 +384,8 @@ class HabitsNest(object):
                                     "Attachments": [],
                                     "Discord Message": self.message_text,
                                     "ButtonText" + str(ii+1): response,
-                                    "FromDiscordID": str(int(ctx.author.id))
+                                    "FromDiscordID": str(int(ctx.author.id)),
+                                    "FromGuildID": str(gid)
                                 }
                             }
                            ]
@@ -318,7 +402,8 @@ class HabitsNest(object):
 
         for ii in range(self.max_menus):
             client.component("button" + str(ii))(button_func)
-            client.component("menu" + str(ii))(menu_response)
+            client.component("menu"   + str(ii))(user_response)
+            client.component("modal"  + str(ii))(user_response)
         # end for ii
 
         @client.event

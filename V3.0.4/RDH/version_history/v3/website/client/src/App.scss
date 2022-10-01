@@ -1,0 +1,113 @@
+@font-face {
+  font-family: chalk;
+  src: url('./chalkboard.ttf');
+}
+body {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-font-smoothing: antialiased;
+  font-family: chalk;
+}
+.scPage::-webkit-scrollbar {
+  width: 0!important;
+}
+input, textarea, select, button, Input, Button, Select {
+	outline: none!important;
+  resize: none!important;
+}
+input, textarea {
+  border: none;
+  outline: none;
+}
+@keyframes bounce {
+  0% { background: rgba(255,255,255,0.1);}
+  100% { background: rgba(255,255,255,0.4);}
+}
+.bounce {
+  animation: bounce 5s infinite;
+  transition: 5s ease-in-out;
+}
+.bgStars {
+  background: url('./stars.png') center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+
+
+.bgStars2 {
+  background: url('./stars.png') center center;
+  background-size: 120%;
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+
+
+
+
+@keyframes bounce2 {
+  0% { background: rgba(255,255,255,0.4);}
+  100% { background: rgba(255,255,255,0.1);}
+}
+.bounce2 {
+  animation: bounce 5s infinite;
+  transition: 5s ease-in-out;
+}
+
+@keyframes shakes {
+  0% { transform: translateY(0);}
+  50% { transform: translateY(80px);}
+  100% {transform: translateY(0);}
+}
+.shake {
+  animation: shakes 3s infinite;
+  transition: 3s ease-in-out;
+}
+
+@keyframes shakes2 {
+  0% { transform: translateY(70px);}
+  50% { transform: translateY(0px);}
+  100% {transform: translateY(70px);}
+}
+.shake2 {
+  animation: shakes2 3s infinite;
+  transition: 3s ease-in-out;
+}
+
+@keyframes mshakes {
+  0% { transform: translateY(0);}
+  50% { transform: translateY(25px);}
+  100% {transform: translateY(0);}
+}
+.mshake {
+  animation: mshakes 3s infinite;
+  transition: 3s ease-in-out;
+}
+
+@keyframes mshakes2 {
+  0% { transform: translateY(35px);}
+  50% { transform: translateY(0px);}
+  100% {transform: translateY(35px);}
+}
+.mshake2 {
+  animation: mshakes2 3s infinite;
+  transition: 3s ease-in-out;
+}
+
+@media only screen and (max-width: 600px) {
+  .absW {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+  @keyframes shakes {
+    0% { transform: translateY(0);}
+    50% { transform: translateY(40px);}
+    100% {transform: translateY(0);}
+  }
+}
+.carImg {
+  width: 100%!important;
+}

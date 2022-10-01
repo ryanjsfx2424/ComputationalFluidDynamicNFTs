@@ -1,0 +1,17 @@
+{
+  "CONTRACT_ADDRESS": "0xa1e04354929992b9eEC85Ca8269c91A089244215",
+  "SCAN_LINK": "https://rinkeby.etherscan.io/address/0xa1e04354929992b9eEC85Ca8269c91A089244215",
+  "NETWORK": {
+    "NAME": "Rinkeby Testnet",
+    "SYMBOL": "ETH",
+    "ID": 4
+  },
+  "NFT_NAME": "RC14N",
+  "SYMBOL": "RC14S",
+  "MAX_SUPPLY": 3000,
+  "MARKETPLACE": "Opeansea",
+  "MARKETPLACE_LINK": "https://testnets.opensea.io/collection/rc14n",
+  "TWITTER_LINK": "https://twitter.com/origo_nft",
+  "DISCORD_LINK": "https://discord.com/invite/origo",
+  "SHOW_BACKGROUND": true
+}

@@ -1,0 +1,43 @@
+First live test, rinkeby
+0x8277b4de7E8327a138F664Ba3bDd1d336ccBa107
+
+ar2.sol
+
+ar3.sol (verified rinkeby)
+0x4A400CcEc41A80F969993c72f93A0f4c53723B4d
+
+ar4.sol (verified rinkeby)
+0x3B9BdC4aBE69d7E2CACCCDffB7652dC8b0e1CE16
+
+metadata:
+ipfs://bafybeibd2vmzmtfjrthoqukrutjdxals6qekl2hzfklytliy2gqnyjl6r4/
+
+ar5.sol (verified rinkeby):
+0xc71F64824e96f3535a4AE76de50cD50c221D94b7
+
+ar6.sol (verified rinkeby):
+0x45a5b4BAb812A66c0b3883dd1bb739c76dE1dB65
+
+hidden image:
+https://nftstorage.link/ipfs/bafybeihf43eequ7gbtvintwnldhpf2vhhgynm4f2bslwasp2j55sojy3yu
+
+hidden json:
+https://nftstorage.link/ipfs/bafkreihfenvwwygwa4sqwijlshnjovf2nkk6aywaoqlvjy4jjogaayyn3e
+ipfs://bafkreihfenvwwygwa4sqwijlshnjovf2nkk6aywaoqlvjy4jjogaayyn3e
+
+json2 uploaded to ipfs:
+https://nftstorage.link/ipfs/bafybeigxymxhfknmls6yudgwizkmnifawtztjx2424podtmcdhlfn27lii
+ipfs://bafybeigxymxhfknmls6yudgwizkmnifawtztjx2424podtmcdhlfn27lii/
+
+ar7.sol (vr)
+0x362B83E7bF2EDed9549c0DA7131D47Dc2721eF75
+
+ar9.sol
+0xe37000a1a458a759Dd41862AA7DCF9e970608d4d
+
+ar10.sol
+
+hidden metadata:
+https://nftstorage.link/ipfs/bafkreievee53hfnzw5ca666fs7dupbnw5otyciueopm25zgbimnelcwjki
+ipfs://bafkreievee53hfnzw5ca666fs7dupbnw5otyciueopm25zgbimnelcwjki
+
