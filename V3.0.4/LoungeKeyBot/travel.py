@@ -218,11 +218,12 @@ class TravelBot(RegionData):
         text = self.fares["texts"][-1]
         hashtags = self.fares["hashtags"][-1]
 
+        print("text: ", text)
         for region in self.region_data:
             #print("region: ", region)
             for subregion in self.region_data[region]:
                 #print("subregion: ", subregion)
-                if subregion in text.lower().replace(" ",""):
+                if subregion.lower().replace(" ","") in text.lower().replace(" ",""):
                     if region == "us_city_map":
                         hashtag = "#" + self.region_data["us_city_map"][subregion]
                         

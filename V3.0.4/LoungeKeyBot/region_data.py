@@ -56,7 +56,7 @@ class RegionData(object):
             country_data_path + "/oceania.txt"
         )
 
-        self.region_data["uk-and-ireland"] = ["uk","ireland"]
+        self.region_data["uk-and-ireland"] = ["uk","ireland","scotland"]
         self.region_data["canada"] = ["canada", "canadian"]
 
         self.region_data["usa"] = self.load_region_data6(

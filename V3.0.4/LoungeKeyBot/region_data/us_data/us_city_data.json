@@ -12,6 +12,9 @@
 "Richmond":"greatlakes",
 "Norfolk":"greatlakes",
 "WashingtonDC":"greatlakes",
+"Washington DC":"greatlakes",
+"washington dc":"greatlakes",
+"washingtondc":"greatlakes",
 
  "seattle":"northwest",
  "Spokane":"northwest",
@@ -29,6 +32,7 @@
  "ManchesterNH":"newengland",
  "Montpelier":"newengland",
  "Boston":"newengland",
+ "boston":"newengland",
  "Providence":"newengland",
  "Hartford":"newengland",
  "Buffalo":"newengland",
