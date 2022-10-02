@@ -4,6 +4,7 @@
 import os
 import io
 import sys
+import math
 import json
 import shutil
 import socket
@@ -106,7 +107,6 @@ class HabitsNest(object):
         print("now.day,    int(dd), now.day    >= int(dd): ", now.day,    int(dd), now.day    >= int(dd))
         print("now.hour,   int(HH), now.hour   > int(HH): ", now.hour,    int(HH), now.hour   >= int(HH)) 
         print("now.minute, int(MM), now.minute > int(MM): ", now.minute,  int(MM), now.minute >= int(MM))   
-        #input(">>")
         
         result = False
         if   now.year  > yy:
@@ -151,7 +151,7 @@ class HabitsNest(object):
             # end if
             fields = record["fields"]
 
-            if len(fields) < 5:
+            if len(fields) < 4:
                 print("too few fields? wanted 5. received len(fields): ", len(fields))
                 print("fields: ", fields)
                 print("skipping")
@@ -173,10 +173,14 @@ class HabitsNest(object):
             # end if
 
             message_text = fields["Discord Message"]
-            channel_id   = fields["Channel_Id"]
+            channel_id   = fields["ChannelId"]
+
+            emojis = message_text.split(":")[1::2]
+
 
             try:
                 channel_id = int(channel_id)
+
             except Exception as err:
                 print("couldn't cast channel_id to int")
                 print("181 err: ", err)
@@ -198,29 +202,35 @@ class HabitsNest(object):
             num_dropdowns  = []
             num_textinputs = []
             for field in fields:
+                if len(fields[field]) == 0:
+                    continue
+                # end if
+
                 if "TextInput" in field:
                     arr = num_textinputs
                     arr2 = textinputs
+
                 elif "DropDown" in field:
                     arr = num_dropdowns
                     arr2 = dropdowns
+
+                else:
+                    continue
                 # end if/else
 
                 if "_" in field:
-                    field = field.split("_")
+                    field = field.split("_")[0]
                     num = field[-1]
-                    print("field, num: ", field, num)
+
                     if num.isdigit():
                         if num not in arr:
                             arr.append(num)
-                            arr2.append([])
-                            print("in if")
+                            arr2.append([""])
+
                         else:
-                            print("else")
                             ind = arr.index(num)
                             arr2[ind].append("")
                         # end if
-                        print("num is digit")
                     # end if
                 # end if
 
@@ -231,33 +241,48 @@ class HabitsNest(object):
                     num_dropdowns = arr
                     dropdowns = arr2
                 # end if/else
-
-                print("arr, arr2: ", arr, arr2)
             # end for
 
-            print("dropdowns: ", dropdowns)
-            print("textinputs: ", textinputs)
             for field in fields:
+                if len(fields[field]) == 0:
+                    continue
+                # end if
+
                 if "DropDown" in field:
                     var = "DropDown"
                     arr = dropdowns
-                    print("DD")
+
                 elif "TextInput" in field:
                     var = "TextInput"
                     arr = textinputs
-                    print("TI")
+
+                else:
+                    continue
                 # end if/elif
+
                 ind1 = int(field.replace(var, "").split("_")[0])-1
-                ind2 = int(field.replace(var, "").split("_")[1][1])-1
-                print("ind1, ind2: ", ind1, ind2)
-                arr[ind1][ind2] = fields[field]
+                ind2 = int(field.split("_")[1][-1])-1
+
+                val = fields[field]
+                if len(val) > 45:
+                    val = val[:40]
+                    val = " ".join(val.split()[:-1]) + "..."
+                arr[ind1][ind2] = val
             # end for
+            print("dropdowns: ", dropdowns)
+            print("textinputs: ", textinputs)
 
             buttons = []
+            button_texts = []
             select_menus = []
-            labels = "a b c d e f g h i j k l m n o".split()
+            labels = "1️⃣ 2️⃣ 3️⃣ 4️⃣ 5️⃣ 6️⃣ 7️⃣ 8️⃣ 9️⃣".split()
+            
+            cnt2 = -1
+            ii = 0
             for ii in range(len(dropdowns)):
-                label = ":regional_indicator_" + labels[ii] + ":"
+                cnt2 += 1
+                label = labels[ii]
+                button_texts.append(label)
                 buttons.append(interactions.Button(style=1, label=label,
                                 custom_id="button" + str(ii)))
 
@@ -277,9 +302,12 @@ class HabitsNest(object):
             cnt = 0
             modals = []
             for jj in range(len(textinputs)):
-                label = ":regional_indicator_" + labels[ii+jj+1] + ":"
+                cnt2 += 1
+                label = labels[cnt2]
+
+                button_texts.append(label)
                 buttons.append(interactions.Button(style=1, label=label,
-                                custom_id="button" + str(ii+jj+1)))
+                                custom_id="button" + str(cnt2)))
 
                 modal_components = []
                 for kk in range(len(textinputs[jj])):
@@ -293,19 +321,61 @@ class HabitsNest(object):
 
                 modals.append(interactions.Modal(
                             title=label,
-                            custom_id="modal" + str(ii+jj+1),
+                            custom_id="modal" + str(cnt2),
                             components=modal_components
                 ))
             # end for
 
             row = interactions.ActionRow(components=buttons)
-            self.select_menus = select_menus
             self.modals = modals
-            self.message_text = message_text
+            self.button_texts = button_texts
+            self.select_menus = select_menus
+            self.message_text = message_text.replace("\\n", "\n").replace("\*", "*")
 
-            print("message_text: ", message_text)
+            print("message_text: ", self.message_text)
+            print("button_texts: ", button_texts)
             print("select_menus: ", self.select_menus)
             print("modals: ", self.modals)
+
+            for channel in self.channels:
+                if len(self.message_text) > 2000:
+                    msg_remaining = self.message_text + ""
+                    
+                    cnt3 = -1
+                    while len(msg_remaining) > 0:
+                        cnt3 += 1
+
+                        print("[] msg_remanining: ", [msg_remaining])
+                        print("len msg_remaining: ", len(msg_remaining))
+
+                        msg = msg_remaining[:2000]
+                        lines = msg.split("\n")
+                        
+                        for ii,line in enumerate(lines[::-1]):
+                            if len(line) == 0:
+                                break
+                            # end if
+                        # end for
+
+                        ind = len(lines) - (ii+1)
+                        msg_to_send = "\n".join(lines[:ind])
+                        if cnt3 > 0:
+                            msg_to_send = "\u200b" + msg_to_send
+
+                        print("msg_to_send: ", [msg_to_send])
+                        await channel.send(msg_to_send)
+                        msg_remaining = msg_remaining[len(msg_to_send):]
+                    # end while
+                    
+                    #num_chunks = int(math.ceil( len(self.message_text)/2000.0 ))
+                    #for ijk in range(num_chunks):
+                    #    msg = self.message_text[ijk*2000:(ijk+1)*2000]
+                    #    await channel.send(msg.replace("\\n", "\n"))
+                else:
+                    await channel.send(self.message_text.replace("\\n", "\n"))
+                # end if/else
+                await channel.send("\u200b", components=row)
+            # end for
 
             print("attachments: ", attachments)
             for attachment in attachments:
@@ -324,9 +394,7 @@ class HabitsNest(object):
 
                 await channel.send(files=image_file)
             # end for attachments
-            for channel in self.channels:
-                await channel.send(message_text.replace("\\n", "\n"), components=row)
-            # end for
+            
             self.rows_handled.append(str(record))
             self.save_arr()
         # end records
@@ -348,27 +416,24 @@ class HabitsNest(object):
             # end if/else
         # end def
 
-        async def user_response(ctx: interactions.CommandContext, response: str):
+        async def menu_response(ctx: interactions.CommandContext, response: str):
             gid = int(ctx.guild.id)
+            aid = int(ctx.author.id)
+            cid = int(ctx.channel_id)
 
             custom_id = ctx.data.custom_id
             num = int(custom_id.replace("menu","").replace("modal",""))
 
-            print("response: ", response)
-            print("[r]: ", [response])
+            #print("response: ", response)
+            #print("[r]: ", [response])
             print("gid, custom_id, num: ", gid, custom_id, num)
-            return
 
-            if   "menu" in custom_id:
-                pass
-            elif "modal" in custom_id:
-                pass
             if type(response) == type([]):
                 response = response[0]
             # end if
 
-
-            print("ii, response, self.button_texts[ii]: ", ii, response, self.button_texts[ii])
+            print("num, self.button_texts: ", num, self.button_texts)
+            print("response, self.button_texts[ii]: ", response, self.button_texts[num])
             print("type response: ", type(response))
 
             headers = {"Content-Type":"application/json", "Authorization":"Bearer " + os.environ["airTable"]}
@@ -376,34 +441,97 @@ class HabitsNest(object):
             print("modal response author id: ", ctx.author.id)
 
             tnow = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            print("self.message_text: ", self.message_text)
             data = {
                 "records": [
                             {
                                 "fields": {
                                     "TimeEST": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                                    "Attachments": [],
-                                    "Discord Message": self.message_text,
-                                    "ButtonText" + str(ii+1): response,
-                                    "FromDiscordID": str(int(ctx.author.id)),
-                                    "FromGuildID": str(gid)
+                                    "FromGuildId": str(gid),
+                                    "ChannelId": str(cid),
+                                    "FromDiscordId": str(aid),
+                                    "DiscordMessage": self.message_text,
+                                    "ButtonType": "DropDown" + str(num+1),
+                                    "Response1": response
                                 }
                             }
                            ]
                     }
 
-            url = (self.airtable_base + self.time_text.replace(":", "%3A") + " " + self.button_texts[ii]).replace(" ", "%20")
+            url = (self.airtable_base + self.time_text.replace(":", "%3A") + " " + str(cid) + " DropDown" + str(num+1)).replace(" ", "%20")
             print("url: ", url)
             req = requests.post(url, headers=headers, json=data)
             print("req.status_code: ", req.status_code)
-            msg = f"Your response to {self.button_texts[ii]}: {response}"
+            msg = f"Your response to {self.button_texts[num]}: {response}"
+            print("msg: msg")
+            await ctx.send(msg)#, ephemeral=True)
+        # end menu_response
+
+        async def modal_response(ctx: interactions.CommandContext, 
+                                response1: str, 
+                                response2: str = None,
+                                response3: str = None,
+                                response4: str = None,
+                                response5: str = None,
+                                response6: str = None,
+                                response7: str = None,
+                                response8: str = None,
+                                response9: str = None):
+            gid = int(ctx.guild.id)
+            aid = int(ctx.author.id)
+            cid = int(ctx.channel_id)
+
+            custom_id = ctx.data.custom_id
+            num = int(custom_id.replace("menu","").replace("modal",""))
+            print("gid, custom_id, num: ", gid, custom_id, num)
+
+            responses = []
+            rs = [response1, response2, response3, response4, response5,
+                  response6, response7, response8, response9]
+            for r in rs:
+                if r is not None:
+                    responses.append(r)
+                # end if
+            # end for
+            print("responses: ", responses)
+
+            headers = {"Content-Type":"application/json", "Authorization":"Bearer " + os.environ["airTable"]}
+
+            tnow = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            
+            fields = {
+                        "TimeEST": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                        "FromGuildId": str(gid),
+                        "ChannelId": str(cid),
+                        "FromDiscordId": str(aid),
+                        "DiscordMessage": self.message_text,
+                        "ButtonType": "TextInput" + str(num-len(self.select_menus)+1)
+                    }
+            for ii in range(len(responses)):
+                fields["Response" + str(ii+1)] = responses[ii]
+            # end for
+
+            data = {
+                "records": [
+                            {
+                                "fields": fields
+                            }
+                           ]
+                    }
+
+            url = (self.airtable_base + self.time_text.replace(":", "%3A") + " " + str(cid) + " TextInput" + str(num+1 - len(self.select_menus))).replace(" ", "%20")
+            print("url: ", url)
+            req = requests.post(url, headers=headers, json=data)
+            print("req.status_code: ", req.status_code)
+            msg = f"Your responses to {self.button_texts[num]}: {responses}"
             print("msg: msg")
             await ctx.send(msg)#, ephemeral=True)
         # end modal_response
 
         for ii in range(self.max_menus):
             client.component("button" + str(ii))(button_func)
-            client.component("menu"   + str(ii))(user_response)
-            client.component("modal"  + str(ii))(user_response)
+            client.component("menu"   + str(ii))(menu_response)
+            client.modal(    "modal"  + str(ii))(modal_response)
         # end for ii
 
         @client.event
@@ -414,18 +542,18 @@ class HabitsNest(object):
             channel_log = await interactions.get(client, interactions.Channel, object_id=self.LOG_CHANNEL)
             self.channels = [channel_log]#, channel_test]
 
-            for channel in self.channels:
-                await channel.send("I am reborn from my ashes.")
+            #for channel in self.channels:
+            #    await channel.send("I am reborn from my ashes.")
             # end for
 
-            await self.airtable_stuff(client)
+            #await self.airtable_stuff(client)
 
-            '''
+            #'''
             while True:
                 await self.airtable_stuff(client)
                 await asyncio.sleep(5.0)
             # end while True
-            '''
+            #'''
         # end on_ready
 
         client.start()
