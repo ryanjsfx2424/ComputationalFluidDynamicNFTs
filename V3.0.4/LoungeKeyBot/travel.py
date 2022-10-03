@@ -190,9 +190,9 @@ class TravelBot(RegionData):
             url = fare.split('<a href="')[2].split(" ")[0].split('"')[0]
             fare = fare.split('title="')[1].split('" ')[0]
             image = images[ii]
-            if "Hotel" in fare:
-                continue
-            # end if
+            #if "Hotel" in fare:
+            #    continue
+            ## end if
 
             if self.fares == {} or fare not in self.fares["texts"]:
                 if self.fares == {}:
@@ -241,9 +241,15 @@ class TravelBot(RegionData):
                         hashtags.append(hashtag)
                     # end if
 
-                    if subregion in text.split(" to ")[0].lower().replace(" ", ""):
-                        if "usa" not in hashtags[-1]:
-                            hashtags[-1] = hashtags[-1] + "_from"
+                    if " to " in text:
+                        if subregion.lower().replace(" ","") in text.split(" to ")[0].lower().replace(" ", ""):
+                            if "usa" not in hashtags[-1]:
+                                hashtags[-1] = hashtags[-1] + "_from"
+                    elif " in " in text:
+                        if subregion.lower().replace(" ","") in text.split(" in ")[0].lower().replace(" ", ""):
+                            if "usa" not in hashtags[-1]:
+                                hashtags[-1] = hashtags[-1] + "_from"
+                    # end if/elif
                 # end if
             # end for
         # end for

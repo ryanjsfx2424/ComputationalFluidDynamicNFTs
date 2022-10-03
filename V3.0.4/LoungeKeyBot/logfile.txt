@@ -1,11 +1,12 @@
 nohup: ignoring input
-[2022-10-01 12:13:19] [INFO    ] discord.client: logging in using static token
-[2022-10-01 12:13:20] [INFO    ] discord.gateway: Shard ID None has sent the IDENTIFY payload.
-[2022-10-01 12:13:20] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 0f7b17b6f913ccdc28078e2431ef3000).
+[2022-10-02 20:25:19] [INFO    ] discord.client: logging in using static token
+[2022-10-02 20:25:19] [INFO    ] discord.gateway: Shard ID None has sent the IDENTIFY payload.
+[2022-10-02 20:25:19] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: f91d3b04c3f63fc5e9c9e77b8165c819).
 on_ready
 wcnt:  1
 resp:  <Response [200]>
-2022-10-01 12:13:23.271580
+text:  ⚠️ HOTEL MISPRICE ⚠️ 3* Hotel El Español Paseo de Montejo in Merida, Mexico for only $1 USD per night
+2022-10-02 20:25:22.654462
 sleeping for 5s in nextdeparture
 119 tdb going to sleep for 60.1s
 wcnt:  2
@@ -70,10 +71,14 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  22
 resp:  <Response [200]>
+text:  Miami to Faro, Portugal for only $362 roundtrip (Nov-Dec dates)
 119 tdb going to sleep for 60.1s
 wcnt:  23
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
+[2022-10-02 20:48:28] [INFO    ] discord.client: Got a request to RESUME the websocket.
+[2022-10-02 20:48:29] [INFO    ] discord.gateway: Shard ID None has sent the RESUME payload.
+[2022-10-02 20:48:29] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session f91d3b04c3f63fc5e9c9e77b8165c819.
 wcnt:  24
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
@@ -157,6 +162,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  51
 resp:  <Response [200]>
+text:  Chicago to Barcelona, Spain for only $326 roundtrip (Nov-May dates)
 119 tdb going to sleep for 60.1s
 wcnt:  52
 resp:  <Response [200]>
@@ -184,9 +190,44 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  60
 resp:  <Response [200]>
-2022-10-01 13:13:36.381697
+2022-10-02 21:25:38.005347
 sleeping for 5s in nextdeparture
+[2022-10-02 21:25:47] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 10 seconds.
+Loop thread traceback (most recent call last):
+  File "travel_discord_bot.py", line 175, in <module>
+    tdb.discord_bot()
+  File "travel_discord_bot.py", line 169, in discord_bot
+    client.run(os.environ.get("lkBotPass"))
+  File "/usr/lib/python3.8/site-packages/discord/client.py", line 872, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.8/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 603, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 570, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 1859, in _run_once
+    handle._run()
+  File "/usr/lib/python3.8/asyncio/events.py", line 81, in _run
+    self._context.run(self._callback, *self._args)
+  File "/usr/lib/python3.8/site-packages/discord/client.py", line 456, in _run_event
+    await coro(*args, **kwargs)
+  File "travel_discord_bot.py", line 57, in on_ready
+    self.get_html_nd()
+  File "/root/ComputationalFluidDynamicNFTs/V3.0.4/LoungeKeyBot/travel.py", line 118, in get_html_nd
+    time.sleep(5)
+
 119 tdb going to sleep for 60.1s
+[2022-10-02 21:25:55] [INFO    ] discord.gateway: Websocket closed with 1000, cannot reconnect.
+[2022-10-02 21:25:55] [ERROR   ] discord.client: Attempting a reconnect in 0.13s
+Traceback (most recent call last):
+  File "/usr/lib/python3.8/site-packages/discord/client.py", line 670, in connect
+    await self.ws.poll_event()
+  File "/usr/lib/python3.8/site-packages/discord/gateway.py", line 631, in poll_event
+    raise ConnectionClosed(self.socket, shard_id=self.shard_id, code=code) from None
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1000
+[2022-10-02 21:25:55] [INFO    ] discord.gateway: Shard ID None has sent the RESUME payload.
+[2022-10-02 21:25:56] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session f91d3b04c3f63fc5e9c9e77b8165c819.
 wcnt:  61
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
@@ -246,6 +287,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  80
 resp:  <Response [200]>
+text:  Oslo, Norway to San Juan, Puerto Rico for only €319 roundtrip (Jan-Feb dates)
 119 tdb going to sleep for 60.1s
 wcnt:  81
 resp:  <Response [200]>
@@ -360,10 +402,11 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  118
 resp:  <Response [200]>
+text:  NEW YEAR: London, UK to Calgary, Canada for only £249 roundtrip (Nov-Apr dates)
 119 tdb going to sleep for 60.1s
 wcnt:  119
 resp:  <Response [200]>
-2022-10-01 14:13:51.271180
+2022-10-02 22:25:56.876227
 sleeping for 5s in nextdeparture
 119 tdb going to sleep for 60.1s
 wcnt:  120
@@ -410,6 +453,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  134
 resp:  <Response [200]>
+text:  Manchester or Birmingham, UK to Bangkok, Thailand from only £385 roundtrip (May-Jun dates)
 119 tdb going to sleep for 60.1s
 wcnt:  135
 resp:  <Response [200]>
@@ -497,6 +541,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  163
 resp:  <Response [200]>
+text:  Dhaka, Bangladesh to Penang, Malaysia for only $288 USD roundtrip (Mar-Jul dates)
 119 tdb going to sleep for 60.1s
 wcnt:  164
 resp:  <Response [200]>
@@ -542,9 +587,9 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  178
 resp:  <Response [200]>
-2022-10-01 15:14:07.189468
+2022-10-02 23:26:09.442886
 sleeping for 5s in nextdeparture
-[2022-10-01 15:14:20] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 10 seconds.
+[2022-10-02 23:26:25] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 10 seconds.
 Loop thread traceback (most recent call last):
   File "travel_discord_bot.py", line 175, in <module>
     tdb.discord_bot()
@@ -566,19 +611,21 @@ Loop thread traceback (most recent call last):
     await coro(*args, **kwargs)
   File "travel_discord_bot.py", line 57, in on_ready
     self.get_html_nd()
-  File "/root/ComputationalFluidDynamicNFTs/V3.0.4/LoungeKeyBot/travel.py", line 120, in get_html_nd
-    driver.get(url)
-  File "/usr/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py", line 447, in get
-    self.execute(Command.GET, {'url': url})
+  File "/root/ComputationalFluidDynamicNFTs/V3.0.4/LoungeKeyBot/travel.py", line 123, in get_html_nd
+    driver.quit()
+  File "/usr/lib/python3.8/site-packages/selenium/webdriver/firefox/webdriver.py", line 187, in quit
+    super().quit()
+  File "/usr/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py", line 564, in quit
+    self.execute(Command.QUIT)
   File "/usr/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py", line 433, in execute
     response = self.command_executor.execute(driver_command, params)
   File "/usr/lib/python3.8/site-packages/selenium/webdriver/remote/remote_connection.py", line 344, in execute
     return self._request(command_info[0], url, body=data)
   File "/usr/lib/python3.8/site-packages/selenium/webdriver/remote/remote_connection.py", line 366, in _request
     response = self._conn.request(method, url, body=body, headers=headers)
-  File "/usr/lib/python3.8/site-packages/urllib3/request.py", line 78, in request
-    return self.request_encode_body(
-  File "/usr/lib/python3.8/site-packages/urllib3/request.py", line 170, in request_encode_body
+  File "/usr/lib/python3.8/site-packages/urllib3/request.py", line 74, in request
+    return self.request_encode_url(
+  File "/usr/lib/python3.8/site-packages/urllib3/request.py", line 96, in request_encode_url
     return self.urlopen(method, url, **extra_kw)
   File "/usr/lib/python3.8/site-packages/urllib3/poolmanager.py", line 376, in urlopen
     response = conn.urlopen(method, u.request_uri, **kw)
@@ -613,6 +660,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  184
 resp:  <Response [200]>
+text:  Boston to Malaga, Spain for only $368 roundtrip (Nov-Mar dates)
 119 tdb going to sleep for 60.1s
 wcnt:  185
 resp:  <Response [200]>
@@ -620,9 +668,6 @@ resp:  <Response [200]>
 wcnt:  186
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
-[2022-10-01 15:22:36] [INFO    ] discord.client: Got a request to RESUME the websocket.
-[2022-10-01 15:22:36] [INFO    ] discord.gateway: Shard ID None has sent the RESUME payload.
-[2022-10-01 15:22:36] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 0f7b17b6f913ccdc28078e2431ef3000.
 wcnt:  187
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
@@ -712,6 +757,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  216
 resp:  <Response [200]>
+text:  Non-stop from Brisbane, Australia to Bali, Indonesia for only $540 AUD roundtrip (May-Jun dates)
 119 tdb going to sleep for 60.1s
 wcnt:  217
 resp:  <Response [200]>
@@ -775,7 +821,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  237
 resp:  <Response [200]>
-2022-10-01 16:14:21.216833
+2022-10-03 00:26:24.139168
 sleeping for 5s in nextdeparture
 119 tdb going to sleep for 60.1s
 wcnt:  238
@@ -837,6 +883,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  257
 resp:  <Response [200]>
+text:  Non-stop from New York to Fort Lauderdale (&#038; vice versa) for only $98 roundtrip (Oct-Dec dates)
 119 tdb going to sleep for 60.1s
 wcnt:  258
 resp:  <Response [200]>
@@ -900,6 +947,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  278
 resp:  <Response [200]>
+text:  Washington DC to Stockholm, Sweden for only $383 roundtrip (Jan-Mar dates)
 119 tdb going to sleep for 60.1s
 wcnt:  279
 resp:  <Response [200]>
@@ -937,6 +985,9 @@ resp:  <Response [200]>
 wcnt:  290
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
+[2022-10-03 01:21:22] [INFO    ] discord.client: Got a request to RESUME the websocket.
+[2022-10-03 01:21:23] [INFO    ] discord.gateway: Shard ID None has sent the RESUME payload.
+[2022-10-03 01:21:23] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session f91d3b04c3f63fc5e9c9e77b8165c819.
 wcnt:  291
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
@@ -954,7 +1005,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  296
 resp:  <Response [200]>
-2022-10-01 17:14:35.403917
+2022-10-03 01:26:37.086364
 sleeping for 5s in nextdeparture
 119 tdb going to sleep for 60.1s
 wcnt:  297
@@ -1025,6 +1076,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  319
 resp:  <Response [200]>
+text:  Boston to Madrid, Spain for only $366 roundtrip (Oct-Mar dates)
 119 tdb going to sleep for 60.1s
 wcnt:  320
 resp:  <Response [200]>
@@ -1061,6 +1113,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  331
 resp:  <Response [200]>
+text:  Non-stop from Singapore to Sydney, Australia for only $242 USD roundtrip (Feb-Mar dates)
 119 tdb going to sleep for 60.1s
 wcnt:  332
 resp:  <Response [200]>
@@ -1133,7 +1186,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  355
 resp:  <Response [200]>
-2022-10-01 18:14:50.685794
+2022-10-03 02:26:49.676445
 sleeping for 5s in nextdeparture
 119 tdb going to sleep for 60.1s
 wcnt:  356
@@ -1250,9 +1303,6 @@ resp:  <Response [200]>
 wcnt:  393
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
-[2022-10-01 18:54:19] [INFO    ] discord.client: Got a request to RESUME the websocket.
-[2022-10-01 18:54:19] [INFO    ] discord.gateway: Shard ID None has sent the RESUME payload.
-[2022-10-01 18:54:19] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 0f7b17b6f913ccdc28078e2431ef3000.
 wcnt:  394
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
@@ -1273,6 +1323,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  400
 resp:  <Response [200]>
+text:  Los Angeles to La Paz, Mexico for only $264 roundtrip (Nov-Dec dates)
 119 tdb going to sleep for 60.1s
 wcnt:  401
 resp:  <Response [200]>
@@ -1315,7 +1366,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  414
 resp:  <Response [200]>
-2022-10-01 19:15:05.076161
+2022-10-03 03:27:01.227154
 sleeping for 5s in nextdeparture
 119 tdb going to sleep for 60.1s
 wcnt:  415
@@ -1404,6 +1455,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  443
 resp:  <Response [200]>
+text:  Los Angeles to Katowice, Poland for only $479 roundtrip (Nov-May dates)
 119 tdb going to sleep for 60.1s
 wcnt:  444
 resp:  <Response [200]>
@@ -1494,7 +1546,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  473
 resp:  <Response [200]>
-2022-10-01 20:15:18.468776
+2022-10-03 04:27:11.835539
 sleeping for 5s in nextdeparture
 119 tdb going to sleep for 60.1s
 wcnt:  474
@@ -1583,6 +1635,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  502
 resp:  <Response [200]>
+text:  Tunis, Tunisia to Stockholm, Sweden for only $173 USD roundtrip (Nov-May dates)
 119 tdb going to sleep for 60.1s
 wcnt:  503
 resp:  <Response [200]>
@@ -1644,6 +1697,9 @@ resp:  <Response [200]>
 wcnt:  522
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
+[2022-10-03 05:17:59] [INFO    ] discord.client: Got a request to RESUME the websocket.
+[2022-10-03 05:17:59] [INFO    ] discord.gateway: Shard ID None has sent the RESUME payload.
+[2022-10-03 05:17:59] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session f91d3b04c3f63fc5e9c9e77b8165c819.
 wcnt:  523
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
@@ -1673,7 +1729,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  532
 resp:  <Response [200]>
-2022-10-01 21:15:30.902863
+2022-10-03 05:27:23.418090
 sleeping for 5s in nextdeparture
 119 tdb going to sleep for 60.1s
 wcnt:  533
@@ -1762,6 +1818,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  561
 resp:  <Response [200]>
+text:  Dakar, Senegal to Milan, Italy for only $250 USD roundtrip (Nov-Mar dates)
 119 tdb going to sleep for 60.1s
 wcnt:  562
 resp:  <Response [200]>
@@ -1781,6 +1838,10 @@ resp:  <Response [200]>
 wcnt:  567
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
+[2022-10-03 06:03:59] [INFO    ] discord.gateway: Websocket closed with 1006, attempting a reconnect.
+[2022-10-03 06:03:59] [INFO    ] discord.client: Got a request to RESUME the websocket.
+[2022-10-03 06:03:59] [INFO    ] discord.gateway: Shard ID None has sent the RESUME payload.
+[2022-10-03 06:03:59] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session f91d3b04c3f63fc5e9c9e77b8165c819.
 wcnt:  568
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
@@ -1852,7 +1913,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  591
 resp:  <Response [200]>
-2022-10-01 22:15:42.635975
+2022-10-03 06:27:35.367138
 sleeping for 5s in nextdeparture
 119 tdb going to sleep for 60.1s
 wcnt:  592
@@ -1870,9 +1931,6 @@ resp:  <Response [200]>
 wcnt:  596
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
-[2022-10-01 22:21:49] [INFO    ] discord.client: Got a request to RESUME the websocket.
-[2022-10-01 22:21:49] [INFO    ] discord.gateway: Shard ID None has sent the RESUME payload.
-[2022-10-01 22:21:49] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 0f7b17b6f913ccdc28078e2431ef3000.
 wcnt:  597
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
@@ -2034,8 +2092,31 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  650
 resp:  <Response [200]>
-2022-10-01 23:15:54.181008
+2022-10-03 07:27:47.301478
 sleeping for 5s in nextdeparture
+[2022-10-03 07:28:03] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 10 seconds.
+Loop thread traceback (most recent call last):
+  File "travel_discord_bot.py", line 175, in <module>
+    tdb.discord_bot()
+  File "travel_discord_bot.py", line 169, in discord_bot
+    client.run(os.environ.get("lkBotPass"))
+  File "/usr/lib/python3.8/site-packages/discord/client.py", line 872, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.8/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 603, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 570, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 1859, in _run_once
+    handle._run()
+  File "/usr/lib/python3.8/asyncio/events.py", line 81, in _run
+    self._context.run(self._callback, *self._args)
+  File "/usr/lib/python3.8/site-packages/discord/client.py", line 456, in _run_event
+    await coro(*args, **kwargs)
+  File "travel_discord_bot.py", line 66, in on_ready
+    if fare in old_fares:
+
 119 tdb going to sleep for 60.1s
 wcnt:  651
 resp:  <Response [200]>
@@ -2142,14 +2223,12 @@ resp:  <Response [200]>
 wcnt:  685
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
-[2022-10-01 23:52:11] [INFO    ] discord.client: Got a request to RESUME the websocket.
-[2022-10-01 23:52:11] [INFO    ] discord.gateway: Shard ID None has sent the RESUME payload.
-[2022-10-01 23:52:11] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 0f7b17b6f913ccdc28078e2431ef3000.
 wcnt:  686
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  687
 resp:  <Response [200]>
+text:  Gothenburg, Sweden to San Juan, Puerto Rico for only €301 roundtrip (Nov-Apr dates)
 119 tdb going to sleep for 60.1s
 wcnt:  688
 resp:  <Response [200]>
@@ -2216,7 +2295,8 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  709
 resp:  <Response [200]>
-2022-10-02 00:16:06.890870
+text:  Oslo, Norway to the US Virgin Islands for only €341 roundtrip (Nov-Mar dates)
+2022-10-03 08:28:03.013279
 sleeping for 5s in nextdeparture
 119 tdb going to sleep for 60.1s
 wcnt:  710
@@ -2308,6 +2388,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  739
 resp:  <Response [200]>
+text:  Venice, Italy to New York, USA for only €262 roundtrip (Jan-Mar dates)
 119 tdb going to sleep for 60.1s
 wcnt:  740
 resp:  <Response [200]>
@@ -2393,9 +2474,12 @@ resp:  <Response [200]>
 wcnt:  767
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
+[2022-10-03 09:27:38] [INFO    ] discord.client: Got a request to RESUME the websocket.
+[2022-10-03 09:27:38] [INFO    ] discord.gateway: Shard ID None has sent the RESUME payload.
+[2022-10-03 09:27:38] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session f91d3b04c3f63fc5e9c9e77b8165c819.
 wcnt:  768
 resp:  <Response [200]>
-2022-10-02 01:16:18.048924
+2022-10-03 09:28:21.145354
 sleeping for 5s in nextdeparture
 119 tdb going to sleep for 60.1s
 wcnt:  769
@@ -2463,6 +2547,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  790
 resp:  <Response [200]>
+text:  Tallinn, Estonia to Venice, Italy for only €19 roundtrip (Wizz members price) (Oct-Jan dates)
 119 tdb going to sleep for 60.1s
 wcnt:  791
 resp:  <Response [200]>
@@ -2538,6 +2623,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  815
 resp:  <Response [200]>
+text:  Marseille, France to Washington DC, USA for only €289 roundtrip (Feb-Mar dates)
 119 tdb going to sleep for 60.1s
 wcnt:  816
 resp:  <Response [200]>
@@ -2566,6 +2652,9 @@ resp:  <Response [200]>
 wcnt:  824
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
+[2022-10-03 10:26:15] [INFO    ] discord.client: Got a request to RESUME the websocket.
+[2022-10-03 10:26:15] [INFO    ] discord.gateway: Shard ID None has sent the RESUME payload.
+[2022-10-03 10:26:16] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session f91d3b04c3f63fc5e9c9e77b8165c819.
 wcnt:  825
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
@@ -2574,7 +2663,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  827
 resp:  <Response [200]>
-2022-10-02 02:16:30.464713
+2022-10-03 10:28:37.881531
 sleeping for 5s in nextdeparture
 119 tdb going to sleep for 60.1s
 wcnt:  828
@@ -2606,6 +2695,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  837
 resp:  <Response [200]>
+text:  Gothenburg, Sweden to New York, USA for only €325 roundtrip (Oct-Jun dates)
 119 tdb going to sleep for 60.1s
 wcnt:  838
 resp:  <Response [200]>
@@ -2684,6 +2774,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  863
 resp:  <Response [200]>
+text:  Marseille, France to Cancun, Mexico for only €379 roundtrip (Jan-May dates)
 119 tdb going to sleep for 60.1s
 wcnt:  864
 resp:  <Response [200]>
@@ -2709,9 +2800,6 @@ resp:  <Response [200]>
 wcnt:  871
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
-[2022-10-02 03:02:18] [INFO    ] discord.client: Got a request to RESUME the websocket.
-[2022-10-02 03:02:18] [INFO    ] discord.gateway: Shard ID None has sent the RESUME payload.
-[2022-10-02 03:02:18] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 0f7b17b6f913ccdc28078e2431ef3000.
 wcnt:  872
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
@@ -2756,70 +2844,9 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  886
 resp:  <Response [200]>
-2022-10-02 03:16:42.323691
+2022-10-03 11:28:58.113286
 sleeping for 5s in nextdeparture
-[2022-10-02 03:16:54] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 10 seconds.
-Loop thread traceback (most recent call last):
-  File "travel_discord_bot.py", line 175, in <module>
-    tdb.discord_bot()
-  File "travel_discord_bot.py", line 169, in discord_bot
-    client.run(os.environ.get("lkBotPass"))
-  File "/usr/lib/python3.8/site-packages/discord/client.py", line 872, in run
-    asyncio.run(runner())
-  File "/usr/lib/python3.8/asyncio/runners.py", line 44, in run
-    return loop.run_until_complete(main)
-  File "/usr/lib/python3.8/asyncio/base_events.py", line 603, in run_until_complete
-    self.run_forever()
-  File "/usr/lib/python3.8/asyncio/base_events.py", line 570, in run_forever
-    self._run_once()
-  File "/usr/lib/python3.8/asyncio/base_events.py", line 1859, in _run_once
-    handle._run()
-  File "/usr/lib/python3.8/asyncio/events.py", line 81, in _run
-    self._context.run(self._callback, *self._args)
-  File "/usr/lib/python3.8/site-packages/discord/client.py", line 456, in _run_event
-    await coro(*args, **kwargs)
-  File "travel_discord_bot.py", line 57, in on_ready
-    self.get_html_nd()
-  File "/root/ComputationalFluidDynamicNFTs/V3.0.4/LoungeKeyBot/travel.py", line 120, in get_html_nd
-    driver.get(url)
-  File "/usr/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py", line 447, in get
-    self.execute(Command.GET, {'url': url})
-  File "/usr/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py", line 433, in execute
-    response = self.command_executor.execute(driver_command, params)
-  File "/usr/lib/python3.8/site-packages/selenium/webdriver/remote/remote_connection.py", line 344, in execute
-    return self._request(command_info[0], url, body=data)
-  File "/usr/lib/python3.8/site-packages/selenium/webdriver/remote/remote_connection.py", line 366, in _request
-    response = self._conn.request(method, url, body=body, headers=headers)
-  File "/usr/lib/python3.8/site-packages/urllib3/request.py", line 78, in request
-    return self.request_encode_body(
-  File "/usr/lib/python3.8/site-packages/urllib3/request.py", line 170, in request_encode_body
-    return self.urlopen(method, url, **extra_kw)
-  File "/usr/lib/python3.8/site-packages/urllib3/poolmanager.py", line 376, in urlopen
-    response = conn.urlopen(method, u.request_uri, **kw)
-  File "/usr/lib/python3.8/site-packages/urllib3/connectionpool.py", line 703, in urlopen
-    httplib_response = self._make_request(
-  File "/usr/lib/python3.8/site-packages/urllib3/connectionpool.py", line 444, in _make_request
-    httplib_response = conn.getresponse()
-  File "/usr/lib/python3.8/http/client.py", line 1348, in getresponse
-    response.begin()
-  File "/usr/lib/python3.8/http/client.py", line 316, in begin
-    version, status, reason = self._read_status()
-  File "/usr/lib/python3.8/http/client.py", line 277, in _read_status
-    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
-  File "/usr/lib/python3.8/socket.py", line 669, in readinto
-    return self._sock.recv_into(b)
-
 119 tdb going to sleep for 60.1s
-[2022-10-02 03:16:59] [INFO    ] discord.gateway: Websocket closed with 1000, cannot reconnect.
-[2022-10-02 03:16:59] [ERROR   ] discord.client: Attempting a reconnect in 0.30s
-Traceback (most recent call last):
-  File "/usr/lib/python3.8/site-packages/discord/client.py", line 670, in connect
-    await self.ws.poll_event()
-  File "/usr/lib/python3.8/site-packages/discord/gateway.py", line 631, in poll_event
-    raise ConnectionClosed(self.socket, shard_id=self.shard_id, code=code) from None
-discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1000
-[2022-10-02 03:16:59] [INFO    ] discord.gateway: Shard ID None has sent the RESUME payload.
-[2022-10-02 03:16:59] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 0f7b17b6f913ccdc28078e2431ef3000.
 wcnt:  887
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
@@ -2831,6 +2858,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  890
 resp:  <Response [200]>
+text:  Non-stop from London, UK to the Dominican Republic for only £396 roundtrip (Oct dates)
 119 tdb going to sleep for 60.1s
 wcnt:  891
 resp:  <Response [200]>
@@ -2874,6 +2902,9 @@ resp:  <Response [200]>
 wcnt:  904
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
+[2022-10-03 11:47:59] [INFO    ] discord.client: Got a request to RESUME the websocket.
+[2022-10-03 11:48:00] [INFO    ] discord.gateway: Shard ID None has sent the RESUME payload.
+[2022-10-03 11:48:00] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session f91d3b04c3f63fc5e9c9e77b8165c819.
 wcnt:  905
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
@@ -2903,6 +2934,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  914
 resp:  <Response [200]>
+text:  Non-stop from Ottawa, Canada to Calgary for only $97 CAD roundtrip (Nov-Jun dates)
 119 tdb going to sleep for 60.1s
 wcnt:  915
 resp:  <Response [200]>
@@ -2931,6 +2963,10 @@ resp:  <Response [200]>
 wcnt:  923
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
+[2022-10-03 12:07:31] [INFO    ] discord.gateway: Websocket closed with 1006, attempting a reconnect.
+[2022-10-03 12:07:31] [INFO    ] discord.client: Got a request to RESUME the websocket.
+[2022-10-03 12:07:31] [INFO    ] discord.gateway: Shard ID None has sent the RESUME payload.
+[2022-10-03 12:07:31] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session f91d3b04c3f63fc5e9c9e77b8165c819.
 wcnt:  924
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
@@ -2975,6 +3011,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  938
 resp:  <Response [200]>
+text:  Milan, Italy to Delhi, India for only €361 roundtrip (Jan-Aug dates)
 119 tdb going to sleep for 60.1s
 wcnt:  939
 resp:  <Response [200]>
@@ -2996,7 +3033,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  945
 resp:  <Response [200]>
-2022-10-02 04:16:55.351164
+2022-10-03 12:29:16.062144
 sleeping for 5s in nextdeparture
 119 tdb going to sleep for 60.1s
 wcnt:  946
@@ -3064,6 +3101,7 @@ resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  967
 resp:  <Response [200]>
+text:  UK cities to Johannesburg, South Africa from only £335 roundtrip (Jan-Feb dates)
 119 tdb going to sleep for 60.1s
 wcnt:  968
 resp:  <Response [200]>
@@ -3075,2876 +3113,5 @@ wcnt:  970
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  971
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  972
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  973
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  974
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  975
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  976
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  977
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  978
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  979
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  980
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  981
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  982
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  983
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  984
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  985
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  986
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  987
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  988
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  989
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  990
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  991
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  992
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  993
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  994
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  995
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  996
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  997
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  998
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  999
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1000
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1001
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1002
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1003
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1004
-resp:  <Response [200]>
-2022-10-02 05:17:06.430942
-sleeping for 5s in nextdeparture
-119 tdb going to sleep for 60.1s
-wcnt:  1005
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1006
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1007
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1008
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1009
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1010
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1011
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1012
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1013
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1014
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1015
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1016
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1017
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1018
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1019
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1020
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1021
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1022
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1023
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1024
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1025
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1026
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1027
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1028
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1029
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1030
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1031
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1032
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1033
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1034
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1035
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1036
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1037
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1038
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1039
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1040
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1041
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1042
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1043
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1044
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1045
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1046
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1047
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1048
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1049
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1050
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1051
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1052
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1053
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1054
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1055
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1056
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1057
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1058
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1059
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1060
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1061
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1062
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1063
-resp:  <Response [200]>
-2022-10-02 06:17:18.033767
-sleeping for 5s in nextdeparture
-119 tdb going to sleep for 60.1s
-wcnt:  1064
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1065
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1066
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1067
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1068
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1069
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1070
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1071
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1072
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1073
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1074
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1075
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1076
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1077
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1078
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1079
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1080
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1081
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1082
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1083
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1084
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1085
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1086
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1087
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1088
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1089
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1090
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1091
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1092
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1093
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1094
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1095
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1096
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1097
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1098
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1099
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1100
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1101
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1102
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1103
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1104
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1105
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1106
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1107
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1108
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-[2022-10-02 07:03:42] [INFO    ] discord.client: Got a request to RESUME the websocket.
-[2022-10-02 07:03:43] [INFO    ] discord.gateway: Shard ID None has sent the RESUME payload.
-[2022-10-02 07:03:43] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 0f7b17b6f913ccdc28078e2431ef3000.
-wcnt:  1109
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1110
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1111
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1112
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1113
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1114
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1115
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1116
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1117
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1118
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1119
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1120
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1121
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1122
-resp:  <Response [200]>
-2022-10-02 07:17:30.317280
-sleeping for 5s in nextdeparture
-119 tdb going to sleep for 60.1s
-wcnt:  1123
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1124
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1125
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1126
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1127
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1128
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1129
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1130
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1131
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1132
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1133
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1134
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1135
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1136
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1137
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1138
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1139
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1140
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1141
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1142
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1143
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1144
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1145
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1146
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1147
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1148
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1149
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1150
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1151
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1152
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1153
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1154
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1155
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1156
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1157
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1158
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1159
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1160
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1161
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1162
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1163
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1164
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1165
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1166
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1167
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1168
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1169
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1170
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1171
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1172
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1173
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1174
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1175
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1176
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1177
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1178
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1179
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1180
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1181
-resp:  <Response [200]>
-2022-10-02 08:17:43.854340
-sleeping for 5s in nextdeparture
-119 tdb going to sleep for 60.1s
-wcnt:  1182
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1183
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1184
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1185
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1186
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1187
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1188
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1189
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1190
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1191
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1192
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1193
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1194
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1195
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1196
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1197
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1198
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1199
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1200
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1201
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1202
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1203
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1204
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1205
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1206
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1207
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1208
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1209
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1210
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1211
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1212
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1213
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1214
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1215
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1216
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1217
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1218
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1219
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1220
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1221
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1222
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1223
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1224
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1225
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1226
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1227
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1228
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1229
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1230
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1231
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1232
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1233
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1234
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1235
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1236
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1237
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1238
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1239
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1240
-resp:  <Response [200]>
-2022-10-02 09:17:58.595603
-sleeping for 5s in nextdeparture
-119 tdb going to sleep for 60.1s
-wcnt:  1241
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1242
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1243
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1244
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1245
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1246
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1247
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1248
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1249
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1250
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1251
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1252
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1253
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1254
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1255
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1256
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1257
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1258
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1259
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1260
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1261
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1262
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1263
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1264
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1265
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1266
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1267
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1268
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1269
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1270
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1271
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1272
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1273
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1274
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1275
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1276
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1277
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1278
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1279
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1280
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1281
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1282
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1283
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1284
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1285
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1286
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1287
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1288
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1289
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1290
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1291
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1292
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1293
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-[2022-10-02 10:12:47] [INFO    ] discord.client: Got a request to RESUME the websocket.
-[2022-10-02 10:12:47] [INFO    ] discord.gateway: Shard ID None has sent the RESUME payload.
-[2022-10-02 10:12:47] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 0f7b17b6f913ccdc28078e2431ef3000.
-wcnt:  1294
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1295
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1296
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1297
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1298
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1299
-resp:  <Response [200]>
-2022-10-02 10:18:16.069904
-sleeping for 5s in nextdeparture
-[2022-10-02 10:18:27] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 10 seconds.
-Loop thread traceback (most recent call last):
-  File "travel_discord_bot.py", line 175, in <module>
-    tdb.discord_bot()
-  File "travel_discord_bot.py", line 169, in discord_bot
-    client.run(os.environ.get("lkBotPass"))
-  File "/usr/lib/python3.8/site-packages/discord/client.py", line 872, in run
-    asyncio.run(runner())
-  File "/usr/lib/python3.8/asyncio/runners.py", line 44, in run
-    return loop.run_until_complete(main)
-  File "/usr/lib/python3.8/asyncio/base_events.py", line 603, in run_until_complete
-    self.run_forever()
-  File "/usr/lib/python3.8/asyncio/base_events.py", line 570, in run_forever
-    self._run_once()
-  File "/usr/lib/python3.8/asyncio/base_events.py", line 1859, in _run_once
-    handle._run()
-  File "/usr/lib/python3.8/asyncio/events.py", line 81, in _run
-    self._context.run(self._callback, *self._args)
-  File "/usr/lib/python3.8/site-packages/discord/client.py", line 456, in _run_event
-    await coro(*args, **kwargs)
-  File "travel_discord_bot.py", line 57, in on_ready
-    self.get_html_nd()
-  File "/root/ComputationalFluidDynamicNFTs/V3.0.4/LoungeKeyBot/travel.py", line 120, in get_html_nd
-    driver.get(url)
-  File "/usr/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py", line 447, in get
-    self.execute(Command.GET, {'url': url})
-  File "/usr/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py", line 433, in execute
-    response = self.command_executor.execute(driver_command, params)
-  File "/usr/lib/python3.8/site-packages/selenium/webdriver/remote/remote_connection.py", line 344, in execute
-    return self._request(command_info[0], url, body=data)
-  File "/usr/lib/python3.8/site-packages/selenium/webdriver/remote/remote_connection.py", line 366, in _request
-    response = self._conn.request(method, url, body=body, headers=headers)
-  File "/usr/lib/python3.8/site-packages/urllib3/request.py", line 78, in request
-    return self.request_encode_body(
-  File "/usr/lib/python3.8/site-packages/urllib3/request.py", line 170, in request_encode_body
-    return self.urlopen(method, url, **extra_kw)
-  File "/usr/lib/python3.8/site-packages/urllib3/poolmanager.py", line 376, in urlopen
-    response = conn.urlopen(method, u.request_uri, **kw)
-  File "/usr/lib/python3.8/site-packages/urllib3/connectionpool.py", line 703, in urlopen
-    httplib_response = self._make_request(
-  File "/usr/lib/python3.8/site-packages/urllib3/connectionpool.py", line 444, in _make_request
-    httplib_response = conn.getresponse()
-  File "/usr/lib/python3.8/http/client.py", line 1348, in getresponse
-    response.begin()
-  File "/usr/lib/python3.8/http/client.py", line 316, in begin
-    version, status, reason = self._read_status()
-  File "/usr/lib/python3.8/http/client.py", line 277, in _read_status
-    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
-  File "/usr/lib/python3.8/socket.py", line 669, in readinto
-    return self._sock.recv_into(b)
-
-119 tdb going to sleep for 60.1s
-[2022-10-02 10:18:32] [INFO    ] discord.gateway: Websocket closed with 1000, cannot reconnect.
-[2022-10-02 10:18:32] [ERROR   ] discord.client: Attempting a reconnect in 0.23s
-Traceback (most recent call last):
-  File "/usr/lib/python3.8/site-packages/discord/client.py", line 670, in connect
-    await self.ws.poll_event()
-  File "/usr/lib/python3.8/site-packages/discord/gateway.py", line 631, in poll_event
-    raise ConnectionClosed(self.socket, shard_id=self.shard_id, code=code) from None
-discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1000
-[2022-10-02 10:18:32] [INFO    ] discord.gateway: Shard ID None has sent the RESUME payload.
-[2022-10-02 10:18:32] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 0f7b17b6f913ccdc28078e2431ef3000.
-wcnt:  1300
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1301
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1302
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1303
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1304
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1305
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1306
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1307
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1308
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1309
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1310
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1311
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1312
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1313
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1314
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1315
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1316
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1317
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1318
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1319
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1320
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1321
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1322
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1323
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1324
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1325
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1326
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1327
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1328
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1329
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1330
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1331
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1332
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1333
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1334
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1335
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1336
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1337
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1338
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1339
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1340
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1341
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1342
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1343
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1344
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1345
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1346
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1347
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-[2022-10-02 11:07:48] [INFO    ] discord.client: Got a request to RESUME the websocket.
-[2022-10-02 11:07:48] [INFO    ] discord.gateway: Shard ID None has sent the RESUME payload.
-[2022-10-02 11:07:49] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 0f7b17b6f913ccdc28078e2431ef3000.
-wcnt:  1348
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1349
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1350
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1351
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1352
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1353
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1354
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1355
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1356
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1357
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1358
-resp:  <Response [200]>
-2022-10-02 11:18:32.887427
-sleeping for 5s in nextdeparture
-119 tdb going to sleep for 60.1s
-wcnt:  1359
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1360
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1361
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1362
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1363
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1364
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1365
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1366
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1367
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1368
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1369
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1370
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1371
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1372
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1373
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1374
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1375
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1376
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1377
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1378
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1379
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1380
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1381
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1382
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1383
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1384
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1385
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1386
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1387
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-[2022-10-02 11:48:41] [INFO    ] discord.gateway: Timed out receiving packet. Attempting a reconnect.
-[2022-10-02 11:48:41] [INFO    ] discord.client: Got a request to RESUME the websocket.
-[2022-10-02 11:48:42] [INFO    ] discord.gateway: Shard ID None has sent the RESUME payload.
-[2022-10-02 11:48:42] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 0f7b17b6f913ccdc28078e2431ef3000.
-wcnt:  1388
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1389
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1390
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1391
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1392
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1393
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1394
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1395
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1396
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1397
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1398
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1399
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1400
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1401
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1402
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1403
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1404
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1405
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1406
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1407
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1408
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1409
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1410
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1411
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1412
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1413
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1414
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1415
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1416
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1417
-resp:  <Response [200]>
-2022-10-02 12:18:52.627437
-sleeping for 5s in nextdeparture
-[2022-10-02 12:19:07] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 10 seconds.
-Loop thread traceback (most recent call last):
-  File "travel_discord_bot.py", line 175, in <module>
-    tdb.discord_bot()
-  File "travel_discord_bot.py", line 169, in discord_bot
-    client.run(os.environ.get("lkBotPass"))
-  File "/usr/lib/python3.8/site-packages/discord/client.py", line 872, in run
-    asyncio.run(runner())
-  File "/usr/lib/python3.8/asyncio/runners.py", line 44, in run
-    return loop.run_until_complete(main)
-  File "/usr/lib/python3.8/asyncio/base_events.py", line 603, in run_until_complete
-    self.run_forever()
-  File "/usr/lib/python3.8/asyncio/base_events.py", line 570, in run_forever
-    self._run_once()
-  File "/usr/lib/python3.8/asyncio/base_events.py", line 1859, in _run_once
-    handle._run()
-  File "/usr/lib/python3.8/asyncio/events.py", line 81, in _run
-    self._context.run(self._callback, *self._args)
-  File "/usr/lib/python3.8/site-packages/discord/client.py", line 456, in _run_event
-    await coro(*args, **kwargs)
-  File "travel_discord_bot.py", line 57, in on_ready
-    self.get_html_nd()
-  File "/root/ComputationalFluidDynamicNFTs/V3.0.4/LoungeKeyBot/travel.py", line 123, in get_html_nd
-    driver.quit()
-  File "/usr/lib/python3.8/site-packages/selenium/webdriver/firefox/webdriver.py", line 187, in quit
-    super().quit()
-  File "/usr/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py", line 564, in quit
-    self.execute(Command.QUIT)
-  File "/usr/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py", line 433, in execute
-    response = self.command_executor.execute(driver_command, params)
-  File "/usr/lib/python3.8/site-packages/selenium/webdriver/remote/remote_connection.py", line 344, in execute
-    return self._request(command_info[0], url, body=data)
-  File "/usr/lib/python3.8/site-packages/selenium/webdriver/remote/remote_connection.py", line 366, in _request
-    response = self._conn.request(method, url, body=body, headers=headers)
-  File "/usr/lib/python3.8/site-packages/urllib3/request.py", line 74, in request
-    return self.request_encode_url(
-  File "/usr/lib/python3.8/site-packages/urllib3/request.py", line 96, in request_encode_url
-    return self.urlopen(method, url, **extra_kw)
-  File "/usr/lib/python3.8/site-packages/urllib3/poolmanager.py", line 376, in urlopen
-    response = conn.urlopen(method, u.request_uri, **kw)
-  File "/usr/lib/python3.8/site-packages/urllib3/connectionpool.py", line 703, in urlopen
-    httplib_response = self._make_request(
-  File "/usr/lib/python3.8/site-packages/urllib3/connectionpool.py", line 444, in _make_request
-    httplib_response = conn.getresponse()
-  File "/usr/lib/python3.8/http/client.py", line 1348, in getresponse
-    response.begin()
-  File "/usr/lib/python3.8/http/client.py", line 316, in begin
-    version, status, reason = self._read_status()
-  File "/usr/lib/python3.8/http/client.py", line 277, in _read_status
-    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
-  File "/usr/lib/python3.8/socket.py", line 669, in readinto
-    return self._sock.recv_into(b)
-
-119 tdb going to sleep for 60.1s
-wcnt:  1418
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1419
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1420
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1421
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1422
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1423
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1424
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1425
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1426
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1427
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1428
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1429
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1430
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1431
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1432
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1433
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1434
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1435
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1436
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1437
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1438
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1439
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1440
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1441
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-['']
-[855616810525917215]
-[932056137518444594]
-['']
-[855616810525917215]
-[932056137518444594]
-wcnt:  1442
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1443
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1444
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1445
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1446
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1447
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1448
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-['']
-[855616810525917215]
-[932056137518444594]
-wcnt:  1449
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1450
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1451
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1452
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1453
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1454
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1455
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1456
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1457
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1458
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1459
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1460
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1461
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1462
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1463
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1464
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1465
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1466
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1467
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1468
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1469
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1470
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1471
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1472
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1473
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1474
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1475
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1476
-resp:  <Response [200]>
-2022-10-02 13:19:13.591285
-sleeping for 5s in nextdeparture
-119 tdb going to sleep for 60.1s
-wcnt:  1477
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1478
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1479
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1480
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1481
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1482
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1483
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1484
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1485
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1486
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1487
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1488
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1489
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1490
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1491
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1492
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1493
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1494
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1495
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1496
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1497
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1498
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1499
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1500
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1501
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1502
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1503
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1504
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1505
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1506
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1507
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1508
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1509
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1510
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1511
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1512
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1513
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1514
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1515
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1516
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1517
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1518
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1519
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1520
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1521
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1522
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1523
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1524
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1525
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1526
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1527
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1528
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1529
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1530
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1531
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1532
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1533
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1534
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1535
-resp:  <Response [200]>
-2022-10-02 14:19:34.220183
-sleeping for 5s in nextdeparture
-119 tdb going to sleep for 60.1s
-wcnt:  1536
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1537
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1538
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1539
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1540
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1541
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1542
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1543
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1544
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1545
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1546
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1547
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1548
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-[2022-10-02 14:33:35] [INFO    ] discord.client: Got a request to RESUME the websocket.
-[2022-10-02 14:33:35] [INFO    ] discord.gateway: Shard ID None has sent the RESUME payload.
-[2022-10-02 14:33:35] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 0f7b17b6f913ccdc28078e2431ef3000.
-wcnt:  1549
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1550
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1551
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1552
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1553
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1554
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1555
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1556
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1557
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1558
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1559
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1560
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1561
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1562
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1563
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1564
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1565
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1566
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1567
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1568
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1569
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1570
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1571
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1572
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1573
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1574
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1575
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1576
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1577
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1578
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1579
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1580
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1581
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1582
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1583
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1584
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1585
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1586
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1587
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1588
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1589
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1590
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1591
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1592
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1593
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1594
-resp:  <Response [200]>
-2022-10-02 15:19:50.311822
-sleeping for 5s in nextdeparture
-119 tdb going to sleep for 60.1s
-wcnt:  1595
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1596
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1597
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1598
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1599
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1600
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1601
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1602
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1603
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1604
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1605
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1606
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1607
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1608
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1609
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1610
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1611
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1612
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1613
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1614
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1615
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1616
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1617
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1618
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1619
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1620
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1621
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1622
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1623
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1624
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1625
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1626
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1627
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1628
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1629
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1630
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1631
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1632
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1633
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1634
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1635
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1636
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1637
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1638
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1639
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1640
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1641
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1642
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1643
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1644
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1645
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1646
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1647
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1648
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-[2022-10-02 16:15:20] [INFO    ] discord.client: Got a request to RESUME the websocket.
-[2022-10-02 16:15:20] [INFO    ] discord.gateway: Shard ID None has sent the RESUME payload.
-[2022-10-02 16:15:20] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 0f7b17b6f913ccdc28078e2431ef3000.
-wcnt:  1649
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1650
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1651
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1652
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1653
-resp:  <Response [200]>
-2022-10-02 16:20:08.951011
-sleeping for 5s in nextdeparture
-[2022-10-02 16:20:19] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 10 seconds.
-Loop thread traceback (most recent call last):
-  File "travel_discord_bot.py", line 175, in <module>
-    tdb.discord_bot()
-  File "travel_discord_bot.py", line 169, in discord_bot
-    client.run(os.environ.get("lkBotPass"))
-  File "/usr/lib/python3.8/site-packages/discord/client.py", line 872, in run
-    asyncio.run(runner())
-  File "/usr/lib/python3.8/asyncio/runners.py", line 44, in run
-    return loop.run_until_complete(main)
-  File "/usr/lib/python3.8/asyncio/base_events.py", line 603, in run_until_complete
-    self.run_forever()
-  File "/usr/lib/python3.8/asyncio/base_events.py", line 570, in run_forever
-    self._run_once()
-  File "/usr/lib/python3.8/asyncio/base_events.py", line 1859, in _run_once
-    handle._run()
-  File "/usr/lib/python3.8/asyncio/events.py", line 81, in _run
-    self._context.run(self._callback, *self._args)
-  File "/usr/lib/python3.8/site-packages/discord/client.py", line 456, in _run_event
-    await coro(*args, **kwargs)
-  File "travel_discord_bot.py", line 57, in on_ready
-    self.get_html_nd()
-  File "/root/ComputationalFluidDynamicNFTs/V3.0.4/LoungeKeyBot/travel.py", line 118, in get_html_nd
-    time.sleep(5)
-
-[2022-10-02 16:20:24] [INFO    ] discord.gateway: Websocket closed with 1000, cannot reconnect.
-[2022-10-02 16:20:24] [ERROR   ] discord.client: Attempting a reconnect in 1.79s
-Traceback (most recent call last):
-  File "/usr/lib/python3.8/site-packages/discord/client.py", line 670, in connect
-    await self.ws.poll_event()
-  File "/usr/lib/python3.8/site-packages/discord/gateway.py", line 631, in poll_event
-    raise ConnectionClosed(self.socket, shard_id=self.shard_id, code=code) from None
-discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1000
-119 tdb going to sleep for 60.1s
-[2022-10-02 16:20:26] [INFO    ] discord.gateway: Shard ID None has sent the RESUME payload.
-[2022-10-02 16:20:26] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 0f7b17b6f913ccdc28078e2431ef3000.
-wcnt:  1654
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1655
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1656
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1657
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1658
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1659
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1660
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1661
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1662
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1663
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1664
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1665
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1666
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1667
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1668
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1669
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1670
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1671
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1672
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1673
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1674
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1675
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1676
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1677
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1678
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1679
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1680
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1681
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1682
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1683
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1684
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1685
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1686
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1687
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1688
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1689
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1690
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1691
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1692
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1693
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1694
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1695
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1696
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1697
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1698
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1699
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1700
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1701
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1702
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1703
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1704
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1705
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1706
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1707
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1708
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1709
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1710
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1711
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1712
-resp:  <Response [200]>
-2022-10-02 17:20:25.457743
-sleeping for 5s in nextdeparture
-119 tdb going to sleep for 60.1s
-wcnt:  1713
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1714
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1715
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1716
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1717
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1718
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1719
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1720
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1721
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1722
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1723
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1724
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1725
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1726
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1727
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1728
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1729
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1730
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1731
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1732
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1733
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1734
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1735
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1736
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1737
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1738
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1739
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1740
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1741
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1742
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1743
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1744
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1745
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1746
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1747
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1748
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1749
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1750
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1751
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1752
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1753
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1754
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1755
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1756
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1757
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1758
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1759
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-[2022-10-02 18:08:43] [INFO    ] discord.client: Got a request to RESUME the websocket.
-[2022-10-02 18:08:43] [INFO    ] discord.gateway: Shard ID None has sent the RESUME payload.
-[2022-10-02 18:08:43] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 0f7b17b6f913ccdc28078e2431ef3000.
-wcnt:  1760
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1761
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1762
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1763
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1764
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1765
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1766
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1767
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1768
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1769
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1770
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1771
-resp:  <Response [200]>
-2022-10-02 18:20:40.372872
-sleeping for 5s in nextdeparture
-119 tdb going to sleep for 60.1s
-wcnt:  1772
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1773
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1774
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1775
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1776
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1777
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1778
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1779
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1780
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1781
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1782
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1783
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1784
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1785
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1786
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1787
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1788
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1789
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1790
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1791
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1792
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1793
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1794
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1795
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1796
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1797
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1798
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1799
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1800
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1801
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1802
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1803
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1804
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1805
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1806
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1807
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1808
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1809
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1810
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1811
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1812
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1813
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1814
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1815
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1816
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1817
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1818
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1819
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1820
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1821
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1822
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1823
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1824
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1825
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1826
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1827
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1828
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1829
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1830
-resp:  <Response [200]>
-2022-10-02 19:21:00.824318
-sleeping for 5s in nextdeparture
-119 tdb going to sleep for 60.1s
-wcnt:  1831
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1832
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1833
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1834
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1835
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1836
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1837
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1838
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1839
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1840
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1841
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1842
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1843
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1844
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1845
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1846
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1847
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1848
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1849
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1850
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1851
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1852
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1853
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1854
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1855
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1856
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1857
-resp:  <Response [200]>
-119 tdb going to sleep for 60.1s
-wcnt:  1858
 resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
