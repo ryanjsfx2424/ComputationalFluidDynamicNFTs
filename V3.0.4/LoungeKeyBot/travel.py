@@ -22,6 +22,8 @@ if socket.gethostname() == "MB-145.local":
 
 class TravelBot(RegionData):
     def __init__(self):
+        self.TESTING = False
+
         self.url = "https://secretflying.com"
         self.sleep_time = 60.1
 
@@ -187,8 +189,17 @@ class TravelBot(RegionData):
 
         fares = fares.split('<h3 class="entry-title">')
         for ii,fare in enumerate(fares[1:]):
-            url = fare.split('<a href="')[2].split(" ")[0].split('"')[0]
+            print("0 fare: ", fare)
+            fare = fare.split("</h3>")[0]
+            print("1 fare: ", fare)
+            fare = fare.split('<a href="')[-1]
+            print("2 fare: ", fare)
+            url = fare.split('" ')[0]
             fare = fare.split('title="')[1].split('" ')[0]
+            print("3 fare: ", fare)
+            ## note, I had ('<a href="')[2] but modified for the hotel error fare thing.
+            #url = fare.split('<a href="')[1].split(" ")[0].split('"')[0]
+            #fare = fare.split('title="')[1].split('" ')[0]
             image = images[ii]
             #if "Hotel" in fare:
             #    continue

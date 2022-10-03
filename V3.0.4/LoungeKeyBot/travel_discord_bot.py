@@ -33,9 +33,9 @@ class TravelDiscordBot(TravelBot):
             last_nd_update = time.time() - 7200
             print("on_ready")
 
-            #channel = client.get_channel(self.CID_VEGAS)
-            #await channel.send("test")
-            #print("sent test")
+            if self.TESTING:
+                test_channel = client.get_channel(self.BOT_COMMANDS_CIDS[0])
+            # end if
 
             wcnt = 0
             while True:
@@ -118,7 +118,8 @@ class TravelDiscordBot(TravelBot):
                             print("going to get LV channel, now: ", datetime.datetime.now())
                             channel = client.get_channel(self.CID_VEGAS)
                             print("got LV channel, now: ", datetime.datetime.now())
-                            await channel.send(embed=embed)
+                            if not self.TESTING:
+                                await channel.send(embed=embed)
                             print("LV sent embed, now: ", datetime.datetime.now())
                         except Exception as err:
                             print("error LV, now: ", datetime.datetime.now())
@@ -139,7 +140,8 @@ class TravelDiscordBot(TravelBot):
                         channel = channels[jj]
                         if role not in roles_mentioned:
                             try:
-                                await channel.send("Hey <@&" + role + ">")
+                                if not self.TESTING:
+                                    await channel.send("Hey <@&" + role + ">")
                             except Exception as err:
                                 print("112 err: ", err)
                                 print("113 err_args: ", err.args[:])
@@ -154,7 +156,12 @@ class TravelDiscordBot(TravelBot):
                             roles_mentioned.append(role)
                         # end if
                         try:
-                            await channel.send(embed=embed)
+                            if not self.TESTING:
+                                await channel.send(embed=embed)
+                                
+                            else:
+                                await test_channel.send(embed=embed)
+                                
                         except Exception as err:
                             print("129 err: ", err)
                             print("130 err_args: ", err.args[:])

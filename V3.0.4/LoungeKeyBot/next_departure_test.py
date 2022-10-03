@@ -18,7 +18,7 @@ driver.get(url)
 email_xpath = "//input[@id='email']"
 passw_xpath = "//input[@id='password']"
 email = "Loungekeyio@gmail.com"
-passw = "DealsLounge"
+passw = "[Redacted]"
 driver.find_element(By.XPATH, email_xpath).send_keys(email)
 driver.find_element(By.XPATH, passw_xpath).send_keys(passw)
 
