@@ -76,6 +76,13 @@ class RegionData(object):
 
         with open("us_city_data.json", "r") as fid:
             self.region_data["us_city_map"] = json.loads(fid.read())
+            for city in list(self.region_data["us_city_map"].keys()):
+                region = self.region_data["us_city_map"][city] + ""
+                del self.region_data["us_city_map"][city]
+
+                city = city.lower().replace(" ","")
+                self.region_data["us_city_map"][city] = region
+            # end for
         # end with open
 
         os.chdir(home_path)
