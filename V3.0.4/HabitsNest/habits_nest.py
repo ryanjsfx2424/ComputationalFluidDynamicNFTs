@@ -128,10 +128,15 @@ class HabitsNest(object):
                 # end if/elif
             # end if/elif
         # end if/elif
+        print("time to send?: ", result)
         return result
     # end process_time
 
     async def airtable_stuff(self, client):
+        if "airTable" not in os.environ:
+            print("err, forgot to export airTable environment variable.")
+            sys.exit()
+        # end if
         headers = {"Content-Type":"json", "Authorization":"Bearer " + os.environ["airTable"]}
         req = requests.get(self.airtable_url, headers=headers)
         print("airtable_stuff req.status_code: ", req.status_code)
@@ -172,11 +177,16 @@ class HabitsNest(object):
                 attachments  = fields["Attachments"] # list, index with ['url']
             # end if
 
+            if "Discord Message" not in fields:
+                print("Discord Message not filled out yet!")
+                continue
+            #if "ChannelId" not in fields:
+            #    print("ChannelId not filled out yet!")
+            #    continue
+            
             message_text = fields["Discord Message"]
             channel_id   = fields["ChannelId"]
-
-            emojis = message_text.split(":")[1::2]
-
+            print("message_text 189: ", message_text)
 
             try:
                 channel_id = int(channel_id)
@@ -196,6 +206,7 @@ class HabitsNest(object):
                 print("192 err.args: ", err.args[:])
                 continue
             # end try/except
+            print("got channel!")
 
             dropdowns  = []
             textinputs = []
@@ -331,7 +342,9 @@ class HabitsNest(object):
             self.button_texts = button_texts
             self.select_menus = select_menus
             self.message_text = message_text.replace("\\n", "\n").replace("\*", "*")
+            self.channels = [channel]
 
+            print("self.channels: ", self.channels)
             print("message_text: ", self.message_text)
             print("button_texts: ", button_texts)
             print("select_menus: ", self.select_menus)
@@ -363,7 +376,10 @@ class HabitsNest(object):
                             msg_to_send = "\u200b" + msg_to_send
 
                         print("msg_to_send: ", [msg_to_send])
-                        await channel.send(msg_to_send)
+                        try:
+                            await channel.send(msg_to_send)
+                        except:
+                            continue
                         msg_remaining = msg_remaining[len(msg_to_send):]
                     # end while
                     
@@ -372,9 +388,14 @@ class HabitsNest(object):
                     #    msg = self.message_text[ijk*2000:(ijk+1)*2000]
                     #    await channel.send(msg.replace("\\n", "\n"))
                 else:
-                    await channel.send(self.message_text.replace("\\n", "\n"))
+                    try:
+                        await channel.send(self.message_text.replace("\\n", "\n"))
+                    except:
+                        continue
+                    print("sent message!")
                 # end if/else
                 await channel.send("\u200b", components=row)
+                print("sent components!")
             # end for
 
             print("attachments: ", attachments)
@@ -395,8 +416,11 @@ class HabitsNest(object):
                 await channel.send(files=image_file)
             # end for attachments
             
+            print("done with attachments")
             self.rows_handled.append(str(record))
+            print("row added")
             self.save_arr()
+            print("saved arr")
         # end records
     # end airtable_stuff
 
