@@ -185,14 +185,16 @@ class HabitsNest(object):
             #    continue
             
             message_text = fields["Discord Message"]
-            channel_id   = fields["ChannelId"]
+            channel_id   = fields["Button Channel Id"]
+            rchannel_id   = fields["Button Channel Id"]
             print("message_text 189: ", message_text)
 
             try:
                 channel_id = int(channel_id)
+                rchannel_id = int(rchannel_id)
 
             except Exception as err:
-                print("couldn't cast channel_id to int")
+                print("couldn't cast (r)channel_id to int")
                 print("181 err: ", err)
                 print("182 err.args: ", err.args[:])
                 continue
@@ -200,6 +202,7 @@ class HabitsNest(object):
 
             try:
                 channel = await interactions.get(client, interactions.Channel, object_id=channel_id)
+                rchannel = await interactions.get(client, interactions.Channel, object_id=rchannel_id)
             except Exception as err:
                 print("couldn't get channel for channel_id: ", channel_id)
                 print("191 err: ", err)
@@ -342,7 +345,8 @@ class HabitsNest(object):
             self.button_texts = button_texts
             self.select_menus = select_menus
             self.message_text = message_text.replace("\\n", "\n").replace("\*", "*")
-            self.channels = [channel]
+            self.response_channel = rchannel
+            self.response_channel_id = rchannel_id
 
             print("self.channels: ", self.channels)
             print("message_text: ", self.message_text)
@@ -350,53 +354,49 @@ class HabitsNest(object):
             print("select_menus: ", self.select_menus)
             print("modals: ", self.modals)
 
-            for channel in self.channels:
-                if len(self.message_text) > 2000:
-                    msg_remaining = self.message_text + ""
+            if len(self.message_text) > 2000:
+                msg_remaining = self.message_text + ""
+                
+                cnt3 = -1
+                while len(msg_remaining) > 0:
+                    cnt3 += 1
+
+                    print("[] msg_remanining: ", [msg_remaining])
+                    print("len msg_remaining: ", len(msg_remaining))
+
+                    msg = msg_remaining[:2000]
+                    lines = msg.split("\n")
                     
-                    cnt3 = -1
-                    while len(msg_remaining) > 0:
-                        cnt3 += 1
+                    for ii,line in enumerate(lines[::-1]):
+                        if len(line) == 0:
+                            break
+                        # end if
+                    # end for
 
-                        print("[] msg_remanining: ", [msg_remaining])
-                        print("len msg_remaining: ", len(msg_remaining))
+                    ind = len(lines) - (ii+1)
+                    msg_to_send = "\n".join(lines[:ind])
+                    if cnt3 > 0:
+                        msg_to_send = "\u200b" + msg_to_send
 
-                        msg = msg_remaining[:2000]
-                        lines = msg.split("\n")
-                        
-                        for ii,line in enumerate(lines[::-1]):
-                            if len(line) == 0:
-                                break
-                            # end if
-                        # end for
-
-                        ind = len(lines) - (ii+1)
-                        msg_to_send = "\n".join(lines[:ind])
-                        if cnt3 > 0:
-                            msg_to_send = "\u200b" + msg_to_send
-
-                        print("msg_to_send: ", [msg_to_send])
-                        try:
-                            await channel.send(msg_to_send)
-                        except:
-                            continue
-                        msg_remaining = msg_remaining[len(msg_to_send):]
-                    # end while
-                    
-                    #num_chunks = int(math.ceil( len(self.message_text)/2000.0 ))
-                    #for ijk in range(num_chunks):
-                    #    msg = self.message_text[ijk*2000:(ijk+1)*2000]
-                    #    await channel.send(msg.replace("\\n", "\n"))
-                else:
+                    print("msg_to_send: ", [msg_to_send])
                     try:
-                        await channel.send(self.message_text.replace("\\n", "\n"))
+                        await channel.send(msg_to_send)
                     except:
                         continue
-                    print("sent message!")
-                # end if/else
-                await channel.send("\u200b", components=row)
-                print("sent components!")
-            # end for
+                    msg_remaining = msg_remaining[len(msg_to_send):]
+                # end while
+                
+                #num_chunks = int(math.ceil( len(self.message_text)/2000.0 ))
+                #for ijk in range(num_chunks):
+                #    msg = self.message_text[ijk*2000:(ijk+1)*2000]
+                #    await channel.send(msg.replace("\\n", "\n"))
+            else:
+                try:
+                    await channel.send(self.message_text.replace("\\n", "\n"))
+                except:
+                    continue
+                print("sent message!")
+            # end if/else
 
             print("attachments: ", attachments)
             for attachment in attachments:
@@ -415,8 +415,11 @@ class HabitsNest(object):
 
                 await channel.send(files=image_file)
             # end for attachments
-            
             print("done with attachments")
+
+            await channel.send("\u200b", components=row)
+            print("sent components!")
+
             self.rows_handled.append(str(record))
             print("row added")
             self.save_arr()
@@ -432,7 +435,7 @@ class HabitsNest(object):
 
             if ii < len(self.select_menus):
                 print("ii, self.select_menus[ii]: ", ii, self.select_menus[ii])
-                await ctx.send(components=self.select_menus[ii])#, ephemeral=True)
+                await ctx.send(components=self.select_menus[ii], ephemeral=True)
             else:
                 jj = len(self.select_menus) - ii
                 print("ii, jj, self.modals[jj]: ", ii, jj, self.modals[jj])
@@ -472,7 +475,8 @@ class HabitsNest(object):
                                 "fields": {
                                     "TimeEST": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                                     "FromGuildId": str(gid),
-                                    "ChannelId": str(cid),
+                                    "Button Channel Id": str(cid),
+                                    "Response Channel Id": str(self.response_channel_id),
                                     "FromDiscordId": str(aid),
                                     "DiscordMessage": self.message_text,
                                     "ButtonType": "DropDown" + str(num+1),
@@ -488,7 +492,8 @@ class HabitsNest(object):
             print("req.status_code: ", req.status_code)
             msg = f"Your response to {self.button_texts[num]}: {response}"
             print("msg: msg")
-            await ctx.send(msg)#, ephemeral=True)
+
+            await self.response_channel.send(msg)
         # end menu_response
 
         async def modal_response(ctx: interactions.CommandContext, 
@@ -526,9 +531,10 @@ class HabitsNest(object):
             fields = {
                         "TimeEST": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                         "FromGuildId": str(gid),
-                        "ChannelId": str(cid),
+                        "Button Channel Id": str(cid),
+                        "Response Channel Id": str(self.response_channel_id),
                         "FromDiscordId": str(aid),
-                        "DiscordMessage": self.message_text,
+                        "Discord Message": self.message_text,
                         "ButtonType": "TextInput" + str(num-len(self.select_menus)+1)
                     }
             for ii in range(len(responses)):
@@ -549,7 +555,10 @@ class HabitsNest(object):
             print("req.status_code: ", req.status_code)
             msg = f"Your responses to {self.button_texts[num]}: {responses}"
             print("msg: msg")
-            await ctx.send(msg)#, ephemeral=True)
+
+            ## actually don't send unless the click an additional checkmark button after they did the previous buttons.
+            ## and we need to store those responses for each person temporarily...
+            await self.response_channel.send(msg)
         # end modal_response
 
         for ii in range(self.max_menus):

@@ -19,3 +19,11 @@ debug*.txt
 # aws keys
 *.pem
 *.ppk
+*.cer
+
+## Google Drive
+client_secrets.json
+
+.env
+.env*
+.env.local

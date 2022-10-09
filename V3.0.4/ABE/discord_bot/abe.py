@@ -24,6 +24,7 @@ class AbeBot(object):
     def init_gcp(self):
         psk = os.environ["abe1"] + os.environ["abe2"]
         self.gcp_url = "https://us-central1-alphaintel.cloudfunctions.net/abe_get_data"
+        self.gcp_url = "https://us-central1-alphaintel.cloudfunctions.net/abe_get_premint"
         self.gcp = {"psk": psk, "key": "Y"}
     # end init_gcp
 
@@ -64,16 +65,22 @@ class AbeBot(object):
                 wcnt += 1
                 print("wcnt: ", wcnt)
 
-                #result = await self.query_gcp()
+                result = await self.query_gcp()
+                print("result.text: ", result.text)
+                print("result.json: ", result.json())
+                with open("premint_test.txt", "w") as fid:
+                    fid.write(str(result.text))
+                # end with
+                sys.exit()
+
                 print("query_gcp done!")
-                
                 result = {'profile_image_url': 'https://pbs.twimg.com/profile_images/1551744305961701376/fKV6-Mne_400x400.jpg', 
-'handle': 'W3NationNFT', 
-'description': 'The Birth Of A New Nation🔫 | 7,777', 'influential_followers': 'WhySo4488, NFTNate_, NFTBuffet, Pants_shh, ', 
-'rating': 'A', 
-'followers': 10133, 
-'created_date': '2022-07-18', 
-'found_date': '2022-08-25 13:49PT'}
+                          'handle': 'W3NationNFT', 
+                          'description': 'The Birth Of A New Nation🔫 | 7,777', 'influential_followers': 'WhySo4488, NFTNate_, NFTBuffet, Pants_shh, ', 
+                          'rating': 'A', 
+                          'followers': 10133, 
+                          'created_date': '2022-07-18', 
+                          'found_date': '2022-08-25 13:49PT'}
 
                 #if result.status_code == 200:
                     #embed = await self.build_embed(result.json())

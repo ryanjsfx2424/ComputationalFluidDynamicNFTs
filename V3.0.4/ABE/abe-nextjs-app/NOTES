@@ -1,0 +1,10 @@
+2. Top left (just below) Dropdown lets them select other guilds, placeholder is current guild
+
+3a. Select which channel to post in. 
+3b. For that channel, select which role(s) to notify
+-> those need to get saved in a mongodb (or somewhere) which the discord
+bot can access.
+
+Now = Dropdown that lets them select other guilds, placeholder is current guild.
+
+
