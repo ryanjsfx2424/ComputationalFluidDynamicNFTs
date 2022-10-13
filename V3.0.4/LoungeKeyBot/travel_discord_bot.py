@@ -9,6 +9,7 @@ from travel import TravelBot
 class TravelDiscordBot(TravelBot):
     def discord_bot(self):
         client = discord.Client(intents=None)
+        self.client = client
 
         @client.event
         async def on_message(message):
@@ -30,50 +31,94 @@ class TravelDiscordBot(TravelBot):
 
         @client.event
         async def on_ready():
+            last_sf_update = time.time() - 7200
             last_nd_update = time.time() - 7200
+            last_scotts_update = time.time() - 48*3600
             print("on_ready")
 
             if self.TESTING:
                 test_channel = client.get_channel(self.BOT_COMMANDS_CIDS[0])
             # end if
 
+            business_channel = client.get_channel(self.BUSINESS_CID)
+            first_class_channel = client.get_channel(self.FIRST_CLASS_CID)
+
             wcnt = 0
             while True:
                 wcnt += 1
                 print("wcnt: ", wcnt)
 
-                old_fares = []
-                if self.fares != {}:
-                    old_fares += self.fares["texts"]
-                # end if
+                # if time.time() - last_sf_update > 60.1:
+                    # last_sf_update = time.time()
+                    # self.get_html()
+                    # self.get_fares("err")
+                    # self.get_fares("deals")
+                # # end if
 
-                self.get_html()
-                self.get_fares("err")
-                self.get_fares("deals")
+                # if time.time() - last_nd_update > 3600:
+                #     print(datetime.datetime.now())
+                #     last_nd_update = time.time()
+                #     await self.get_html_nd()
+                # # end if
 
-                if time.time() - last_nd_update > 3600:
+                if time.time() - last_scotts_update > 24.5*3600:
                     print(datetime.datetime.now())
-                    last_nd_update = time.time()
-                    self.get_html_nd()
+                    last_scotts_update = time.time()
+                    asyncio.create_task(self.get_fares_scotts())
                 # end if
 
                 with open(self.fname_fares, "w") as fid:
                     fid.write(str(self.fares))
                 # end with open
 
+                # with open(self.fname_fares_scotts, "w") as fid:
+                #     fid.write(str(self.fares_scotts))
+                # # end with open
+
+                fares = []
+                hashtags = []
+                urls = []
+                images = []
+                if self.fares != {}:
+                    fares    += self.fares[   "texts"]
+                    hashtags += self.fares["hashtags"]
+                    urls     += self.fares[    "urls"]
+                    images   += self.fares[  "images"]
+
+                # if self.fares_scotts != {} and \
+                #         len(self.fares_scotts["texts"]) == \
+                #         len(self.fares_scotts["hashtags"]) == \
+                #         len(self.fares_scotts["urls"]) == \
+                #         len(self.fares_scotts["images"]):
+                #     print("adding scotts fares!")
+
+                    # fares    += self.fares_scotts["texts"]
+                    # hashtags += self.fares_scotts["hashtags"]
+                    # urls     += self.fares_scotts["urls"]
+                    # images   += self.fares_scotts["images"]
+
+                    # print("fares inc. scotts: ", fares)
+                # end if
+
                 roles_mentioned = []
-                for ii,fare in enumerate(self.fares["texts"]):
-                    if fare in old_fares:
+                for ii,fare in enumerate(fares):
+                    if fare in self.old_fares:
+                        print("fare was in old_fares")
+                        print("ii: ", ii)
+                        print("fare: ", fare)
+                        print("old_fares: ", self.old_fares)
+                        input(">>")
                         continue
                     # end if
                     title = fare
                     description = ""
 
                     ports = []; roles = []; channels = []
-                    for jj,hashtag in enumerate(self.fares["hashtags"][ii]):
+                    for jj,hashtag in enumerate(hashtags[ii]):
                         description += hashtag + ", "
                         if "_from" in hashtag:
                             if "usa" in hashtag:
+                                print("usa in hashtag")
                                 continue
                             # end if
                             hashtag = hashtag.replace("_from","")
@@ -110,8 +155,8 @@ class TravelDiscordBot(TravelBot):
                         print("Las vegas in title, now: ", datetime.datetime.now())
 
                         embed = discord.Embed(title=title, description=title,
-                            color=discord.Color.blue(), url=self.fares["urls"][ii])
-                        embed.set_thumbnail(url=self.fares["images"][ii])
+                            color=discord.Color.blue(), url=urls[ii])
+                        embed.set_thumbnail(url=images[ii])
                         embed.set_footer(text = "Built for Solana Vegas Tour, Powered by @TheLunaLabs",
                           icon_url=self.icon_url)
                         try:
@@ -129,8 +174,8 @@ class TravelDiscordBot(TravelBot):
                     # end if
 
                     embed = discord.Embed(title=title, description=description,
-                        color=discord.Color.blue(), url=self.fares["urls"][ii])
-                    embed.set_thumbnail(url=self.fares["images"][ii])
+                        color=discord.Color.blue(), url=urls[ii])
+                    embed.set_thumbnail(url=images[ii])
                     embed.set_footer(text = "Built for Key Lounge IO, Powered by @TheLunaLabs",
                         icon_url=self.icon_url)
                     #embed.add_field(name="Hey @Authenticated", value="\u200b")
@@ -151,7 +196,7 @@ class TravelDiscordBot(TravelBot):
                                 print("channels: ", channels)
                                 print("title: ", title)
                                 print("description: ", description)
-                                print("hashtags: ", self.fares["hashtags"][ii])
+                                print("hashtags: ", hashtags[ii])
                             # end try/except
                             roles_mentioned.append(role)
                         # end if
@@ -161,14 +206,23 @@ class TravelDiscordBot(TravelBot):
                                 
                             else:
                                 await test_channel.send(embed=embed)
-                                
+                            
+                            self.old_fares.append(fare)
+
                         except Exception as err:
                             print("129 err: ", err)
                             print("130 err_args: ", err.args[:])
                             print("channel: ", channel)
                         # end try/except
+
+                        if "business" in title.lower():
+                            await business_channel.send(embed=embed)
+                        
+                        if "first class" in title.lower():
+                            await first_class_channel.send(embed=embed)
                     # end for
                 # end for
+
                 print("119 tdb going to sleep for " + str(self.sleep_time)+"s")
                 await asyncio.sleep(self.sleep_time)
             # end while
