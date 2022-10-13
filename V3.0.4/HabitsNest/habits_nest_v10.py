@@ -64,7 +64,6 @@ class HabitsNest(object):
         self.fname_select_menus        = "data_big/select_menus.pickle"
         self.fname_message_text        = "data_big/message_text.pickle"
         self.fname_response_channel_id = "data_big/response_channel_id.pickle"
-        self.fname_special_button_messages = "data_big/special_button_messages.pickle"
     # end init_fnames
 
     def init_data(self):        
@@ -77,7 +76,6 @@ class HabitsNest(object):
         self.select_menus        = self.load_pickle(self.fname_select_menus)
         self.message_text        = self.load_pickle(self.fname_message_text)
         self.response_channel_id = self.load_pickle(self.fname_response_channel_id)
-        self.special_button_messages = self.load_pickle(self.fname_special_button_messages)
     # end init_data
 
     def save_pickles(self):
@@ -87,7 +85,6 @@ class HabitsNest(object):
         self.save_pickle(self.fname_select_menus,        self.select_menus)
         self.save_pickle(self.fname_message_text,        self.message_text)
         self.save_pickle(self.fname_response_channel_id, self.response_channel_id)
-        self.save_pickle(self.fname_special_button_messages, self.special_button_messages)
     # end save_pickles
 
     def save_pickle(self, fname, obj):
@@ -289,23 +286,6 @@ class HabitsNest(object):
             
             message_text = fields["Discord Message"]
             print("message_text 189: ", message_text)
-            
-            messages = [message_text]
-            special_button_names   = []
-            special_button_messages = []
-            if "<<<" in message_text and ">>>" in message_text and ":::" in message_text:
-                starts = message_text.split("<<<")
-                messages = [starts[0] + ""]
-                starts = starts[1:]
-                for ss,start in enumerate(starts):
-                    print("in start ss: ", ss)
-                    before,after = start.split(">>>")
-                    name,msg = before.split(":::")
-                    special_button_names.append(name)
-                    special_button_messages.append(msg.replace("\\n","\n"))
-                    messages.append(after)
-                # end for
-            # end if
 
             dropdowns  = []
             textinputs = []
@@ -445,7 +425,6 @@ class HabitsNest(object):
             self.select_menus[cid] = select_menus
             self.message_text[cid] = message_text.replace("\\n", "\n").replace("\*", "*")
             self.response_channel_id[cid] = rchannel_id
-            self.special_button_messages[cid] = special_button_messages
 
             self.save_pickles()
 
@@ -456,54 +435,46 @@ class HabitsNest(object):
             # print("select_menus: ", self.select_menus[cid])
             # print("modals: ", self.modals[cid])
 
-            for mm, message in enumerate(messages):
-                if len(message) > 2000:
-                    msg_remaining = message + ""
+            if len(self.message_text[cid]) > 2000:
+                msg_remaining = self.message_text[cid] + ""
                 
-                    cnt3 = -1
-                    while len(msg_remaining) > 0:
-                        cnt3 += 1
+                cnt3 = -1
+                while len(msg_remaining) > 0:
+                    cnt3 += 1
 
-                        print("[] msg_remanining: ", [msg_remaining])
-                        print("len msg_remaining: ", len(msg_remaining))
+                    print("[] msg_remanining: ", [msg_remaining])
+                    print("len msg_remaining: ", len(msg_remaining))
 
-                        msg = msg_remaining[:2000]
-                        lines = msg.split("\n")
+                    msg = msg_remaining[:2000]
+                    lines = msg.split("\n")
                     
-                        for ii,line in enumerate(lines[::-1]):
-                            if len(line) == 0:
-                                break
-                            # end if
-                        # end for
+                    for ii,line in enumerate(lines[::-1]):
+                        if len(line) == 0:
+                            break
+                        # end if
+                    # end for
 
-                        ind = len(lines) - (ii+1)
-                        msg_to_send = "\n".join(lines[:ind])
-                        if cnt3 > 0:
-                            msg_to_send = "\u200b" + msg_to_send
+                    ind = len(lines) - (ii+1)
+                    msg_to_send = "\n".join(lines[:ind])
+                    if cnt3 > 0:
+                        msg_to_send = "\u200b" + msg_to_send
 
-                        print("msg_to_send: ", [msg_to_send])
-                        try:
-                            await channel.send(msg_to_send)
-                        except:
-                            continue
-                        # end try/except
-
-                        msg_remaining = msg_remaining[len(msg_to_send):]
-                    # end while
-                else:
+                    print("msg_to_send: ", [msg_to_send])
                     try:
-                        await channel.send(message.replace("\\n", "\n"))
+                        await channel.send(msg_to_send)
                     except:
                         continue
-                    print("sent message!")
-                # end if/else
-                if mm < len(special_button_names):
-                    button = interactions.Button(style=1, label=special_button_names[mm],
-                                custom_id="special_button" + str(mm))
-                    #row = interactions.ActionRow(components=button)
-                    await channel.send("\u200b", components=button)
-                # end if
-            # end for messages
+                    # end try/except
+
+                    msg_remaining = msg_remaining[len(msg_to_send):]
+                # end while
+            else:
+                try:
+                    await channel.send(self.message_text[cid].replace("\\n", "\n"))
+                except:
+                    continue
+                print("sent message!")
+            # end if/else
 
             print("attachments: ", attachments)
             for attachment in attachments:
@@ -543,18 +514,9 @@ class HabitsNest(object):
         client = interactions.Client(token=os.environ["habitsNestBotPass"])#, intents=interactions.Intents.DEFAULT | interactions.Intents.GUILD_MEMBERS)
 
         async def button_func(ctx: interactions.ComponentContext):
+            ii = int(ctx.data.custom_id.replace("button", ""))
+
             cid = int(ctx.channel_id)
-
-            custom_id = ctx.data.custom_id
-            if "special_button" in custom_id:
-                print("special_button in custom_id")
-                ii = custom_id.replace("special_button", "")
-                ii = int(ii)
-                await ctx.send(self.special_button_messages[cid][ii], ephemeral=True)
-                return
-            # end if
-
-            ii = int(custom_id.replace("button", ""))
 
             if ii < len(self.select_menus[cid]):
                 print("ii, self.select_menus[ii]: ", ii, self.select_menus[cid][ii])
@@ -564,7 +526,6 @@ class HabitsNest(object):
                 print("ii, jj, self.modals[jj]: ", ii, jj, self.modals[cid][jj])
                 await ctx.popup(self.modals[cid][jj])
             # end if/else
-            return
         # end def
 
         async def menu_response(ctx: interactions.CommandContext, response: str):
@@ -734,23 +695,44 @@ class HabitsNest(object):
             # end for
 
             if len(msg) > 2000:
-                chunks = int(math.ceil(len(msg)/1998))
-                for ii in range(chunks):
-                    beg = ii*1998
-                    end = (ii+1)*1998
+                msg_remaining = msg + ""
+                    
+                cnt3 = -1
+                while len(msg_remaining) > 0:
+                    cnt3 += 1
 
-                    val = ""
-                    if ii > 1:
-                        val += "-"
+                    print("[] msg_remanining: ", [msg_remaining])
+                    print("len msg_remaining: ", len(msg_remaining))
 
-                    if end > len(msg):
-                        end = len(msg)
-                        val = response[beg:end]
+                    msg = msg_remaining[:2000]
+                    lines = msg.split("\n")
+                    
+                    if len(lines) > 5:
+                        for ii,line in enumerate(lines[::-1]):
+                            if len(line) == 0:
+                                break
+                            # end if
+                        # end for
+
+                        ind = len(lines) - (ii+1)
+                        msg_to_send = "\n".join(lines[:ind])
                     else:
-                        val = response[beg:end] + "-"
+                        msg_to_send = msg
                     # end if/else
-                    await ctx.send(val, ephemeral=True)
-                # end for
+
+                    if cnt3 > 0:
+                        msg_to_send = "\u200b" + msg_to_send
+                    # end if
+
+                    print("msg_to_send: ", [msg_to_send])
+                    try:
+                        await ctx.send(msg_to_send, ephemeral=True)
+                    except:
+                        continue
+                    # end try/except
+
+                    msg_remaining = msg_remaining[len(msg_to_send):]
+                # end while
             else:
                 await ctx.send(msg, ephemeral=True)
             # end if/else
@@ -760,7 +742,6 @@ class HabitsNest(object):
         # end modal_response
 
         for ii in range(self.max_menus):
-            client.component("special_button" + str(ii))(button_func)
             client.component("button" + str(ii))(button_func)
             client.component("menu"   + str(ii))(menu_response)
             client.modal(    "modal"  + str(ii))(modal_response)
