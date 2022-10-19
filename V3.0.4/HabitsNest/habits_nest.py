@@ -148,9 +148,18 @@ class HabitsNest(object):
         # print("time_to_send (st process_time): ", time_to_send)
 
         yy,mm,dd = time_to_send.split("-")
-        dd,hh,apm = dd.split()
-        HH,MM = hh.split(":")
-        
+        if "pm" in dd.lower():
+            apm = "PM"
+        elif "am" in dd.lower():
+            apm = "AM"
+        else:
+            return False
+        dd = dd[:-2]
+        #dd,hh,apm = dd.split()
+        dd,hh = dd.split()
+        HH,MM = hh.replace(" ","").split(":")
+        print("[HH], [MM]: ", [HH], [MM])
+
         yy = int(yy); mm = int(mm); dd = int(dd)
         HH = int(HH); MM = int(MM)
         # print("pm in apm.lower(): ", "pm" in apm.lower())
@@ -205,9 +214,17 @@ class HabitsNest(object):
         
         if str(req.status_code)[0] != "2":
             print("not 2XX??")
+            return
         # end if
         
-        result = req.json()
+        try:
+            result = req.json()
+        except:
+            print("214 err: ", err)
+            print("214 err.args: ", err.args[:])
+            return
+        # end try/except
+
         with open("debug_airtable.json", "w") as fid:
             json.dump(result, fid)
         # end with
@@ -288,11 +305,13 @@ class HabitsNest(object):
             # end if
             
             message_text = fields["Discord Message"]
-            print("message_text 189: ", message_text)
+            end = min(20, len(message_text))
+            print("message_text[:20] 189: ", message_text[:end])
             
             messages = [message_text]
             special_button_names   = []
             special_button_messages = []
+
             if "<<<" in message_text and ">>>" in message_text and ":::" in message_text:
                 starts = message_text.split("<<<")
                 messages = [starts[0] + ""]
@@ -300,12 +319,21 @@ class HabitsNest(object):
                 for ss,start in enumerate(starts):
                     print("in start ss: ", ss)
                     before,after = start.split(">>>")
+                    if len(after.replace(" ","").replace("\n","")) == 0:
+                        after = ""
+                    # end if
                     name,msg = before.split(":::")
                     special_button_names.append(name)
                     special_button_messages.append(msg.replace("\\n","\n"))
                     messages.append(after)
+                    #print("[after]: ", [after])
+                    #print("len after: ", len(after))
+                    #print("len after.replace(" ",""): ", len(after.replace(" ","")))
+                    #print("len after.replace(' ','').replace('slashn',''): ", len(after.replace(" ","").replace("\n","")))
                 # end for
             # end if
+            print("special_button_names: ", special_button_names)
+            print("special_button_messages: ", special_button_messages)
 
             dropdowns  = []
             textinputs = []
@@ -437,7 +465,7 @@ class HabitsNest(object):
 
             row = interactions.ActionRow(components=buttons)
 
-            print("message_text1: ", message_text)
+            #print("message_text1: ", message_text)
 
             self.time_text[cid] = time_to_send
             self.modals[cid] = modals
@@ -456,7 +484,10 @@ class HabitsNest(object):
             # print("select_menus: ", self.select_menus[cid])
             # print("modals: ", self.modals[cid])
 
+            row_buttons = []
+            print("len messages: ", len(messages))
             for mm, message in enumerate(messages):
+                print("mm: ", mm)
                 if len(message) > 2000:
                     msg_remaining = message + ""
                 
@@ -491,19 +522,39 @@ class HabitsNest(object):
                         msg_remaining = msg_remaining[len(msg_to_send):]
                     # end while
                 else:
-                    try:
-                        await channel.send(message.replace("\\n", "\n"))
-                    except:
-                        continue
-                    print("sent message!")
+                    if len(message) == 0:
+                        append_button_flag = True
+                    else:
+                        append_button_flag = False
+                        if ((mm+1 < len(messages)) and len(messages[mm+1]) == 0):
+                            append_button_flag = True
+                        try:
+                            await channel.send(message.replace("\\n", "\n"))
+                        except:
+                            continue
+                        print("sent message!")
+                    # end if/else
                 # end if/else
                 if mm < len(special_button_names):
                     button = interactions.Button(style=1, label=special_button_names[mm],
                                 custom_id="special_button" + str(mm))
-                    #row = interactions.ActionRow(components=button)
-                    await channel.send("\u200b", components=button)
+                    if append_button_flag:
+                        row_buttons.append(button)
+                    else:
+                        if len(row_buttons) > 0:
+                            row2 = interactions.ActionRow(components=row_buttons)
+                            await channel.send("\u200b", components=row2)
+                            row_buttons = []
+                        else:
+                            await channel.send("\u200b", components=button)
+                        # end if/else
+                    # end if/else
                 # end if
             # end for messages
+            if len(row_buttons) > 0:
+                row2 = interactions.ActionRow(components=row_buttons)
+                await channel.send("\u200b", components=row2)
+            # end if
 
             print("attachments: ", attachments)
             for attachment in attachments:
@@ -592,7 +643,7 @@ class HabitsNest(object):
             print("modal response author id: ", ctx.author.id)
 
             tnow = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            print("self.message_text: ", self.message_text[cid])
+            #print("self.message_text: ", self.message_text[cid])
             data = {
                 "records": [
                             {
@@ -733,6 +784,7 @@ class HabitsNest(object):
                 msg += f"Your response to {self.button_texts[cid][num]}: {response}"
             # end for
 
+            '''
             if len(msg) > 2000:
                 chunks = int(math.ceil(len(msg)/1998))
                 for ii in range(chunks):
@@ -754,6 +806,8 @@ class HabitsNest(object):
             else:
                 await ctx.send(msg, ephemeral=True)
             # end if/else
+            '''
+            await ctx.send("response received", ephemeral=True)
 
             print("going to return")
             return
