@@ -1,15 +1,13 @@
 root         514  0.0  0.0 108104  7628 ?        Ssl  Jun19   0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
-root       10250  0.0  0.1  30496 11620 ?        Ss   Jun19  47:14 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
-root     1337712  0.0  4.6 574136 377916 ?       S    Sep08   0:48 python3 -u engagement_bf.py likes
-root     1337730  0.0  4.6 574132 377876 ?       S    Sep08   0:49 python3 -u engagement_bf.py retweets
-root     1339966  0.0  0.0  15100  5976 ?        S    Sep08   2:48 python3 -u keep_alive_dauthy.py
-root     1940640  0.0  0.4 216784 37424 ?        S    Sep14  10:01 python3 stream.py
-root     3140897  1.8  8.1 771544 668204 ?       Sl   Sep27 110:21 python3 -u dauthy.py
-root     3142273  0.0  0.0  15100  6080 ?        S    Sep27   0:27 python3 -u keep_alive_streamBf.py
-root     3142313  3.4  1.4 442996 121944 ?       Sl   Sep27 207:12 python3 -u tweeteroo_bf.py
-root     3142858  8.9  9.0 1063440 741604 ?      Sl   Sep27 529:35 python3 -u tweeteroo_gac.py
-root     3226910  0.1  0.5 205364 47648 ?        Sl   Sep27   7:08 python3 -u travel_discord_bot.py
-root     3592095 90.1 18.2 1867276 1488432 ?     Rl   Sep29 2341:23 python3 -u ScrapeTweets_server.py
-root     3686979  0.0  8.9 906496 726480 ?       S    Sep30   0:03 python3 -u stream_bf.py
-root     3825869  0.0  0.0   2608   596 ?        S    12:02   0:00 sh -c ps aux | grep python > running_processes.txt
-root     3825871  0.0  0.0   8160   652 ?        S    12:02   0:00 grep python
+root       10250  0.0  0.1  30496 11124 ?        Ss   Jun19  55:13 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+root      949873  0.0  0.0  15100  6192 ?        S    Oct13   0:43 python3 -u keep_alive_dauthy.py
+root      950070  0.0  8.9 924556 727244 ?       S    Oct13   0:12 python3 engagement_bf.py likes
+root     1032663  0.7  0.7 223540 59020 ?        Sl   Oct14  49:48 python3 -u habits_nest.py
+root     1105170  0.0  0.4 213024 33940 ?        S    Oct15   4:02 python3 -u stream.py
+root     1191567  2.0  5.1 518432 417060 ?       Sl   Oct16  87:12 python3 -u dauthy.py
+root     1192635  4.0  1.5 441420 123480 ?       Sl   Oct16 168:33 python3 -u tweeteroo_bf.py
+root     1199967  2.1  1.2 443676 100500 ?       Sl   Oct16  88:20 python3 -u wlp.py
+root     1214509 58.3 16.9 1749792 1380044 ?     Sl   Oct16 2220:42 python3 -u ScrapeTweets_server.py
+root     1433450  0.4  0.5 201840 46040 pts/0    Sl   15:13   0:01 python3 -u travel_discord_bot.py
+root     1434469  0.0  0.0   2608   536 ?        S    15:19   0:00 sh -c ps aux | grep python > running_processes.txt
+root     1434471  0.0  0.0   8160   656 ?        S    15:19   0:00 grep python

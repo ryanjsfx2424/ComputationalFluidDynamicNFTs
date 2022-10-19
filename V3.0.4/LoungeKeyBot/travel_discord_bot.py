@@ -19,9 +19,10 @@ class TravelDiscordBot(TravelBot):
             if message.author.id != 855616810525917215:
                 return
             else:
-                print([message.content])
-                print([message.author.id])
-                print([message.channel.id])
+                pass
+                #print([message.content])
+                #print([message.author.id])
+                #print([message.channel.id])
             if message.content.startswith("!lk update pfp="):
                 img = message.content.replace("!lk update pfp=","")
                 with open(img, "rb") as fid:
@@ -48,18 +49,18 @@ class TravelDiscordBot(TravelBot):
                 wcnt += 1
                 print("wcnt: ", wcnt)
 
-                # if time.time() - last_sf_update > 60.1:
-                    # last_sf_update = time.time()
-                    # self.get_html()
-                    # self.get_fares("err")
-                    # self.get_fares("deals")
-                # # end if
+                if time.time() - last_sf_update > 60.1:
+                    last_sf_update = time.time()
+                    self.get_html()
+                    self.get_fares("err")
+                    self.get_fares("deals")
+                # end if
 
-                # if time.time() - last_nd_update > 3600:
-                #     print(datetime.datetime.now())
-                #     last_nd_update = time.time()
-                #     await self.get_html_nd()
-                # # end if
+                if time.time() - last_nd_update > 3600:
+                    print(datetime.datetime.now())
+                    last_nd_update = time.time()
+                    await self.get_html_nd()
+                # end if
 
                 if time.time() - last_scotts_update > 24.5*3600:
                     print(datetime.datetime.now())
@@ -103,11 +104,11 @@ class TravelDiscordBot(TravelBot):
                 roles_mentioned = []
                 for ii,fare in enumerate(fares):
                     if fare in self.old_fares:
-                        print("fare was in old_fares")
-                        print("ii: ", ii)
-                        print("fare: ", fare)
-                        print("old_fares: ", self.old_fares)
-                        input(">>")
+                        #print("fare was in old_fares")
+                        #print("ii: ", ii)
+                        #print("fare: ", fare)
+                        #print("old_fares: ", self.old_fares)
+                        #input(">>")
                         continue
                     # end if
                     title = fare

@@ -39,10 +39,10 @@ class TravelBot(RegionData):
         self.BUSINESS_CID = 1025549865561894972
         self.FIRST_CLASS_CID = 1025550542761635850
 
-                    if self.time_since_last_business_ping - time.time() > self.ONE_HOUR:
         self.ONE_HOUR = 3600
         self.time_since_last_business_ping    = time.time() - self.ONE_HOUR
         self.time_since_last_first_class_ping = time.time() - self.ONE_HOUR
+        self.time_since_last_ping = {}
 
         self.CID_VEGAS = 1000549429276848221
         self.CIDS     = self.load_discord_ids("region_data/channel_id_data.json")
@@ -508,7 +508,7 @@ class TravelBot(RegionData):
 
                 if "_from" in hashtag:
                     if "usa" in hashtag:
-                        print("usa in hashtag")
+                        #print("usa in hashtag")
                         continue
                     # end if
 
@@ -542,7 +542,7 @@ class TravelBot(RegionData):
             #description = ", ".join(self.fares["hashtags"][ii])
 
             if "to Las Vegas" in title:
-                print("Las vegas in title, now: ", datetime.datetime.now())
+                #print("Las vegas in title, now: ", datetime.datetime.now())
 
                 embed = discord.Embed(title=title, description=title,
                     color=discord.Color.blue(), url=url)
@@ -550,9 +550,9 @@ class TravelBot(RegionData):
                 embed.set_footer(text = "Built for Solana Vegas Tour, Powered by @TheLunaLabs",
                     icon_url=self.icon_url)
                 try:
-                    print("going to get LV channel, now: ", datetime.datetime.now())
+                    #print("going to get LV channel, now: ", datetime.datetime.now())
                     channel = self.client.get_channel(self.CID_VEGAS)
-                    print("got LV channel, now: ", datetime.datetime.now())
+                    #print("got LV channel, now: ", datetime.datetime.now())
                     if not self.TESTING:
                         await channel.send(embed=embed)
                     print("LV sent embed, now: ", datetime.datetime.now())
@@ -576,7 +576,10 @@ class TravelBot(RegionData):
                 if role not in roles_mentioned:
                     try:
                         if not self.TESTING:
-                            #await channel.send("Hey <@&" + role + ">")
+                            if "business class" not in title.lower() and "first class" not in title.lower():
+                                if role not in self.time_since_last_ping or self.time_since_last_ping[role] - time.time() > self.ONE_HOUR:
+                                    self.time_since_last_ping[role] = time.time()
+                                    await channel.send("Hey <@&" + role + ">")
                     except Exception as err:
                         print("112 err: ", err)
                         print("113 err_args: ", err.args[:])
@@ -592,12 +595,11 @@ class TravelBot(RegionData):
                 # end if
                 try:
                     if not self.TESTING:
-                        pass
-                        #await channel.send(embed=embed)
+                        if "business class" not in title.lower() and "first class" not in title.lower():
+                            await channel.send(embed=embed)
                         
                     else:
-                        pass
-                        #await test_channel.send(embed=embed)
+                        await test_channel.send(embed=embed)
 
                 except Exception as err:
                     print("129 err: ", err)
@@ -606,7 +608,7 @@ class TravelBot(RegionData):
                 # end try/except
             # end for
 
-            if "business" in title.lower():
+            if "business class" in title.lower():
                 if  self.time_since_last_business_ping - time.time() > self.ONE_HOUR:
                     self.time_since_last_business_ping = time.time()
                     #await business_channel.send("Hey <@&" + role + ">")
@@ -641,7 +643,7 @@ class TravelBot(RegionData):
               print("172 Traceback, html ", self.html)
               return
         else:
-            fares = self.html.split("Latest Deals")[1].split("As seen on")[0]
+            fares = self.html.split("Latest Deals")[1].split("As Seen On")[0]
         # end if/else
         imgs = fares.split("<img ")[1:]
 
@@ -655,18 +657,23 @@ class TravelBot(RegionData):
 
         fares = fares.split('<h3 class="entry-title">')
         for ii,fare in enumerate(fares[1:]):
-            print("0 fare: ", fare)
+            #print("0 fare: ", fare)
             fare = fare.split("</h3>")[0]
-            print("1 fare: ", fare)
+            #print("1 fare: ", fare)
             fare = fare.split('<a href="')[-1]
-            print("2 fare: ", fare)
+            #print("2 fare: ", fare)
             url = fare.split('" ')[0]
             fare = fare.split('title="')[1].split('" ')[0]
-            print("3 fare: ", fare)
+            #print("3 fare: ", fare)
             ## note, I had ('<a href="')[2] but modified for the hotel error fare thing.
             #url = fare.split('<a href="')[1].split(" ")[0].split('"')[0]
             #fare = fare.split('title="')[1].split('" ')[0]
-            image = images[ii]
+            try:
+                image = images[ii]
+            except Exception as err:
+                print("674 err: ", err)
+                print("675 err.args: ", err.args[:])
+                print("fare: ", fare)
             #if "Hotel" in fare:
             #    continue
             ## end if
@@ -694,7 +701,7 @@ class TravelBot(RegionData):
     # end get_fares
 
     def get_new_hashtags_from_regions(self, text, hashtags):
-        print("text: ", text)
+        #print("text: ", text)
         for region in self.region_data:
             #print("region: ", region)
             for subregion in self.region_data[region]:

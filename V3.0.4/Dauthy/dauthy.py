@@ -36,7 +36,7 @@ class AuthenticationDiscordBot(object):
     self.FOOTER   = "Built for Roo Tech, Powered by Roo Tech"
     self.CMD_PREFIX = ""
 
-    self.SLEEP_TIME = 3.2
+    self.SLEEP_TIME = 2.2
 
     self.fname_base = "data_big/DauthyData"
     self.fname_ext  = ".txt"
@@ -672,9 +672,11 @@ class AuthenticationDiscordBot(object):
       #  channel = client.get_channel(BOT_COMMANDS_CID)
       #  await channel.send("URL Police bot is on patrol.")
       # end for
+      last_print = time.time() - 3700
       while True:
         await asyncio.sleep(self.SLEEP_TIME)
-        print("now: ", datetime.datetime.now())
+        if time.time() - last_print > 3600:
+          print("now: ", datetime.datetime.now())
         await self.remove_authenticated_users()
       # end while
     # end on_ready

@@ -35,7 +35,7 @@ class Tweeteroo2(object):
         self.CID_MSG1 = 1008832530633478284 # roo tech, tweeteroo-battlefish
         self.CID_MSG2 = 1009227419082825758 # battle.fish. seashills
         self.BOT_COMMANDS_CIDS = [self.CID_MSG1, self.CID_MSG2, self.CID_LOG]
-        self.GUILDS = [993961827799158925,931482273440751638]#,954556360354299924] # Roo Tech, TTM, BF
+        self.GUILDS = [993961827799158925,931482273440751638,954556360354299924] # Roo Tech, TTM, BF
 
         self.CMD_PREFIX = "bf"
         self.BOT_NAME   = "SeaShills - a Battle.Fish bot"

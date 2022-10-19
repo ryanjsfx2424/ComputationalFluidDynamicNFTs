@@ -1,34 +1,27 @@
-[2022-10-12 17:36:00] [INFO    ] discord.client: logging in using static token
-[2022-10-12 17:36:00] [INFO    ] discord.gateway: Shard ID None has sent the IDENTIFY payload.
-[2022-10-12 17:36:01] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 766150b2a37ea8b30519ad77dc7e122f).
+nohup: ignoring input
+[2022-10-19 15:13:29] [INFO    ] discord.client: logging in using static token
+[2022-10-19 15:13:29] [INFO    ] discord.gateway: Shard ID None has sent the IDENTIFY payload.
+[2022-10-19 15:13:30] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 97a91f5f940dc66191cc7ec051603f44).
 on_ready
 wcnt:  1
-2022-10-12 17:36:03.169704
+resp:  <Response [200]>
+2022-10-19 15:13:32.951575
+sleeping for 5s in nextdeparture
+2022-10-19 15:13:49.764990
+get_fares_scotts took:  26.643388032913208
 119 tdb going to sleep for 60.1s
-link:  https://app.scottscheapflights.com/route/us/from-auto/pr/to-ponce/standard/auto?cos=economy
-link:  https://app.scottscheapflights.com/route/us/from-auto/us/to-honolulu-hi/standard/auto?cos=economy
-link:  https://app.scottscheapflights.com/route/us/from-auto/us/to-kahului-hi/standard/auto?cos=economy
-link:  https://app.scottscheapflights.com/route/us/from-auto/mx/to-cancun/standard/auto?cos=economy
-text:  Houston, United States to Cancun, Mexico When: Oct 2022 - Mar 2023 Rarity: Common for $229 ROUNDTRIP ECONOMY
-link:  https://app.scottscheapflights.com/route/us/from-auto/gt/to-guatemala-city/standard/auto?cos=economy
 wcnt:  2
+resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
-text:  Houston, United States to Guatemala City, Guatemala When: Jan - Feb 2023 Rarity: Common for $231 ROUNDTRIP ECONOMY
-link:  https://app.scottscheapflights.com/route/us/from-auto/mx/to-monterrey/standard/auto?cos=economy
-text:  Houston, United States to Monterrey, Mexico When: Oct 2022 - Feb 2023 Rarity: Epic for $196 ROUNDTRIP ECONOMY
-link:  https://app.scottscheapflights.com/route/us/from-auto/co/to-san-andres/standard/auto?cos=first
-text:  Houston, United States to San Andres, Colombia When: Nov 2022; Jan - May 2023; Aug 2023 Rarity: Legendary for $1,968 ROUNDTRIP FIRST CLASS
-link:  https://app.scottscheapflights.com/route/us/from-auto/tr/to-ankara/standard/auto?cos=business
-text:  Houston, United States to Ankara, Turkiye When: Nov 2022 - Feb 2023 Rarity: Legendary for $2,956 ROUNDTRIP BUSINESS CLASS
-Task exception was never retrieved
-future: <Task finished name='Task-14' coro=<TravelBot.get_fares_scotts() done, defined at /Users/ryanjsfx/Documents/ComputationalFluidDynamicNFTs/V3.0.4/LoungeKeyBot/travel.py:210> exception=NameError("name 'business_channel' is not defined")>
-Traceback (most recent call last):
-  File "/Users/ryanjsfx/Documents/ComputationalFluidDynamicNFTs/V3.0.4/LoungeKeyBot/travel.py", line 603, in get_fares_scotts
-    await business_channel.send(embed=embed)
-NameError: name 'business_channel' is not defined
 wcnt:  3
+resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  4
+resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
 wcnt:  5
+resp:  <Response [200]>
+119 tdb going to sleep for 60.1s
+wcnt:  6
+resp:  <Response [200]>
 119 tdb going to sleep for 60.1s
