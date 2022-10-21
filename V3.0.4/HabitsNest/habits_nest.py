@@ -72,8 +72,7 @@ class HabitsNest(object):
                     "2022-10-17 11:40AM",
                     "2022-10-18 12:40PM",
                     "2022-10-19 10:00AM",
-                    "2022-10-20 10:00AM",
-                    "2022-10-21 10:00AM"
+                    "2022-10-20 10:00AM"
                 ]
             }
         )
@@ -123,12 +122,7 @@ class HabitsNest(object):
         if os.path.exists(fname) and os.stat(fname).st_size != 0:
             with open(fname, "rb") as fid:
                 result = pickle.load(fid)
-                # print("fname, dtype, result: ", fname, dtype, result)
-                # input(">>")
             # end with
-        # else:
-        #     print("fname does not exist: ", fname)
-        #     input(">>")
         # end if
         return result
     # end load_pickle
@@ -172,9 +166,8 @@ class HabitsNest(object):
     # end load_arr
 
     def process_time(self, time_to_send):
-        # print("time_to_send (st process_time): ", time_to_send)
-
         yy,mm,dd = time_to_send.split("-")
+
         if "pm" in dd.lower():
             apm = "PM"
         elif "am" in dd.lower():
@@ -263,9 +256,6 @@ class HabitsNest(object):
             fields = record["fields"]
 
             if len(fields) < 4:
-                # print("too few fields? wanted 5. received len(fields): ", len(fields))
-                # print("fields: ", fields)
-                # print("skipping")
                 continue
             # end if
 
@@ -279,7 +269,10 @@ class HabitsNest(object):
                 continue
 
             time_to_send = time_to_send.replace(" copy", "")
-            good_to_send = self.process_time(time_to_send)
+            try:
+                good_to_send = self.process_time(time_to_send)
+            except:
+                good_to_send = False
 
             if not good_to_send:
                 continue
@@ -322,6 +315,7 @@ class HabitsNest(object):
             # input(">>")
 
             if cid in self.times_handled and time_to_send in self.times_handled[cid]:
+                #print("times handled skip")
                 continue
 
 
@@ -547,8 +541,8 @@ class HabitsNest(object):
             # end for
 
             #print("message_text1: ", message_text)
-            print("548 special_button_messages: ", self.special_button_messages)
-            print("549 special_button_messages: ", special_button_messages)
+            #print("548 special_button_messages: ", self.special_button_messages)
+            #print("549 special_button_messages: ", special_button_messages)
 
             if cid not in self.message_text:
                 self.modals[cid] = {} # not tested
