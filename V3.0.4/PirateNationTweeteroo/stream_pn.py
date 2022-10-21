@@ -4,7 +4,7 @@ import requests
 import numpy as np
 from tweeteroo_pn import *
 
-MAX_LOOPS = 20
+MAX_LOOPS = 5
 
 class Stream(Tweeteroo2):
   def __init__(self):
@@ -108,6 +108,13 @@ class Stream(Tweeteroo2):
       except Exception as err:
         print("55 stream connect_stream err: ", err)
         print("56 scs err.args: ", err.args[:])
+        if "Connection reset by peer" in err:
+            print("going to try recursing")
+            time.sleep(60.1)
+            self.connect_stream()
+            print("outside recurse")
+            return
+        # end if
       # end try/except
       print("outside try/except")
     # end while

@@ -35,13 +35,14 @@ DEFAULT_TIMEST = "all"
 
 class Tweeteroo2(object):
     def __init__(self):
-        self.DEV_MODE = False
+        self.DEV_MODE = True
 
         self.CID_LOG  =  932056137518444594 # TTM, bot-commands
         self.CID_MSG1 = 1001191510705963129 # roo tech, tweeteroo-piratenation
+        self.CID_MSG2 = 1027243048381460490
         #self.CID_MSG2 = 1009227419082825758 # battle.fish. seashills
-        self.BOT_COMMANDS_CIDS = [self.CID_MSG1, self.CID_LOG]
-        self.GUILDS = [993961827799158925,931482273440751638]#,933037216811319327] # Roo Tech, TTM, PN
+        self.BOT_COMMANDS_CIDS = [self.CID_MSG1, self.CID_MSG2, self.CID_LOG]
+        self.GUILDS = [993961827799158925,931482273440751638,933037216811319327] # Roo Tech, TTM, PN
 
         self.CMD_PREFIX = "ahoy"
         self.BOT_NAME   = "Pirate Nation Tweeteroo"
@@ -67,6 +68,7 @@ class Tweeteroo2(object):
                             + 2*self.TAB + "!" + self.CMD_PREFIX + "verify " + self.VERIFY1 + " \nOR\n" \
                             + 2*self.TAB + "!" + self.CMD_PREFIX + "verify " + self.VERIFY2 + "```"
         self.LINK_SUCCESS = "```>>> SUCCESS! Twitter username linked with this discord id.```"
+        self.LINK_SUCCESS = "```>>> hey you connected your twitter! good job! check back in a few minutes for the leaderboard to update```"
         self.VERIFY_SUCCESS = "```>>> SUCCESS! Your tweet was already processed :)```"
         self.STATS_ERROR = "```>>> error fetching user's stats```"
         self.RANK_ERROR = "```>>> error fetching user's rank```"
@@ -84,7 +86,7 @@ class Tweeteroo2(object):
         self.FLAG_RTS = "retweets"
         self.FLAG_QTS = "quotes"
 
-        self.pages = {}; self.points_usernames = []; self.project_tweet_ids = []
+        self.pages = {}; self.points_usernames = []
         self.init_times()
         self.init_auth()
         self.init_arrays()
@@ -94,8 +96,14 @@ class Tweeteroo2(object):
 
     def init_keywords(self):
         self.PROJECT_TWITTER = "piratenationnft"
-        self.PROJECT_TWITTER_SN = self.PROJECT_TWITTER
+        self.PROJECT_TWITTER_SN = "PirateNationNFT"
         self.fname_project_tweet_ids   = "data_big/tweet_ids_" + self.PROJECT_TWITTER + ".txt"
+        self.project_tweet_ids = []
+
+        fs = np.sort(glob.glob("data_big/from*.txt"))
+        for fn in fs:
+            self.load_project_tweets(fn)
+        # end for fs
 
         query = "(@" + self.PROJECT_TWITTER + " OR Yargh OR #Yargh OR Arr Nation OR #ArrNation OR Pirate Nation OR #PirateNation OR The Weekly Yargh)"
 
@@ -224,30 +232,28 @@ class Tweeteroo2(object):
                             icon_url=self.URL)
         embedInt.set_footer(text = self.FOOTER,
                             icon_url=self.URL)
-                            add_tweet_to_bounties
-        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "help__**", value="Display this help menu", inline=True)
-        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "help__**", value="Display this help menu", inline=True)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + " help__**", value="Display this help menu", inline=True)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + " help__**", value="Display this help menu", inline=True)
         #embedInt.add_field(name="**__/" + self.CMD_PREFIX + "link__**", value="(Slash command only!) Link discord id with twitter username", inline=False)
         #embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "link__**", value="(Slash command only!) Link discord id with twitter username", inline=False)
-        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "add_tweeteroo_admin__**", value="(Botfather only) Adds user that can put bounties (point multipliers) on tweets.", inline=False)
-        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "add_tweeteroo_admin__**", value="(Botfather only) Adds user that can put bounties (point multipliers) on tweets.", inline=False)
-        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "remove_tweeteroo_admin__**", value="(Tweeteroo admins only) Removes user that would put bounties (point multipliers) on tweets.", inline=False)
-        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "remove_tweeteroo_admin__**", value="(Tweeteroo admins only) Removes user that would put bounties (point multipliers) on tweets.", inline=False)
-        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "add_tweet_to_bounties__**", value="(Tweeteroo admins only) Tweet that users get extra points for engaging with.", inline=False)
-        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "add_tweet_to_bounties__**", value="(Tweeteroo admins only) Tweet that users get extra points for engaging with.", inline=False)
-        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "link__**", value="Link discord id with twitter username", inline=False)
-        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "link__**", value="Link discord id with twitter username", inline=False)
-        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "link__**", value="Link discord id with twitter username", inline=False)
-        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "lb__**", value="Display leaderboard (all data)\nTo see options for granular leaderboards, run command: **__!" + self.CMD_PREFIX + "helplb__**", inline=False)
-        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "lb__**", value="Display leaderboard (all data)\nTo see options for granular leaderboards, run command: **__!" + self.CMD_PREFIX + "helplb__**", inline=False)
-        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "keywords__**", value="Display keywords we use to find Tweets that count towards your rank", inline=False)
-        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "keywords__**", value="Display keywords we use to find Tweets that count towards your rank", inline=False)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + " add_tweeteroo_admin__**", value="(Botfather only) Adds user that can put bounties (point multipliers) on tweets.", inline=False)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + " add_tweeteroo_admin__**", value="(Botfather only) Adds user that can put bounties (point multipliers) on tweets.", inline=False)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + " remove_tweeteroo_admin__**", value="(Tweeteroo admins only) Removes user that would put bounties (point multipliers) on tweets.", inline=False)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + " remove_tweeteroo_admin__**", value="(Tweeteroo admins only) Removes user that would put bounties (point multipliers) on tweets.", inline=False)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + " add_tweet_to_bounties__**", value="(Tweeteroo admins only) Tweet that users get extra points for engaging with.", inline=False)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + " add_tweet_to_bounties__**", value="(Tweeteroo admins only) Tweet that users get extra points for engaging with.", inline=False)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + " link__**", value="Link discord id with twitter username", inline=False)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + " link__**", value="Link discord id with twitter username", inline=False)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + " lb__**", value="Display leaderboard (all data)\nTo see options for granular leaderboards, run command: **__!" + self.CMD_PREFIX + "helplb__**", inline=False)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + " lb__**", value="Display leaderboard (all data)\nTo see options for granular leaderboards, run command: **__!" + self.CMD_PREFIX + "helplb__**", inline=False)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + " keywords__**", value="Display keywords we use to find Tweets that count towards your rank", inline=False)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + " keywords__**", value="Display keywords we use to find Tweets that count towards your rank", inline=False)
         #embedDpy.add_field(name="**__!" + self.CMD_PREFIX + "verify <url>,<twitter username>__**", value="Verify if we've processed your interaction", inline=False)
         #embedInt.add_field(name="**__!" + self.CMD_PREFIX + "verify <url>,<twitter username>__**", value="Verify if we've processed your interaction", inline=False)
-        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "stats <twitter username>__**", value="Display user's points, likes, etc.", inline=False)
-        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "stats <twitter username>__**", value="Display user's points, likes, etc.", inline=False)
-        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "rank <twitter username>__**",  value="Display user's rank (all data). To see options for granular ranks, run command: **__!" + self.CMD_PREFIX + "helplb__**", inline=False)
-        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "rank <twitter username>__**",  value="Display user's rank (all data). To see options for granular ranks, run command: **__!" + self.CMD_PREFIX + "helplb__**", inline=False)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + " stats <twitter username>__**", value="Display user's points, likes, etc.", inline=False)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + " stats <twitter username>__**", value="Display user's points, likes, etc.", inline=False)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + " rank <twitter username>__**",  value="Display user's rank (all data). To see options for granular ranks, run command: **__!" + self.CMD_PREFIX + "helplb__**", inline=False)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + " rank <twitter username>__**",  value="Display user's rank (all data). To see options for granular ranks, run command: **__!" + self.CMD_PREFIX + "helplb__**", inline=False)
         self.helpEmbedAdminDpy = embedDpy
         self.helpEmbedAdminInt = embedInt
 
@@ -870,6 +876,7 @@ class Tweeteroo2(object):
         yr,mo = tnow.strftime(tstr).split("-")[:2]
 
         if msg == None:
+            print("871 msg was none")
             return [start_time, end_time, time_str, True, ""]
         # end if
 
@@ -1292,13 +1299,10 @@ class Tweeteroo2(object):
         tuids, indsU, vals = np.unique(tuids, return_index=True, return_counts=True)
 
         usernames = usernames[indsB][indsE][indsU]
-        ind = np.where(usernames == "TheLunaLabs")
-        ind2 = np.where(usernames == "thelunalabs")
-        print("1: ", usernames[ind])
-        print("2: ", usernames[ind2])
-        print("tuids 1: ", tuids[ind])
-        print("tuids 2: ", tuids[ind2])
-        print("vals 2: ", vals[ind2])
+        ind2 = np.where(usernames == "bukottv")
+        print("bukottv: ", usernames[ind2])
+        print("tuids bukottv: ", tuids[ind2])
+        print("vals bukottv: ", vals[ind2])
         indsSU = np.where(np.in1d(usernames, self.user_dict["linked_usernames"]))[0]
 
         usernames = usernames[indsSU]
