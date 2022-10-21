@@ -9,7 +9,6 @@ import math
 import json
 import time
 import glob
-import copy
 import shutil
 import pickle
 import socket
@@ -52,11 +51,6 @@ class HabitsNest(object):
         self.fname_special_button_messages = "data_big/special_button_messages.pickle"
         self.fname_guilds = "data_big/guilds.pickle"
         self.fname_prompts = "data_big/prompts.pickle"
-
-        self.fname_button_ids = "data_big/button_ids.pickle"
-        self.fname_menu_ids = "data_big/menu_ids.pickle"
-        self.fname_modal_ids = "data_big/modal_ids.pickle"
-        self.fname_special_button_ids = "data_big/special_button_ids.pickle"
     # end init_fnames
 
     def init_data(self):
@@ -85,14 +79,8 @@ class HabitsNest(object):
         self.response_channel_id = self.load_pickle(self.fname_response_channel_id)
         self.response_buttons    = self.load_pickle(self.fname_response_buttons)
         self.special_button_messages = self.load_pickle(self.fname_special_button_messages)
-
         self.GUILDS = self.load_pickle(self.fname_guilds, dtype=self.GUILDS)
         self.prompts = self.load_pickle(self.fname_prompts)
-
-        self.button_ids = self.load_pickle(self.fname_button_ids)
-        self.menu_ids = self.load_pickle(self.fname_menu_ids)
-        self.modal_ids = self.load_pickle(self.fname_modal_ids)
-        self.special_button_ids = self.load_pickle(self.fname_special_button_ids)
     # end init_data
 
     def save_pickles(self):
@@ -106,10 +94,6 @@ class HabitsNest(object):
         self.save_pickle(self.fname_special_button_messages, self.special_button_messages)
         self.save_pickle(self.fname_guilds, self.GUILDS)
         self.save_pickle(self.fname_prompts, self.prompts)
-        self.save_pickle(self.fname_button_ids, self.button_ids)
-        self.save_pickle(self.fname_menu_ids, self.menu_ids)
-        self.save_pickle(self.fname_modal_ids, self.modal_ids)
-        self.save_pickle(self.fname_special_button_ids, self.special_button_ids)
     # end save_pickles
 
     def save_pickle(self, fname, obj):
@@ -119,7 +103,7 @@ class HabitsNest(object):
     # end save_pickle
 
     def load_pickle(self, fname, dtype={}):
-        result = copy.deepcopy(dtype)
+        result = dtype
         if os.path.exists(fname) and os.stat(fname).st_size != 0:
             with open(fname, "rb") as fid:
                 result = pickle.load(fid)
@@ -277,11 +261,11 @@ class HabitsNest(object):
 
             except Exception as err:
                 continue
-
             time_to_send = time_to_send.replace(" copy", "")
-            good_to_send = self.process_time(time_to_send)
 
+            good_to_send = self.process_time(time_to_send)
             if not good_to_send:
+                #print("too early! airtable")
                 continue
             # end if
 
@@ -440,23 +424,12 @@ class HabitsNest(object):
             ii = 0
             for ii in range(len(dropdowns)):
                 cnt2 += 1
-
                 label = self.labels[ii]
                 button_texts.append(label)
-                custom_id = "button" + str(ii) + "_" + time_to_send + "_" + str(cid)
-
                 buttons.append(interactions.Button(style=1, label=label,
-                                custom_id=custom_id
+                                custom_id="button" + str(ii) + "_" + time_to_send + "_" + str(cid)
                                 ))
-                self.client.component(custom_id)(button_func)
-
-                if cid not in self.button_ids:
-                    self.button_ids[cid] = {}
-
-                if time_to_send not in self.button_ids[cid]:
-                    self.button_ids[cid][time_to_send] = []
-
-                self.button_ids[cid][time_to_send].append(custom_id)
+                self.client.component("button" + str(ii) + "_" + time_to_send + "_" + str(cid))(button_func)
 
                 select_options = []
                 for dropdown_option in dropdowns[ii]:
@@ -464,21 +437,12 @@ class HabitsNest(object):
                         label=dropdown_option, value=dropdown_option, description=dropdown_option))
                 # end for
 
-                custom_id = "menu" + str(ii) + "_" + time_to_send + "_" + str(cid)
                 select_menus.append(interactions.SelectMenu(
                     options=select_options,
                     placeholder=label,
-                    custom_id=custom_id
+                    custom_id="menu" + str(ii) + "_" + time_to_send + "_" + str(cid)
                 ))
-                self.client.component(custom_id)(menu_response)
-
-                if cid not in self.menu_ids:
-                    self.menu_ids[cid] = {}
-
-                if time_to_send not in self.menu_ids[cid]:
-                    self.menu_ids[cid][time_to_send] = []
-
-                self.menu_ids[cid][time_to_send].append(custom_id)
+                self.client.component("menu" + str(ii) + "_" + time_to_send + "_" + str(cid))(menu_response)
             # end for
             
             cnt = 0
@@ -487,20 +451,10 @@ class HabitsNest(object):
                 cnt2 += 1
                 label = self.labels[cnt2]
 
-                custom_id = "button" + str(cnt2) + "_" + time_to_send + "_" + str(cid)
                 button_texts.append(label)
                 buttons.append(interactions.Button(style=1, label=label,
-                                custom_id=custom_id))
-                self.client.component(custom_id)(button_func)
-
-                if cid not in self.button_ids:
-                    self.button_ids[cid] = {}
-
-                if time_to_send not in self.button_ids[cid]:
-                    self.button_ids[cid][time_to_send] = []
-
-                self.button_ids[cid][time_to_send].append(custom_id)
-
+                                custom_id="button" + str(cnt2) + "_" + time_to_send + "_" + str(cid)))
+                self.client.component("button" + str(cnt2) + "_" + time_to_send + "_" + str(cid))(button_func)
 
                 modal_components = []
                 for kk in range(len(textinputs[jj])):
@@ -512,21 +466,12 @@ class HabitsNest(object):
                     ))
                 # end for
 
-                custom_id = "modal" + str(cnt2) + "_" + time_to_send + "_" + str(cid)
                 modals.append(interactions.Modal(
                             title=label,
-                            custom_id=custom_id,
+                            custom_id="modal" + str(cnt2) + "_" + time_to_send + "_" + str(cid),
                             components=modal_components
                 ))
-                self.client.modal(custom_id)(modal_response)
-
-                if cid not in self.modal_ids:
-                    self.modal_ids[cid] = {}
-
-                if time_to_send not in self.modal_ids[cid]:
-                    self.modal_ids[cid][time_to_send] = []
-
-                self.modal_ids[cid][time_to_send].append(custom_id)
+                self.client.modal("modal" + str(cnt2) + "_" + time_to_send + "_" + str(cid))(modal_response)
             # end for
 
             prompts = []
@@ -547,8 +492,6 @@ class HabitsNest(object):
             # end for
 
             #print("message_text1: ", message_text)
-            print("548 special_button_messages: ", self.special_button_messages)
-            print("549 special_button_messages: ", special_button_messages)
 
             if cid not in self.message_text:
                 self.modals[cid] = {} # not tested
@@ -569,7 +512,6 @@ class HabitsNest(object):
             self.response_channel_id[cid][time_to_send] = rchannel_id
             self.special_button_messages[cid][time_to_send] = special_button_messages
             self.response_buttons[cid][time_to_send] = buttons
-            self.special_button_messages[cid][time_to_send] = special_button_messages
             self.prompts[cid][time_to_send] = prompts
 
             if cid not in self.times_handled:
@@ -578,6 +520,11 @@ class HabitsNest(object):
 
             self.times_handled[cid].append(time_to_send)
             self.save_pickles()
+
+            # print("self.times_handed 524: ", self.times_handled)
+            # times525 = self.load_pickle(self.fname_times)
+            # print("times525: ", times525)
+            # input(">>")
 
             row_buttons = []
             print("len messages: ", len(messages))
@@ -630,21 +577,10 @@ class HabitsNest(object):
                         print("sent message!")
                     # end if/else
                 # end if/else
-
                 if mm < len(special_button_names):
-                    custom_id = "special_button" + str(mm) + "_time" + time_to_send + "_" + str(cid)
                     button = interactions.Button(style=1, label=special_button_names[mm],
-                                custom_id=custom_id)
-                    self.client.component(custom_id)(button_func)
-
-                    if cid not in self.special_button_ids:
-                        self.special_button_ids[cid] = {}
-
-                    if time_to_send not in self.special_button_ids[cid]:
-                        self.special_button_ids[cid][time_to_send] = []
-
-                    self.special_button_ids[cid][time_to_send].append(custom_id)
-
+                                custom_id="special_button" + str(mm) + "_time" + time_to_send + "_" + str(cid))
+                    self.client.component("special_button" + str(mm) + "_time" + time_to_send + "_" + str(cid))(button_func)
 
                     if append_button_flag:
                         row_buttons.append(button)
@@ -673,20 +609,24 @@ class HabitsNest(object):
                 print("r.status_code: ", r.status_code)
                 r.raw.decode_content = True
 
-                with open("data_big/" + image_name, "wb") as fid:
+                with open(image_name, "wb") as fid:
                     shutil.copyfileobj(r.raw, fid)
                 # end with
                 print("Image downloaded!")
-                image_file = interactions.File(filename="data_big/" + image_name)
+                image_file = interactions.File(filename=image_name)
 
                 print("channel_id: ", channel_id)
                 await channel.send(files=image_file)
             # end for attachments
+            print("done with attachments")
 
-            self.save_pickle(self.fname_special_button_ids, self.special_button_ids)
+            #await channel.send("\u200b", components=row)
+            #print("sent components!")
 
             self.rows_handled.append(str(record))
+            print("row added")
             self.save_arr()
+            print("saved arr")
         # end records
     # end airtable_stuff
 
@@ -728,7 +668,7 @@ class HabitsNest(object):
             self.save_pickle(self.fname_guilds, self.GUILDS)
             await ctx.send("saved guild. now we need to rooboot for that to take effect", ephemeral=True)
 
-            fname = "data_big/pid.txt"
+            fname = "pid.txt"
             os.system("ps aux | grep habits_nest.py > " + fname)
             with open(fname, "r") as fid:
                 for line in fid:
@@ -912,10 +852,7 @@ class HabitsNest(object):
 
                     if ii < len(self.prompts[cid][time_to_send]):
                         end = min(40,len(self.prompts[cid][time_to_send][ii]))
-                        if end < 40:
-                            name = self.labels[ii] + " " + self.prompts[cid][time_to_send][ii][:end]
-                        else:
-                            name = self.labels[ii] + " " + self.prompts[cid][time_to_send][ii][:end] + "..."
+                        name = self.labels[ii] + " " + self.prompts[cid][time_to_send][ii][:end]
                         value = prompt
 
                     else:
@@ -935,7 +872,7 @@ class HabitsNest(object):
                 print("r.status_code: ", r.status_code)
                 r.raw.decode_content = True
 
-                image_name = "data_big/temp_image_file_" + str(int(time.time())) + "." + image_upload.content_type.split("/")[1]
+                image_name = "temp_image_file_" + str(int(time.time())) + "." + image_upload.content_type.split("/")[1]
                 with open(image_name, "wb") as fid:
                     shutil.copyfileobj(r.raw, fid)
                 # end with
@@ -1004,8 +941,6 @@ class HabitsNest(object):
                 ii,time_to_send,junk = ii.split("_")
                 time_to_send = time_to_send.replace("time","")
                 ii = int(ii)
-
-                print("special_button_messages[cid][time_to_send]: ", self.special_button_messages[cid][time_to_send])
 
                 trues = 0
                 for jj in range(len(self.response_buttons[cid][time_to_send])):
@@ -1205,23 +1140,6 @@ class HabitsNest(object):
 
             return
         # end modal_response
-
-        for cid in self.special_button_ids:
-            for time_to_send in self.special_button_ids[cid]:
-                for special_button_id in self.special_button_ids[cid][time_to_send]:
-                    self.client.component(special_button_id)(button_func)
-        for cid in self.button_ids:
-            for time_to_send in self.button_ids[cid]:
-                for button_id in self.button_ids[cid][time_to_send]:
-                    self.client.component(button_id)(button_func)
-        for cid in self.menu_ids:
-            for time_to_send in self.menu_ids[cid]:
-                for menu_id in self.menu_ids[cid][time_to_send]:
-                    self.client.component(menu_id)(menu_response)
-        for cid in self.modal_ids:
-            for time_to_send in self.modal_ids[cid]:
-                for modal_id in self.modal_ids[cid][time_to_send]:
-                    self.client.modal(modal_id)(modal_response)
 
         for ii in range(self.max_menus):
             client.component("special_button" + str(ii))(button_func)

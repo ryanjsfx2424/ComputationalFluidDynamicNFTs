@@ -1,24 +1,42 @@
 ## invite link: https://discord.com/api/oauth2/authorize?client_id=1019966201008488488&permissions=3072&scope=bot
 ## above uses scopes (1): 1) bot
 ## above uses perms (2): 1) read messages/view channels & 2) send messages
-## current channel permissions required (4): 1) view channel, 2) send messages, 3) embed links, 4) attach files
 import os
 import io
 import sys
 import math
 import json
-import time
-import glob
-import copy
 import shutil
 import pickle
 import socket
 import requests
 import asyncio
+import gspread
 import datetime
-import numpy as np
 from pytz import timezone
+
+import google.auth
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
+from googleapiclient.http import MediaIoBaseDownload
+
+from apiclient.discovery import build
+from oauth2client.service_account import ServiceAccountCredentials
+
+from google.oauth2.credentials import Credentials
+from google.oauth2 import service_account
+
+if socket.gethostname() == "MB-145.local":
+#   sys.path.append("/Users/ryanjsfx/Documents/interactions-ryanjsfx")
+  gname = "/Users/ryanjsfx/.config/gspread/HabitsNest/service_account.json"
+else:
+#   sys.path.append("/root/ToServer/interactions-ryanjsfx")
+  gname = "/root/.config/gspread/HabitsNest/service_account.json"
+# end if/else
+# sys.path.insert(0,"/Users/ryanjsfx/Documents/interactions-ryanjsfx")
+
 import interactions
+#from interactions.ext.files.files import command_send
 
 class HabitsNest(object):
     def __init__(self):
@@ -26,7 +44,6 @@ class HabitsNest(object):
 
         self.labels = "1️⃣ 2️⃣ 3️⃣ 4️⃣ 5️⃣ 6️⃣ 7️⃣ 8️⃣ 9️⃣".split()
 
-        self.APPROVED_USERS = [855616810525917215, 866735417566429225, 318615282245566466, 869988952688451594] # me, Lin, Mikey, Ari
         self.GUILDS = [864029910507323392, 993961827799158925]
 
         os.system("mkdir -p data_big")
@@ -43,6 +60,7 @@ class HabitsNest(object):
         self.fname                     = "data_big/rows_handled.json"
         self.fname_response_dict       = "data_big/response_dict.json"
 
+        self.fname_time_text           = "data_big/time_text.pickle"
         self.fname_button_texts        = "data_big/button_texts.pickle"
         self.fname_modals              = "data_big/modals.pickle"
         self.fname_select_menus        = "data_big/select_menus.pickle"
@@ -50,20 +68,13 @@ class HabitsNest(object):
         self.fname_response_channel_id = "data_big/response_channel_id.pickle"
         self.fname_response_buttons    = "data_big/response_buttons.pickle"
         self.fname_special_button_messages = "data_big/special_button_messages.pickle"
-        self.fname_guilds = "data_big/guilds.pickle"
-        self.fname_prompts = "data_big/prompts.pickle"
-
-        self.fname_button_ids = "data_big/button_ids.pickle"
-        self.fname_menu_ids = "data_big/menu_ids.pickle"
-        self.fname_modal_ids = "data_big/modal_ids.pickle"
-        self.fname_special_button_ids = "data_big/special_button_ids.pickle"
     # end init_fnames
 
-    def init_data(self):
-        self.rows_handled =  self.load_arr() # obselete
-        self.response_dict = self.load_json(self.fname_response_dict, dtype = {}) #obselete
+    def init_data(self):        
+        self.rows_handled =  self.load_arr()
+        self.response_dict = self.load_json(self.fname_response_dict, dtype = {})
         self.times_handled = self.load_pickle(self.fname_times, dtype = {
-            1001020922423152691:
+            str(1001020922423152691):
                 [
                     "2024-10-04 1:00 PM", 
                     "2024-10-05 1:01 PM", 
@@ -78,6 +89,7 @@ class HabitsNest(object):
             }
         )
 
+        self.time_text           = self.load_pickle(self.fname_time_text)
         self.button_texts        = self.load_pickle(self.fname_button_texts)
         self.modals              = self.load_pickle(self.fname_modals)
         self.select_menus        = self.load_pickle(self.fname_select_menus)
@@ -85,31 +97,17 @@ class HabitsNest(object):
         self.response_channel_id = self.load_pickle(self.fname_response_channel_id)
         self.response_buttons    = self.load_pickle(self.fname_response_buttons)
         self.special_button_messages = self.load_pickle(self.fname_special_button_messages)
-
-        self.GUILDS = self.load_pickle(self.fname_guilds, dtype=self.GUILDS)
-        self.prompts = self.load_pickle(self.fname_prompts)
-
-        self.button_ids = self.load_pickle(self.fname_button_ids)
-        self.menu_ids = self.load_pickle(self.fname_menu_ids)
-        self.modal_ids = self.load_pickle(self.fname_modal_ids)
-        self.special_button_ids = self.load_pickle(self.fname_special_button_ids)
     # end init_data
 
     def save_pickles(self):
         self.save_pickle(self.fname_times,               self.times_handled)
+        self.save_pickle(self.fname_time_text,           self.time_text)
         self.save_pickle(self.fname_button_texts,        self.button_texts)
         self.save_pickle(self.fname_modals,              self.modals)
         self.save_pickle(self.fname_select_menus,        self.select_menus)
         self.save_pickle(self.fname_message_text,        self.message_text)
         self.save_pickle(self.fname_response_channel_id, self.response_channel_id)
-        self.save_pickle(self.fname_response_buttons, self.response_buttons)
         self.save_pickle(self.fname_special_button_messages, self.special_button_messages)
-        self.save_pickle(self.fname_guilds, self.GUILDS)
-        self.save_pickle(self.fname_prompts, self.prompts)
-        self.save_pickle(self.fname_button_ids, self.button_ids)
-        self.save_pickle(self.fname_menu_ids, self.menu_ids)
-        self.save_pickle(self.fname_modal_ids, self.modal_ids)
-        self.save_pickle(self.fname_special_button_ids, self.special_button_ids)
     # end save_pickles
 
     def save_pickle(self, fname, obj):
@@ -119,16 +117,11 @@ class HabitsNest(object):
     # end save_pickle
 
     def load_pickle(self, fname, dtype={}):
-        result = copy.deepcopy(dtype)
+        result = dtype
         if os.path.exists(fname) and os.stat(fname).st_size != 0:
             with open(fname, "rb") as fid:
                 result = pickle.load(fid)
-                # print("fname, dtype, result: ", fname, dtype, result)
-                # input(">>")
             # end with
-        # else:
-        #     print("fname does not exist: ", fname)
-        #     input(">>")
         # end if
         return result
     # end load_pickle
@@ -185,7 +178,7 @@ class HabitsNest(object):
         #dd,hh,apm = dd.split()
         dd,hh = dd.split()
         HH,MM = hh.replace(" ","").split(":")
-        # print("[HH], [MM]: ", [HH], [MM])
+        print("[HH], [MM]: ", [HH], [MM])
 
         yy = int(yy); mm = int(mm); dd = int(dd)
         HH = int(HH); MM = int(MM)
@@ -230,14 +223,14 @@ class HabitsNest(object):
         return result
     # end process_time
 
-    async def airtable_stuff(self, button_func, menu_response, modal_response):
+    async def airtable_stuff(self, client):
         if "airTable" not in os.environ:
             print("err, forgot to export airTable environment variable.")
             sys.exit()
         # end if
         headers = {"Content-Type":"json", "Authorization":"Bearer " + os.environ["airTable"]}
         req = requests.get(self.airtable_url, headers=headers)
-        # print("airtable_stuff req.status_code: ", req.status_code)
+        print("airtable_stuff req.status_code: ", req.status_code)
         
         if str(req.status_code)[0] != "2":
             print("not 2XX??")
@@ -252,7 +245,7 @@ class HabitsNest(object):
             return
         # end try/except
 
-        with open("data_big/debug_airtable.json", "w") as fid:
+        with open("debug_airtable.json", "w") as fid:
             json.dump(result, fid)
         # end with
 
@@ -270,18 +263,23 @@ class HabitsNest(object):
             # end if
 
             if "Discord Message" not in fields:
+                print("Discord Message not filled out yet!")
                 continue
 
             try:
                 time_to_send = fields["TimeEST"]
 
             except Exception as err:
-                continue
+                print("couldn't get TimeEST from airtable (time to send message)")
+                print("217 err: ", err)
+                print("218 err.args: ", err.args[:])
 
             time_to_send = time_to_send.replace(" copy", "")
-            good_to_send = self.process_time(time_to_send)
 
+
+            good_to_send = self.process_time(time_to_send)
             if not good_to_send:
+                #print("too early! airtable")
                 continue
             # end if
 
@@ -290,6 +288,9 @@ class HabitsNest(object):
                 rchannel_id = fields["Response Channel Id"]
 
             except Exception as err:
+                print("couldn't get button channel id or response channel id from airtable")
+                print("182 err: ", err)
+                print("183 err.args: ", err.args[:])
                 continue
             # end try/except
 
@@ -305,8 +306,8 @@ class HabitsNest(object):
             # end try/except
 
             try:
-                channel  = await interactions.get(self.client, interactions.Channel, object_id=channel_id)
-                rchannel = await interactions.get(self.client, interactions.Channel, object_id=rchannel_id)
+                channel  = await interactions.get(client, interactions.Channel, object_id=channel_id)
+                rchannel = await interactions.get(client, interactions.Channel, object_id=rchannel_id)
             
             except Exception as err:
                 print("couldn't get channel for channel_id: ", channel_id)
@@ -318,10 +319,7 @@ class HabitsNest(object):
 
             cid = channel_id
 
-            # print("self.times_handled: ", self.times_handled)
-            # input(">>")
-
-            if cid in self.times_handled and time_to_send in self.times_handled[cid]:
+            if str(cid) in self.times_handled and time_to_send in self.times_handled[str(cid)]:
                 continue
 
 
@@ -352,6 +350,10 @@ class HabitsNest(object):
                     special_button_names.append(name)
                     special_button_messages.append(msg.replace("\\n","\n"))
                     messages.append(after)
+                    #print("[after]: ", [after])
+                    #print("len after: ", len(after))
+                    #print("len after.replace(" ",""): ", len(after.replace(" ","")))
+                    #print("len after.replace(' ','').replace('slashn',''): ", len(after.replace(" ","").replace("\n","")))
                 # end for
             # end if
             print("special_button_names: ", special_button_names)
@@ -440,45 +442,22 @@ class HabitsNest(object):
             ii = 0
             for ii in range(len(dropdowns)):
                 cnt2 += 1
-
                 label = self.labels[ii]
                 button_texts.append(label)
-                custom_id = "button" + str(ii) + "_" + time_to_send + "_" + str(cid)
-
                 buttons.append(interactions.Button(style=1, label=label,
-                                custom_id=custom_id
-                                ))
-                self.client.component(custom_id)(button_func)
-
-                if cid not in self.button_ids:
-                    self.button_ids[cid] = {}
-
-                if time_to_send not in self.button_ids[cid]:
-                    self.button_ids[cid][time_to_send] = []
-
-                self.button_ids[cid][time_to_send].append(custom_id)
+                                custom_id="button" + str(ii)))
 
                 select_options = []
                 for dropdown_option in dropdowns[ii]:
                     select_options.append(interactions.SelectOption(
                         label=dropdown_option, value=dropdown_option, description=dropdown_option))
                 # end for
-
-                custom_id = "menu" + str(ii) + "_" + time_to_send + "_" + str(cid)
+                
                 select_menus.append(interactions.SelectMenu(
                     options=select_options,
                     placeholder=label,
-                    custom_id=custom_id
+                    custom_id="menu" + str(ii)
                 ))
-                self.client.component(custom_id)(menu_response)
-
-                if cid not in self.menu_ids:
-                    self.menu_ids[cid] = {}
-
-                if time_to_send not in self.menu_ids[cid]:
-                    self.menu_ids[cid][time_to_send] = []
-
-                self.menu_ids[cid][time_to_send].append(custom_id)
             # end for
             
             cnt = 0
@@ -487,20 +466,9 @@ class HabitsNest(object):
                 cnt2 += 1
                 label = self.labels[cnt2]
 
-                custom_id = "button" + str(cnt2) + "_" + time_to_send + "_" + str(cid)
                 button_texts.append(label)
                 buttons.append(interactions.Button(style=1, label=label,
-                                custom_id=custom_id))
-                self.client.component(custom_id)(button_func)
-
-                if cid not in self.button_ids:
-                    self.button_ids[cid] = {}
-
-                if time_to_send not in self.button_ids[cid]:
-                    self.button_ids[cid][time_to_send] = []
-
-                self.button_ids[cid][time_to_send].append(custom_id)
-
+                                custom_id="button" + str(cnt2)))
 
                 modal_components = []
                 for kk in range(len(textinputs[jj])):
@@ -508,76 +476,41 @@ class HabitsNest(object):
                     modal_components.append(interactions.TextInput(
                         style=interactions.TextStyleType.PARAGRAPH,
                         label=textinputs[jj][kk],
-                        custom_id="text-input-" + str(cnt) + "_" + time_to_send,
+                        custom_id="text-input-" + str(cnt),
                     ))
                 # end for
 
-                custom_id = "modal" + str(cnt2) + "_" + time_to_send + "_" + str(cid)
                 modals.append(interactions.Modal(
                             title=label,
-                            custom_id=custom_id,
+                            custom_id="modal" + str(cnt2),
                             components=modal_components
                 ))
-                self.client.modal(custom_id)(modal_response)
-
-                if cid not in self.modal_ids:
-                    self.modal_ids[cid] = {}
-
-                if time_to_send not in self.modal_ids[cid]:
-                    self.modal_ids[cid][time_to_send] = []
-
-                self.modal_ids[cid][time_to_send].append(custom_id)
-            # end for
-
-            prompts = []
-            for ii,label in enumerate(self.labels):
-                if label in message_text:
-                    prompt = message_text.split(label)[-1]
-                    if ii+1 < len(self.labels):
-                        if self.labels[ii+1] in prompt:
-                            prompt = prompt.split(self.labels[ii+1])[0]
-                        else:
-                            if "\n" in prompt:
-                                prompt = prompt.split("\n")[0]
-                    else:
-                        if "\n" in prompt:
-                            prompt = prompt.split("\n")[0]
-                    prompts.append(prompt)
-                # end if
             # end for
 
             #print("message_text1: ", message_text)
-            print("548 special_button_messages: ", self.special_button_messages)
-            print("549 special_button_messages: ", special_button_messages)
 
-            if cid not in self.message_text:
-                self.modals[cid] = {} # not tested
-                self.button_texts[cid] = {} # not tested
-                self.select_menus[cid] = {} # not tested
-
-                self.message_text[cid] = {}
-                self.response_channel_id[cid] = {}
-                self.special_button_messages[cid] = {}
-                self.response_buttons[cid] = {}
-                self.prompts[cid] = {}
-            # end if
-            self.modals[cid][time_to_send] = modals
-            self.button_texts[cid][time_to_send] = button_texts
-            self.select_menus[cid][time_to_send] = select_menus
-
-            self.message_text[cid][time_to_send] = message_text.replace("\\n", "\n").replace("\*", "*")
-            self.response_channel_id[cid][time_to_send] = rchannel_id
-            self.special_button_messages[cid][time_to_send] = special_button_messages
-            self.response_buttons[cid][time_to_send] = buttons
-            self.special_button_messages[cid][time_to_send] = special_button_messages
-            self.prompts[cid][time_to_send] = prompts
+            self.time_text[cid] = time_to_send
+            self.modals[cid] = modals
+            self.button_texts[cid] = button_texts
+            self.select_menus[cid] = select_menus
+            self.message_text[cid] = message_text.replace("\\n", "\n").replace("\*", "*")
+            self.response_channel_id[cid] = rchannel_id
+            self.special_button_messages[cid] = special_button_messages
+            self.response_buttons[cid] = buttons
 
             if cid not in self.times_handled:
                 self.times_handled[cid] = []
             # end if
-
             self.times_handled[cid].append(time_to_send)
+
             self.save_pickles()
+
+            # print("message_text2: ", self.message_text)
+            # print("message_text[cid]: ", self.message_text[cid])
+            # input(">>")
+            # print("button_texts: ", button_texts)
+            # print("select_menus: ", self.select_menus[cid])
+            # print("modals: ", self.modals[cid])
 
             row_buttons = []
             print("len messages: ", len(messages))
@@ -630,22 +563,9 @@ class HabitsNest(object):
                         print("sent message!")
                     # end if/else
                 # end if/else
-
                 if mm < len(special_button_names):
-                    custom_id = "special_button" + str(mm) + "_time" + time_to_send + "_" + str(cid)
                     button = interactions.Button(style=1, label=special_button_names[mm],
-                                custom_id=custom_id)
-                    self.client.component(custom_id)(button_func)
-
-                    if cid not in self.special_button_ids:
-                        self.special_button_ids[cid] = {}
-
-                    if time_to_send not in self.special_button_ids[cid]:
-                        self.special_button_ids[cid][time_to_send] = []
-
-                    self.special_button_ids[cid][time_to_send].append(custom_id)
-
-
+                                custom_id="special_button" + str(mm))
                     if append_button_flag:
                         row_buttons.append(button)
                     else:
@@ -673,20 +593,24 @@ class HabitsNest(object):
                 print("r.status_code: ", r.status_code)
                 r.raw.decode_content = True
 
-                with open("data_big/" + image_name, "wb") as fid:
+                with open(image_name, "wb") as fid:
                     shutil.copyfileobj(r.raw, fid)
                 # end with
                 print("Image downloaded!")
-                image_file = interactions.File(filename="data_big/" + image_name)
+                image_file = interactions.File(filename=image_name)
 
                 print("channel_id: ", channel_id)
                 await channel.send(files=image_file)
             # end for attachments
+            print("done with attachments")
 
-            self.save_pickle(self.fname_special_button_ids, self.special_button_ids)
+            #await channel.send("\u200b", components=row)
+            #print("sent components!")
 
             self.rows_handled.append(str(record))
+            print("row added")
             self.save_arr()
+            print("saved arr")
         # end records
     # end airtable_stuff
 
@@ -696,57 +620,6 @@ class HabitsNest(object):
 
     def discord_bot(self):
         client = interactions.Client(token=os.environ["habitsNestBotPass"])#, intents=interactions.Intents.DEFAULT | interactions.Intents.GUILD_MEMBERS)
-        self.client = client
-
-        @client.command(
-            name="habit-nest-add-guild",
-            description="Add a guild (discord server) habit nest daily challenge bot will accept commands from",
-            scope=self.GUILDS,
-            options=[
-                interactions.Option(
-                    name="guild_id",
-                    description="The discord server ('guild') id.",
-                    type=interactions.OptionType.STRING,
-                    required=True,
-                )
-            ]
-        )
-        async def add_guild(ctx: interactions.CommandContext, guild_id: str):
-            if int(ctx.author.id) not in self.APPROVED_USERS:
-                await ctx.send("Error, only Luna, Lin, Mikey, and Ari can use this command presently.", ephemeral=True)
-                return
-
-            try:
-                guild_id = int(guild_id)
-            except Exception as err:
-                print("629 err: ", err)
-                print("630 err.args: ", err.args[:])
-                await ctx.send("error, guild_id was not an integer", ephemeral=True)
-            # end try/except
-
-            self.GUILDS.append(guild_id)
-            self.save_pickle(self.fname_guilds, self.GUILDS)
-            await ctx.send("saved guild. now we need to rooboot for that to take effect", ephemeral=True)
-
-            fname = "data_big/pid.txt"
-            os.system("ps aux | grep habits_nest.py > " + fname)
-            with open(fname, "r") as fid:
-                for line in fid:
-                    if "grep" not in line:
-                        pid = line.split()[1]
-                        break
-
-            logfiles = np.sort(glob.glob("logfile*"))
-            num = 1
-            if len(logfiles) != 0:
-                num = int(logfiles[-1].replace("logfile","").replace(".txt",""))
-            # end if
-
-            newlog = "logfile" + str(num).zfill(6) + ".txt"
-            await ctx.send("okay all is swell, launching new process then killing myself to complete the reboot", ephemeral=True)
-            os.system("nohup python3 -u habits_nest.py > " + newlog + " 2>&1 &")
-            os.system("kill " + pid)
-        # end add_guild
 
         @client.command(
             name="habit-nest-daily-challenge",
@@ -810,7 +683,7 @@ class HabitsNest(object):
                 interactions.Option(
                     name="days_old",
                     description="Number of days old. For example put 1 for yesterday",
-                    type=interactions.OptionType.STRING,
+                    type=interactions.OptionType.INTEGER,
                     required=False
                 ),
                 interactions.Option(
@@ -821,7 +694,7 @@ class HabitsNest(object):
                 )
             ]
         )
-        async def cmd(ctx: interactions.CommandContext, prompt1: str, days_old: str = None, 
+        async def cmd(ctx: interactions.CommandContext, prompt1: str, days_old: int = None, 
                       image_upload: interactions.Attachment = None,
                       prompt2: str=None,
                       prompt3: str=None,
@@ -831,7 +704,6 @@ class HabitsNest(object):
                       prompt7: str=None,
                       prompt8: str=None,
                       prompt9: str=None):
-            gid = int(ctx.guild.id)
             aid = int(ctx.author.id)
             cid = int(ctx.channel_id)
             if aid != 855616810525917215:
@@ -857,41 +729,16 @@ class HabitsNest(object):
 
 
             if days_old != None:
-                try:
-                    days_old = int(days_old)
-                except Exception as err:
-                    print("762 err: ", err)
-                    print("763 err.args: ", err.args[:])
-                    await ctx.send("error, expected an integer for 'days_old' but received: " + str(days_old), ephemeral=True)
-                    return
-            else:
-                days_old = 0
-            # end if/else
-
-            if days_old < 0:
-                await ctx.send("error, exptected 'days_old' >= 0 but received: " + str(days_old), ephemeral=True)
-                return
-            # end if
-
-            times_to_send = np.sort(list(self.message_text[cid].keys()))
-            if days_old >= len(times_to_send):
-                await ctx.send("error days_old > number of daily challenges in this discord! Received: " + str(days_old), ephemeral=True)
-                return
-            # end if
-            time_to_send = times_to_send[-1-days_old]
-
-            response_map = {0:"today", 1:"yesterday"}
-            if days_old == 0:
-                description = "responses for today's challenge!"
-            elif days_old == 1:
-                description = "responses for yesterday's challenge!"
-            else:
-                description = "responses for challenge from " + str(days_old) + " days ago!"
-            # end if/elif/else
-
+                await ctx.send("received days_old input, but not implemented yet :)", ephemeral=True)
+            
             avatar_url = ctx.author.user.avatar_url
+            print("dir ctx.author: ", dir(ctx.author))
+            print("dir ctx.author.user: ", dir(ctx.author.user))
+            print("ctx.author.user: ", ctx.author.user)
+            print("ctx.author.user.discriminator: ", ctx.author.user.discriminator)
+            # print("ctx.author.discriminator: ", ctx.author.discriminator)
             title = ctx.author.name + "#" + ctx.author.user.discriminator
-            embed = interactions.Embed(title=title, description=description, image_url=avatar_url)
+            embed = interactions.Embed(title=title, description="\u200b", image_url=avatar_url)
             embed.set_footer(text = "Built for Habit Nest, powered by Roo Tech", icon_url = "https://cdn.discordapp.com/icons/864029910507323392/e2eb644133171506b6f22e55fb3daed1.webp")
             embed.set_thumbnail(url=avatar_url)
 
@@ -906,84 +753,20 @@ class HabitsNest(object):
                         prompt8,
                         prompt9
                         ]
-            responses = ""
             for ii,prompt in enumerate(prompts):
                 if prompt != None:
-
-                    if ii < len(self.prompts[cid][time_to_send]):
-                        end = min(40,len(self.prompts[cid][time_to_send][ii]))
-                        if end < 40:
-                            name = self.labels[ii] + " " + self.prompts[cid][time_to_send][ii][:end]
-                        else:
-                            name = self.labels[ii] + " " + self.prompts[cid][time_to_send][ii][:end] + "..."
-                        value = prompt
-
-                    else:
-                        name = "\u200b"
-                        value = self.labels[ii] + " " + prompt
-                    # end if/else
-                    responses += self.labels[ii] + " " + prompt + "\n\n"
-                    embed.add_field(name=name, value=value, inline=False)
+                    embed.add_field(name="\u200b", value=self.labels[ii] + " " + prompt, inline=False)
             # end for
 
-            rchannel = await interactions.get(client, interactions.Channel, object_id=self.response_channel_id[cid][time_to_send])
+            rchannel = await interactions.get(client, interactions.Channel, object_id=self.response_channel_id[cid])
             await rchannel.send(embeds=embed)
-            await ctx.send("We posted your response in <#" + str(self.response_channel_id[cid][time_to_send]) + ">\nGood work!", ephemeral=True)
-
+            await ctx.send("We posted your response in <#" + str(self.response_channel_id[cid]) + ">\nGood work!", ephemeral=True)
             if image_url:
-                r = requests.get(image_url, stream=True)
-                print("r.status_code: ", r.status_code)
-                r.raw.decode_content = True
-
-                image_name = "data_big/temp_image_file_" + str(int(time.time())) + "." + image_upload.content_type.split("/")[1]
-                with open(image_name, "wb") as fid:
-                    shutil.copyfileobj(r.raw, fid)
-                # end with
-
-                print("Image downloaded!")
-                image_file = interactions.File(filename=image_name)
-                message = await rchannel.send(files=image_file)
-                print("dir message of image: ", dir(message))
-                print("dir message.attachments: ", dir(message.attachments))
-                print("message.attachments: ", message.attachments)
-                print("dir message.attachments0: ", dir(message.attachments[0]))
-                print("message.attachments0.url: ", message.attachments[0].url)
-                image_url = message.attachments[0].url
-                print("message.url: ", message.url)
-                await ctx.send("And now we sent your uploaded iamge too :)", ephemeral=True)
-                os.system("rm " + image_name)
+                await image_upload.download()
+                await ctx.send("Downloaded!", ephemeral=True)
+                #await rchannel.send("\u200b", attachments=[image_upload])
+                #await ctx.send("And now we sent your uploaded iamge too :)", ephemeral=True)
             # end if
-
-            tnow = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            
-            fields = {
-                        "TimeEST": time_to_send,
-                        "Button Channel Id": str(cid),
-                        "Response Channel Id": str(self.response_channel_id[cid][time_to_send]),
-                        "Discord Message": self.message_text[cid][time_to_send],
-                        "FromGuildId": str(gid),
-                        "TimeSubmitted": tnow,
-                        "FromDiscordId": str(aid),
-                        "FromDiscordUsernameAndDiscriminator": ctx.author.name + "#" + ctx.author.user.discriminator,
-                        "Responses": responses
-                    }
-
-            if image_url:
-                fields["AttachmentSubmittedURL"] = image_url
-            # end if
-
-            data = {
-                "records": [
-                            {
-                                "fields": fields
-                            }
-                           ]
-                    }
-
-            headers = {"Content-Type":"application/json", "Authorization":"Bearer " + os.environ["airTable"]}
-            url = (self.airtable_base + "Responses").replace(" ", "%20")
-            print("url: ", url)
-            asyncio.create_task(self.post_to_airtable(url, headers, data))
 
             return
 
@@ -991,58 +774,37 @@ class HabitsNest(object):
             cid = int(ctx.channel_id)
 
             custom_id = ctx.data.custom_id
-            print("custom_id: ", custom_id)
             if "special_button" in custom_id:
                 print("special_button in custom_id")
                 ii = custom_id.replace("special_button", "")
-
-                if "_" not in ii:
-                    await ctx.send("clicked on a really old button? sorry I can't handle that rn :(", ephemeral=True)
-                    return
-                # end if
-
-                ii,time_to_send,junk = ii.split("_")
-                time_to_send = time_to_send.replace("time","")
                 ii = int(ii)
 
-                print("special_button_messages[cid][time_to_send]: ", self.special_button_messages[cid][time_to_send])
-
                 trues = 0
-                for jj in range(len(self.response_buttons[cid][time_to_send])):
-                    if self.labels[jj] in self.special_button_messages[cid][time_to_send][ii]:
+                for jj in range(len(self.response_buttons[cid])):
+                    if self.labels[jj] in self.special_button_messages[cid][ii]:
                         trues += 1
                 # end for
 
-                if trues == len(self.response_buttons[cid][time_to_send]):
-                    row = interactions.ActionRow(components=self.response_buttons[cid][time_to_send])
-                    await ctx.send(self.special_button_messages[cid][time_to_send][ii], components=row, ephemeral=True)
+                if trues == len(self.response_buttons[cid]):
+                    row = interactions.ActionRow(components=self.response_buttons[cid])
+                    await ctx.send(self.special_button_messages[cid][ii], components=row, ephemeral=True)
                 else:
-                    await ctx.send(self.special_button_messages[cid][time_to_send][ii], ephemeral=True)
+                    await ctx.send(self.special_button_messages[cid][ii], ephemeral=True)
                 # end if/else
 
                 return
             # end if
 
-            ii = custom_id.replace("button", "")
-            if "_" not in ii:
-                await ctx.send("clicked on a really old button? sorry I can't handle that rn :(", ephemeral=True)
-                return
-            # end if
+            ii = int(custom_id.replace("button", ""))
 
-            ii,time_to_send,junk = ii.split("_")
-            time_to_send = time_to_send.replace("time","")
-            ii = int(ii)
-
-            if ii < len(self.select_menus[cid][time_to_send]):
-                print("ii, self.select_menus[ii]: ", ii, self.select_menus[cid][time_to_send][ii])
-                await ctx.send(components=self.select_menus[cid][time_to_send][ii], ephemeral=True)
-
+            if ii < len(self.select_menus[cid]):
+                print("ii, self.select_menus[ii]: ", ii, self.select_menus[cid][ii])
+                await ctx.send(components=self.select_menus[cid][ii], ephemeral=True)
             else:
-                jj = len(self.select_menus[cid][time_to_send]) - ii
-                print("ii, jj, self.modals[jj]: ", ii, jj, self.modals[cid][time_to_send][jj])
-                await ctx.popup(self.modals[cid][time_to_send][jj])
+                jj = len(self.select_menus[cid]) - ii
+                print("ii, jj, self.modals[jj]: ", ii, jj, self.modals[cid][jj])
+                await ctx.popup(self.modals[cid][jj])
             # end if/else
-
             return
         # end def
 
@@ -1052,50 +814,51 @@ class HabitsNest(object):
             cid = int(ctx.channel_id)
 
             custom_id = ctx.data.custom_id
-            num = custom_id.replace("menu", "").replace("modal","")
+            num = int(custom_id.replace("menu","").replace("modal",""))
 
-            if "_" not in num:
-                await ctx.send("clicked on a really old button? sorry I can't handle that rn :(", ephemeral=True)
-                return
-            # end if
-
-            num,time_to_send,junk = num.split("_")
-            time_to_send = time_to_send.replace("time","")
-            num = int(num)
+            #print("response: ", response)
+            #print("[r]: ", [response])
+            print("gid, custom_id, num: ", gid, custom_id, num)
 
             if type(response) == type([]):
                 response = response[0]
             # end if
 
+            print("num, self.button_texts: ", num, self.button_texts[cid])
+            print("response, self.button_texts[ii]: ", response, self.button_texts[cid][num])
+            print("type response: ", type(response))
+
+            headers = {"Content-Type":"application/json", "Authorization":"Bearer " + os.environ["airTable"]}
+
+            print("modal response author id: ", ctx.author.id)
+
             tnow = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            fields = {
-                        "TimeEST": time_to_send,
-                        "Button Channel Id": str(cid),
-                        "Response Channel Id": str(self.response_channel_id[cid][time_to_send]),
-                        "Discord Message": self.message_text[cid][time_to_send],
-                        "FromGuildId": str(gid),
-                        "TimeSubmitted": tnow,
-                        "FromDiscordId": str(aid),
-                        "FromDiscordUsernameAndDiscriminator": ctx.author.name + "#" + ctx.author.user.discriminator,
-                        "MenuResponse": response
-                    }
+            #print("self.message_text: ", self.message_text[cid])
             data = {
                 "records": [
                             {
-                                "fields": fields
+                                "fields": {
+                                    "TimeEST": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                                    "FromGuildId": str(gid),
+                                    "Button Channel Id": str(cid),
+                                    "Response Channel Id": str(self.response_channel_id[cid]),
+                                    "FromDiscordId": str(aid),
+                                    "DiscordMessage": self.message_text[cid],
+                                    "ButtonType": "DropDown" + str(num+1),
+                                    "Response1": response
+                                }
                             }
                            ]
                     }
 
-            headers = {"Content-Type":"application/json", "Authorization":"Bearer " + os.environ["airTable"]}
-            url = (self.airtable_base + "Responses").replace(" ", "%20")
+            url = (self.airtable_base + self.time_text[cid].replace(":", "%3A") + " " + str(cid) + " DropDown" + str(num+1)).replace(" ", "%20")
             print("url: ", url)
-            asyncio.create_task(self.post_to_airtable(url, headers, data))
-            await ctx.send("Selection received!", ephemeral=True)
+            asyncio.create_task(self.post_to_airtable)
+            msg = f"Your response to {self.button_texts[cid][num]}: {response}"
+            print("msg: msg")
 
-            ## this would be an embed now
-            # rchannel = await interactions.get(client, interactions.Channel, object_id=self.response_channel_id[cid][time_to_send])
-            # await rchannel.send(msg)
+            rchannel = await interactions.get(client, interactions.Channel, object_id=self.response_channel_id[cid])
+            await rchannel.send(msg)
             return
         # end menu_response
 
@@ -1114,16 +877,8 @@ class HabitsNest(object):
             cid = int(ctx.channel_id)
 
             custom_id = ctx.data.custom_id
-            num = custom_id.replace("menu", "").replace("modal","")
-
-            if "_" not in num:
-                await ctx.send("clicked on a really old button? sorry I can't handle that rn :(", ephemeral=True)
-                return
-            # end if
-
-            num,time_to_send,junk = num.split("_")
-            time_to_send = time_to_send.replace("time","")
-            num = int(num)
+            num = int(custom_id.replace("menu","").replace("modal",""))
+            print("gid, custom_id, num: ", gid, custom_id, num)
 
             responses = []
             rs = [response1, response2, response3, response4, response5,
@@ -1135,20 +890,23 @@ class HabitsNest(object):
             # end for
             print("responses: ", responses)
 
+            headers = {"Content-Type":"application/json", "Authorization":"Bearer " + os.environ["airTable"]}
 
             tnow = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            ## need to adjust the below!! e.g., get gid
+            
             fields = {
-                        "TimeEST": time_to_send,
-                        "Button Channel Id": str(cid),
-                        "Response Channel Id": str(self.response_channel_id[cid][time_to_send]),
-                        "Discord Message": self.message_text[cid][time_to_send],
+                        "TimeEST": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                         "FromGuildId": str(gid),
-                        "TimeSubmitted": tnow,
+                        "Button Channel Id": str(cid),
+                        "Response Channel Id": str(self.response_channel_id[cid]),
                         "FromDiscordId": str(aid),
-                        "FromDiscordUsernameAndDiscriminator": ctx.author.name + "#" + ctx.author.user.discriminator,
-                        "Responses": "\n\n".join(responses)
+                        "Discord Message": self.message_text[cid],
+                        "ButtonType": "TextInput" + str(num-len(self.select_menus[cid])+1)
                     }
+            for ii in range(len(responses)):
+                fields["Response" + str(ii+1)] = responses[ii]
+            # end for
+
             data = {
                 "records": [
                             {
@@ -1157,29 +915,39 @@ class HabitsNest(object):
                            ]
                     }
 
-            headers = {"Content-Type":"application/json", "Authorization":"Bearer " + os.environ["airTable"]}
-            url = (self.airtable_base + "Responses").replace(" ", "%20")
+            url = (self.airtable_base + self.time_text[cid].replace(":", "%3A") + " " + str(cid) + " TextInput" + str(num+1 - len(self.select_menus[cid]))).replace(" ", "%20")
             print("url: ", url)
             asyncio.create_task(self.post_to_airtable(url, headers, data))
+            msg = f"Your responses to {self.button_texts[cid][num]}: {responses}"
+            print("msg: msg")
 
             if cid not in self.response_dict:
                 self.response_dict[cid] = {}
-            if time_to_send not in self.response_dict[cid]:
-                self.response_dict[cid][time_to_send] = {}
-            if aid not in self.response_dict[cid][time_to_send]:
-                self.response_dict[cid][time_to_send][aid] = []
+            if aid not in self.response_dict[cid]:
+                self.response_dict[cid][aid] = []
 
-            self.response_dict[cid][time_to_send][aid].append(responses)
+            self.response_dict[cid][aid].append(responses)
             self.save_json(self.fname_response_dict, self.response_dict)
 
-            if len(self.response_dict[cid][time_to_send][aid]) == len(self.button_texts[cid][time_to_send]):
+            if len(self.response_dict[cid][aid]) == len(self.button_texts[cid]):
                 # first, build the embed
+                print("dir ctx author: ", dir(ctx.author))
+                print("ctx author user: ", ctx.author.user)
+                print("dir ctx author user: ", dir(ctx.author.user))
+                print("ctx.author.avatar: ", ctx.author.avatar)
+                print("ctx.author.nick: ", ctx.author.nick)
+                print("ctx.author.name: ", ctx.author.name)
+                print("ctx.author.avatar_url: ", ctx.author.user.avatar_url)
                 avatar_url = ctx.author.user.avatar_url
-                title = ctx.author.name + "#" + ctx.author.user.discriminator
-                embed = interactions.Embed(title=title, description="\u200b", image_url=avatar_url)
+                print("avatar_url: ", avatar_url)
+                print("type avatar_url: ", type(avatar_url))
+                handle = ctx.author.name
+                print("handle: ", handle)
+                print("type handle: ", type(handle))
+                embed = interactions.Embed(title=handle, description="\u200b", image_url=avatar_url)
                 embed.set_footer(text = "Built for Habit Nest, powered by Roo Tech", icon_url = "https://cdn.discordapp.com/icons/864029910507323392/e2eb644133171506b6f22e55fb3daed1.webp")
                 embed.set_thumbnail(url=avatar_url)
-                for responses in self.response_dict[cid][time_to_send][aid]:
+                for responses in self.response_dict[cid][aid]:
                     for response in responses:
                         if len(response) > 1024:
                             chunks = int(math.ceil(len(response)/1022.0))
@@ -1195,33 +963,45 @@ class HabitsNest(object):
                         else:
                             embed.add_field(name="\u200b", value=response, inline=False)
                 # end for
-                rchannel = await interactions.get(client, interactions.Channel, object_id=self.response_channel_id[cid][time_to_send])
+                rchannel = await interactions.get(client, interactions.Channel, object_id=self.response_channel_id[cid])
                 await rchannel.send(embeds=embed)
 
-                self.response_dict[cid][time_to_send][aid] = []
+                self.response_dict[cid][aid] = []
             # end if
 
+            msg = ""
+            for response in responses:
+                msg += f"Your response to {self.button_texts[cid][num]}: {response}"
+            # end for
+
+            '''
+            if len(msg) > 2000:
+                chunks = int(math.ceil(len(msg)/1998))
+                for ii in range(chunks):
+                    beg = ii*1998
+                    end = (ii+1)*1998
+
+                    val = ""
+                    if ii > 1:
+                        val += "-"
+
+                    if end > len(msg):
+                        end = len(msg)
+                        val = response[beg:end]
+                    else:
+                        val = response[beg:end] + "-"
+                    # end if/else
+                    await ctx.send(val, ephemeral=True)
+                # end for
+            else:
+                await ctx.send(msg, ephemeral=True)
+            # end if/else
+            '''
             await ctx.send("response received", ephemeral=True)
 
+            print("going to return")
             return
         # end modal_response
-
-        for cid in self.special_button_ids:
-            for time_to_send in self.special_button_ids[cid]:
-                for special_button_id in self.special_button_ids[cid][time_to_send]:
-                    self.client.component(special_button_id)(button_func)
-        for cid in self.button_ids:
-            for time_to_send in self.button_ids[cid]:
-                for button_id in self.button_ids[cid][time_to_send]:
-                    self.client.component(button_id)(button_func)
-        for cid in self.menu_ids:
-            for time_to_send in self.menu_ids[cid]:
-                for menu_id in self.menu_ids[cid][time_to_send]:
-                    self.client.component(menu_id)(menu_response)
-        for cid in self.modal_ids:
-            for time_to_send in self.modal_ids[cid]:
-                for modal_id in self.modal_ids[cid][time_to_send]:
-                    self.client.modal(modal_id)(modal_response)
 
         for ii in range(self.max_menus):
             client.component("special_button" + str(ii))(button_func)
@@ -1235,7 +1015,7 @@ class HabitsNest(object):
             print("ready!")
 
             while True:
-                await self.airtable_stuff(button_func, menu_response, modal_response)
+                await self.airtable_stuff(client)
                 await asyncio.sleep(5.0)
             # end while True
         # end on_ready
