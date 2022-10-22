@@ -219,6 +219,7 @@ class TravelBot(RegionData):
         business_channel    = self.client.get_channel(self.BUSINESS_CID)
         first_class_channel = self.client.get_channel(self.FIRST_CLASS_CID)
 
+        options.headless = True
         driver = webdriver.Firefox(options=options, executable_path=exec_path)
         driver.get(url)
         driver.fullscreen_window()
@@ -246,14 +247,23 @@ class TravelBot(RegionData):
         deals_xpath = '//div[@class="DealCardstyled-sc-1y5rz5y-12 iWtlCA DealGridstyled__DealCardItem-sc-wxnuip-2 fqkPVX"]'
         deals_class = '"Link__StyledCoreLink-sc-1h103ma-0 eiEvAU DealCard___StyledLink-sc-1m8z4ys-0 jrpdrz"'
         deals_xpath = '//a[@class="Link__StyledCoreLink-sc-1h103ma-0 eiEvAU DealCard___StyledLink-sc-1m8z4ys-0 jrpdrz"]'
+        deals_csss  = "a.DealCard___StyledLink-sc-1m8z4ys-0"
 
         image_xpath = '//img[@class="RouteImageContainerstyled__RouteImage-sc-1g5bk2f-4 dNbvtN"]'
-        h1_xpath = '//h1[@class="Headingstyled__H1-sc-1m02ur5-0 gQWhhr RouteTitlestyled-sc-1jwxr9x-3 fzKwOb"]'
-        cities_xpath = './/span[@class="RouteTitlestyled__RouteCity-sc-1jwxr9x-0 eQFYGB"]'
-        countries_xpath = './/div[@class="Paragraph-sc-ivzkw1-0 RouteTitlestyled__RouteCountry-sc-1jwxr9x-1 ddVNcC jsCoDc"]'
+        image_csss  = 'img.RouteImageContainerstyled__RouteImage-sc-1g5bk2f-4'
 
-        rarity_xpath = '//span[@class="DealDetailsstyled__DealDetailsValue-sc-2a3eq9-3 bcQPgC"]'
-        time_xpath = '//span[@class="DealDetailsstyled__DealDetailsValue-sc-2a3eq9-3 lndALR"]'
+
+        h1_xpath = '//h1[@class="Headingstyled__H1-sc-1m02ur5-0 gQWhhr RouteTitlestyled-sc-1jwxr9x-3 fzKwOb"]'
+        h1_csss  = 'h1.RouteTitlestyled-sc-1jwxr9x-3'
+
+        cities_xpath = './/span[@class="RouteTitlestyled__RouteCity-sc-1jwxr9x-0 eQFYGB"]'
+        cities_csss  = 'span.RouteTitlestyled__RouteCity-sc-1jwxr9x-0'
+        countries_xpath = './/div[@class="Paragraph-sc-ivzkw1-0 RouteTitlestyled__RouteCountry-sc-1jwxr9x-1 ddVNcC jsCoDc"]'
+        countries_csss  = 'div.RouteTitlestyled__RouteCountry-sc-1jwxr9x-1'
+
+        rarity_and_time_csss = 'span.DealDetailsstyled__DealDetailsValue-sc-2a3eq9-3'
+        #rarity_xpath = '//span[@class="DealDetailsstyled__DealDetailsValue-sc-2a3eq9-3 bcQPgC"]'
+        #time_xpath = '//span[@class="DealDetailsstyled__DealDetailsValue-sc-2a3eq9-3 lndALR"]'
 
         price_xpath = '//h2[@class="Headingstyled__H2-sc-1m02ur5-1 bgUUHW BookingDetailsstyled__BookingDetailsHeading-sc-1k8ynhk-7 fbgyZM"]'
         price_csss = 'h2.BookingDetailsstyled__BookingDetailsHeading-sc-1k8ynhk-7'
@@ -272,24 +282,29 @@ class TravelBot(RegionData):
 #<div class="Paragraph-sc-ivzkw1-0 BookingDetailsstyled__BookingAttribute-sc-1k8ynhk-5 icRgRK fNXfxv">Roundtrip</div>
 
         normal_price_xpath1 = '//div[@class="BookingDetailsstyled__BookingDetailsSection-sc-1k8ynhk-9 kHUIQL"]'
+        normal_price_csss = 'div.BookingDetailsstyled__BookingDetailsSection-sc-1k8ynhk-9'
         normal_price_xpath2 = './/span'
 
         gf_button1_xpath = '//button[@class="Buttonstyled-sc-ru2yn6-1 gEBqgP BookingDetailsstyled__BookDealButton-sc-1k8ynhk-4 JSAhN"]'
+        gf_button1_csss  = 'button.BookingDetailsstyled__BookDealButton-sc-1k8ynhk-4'
         gf_button2_xpath = '//button[@class="VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-k8QpJ VfPpkd-LgbsSe-OWXEXe-dgl2Hf nCP5yc AjY5Oe DuMIQc LQeN7 Nc7WLe"]'
 
         ## class changed at end for xpath :(
         other_links_div_csss  = 'div.OtherDeparturesstyled__DeparturesContainer-sc-cwe8z8-5'
         other_links_div_xpath = '//div[@class="OtherDeparturesstyled__DeparturesContainer-sc-cwe8z8-5 exWYYM"]'
         other_links_xpath = './/a[@class="Link__StyledCoreLink-sc-1h103ma-0 eiEvAU OtherDeparturesstyled__DepartureItem-sc-cwe8z8-2 hMzepB"]'
+        other_links_csss  = 'a.OtherDeparturesstyled__DepartureItem-sc-cwe8z8-2'
 
         other_buttons_div_xpath = '//div[@class="OtherDeparturesstyled__OtherDepartureServiceClassesContainer-sc-cwe8z8-11 kdSInU"]'
+        other_buttons_div_csss  = 'div.OtherDeparturesstyled__OtherDepartureServiceClassesContainer-sc-cwe8z8-11'
         other_buttons_xpath = './/button[@class="Buttonstyled-sc-ru2yn6-1 hTBIOf ButtonTogglestyled-sc-1j1lwek-0 cvwzMQ SharedComponentsstyled__OtherDepatureServiceClass-sc-14cmb39-0 kFqOFc"]'
+        other_buttons_csss  = 'button.SharedComponentsstyled__OtherDepatureServiceClass-sc-14cmb39-0'
 
         await asyncio.sleep(0.1)
         driver.implicitly_wait(10)
         await asyncio.sleep(0.1)
 
-        elems = driver.find_elements(By.XPATH, deals_xpath)
+        elems = driver.find_elements(By.CSS_SELECTOR, deals_csss)
         links = [elem.get_attribute("href") for elem in elems]
 
         locations      = []
@@ -320,9 +335,9 @@ class TravelBot(RegionData):
             driver.get(link)
             driver.implicitly_wait(10)
 
-            elem = driver.find_element(By.XPATH, h1_xpath)
-            cities = elem.find_elements(By.XPATH, cities_xpath)
-            countries = elem.find_elements(By.XPATH, countries_xpath)
+            elem = driver.find_element(By.CSS_SELECTOR, h1_csss)
+            cities = elem.find_elements(By.CSS_SELECTOR, cities_csss)
+            countries = elem.find_elements(By.CSS_SELECTOR, countries_csss)
             #print("elem: ", elem)
             #print("cities: ", cities)
             #print("countries: ", countries)
@@ -335,10 +350,7 @@ class TravelBot(RegionData):
             #print("location: ", location)
 
 
-            #elems = driver.find_elements(By.XPATH, flight_and_class_xpath)
             elems = driver.find_elements(By.CSS_SELECTOR, flight_and_class_csss)
-            #elems = elem.find_elements(By.XPATH, ".//div")
-            #print("elems: ", elems)
 
             flight_type  = elems[0].get_attribute("innerText")
             flight_class = elems[1].get_attribute("innerText")
@@ -359,9 +371,7 @@ class TravelBot(RegionData):
                 sys.exit()
 
             ## get price
-            #elem = driver.find_element(By.XPATH, price_xpath)
             elem = driver.find_element(By.CSS_SELECTOR, price_csss)
-            #print("elem: ",elem)
             price = elem.get_attribute("innerText")
             action = webdriver.common.action_chains.ActionChains(driver)
             action.move_to_element_with_offset(elem, 5, 0)
@@ -381,7 +391,8 @@ class TravelBot(RegionData):
             flight_types.append(flight_type)
             flight_classes.append(flight_class)
 
-            elem = driver.find_element(By.XPATH, image_xpath)
+            elem = driver.find_element(By.CSS_SELECTOR, image_csss)
+            #elem = driver.find_element(By.XPATH, image_xpath)
             image = elem.get_attribute("src")
             #print("elem: ", elem)
             #print("image: ", image)
@@ -389,20 +400,28 @@ class TravelBot(RegionData):
             images.append(image)
 
 
-            rarity = driver.find_element( By.XPATH, rarity_xpath)
-            when   = driver.find_elements(By.XPATH, time_xpath)
+            elems = driver.find_elements( By.CSS_SELECTOR, rarity_and_time_csss)
+            print("len elems: ", len(elems))
+            for ee, elem in enumerate(elems):
+              print("ee, innerText: ", ee, elem.get_attribute("innerText"))
+            rarity = elems[1]
+            when = elems[2]
+            #rarity = driver.find_element( By.XPATH, rarity_xpath)
+            #when   = driver.find_elements(By.XPATH, time_xpath)
 
             #print("rarity elem: ", rarity)
             #print("time elemt: ", time)
 
             rarities.append("Rarity: " + rarity.get_attribute("innerText"))
-            dates.append("When: " + when[1].get_attribute("innerText"))
+            dates.append("When: " + when.get_attribute("innerText"))
+            #dates.append("When: " + when[1].get_attribute("innerText"))
 
             #print("rarities: ", rarities)
             #print("dates: ", dates)
 
             try:
-                elem  = driver.find_element(By.XPATH, normal_price_xpath1)
+                #elem  = driver.find_element(By.XPATH, normal_price_xpath1)
+                elem  = driver.find_element(By.CSS_SELECTOR, normal_price_csss)
                 #print("elem: ", elem)
                 elem2 = elem.find_elements(  By.XPATH, normal_price_xpath2)
                 #print("elem2: ", elem2)
@@ -418,7 +437,8 @@ class TravelBot(RegionData):
             #elem = driver.find_element(By.XPATH, other_links_div_xpath)
             elem = driver.find_element(By.CSS_SELECTOR, other_links_div_csss)
             #print("164 elem: ", elem)
-            elems = elem.find_elements(By.XPATH, other_links_xpath)
+            #elems = elem.find_elements(By.XPATH, other_links_xpath)
+            elems = elem.find_elements(By.CSS_SELECTOR, other_links_csss)
             #print("166 elems: ", elems)
 
             for elem in elems:
@@ -429,7 +449,8 @@ class TravelBot(RegionData):
             #### next, click on the other buttons, if they exist
             buttons_exist = True
             try:
-                elem = driver.find_element(By.XPATH, other_buttons_div_xpath)
+                #elem = driver.find_element(By.XPATH, other_buttons_div_xpath)
+                elem = driver.find_element(By.CSS_SELECTOR, other_buttons_div_csss)
                 #print("176 elem: ", elem)
             except NoSuchElementException:
                 buttons_exist = False
@@ -438,7 +459,8 @@ class TravelBot(RegionData):
             if buttons_exist:
                 #print("buttons_exist!")
                 buttons_to_click = []
-                elems = elem.find_elements(By.XPATH, other_buttons_xpath)
+                #elems = elem.find_elements(By.XPATH, other_buttons_xpath)
+                elems = elem.find_elements(By.CSS_SELECTOR, other_buttons_csss)
 
                 #print("184 elems: ", elems)
                 for elem in elems:
@@ -460,7 +482,8 @@ class TravelBot(RegionData):
                     elem = driver.find_element(By.CSS_SELECTOR, other_links_div_csss)
                     #elem = driver.find_element(By.XPATH, other_links_div_xpath)
                     #print("203 elem: ", elem)
-                    elems = elem.find_elements(By.XPATH, other_links_xpath)
+                    #elems = elem.find_elements(By.XPATH, other_links_xpath)
+                    elems = elem.find_elements(By.CSS_SELECTOR, other_links_csss)
                     #print("205 elems: ", elems)
 
                     for elem in elems:
@@ -472,7 +495,8 @@ class TravelBot(RegionData):
             #print("done with buttons")
 
             await asyncio.sleep(3)
-            elem = driver.find_element(By.XPATH, gf_button1_xpath).click()
+            #elem = driver.find_element(By.XPATH, gf_button1_xpath).click()
+            elem = driver.find_element(By.CSS_SELECTOR, gf_button1_csss).click()
             await asyncio.sleep(3)
             google_url1 = driver.current_url
             if "consent.google.com" in google_url1:
@@ -491,6 +515,8 @@ class TravelBot(RegionData):
             url = gf_links[-1]
             hashtags = []
             hashtags = self.get_new_hashtags_from_regions(fare, hashtags)
+            print("fare: ", fare)
+            print("hashtags: ", hashtags)
 
             # if fares[-1] not in self.fares_scotts["texts"]:
             #     self.fares_scotts["texts"].append(fares[-1])
@@ -577,6 +603,8 @@ class TravelBot(RegionData):
             #embed.add_field(name="Hey @Authenticated", value="\u200b")
 
             #channel = client.get_channel(self.BOT_COMMANDS_CIDS[0])
+            print("roles: ", roles)
+            print("self.roles: ", self.roles)
             for jj,role in enumerate(roles):
                 channel = channels[jj]
                 if role not in roles_mentioned:
