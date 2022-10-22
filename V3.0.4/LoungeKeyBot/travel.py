@@ -229,7 +229,9 @@ class TravelBot(RegionData):
         passw = os.environ.get("lkNDPass")
 
         driver.find_element(By.XPATH, email_xpath ).send_keys(email)
+        await asyncio.sleep(0.1)
         driver.implicitly_wait(10)
+        await asyncio.sleep(0.1)
         driver.find_element(By.XPATH, passw_xpath ).send_keys(passw)
 
         act = ActionChains(driver)
@@ -283,7 +285,9 @@ class TravelBot(RegionData):
         other_buttons_div_xpath = '//div[@class="OtherDeparturesstyled__OtherDepartureServiceClassesContainer-sc-cwe8z8-11 kdSInU"]'
         other_buttons_xpath = './/button[@class="Buttonstyled-sc-ru2yn6-1 hTBIOf ButtonTogglestyled-sc-1j1lwek-0 cvwzMQ SharedComponentsstyled__OtherDepatureServiceClass-sc-14cmb39-0 kFqOFc"]'
 
+        await asyncio.sleep(0.1)
         driver.implicitly_wait(10)
+        await asyncio.sleep(0.1)
 
         elems = driver.find_elements(By.XPATH, deals_xpath)
         links = [elem.get_attribute("href") for elem in elems]
@@ -472,7 +476,9 @@ class TravelBot(RegionData):
             await asyncio.sleep(3)
             google_url1 = driver.current_url
             if "consent.google.com" in google_url1:
+                await asyncio.sleep(0.1)
                 driver.implicitly_wait(10)
+                await asyncio.sleep(0.1)
                 elem = driver.find_element(By.XPATH, gf_button2_xpath).click()
                 await asyncio.sleep(3)
             # end if
@@ -628,6 +634,7 @@ class TravelBot(RegionData):
             self.save_json(self.fname_fares_scotts, already_visited)
 
             del links[0]
+            await asyncio.sleep(1.0)
         # end while
 
         print("get_fares_scotts took: ", time.time() - tstart)
