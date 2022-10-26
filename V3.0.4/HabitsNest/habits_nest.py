@@ -22,11 +22,16 @@ import interactions
 
 class HabitsNest(object):
     def __init__(self):
+        self.DEV_MODE = False
         self.max_menus = 10
+
+        self.pci = ""
+        if self.DEV_MODE:
+            self.pci = "l"
 
         self.labels = "1️⃣ 2️⃣ 3️⃣ 4️⃣ 5️⃣ 6️⃣ 7️⃣ 8️⃣ 9️⃣".split()
 
-        self.APPROVED_USERS = [855616810525917215, 866735417566429225, 318615282245566466, 869988952688451594] # me, Lin, Mikey, Ari
+        self.APPROVED_USERS = [855616810525917215, 866735417566429225, 318615282245566466, 869988952688451594, 1019966201008488488] # me, Lin, Mikey, Ari, and the HabitNest bot for 1019966...
         self.GUILDS = [864029910507323392, 993961827799158925]
 
         os.system("mkdir -p data_big")
@@ -307,6 +312,10 @@ class HabitsNest(object):
                 print("206 err.args: ", err.args[:])
                 continue
             # end try/except
+            if self.DEV_MODE:
+                if channel_id != 1020438647302000731:
+                    continue
+
             print("got channel!")
 
             cid = channel_id
@@ -397,6 +406,8 @@ class HabitsNest(object):
                 # end if/else
             # end for
 
+            dropdownsFull  = dropdowns + []
+            textinputsFull = copy.deepcopy(textinputs)
             for field in fields:
                 if len(fields[field]) == 0:
                     continue
@@ -405,10 +416,12 @@ class HabitsNest(object):
                 if "DropDown" in field:
                     var = "DropDown"
                     arr = dropdowns
+                    arr2 = dropdownsFull
 
                 elif "TextInput" in field:
                     var = "TextInput"
                     arr = textinputs
+                    arr2 = textinputsFull
 
                 else:
                     continue
@@ -417,14 +430,22 @@ class HabitsNest(object):
                 ind1 = int(field.replace(var, "").split("_")[0])-1
                 ind2 = int(field.split("_")[1][-1])-1
 
-                val = fields[field]
+                val = fields[field] + ""
+                val2 = copy.deepcopy(val)
                 if len(val) > 45:
                     val = val[:40]
                     val = " ".join(val.split()[:-1]) + "..."
                 arr[ind1][ind2] = val
+
+                if len(val2) > 100:
+                    val2 = val2[:95]
+                    val2 = " ".join(val2.split()[:-1]) + "..."
+                arr2[ind1][ind2] = val2
+
             # end for
             print("dropdowns: ", dropdowns)
             print("textinputs: ", textinputs)
+            print("textinputsFull: ", textinputsFull)
 
             buttons = []
             button_texts = []
@@ -437,7 +458,7 @@ class HabitsNest(object):
 
                 label = self.labels[ii]
                 button_texts.append(label)
-                custom_id = "button" + str(ii) + "_" + time_to_send + "_" + str(cid)
+                custom_id = self.pci+"button" + str(ii) + "_" + time_to_send + "_" + str(cid)
 
                 buttons.append(interactions.Button(style=1, label=label,
                                 custom_id=custom_id
@@ -458,7 +479,7 @@ class HabitsNest(object):
                         label=dropdown_option, value=dropdown_option, description=dropdown_option))
                 # end for
 
-                custom_id = "menu" + str(ii) + "_" + time_to_send + "_" + str(cid)
+                custom_id = self.pci+"menu" + str(ii) + "_" + time_to_send + "_" + str(cid)
                 select_menus.append(interactions.SelectMenu(
                     options=select_options,
                     placeholder=label,
@@ -481,7 +502,7 @@ class HabitsNest(object):
                 cnt2 += 1
                 label = self.labels[cnt2]
 
-                custom_id = "button" + str(cnt2) + "_" + time_to_send + "_" + str(cid)
+                custom_id = self.pci+"button" + str(cnt2) + "_" + time_to_send + "_" + str(cid)
                 button_texts.append(label)
                 buttons.append(interactions.Button(style=1, label=label,
                                 custom_id=custom_id))
@@ -495,20 +516,20 @@ class HabitsNest(object):
 
                 self.button_ids[cid][time_to_send].append(custom_id)
 
-
                 modal_components = []
                 for kk in range(len(textinputs[jj])):
                     cnt += 1
                     modal_components.append(interactions.TextInput(
                         style=interactions.TextStyleType.PARAGRAPH,
                         label=textinputs[jj][kk],
-                        custom_id="text-input-" + str(cnt) + "_" + time_to_send,
+                        custom_id=self.pci+"text-input-" + str(cnt) + "_" + time_to_send,
+                        placeholder=textinputsFull[jj][kk]
                     ))
                 # end for
 
-                custom_id = "modal" + str(cnt2) + "_" + time_to_send + "_" + str(cid)
+                custom_id = self.pci+"modal" + str(cnt2) + "_" + time_to_send + "_" + str(cid)
                 modals.append(interactions.Modal(
-                            title=label,
+                            title=label + " " + textinputs[jj][0],
                             custom_id=custom_id,
                             components=modal_components
                 ))
@@ -559,6 +580,9 @@ class HabitsNest(object):
             self.button_texts[cid][time_to_send] = button_texts
             self.select_menus[cid][time_to_send] = select_menus
 
+            if self.DEV_MODE:
+                message_text = "FOO " + message_text + " BAR"
+
             self.message_text[cid][time_to_send] = message_text.replace("\\n", "\n").replace("\*", "*")
             self.response_channel_id[cid][time_to_send] = rchannel_id
             self.special_button_messages[cid][time_to_send] = special_button_messages
@@ -601,7 +625,7 @@ class HabitsNest(object):
                         if cnt3 > 0:
                             msg_to_send = "\u200b" + msg_to_send
 
-                        print("msg_to_send: ", [msg_to_send])
+                        #print("msg_to_send: ", [msg_to_send])
                         try:
                             await channel.send(msg_to_send)
                         except:
@@ -626,7 +650,7 @@ class HabitsNest(object):
                 # end if/else
 
                 if mm < len(special_button_names):
-                    custom_id = "special_button" + str(mm) + "_time" + time_to_send + "_" + str(cid)
+                    custom_id = self.pci+"special_button" + str(mm) + "_time" + time_to_send + "_" + str(cid)
                     button = interactions.Button(style=1, label=special_button_names[mm],
                                 custom_id=custom_id)
                     self.client.component(custom_id)(button_func)
@@ -689,7 +713,7 @@ class HabitsNest(object):
         print("req.status_code: ", req.status_code)
 
     def discord_bot(self):
-        client = interactions.Client(token=os.environ["habitsNestBotPass"])#, intents=interactions.Intents.DEFAULT | interactions.Intents.GUILD_MEMBERS)
+        client = interactions.Client(token=os.environ["habitsNestBotPass"], intents=interactions.Intents.DEFAULT | interactions.Intents.GUILD_MEMBERS | interactions.Intents.GUILD_MESSAGE_CONTENT)
         self.client = client
 
         @client.command(
@@ -828,9 +852,11 @@ class HabitsNest(object):
             gid = int(ctx.guild.id)
             aid = int(ctx.author.id)
             cid = int(ctx.channel_id)
-            if aid != 855616810525917215:
-                await ctx.send("still developing only developer can use this now", ephemeral=True)
-            # end if
+            if self.DEV_MODE:
+                if aid != 855616810525917215:
+                    await ctx.send("still developing only developer can use this now", ephemeral=True)
+                    return
+                # end if
 
             image_url = ""
             if image_upload != None:
@@ -985,6 +1011,8 @@ class HabitsNest(object):
             cid = int(ctx.channel_id)
 
             custom_id = ctx.data.custom_id
+            if self.pci != "":
+                custom_id = custom_id[len(self.pci):]
             print("custom_id: ", custom_id)
             if "special_button" in custom_id:
                 print("special_button in custom_id")
@@ -999,7 +1027,7 @@ class HabitsNest(object):
                 time_to_send = time_to_send.replace("time","")
                 ii = int(ii)
 
-                print("special_button_messages[cid][time_to_send]: ", self.special_button_messages[cid][time_to_send])
+                #print("special_button_messages[cid][time_to_send]: ", self.special_button_messages[cid][time_to_send])
 
                 trues = 0
                 for jj in range(len(self.response_buttons[cid][time_to_send])):
@@ -1008,8 +1036,38 @@ class HabitsNest(object):
                 # end for
 
                 if trues == len(self.response_buttons[cid][time_to_send]):
-                    row = interactions.ActionRow(components=self.response_buttons[cid][time_to_send])
-                    await ctx.send(self.special_button_messages[cid][time_to_send][ii], components=row, ephemeral=True)
+                    figured_it_out = True
+
+                    for jj in range(trues):
+
+                        if not self.DEV_MODE:
+                            figured_it_out = False
+                            break
+
+                        pieces = self.special_button_messages[cid][time_to_send][ii].split(self.labels[jj])
+
+                        if len(pieces) != 2:
+                            figured_it_out = False
+                            break
+
+                        if "\n" not in pieces[1] and jj != trues-1:
+                            figured_it_out = False
+                            break
+                        
+                        if "\n" in pieces[1]:
+                            pieces[1] = pieces[1].split("\n")[0]
+
+                        if jj == 0:
+                            message = pieces[0] + self.labels[jj] + pieces[1]
+                        else:
+                            message = self.labels[jj] + pieces[1]
+
+                        row = interactions.ActionRow(components=[self.response_buttons[cid][time_to_send][jj]])
+                        await ctx.send(message, components=row, ephemeral=True)
+
+                    if not figured_it_out:
+                        row = interactions.ActionRow(components=self.response_buttons[cid][time_to_send])
+                        await ctx.send(self.special_button_messages[cid][time_to_send][ii], components=row, ephemeral=True)
                 else:
                     await ctx.send(self.special_button_messages[cid][time_to_send][ii], ephemeral=True)
                 # end if/else
@@ -1032,7 +1090,7 @@ class HabitsNest(object):
                 await ctx.send(components=self.select_menus[cid][time_to_send][ii], ephemeral=True)
 
             else:
-                jj = len(self.select_menus[cid][time_to_send]) - ii
+                jj = ii - len(self.select_menus[cid][time_to_send])
                 print("ii, jj, self.modals[jj]: ", ii, jj, self.modals[cid][time_to_send][jj])
                 await ctx.popup(self.modals[cid][time_to_send][jj])
             # end if/else
@@ -1046,6 +1104,8 @@ class HabitsNest(object):
             cid = int(ctx.channel_id)
 
             custom_id = ctx.data.custom_id
+            if self.pci != "":
+                custom_id = custom_id[len(self.pci):]
             num = custom_id.replace("menu", "").replace("modal","")
 
             if "_" not in num:
@@ -1108,6 +1168,8 @@ class HabitsNest(object):
             cid = int(ctx.channel_id)
 
             custom_id = ctx.data.custom_id
+            if self.pci != "":
+                custom_id = custom_id[len(self.pci):]
             num = custom_id.replace("menu", "").replace("modal","")
 
             if "_" not in num:
@@ -1233,6 +1295,18 @@ class HabitsNest(object):
                 await asyncio.sleep(5.0)
             # end while True
         # end on_ready
+
+        @client.event
+        async def on_message_create(message):
+            if int(message.channel_id) not in list(self.times_handled.keys()):
+                return
+            # end if
+
+            try:
+                if int(message.author.id) not in self.APPROVED_USERS:
+                    await message.delete()
+            except:
+                return
 
         client.start()
     # end discord_bot
