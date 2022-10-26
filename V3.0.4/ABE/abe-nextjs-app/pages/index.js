@@ -63,6 +63,7 @@ export default function Home() {
               }
   }
 
+  console.log("isConnected: ", isConnected)
   console.log("session9: ", session)
   if (!session) {
     return (

@@ -20,9 +20,11 @@ export default function Settings() {
     const router = useRouter()
     const { guildName, guildId } = router.query
     const gid = guildId
-    console.log("guildName: ", guildName)
-    console.log("guildId: ", guildId)
-    console.log("gid: ", gid)
+    console.log("router.query: ", router.query)
+    console.log("FUDGE");
+    // console.log("guildName: ", guildName)
+    // console.log("guildId: ", guildId)
+    // console.log("gid: ", gid)
 
     const [finishedFetch, setFinishedFetch] = useState(false)
     const [guildData, setGuildData] = useState([])
@@ -31,8 +33,8 @@ export default function Settings() {
     const [guildChannels, setGuildChannels] = useState(["general", "bot-commands", "the-lodge", "cfd-v1"])
 
     let token = process.env.NEXT_PUBLIC_discordAccessTokenDevMode
-    console.log("process.env.NEXT_PUBLIC_discordAccessTokenDevMode: ", process.env.NEXT_PUBLIC_discordAccessTokenDevMode)
-    console.log("token: ", token)
+    // console.log("process.env.NEXT_PUBLIC_discordAccessTokenDevMode: ", process.env.NEXT_PUBLIC_discordAccessTokenDevMode)
+    // console.log("token: ", token)
 
     async function avoidRateLimit() {
         await sleep()
@@ -58,7 +60,7 @@ export default function Settings() {
         }
 
         response = Object.values(response).filter((guild) => (true))//(guild.owner || guild.permissions & 0x8 || guild.permissions & 0x20)))
-        console.log("45 response: ", response);
+        // console.log("45 response: ", response);
 
         setGuildData(response)
         setFinishedFetch(true)
@@ -102,10 +104,10 @@ export default function Settings() {
                             {currentGuild}
                         </MenuButton>
                         <MenuList>
-                            {console.log("88 guildData [gid].js: ", guildData, {})}
+                            {/* {console.log("88 guildData [gid].js: ", guildData, {})}
                             {console.log(guildData === {})}
                             {console.log("90 typeOf guildData [gid].js: ",typeof(guildData))}
-                            {console.log("91 typeOf {} [gid].js: ",typeof({}))}
+                            {console.log("91 typeOf {} [gid].js: ",typeof({}))} */}
                             {guildData.map((guild) => (<MenuItem>{guild.name}</MenuItem>))}
                         </MenuList>
                     </Menu>

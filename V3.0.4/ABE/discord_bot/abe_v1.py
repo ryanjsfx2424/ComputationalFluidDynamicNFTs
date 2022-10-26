@@ -3,12 +3,9 @@
 
 import os
 import time
-import urllib
-import requests
-import asyncio
 import discord
-import numpy as np
-from pymongo import MongoClient
+import asyncio
+import requests
 
 class AbeBot(object):
     def __init__(self):
@@ -22,7 +19,6 @@ class AbeBot(object):
         self.embed_rgb = [21, 77, 255]# main color EI Labs brandKit v2
 
         self.init_gcp()
-        self.init_mongodb()
     # end __init__
 
     def init_gcp(self):
@@ -55,83 +51,6 @@ class AbeBot(object):
         return embed
     # end build_embed
 
-    def init_mongodb(self):
-        user = urllib.parse.quote("pymongo-user")
-        word = urllib.parse.quote(os.environ["atlP"])
-
-        connection_string = "mongodb+srv://" + user + ":" + word \
-                          + "@cluster0.pqg6c02.mongodb.net/" \
-                          + "?retryWrites=true&w=majority"
-
-        client = MongoClient(connection_string)
-        self.mongoDB = client.get_database("abe")
-
-    def get_guild_data(self):
-        cursor = self.mongoDB["abe-guilds-data"].find({})
-        abe_guilds_data_db = []
-        for document in cursor:
-            abe_guilds_data_db.append(document)
-        return abe_guilds_data_db
-
-    async def leave_unsubscribed_guilds(self, client):
-        abe_guilds_data_db = self.get_guild_data()
-
-        for guild in client.guilds:
-            print("guild.name; ", guild.name)
-            subscribed = False
-
-            for ii,abe_guild in enumerate(abe_guilds_data_db):
-                if "guild_id" in abe_guild:
-                    if int(guild.id) == int(abe_guild["guild_id"]):
-                        if "subscribed" in abe_guild and abe_guild["subscribed"] == True:
-                            subscribed = True
-                            break
-            # end for
-
-            if not subscribed:
-                await guild.leave()
-                print("left guild")
-            else:
-                if "in" not in abe_guild or abe_guild["in"] == False:
-                    self.mongoDB["abe-guilds-data"].find_one_and_update({
-                        "guild_id":str(int(guild.id))},
-                        {"$set": {"in": True}}
-                    )
-                    print("set 'in' True!")
-                # end if
-
-                channels = []
-                for channel in guild.channels:
-                    channels.append(channel.name)
-                # end for
-                channels = list(np.sort(channels))
-                
-                if "channels" not in abe_guild or abe_guild["channels"] != channels:
-                    self.mongoDB["abe-guilds-data"].find_one_and_update({
-                        "guild_id":str(int(guild.id))},
-                        {"$set": {"channels": channels}}
-                    )
-                    print("set channels!")
-                # end if
-
-                roles = []
-                for role in guild.roles:
-                    roles.append(role.name)
-                # end for
-
-                if "roles" not in abe_guild or abe_guild["roles"] != roles:
-                    self.mongoDB["abe-guilds-data"].find_one_and_update({
-                        "guild_id":str(int(guild.id))},
-                        {"$set": {"roles": roles}}
-                    )
-                    print("set roles!")
-                # end if
-
-                print("staying in guild")
-            # end if/else
-        # end for
-    # end leave_unsubscribed_guilds
-
     def discord_bot(self):
         client = discord.Client(intents=None)
 
@@ -141,23 +60,11 @@ class AbeBot(object):
             wcnt = 0
             last = time.time()
 
-            for guild in client.guilds:
-                print("guild.name: ", guild.name)
-                print("guild.channels: ", guild.channels)
-                for channel in guild.channels:
-                    print("channel.id, channel.name: ", channel.id, channel.name)
-
-            await self.leave_unsubscribed_guilds(client)
-            sys.exit()
-
             channel_log = client.get_channel(self.LOG_CID)
-            await channel_log.send("hi")
-            sys.exit()
             while True:
                 wcnt += 1
                 print("wcnt: ", wcnt)
 
-                await self.leave_unsubscribed_guilds(client)
                 result = await self.query_gcp()
                 print("result.text: ", result.text)
                 print("result.json: ", result.json())

@@ -5,9 +5,9 @@ import os
 import time
 import urllib
 import requests
+
 import asyncio
 import discord
-import numpy as np
 from pymongo import MongoClient
 
 class AbeBot(object):
@@ -103,8 +103,6 @@ class AbeBot(object):
                 channels = []
                 for channel in guild.channels:
                     channels.append(channel.name)
-                # end for
-                channels = list(np.sort(channels))
                 
                 if "channels" not in abe_guild or abe_guild["channels"] != channels:
                     self.mongoDB["abe-guilds-data"].find_one_and_update({
@@ -112,20 +110,6 @@ class AbeBot(object):
                         {"$set": {"channels": channels}}
                     )
                     print("set channels!")
-                # end if
-
-                roles = []
-                for role in guild.roles:
-                    roles.append(role.name)
-                # end for
-
-                if "roles" not in abe_guild or abe_guild["roles"] != roles:
-                    self.mongoDB["abe-guilds-data"].find_one_and_update({
-                        "guild_id":str(int(guild.id))},
-                        {"$set": {"roles": roles}}
-                    )
-                    print("set roles!")
-                # end if
 
                 print("staying in guild")
             # end if/else
