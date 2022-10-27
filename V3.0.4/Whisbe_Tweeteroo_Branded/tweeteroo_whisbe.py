@@ -1,3 +1,6 @@
+## invite link: https://discord.com/api/oauth2/authorize?client_id=1033113308762476626&permissions=93248&scope=bot
+## scopes (1): 1) bot
+## permissions (6): 1) Read messages / view channels, 2) Send messages, 3) Manage messages, 4) Embed links, 5) Read message history, 6) Add reactions
 import os
 import re
 import sys
@@ -31,11 +34,14 @@ class Tweeteroo2(object):
     def __init__(self):
         self.DEV_MODE = False
 
-        self.CID_LOG  = 1034505641064149032 # TTM, bot-commands
-        self.CID_MSG1 = 1034506084045562017 # roo tech tweeteroo-madmetaverse
-        self.CID_MSG2 = 1034506317471162419 #1009227419082825758 # battle.fish. seashills
+        self.CID_LOG  = 1034505641064149032 # whisbe-logging
+        self.CID_LOG  = 932056137518444594 # TTM, bot-commands
+        self.CID_MSG1 = 1034506084045562017 # whisbe-testing
+        self.CID_MSG1 = 1033106239690899466 # roo tech tweeteroo-whisbe
+        self.CID_MSG2 = 1034506317471162419 # whisbe-production
+        self.CID_MSG2 = -1
         self.BOT_COMMANDS_CIDS = [self.CID_MSG1, self.CID_MSG2, self.CID_LOG]
-        self.GUILDS = [887417831510147162]#,931482273440751638]#,889422434745344010] # Roo Tech, TTM, MAD
+        self.GUILDS = [993961827799158925]#,931482273440751638]#[887417831510147162] # Roo Tech, TTM, Whisbe
 
         self.CMD_PREFIX = "whisbe"
         self.BOT_NAME   = "BernardTheBot"
@@ -89,17 +95,15 @@ class Tweeteroo2(object):
     def init_keywords(self):
         self.PROJECT_TWITTERS = ["WhisbeVandalz", "WhIsBe"]
         
-        self.fname_projects_tweet_ids = []
-        for project_twitter in self.PROJECT_TWITTERS:
-          self.fname_projects_tweet_ids.append("data_big/tweet_ids_" + project_twitter + ".txt")
+        self.fname_project_tweet_ids = "data_big/tweet_ids" + "_and_".join(self.PROJECT_TWITTERS) + ".txt"
 
         #query = "(@" + self.PROJECT_TWITTER + " OR BIOMETA OR Metacell OR Metascientists OR Evolving)"
-        query = "(@ ".join(self.PROJECT_TWITTERS) + " OR (Whisbe vandalz) OR (vandal gummy) OR Whisbe OR vandalz)"
+        query = "(@" + " OR @".join(self.PROJECT_TWITTERS) + " OR (Whisbe vandalz) OR (vandal gummy) OR Whisbe)"# OR vandalz)"
 
         self.keywords_help = query + ""
         self.keywords_query = query.replace(" ", "%20")
 
-        self.CHUNK_SIZE = 1000
+        self.CHUNK_SIZE = 300
         nfs = len(glob.glob("data_big/keywords_data/keywords*.txt"))
         num = 2 * self.CHUNK_SIZE * nfs
 
@@ -409,32 +413,48 @@ class Tweeteroo2(object):
         print("newest: ", newest)
         #input(">>")
         #oldest = None; newest = None
-        '''
-        for qq in query.split("OR"):
-            fs = np.sort(glob.glob("data_big/keywords_data/keywords*.txt"))
-            if len(fs) > 0:
-                fnum = fs[-1].replace("data_big/keywords_data/","")
+        
+        for qq in query.split(" OR "):
+            fs2 = np.sort(glob.glob("data_big/keywords_data/keywords*.txt"))
+            if len(fs2) > 0:
+                fnum = fs2[-1].replace("data_big/keywords_data/","")
                 fnum =   fnum.replace("keywords","")
                 fnum = int(fnum.split("_")[0])+1
             else:
                 fnum = 1
             # end if/else
             fsave = "data_big/keywords_data/keywords" + str(fnum).zfill(6) + \
-                    "_" + self.PROJECT_TWITTER + ".txt"
+                    "_this_gets_edited_anyway.txt"
 
-            qq = qq.replace("(","").replace(")","").replace(" ","")
+            qq = qq.replace("(","").replace(")","")
             self.get_sndata(qq, fsave, oldest=oldest, newest=newest)
         # end for qq
-        self.init_keywords()
+        new_fs = np.sort(glob.glob("data_big/keywords_data/keywords*.txt"))
+        num = len(new_fs) - len(fs)
+
+        if num > 0:
+            for key in self.keywords_data:
+                if key == "ii":
+                    continue
+                elif key == "texts":
+                    self.keywords_data[key] = np.append( self.keywords_data[key], np.array(num*self.filler_text) )
+                else:
+                    self.keywords_data[key] = np.append( self.keywords_data[key], np.array(num*self.filler_date) )
+                # end if/elif/else
+            # end for
+        # end if
+
         start = time.time()
         print("362 going to start loading keywords")
-        fs = np.sort(glob.glob("data_big/keywords_data/keywords*.txt"))
-        for ii,fsave in enumerate(fs):
+        for ii,fsave in enumerate(new_fs):
+            if fsave in fs:
+                continue
+            # end if
             print("ii, fsave, exec'd: ", ii, fsave, time.time() - start)
             self.load_keywords(fsave)
         # end for
         print("367 loaded keywords in: ", time.time() - start)
-        '''
+        
         inds = np.where(self.keywords_data["dates"] != self.filler_date)
         self.keywords_data["dates"    ] = self.keywords_data["dates"    ][inds]
         self.keywords_data["dates_s"  ] = self.keywords_data["dates_s"  ][inds]
@@ -536,7 +556,7 @@ class Tweeteroo2(object):
                 cnt += 1
                 if cnt % 100 == 0:
                     print(cnt)
-                    with open(fsave, "w") as fid:
+                    with open(fsave.replace("_this_gets_edited_anyway", "_" + og_query.replace(" ", "_and_")), "w") as fid:
                         to_save = str(data)[1:-1]
                         if old_data != []:
                             if ii == 0:
@@ -554,11 +574,11 @@ class Tweeteroo2(object):
                     if   "data_big/keywords" in fsave:
                         fsave = "data_big/keywords_data/keywords" + \
                                 str(fnum).zfill(6) + "_" + \
-                                self.PROJECT_TWITTER[0] + ".txt"
+                                og_query.replace(" ", "_and_") + ".txt"
                     elif "data_big/from" in fsave:
                         fsave = "data_big/from" + \
                                 str(fnum).zfill(6) + "_" + \
-                                self.PROJECT_TWITTER[0] + ".txt"
+                                og_query.replace("from:","") + ".txt"
                     # end if/elif
                 # end if
                 data.append(tweet)
@@ -599,7 +619,7 @@ class Tweeteroo2(object):
         print("len tweets: ", len(tweets))
         for ii in range(nt):
             tweet = tweets[ii]
-            if ii % 1000 == 0 and ii != 0:
+            if ii % 100 == 0 and ii != 0:
                 print("ii: ", ii)
             # end if
 
@@ -628,28 +648,8 @@ class Tweeteroo2(object):
             self.keywords_data["usernames"][ind] = uname
             self.keywords_data[    "texts"][ind] = text
 
-            '''
-            print("565: ", self.keywords_data["dates"  ])
-            print("566: ", self.keywords_data["dates"  ][ind])
-            print("567: ", self.keywords_data["dates_s"][ind])
-            print("568: ", np.max(self.keywords_data["dates_s"][ind].astype(float)))
-            print("569: ", self.keywords_data["tuids"][ind])
-            print("570: ", self.keywords_data["usernames"][ind])
-            print("571: ", self.keywords_data["texts"][ind])
-            print("ind: ", ind)
-            print("date: ", date)
-            print("date_s: ", date_s)
-            print("tuid: ", tuid)
-            print("uname: ", uname)
-            print("text: ", text)
-            input(">>")
-            '''
-
-
             self.keywords_data["ii"] += 1
         # end for tweets
-        #print("done looping over tweets")
-        #print("SUCCESS load_keywords fload: ", fload)
     # end load_keywords
 
     def load_project_tweets(self, fload):
@@ -658,16 +658,16 @@ class Tweeteroo2(object):
             line = fid.read()
         # end with open
 
-        tweet_ids = []
-        for project_twitter in self.PROJECT_TWIITERS:
-          tweet_ids += line.split("https://twitter.com/" + project_twitter + "/status/")[1:]
+        for ii,project_twitter in enumerate(self.PROJECT_TWITTERS):
+            new_tweet_ids = line.split("https://twitter.com/" + project_twitter + "/status/")[1:]
 
-          for tweet_id in tweet_ids:
-            tweet_id = tweet_id.split("'")[0]
-            if tweet_id not in self.project_tweet_ids:
-              self.project_tweet_ids.append(tweet_id)
-            # end if
-          # end for twids
+            for tweet_id in new_tweet_ids:
+                tweet_id = tweet_id.split("'")[0]
+                
+                if tweet_id not in self.project_tweet_ids:
+                    self.project_tweet_ids.append(tweet_id)
+                # end if
+            # end for twids
         # end for
 
         with open(self.fname_project_tweet_ids, "w") as fid:
@@ -679,6 +679,7 @@ class Tweeteroo2(object):
 
     def load_engagement(self):
         self.engagement = {}
+
         for etype in ["likes", "retweets", "replies", "quotes"]:
             fnames = np.sort(glob.glob("data_big/" + etype + "/activity_*.txt"))
             tuids = []
@@ -687,18 +688,21 @@ class Tweeteroo2(object):
             
             for fname in fnames:
                 usernames_f = []
-                #print("fname: ", fname)
+
                 with open(fname, "r") as fid:
                     for line in fid:
                         if "next_token: " in line and "None" not in line:
                             next_token = line.split("next_token: ")[1]
+
                         elif "twitter_ids: " in line and "[]" not in line:
                             tuids_line = line.replace("'", "").replace("[", "").replace("]","").replace("\n","").split("twitter_ids: ")[1]
+
                             if ", " in tuids_line:
                                 tuids += tuids_line.split(", ")
                             else:
                                 tuids += [tuids_line]
                             # end if/else
+
                         elif "twitter_usernames: " in line and "[]" not in line:
                             usernames_line = line.replace("'", "").replace("[", "").replace("]","").replace("\n","").split("twitter_usernames: ")[1]
                             if ", " in usernames_line:
@@ -717,14 +721,11 @@ class Tweeteroo2(object):
                     print("len tuids: ", len(tuids))
                     raise
                 # end if
-                #print("fname: ", fname)
+
                 try:
                     tweet_id = int(fname.split("activity_gac_")[1].split(".txt")[0])
                 except:
-                    try:
-                      tweet_id = int(fname.split("activity_" + self.PROJECT_TWITTERS[0] + "_")[1].split(".txt")[0])
-                    except:
-                      tweet_id = int(fname.split("activity_" + self.PROJECT_TWITTERS[1] + "_")[1].split(".txt")[0])
+                    tweet_id = int(fname.split("activity_" + "_and_".join(self.PROJECT_TWITTERS) + "_")[1].split(".txt")[0])
                 tweet_ids += len(usernames_f)*[tweet_id]
 
                 if len(usernames) != len(tuids):
@@ -733,7 +734,6 @@ class Tweeteroo2(object):
                     print("len tuids: ", len(tuids))
                     raise
                 # end if
-
             # end for fnames
 
             usernames = np.array(usernames)
@@ -950,8 +950,10 @@ class Tweeteroo2(object):
         if method == None:
             method = "Points"
         # end if
+
         method = method.lower()
         method = method.replace(" ","")
+
         if "like" in method:
             method = "Likes"
         elif "retweet" in method:
@@ -963,6 +965,7 @@ class Tweeteroo2(object):
         else:
             method = "Points"
         # end if/elifs
+
         return method
     # end get_method
 
@@ -1392,22 +1395,32 @@ class Tweeteroo2(object):
                         date_s   = str(self.get_tweet_time_s(date))
 
                         flag = "keywords"
-                        flag = self.FLAG_KEY
+                        flags = []
                         for matching_rule in line["matching_rules"]:
-                            if   self.PROJECT_TWITTER + "_retweetstag" in matching_rule["tag"]:
-                                flag = self.FLAG_RTS
-                                text = text[:2]
-                            elif self.PROJECT_TWITTER + "_quotestag" in matching_rule["tag"]:
-                                flag = self.FLAG_QTS
-                            elif self.PROJECT_TWITTER + "_tweetstag" in matching_rule["tag"]:
-                                self.project_tweet_ids.append(tweet_id)
-                                with open(self.fname_project_tweet_ids, "w") as fid:
-                                    fid.write(str(self.project_tweet_ids))
-                                # end with
-                            # end if/elif
-                        # end for
+                            for ii,project_twitter in enumerate(self.PROJECT_TWITTERS):
+                                if   project_twitter + "_retweetstag" in matching_rule["tag"]:
+                                    flags.append(self.FLAG_RTS)
+                                    text = text[:2]
 
-                        if flag != self.FLAG_RTS:
+                                elif project_twitter + "_quotestag" in matching_rule["tag"]:
+                                    flags.append(self.FLAG_QTS)
+
+                                elif project_twitter + "_tweetstag" in matching_rule["tag"]:
+                                    self.project_tweet_ids.append(tweet_id)
+
+                                    with open(self.fname_project_tweet_ids, "w") as fid:
+                                        fid.write(str(self.project_tweet_ids))
+                                    # end with
+
+                                elif "_and_".join(self.PROJECT_TWITTERS) + "_keywordstag" in matching_rule["tag"]:
+                                    flags.append(self.FLAG_KEY)
+                                # end if/elif
+                            # end for
+                        # end for
+                        if flags == []:
+                            continue
+
+                        if self.FLAG_RTS in flags:
                             if tweet_id in self.stream_data["tweet_ids"]:
                                 continue
                             # end if
@@ -1743,6 +1756,7 @@ class Tweeteroo2(object):
                 if len(self.lbEmbedInts) <= ijk:
                     await ctx.send("Error. No users linked their twitter yet?")
                     return
+
                 print("self.lbEmbedInts[ijk]: ", self.lbEmbedInts[ijk])
                 await ctx.send(embeds=self.lbEmbedInts[ijk], 
                     components=[self.buttons_row])#, ephemeral=True)
@@ -1832,6 +1846,7 @@ class Tweeteroo2(object):
                     channel = client.get_channel(payload.channel_id)
                     message = await channel.fetch_message(payload.message_id)
                     reaction = discord.utils.get(message.reactions, emoji=payload.emoji.name)
+
                     if reaction and reaction.count > 1:
                         try:
                             await message.delete()
@@ -1840,10 +1855,12 @@ class Tweeteroo2(object):
                             print("1034 orra del err.args: ", err.args[:])
                         # end try/except
                     # end if
+
                 elif payload.emoji.name == '⏮':
                     channel = client.get_channel(payload.channel_id)
                     message = await channel.fetch_message(payload.message_id)
                     reaction = discord.utils.get(message.reactions, emoji=payload.emoji.name)
+
                     if reaction and reaction.count > 1:
                         self.pages[str(message.id)]["pnum"] = 0
                         await message.edit(embed=self.pages[str(message.id)]["pages"][0])
@@ -1854,10 +1871,12 @@ class Tweeteroo2(object):
                         await message.add_reaction('⏭')
                         await message.add_reaction(xemoji)
                     # end if
+
                 elif payload.emoji.name == '◀':
                     channel = client.get_channel(payload.channel_id)
                     message = await channel.fetch_message(payload.message_id)
                     reaction = discord.utils.get(message.reactions, emoji=payload.emoji.name)
+
                     if reaction and reaction.count > 1:
                         try:
                             self.pages[str(message.id)]["pnum"] = self.pages[str(message.id)]["pnum"]-1
@@ -1874,6 +1893,7 @@ class Tweeteroo2(object):
                         await message.add_reaction('⏭')
                         await message.add_reaction(xemoji)
                     # end if
+
                 elif payload.emoji.name == '▶':
                     channel = client.get_channel(payload.channel_id)
                     message = await channel.fetch_message(payload.message_id)
@@ -1895,6 +1915,7 @@ class Tweeteroo2(object):
                         await message.add_reaction('⏭')
                         await message.add_reaction(xemoji)
                     # end if
+
                 elif payload.emoji.name == '⏭':
                     channel = client.get_channel(payload.channel_id)
                     message = await channel.fetch_message(payload.message_id)
@@ -2020,6 +2041,8 @@ class Tweeteroo2(object):
                 return
 
             elif "verify" in msg:
+                await channel.send(self.VERIFY_ERROR)
+                return
                 if (("https://twitter.com/" not in msg) and ("https://mobile.twitter.com/") not in msg) or "/status/" not in msg:
                     print("1361 malformed url in on_msg verify")
                     await channel.send(self.VERIFY_ERROR)
@@ -2036,7 +2059,7 @@ class Tweeteroo2(object):
                 msg = msg.replace(":","").replace("=","")
                 msg = msg.replace("@","")
                 msg = msg.replace("username","")
-                if self.PROJECT_TWITTER + "/status/" in msg:
+                if self.PROJECT_TWITTERS + "/status/" in msg:
                     if "," in msg:
                         tweet_url,username = msg.split(",")
                     else:

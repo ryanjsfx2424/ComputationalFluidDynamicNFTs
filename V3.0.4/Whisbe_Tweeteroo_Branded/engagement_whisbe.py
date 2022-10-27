@@ -72,7 +72,7 @@ class Engagement(Tweeteroo2):
 
         lines = []
         token = ""
-        fname = "data_big/" + etype + "/activity_" + self.PROJECT_TWITTER + "_" + tweet_id + ".txt"
+        fname = "data_big/" + etype + "/activity_" + "_and_".join(self.PROJECT_TWITTERS) + "_" + tweet_id + ".txt"
         print("fname: ", fname)
         if os.path.exists(fname) and os.stat(fname).st_size != 0:
             with open(fname, "r") as fid:
