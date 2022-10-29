@@ -185,6 +185,31 @@ class Tweeteroo2(object):
         self.helpEmbedDpy = embedDpy
         self.helpEmbedInt = embedInt
 
+        TITLE = "__Admin Help Menu__"
+        DESCRIPTION = "Hi! I am " + self.BOT_NAME + " developed by @TheLunaLabs © 2022"
+        DESCRIPTION += ".\n Below are my commands which are case insensitive: "
+
+
+        embedDpy = discord.Embed(title=TITLE, description=DESCRIPTION)
+        embedInt = interactions.Embed(title=TITLE, description=DESCRIPTION)
+        embedDpy.set_footer(text = self.FOOTER,
+                            icon_url=self.URL)
+        embedInt.set_footer(text = self.FOOTER,
+                            icon_url=self.URL)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "admin_help__**", value="Display this help menu", inline=True)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "admin_help__**", value="Display this help menu", inline=True)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "admin_link__**", value="Link user's discord id with their twitter username", inline=False)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "admin_link__**", value="Link user's discord id with their twitter username", inline=False)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "admin_unlink__**", value="Unlink user's discord id with their twitter username", inline=False)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "admin_unlink__**", value="Unlink user's discord id with their twitter username", inline=False)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "admin_add_admin__**", value="Add a tweeteroo admin", inline=False)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "admin_add_admin__**", value="Add a tweeteroo admin", inline=False)
+        embedInt.add_field(name="**__/" + self.CMD_PREFIX + "admin_remove_admin__**", value="Remove a tweeteroo admin", inline=False)
+        embedDpy.add_field(name="**__/" + self.CMD_PREFIX + "admin_remove_admin__**", value="Remove a tweeteroo admin", inline=False)
+
+        self.helpEmbedDpy = embedDpy
+        self.helpEmbedInt = embedInt
+
         LB_HELP_TITLE = "__Leaderboard Help Menu__"
         LB_HELP_DESCRIPTION = "Hi! I am " + self.BOT_NAME + " developed by @TheLunaLabs © 2022"
         LB_HELP_DESCRIPTION += "\nUse the commands below to find the raid data you're looking for:"
