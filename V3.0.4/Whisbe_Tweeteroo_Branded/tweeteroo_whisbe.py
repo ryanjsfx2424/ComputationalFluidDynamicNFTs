@@ -32,7 +32,7 @@ DEFAULT_TIMEST = "all"
 
 class Tweeteroo2(object):
     def __init__(self):
-        self.DEV_MODE = False
+        self.DEV_MODE = True
 
         self.CID_LOG  = 1034505641064149032 # whisbe-logging
         self.CID_LOG  = 932056137518444594 # TTM, bot-commands
@@ -41,7 +41,7 @@ class Tweeteroo2(object):
         self.CID_MSG2 = 1034506317471162419 # whisbe-production
         self.CID_MSG2 = -1
         self.BOT_COMMANDS_CIDS = [self.CID_MSG1, self.CID_MSG2, self.CID_LOG]
-        self.GUILDS = [993961827799158925]#,931482273440751638]#[887417831510147162] # Roo Tech, TTM, Whisbe
+        self.GUILDS = [993961827799158925,931482273440751638,887417831510147162] # Roo Tech, TTM, Whisbe
 
         self.CMD_PREFIX = "whisbe"
         self.BOT_NAME   = "BernardTheBot"
