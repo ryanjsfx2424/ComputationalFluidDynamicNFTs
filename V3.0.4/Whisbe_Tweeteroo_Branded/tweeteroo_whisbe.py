@@ -41,11 +41,14 @@ class Tweeteroo2(object):
         self.CID_MSG2 = 1034506317471162419 # whisbe-production
         self.CID_MSG2 = -1
         self.BOT_COMMANDS_CIDS = [self.CID_MSG1, self.CID_MSG2, self.CID_LOG]
-        self.GUILDS = [993961827799158925,931482273440751638,887417831510147162] # Roo Tech, TTM, Whisbe
+        self.GUILDS = [993961827799158925,931482273440751638]#,887417831510147162] # Roo Tech, TTM, Whisbe
 
         self.CMD_PREFIX = "whisbe"
         self.BOT_NAME   = "BernardTheBot"
         self.FOOTER = "Built for WhisbeVandalz powered by Roo Tech."
+
+        self.APPROVED_USERS = [855616810525917215, # me
+                               812135550597070848] # NB
 
         os.system("mkdir -p data_big")
         os.system("mkdir -p data_big/keywords_data")
@@ -379,6 +382,14 @@ class Tweeteroo2(object):
         self.fname_linked = "data_big/linked.txt"
         if os.path.exists(self.fname_linked) and os.stat(self.fname_linked).st_size != 0:
             with open(self.fname_linked, "r") as fid:
+                data = fid.read()
+            # end with
+            self.user_dict = ast.literal_eval(data)
+        # end if
+
+        self.fname_admins = "data_big/approved_users.txt"
+        if os.path.exists(self.fname_admins) and os.stat(self.fname_admins).st_size != 0:
+            with open(self.fname_admins, "r") as fid:
                 data = fid.read()
             # end with
             self.user_dict = ast.literal_eval(data)
@@ -1299,7 +1310,7 @@ class Tweeteroo2(object):
             leaderboards.append(">>> ```")
             leaderboardsEmbed.append("```")
             for ii in range(len(valp)):
-                line = str(jj*vpp+ii).rjust(2) + ") " + \
+                line = str(jj*vpp+ii+1).rjust(2) + ") " + \
                 (usernamesp[ii] + ":").ljust(max_name_len+1) + " " + \
                     str(int(valp[ii])).rjust(max_val_len) + "\n"
                 leaderboards[-1] += line
@@ -1583,11 +1594,69 @@ class Tweeteroo2(object):
                         ),
                     ],
                 ),
+                interactions.Option(
+                    name="admin_link",
+                    description="Admin Only: Link discord id with twitter username",
+                    type=interactions.OptionType.SUB_COMMAND,
+                    options=[
+                        interactions.Option(
+                            name="username",
+                            description="Their twitter username",
+                            type=interactions.OptionType.STRING,
+                            required=True,
+                        ),
+                        interactions.Option(
+                            name="discord_id",
+                            description="Their discord id",
+                            type=interactions.OptionType.STRING,
+                            required=True,
+                        ),
+                    ],
+                ),
+                interactions.Option(
+                    name="admin_unlink",
+                    description="Admin Only: Unlink discord id with currently linked twitter username",
+                    type=interactions.OptionType.SUB_COMMAND,
+                    options=[
+                        interactions.Option(
+                            name="discord_id",
+                            description="Their discord id",
+                            type=interactions.OptionType.STRING,
+                            required=True,
+                        ),
+                    ],
+                ),
+                interactions.Option(
+                    name="admin_add_admin",
+                    description="Admin Only: Add Admin",
+                    type=interactions.OptionType.SUB_COMMAND,
+                    options=[
+                        interactions.Option(
+                            name="discord_id",
+                            description="Their discord id",
+                            type=interactions.OptionType.STRING,
+                            required=True,
+                        ),
+                    ],
+                ),
+                interactions.Option(
+                    name="admin_remove_admin",
+                    description="Admin Only: Remove Admin",
+                    type=interactions.OptionType.SUB_COMMAND,
+                    options=[
+                        interactions.Option(
+                            name="discord_id",
+                            description="Their discord id",
+                            type=interactions.OptionType.STRING,
+                            required=True,
+                        ),
+                    ],
+                ),
             ],
         )
         async def cmd(ctx: interactions.CommandContext, sub_command: str,
                       username: str = None, method: str = None,
-                      timerange: str = None, url: str = None):
+                      timerange: str = None, url: str = None, discord_id: str = None):
 
             if   sub_command in ["help", "halp", "hlp"]:
                 await ctx.send(embeds=self.helpEmbedInt)#, ephemeral=True)
@@ -1653,7 +1722,88 @@ class Tweeteroo2(object):
                 os.system("cp data_big/temp.txt " + self.fname_linked)
 
                 await ctx.send(self.LINK_SUCCESS)#, ephemeral=True)
+                return                
+
+            elif sub_command == "admin_add_admin":
+                print("1678 tw_whisbe: ", str(ctx.author.id))
+
+                if str(ctx.author.id) not in self.APPROVED_USERS:
+                    await ctx.send("Error, only approved users can use this command")
+                    return
+                
+                self.APPROVED_USERS.append(str(discord_id))
+                with open("data_big/temp.txt", "w") as fid:
+                    fid.write(str(self.APPROVED_USERS))
+                # end with open
+                os.system("cp data_big/temp.txt " + self.fname_admins)
+
+                await ctx.send("Successfully added tweeteroo admin!")
                 return
+
+            elif sub_command == "admin_remove_admin":
+                print("1678 tw_whisbe: ", str(ctx.author.id))
+
+                if str(ctx.author.id) not in self.APPROVED_USERS:
+                    await ctx.send("Error, only approved users can use this command")
+                    return
+                
+                if str(discord_id) not in self.APPROVED_USERS:
+                    await ctx.send("Error, discord_id already not in approved users")
+                    return
+
+                ind = self.APPROVED_USERS.index(str(discord_id))
+                del self.APPROVED_USERS[ind]
+
+                with open("data_big/temp.txt", "w") as fid:
+                    fid.write(str(self.APPROVED_USERS))
+                # end with open
+                os.system("cp data_big/temp.txt " + self.fname_admins)
+
+                await ctx.send("Successfully removed tweeteroo admin!")
+                return
+
+            elif sub_command == "admin_link":
+                if str(ctx.author.id) not in self.APPROVED_USERS:
+                    await ctx.send("Error, only approved users can use this command")
+                    return
+                username = username.lower()
+                username = username.replace("@","")
+                username = username.replace(" ","")
+
+                self.user_dict["discordId_to_username"][discord_id] = username
+                self.user_dict["linked_usernames"].append(username)
+
+                with open("data_big/temp.txt", "w") as fid:
+                    fid.write(str(self.user_dict))
+                # end with open
+                os.system("cp data_big/temp.txt " + self.fname_linked)
+
+                await ctx.send(self.LINK_SUCCESS)#, ephemeral=True)
+                return
+
+            elif sub_command == "admin_unlink":
+                if str(ctx.author.id) not in self.APPROVED_USERS:
+                    await ctx.send("Error, only approved users can use this command")
+                    return
+
+                if discord_id not in self.user_dict["discord_id_to_username"]:
+                    await ctx.send("We couldn't find that discord_id in our db. Typo or already unlinked?")
+                    return
+
+                username = self.user_dict["discordId_to_username"][discord_id]
+                ind = self.user_dict["linked_usernames"].index(username)
+
+                del self.user_dict["linked_usernames"][ind]
+                del self.user_dict["discordId_to_username"][discord_id]
+
+                with open("data_big/temp.txt", "w") as fid:
+                    fid.write(str(self.user_dict))
+                # end with open
+                os.system("cp data_big/temp.txt " + self.fname_linked)
+
+                await ctx.send("Successfully unlinked!")#, ephemeral=True)
+                return
+
 
             elif sub_command in ["verify"]:
                 tweet_url = url.lower()
