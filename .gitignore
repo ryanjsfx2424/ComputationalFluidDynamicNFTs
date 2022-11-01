@@ -27,3 +27,5 @@ client_secrets.json
 .env
 .env*
 .env.local
+
+running_processes.txt
