@@ -1320,6 +1320,10 @@ class Tweeteroo2(object):
             # usernames = usernames[indsB][indsE][indsU][inds]
         # end if/else
 
+        if len(vals) == 0:
+          vals = [0]
+          usernames = "None"
+
         if method == "Points":
             self.points_usernames = usernames
         # end if
@@ -2524,5 +2528,21 @@ class Tweeteroo2(object):
 
 if __name__ == "__main__":
     twt = Tweeteroo2()
-    twt.discord_bot()
+    
+    ecnt = 0; wcnt = 0
+    told = time.time()
+    while True:
+        if time.time() - told > 3600:
+            told = time.time()
+            ecnt = 0
+        # end if
+
+        try:
+            twt.discord_bot()
+        except Exception as err:
+            print("2538 err: ", err)
+            print("2539 err.args: ", err.args[:])
+            ecnt += 1
+        # end try/except
+    # end while
 # end if
