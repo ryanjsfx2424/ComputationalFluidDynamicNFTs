@@ -108,16 +108,20 @@ class Stream(Tweeteroo2):
       except Exception as err:
         print("55 stream connect_stream err: ", err)
         print("56 scs err.args: ", err.args[:])
+        return 
         if "Connection reset by peer" in err:
-            print("going to try recursing")
-            time.sleep(60.1)
-            self.connect_stream()
-            print("outside recurse")
-            return
+            #print("going to try recursing")
+            #time.sleep(60.1)
+            #self.connect_stream()
+            #print("outside recurse")
+            return "connection reset by peer"
+        if "Connection broken: InvalidChunkLength" in err:
+            return "Connection broken: InvalidChunkLength"
         # end if
       # end try/except
       print("outside try/except")
     # end while
+    return "other reason"
   # end connect_stream
 # end Stream
 
@@ -128,6 +132,15 @@ if __name__ == "__main__":
   print("ids: ", ids)
   st.delete_rules(ids)
   st.add_rules()
-  st.connect_stream()
+  result = st.connect_stream()
+
+  wcnt_main = 0
+  while result == "connection reset by peer" or result == "Connection broken: InvalidChunkLength":
+    wcnt_main += 1; print("wcnt_main: ", wcnt_main)
+    result = st.connect_stream()
+    if wcnt_main > 3:
+      break
+    # end if
+  # end while
 # end if
 ## end stream.py
