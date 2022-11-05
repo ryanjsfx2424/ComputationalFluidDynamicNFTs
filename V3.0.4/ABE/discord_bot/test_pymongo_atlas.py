@@ -30,7 +30,7 @@ for document in cursor:
     print("document[scfm]: ", document["subscribed_channel_feed_map"])
   else:
     print("\n\nnope channels")
-
+  print("\n\n")
 '''
 collection.find_one_and_update({"guild_id": "931482273440751638"}, 
 {"$set": {"testfield":"foobar"}})
