@@ -1067,18 +1067,34 @@ class HabitsNest(object):
 
                     if not figured_it_out:
                         row = interactions.ActionRow(components=self.response_buttons[cid][time_to_send])
-                        await ctx.send(self.special_button_messages[cid][time_to_send][ii], components=row, ephemeral=True)
+                        for retry in range(3):
+                            try:
+                                await ctx.send(self.special_button_messages[cid][time_to_send][ii], components=row, ephemeral=True)
+                                return
+                            except Exception as err:
+                                print("1075 err: ", err)
+                                print("1076 err: ", err.args[:])
+                                await asyncio.sleep(1.3)
+                            # end for try/except
+                        # end for
                 else:
-                    await ctx.send(self.special_button_messages[cid][time_to_send][ii], ephemeral=True)
+                    for retry in range(3):
+                        try:
+                            await ctx.send(self.special_button_messages[cid][time_to_send][ii], ephemeral=True)
+                            return
+                        except Exception as err:
+                            print("1077 err: ", err)
+                            print("1078 err: ", err.args[:])
+                            await asyncio.sleep(1.3)
+                        # end for try/except
+                    # end for
                 # end if/else
-
                 return
             # end if
 
             ii = custom_id.replace("button", "")
             if "_" not in ii:
                 await ctx.send("clicked on a really old button? sorry I can't handle that rn :(", ephemeral=True)
-                return
             # end if
 
             ii,time_to_send,junk = ii.split("_")
@@ -1092,9 +1108,16 @@ class HabitsNest(object):
             else:
                 jj = ii - len(self.select_menus[cid][time_to_send])
                 print("ii, jj, self.modals[jj]: ", ii, jj, self.modals[cid][time_to_send][jj])
-                await ctx.popup(self.modals[cid][time_to_send][jj])
+                for retry in range(3):
+                    try:
+                        await ctx.popup(self.modals[cid][time_to_send][jj])
+                        return
+                    except Exception as err:
+                        print("1100 err: ", err)
+                        print("1101 err: ", err.args[:])
+                        await asyncio.sleep(1.3)
             # end if/else
-
+            print("1104 err?")
             return
         # end def
 
@@ -1257,8 +1280,17 @@ class HabitsNest(object):
                 self.response_dict[cid][time_to_send][aid] = []
             # end if
 
-            await ctx.send("response received", ephemeral=True)
-
+            for retries in range(3):
+                try:
+                    await ctx.send("response received", ephemeral=True)
+                    return
+                except Exception as err:
+                    print("1265 err: ", err)
+                    print("1266 err: ", err.args[:])
+                    await asyncio.sleep(1.3)
+                # end try/except
+            # end for
+            print("1270 err?")
             return
         # end modal_response
 
