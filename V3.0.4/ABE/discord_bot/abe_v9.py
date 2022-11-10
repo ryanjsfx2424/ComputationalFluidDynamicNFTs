@@ -27,8 +27,6 @@ from pymongo import MongoClient
 
 class AbeBot(object):
     def __init__(self):
-        self.DEV_MODE = False
-
         self.FOOTER = "ABE A.I. powered by EILabs.AI Visit our website for more. Not financial advice."
         self.ICON_URL = "https://cdn.discordapp.com/icons/952352992626114622/39bd07c3ccd0d708f20e47b3dc7cb140.webp?size=160"
 
@@ -38,7 +36,7 @@ class AbeBot(object):
 
         os.system("mkdir -p data_big")
 
-        self.rating_map = {"A": "alpha-plus", "B": "alpha", "P": "aptos", "S": "solana", "D": "daos", "T": "nft-tools", "DailyEth": "daily", "Highlight":"highlight", "Artist":"artist", "C": "might-be-something", "VC": "vc-firms", "Daily": "daily", "V": "vc-firms", "O": "other-chains"}
+        self.rating_map = {"A": "alpha-plus", "B": "alpha", "P": "aptos", "S": "solana", "D": "daos", "T": "nft-tools", "DailyEth": "daily", "Highlight":"highlight", "Artist":"artist", "C": "might-be-something", "VC": "vc-firms", "Daily": "daily", "V": "vc-firms"}
 
         ## note, toTheMoons paid for 1 month, standard
         ## note, test paid for 1 month, standard
@@ -47,7 +45,7 @@ class AbeBot(object):
                             "952352992626114622": 1e50, # ABE
                             "922678240798187550": 5 # sketches by gabo
                         }
-        self.premium_ratings = ["aptos", "artist", "daos", "nft-tools", "premint", "vc-firms", "other-chains"]
+        self.premium_ratings = ["aptos", "artist", "daos", "nft-tools", "premint", "vc-firms"]
 
         self.init_gcp()
         self.init_mongodb()
@@ -79,32 +77,25 @@ class AbeBot(object):
         embed = discord.Embed(title=title, description=description,
             color=discord.Color.from_rgb(self.embed_rgb[0], self.embed_rgb[1], self.embed_rgb[2]), url=url)
         embed.set_thumbnail(url=payload["profile_image_url"])
+        embed.set_footer(text = self.FOOTER, icon_url=self.ICON_URL)
 
-        footer_text = self.FOOTER
-        footer_icon = self.ICON_URL
-        if "embedded_img_url" in payload:
-            footer_icon = payload["embedded_img_url"]
-
-        embed.set_footer(text = footer_text, icon_url=footer_icon)
-
-        if "description" in payload and payload["description"] != "":
-            description = payload["description"]
-            if len(description) > 1024:
-                wcnt = 0
-                while len(description) > 0:
-                    wcnt += 1
-                    chunk = description[:1024]
-                    if "\n" in chunk:
-                        chunk2 = "\n".join(chunk.split("\n")[:-1])
-                    description = description[len(chunk2):]
-                    if "\n" not in chunk:
-                        chunk2 += "-"
-                    chunk = chunk2
-                    embed.add_field(name="**Description (" + str(wcnt) + ")**", value=chunk, inline=False)
-            else:
-                embed.add_field(name="**Description**",           value=payload["description"],  inline=False)
-            # end if/elif
-        # end if
+        description = payload["description"]
+        if description == "":
+            description = "\u200b"
+        if len(description) > 1024:
+            wcnt = 0
+            while len(description) > 0:
+                wcnt += 1
+                chunk = description[:1024]
+                if "\n" in chunk:
+                    chunk2 = "\n".join(chunk.split("\n")[:-1])
+                description = description[len(chunk2):]
+                if "\n" not in chunk:
+                  chunk2 += "-"
+                chunk = chunk2
+                embed.add_field(name="**Description (" + str(wcnt) + ")**", value=chunk, inline=False)
+        else:
+            embed.add_field(name="**Description**",           value=payload["description"],  inline=False)
         embed.add_field(name="**Influential Followers**", value=payload["influential_followers"], inline=False)
         embed.add_field(name="**Rating**",                value=payload["rating"],       inline=False)
         embed.add_field(name="**Followers**",             value=payload["followers"],    inline=False)
@@ -232,9 +223,6 @@ class AbeBot(object):
         abe_guilds_data_db = self.get_guild_data()
 
         for guild in guilds:
-            if self.DEV_MODE:
-                if guild.name != "Test":
-                    continue
             print("guild.name in send_payload: ", guild.name)
 
             abe_guild = await self.get_abe_guild(abe_guilds_data_db, guild)
@@ -249,10 +237,7 @@ class AbeBot(object):
                 continue
 
             if rating not in abe_guild["subscribed_channel_feed_map"]:
-                if (rating == "other-chains" and "aptos" in abe_guild["subscribed_channel_feed_map"]):
-                    rating = "aptos"
-                else:
-                    continue
+                continue
             
             channel_name = abe_guild["subscribed_channel_feed_map"][rating]
 
@@ -273,7 +258,7 @@ class AbeBot(object):
             has_premium = abe_guild["name"] == "premium"
 
             role_to_ping = ""
-            role_id = None
+            rold_id = None
             if "subscribed_role_feed_map" in abe_guild and rating in abe_guild["subscribed_role_feed_map"]:
                 role_to_ping = abe_guild["subscribed_role_feed_map"][rating]
                 for role in guild.roles:
@@ -332,12 +317,11 @@ class AbeBot(object):
                                 print("302 err: ", err)
                                 print("303 err.args: ", err.args[:])
                         else:
-                            if role_to_ping != "Add Role":
-                                try:
-                                    await channel.send(payload)
-                                except Exception as err:
-                                    print("308 err: ", err)
-                                    print("309 err.args: ", err.args[:])
+                            try:
+                                await channel.send(payload)
+                            except Exception as err:
+                                print("308 err: ", err)
+                                print("309 err.args: ", err.args[:])
                         # end if/else
                     # end if/else
 
@@ -398,8 +382,7 @@ class AbeBot(object):
                 if wcnt > 1:
                     print("sleeping a minute")
                     print("now: ", datetime.datetime.now())
-                    if self.DEV_MODE:
-                        sys.exit()
+                    #sys.exit()
                     await asyncio.sleep(60.0)
 
                 #'''
@@ -463,29 +446,27 @@ class AbeBot(object):
                 # end if premint stuff
 
                 #'''
-                if not self.DEV_MODE:
-                    result = await self.query_gcp()
-                    print("result.text: ", result.text)
-                    with open("data_big/" + now + ".txt", "w") as fid:
-                       fid.write(str(result.text))
-                    # end with
+                result = await self.query_gcp()
+                print("result.text: ", result.text)
+                with open("data_big/" + now + ".txt", "w") as fid:
+                   fid.write(str(result.text))
+                #end with
 
-                    try:
-                        print("result.json: ", result.json())
-                        result = result.json()
+                try:
+                    print("result.json: ", result.json())
+                    result = result.json()
 
-                    except Exception as err:
-                        print("303 err: ", err)
-                        print("304 err.args: ", err.args[:])
-                        continue
-                    # end try/except
+                except Exception as err:
+                    print("303 err: ", err)
+                    print("304 err.args: ", err.args[:])
+                    continue
+                # end try/except
                 #'''
 
-                else:
-                    fname = "22-11-10_18-30-59.txt"
-                    with open("data_big/" + fname, "r") as fid:
-                        result = json.load(fid)
-                    # end with open
+                '''
+                with open("data_big/22-11-07_14-03-36.txt", "r") as fid:
+                    result = json.load(fid)
+                # end with open
                 #'''
                 print("query_gcp done!")
 
