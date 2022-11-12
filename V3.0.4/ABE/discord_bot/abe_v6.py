@@ -27,9 +27,7 @@ from pymongo import MongoClient
 
 class AbeBot(object):
     def __init__(self):
-        self.DEV_MODE = False
-
-        self.FOOTER = "ABE A.I. powered by EILabs.AI Visit our website for more. Not financial advice."
+        self.FOOTER = "Please visit AlwaysBeEarly.AI for full terms and conditions. Not Financial Advice."
         self.ICON_URL = "https://cdn.discordapp.com/icons/952352992626114622/39bd07c3ccd0d708f20e47b3dc7cb140.webp?size=160"
 
         self.LOG_CID = 932056137518444594 # TTB bot-commands
@@ -38,7 +36,7 @@ class AbeBot(object):
 
         os.system("mkdir -p data_big")
 
-        self.rating_map = {"A": "alpha-plus", "B": "alpha", "P": "aptos", "S": "solana", "D": "daos", "T": "nft-tools", "DailyEth": "daily", "Highlight":"highlight", "Artist":"artist", "C": "might-be-something", "VC": "vc-firms", "Daily": "daily", "V": "vc-firms", "O": "other-chains"}
+        self.rating_map = {"A": "alpha-plus", "B": "alpha", "P": "aptos", "S": "solana", "D": "daos", "T": "nft-tools", "Daily": "daily", "Highlight":"highlight", "Artist":"artist"}
 
         ## note, toTheMoons paid for 1 month, standard
         ## note, test paid for 1 month, standard
@@ -47,7 +45,7 @@ class AbeBot(object):
                             "952352992626114622": 1e50, # ABE
                             "922678240798187550": 5 # sketches by gabo
                         }
-        self.premium_ratings = ["aptos", "artist", "daos", "nft-tools", "premint", "vc-firms", "other-chains"]
+        self.premium_ratings = ["aptos", "artist", "daos", "nft-tools", "premint"]
 
         self.init_gcp()
         self.init_mongodb()
@@ -73,38 +71,15 @@ class AbeBot(object):
         url = "https://twitter.com/" + payload["handle"]
 
         ## if not an expected rating, skip.
-        #if payload["rating"].lower() == "highlight":
-        #    return False
+        if payload["rating"].lower() == "highlight":
+            return False
 
         embed = discord.Embed(title=title, description=description,
             color=discord.Color.from_rgb(self.embed_rgb[0], self.embed_rgb[1], self.embed_rgb[2]), url=url)
         embed.set_thumbnail(url=payload["profile_image_url"])
+        embed.set_footer(text = self.FOOTER, icon_url=self.ICON_URL)
 
-        footer_text = self.FOOTER
-        footer_icon = self.ICON_URL
-        if "embedded_img_url" in payload:
-            footer_icon = payload["embedded_img_url"]
-
-        embed.set_footer(text = footer_text, icon_url=footer_icon)
-
-        if "description" in payload and payload["description"] != "":
-            description = payload["description"]
-            if len(description) > 1024:
-                wcnt = 0
-                while len(description) > 0:
-                    wcnt += 1
-                    chunk = description[:1024]
-                    if "\n" in chunk:
-                        chunk2 = "\n".join(chunk.split("\n")[:-1])
-                    description = description[len(chunk2):]
-                    if "\n" not in chunk:
-                        chunk2 += "-"
-                    chunk = chunk2
-                    embed.add_field(name="**Description (" + str(wcnt) + ")**", value=chunk, inline=False)
-            else:
-                embed.add_field(name="**Description**",           value=payload["description"],  inline=False)
-            # end if/elif
-        # end if
+        embed.add_field(name="**Description**",           value=payload["description"],  inline=False)
         embed.add_field(name="**Influential Followers**", value=payload["influential_followers"], inline=False)
         embed.add_field(name="**Rating**",                value=payload["rating"],       inline=False)
         embed.add_field(name="**Followers**",             value=payload["followers"],    inline=False)
@@ -228,13 +203,9 @@ class AbeBot(object):
     # end update_guilds_data
 
     async def send_payload(self, payload, rating, guilds):
-        print("rating: ", rating)
         abe_guilds_data_db = self.get_guild_data()
 
         for guild in guilds:
-            if self.DEV_MODE:
-                if guild.name != "Test":
-                    continue
             print("guild.name in send_payload: ", guild.name)
 
             abe_guild = await self.get_abe_guild(abe_guilds_data_db, guild)
@@ -249,18 +220,16 @@ class AbeBot(object):
                 continue
 
             if rating not in abe_guild["subscribed_channel_feed_map"]:
-                if (rating == "other-chains" and "aptos" in abe_guild["subscribed_channel_feed_map"]):
-                    rating = "aptos"
-                else:
-                    continue
+                continue
             
             channel_name = abe_guild["subscribed_channel_feed_map"][rating]
 
             if abe_guild["num_months"] == 0:
                 if abe_guild["guild_id"] not in self.trial_map:
-                    duration = 3600*24*7 # one week
-                else:
-                    duration = self.trial_map[abe_guild["guild_id"]]
+                    print("trial but not in trial map? Fatal")
+                    raise
+                
+                duration = self.trial_map[abe_guild["guild_id"]]
             else:
                 duration = abe_guild["num_months"]*30*24*3600
             
@@ -273,7 +242,7 @@ class AbeBot(object):
             has_premium = abe_guild["name"] == "premium"
 
             role_to_ping = ""
-            role_id = None
+            rold_id = None
             if "subscribed_role_feed_map" in abe_guild and rating in abe_guild["subscribed_role_feed_map"]:
                 role_to_ping = abe_guild["subscribed_role_feed_map"][rating]
                 for role in guild.roles:
@@ -283,8 +252,7 @@ class AbeBot(object):
             print("role_id: ", role_id)
             print("channel_name: ", channel_name)
 
-            if rating != "premint":
-                embed = await self.build_embed(payload)
+            embed = await self.build_embed(payload)
 
             sent = False
             for channel in guild.channels:
@@ -296,20 +264,12 @@ class AbeBot(object):
 
                 #'''
                 if time.time() - (start+duration) > 0:
-                    try:
-                        await channel.send("Uh oh! We had new alpha to send but your subscription expired. \nDon't miss out! Renew your subscription today: \nhttps://www.alwaysbeearly.io")
-                    except Exception as err:
-                        print("272 err: ", err)
-                        print("272 err.args: ", err.args[:])
+                    await channel.send("Uh oh! We had new alpha to send but your subscription expired. \nDon't miss out! Renew your subscription today: \nhttps://www.alwaysbeearly.io")
                     sent = True
                     break
 
                 if premium_rating and has_premium == False:
-                    try:
-                        await channel.send("Uh oh! We had premium alpha to send but you don't have a premium subscription. \nDon't miss out! Upgrade your subscription today: \nhttps://www.alwaysbeearly.io")
-                    except Exception as err:
-                        print("281 err: ", err)
-                        print("282 err.args: ", err.args[:])
+                    await channel.send("Uh oh! We had premium alpha to send but you don't have a premium subscription. \nDon't miss out! Upgrade your subscription today: \nhttps://www.alwaysbeearly.io")
                     sent = True
                     break
                 #'''
@@ -317,27 +277,14 @@ class AbeBot(object):
                 if rating == "premint":
                     if role_to_ping == "@everyone":
                         print("role_to_ping == @everyone")
-                        try:
-                            await channel.send(payload)
-                            await channel.send("@everyone")
-                        except Exception as err:
-                            print("294 err: ", err)
-                            print("295 err.args: ", err.args[:])
+                        await channel.send(payload)
+                        await channel.send("@everyone")
                     else:
                         if role_id != None:
                             print("role_id: ", role_id)
-                            try:
-                                await channel.send(payload + "^ <@&" + role_id + ">")
-                            except Exception as err:
-                                print("302 err: ", err)
-                                print("303 err.args: ", err.args[:])
+                            await channel.send(payload + "^ <@&" + role_id + ">")
                         else:
-                            if role_to_ping != "Add Role":
-                                try:
-                                    await channel.send(payload)
-                                except Exception as err:
-                                    print("308 err: ", err)
-                                    print("309 err.args: ", err.args[:])
+                            await channel.send(payload)
                         # end if/else
                     # end if/else
 
@@ -345,32 +292,20 @@ class AbeBot(object):
                     break
                 else:
                     print("286 payload: ", payload)
-                    try:
-                        await channel.send(embed=embed)
-                    except Exception as err:
-                        print("320 err: ", err)
-                        print("321 err.args: ", err.args[:])
+                    await channel.send(embed=embed)
                     if role_to_ping == "@everyone":
-                        try:
-                            await channel.send("^ @everyone")
-                        except Exception as err:
-                            print("320 err: ", err)
-                            print("321 err.args: ", err.args[:])
+                        await channel.send("^ @everyone")
                     else:
-                        try:
-                            await channel.send("^ <@&" + role_id + ">")
-                        except Exception as err:
-                            print("320 err: ", err)
-                            print("321 err.args: ", err.args[:])
+                        await channel.send("^ <@&" + role_id + ">")
                     # end if/else
 
                     sent = True
                     break
             # end for channels
 
-            #if not sent and ("moons" in guild.name or "Moons" in guild.name):
-            #    print("\n\nTraceback: ============= didn't send =====================\n\n")
-            #    sys.exit()
+            if not sent and ("moons" in guild.name or "Moons" in guild.name):
+                print("\n\nTraceback: ============= didn't send =====================\n\n")
+                sys.exit()
         # end for guilds
     # end send_payload
 
@@ -397,9 +332,6 @@ class AbeBot(object):
                 print("wcnt: ", wcnt)
                 if wcnt > 1:
                     print("sleeping a minute")
-                    print("now: ", datetime.datetime.now())
-                    if self.DEV_MODE:
-                        sys.exit()
                     await asyncio.sleep(60.0)
 
                 #'''
@@ -422,20 +354,18 @@ class AbeBot(object):
                     
                     #'''
                     result = await self.query_gcp(premint=True)
-                    parsed = True
                     try:
                         print("result.text: ", result.text)
 
                     except Exception as err:
                         print("352 err: ", err)
                         print("353 err.args: ", err.args[:])
-                        parsed = False
+                        continue
                     # end try/except
 
-                    if parsed:
-                        with open("data_big/premint_" + now + ".txt", "w") as fid:
-                            fid.write(str(result.text))
-                        #end with
+                    with open("data_big/premint_" + now + ".txt", "w") as fid:
+                        fid.write(str(result.text))
+                    #end with
                 
                     try:
                         print("result.json: ", result.json())
@@ -443,7 +373,7 @@ class AbeBot(object):
                     except Exception as err:
                         print("375 err: ", err)
                         print("376 err.args: ", err.args[:])
-                        parsed = False
+                        continue
                     # end try/except
      
                     '''
@@ -452,40 +382,37 @@ class AbeBot(object):
                     # end with open
                     #'''
 
-                    if parsed:
-                        if "links_count" in result and "newly_found_links" in result:
-                            message = ""
-                            for link in result["newly_found_links"]:
-                                message += link + "\n"
-                            await self.send_payload(message, "premint", client.guilds)
-                            ## loop over subscribing guilds and send to their premint channel, if any
-                        # end if
+                    if "links_count" in result and "newly_found_links" in result:
+                        message = ""
+                        for link in result["newly_found_links"]:
+                            message += link + "\n"
+                        await self.send_payload(message, "premint", client.guilds)
+                        ## loop over subscribing guilds and send to their premint channel, if any
+                    # end if
                 # end if premint stuff
 
                 #'''
-                if not self.DEV_MODE:
-                    result = await self.query_gcp()
-                    print("result.text: ", result.text)
-                    with open("data_big/" + now + ".txt", "w") as fid:
-                       fid.write(str(result.text))
-                    # end with
+                result = await self.query_gcp()
+                print("result.text: ", result.text)
+                with open("data_big/" + now + ".txt", "w") as fid:
+                   fid.write(str(result.text))
+                #end with
 
-                    try:
-                        print("result.json: ", result.json())
-                        result = result.json()
+                try:
+                    print("result.json: ", result.json())
+                    result = result.json()
 
-                    except Exception as err:
-                        print("303 err: ", err)
-                        print("304 err.args: ", err.args[:])
-                        continue
-                    # end try/except
+                except Exception as err:
+                    print("303 err: ", err)
+                    print("304 err.args: ", err.args[:])
+                    continue
+                # end try/except
                 #'''
 
-                else:
-                    fname = "22-11-10_18-30-59.txt"
-                    with open("data_big/" + fname, "r") as fid:
-                        result = json.load(fid)
-                    # end with open
+                '''
+                with open("data_big/22-11-05_17-33-26.txt", "r") as fid:
+                    result = json.load(fid)
+                # end with open
                 #'''
                 print("query_gcp done!")
 
