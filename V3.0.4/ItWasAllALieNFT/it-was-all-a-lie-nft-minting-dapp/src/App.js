@@ -82,7 +82,7 @@ function App() {
       backgroundImage:backgroundImage,
     }}>
     <a style={{
-      marginLeft: Math.round(width/2)}} href="https://raritysniper.com/nft-drops-calendar"><img alt="NFT drops by rarity sniper" src="./rarity-sniper1.png" width="69" height="69"></img></a>
+      marginLeft: Math.round(width/2)}} href="https://raritysniper.com/nft-drops-calendar"></a>
     {/* <div className="screen"> */}
     {height > width && 
       <div style={{
