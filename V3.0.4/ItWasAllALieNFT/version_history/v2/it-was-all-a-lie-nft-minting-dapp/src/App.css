@@ -14,103 +14,75 @@
   margin-left: 530px;
 } */
 
-.Logo {
-  width: 69px;
-  height: 69px;
-  border-radius: 999999999px;
-}
-
-.LogoMargin {
-  margin-top: 30px;
-}
-
-.OpenseaMargin {
-  margin-left: 30px;
-}
-
-.TwitterMargin {
-  margin-right: 40px;
-}
-
 .OpenseaLogo {
+  margin-left: 30px;
+  width: 100px;
+  height: 100px;
   background-size: contain;
   background-repeat: no-repeat;
   /* background-repeat: no-repeat; */
 }
 
 .TwitterLogo {
+  width: 90px;
+  height: 90px;
   background-size: contain;
   background-repeat: no-repeat;
   /* background-repeat: no-repeat; */
 }
 
-.ButtonRow {
-  margin-top: 60px;
-}
-
-.Button {
-  background-color: transparent;
-  border-color: transparent;
-}
-
 .MintButton {
-  cursor: pointer;
-  margin-left: 20px;
+  margin-left: 30px;
   width: 100px;
-  height: 50px;
+  height: 100px;
   background-size: contain;
   background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
 }
 
 .PlusButton {
-  cursor: pointer;
-  width: 36px;
-  height: 36px;
+  margin-top: 10px;
+  width: 70px;
+  height: 70px;
   background-size: contain;
   background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
 }
 
 .MinusButton {
-  cursor: pointer;
-  width: 36px;
-  height: 36px;
+  margin-top:17px;
+  width: 50px;
+  height: 50px;
   background-size: contain;
   background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
 }
 
 .ToMintDisplay {
-  margin-top: 55px;
+  margin-top: -10px;
   margin-right: 20px;
   width: 100px;
   height: 100px;
   background-size: contain;
   background-repeat: no-repeat;
-}
-
-.Text {
-  text-align: center;
-  font-size: 32px;
-  color: rgb(230, 182, 82);
-  text-shadow: "0 0 2px #888";
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
-  font-weight: 800;
+  /* background-repeat: no-repeat; */
 }
 
 .MintedDisplay {
+  margin-top: -40px;  
   margin-left: 25px;
-  margin-top: 5px;
   width: 200px;
-  height: 60px;
+  height: 200px;
   background-size: contain;
   background-repeat: no-repeat;
   /* background-repeat: no-repeat; */
 }
 
 .MintedIndicator {
+  margin-top: -40px;
   margin-right: 10px;
-  width: 200px;
-  height: 60px;
+  width: 180px;
+  height: 180px;
   background-size: contain;
   background-repeat: no-repeat;
   /* background-repeat: no-repeat; */
