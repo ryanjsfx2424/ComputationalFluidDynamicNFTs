@@ -10,6 +10,4 @@ convert favicon.png -scale 192 192.png
 convert favicon.png -scale 256 256.png
 convert favicon.png -scale 512 512.png
 
-convert 16.png 24.png 32.png 48.png 64.png 72.png 96.png 128.png 192.png 256.png 512.png favicon.ico
-
-rm {16,24,32,48,64,72,96,128,192,256,512}.png
+convert 16.png 256.png 32.png 48.png 64.png 72.png 96.png 128.png 192.png 256.png 512.png favicon.ico

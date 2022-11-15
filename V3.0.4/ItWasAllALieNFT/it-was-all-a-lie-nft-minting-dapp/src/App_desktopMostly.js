@@ -21,8 +21,6 @@ import Web3EthContract from 'web3-eth-contract'
 import contractABI from './abi_v3p2.json';
 import wlt from './TEAM.json';
 import wlp from './WL.json';
-import desktopVideo from './desktop.mp4'
-import mobileVideo from './mobile.mp4'
 
 // require('dotenv').config()
 const CHAIN_ID = 5 // GOERLI
@@ -38,12 +36,8 @@ function App() {
     const [isButtonDisabled, setIsButtonDisabled]   = useState(false)
     const [isWalletConnected, setIsWalletConnected] = useState(false)
     const [isCorrectChain,    setIsCorrectChain]    = useState(false)
-    const [isVideoLoaded, setIsVideoLoaded] = useState(false)
-    const { height, width } = useWindowDimensions()
 
-    const onLoadedData = () => {
-        setIsVideoLoaded(true)
-    }
+    const { height, width } = useWindowDimensions()
 
     const connectWallet = async () => {
       if (window.ethereum) {
@@ -395,213 +389,103 @@ function App() {
         return
     }
 
-    // let supplyMintedMarginTop = 7
-    // let supplyMintedMarginLeft = -10
-    // let mintedIndicatorHeight = 60
-    // let mintedIndicatorWidth = 200
-    // let mintedIndicatorMarginRight = 10
-    // let mintedDisplayMarginLeft = 25
-    // let mintedDisplayMarginTop = 5
-    // let mintedDisplayWidth = 200
-    // let mintedDisplayHeight = 60
-    // let textFontSize = 32
-    // let toMintDisplayMarginTop = 55
-    // let toMintDisplayMarginRight = 20
-    // let toMintDisplayLength = 100
-    // let pmButtonLength = 36
-    // let mintButtonMarginLeft = 20
-    // let mintButtonWidth = 100
-    // let mintButtonHeight = 50
-    // let buttonRowMarginTop = 60
-    // let twitterMarginRight = 40
-    // let openseaMarginLeft = 30
-    // let logoMarginTop = 30
-    // let logoLength = 69
-
-    // let containerWidth = 420 
-    // let containerHeight = 400
-    // let marginTop = 40
-    // let marginLeft = Math.round(0.36*width)
-
-    let sizes = {
-        supplyMintedMarginTop : 7,
-        supplyMintedMarginLeft : -10,
-        mintedIndicatorHeight : 60,
-        mintedIndicatorWidth : 200,
-        mintedIndicatorMarginRight : 10,
-        mintedDisplayMarginLeft : 25,
-        mintedDisplayMarginTop : 5,
-        mintedDisplayWidth : 200,
-        mintedDisplayHeight : 60,
-        textFontSize : 32,
-        toMintDisplayMarginTop : 55,
-        toMintDisplayMarginRight : 20,
-        toMintDisplayLength : 100,
-        pmButtonLength : 36,
-        mintButtonMarginLeft : 20,
-        mintButtonWidth : 100,
-        mintButtonHeight : 50,
-        buttonRowMarginTop : 60,
-        twitterMarginRight : 40,
-        openseaMarginLeft : 30,
-        logoMarginTop : 30,
-        logoLength : 69,
-    
-        containerWidth : 420,
-        containerHeight : 400,
-        marginTop : 40,
-        marginLeft : Math.round(0.36*width)
-    }
-
+    let topDivHeight = 200
+    let containerWidth = 420 
+    let containerHeight = 400
+    let top = 0
+    let marginLeft = Math.round(0.36*width)
     let backgroundImage = `url(${backgroundImageDesktop})`
-    let vidSrc = desktopVideo
-    let valueToSub = 0
-    let valueToSubML = 0
-    let valueToSubMT = 0
     if (height > width) {
-        console.log("height > width")
-        sizes.containerWidth = 360
-        sizes.containerHeight = 320
+        containerWidth = 360
+        containerHeight = 320
         backgroundImage = `url(${backgroundImageMobile})`
-        vidSrc = mobileVideo
-        sizes.marginLeft = Math.round(0.19*width)
-        sizes.marginTop = Math.round(0.4*height)
+        marginLeft = Math.round(0.19*width)
+        topDivHeight = 150
         if (width < 900) {
-            console.log("width < 900")
-            sizes.containerWidth = 360
-            sizes.containerHeight = 320
-
-            valueToSub = Math.floor((900 - width)/6.0)
-            valueToSubML = Math.floor((900 - width)/8.0)
-            valueToSubMT = Math.floor((900 - width)/8.0)
+          containerWidth = 360
+          containerHeight = 320
+          marginLeft -= Math.floor((900 - width)/8.0)
+          containerWidth -= Math.floor((900 - width)/6.0)
+          containerHeight -= Math.floor((900 - width)/6.0)
+        }
+    } else if (width < 1520) {
+        containerWidth = 400
+        containerHeight = 400
+        containerWidth  -= Math.floor((1520-width)/4.0)
+        containerHeight -= Math.floor((1520-width)/4.0)
+    } else if (height < 1000) {
+        containerWidth = 400
+        containerHeight = 400
+        marginLeft = Math.round(0.36*width)
+        containerWidth  -= Math.floor((1000-height)/4.0)
+        containerHeight -= Math.floor((1000-height)/4.0)
+        marginLeft += Math.floor((1000-height)/4.0)
+    }
+    if (width > height && width/height > 1.593 && height < 1000) {
+        console.log("in if")
+        containerWidth = 400
+        containerHeight = 400
+        marginLeft = Math.round(0.36*width)
+        containerHeight -= Math.floor((1000-height)/2.5)
+        containerWidth -= Math.floor((1000-height)/2.5)
+        marginLeft += Math.floor((1000-height)/4.0)
+        if (width < 1520) {
+          marginLeft -= Math.floor((1520-width)/5.0)
         }
     }
-    valueToSub =  Math.max(Math.floor((1520-width)/3.5), Math.floor((1000-height)/3.5))
-    // if (width > height && (height < 1000 || width < 1520) && width/height > 1.593) {
-    //     console.log("in if")
-    //     console.log("width > height && (height < 1000 || width < 1520) && width/height > 1.593")
-
-    //     sizes.containerWidth = 400
-    //     sizes.containerHeight = 400
-
-    //     if (width < 1900)
-    //         sizes.marginLeft = Math.round(0.36*width)
-    //     else if (width < 2800) {
-    //         sizes.marginLeft = Math.round(0.41*width)
-    //     }
-    //     else {
-    //         sizes.marginLeft = Math.round(0.42*width)
-    //     }
-
-    //     valueToSub = Math.floor((1000-height)/2.5)
-    //     valueToSubML = 0//-Math.max(Math.floor((1520-width)/4.0), Math.floor((1000-height)/4.0))
-    //     valueToSubMT = -Math.max(Math.floor((1520-width)/24.0), Math.floor((1000-height)/3.0))
-    // } else if (width > height && (height < 1000 || width < 1520)) {
-    //     console.log("width > height && (height < 1000 || width < 1520)")
-    //     console.log("height dif: ", Math.floor((1000-height)/2.0))
-    //     console.log("width dif: ", Math.floor((1520-width)/3.0))
-
-    //     sizes.containerWidth = 400
-    //     sizes.containerHeight = 400
-
-    //     sizes.marginLeft = Math.round(0.36*width)
-    //     valueToSub =  Math.max(Math.floor((1520-width)/4.0), Math.floor((1000-height)/3.0))
-    //     valueToSubMT = -Math.max(Math.floor((1520-width)/24.0), Math.floor((1000-height)/3.0))
-    //     valueToSubML = 0//Math.max(0, Math.floor((1000-height)/4.0))
-    // } else {
-    //     console.log("else")
-    //     sizes.containerWidth = 400
-    //     sizes.containerHeight = 400
-
-    //     sizes.marginLeft = Math.round(0.36*width)
-    //     valueToSub =  Math.max(Math.floor((1520-width)/4.0), Math.floor((1000-height)/3.0))
-    //     valueToSubMT = 0//-Math.max(Math.floor((1520-width)/4.0), Math.floor((1000-height)/3.0))
-    //     valueToSubML = 0//Math.max(0, Math.floor((1000-height)/4.0))
-    // }
-    if (width / height > 1.6) {
-        let wpct = 0.36
-        let wextra = 0
-        wextra = 0.05 * Math.abs(width-1500)/1000
-        sizes.marginLeft = Math.round((wpct + wextra)*width)
-
-        if (width > 3000) {
-            return (
-                <h1>Your screen is too large. I can't fucking handle it.</h1>
-            )
-        }
-        if (height < 500) {
-            sizes.marginLeft += ((10-width/height)*(500 - height))
-            valueToSub += (0.35*(500 - height))
-            sizes.marginTop -= (0.15*(500 - height))
-        }
-    } else if (width / height < 1.59) {
-        if (height < 1000) {
-            sizes.marginTop += 0//(1000-height)//1.69*(1000 - height)
-        }
-    }
-    sizes.containerWidth -= 50
-    let cw = sizes.containerWidth
-    let ch = sizes.containerHeight
-    for (const [key, value] of Object.entries(sizes)) {
-        let valueToSubLocal = valueToSub
-        if (key === "marginLeft") {
-            valueToSubLocal = valueToSubML
-        } else if (key === "marginTop") {
-            valueToSubLocal = valueToSubMT
-        } else if (key !== "containerWidth" && key !== "containerHeight") {
-            valueToSubLocal = Math.floor(valueToSub * Math.min(value / cw, value/ch))
-        }
-        sizes[key] -= valueToSubLocal
-    }
-
-    let margin = sizes.marginTop + "px" + " 0 0 " + sizes.marginLeft + "px"
-    console.log("margin: ", margin)
-    console.log("height, width: ", height, width)
+    let margin = "0 0 0 " + marginLeft + "px"
 
     return (
-        <div className="videoContainer">
-            <div className="screen" style={{ backgroundImage:backgroundImage, opacity: isVideoLoaded ? 0 : 1}}></div>
-            <video className="screen" autoPlay playsInline muted loop src={vidSrc} onLoadedData={onLoadedData} style={{opacity: isVideoLoaded ? 1 : 0}}></video>
-
-            <a href="https://raritysniper.com/nft-drops-calendar"></a>
+        <div className="screen" style={{ 
+          backgroundImage:backgroundImage,
+        }}>
+            <a style={{
+                marginLeft: Math.round(width/2)}} href="https://raritysniper.com/nft-drops-calendar"
+            ></a>
+            {height > width && 
+              <div style={{
+                  height: {topDivHeight} + "px",
+                  width: 400
+                }}></div>
+            }
             <audio src="./itwasallalie_music.mp3" autoPlay loop></audio>
-
-            <div className="content">
-                <div className="container" style= {{
-                    margin: margin,
-                    width: sizes.containerWidth + "px",
-                    height: sizes.containerHeight + "px",
-                    backgroundColor: "transparent",
-                    outline: "1px dotted blue"
-                }}>
-                
-                    <div style={{display:"flex", direction:"row", justifyContent:"space-between"}}>
-                        <a href="https://opensea.io" className="Logo"><div className="Logo OpenseaLogo" style={{ backgroundImage:`url(${openseaLogo})`, width:sizes.logoLength, height:sizes.logoLength, marginTop: sizes.logoMarginTop, marginLeft: sizes.openseaMarginLeft }}></div></a>
-                        <a href="https://twitter.com/itwasallalienft" className="Logo"><div className="Logo TwitterLogo" style={{ backgroundImage:`url(${twitterLogo})`, marginTop: sizes.logoMarginTop, width:sizes.logoLength, height:sizes.logoLength, marginRight:sizes.twitterMarginRight}}></div></a>
-                    </div>
-                    <div style={{display:"flex", direction:"row", justifyContent:"space-around"}}>
-                        <button className="MintButton Button" style={{ backgroundImage:`url(${mintButtonImage})`, marginTop: sizes.buttonRowMarginTop, marginLeft: sizes.mintButtonMarginLeft, width: sizes.mintButtonWidth, height: sizes.mintButtonHeight}}
-                            disabled={isButtonDisabled} onClick={() => {handleMint()}}>
-                        </button>
-
-                        <button className="PlusButton Button" style={{ backgroundImage:`url(${plusButtonImage})`, marginTop: sizes.buttonRowMarginTop, width: sizes.pmButtonLength, height: sizes.pmButtonLength}}
-                            disabled={isButtonDisabled} onClick={() => {handlePlusButton()}}>
-                        </button>
-                        <button className="MinusButton Button" style={{ backgroundImage:`url(${minusButtonImage})`, marginTop: sizes.buttonRowMarginTop, width: sizes.pmButtonLength, height: sizes.pmButtonLength}}
-                            disabled={isButtonDisabled} onClick={() => {handleMinusButton()}}>
-                        </button>
-                        <div className="ToMintDisplay Text" style={{ backgroundImage:`url(${toMintIndicatorImage})`, marginTop: sizes.toMintDisplayMarginTop, marginRight: sizes.toMintDisplayMarginRight, width: sizes.toMintDisplayLength, height: sizes.toMintDisplayLength, fontSize: sizes.textFontSize}}>
-                            {mintAmount}
-                        </div>
-                    </div>
-                    <div style={{display:"flex", direction:"row", justifyContent:"space-around"}}>
-                        <div className="MintedDisplay" style={{ backgroundImage:`url(${mintedDisplayImage})`, height: sizes.mintedDisplayHeight, width: sizes.mintedDisplayWidth, marginLeft: sizes.mintedDisplayMarginLeft, marginTop: sizes.mintedDisplayMarginTop}}></div>
-                        <div className="MintedIndicator Text" style={{ backgroundImage:`url(${mintedIndicatorImage})`, fontSize: sizes.textFontSize, height: sizes.mintedIndicatorHeight, width: sizes.mintedIndicatorWidth, marginRight: sizes.mintedIndicatorMarginRight}}>
-                            <div style={{marginTop:sizes.supplyMintedMarginTop, marginLeft:sizes.supplyMintedMarginLeft}}>{supplyMinted}</div>
-                        </div>
-                    </div>
+            <div className="container" style= {{
+                margin: margin,
+                width: containerWidth + "px",
+                height: containerHeight + "px",
+                backgroundColor: "transparent",
+                outline: "1px dotted blue"
+            }}>
+            
+                <div style={{display:"flex", direction:"row", justifyContent:"space-between"}}>
+                    <a href="https://opensea.io" className="Logo LogoMargin OpenseaMargin"><div className="Logo OpenseaLogo" style={{ backgroundImage:`url(${openseaLogo})`}}></div></a>
+                    <a href="https://twitter.com/itwasallalienft" className="Logo LogoMargin TwitterMargin"><div className="Logo TwitterLogo" style={{ backgroundImage:`url(${twitterLogo})`}}></div></a>
                 </div>
-            </div>
+                <div style={{display:"flex", direction:"row", justifyContent:"space-around"}}>
+                      <button className="ButtonRow MintButton Button" style={{ backgroundImage:`url(${mintButtonImage})`}}
+                          disabled={isButtonDisabled} onClick={() => {handleMint()}}>
+                      </button>
+
+                      <button className="ButtonRow PlusButton Button" style={{ backgroundImage:`url(${plusButtonImage})`}}
+                          disabled={isButtonDisabled} onClick={() => {handlePlusButton()}}>
+                      </button>
+                      <button className="ButtonRow MinusButton Button" style={{ backgroundImage:`url(${minusButtonImage})`}}
+                          disabled={isButtonDisabled} onClick={() => {handleMinusButton()}}>
+                      </button>
+                      <div className="ButtonRow ToMintDisplay Text" style={{ backgroundImage:`url(${toMintIndicatorImage})`}}>
+                          {mintAmount}
+                      </div>
+                  </div>
+                  <div style={{display:"flex", direction:"row", justifyContent:"space-around"}}>
+                      <div className="MintedDisplay" style={{ backgroundImage:`url(${mintedDisplayImage})`}}></div>
+                      <div className="MintedIndicator Text" style={{ backgroundImage:`url(${mintedIndicatorImage})`}}>
+                          <div style={{marginTop:7, marginLeft:-10}}>{supplyMinted}</div>
+                      </div>
+                  </div>
+              </div>
+            {/* <div className="MintButton" style={{ backgroundImage:`url(${mintButtonImage})`}}
+              onClick={() => {mint()}}>
+            </div> */}
         </div>
     );
 }
