@@ -35,7 +35,7 @@ const ETHERSCAN_LINK = "https://etherscan.io/address/" + contractAddress
 
 function App() {
     const [mintAmount,       setMintAmount]         = useState(1)
-    const [supplyMinted,     setSupplyMinted]       = useState("?/8888")
+    const [supplyMinted,     setSupplyMinted]       = useState("1000/8888")
     const [isButtonDisabled, setIsButtonDisabled]   = useState(false)
     const [isWalletConnected, setIsWalletConnected] = useState(false)
     const [isCorrectChain,    setIsCorrectChain]    = useState(false)
@@ -955,16 +955,42 @@ function App() {
         sizes.pmButtonMarginTop += 10
         sizes.supplyMintedFontSize += 4
     }
+    if (width > height && width < 1300 && height < 950 && width >= 1100) {
+        sizes.marginTop += 30 + 20*(1300-width)/100
+        sizes.containerHeight -= 40
+        sizes.containerWidth -= 30
+        sizes.pmButtonMarginTop += 4
+    }
+    if (width > height && width < 1100 && height < 950) {
+        sizes.marginTop += 40 + 25*(1300-width)/100
+        sizes.containerHeight -= 40
+        sizes.containerWidth -= 30
+        sizes.pmButtonMarginTop -= 6
+        sizes.supplyMintedFontSize -= 6
+        sizes.supplyMintedMarginTop -= 2
+        sizes.supplyMintedMarginLeft += 10
+    }
+    if (width > height && width > 1550 && height < 950) {
+        sizes.marginLeft += 10 + 20*(width-1550)/100
+    }
 
     let margin = sizes.marginTop + "px" + " 0 0 " + sizes.marginLeft + "px"
     console.log("margin: ", margin)
     console.log("height, width: ", height, width)
 
-    if (width/height > 2) {
-        sizes.marginLeft = "43.5vw"
+    if (width/height > 2 && !(width > height && width > 1550 && height < 950)) {
+        sizes.marginLeft += "43.5vh"
         sizes.marginTop = 25
         margin = sizes.marginTop + "px 0 0 " + sizes.marginLeft
         sizes.supplyMintedFontSize = 12
+    } else if (width/height > 2 && (width > height && width > 1550 && height < 950)) {
+        sizes.marginLeft += "px"
+        sizes.marginTop = 25
+        margin = sizes.marginTop + "px 0 0 " + sizes.marginLeft
+        sizes.supplyMintedFontSize = 20
+    }
+    if (width > height && height < 950 && height > 900 && width >= 1900) {
+        sizes.marginLeft = 0
     }
 
     return (
