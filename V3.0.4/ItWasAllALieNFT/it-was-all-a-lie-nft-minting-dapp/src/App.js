@@ -738,42 +738,86 @@ function App() {
                     }
                 }
             } else if (width <= 500) {
-                sizes.marginTop += 190 + 50*(height-800)/100 - 36*(width-301)/100
-                sizes.marginLeft -= 50 - 22*(width-301)/100
-                sizes.containerWidth += 80 + 44*(width-301)/100
-                sizes.containerHeight += 65 + 40*(width-301)/100
+                if (height > 900 && height < 1000) {
+                    sizes.marginTop += 140 
+                    sizes.marginLeft -= 50 - 22*(width-301)/100
+                    sizes.containerWidth += 80 + 44*(width-301)/100
+                    sizes.containerHeight += 65 + 40*(width-301)/100
+        
+                    sizes.logoLength         += 16 + 4*(height-550)/100 
+                    sizes.logoMarginTop      +=  4
+                    sizes.openseaMarginLeft  +=  5
+        
+                    sizes.twitterMarginRight += 12 + 4*(height-550)/100 - 20*(500 - width)/100
+        
+                    let factor = (height-550)/10
+                    sizes.mintButtonWidth  += 30 + 8*(height-550)/100
+                    sizes.mintButtonHeight += 30
+                    sizes.mintButtonMarginRight += 4*(height-550)/100
+                    
+                    sizes.buttonRowMarginTop += 8*(height-550)/100 - 10*(500 - width)/100
+                    sizes.pmButtonLength   += 16
+                    sizes.pmButtonMarginTop = sizes.buttonRowMarginTop - 10
+        
+                    sizes.toMintDisplayLength += 24 + 8*(height-550)/100
+                    sizes.toMintDisplayMarginLeft += 4*(height-550)/100
+                    sizes.toMintDisplayMarginTop += 15
+                    
+                    sizes.textFontSize += 12
+        
+                    sizes.mintedDisplayWidth += 38 + 10*(height-550)/100 - 10*(500 - width)/100
+                    sizes.mintedDisplayMarginTop += 4*(height-550)/100 - 15*(500 - width)/100
+                    sizes.mintedDisplayMarginRight += 4*(height-550)/100 - 5*(500 - width)/100
     
-                sizes.logoLength         += 16 + 4*(height-550)/100 
-                sizes.logoMarginTop      +=  4
-                sizes.openseaMarginLeft  +=  5
+                    sizes.mintedIndicatorWidth = sizes.mintedDisplayWidth
+                    sizes.mintedIndicatorMarginRight += 5
+                    sizes.mintedIndicatorMarginTop += 2*(height-550)/100 - 15*(500 - width)/100
+        
+                    if (Number(supplyMinted.split("/")[0]) > 999) {
+                        sizes.supplyMintedMarginTop += 5
+                        sizes.supplyMintedFontSize  += 2
+                    } else {
+                        sizes.supplyMintedMarginTop += 4
+                        sizes.supplyMintedFontSize  += 4
+                    }
+                } else {
+                    sizes.marginTop += 190 + 50*(height-800)/100 - 36*(width-301)/100
+                    sizes.marginLeft -= 50 - 22*(width-301)/100
+                    sizes.containerWidth += 80 + 44*(width-301)/100
+                    sizes.containerHeight += 65 + 40*(width-301)/100
+        
+                    sizes.logoLength         += 16 + 4*(height-550)/100 
+                    sizes.logoMarginTop      +=  4
+                    sizes.openseaMarginLeft  +=  5
+        
+                    sizes.twitterMarginRight += 12 + 4*(height-550)/100 - 20*(500 - width)/100
+        
+                    let factor = (height-550)/10
+                    sizes.mintButtonWidth  += 30 + 8*(height-550)/100
+                    sizes.mintButtonHeight += 30
+                    sizes.mintButtonMarginRight += 4*(height-550)/100
+                    
+                    sizes.buttonRowMarginTop += 8*(height-550)/100 - 10*(500 - width)/100
+                    sizes.pmButtonLength   += 8 + 2*(height-550)/100
+                    sizes.pmButtonMarginTop = sizes.buttonRowMarginTop + 1*(height-550)/100
+        
+                    sizes.toMintDisplayLength += 24 + 8*(height-550)/100
+                    sizes.toMintDisplayMarginLeft += 4*(height-550)/100
+                    sizes.toMintDisplayMarginTop += 4*(height-550)/100 - 6*(500 - width)/100
+                    
+                    sizes.textFontSize += 8 + 4*(height-550)/100 - 4*(500 - width)/100
+        
+                    sizes.mintedDisplayWidth += 38 + 10*(height-550)/100 - 10*(500 - width)/100
+                    sizes.mintedDisplayMarginTop += 4*(height-550)/100 - 15*(500 - width)/100
+                    sizes.mintedDisplayMarginRight += 4*(height-550)/100 - 5*(500 - width)/100
     
-                sizes.twitterMarginRight += 12 + 4*(height-550)/100 - 20*(500 - width)/100
-    
-                let factor = (height-550)/10
-                sizes.mintButtonWidth  += 30 + 8*(height-550)/100
-                sizes.mintButtonHeight += 30
-                sizes.mintButtonMarginRight += 4*(height-550)/100
-                
-                sizes.buttonRowMarginTop += 8*(height-550)/100 - 10*(500 - width)/100
-                sizes.pmButtonLength   += 8 + 2*(height-550)/100
-                sizes.pmButtonMarginTop = sizes.buttonRowMarginTop + 1*(height-550)/100
-    
-                sizes.toMintDisplayLength += 24 + 8*(height-550)/100
-                sizes.toMintDisplayMarginLeft += 4*(height-550)/100
-                sizes.toMintDisplayMarginTop += 4*(height-550)/100 - 6*(500 - width)/100
-                
-                sizes.textFontSize += 8 + 4*(height-550)/100 - 4*(500 - width)/100
-    
-                sizes.mintedDisplayWidth += 38 + 10*(height-550)/100 - 10*(500 - width)/100
-                sizes.mintedDisplayMarginTop += 4*(height-550)/100 - 15*(500 - width)/100
-                sizes.mintedDisplayMarginRight += 4*(height-550)/100 - 5*(500 - width)/100
-
-                sizes.mintedIndicatorWidth = sizes.mintedDisplayWidth
-                sizes.mintedIndicatorMarginRight += 5
-                sizes.mintedIndicatorMarginTop += 2*(height-550)/100 - 15*(500 - width)/100
-    
-                sizes.supplyMintedMarginTop += 3
-                sizes.supplyMintedFontSize  += 6 + 4*(height-550)/100 - 5*(500 - width)/100
+                    sizes.mintedIndicatorWidth = sizes.mintedDisplayWidth
+                    sizes.mintedIndicatorMarginRight += 5
+                    sizes.mintedIndicatorMarginTop += 2*(height-550)/100 - 15*(500 - width)/100
+        
+                    sizes.supplyMintedMarginTop += 3
+                    sizes.supplyMintedFontSize  += 6 + 4*(height-550)/100 - 5*(500 - width)/100
+                }
             } else if (width <= 700) {
                 sizes.marginTop += 190 + 50*(height-800)/100 - 18*(width-301)/100
                 sizes.marginLeft -= 50 - 36*(width-301)/100
@@ -992,6 +1036,8 @@ function App() {
     if (width > height && height < 950 && height > 900 && width >= 1900) {
         sizes.marginLeft = 0
     }
+    // handle desktop 1476 x 524 (and other heights < 900)
+    // if (width > height && )
 
     return (
         <div className="videoContainer">
