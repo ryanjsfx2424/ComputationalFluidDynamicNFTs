@@ -35,7 +35,7 @@ const ETHERSCAN_LINK = "https://etherscan.io/address/" + contractAddress
 
 function App() {
     const [mintAmount,       setMintAmount]         = useState(1)
-    const [supplyMinted,     setSupplyMinted]       = useState("1000/8888")
+    const [supplyMinted,     setSupplyMinted]       = useState("?/8888")
     const [isButtonDisabled, setIsButtonDisabled]   = useState(false)
     const [isWalletConnected, setIsWalletConnected] = useState(false)
     const [isCorrectChain,    setIsCorrectChain]    = useState(false)
