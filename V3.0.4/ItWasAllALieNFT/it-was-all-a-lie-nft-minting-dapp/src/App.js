@@ -1023,21 +1023,26 @@ function App() {
     console.log("height, width: ", height, width)
 
     if (width/height > 2 && !(width > height && width > 1550 && height < 950)) {
-        sizes.marginLeft += "43.5vh"
+        sizes.marginLeft = "42vw"
         sizes.marginTop = 25
         margin = sizes.marginTop + "px 0 0 " + sizes.marginLeft
         sizes.supplyMintedFontSize = 12
+        sizes.pmButtonMarginTop = 30
+        sizes.supplyMintedMarginTop -= 2
     } else if (width/height > 2 && (width > height && width > 1550 && height < 950)) {
         sizes.marginLeft += "px"
         sizes.marginTop = 25
         margin = sizes.marginTop + "px 0 0 " + sizes.marginLeft
         sizes.supplyMintedFontSize = 20
     }
-    if (width > height && height < 950 && height > 900 && width >= 1900) {
+    if (width > height && height < 950 && height >= 900 && width >= 1900) {
         sizes.marginLeft = 0
     }
     // handle desktop 1476 x 524 (and other heights < 900)
-    // if (width > height && )
+    if (width > height && height < 900 && height > 400 && width > 1400 && width < 1550) {
+        sizes.marginLeft = 41
+        margin = sizes.marginTop + "px" + " 0 0 " + sizes.marginLeft + "vw"
+    }
 
     return (
         <div className="videoContainer">
