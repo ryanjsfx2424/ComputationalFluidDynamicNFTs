@@ -979,7 +979,7 @@ function App() {
                 }}>
                 
                     <div style={{display:"flex", direction:"row", justifyContent:"space-between"}}>
-                        <a href="https://opensea.io" className="Logo"><div className="Logo OpenseaLogo" style={{ backgroundImage:`url(${openseaLogo})`, width:sizes.logoLength, height:sizes.logoLength, marginTop: sizes.logoMarginTop, marginLeft: sizes.openseaMarginLeft }}></div></a>
+                        <a href="https://opensea.io/collection/it-was-all-a-lie-nft" className="Logo"><div className="Logo OpenseaLogo" style={{ backgroundImage:`url(${openseaLogo})`, width:sizes.logoLength, height:sizes.logoLength, marginTop: sizes.logoMarginTop, marginLeft: sizes.openseaMarginLeft }}></div></a>
                         <a href="https://twitter.com/itwasallalienft" className="Logo"><div className="Logo TwitterLogo" style={{ backgroundImage:`url(${twitterLogo})`, marginTop: sizes.logoMarginTop, width:sizes.logoLength, height:sizes.logoLength, marginRight:sizes.twitterMarginRight}}></div></a>
                     </div>
                     <div style={{display:"flex", direction:"row"}}>
