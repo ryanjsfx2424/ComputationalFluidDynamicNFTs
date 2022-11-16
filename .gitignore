@@ -37,3 +37,6 @@ yarn-error.log*
 .vercel
 
 __pycache__
+
+!desktop.mp4
+!mobile.mp4
