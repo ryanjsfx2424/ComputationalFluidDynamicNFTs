@@ -35,7 +35,7 @@ const ETHERSCAN_LINK = "https://etherscan.io/address/" + contractAddress
 
 function App() {
     const [mintAmount,       setMintAmount]         = useState(1)
-    const [supplyMinted,     setSupplyMinted]       = useState("?/8888")
+    const [supplyMinted,     setSupplyMinted]       = useState("1000/8888")
     const [isButtonDisabled, setIsButtonDisabled]   = useState(false)
     const [isWalletConnected, setIsWalletConnected] = useState(false)
     const [isCorrectChain,    setIsCorrectChain]    = useState(false)
@@ -675,9 +675,13 @@ function App() {
                     sizes.mintedIndicatorWidth = sizes.mintedDisplayWidth
                     sizes.mintedIndicatorMarginRight += 5
         
-                    sizes.supplyMintedMarginTop += 3
-                    sizes.supplyMintedFontSize  += 6 + factor/3
-
+                    if (Number((supplyMinted).split("/")[0]) > 999) {
+                        sizes.supplyMintedFontSize  += 3 + factor/12
+                        sizes.supplyMintedMarginTop += 5
+                    } else{
+                        sizes.supplyMintedFontSize  += 6 + factor/3
+                        sizes.supplyMintedMarginTop += 3
+                    }
                 }
             } else {
                 if (height >= 550) {
@@ -933,13 +937,15 @@ function App() {
         // }
         sizes[key] -= valueToSubLocal
     }
-    sizes.marginTop -= 60
-    sizes.pmButtonMarginTop += 45
-    sizes.toMintDisplayMarginLeft += 20
-    sizes.mintButtonMarginRight += 20
-    sizes.supplyMintedFontSize = 20
-    sizes.supplyMintedMarginTop += 5
-    sizes.supplyMintedMarginLeft -= 7
+    if (width > height) {
+        sizes.marginTop -= 60
+        sizes.pmButtonMarginTop += 45
+        sizes.toMintDisplayMarginLeft += 20
+        sizes.mintButtonMarginRight += 20
+        sizes.supplyMintedFontSize = 20
+        sizes.supplyMintedMarginTop += 5
+        sizes.supplyMintedMarginLeft -= 7   
+    }
 
     if (height > 900) {
         sizes.marginTop += 50
