@@ -124,12 +124,22 @@ class AbeBot(object):
         client = MongoClient(connection_string)
         self.mongoDB = client.get_database("abe")
 
-    def get_guild_data(self):
-        cursor = self.mongoDB["abe-guilds-data"].find({})
-        abe_guilds_data_db = []
-        for document in cursor:
-            abe_guilds_data_db.append(document)
-        return abe_guilds_data_db
+    async def get_guild_data(self):
+        for retry in range(3):
+            try:
+                cursor = self.mongoDB["abe-guilds-data"].find({})
+                abe_guilds_data_db = []
+                for document in cursor:
+                    abe_guilds_data_db.append(document)
+                return abe_guilds_data_db
+            except Exception as err:
+                print("136 err: ", err)
+                print("136 err.args[:]: ", err.args[:])
+                print("retry: ", retry)
+                print("going to sleep a minute")
+                await asyncio.sleep(60)
+            # end try/except
+        return []
 
     def update_in(self, guild, abe_guild):
         if "in" not in abe_guild or abe_guild["in"] == False:
@@ -206,7 +216,9 @@ class AbeBot(object):
     # def get_abe_guild
 
     async def update_guilds_data(self, guilds):
-        abe_guilds_data_db = self.get_guild_data()
+        abe_guilds_data_db = await self.get_guild_data()
+        if abe_guilds_data_db == []:
+            return
 
         for guild in guilds:
             print("guild.name; ", guild.name)
@@ -229,7 +241,10 @@ class AbeBot(object):
 
     async def send_payload(self, payload, rating, guilds):
         print("rating: ", rating)
-        abe_guilds_data_db = self.get_guild_data()
+        abe_guilds_data_db = await self.get_guild_data()
+        if abe_guilds_data_db == []:
+            print("Trace: wasn't able to send payload! now: ", datetime.datetime.now())
+            return
 
         for guild in guilds:
             if self.DEV_MODE:
