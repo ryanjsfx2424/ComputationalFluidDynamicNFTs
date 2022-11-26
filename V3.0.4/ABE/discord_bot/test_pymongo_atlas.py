@@ -4,7 +4,7 @@ from pymongo import MongoClient
 
 
 user = urllib.parse.quote("pymongo-user")
-word = os.environ["atlP1"] + os.environ["atlP2"] + os.environ["atlP3"]
+word = os.environ["atlP1"] + os.environ["atlP2"] + "5!#!%"
 word = urllib.parse.quote(os.environ["atlP"])
 
 connection_string = "mongodb+srv://" + user + ":" + word \

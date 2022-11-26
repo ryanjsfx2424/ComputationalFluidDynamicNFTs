@@ -45,7 +45,11 @@ class AbeBot(object):
         ## this is in seconds
         self.trial_map = {
                             "952352992626114622": 1e50, # ABE
-                            "922678240798187550": 5 # sketches by gabo
+                            "922678240798187550": 5, # sketches by gabo
+                            "999414546496229498": 1e50, # Test
+                            "984574397870399528": 30*24*3600, # momentum
+                            "967786268077461604": 18*24*3600, # beyond-alpha
+                            "978987192573657089": 14*24*3600
                         }
         self.premium_ratings = ["aptos", "artist", "daos", "nft-tools", "premint", "vc-firms", "other-chains"]
 
@@ -90,17 +94,39 @@ class AbeBot(object):
         if "description" in payload and payload["description"] != "":
             description = payload["description"]
             if len(description) > 1024:
+                print("len description: ", len(description))
                 wcnt = 0
                 while len(description) > 0:
                     wcnt += 1
                     chunk = description[:1024]
-                    if "\n" in chunk:
+                    if "\n" in chunk and len(description) > 1024:
                         chunk2 = "\n".join(chunk.split("\n")[:-1])
-                    description = description[len(chunk2):]
+                        description = description[len(chunk2):]
+                        #print("chunk2: ", [chunk2])
+                        #print("description: ", [description])
+                        #print("len description: ", len(description))
+                    else:
+                        chunk2 = chunk
+                        description = description[len(chunk):]
+                        #print("chunk: ", chunk)
+                        #print("len description: ", len(description))
                     if "\n" not in chunk:
-                        chunk2 += "-"
+                        if len(description) > 0:
+                            chunk2 += "-"
+                    #input(">>")
+                    
                     chunk = chunk2
-                    embed.add_field(name="**Description (" + str(wcnt) + ")**", value=chunk, inline=False)
+
+                    if "<@&" in chunk:
+                        pieces = chunk.split("<@&")
+                        new_chunk = pieces[0]
+                        for piece in pieces[1:]:
+                            if ">" in piece:
+                                piece = piece.split(">")[1]
+                                new_chunk += piece
+                        chunk = new_chunk
+                    if len(chunk) != 0:
+                        embed.add_field(name="**Description (" + str(wcnt) + ")**", value=chunk, inline=False)
             else:
                 embed.add_field(name="**Description**",           value=payload["description"],  inline=False)
             # end if/elif
@@ -299,7 +325,9 @@ class AbeBot(object):
             print("channel_name: ", channel_name)
 
             if rating != "premint":
+                print("going to build embed")
                 embed = await self.build_embed(payload)
+                print("done building embed")
 
             sent = False
             for channel in guild.channels:
@@ -436,8 +464,10 @@ class AbeBot(object):
                     premint_per_hour = True
                     
                     #'''
-                    result = await self.query_gcp(premint=True)
-                    parsed = True
+                    parsed = False
+                    if not self.DEV_MODE:
+                        result = await self.query_gcp(premint=True)
+                        parsed = True
                     try:
                         print("result.text: ", result.text)
 
@@ -497,7 +527,7 @@ class AbeBot(object):
                 #'''
 
                 else:
-                    fname = "22-11-10_18-30-59.txt"
+                    fname = "22-11-18_01-18-21.txt"
                     with open("data_big/" + fname, "r") as fid:
                         result = json.load(fid)
                     # end with open
