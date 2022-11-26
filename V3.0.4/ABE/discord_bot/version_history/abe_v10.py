@@ -4,9 +4,6 @@
 ## invite link: https://discord.com/api/oauth2/authorize?client_id=1014177171008409660&permissions=183296&scope=bot
 ## ^That's for scopes(1) = bot; permissions (5) = 1) read messages/view channels, 2) send messages, 3) embed links, 4) attach files, 5) mention everyone
 
-## with messages.read scopes and read message history perms (in addition to above):
-
-
 ## to do
 # 1) switch to HTTPClient (I guess would need to switch to interactions for this...will defer)
 # 2) have bot say 'hi' in all channels it's subscribed to 
@@ -30,13 +27,12 @@ from pymongo import MongoClient
 
 class AbeBot(object):
     def __init__(self):
-        self.DEV_MODE = False
+        self.DEV_MODE = True
 
         self.FOOTER = "ABE A.I. powered by EILabs.AI Visit our website for more. Not financial advice."
         self.ICON_URL = "https://cdn.discordapp.com/icons/952352992626114622/39bd07c3ccd0d708f20e47b3dc7cb140.webp?size=160"
 
         self.LOG_CID = 932056137518444594 # TTB bot-commands
-        self.TARZAN_HIHLIGHTS_CID = 1032431267490299944 # TTB bot-commands
 
         self.embed_rgb = [21, 77, 255]# main color EI Labs brandKit v2
 
@@ -91,8 +87,6 @@ class AbeBot(object):
         footer_text = self.FOOTER
         footer_icon = self.ICON_URL
         if "embedded_img_url" in payload:
-            footer_icon = payload["embedded_img_url"]
-        elif "embeded_img_url" in payload:
             footer_icon = payload["embedded_img_url"]
 
         embed.set_footer(text = footer_text, icon_url=footer_icon)
@@ -280,12 +274,12 @@ class AbeBot(object):
 
         for guild in guilds:
             if self.DEV_MODE:
-                if guild.name != "ToTheMoonsNFT":#"Test":
+                if guild.name != "Test":
                     continue
             print("guild.name in send_payload: ", guild.name)
 
             abe_guild = await self.get_abe_guild(abe_guilds_data_db, guild)
-            print("got abe_guild (send_payload)")
+            print("got abe_guild (send_payload")
             #print("\n\nabe_guild: ", abe_guild)
             
             if abe_guild == None:
@@ -403,14 +397,14 @@ class AbeBot(object):
                         try:
                             await channel.send("^ @everyone")
                         except Exception as err:
-                            print("406 err: ", err)
-                            print("407 err.args: ", err.args[:])
+                            print("320 err: ", err)
+                            print("321 err.args: ", err.args[:])
                     else:
                         try:
                             await channel.send("^ <@&" + role_id + ">")
                         except Exception as err:
-                            print("412 err: ", err)
-                            print("413 err.args: ", err.args[:])
+                            print("320 err: ", err)
+                            print("321 err.args: ", err.args[:])
                     # end if/else
 
                     sent = True
@@ -424,7 +418,8 @@ class AbeBot(object):
     # end send_payload
 
     def discord_bot(self):
-        intents = discord.Intents.all()
+        intents = discord.Intents.default()
+        intents.guilds = True
         client = discord.Client(intents=intents)
         print("client.user: ", client.user)
 
@@ -433,25 +428,7 @@ class AbeBot(object):
             print("guild joined!")
             await self.update_guilds_data([guild])
 
-        @client.event
-        async def on_message(msg):
-            if msg.channel.id != self.TARZAN_HIHLIGHTS_CID:
-                return
-            if msg.author.id == client.user.id:
-                return
-
-            payload = {}
-            payload["handle"] = "AlwaysBeEarlyAI"
-            payload["profile_image_url"] = "https://pbs.twimg.com/profile_images/1556680298133200898/ZAJf2vNq_400x400.jpg"
-            payload["description"] = msg.content
-            payload["influential_followers"] = 8
-            payload["rating"] = "Highlight"
-            payload["followers"] = 693
-            payload["created_date"] = "2022-06-09"
-            payload["found_date"] = "2022-11-24"
-
-            await self.send_payload(payload, "highlight", client.guilds)
-        # end on_message
+        
 
         @client.event
         async def on_ready():
@@ -459,10 +436,6 @@ class AbeBot(object):
             wcnt = 0
             last = time.time() - 10*60
             premint_per_hour = False
-
-            if self.DEV_MODE:
-                self.test_channel = client.get_channel(self.TARZAN_HIHLIGHTS_CID)
-                return
 
             while True:
                 wcnt += 1

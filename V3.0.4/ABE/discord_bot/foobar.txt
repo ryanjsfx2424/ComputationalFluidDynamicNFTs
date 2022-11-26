@@ -1,0 +1,180 @@
+collection:  Collection(Database(MongoClient(host=['ac-t8jjxob-shard-00-02.pqg6c02.mongodb.net:27017', 'ac-t8jjxob-shard-00-00.pqg6c02.mongodb.net:27017', 'ac-t8jjxob-shard-00-01.pqg6c02.mongodb.net:27017'], document_class=dict, tz_aware=False, connect=True, retrywrites=True, w='majority', authsource='admin', replicaset='atlas-iu0plp-shard-0', tls=True), 'abe'), 'abe-guilds-data')
+cursor:  <pymongo.cursor.Cursor object at 0x102e09eb0>
+{'_id': ObjectId('635eb052261f89414e34dfe8'), 'total_cost': 0.16, 'cost_per_month': '0.16', 'discount_fraction': 1, 'num_months': 1, 'type': 'eth', 'name': 'standard', 'guild_id': '931482273440751638', 'guild_name': 'tothemoonsnft', 'date': 'Sun Oct 30 2022 18:11:44 GMT+0100 (Central European Standard Time)', 'subscribed': True, 'in': True, 'channels': ['alpha', 'alpha-plus', 'aptos', 'artists', 'daily-recaps', 'daos', 'highlights', 'nft-tools', 'premint', 'solana', '🤖bot-commands'], 'roles': ['@everyone', 'Mudae', 'ABE A.I.', 'WhIsBe Vandalz Tweeteroo', 'MADmetaverseTweeteroo', 'HabitsNest DailyChallenge', 'JB Test Role', 'Pirate Nation Tweeteroo', 'FractalzBot', 'ABE AI', 'new role', 'Origo Bot (WILL NEVER DM YOU)', 'SeaShills', 'GAC Tweeteroo', 'Roo Tech Alerts', 'NFT Round Table Alpha Tool', 'Tweeteroo2', 'LoungeKey Bot', 'Roorarity', 'Tweeteroo by TheLunaLabs', 'onchain-giveaways', 'Dank Memer', 'GarticBOT', 'PokéMeow', 'Server Booster', 'Beldum-Bot', 'Welcomed', 'Member', 'Moonlet Mod', 'Bot', 'carl-bot', 'Arcane', 'Invite Tracker', 'Moon Baby', 'Moon Toddler', 'Moon Preteen', 'Moon Teen', 'Moon Adult', 'cfd-nfts-v3.0.0', 'cfd-nfts-v2.0.0', 'cfd-nfts-v1.0.0', 'Moon, Protoplanetary', 'Collab.Land', 'Moon Elder', 'Moon, Primordial', 'Meme Mooner Moon', 'Moon Artistic Mooned', 'Authenticated', 'Dauthy', 'Founders'], 'subscribed_role_feed_map': {'alpha-plus': 'cfd-nfts-v1.0.0', 'premint': 'cfd-nfts-v3.0.0', 'aptos': 'cfd-nfts-v1.0.0', 'nft-tools': 'cfd-nfts-v2.0.0', 'daos': 'cfd-nfts-v2.0.0', 'solana': 'cfd-nfts-v2.0.0', 'alpha': 'cfd-nfts-v3.0.0', 'daily': 'cfd-nfts-v3.0.0', 'other-chains': 'JB Test Role'}, 'subscribed_channel_feed_map': {'alpha-plus': 'alpha-plus', 'alpha': 'alpha', 'solana': 'solana', 'daos': 'daos', 'nft-tools': 'nft-tools', 'aptos': 'aptos', 'premint': 'premint', 'daily': 'daily-recaps', 'highlight': 'highlights', 'artist': 'artists', 'other-chains': 'aptos'}}
+document[srfm]:  {'alpha-plus': 'cfd-nfts-v1.0.0', 'premint': 'cfd-nfts-v3.0.0', 'aptos': 'cfd-nfts-v1.0.0', 'nft-tools': 'cfd-nfts-v2.0.0', 'daos': 'cfd-nfts-v2.0.0', 'solana': 'cfd-nfts-v2.0.0', 'alpha': 'cfd-nfts-v3.0.0', 'daily': 'cfd-nfts-v3.0.0', 'other-chains': 'JB Test Role'}
+
+
+nope channels
+
+
+
+{'_id': ObjectId('635ece56d6b4d465cd6f1c3b'), 'total_cost': 0.16, 'cost_per_month': '0.16', 'discount_fraction': 1, 'num_months': 1, 'type': 'eth', 'name': 'standard', 'guild_id': '999414546496229498', 'guild_name': 'test', 'date': 'Sun Oct 30 2022 20:19:48 GMT+0100 (Central European Standard Time)', 'subscribed': True, 'in': True, 'channels': ['General', 'foobar'], 'roles': ['@everyone', 'ABE A.I.', 'tweetlist by ezu'], 'subscribed_channel_feed_map': {'alpha-plus': 'Add Channel', 'daily': 'Add Channel', 'alpha': 'foobar', 'might-be-something': 'foobar', 'solana': 'foobar', 'daos': 'foobar', 'nft-tools': 'foobar', 'other-chains': 'foobar', 'premint': 'foobar', 'highlight': 'foobar', 'artist': 'foobar', 'vc-firms': 'foobar'}, 'subscribed_role_feed_map': {'alpha-plus': 'Add Role'}}
+document[srfm]:  {'alpha-plus': 'Add Role'}
+
+
+nope channels
+
+
+
+{'_id': ObjectId('63652a7f291f875187c1ebc0'), 'total_cost': 0, 'cost_per_month': '0.18', 'discount_fraction': 0, 'num_months': 0, 'type': 'eth', 'name': 'premium', 'guild_id': '922678240798187550', 'guild_name': 'sketches by gabo', 'date': 'Fri Nov 04 2022 16:06:39 GMT+0100 (Central European Standard Time)', 'subscribed': True, 'in': True, 'channels': ['Community Hangout', 'Lounge', 'Stream Room', 'alpha', 'alpha-plus', 'announcements', 'aptos', 'artists', 'bot-commands', 'daily', 'daos', 'events', 'general', 'highlights', 'ideas-and-feedback', 'premint', 'solana', 'tools', 'welcome-and-rules'], 'roles': ['@everyone', 'ABE A.I.'], 'subscribed_channel_feed_map': {'daily': ' ', 'alpha-plus': ' ', 'alpha': ' ', 'solana': 'solana', 'daos': 'daos', 'nft-tools': 'tools', 'aptos': 'aptos', 'premint': 'premint', 'highlight': 'highlights', 'artist': 'artists'}, 'subscribed_role_feed_map': {'daily': '@everyone', 'alpha-plus': '@everyone', 'alpha': '@everyone', 'solana': '@everyone', 'daos': '@everyone', 'nft-tools': '@everyone', 'aptos': '@everyone', 'premint': '@everyone', 'highlight': '@everyone', 'artist': '@everyone'}}
+document[srfm]:  {'daily': '@everyone', 'alpha-plus': '@everyone', 'alpha': '@everyone', 'solana': '@everyone', 'daos': '@everyone', 'nft-tools': '@everyone', 'aptos': '@everyone', 'premint': '@everyone', 'highlight': '@everyone', 'artist': '@everyone'}
+
+
+nope channels
+
+
+
+{'_id': ObjectId('63652a8d291f875187c1ebc1'), 'total_cost': 0, 'cost_per_month': '0.18', 'discount_fraction': 0, 'num_months': 0, 'type': 'eth', 'name': 'premium', 'guild_id': '922678240798187550', 'guild_name': 'sketches by gabo', 'date': 'Fri Nov 04 2022 16:06:53 GMT+0100 (Central European Standard Time)', 'subscribed': True, 'subscribed_channel_feed_map': {'daily': ' ', 'alpha-plus': ' ', 'alpha': ' ', 'solana': 'solana', 'daos': 'daos', 'nft-tools': 'tools', 'aptos': 'aptos', 'premint': 'premint', 'highlight': 'highlights', 'artist': 'artists'}, 'subscribed_role_feed_map': {'daily': '@everyone', 'alpha-plus': '@everyone', 'alpha': '@everyone', 'solana': '@everyone', 'daos': '@everyone', 'nft-tools': '@everyone', 'aptos': '@everyone', 'premint': '@everyone', 'highlight': '@everyone', 'artist': '@everyone'}}
+document[srfm]:  {'daily': '@everyone', 'alpha-plus': '@everyone', 'alpha': '@everyone', 'solana': '@everyone', 'daos': '@everyone', 'nft-tools': '@everyone', 'aptos': '@everyone', 'premint': '@everyone', 'highlight': '@everyone', 'artist': '@everyone'}
+
+
+nope channels
+
+
+
+{'_id': ObjectId('63652aad291f875187c1ebc2'), 'total_cost': 0, 'cost_per_month': '0.18', 'discount_fraction': 0, 'num_months': 0, 'type': 'eth', 'name': 'premium', 'guild_id': '922678240798187550', 'guild_name': 'sketches by gabo', 'date': 'Fri Nov 04 2022 16:07:25 GMT+0100 (Central European Standard Time)', 'subscribed': True, 'subscribed_channel_feed_map': {'daily': ' ', 'alpha-plus': ' ', 'alpha': ' ', 'solana': 'solana', 'daos': 'daos', 'nft-tools': 'tools', 'aptos': 'aptos', 'premint': 'premint', 'highlight': 'highlights', 'artist': 'artists'}, 'subscribed_role_feed_map': {'daily': '@everyone', 'alpha-plus': '@everyone', 'alpha': '@everyone', 'solana': '@everyone', 'daos': '@everyone', 'nft-tools': '@everyone', 'aptos': '@everyone', 'premint': '@everyone', 'highlight': '@everyone', 'artist': '@everyone'}}
+document[srfm]:  {'daily': '@everyone', 'alpha-plus': '@everyone', 'alpha': '@everyone', 'solana': '@everyone', 'daos': '@everyone', 'nft-tools': '@everyone', 'aptos': '@everyone', 'premint': '@everyone', 'highlight': '@everyone', 'artist': '@everyone'}
+
+
+nope channels
+
+
+
+{'_id': ObjectId('63652ada291f875187c1ebc3'), 'total_cost': 0, 'cost_per_month': '0.18', 'discount_fraction': 0, 'num_months': 0, 'type': 'eth', 'name': 'premium', 'guild_id': '922678240798187550', 'guild_name': 'sketches by gabo', 'date': 'Fri Nov 04 2022 16:08:10 GMT+0100 (Central European Standard Time)', 'subscribed': True, 'subscribed_channel_feed_map': {'daily': ' ', 'alpha-plus': ' ', 'alpha': ' ', 'solana': 'solana', 'daos': 'daos', 'nft-tools': 'tools', 'aptos': 'aptos', 'premint': 'premint', 'highlight': 'highlights', 'artist': 'artists'}, 'subscribed_role_feed_map': {'daily': '@everyone', 'alpha-plus': '@everyone', 'alpha': '@everyone', 'solana': '@everyone', 'daos': '@everyone', 'nft-tools': '@everyone', 'aptos': '@everyone', 'premint': '@everyone', 'highlight': '@everyone', 'artist': '@everyone'}}
+document[srfm]:  {'daily': '@everyone', 'alpha-plus': '@everyone', 'alpha': '@everyone', 'solana': '@everyone', 'daos': '@everyone', 'nft-tools': '@everyone', 'aptos': '@everyone', 'premint': '@everyone', 'highlight': '@everyone', 'artist': '@everyone'}
+
+
+nope channels
+
+
+
+{'_id': ObjectId('63653803a385ab52e9edfe8d'), 'total_cost': 0, 'cost_per_month': '0.19', 'discount_fraction': 0, 'num_months': 0, 'type': 'eth', 'name': 'premium', 'guild_id': '789032594456576001', 'guild_name': 'interactions.py', 'date': 'Fri Nov 04 2022 17:04:19 GMT+0100 (Central European Standard Time)', 'subscribed': True}
+
+
+nope roles
+
+
+nope channels
+
+
+
+{'_id': ObjectId('636683e942fb3724b0df86b0'), 'total_cost': 0, 'cost_per_month': '0.18', 'discount_fraction': 0, 'num_months': 0, 'type': 'eth', 'name': 'premium', 'guild_id': '952352992626114622', 'guild_name': "abe a.i.'s server", 'date': 'Sat Nov 05 2022 16:40:23 GMT+0100 (Central European Standard Time)', 'subscribed': True, 'in': True, 'channels': ['abe-team-chat', 'alpha', 'alpha-plus', 'artists', 'bot-commands', 'chat-abe-awakened', 'chat-abe-matty', 'daily-recaps', 'daos', 'highlights', 'logs', 'might-be-something', 'nft-tools', 'other-chains', 'premint', 'solana', 'test-text', 'vc-firms', '☕-abe-basic-lite', '⚒abe-nft-tools', '🌐abe-premint-links', '🍕-general-chat', '💡-highlight', '💵vc-firms', '🕹abe-aptos', '🕹abe-other-chains', '🤝abe-daos'], 'roles': ['@everyone', 'ABE A.I.', 'TweetShift', 'hooman', 'ABE Demo View', 'Auditor', 'ABE Partners', 'ABE VIP Partners', 'ABE Team', 'ABE Marketing Manager', 'Strategic Partnership Manager', 'Founder', 'Bots', 'Ticket Tool', 'Sledgehammer', 'ABE Admin', 'ABE Discord Lead Dev', 'ABE A.I.'], 'subscribed_channel_feed_map': {'daily': 'daily-recaps', 'alpha-plus': 'alpha-plus', 'alpha': 'alpha', 'solana': 'solana', 'daos': 'daos', 'nft-tools': 'nft-tools', 'highlight': 'highlights', 'artist': 'artists', 'aptos': 'aptos', 'premint': 'premint', 'might-be-something': 'might-be-something', 'vc-firms': 'vc-firms', 'other-chains': 'other-chains'}, 'subscribed_role_feed_map': {'daily': 'ABE Team', 'alpha-plus': 'ABE Team', 'alpha': 'ABE Team', 'solana': 'ABE Team', 'daos': 'ABE Team', 'nft-tools': 'ABE Team', 'highlight': 'ABE Team', 'artist': 'ABE Team', 'aptos': 'ABE Team', 'premint': 'ABE Team', 'might-be-something': 'ABE Team', 'vc-firms': 'ABE Team'}}
+document[srfm]:  {'daily': 'ABE Team', 'alpha-plus': 'ABE Team', 'alpha': 'ABE Team', 'solana': 'ABE Team', 'daos': 'ABE Team', 'nft-tools': 'ABE Team', 'highlight': 'ABE Team', 'artist': 'ABE Team', 'aptos': 'ABE Team', 'premint': 'ABE Team', 'might-be-something': 'ABE Team', 'vc-firms': 'ABE Team'}
+
+
+nope channels
+
+
+
+{'_id': ObjectId('636947e34c635447dd924948'), 'total_cost': 0.19, 'cost_per_month': '0.19', 'discount_fraction': 1, 'num_months': 1, 'type': 'eth', 'name': 'premium', 'guild_id': '993961827799158925', 'guild_name': 'roo tech', 'date': 'Mon Nov 07 2022 19:01:07 GMT+0100 (Central European Standard Time)', 'subscribed': True}
+
+
+nope roles
+
+
+nope channels
+
+
+
+{'_id': ObjectId('63699b33cd060bd15ba64552'), 'total_cost': 0, 'cost_per_month': '0.19', 'discount_fraction': 0, 'num_months': 0, 'type': 'eth', 'name': 'premium', 'guild_id': '968895532133134367', 'guild_name': 'whitelistping', 'date': 'Tue Nov 08 2022 00:56:33 GMT+0100 (Central European Standard Time)', 'subscribed': True}
+
+
+nope roles
+
+
+nope channels
+
+
+
+{'_id': ObjectId('636afdb6cc351d87c283bcf1'), 'total_cost': 0, 'cost_per_month': '0.23', 'discount_fraction': 0, 'num_months': 0, 'type': 'eth', 'name': 'premium', 'guild_id': '980597822623715330', 'guild_name': 'knightscastle.wtf', 'date': 'Wed Nov 09 2022 02:09:08 GMT+0100 (Central European Standard Time)', 'subscribed': True}
+
+
+nope roles
+
+
+nope channels
+
+
+
+{'_id': ObjectId('636b0b1a8d311c0f835f8d69'), 'total_cost': 0, 'cost_per_month': '0.23', 'discount_fraction': 0, 'num_months': 0, 'type': 'eth', 'name': 'premium', 'guild_id': '903135744300830761', 'guild_name': 'og labz', 'date': 'Tue Nov 08 2022 21:06:16 GMT-0500 (Eastern Standard Time)', 'subscribed': True, 'in': True, 'channels': ['Total Members: 323', 'ticket-0052', 'ticket-0053', '♿ BLUE: 152', '⚠︱server-logs', '⚠︱server-updates', '⛽︱og-dao', '✔︱check-in', '❓︱faqs', '🆘︱emergency-alerts', '🌎︱world-chat', '🍦︱the-cream', '🍼︱n00bs', '🎁︱giveaways', '🎫︱open-ticket', '🏦︱dao-vault', '👑 OG: 0', '👑︱dao-chat', '👹 RED: 159', '💀︱shill-zone', '💎︱alpha-chat', '💎︱core-team', '💎︱dao-alpha', '💯︱og-follow-og', '💯︱street-code', '📢︱announcements', '📣︱minor-news', '📰︱nft-news-feed', '📰︱web3-news-feed', '🔒︱claim-your-side', '🔔︱role-call', '🔗︱official-links', '🗞︱dao-news', '🗣︱suggestions', '🗳︱giveaway-votes', '🗺︱roadmap', '🚀︱exclusive-collabs', '🚂︱gang-raids', '🚧︱support-help', '🚨︱admin vc', '🚨︱admin-chat', '🤝︱project-collabs', '🧠︱alpha-calls'], 'roles': ['@everyone', 'ABE A.I.', '☑️ OG LABZ Hitlist', '☑️ OG LABZ News Bot', 'Spotix', 'ticker_red', 'ticker_green', 'Muted', 'Ticket Tool', 'Invite Tracker', '☑️ OG LABZ General Bot', 'CryptoDisplay', '💎 ALPHA', '🍼 N00B', '👀 LOOK OUT', '🏃 RUNNER', '💰 HUSTLA', '🔌 THA PLUG', '🎖 KINGPIN', '✅ VERIFIED', '🦄 BOOSTER', '♿ BLUE', '👹 RED', '👑 OG', '💀 ENFORCER', '💻 DEV-TEAM', '🤖NPC', '💎 SHOTCALLER']}
+
+
+nope roles
+
+
+nope channels
+
+
+
+{'_id': ObjectId('636b0b4b8d311c0f835f8d6a'), 'total_cost': 0, 'cost_per_month': 300, 'discount_fraction': 0, 'num_months': 0, 'type': 'usdc', 'name': 'premium', 'guild_id': '903135744300830761', 'guild_name': 'og labz', 'date': 'Tue Nov 08 2022 21:07:07 GMT-0500 (Eastern Standard Time)', 'subscribed': True}
+
+
+nope roles
+
+
+nope channels
+
+
+
+{'_id': ObjectId('636d09ff2e72840a56d5a32f'), 'total_cost': 0, 'cost_per_month': '0.24', 'discount_fraction': 0, 'num_months': 0, 'type': 'eth', 'name': 'premium', 'guild_id': '967786268077461604', 'guild_name': 'beyond alpha', 'date': 'Thu Nov 10 2022 15:26:05 GMT+0100 (heure normale d’Europe centrale)', 'subscribed': True, 'in': True, 'channels': ['abe-alpha', 'abe-alpha-plus', 'daily-leaderboard', 'highlight', 'htmker-winners', 'might-be-something', 'premints', 'test', 'vc-firms', 'verified-contract-deployer', '⌛︱drops-now', '⚪︱announcements', '⚪︱new-members', '⚪︱official-links', '⚪︱reaction-roles', '⚪︱rules', '⚪︱soft-announcements', '⚪︱twitter-feed', '⚫︱alpha-chat', '⚫︱ba-follow-ba', '⚫︱beyond-success', '⚫︱crypto-ta', '⚫︱general', '⚫︱otc', '🍊︱owange', '🎁︱giveaways', '🎮︱homa-games', '🎯︱ Marked VC', '🎯︱marked-alpha', '🎯︱marked-elite', '🎯︱marked-hangout', '🎯︱marked-important', '🎯︱vc-money', '🎰︱shitcoins', '🏃︱net-runners', '🏆︱wl-winners', '👀︱members-alpha', '👪︱team call', '👪︱team-chat', '👻︱project-curse', '💎︱potential-collabs', '💰︱wl-opportunities', '📅︱mint-calendar', '📋︱premints', '📌︱early-projects', '📚︱documents', '📩︱wl-requests', '📰︱orlando-news', '🔎︱alpha-insights', '🔎︱upcoming-drops', '🔨︱digiminers', '🔭︱wallet-tracker', '🔵︱soul-aether', '🚗︱mitsubishi-winners', '\U0001f977︱hitman-headquarters', '🧠︱alpha vc', '🧠︱alpha-brains', '🧹︱gem-sweeps', '\U0001faa6︱beyond-inactive-logs'], 'roles': ['@everyone', 'HTMKER', 'Mitsubishi', 'DigiMiners', 'Project Curse', 'Homa', 'Owange', 'Dyno', 'Net Runners', 'ABE A.I.', 'Soul Aether', 'redacted-bot', 'Azul WL', 'Shitcoin', 'Early projects', 'Member alpha', 'Time sensitive', 'Premints', 'new role', 'Whitelist opportunities', 'nft_utility_bot', 'Crypto Role', 'Reaction Roles', 'Mr Rolebot', 'Daily Mints', '3gm Bot', 'Veve', 'Scam Alert', 'nouveau rôle', 'Raid Role', 'Waiting Room', 'Daily Mints', 'Verified', 'TweetShift', 'Dyno', 'Alphabot', 'Beemo', 'Pancake', 'Gas Tracker', 'GiveawayBot', 'Server Booster', 'Giveaway', 'Degen ping', 'Alpha ping', 'Member', 'First Beyonds\U0001f977', 'Marked', 'BOT', 'Crypto', 'Sudo Sensei', 'Alpha Force', 'Honorary member', 'DEV', 'Hitman', 'MANAGER', 'Hitman Boss', 'Right Hand', 'FOUNDER'], 'subscribed_channel_feed_map': {'highlight': 'highlight', 'premint': 'premints', 'vc-firms': 'vc-firms', 'daily': 'daily-leaderboard', 'alpha-plus': 'abe-alpha-plus', 'alpha': 'abe-alpha', 'might-be-something': 'might-be-something'}, 'subscribed_role_feed_map': {'premint': 'Add Role'}}
+document[srfm]:  {'premint': 'Add Role'}
+
+
+nope channels
+
+
+
+{'_id': ObjectId('636d0a21bf6092ec649c8096'), 'total_cost': 0, 'cost_per_month': '0.23', 'discount_fraction': 0, 'num_months': 0, 'type': 'eth', 'name': 'premium', 'guild_id': '967786268077461604', 'guild_name': 'beyond alpha', 'date': 'Thu Nov 10 2022 15:26:38 GMT+0100 (heure normale d’Europe centrale)', 'subscribed': True, 'subscribed_channel_feed_map': {'highlight': 'highlight', 'premint': 'premints', 'vc-firms': 'vc-firms', 'daily': 'daily-leaderboard', 'alpha-plus': 'abe-alpha-plus', 'alpha': 'abe-alpha', 'might-be-something': 'might-be-something'}, 'subscribed_role_feed_map': {'premint': 'Add Role'}}
+document[srfm]:  {'premint': 'Add Role'}
+
+
+nope channels
+
+
+
+{'_id': ObjectId('636d68f037ff0d4a44570cf1'), 'total_cost': 0, 'cost_per_month': '0.23', 'discount_fraction': 0, 'num_months': 0, 'type': 'eth', 'name': 'premium', 'guild_id': '1002246079493980221', 'guild_name': 'bountiful', 'date': 'Thu Nov 10 2022 22:11:12 GMT+0100 (Central European Standard Time)', 'subscribed': True}
+
+
+nope roles
+
+
+nope channels
+
+
+
+{'_id': ObjectId('636d6932360ba3692bc8e2fc'), 'total_cost': 0, 'cost_per_month': '0.23', 'discount_fraction': 0, 'num_months': 0, 'type': 'eth', 'name': 'premium', 'guild_id': '1033342324467568680', 'guild_name': 'wlc test server', 'date': 'Thu Nov 10 2022 22:12:16 GMT+0100 (Central European Standard Time)', 'subscribed': True}
+
+
+nope roles
+
+
+nope channels
+
+
+
+{'_id': ObjectId('636d6a3a8e5600a20292f902'), 'total_cost': 0, 'cost_per_month': '0.23', 'discount_fraction': 0, 'num_months': 0, 'type': 'eth', 'name': 'premium', 'guild_id': '984574397870399528', 'guild_name': 'momentum', 'date': 'Thu Nov 10 2022 11:16:41 GMT-1000 (Hawaii-Aleutian Standard Time)', 'subscribed': True, 'in': True, 'channels': ['🤖│abe-ai-daily-report', '🤖│abe-ai-eth', '🤖│abe-ai-highlights', '🤖│abe-ai-items-of-interest', '🤖│abe-ai-might-be-somthing', '🤖│abe-ai-sol', '🤝│collabland-join'], 'roles': ['@everyone', 'poker', 'Twitter Blue', 'ABE A.I.', 'dog', 'Timmith Ama Attendee', 'Vulcan Authentication', 'Lost Realm AMA attendee', '3gm Bot', 'MINTER BENEFITS', 'News', 'Shit Coins', 'Upcoming Drops', 'Scams/Security', 'Member Alpha', 'Giveaways', 'Events', 'Degen Mints', 'Alpha/Research', 'Open Mic', 'NotABot', 'Thunder Partner', 'Node Partner', 'Blur Partners', 'AlphaHQ Partner', 'Momentum', 'Guest [TEMPORARY]', 'Momentum Boosters', 'Member', 'SNIF Whale', 'Momentum Pass', 'Genesis Pass', 'Momentum Whale', 'EssieEssieEssie', 'Mum', '#yungstafferly', 'Crypto Tickers', 'Ticket Tool', 'Alphabot', 'Staff', 'Dyno', 'collabland-admin', 'Collab.Land', 'Muted', 'Quarantine', 'Wick Premium', 'Master Fudders', 'Team', 'Head of Operations', 'Top Signal'], 'subscribed_channel_feed_map': {'daily': '🤖│abe-ai-daily-report', 'might-be-something': '🤖│abe-ai-might-be-somthing', 'alpha-plus': '🤖│eth-alph-ai-bot', 'alpha': '🤖│abe-ai-might-be-somthing', 'solana': '🤖│sol-alpha-ai-bot', 'highlight': '🤖│abe-ai-highlights', 'nft-tools': '🤖│abe-ai-items-of-interest', 'other-chains': '🤖│abe-ai-items-of-interest', 'daos': '🤖│abe-ai-items-of-interest', 'premint': '🤖│abe-ai-items-of-interest', 'artist': '🤖│abe-ai-items-of-interest', 'vc-firms': '🤖│abe-ai-items-of-interest'}}
+
+
+nope roles
+
+
+nope channels
+
+
+
+{'_id': ObjectId('63752dad672563e68f2dcb56'), 'total_cost': 0, 'cost_per_month': '0.25', 'discount_fraction': 0, 'num_months': 0, 'type': 'eth', 'name': 'premium', 'guild_id': '978987192573657089', 'guild_name': 'beta calls', 'date': 'Wed Nov 16 2022 13:36:27 GMT-0500 (Eastern Standard Time)', 'subscribed': True, 'in': True, 'channels': ['Beta VC', 'Gaming', 'Lounge', 'Team VC', 'abe-alpha-plus', 'abe-highlights', 'abe-might-be-something', 'abe-misc', '⚙｜bot-bug-fixes', '⚙｜commands', '⚙｜staff-command', '⛩｜team-announcement', '✅｜success', '✔｜react-for-roles', '❄｜moby-pings', '❌｜scam-alerts', '🇺┃unfiltered-analysis', '🇺┃unfiltered-news', '🇺┃unfiltered-scam-alerts', '🌐｜premint-links', '🎁｜giveaways', '🎗｜tweet-tracking', '🎰｜sports-bets', '🏆｜giveaway-results', '🏪｜otc-marketplace', '🐦｜tweets', '🐳｜icy-wallets', '💡｜response-log', '💥｜vc-text', '💦｜airdrop-alpha', '💧｜price-analysis', '💬｜beta-chat', '💬｜shitcoin-maxis', '📈｜stock-calls', '📖｜early-alpha', '📜｜project-research', '📞｜community-calls', '📬｜server-recommendations', '🔖｜daft-daily-rank', '🔖｜guides', '🗓｜mint-calendar', '🗞｜daily-news', '🛠｜subscription-info', '🛠｜team-text', '🥵｜post-socials', '\U0001f977｜ninja-alerts', '🧱｜brickers', '🧹｜sweep-feed', '\U0001fab5｜logs'], 'roles': ['@everyone', 'DMTP', 'bakpak', 'WhitelistPing WL', 'WhitelistPing WL', 'ABE A.I.', 'Hunting Diary Bot', 'Silk NFT', 'Familiars WL', 'Football Metaverse', 'Project Nakano', 'Atamo Ascension', 'Xenia', 'Operation Mitsubishi', 'KYOKAI', 'UTLTY', 'Degeneration', 'Springfield', 'Caesars', 'Metaplaces', 'DeadorAlive', 'Meowki', 'CryptoRex', 'AAC', 'SuperWall', 'Okay Kongs', 'FanCPlace WL', 'FanCPlace WL', 'Freakzz', 'Mitsubishi Phase 2 WL', 'Supercute', 'Artropods', 'Rift Trip WL', 'Rift Trip WL', 'Ghost Buddy WL', 'VIKINGSAI', 'Soul Aether', 'BetaTools', 'Mekawaii WL', 'EOT (Allowlist)', 'Appolumia', 'OSYC', '8OYZ', 'Kitsuden', 'Unparallels', 'Rogue X', 'Oddsquad', 'GigaChad', 'Neko', 'MsVampire', 'EOT (Guaranteed)', 'Heroes Bitz WL', 'NUO', 'Brainless Spikes', 'EON Guardians', 'Rafi Lounge', 'Afirix', 'GOR', 'JokerBoysNFT', 'VeNFTian', 'Aptos Land', 'Dino Fatties', 'Fishmafia', 'Pandora', 'TooneyChain', 'Shinigami', 'Contributors', 'Furrzuki', 'AZGA', 'THE NEMESIS', 'ABSTRACT WORLD', 'TYRANZ', 'APTOS TOMIKO', 'spacemeta', 'page one', 'MAU', 'ArashiPortal', 'Tsukimi', 'CRYPTO TITANS', 'Staxe', 'HempBased', 'TMI', 'WILDERS', 'ET', 'aethergamesinc', 'School data', 'Degen Galz WL', 'Degen Galz WL', 'KIYO WL', 'Bugatti Group WL', 'RealTagComic', 'Neckles', 'Xora World WL', 'Warp', 'Techie_club', 'Saint Robotica WL', 'Chill TUNE WL', 'Duckin', 'Decats', 'AICONS', 'BionicOwls', 'JAMBESS', 'crazyliluni', 'FREAKS', 'VOYAGI', 'SacredScribes_', 'IMMORTAL DRAGONS', 'Guritchi', 'CATCH THE CULPRIT', 'PETTOKADO', 'AyahuascaCats', 'Verseshoe', 'metaflexer-2nd', 'BI DID', 'FREE MINT PASS', 'MEG4MINT', 'METADVENTURE', 'ETHERUKO', 'SILLY DUMPLINGS', 'SUPERORDINARY FRIENDS', 'DayAway', 'Vile (2)', 'DR/VRS WL', 'Ayahuasca Cats WL', 'Wisdomatic WL', 'Metadventure WL', 'Verified', 'Duel Realms WL', 'Anubis WL', 'HoshikoNFTWL', 'SpoilsOfWar2WL', 'TBO', 'ProjectRektNews', 'zombiewtf', 'Deviators WL', 'AETHER', 'EXTRATERRE', 'JOKER BOYS', 'METROGRAD', 'DAYH', 'KUDOMACHI', 'KATWALKERZ', 'BB', 'NAYOM1', 'Fruitz WL', 'Owange WL', 'GOOFY PANDA', 'KIDDO', 'VCX', 'IR', 'Gakkoverse WL', 'NECKLESS', 'Project Abyss', 'LONEWOLF', 'dreambeatz wl', 'Tenchi WL', 'METAOASIS', 'Price Analysis', 'HOMA', 'LB', 'New Wave Warriors', 'Dr/Vrs', 'TWINZ', 'ITAMIVERSE', 'GBYC', 'BODEGA', 'NOBODY', 'Unfiltered Lite', 'anarcade', 'Sakura WL', 'MEKABEASTS WL', 'KOPOKO', 'ALIEN', 'Miuzium WL', 'The Ninja Kingdom 忍者王国WL', 'Fabled Adventure WL', 'Openstream WL', 'Exploders WL', 'DNC WL', 'Scribbles WL', 'Wali', 'DuelRealms Wl', 'Shinnoki WL', 'Epic League WL', 'Beau Coup WL', 'BEO wl', 'Ear Tensifier', 'Kira Corp WL', 'Highlienz WL', 'Verb Chapter 2 WL', 'BubbliesIOWL', 'KnightsRosesWL', 'RatTrap WL', 'RedRex WL', 'BSP WL', 'Defined Bot', 'Machina WL', 'Alphabot', 'Ticket Tool', 'Gaming', 'TweetShift', 'Sport Bets', 'Daily Calendar', 'Giveaway Ping', 'Early Alpha', 'House Dev', 'Shitcoin Alpha', 'Degen Pings', 'Server Booster', 'Server Booster 15x', 'Urgent Pings', 'Tools Manager', 'Alpha Ping', 'Stocks', 'Bots', 'Undercutters', 'Dyno', 'Lady Degens', 'On Watch', 'Booster Whale🐳', 'On Visit', 'Jr Callers', 'Beta Callers', 'Community Mod', 'Collab Managers', 'Builders', 'Betas', 'Vulcan Authentication', 'Eth Price', 'NXT Level', 'Beta Calls', 'Whop Bot', 'Directors'], 'subscribed_channel_feed_map': {'highlight': 'abe-highlights', 'alpha-plus': 'abe-alpha-plus', 'might-be-something': 'abe-might-be-something', 'premint': '🌐｜premint-links', 'alpha': 'abe-misc', 'daily': 'abe-misc'}, 'subscribed_role_feed_map': {'highlight': 'Alpha Ping'}}
+document[srfm]:  {'highlight': 'Alpha Ping'}
+
+
+nope channels
+
+
+
+{'_id': ObjectId('63752e99672563e68f2dcb57'), 'total_cost': 0, 'cost_per_month': '0.25', 'discount_fraction': 0, 'num_months': 0, 'type': 'eth', 'name': 'premium', 'guild_id': '978987192573657089', 'guild_name': 'beta calls', 'date': 'Wed Nov 16 2022 13:40:25 GMT-0500 (Eastern Standard Time)', 'subscribed': True, 'subscribed_channel_feed_map': {'highlight': 'abe-highlights', 'alpha-plus': 'abe-alpha-plus', 'might-be-something': 'abe-might-be-something', 'premint': '🌐｜premint-links', 'alpha': 'abe-misc', 'daily': 'abe-misc'}, 'subscribed_role_feed_map': {'highlight': 'Alpha Ping'}}
+document[srfm]:  {'highlight': 'Alpha Ping'}
+
+
+nope channels
+
+
+
