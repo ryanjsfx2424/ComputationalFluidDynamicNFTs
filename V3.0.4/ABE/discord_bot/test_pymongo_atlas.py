@@ -20,17 +20,36 @@ print("collection: ", collection)
 cursor = collection.find({})
 print("cursor: ", cursor)
 
+trial_map = {
+                            "952352992626114622": 1e50, # ABE
+                            "922678240798187550": 5, # sketches by gabo
+                            "999414546496229498": 1e50, # Test
+                            "984574397870399528": 30*24*3600, # momentum
+                            "967786268077461604": 18*24*3600, # beyond-alpha
+                            "978987192573657089": 14*24*3600,
+                            "889254570906239028": 16*24*3600 # origins
+                        }
+
 for document in cursor:
   print(document)
+  print(document.keys())
+  print("\n\n")
+  print("guild name: ", document["guild_name"])
+  print("subscription date: ", document["date"])
   if "subscribed_role_feed_map" in document:
     print("document[srfm]: ", document["subscribed_role_feed_map"])
   else:
     print("\n\nnope roles")
-  if "subscribed_chanel_feed_map" in document:
+  if "subscribed_channel_feed_map" in document:
     print("document[scfm]: ", document["subscribed_channel_feed_map"])
   else:
     print("\n\nnope channels")
+  if document["guild_id"] in trial_map:
+    print("yup in trial map")
+  else:
+    print("not in trial map")
   print("\n\n")
+  input(">>")
 '''
 collection.find_one_and_update({"guild_id": "931482273440751638"}, 
 {"$set": {"testfield":"foobar"}})

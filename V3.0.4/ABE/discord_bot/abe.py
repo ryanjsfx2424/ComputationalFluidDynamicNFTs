@@ -53,7 +53,9 @@ class AbeBot(object):
                             "999414546496229498": 1e50, # Test
                             "984574397870399528": 30*24*3600, # momentum
                             "967786268077461604": 18*24*3600, # beyond-alpha
-                            "978987192573657089": 14*24*3600
+                            "978987192573657089": 14*24*3600,
+                            "889254570906239028": 16*24*3600, # origins
+                            "936842870193803314": 45*24*3600 # nate's
                         }
         self.premium_ratings = ["aptos", "artist", "daos", "nft-tools", "premint", "vc-firms", "other-chains"]
 
@@ -93,7 +95,7 @@ class AbeBot(object):
         if "embedded_img_url" in payload:
             footer_icon = payload["embedded_img_url"]
         elif "embeded_img_url" in payload:
-            footer_icon = payload["embedded_img_url"]
+            footer_icon = payload["embeded_img_url"]
 
         embed.set_footer(text = footer_text, icon_url=footer_icon)
 
@@ -151,12 +153,14 @@ class AbeBot(object):
 
         connection_string = "mongodb+srv://" + user + ":" + word \
                           + "@cluster0.pqg6c02.mongodb.net/" \
-                          + "?retryWrites=true&w=majority"
+                          + "?retryWrites=true&w=majority&readPreference=PrimaryPreferred"
 
         client = MongoClient(connection_string)
         self.mongoDB = client.get_database("abe")
 
     async def get_guild_data(self):
+        ## this seems to have the answer: https://www.mongodb.com/community/forums/t/connection-to-atlas-server-falls-over-every-1-5-weeks-with-pymongo-errors-serverselectiontimeouterror-no-replica-set-members-match-selector-primary-traceback-message/124971/4
+        ## need to add a --lazy-apps option to uWSGI...Or add &replicaSet=yourreplicasetsname to end of connection string. Also can try readPreference=PrimaryPreferred (since I just read here)
         for retry in range(3):
             try:
                 cursor = self.mongoDB["abe-guilds-data"].find({})
@@ -295,8 +299,9 @@ class AbeBot(object):
             if "subscribed_channel_feed_map" not in abe_guild:
                 continue
 
-            if rating not in abe_guild["subscribed_channel_feed_map"]:
-                if (rating == "other-chains" and "aptos" in abe_guild["subscribed_channel_feed_map"]):
+            if rating not in abe_guild["subscribed_channel_feed_map" ]:
+                if (rating == "other-chains" and \
+                    "aptos" in abe_guild["subscribed_channel_feed_map"]):
                     rating = "aptos"
                 else:
                     continue
