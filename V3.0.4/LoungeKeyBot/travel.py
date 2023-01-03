@@ -27,6 +27,10 @@ if "MB-145" in socket.gethostname():
 class TravelBot(RegionData):
     def __init__(self):
         self.TESTING = False
+        self.SCOTTS = False
+        self.first_time = True
+
+        self.last_scotts_update = time.time() - 48*3600
 
         self.url = "https://secretflying.com"
         self.sleep_time = 60.1
@@ -224,6 +228,11 @@ class TravelBot(RegionData):
         driver.get(url)
         driver.fullscreen_window()
 
+        html = driver.page_source
+        with open("scotts_debug1.txt", "w") as fid:
+            fid.write(html)
+        # end with open
+
         email_xpath  = '//input[@name="email"]'
         passw_xpath  = '//input[@name="password"]'
         email = os.environ.get("lkEmail")
@@ -305,6 +314,7 @@ class TravelBot(RegionData):
         await asyncio.sleep(0.1)
 
         elems = driver.find_elements(By.CSS_SELECTOR, deals_csss)
+        print("num deals found on page: ", len(elems))
         links = [elem.get_attribute("href") for elem in elems]
 
         locations      = []
@@ -327,13 +337,23 @@ class TravelBot(RegionData):
             self.fares_scotts["hashtags"] = []
         # end if
 
+        html = driver.page_source
+        with open("scotts_debug2.txt", "w") as fid:
+            fid.write(html)
+        # end with open
+
+        wcnt = 0
+        log_channel = self.client.get_channel(self.BOT_COMMANDS_CIDS[0])
         #links = ["https://app.scottscheapflights.com/route/us/from-abe/fr/to-paris/standard/premium-economy"]
         while len(links) > 0:
             link = links[0]
-            
+            wcnt += 1
+
+            await log_channel.send("scotts, wcnt: " + str(wcnt))
             print("link: ", link)
             driver.get(link)
             driver.implicitly_wait(10)
+            await log_channel.send("done w wait 354")
 
             elem = driver.find_element(By.CSS_SELECTOR, h1_csss)
             cities = elem.find_elements(By.CSS_SELECTOR, cities_csss)
@@ -378,13 +398,6 @@ class TravelBot(RegionData):
             action.click()
             action.perform()
             #print("price: ", price)
-
-
-            if location + price + flight_type + flight_class in already_visited:
-                del links[0]
-                await asyncio.sleep(2)
-                continue
-            # end if
 
             prices.append(price)
             locations.append(location)
@@ -473,8 +486,10 @@ class TravelBot(RegionData):
                 # end for
 
                 #print("going to click buttons")
+                fcnt = 0
                 for button in buttons_to_click:
-                    await asyncio.sleep(1)
+                    await asyncio.sleep(1); fcnt += 1
+                    await log_channel.send("done w sleep 490, fcnt: " + str(fcnt))
                     button.click()
 
                     ## now grab links to all the other departs from things
@@ -494,17 +509,30 @@ class TravelBot(RegionData):
             # end if buttons_exist
             #print("done with buttons")
 
+            if location + price + flight_type + flight_class in already_visited:
+                del links[0]
+                await asyncio.sleep(2)
+                print("already_visited so continuing")
+                continue
+            else:
+                print("not in already_visted: ", location + price + flight_type + flight_class)
+            # end if
+
             await asyncio.sleep(3)
+            await log_channel.send("done w sleep 520")
             #elem = driver.find_element(By.XPATH, gf_button1_xpath).click()
             elem = driver.find_element(By.CSS_SELECTOR, gf_button1_csss).click()
             await asyncio.sleep(3)
+            await log_channel.send("done w sleep 524")
             google_url1 = driver.current_url
             if "consent.google.com" in google_url1:
                 await asyncio.sleep(0.1)
                 driver.implicitly_wait(10)
+                await log_channel.send("done w wait 529")
                 await asyncio.sleep(0.1)
                 elem = driver.find_element(By.XPATH, gf_button2_xpath).click()
                 await asyncio.sleep(3)
+                await log_channel.send("done w sleep 533")
             # end if
             gf_links.append(driver.current_url)
 
@@ -660,12 +688,14 @@ class TravelBot(RegionData):
 
             already_visited.append(location + price + flight_type + flight_class)
             self.save_json(self.fname_fares_scotts, already_visited)
+            print("appended and saved already_visted. av[-1]: ", already_visited[-1])
 
             del links[0]
             await asyncio.sleep(1.0)
         # end while
 
         print("get_fares_scotts took: ", time.time() - tstart)
+        #driver.quit()
     # end get_fares_scotts
 
     def get_fares(self, fare_type):
@@ -678,7 +708,13 @@ class TravelBot(RegionData):
               print("172 Traceback, html ", self.html)
               return
         else:
-            fares = self.html.split("Latest Deals")[1].split("As Seen On")[0]
+            try:
+              fares = self.html.split("Latest Deals")[1].split("As Seen On")[0]
+            except Exception as err:
+              print("714 err: ", err)
+              print("715 err.args: ", err.args[:])
+              print("716 Traceback, html ", self.html)
+              return
         # end if/else
         imgs = fares.split("<img ")[1:]
 

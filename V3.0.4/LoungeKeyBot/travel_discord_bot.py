@@ -34,7 +34,6 @@ class TravelDiscordBot(TravelBot):
         async def on_ready():
             last_sf_update = time.time() - 7200
             last_nd_update = time.time() - 7200
-            last_scotts_update = time.time() - 48*3600
             print("on_ready")
 
             if self.TESTING:
@@ -51,22 +50,30 @@ class TravelDiscordBot(TravelBot):
 
                 if time.time() - last_sf_update > 60.1:
                     last_sf_update = time.time()
-                    self.get_html()
-                    self.get_fares("err")
-                    self.get_fares("deals")
+                    if not self.SCOTTS:
+                        self.get_html()
+                        self.get_fares("err")
+                        self.get_fares("deals")
                 # end if
 
                 if time.time() - last_nd_update > 3600:
-                    print(datetime.datetime.now())
+                    print("now: ", datetime.datetime.now())
                     last_nd_update = time.time()
-                    await self.get_html_nd()
+                    if not self.SCOTTS:
+                        await self.get_html_nd()
                 # end if
 
-                if time.time() - last_scotts_update > 24.5*3600:
-                    print(datetime.datetime.now())
-                    last_scotts_update = time.time()
+                #if time.time() - self.last_scotts_update > 24.5*3600 or 
+                if self.SCOTTS and self.first_time:
+                    self.first_time = False
+                    print("now: ", datetime.datetime.now())
+                    self.last_scotts_update = time.time()
+                    print("scotts")
                     asyncio.create_task(self.get_fares_scotts())
+                    await asyncio.sleep(3600*24*365)
                 # end if
+                if self.SCOTTS:
+                    sys.exit()
 
                 with open(self.fname_fares, "w") as fid:
                     fid.write(str(self.fares))
